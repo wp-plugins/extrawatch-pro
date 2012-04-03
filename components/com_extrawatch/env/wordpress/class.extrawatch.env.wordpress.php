@@ -73,7 +73,7 @@ class ExtraWatchWordpressEnv implements ExtraWatchEnv
     function getEnvironmentSuffix()
     {
         // as install dir
-        return "wp-content/plugins/extrawatch/";
+        return "wp-content/plugins/extrawatch-pro/";
     }
 
     function renderLink($task, $otherParams)
