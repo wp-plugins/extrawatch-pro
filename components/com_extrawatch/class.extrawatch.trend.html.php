@@ -1,0 +1,305 @@
+<?php
+
+/**
+ * ExtraWatch - A real-time ajax monitor and live stats
+ * @package ExtraWatch
+ * @version 1.2.18
+ * @revision 41
+ * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
+ * @copyright (C) 2012 by Matej Koval - All rights reserved!
+ * @website http://www.codegravity.com
+ **/
+
+/** ensure this file is being included by a parent file */
+if (!defined('_JEXEC') && !defined('_VALID_MOS'))
+    die('Restricted access');
+
+class ExtraWatchTrendHTML
+{
+
+    var $extraWatch;
+
+    const COLOR_GRAY = "gray";
+
+    const COLOR_RED = "red";
+
+    const COLOR_GREEN = "green";
+
+    function ExtraWatchTrendHTML($extraWatch)
+    {
+        $this->extraWatch = $extraWatch;
+    }
+
+    /* trend */
+    function renderDiff($group, $name, $date, $relDiff, $onlyImage = 0, $title = "")
+    {
+        $diffOutput = "";
+
+        $color = $this->getDiffColor($relDiff);
+
+        if (!$onlyImage) {
+            $diffOutput .= "<table cellpadding='0' cellspacing='0'><tr><td><a href='" . @ $this->extraWatch->config->getAdministratorIndex() . "?option=com_extrawatch&task=trends&group=$group&name=$name&date=$date' style='color:$color;'>";
+            $diffOutput .= "$relDiff%</a></td><td>";
+        }
+        $diffOutput .= "<img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/icons/trend_$color.gif' border='0' title='$title'/>";
+        if (!$onlyImage) {
+            $diffOutput .= "</td></tr></table>";
+        }
+
+        return $diffOutput;
+    }
+
+    function getDiffColor($relDiff, $inversed = false)
+    {
+        if (!$relDiff) {
+            $color = ExtraWatchTrendHTML::COLOR_GRAY;
+            return $color;
+        } else {
+            if ((!$inversed && $relDiff < 0) || ($inversed && $relDiff > 0)) {
+                $color = ExtraWatchTrendHTML::COLOR_RED;
+            } else {
+                $color = ExtraWatchTrendHTML::COLOR_GREEN;
+            }
+            return $color;
+        }
+    }
+
+
+    /* trend */
+    function renderDayDiff($group, $name, $date1, $date2, $onlyImage = 0)
+    {
+        $relDiff = $this->extraWatch->stat->getRelDiffOfTwoDays($date1, $date2, $group, $name);
+        $output = $this->renderDiff($group, $name, $date2, $relDiff, $onlyImage);
+        return $output;
+
+    }
+
+    /* trend */
+    function renderDayTrends($group, $name, $date)
+    {
+
+        $dbKeysArray = array(1 => 'BROWSER', 'COUNTRY', 'GOALS', 'HITS', 'INTERNAL', 'IP', 'KEYWORDS', 'LOADS', 'OS', 'REFERERS', 'UNIQUE', 'URI', 'USERS', 'URI2KEYWORD');
+
+        $resultsArray = array();
+        $max = 0;
+        $maxDate = 0;
+        for ($i = $date - 20; $i <= $date; $i++) {
+            $value = $this->extraWatch->stat->getKeyValueInGroupByDate($group, $name, $i);
+            if ($max < $value) {
+                $max = $value;
+                $maxDate = $i;
+            }
+            $resultsArray[$i - ($date - 20)] = $value;
+        }
+
+
+        $nameTranslated = $name;
+
+        switch ($group) {
+            case DB_KEY_INTERNAL:
+                {
+                /* special handling for inbound */
+                $inboundRow = $this->extraWatch->visit->getInternalNameById(@$name);
+                $from = $inboundRow->from;
+                $to = $inboundRow->to;
+
+                $nameTranslated = "<br/>$from -> $to";
+                break;
+                }
+
+            case DB_KEY_GOALS:
+                {
+                $nameTranslated = "<br/>" . $this->extraWatch->goal->getGoalNameById($name);
+                break;
+                }
+
+            case DB_KEY_URI2KEYPHRASE:
+                {
+                $nameTranslated = "<br/>" . $this->extraWatch->visit->getKeyphraseFromUri2KeyphraseId($name);
+                break;
+                }
+            case DB_KEY_HEATMAP:
+                {
+                $nameTranslated = "<br/>" . $this->extraWatch->visit->getTitleByUriId($name);
+                break;
+                }
+            case DB_KEY_SEARCH_RESULT_NUM:
+                {
+                $result = $this->extraWatch->seo->getUri2KeyphrasePosNameById($name);
+                $nameTranslated = "<br/>" . $result;
+                break;
+                }
+            default:
+                {
+                $nameTranslated = $name;
+                }
+        }
+
+
+        $groupTranslated = @constant("_EW_STATS_" . strtoupper($dbKeysArray[$group]));
+
+        $helpId = ExtraWatchHTML::renderOnlineHelp("trends");
+        $output = "<center><h2>" . _EW_TRENDS_DAILY_WEEKLY . " $groupTranslated : $nameTranslated $helpId</h2><br/>";
+        $output .= "<table cellpadding='0' cellspacing='0'>";
+        $output .= "<tr>";
+        $progressBarIcon = $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/icons/progress_bar_vertical.gif";
+
+        for ($i = $date - 20; $i <= $date; $i++) {
+            $value = ($resultsArray[$i - ($date - 20)]);
+            $percent = 0;
+            if ($max) {
+                $percent = floor(($value / $max) * 1000) / 10;
+            }
+            $output .= "<td valign='bottom' align='center'>";
+            $output .= $this->formatValueBasedOnGroup($group, $value);
+            $output .= "<br/><img src='$progressBarIcon' height='$percent' width='10' /><br/>";
+            $output .= $this->renderDayDiff($group, $name, $i - 1, $i);
+            $output .= $this->extraWatch->date->getDateByDay($i, "d.m ") . "&nbsp;<br/>";
+            $output .= $this->extraWatch->date->getDateByDay($i, "D") . "<br/>";
+            $output .= "</td>";
+
+        }
+        $output .= "</tr>";
+        $output .= "</table>";
+        $output .= "</center>";
+
+        return $output;
+
+    }
+
+    /* trend */
+    function renderWeekTrends($group, $name, $date)
+    {
+
+        $NUMBER_OF_BARS = 20;
+        $resultsArray = array();
+        $max = 0;
+        $maxDate = 0;
+        // first day has to be monday
+        $dayOfWeek = (ExtraWatchDate::date("N", $date * 24 * 3600) - 1);
+        for ($i = $date - $NUMBER_OF_BARS * 7 - $dayOfWeek + 7; $i <= $date - $dayOfWeek; $i += 7) {
+            $value = $this->extraWatch->stat->getSumOfTwoDays($i + 7, $i, $group, $name);
+            if ($max < $value) {
+                $max = $value;
+                $maxDate = $i;
+            }
+            $resultsArray[$i - ($date - $NUMBER_OF_BARS * 7)] = $value;
+        }
+
+        $output = "<center>";
+        $output .= "<table>";
+        $output .= "<tr>";
+        $progressBarIcon = $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/icons/progress_bar_vertical_wide.gif";
+
+        for ($i = $date - $NUMBER_OF_BARS * 7 - $dayOfWeek + 7; $i <= $date - $dayOfWeek; $i += 7) {
+            $value = ($resultsArray[$i - ($date - $NUMBER_OF_BARS * 7)]);
+            $percent = 0;
+
+            if ($max) {
+                $percent = floor(($value / $max) * 1000) / 10;
+            }
+            $output .= "<td valign='bottom' align='center'>";
+            $output .= $this->formatValueBasedOnGroup($group, $value);
+            $output .= "<br/><img src='$progressBarIcon' height='$percent' width='$NUMBER_OF_BARS' /><br/>";
+            $relDiff = $this->extraWatch->stat->getRelDiffOfTwoWeeks($i, $i + 7, $group, $name);
+            $output .= $this->renderDiff($group, $name, $i + 7, $relDiff);
+            $output .= ExtraWatchDate::date("W/y", $i * 24 * 3600) . " &nbsp;<br/>";
+            $output .= "</td>";
+
+        }
+        $output .= "</tr>";
+        $output .= "</table>";
+        $output .= "</center>";
+
+        return $output;
+
+    }
+
+    /* trend */
+    function renderTrends()
+    {
+        $group = @ ExtraWatchHelper::requestGet('group');
+        $name = @ ExtraWatchHelper::requestGet('name');
+        $date = @ ExtraWatchHelper::requestGet('date');
+
+        $output = "";
+        $output .= "<br/><br/>";
+        $output .= "<br/><br/>";
+        $output .= "<br/><br/>";
+        $output .= "<br/><br/>";
+        $output .= $this->renderDayTrends($group, $name, $date);
+        $output .= "<br/><br/>";
+        $output .= $this->renderWeekTrends($group, $name, $date);
+        return $output;
+
+    }
+
+    function renderGraphSelectionForm($group)
+    {
+
+        $keysArray = array('goals', 'referers', 'internal', 'keyphrase', 'keywords', 'uri', 'users', 'country', 'ip', 'browser', 'os', 'size_db');
+
+        $output = "<br/><br/><div align='center'>
+        <form action='".$this->extraWatch->env->renderLink("graphs","")."' method='POST'>
+        <select name='group' onchange='this.form.submit()'>";
+        foreach ($keysArray as $key => $value) {
+            $key2 = @constant("DB_KEY_" . strtoupper($keysArray[$key]));
+            if ($key2 == $group) {
+                $selected = "selected";
+            } else {
+                $selected = "";
+            }
+
+            $output .= "<option value='$key2' $selected>$value</option>";
+        }
+        $output .= "</select>
+        </form></div>
+        ";
+        return $output;
+    }
+
+
+    /* trend */
+    function renderGraphsForGroup($group = 0)
+    {
+
+        if (!$group) {
+            $group = 3;
+        }
+
+        $date = $this->extraWatch->date->jwDateToday();
+
+        $rows = $this->extraWatch->stat->getIntValuesByName($group, $date, false, 10);
+
+        $output = $this->renderGraphSelectionForm($group);
+        if (!$rows) {
+            $output .= "<br/><br/><br/><br/><div style='text-align: center'>" . ExtraWatchHelper::renderNoData() . "</div><br/><br/><br/><br/>";
+        }
+
+
+        foreach ($rows as $row) {
+            $output .= "<br/><br/>";
+            $output .= $this->renderDayTrends($group, $row->name, $date);
+            $output .= "<br/><br/>";
+            $output .= $this->renderWeekTrends($group, $row->name, $date);
+            $output .= "<hr/><br/>";
+        }
+        $output .= $this->renderGraphSelectionForm($group);
+        return $output;
+    }
+
+    function formatValueBasedOnGroup($group, $value)
+    {
+        if (!$value) { // if no value, we are not going to format it at all
+            return $value;
+        }
+        if ($group == DB_KEY_SIZE_DB || $group == DB_KEY_SIZE_COM || $group == DB_KEY_SIZE_MOD) {
+            $output = $this->extraWatch->sizes->sizeFormat($value) . "&nbsp;";
+        } else {
+            $output = $value;
+        }
+        return $output;
+    }
+}
+
+?>

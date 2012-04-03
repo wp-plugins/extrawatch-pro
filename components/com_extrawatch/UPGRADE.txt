@@ -1,0 +1,20 @@
+
+Update ExtraWatch (Joomla 1.6 only)
+The following update method is little bit weird, because of unfinished update mechanism of Joomla 1.6, which contains a bug. ExtraWatch fixes this bug, but you need to to the following:
+
+1. Open update manger (http://www.yoursite.com/administrator/index.php?option=com_installer&view=update)
+2. Click Find Updates
+3. Go back to ExtraWatch -> Update and Open update manager again (http://www.yoursite.com/administrator/index.php?option=com_installer&view=update)
+4. Now you should see the New version in update manager (if available)
+5. Tick the checkbox and click "Update"
+
+Older method:
+
+When you are doing an UPGRADE from some older version
+====================================================
+1. You can keep your current data by ticking the UNINSTALL_KEEP_DATA in ExtraWatch -> Advanced before doing an uninstall.
+2. The database backup of jos_extrawatch_* tables is even though recommended.
+3. Uninstall without this option switched on #!ERASES!# all the database tables that belong
+to ExtraWatch.
+4. Install the new version
+

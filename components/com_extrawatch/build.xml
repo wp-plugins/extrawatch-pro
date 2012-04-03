@@ -1,0 +1,294 @@
+<?xml version="1.0"?>
+
+<project name="test" default="build" basedir="../..">
+
+    <taskdef resource="net/sf/antcontrib/antcontrib.properties"/>
+
+    <tstamp/>
+    <tstamp>
+        <format property="year" pattern="yyyy" locale="en,UK"/>
+    </tstamp>
+
+    <property name="version" value="1.2.18"/>
+    <property name="dir" value="${basedir}"/>
+    <property name="build" value="d:\work\ew-build-${version}-${DSTAMP}"/>
+    <property name="build.tokenized" value="${build}/src"/>
+    <property name="license" value="PRO"/>
+
+    <property name="revision.number.fallback" value="BETA"/>
+
+    <target name="build" depends="build-j16,token_copy-j15">
+        <delete dir="${build}/j15"/>
+        <mkdir dir="${build}/j15"/>
+        <zip destfile="${build}/j15/com_extrawatch.zip">
+            <fileset dir="${build.tokenized}/administrator/components/com_extrawatch">
+                <exclude name="extrawatch.xml"/>
+                <exclude name="security_certificate.pdf"/>
+            </fileset>
+            <fileset dir="${build.tokenized}/components/com_extrawatch">
+                <exclude name="**/_THIS_IS_A_DEVELOPMENT_VERSION"/>
+                <exclude name="**/TODO.txt"/>
+                <exclude name="**/build.xml"/>
+                <exclude name="**/build.bat"/>
+                <exclude name="**/ip-to-country.csv"/>
+                <exclude name="**/csv2sql.csv"/>
+                <exclude name="**/*.bat"/>
+            </fileset>
+
+        </zip>
+        <zip destfile="${build}/j15/mod_extrawatch_agent.zip">
+            <fileset dir="${build.tokenized}/modules/mod_extrawatch_agent" includes="**/*">
+                <exclude name="mod_extrawatch_agent.xml"/>
+            </fileset>
+        </zip>
+        <zip destfile="${build}/j15/mod_extrawatch_visitors.zip">
+            <fileset dir="${build.tokenized}/modules/mod_extrawatch_visitors" includes="**/*">
+                <exclude name="mod_extrawatch_visitors.xml"/>
+            </fileset>
+        </zip>
+        <zip destfile="${build}/j15/mod_extrawatch_users.zip">
+            <fileset dir="${build.tokenized}/modules/mod_extrawatch_users" includes="**/*">
+                <exclude name="mod_extrawatch_users.xml"/>
+            </fileset>
+        </zip>
+
+        <copy file="${build.tokenized}\components\com_extrawatch\INSTALL.txt" tofile="${build}\j15\INSTALL.txt"/>
+        <copy file="${build.tokenized}\components\com_extrawatch\README.txt" tofile="${build}\j15\README.txt"/>
+        <copy file="${build.tokenized}\components\com_extrawatch\LICENSE.txt" tofile="${build}\j15\LICENSE.txt"/>
+        <copy file="${build.tokenized}\components\com_extrawatch\UPGRADE.txt" tofile="${build}\j15\UPGRADE.txt"/>
+        <copy file="${build.tokenized}\components\com_extrawatch\TERMS_AND_CONDITIONS.txt"
+              tofile="${build}\j15\TERMS_AND_CONDITIONS.txt"/>
+        <zip destfile="${build}/ExtraWatch-${version}-Joomla1.5-UnzipFirst.zip">
+            <fileset dir="${build}/j15/" includes="com_extrawatch.zip"/>
+            <fileset dir="${build}/j15/" includes="mod_extrawatch_agent.zip"/>
+            <fileset dir="${build}/j15/" includes="mod_extrawatch_visitors.zip"/>
+            <fileset dir="${build}/j15/" includes="mod_extrawatch_users.zip"/>
+            <fileset dir="${build}/j15/" includes="INSTALL.txt"/>
+            <fileset dir="${build}/j15/" includes="README.txt"/>
+            <fileset dir="${build}/j15/" includes="LICENSE.txt"/>
+            <fileset dir="${build}/j15/" includes="UPGRADE.txt"/>
+            <fileset dir="${build}/j16/" includes="TERMS_AND_CONDITIONS.txt"/>
+            <fileset dir="${dir}/administrator/components/com_extrawatch" includes="security_certificate.pdf"/>
+        </zip>
+        <antcall target="drupal"/>
+        <antcall target="wordpress"/>
+    </target>
+
+    <target name="drupal">
+        <echo message="drupal build ${build.tokenized}  ${build}/j16/"/>
+        <mkdir dir="${build}/drupal/extrawatch"/>
+        <copy todir="${build}/drupal/extrawatch" overwrite="true">
+            <fileset dir="${build}/src" includes="**/*"/>
+        </copy>
+        <copy todir="${build}/drupal/extrawatch" overwrite="true">
+            <fileset dir="${build}/src/components/com_extrawatch/env/drupal/module" includes="**/*"/>
+        </copy>
+        <zip destfile="${build}/drupal/extrawatch-pro.zip">
+            <fileset dir="${build}/drupal/extrawatch" includes="**/*"/>
+        </zip>
+
+        <!-- free version -->
+        <copy todir="${build}/drupal/extrawatch/components/com_extrawatch" overwrite="true">
+            <fileset dir="${build}/src/components/com_extrawatch/lite" includes="**/*"/>
+        </copy>
+        <zip destfile="${build}/drupal/extrawatch.zip">
+            <fileset dir="${build}/drupal/extrawatch" includes="**/*"/>
+        </zip>
+
+    </target>
+
+    <target name="find_revision">
+        <property name="revision" value="HEAD"/>
+        <property name="log.dir" location="log"/>
+        <echo>Executing svn update first</echo>
+        <exec executable="svn">
+            <arg line="update ${dir}\\components\\com_extrawatch "/>
+        </exec>
+        <exec executable="svn" outputproperty="svnlog.out">
+            <arg line="info ${dir}\\components\\com_extrawatch "/>
+        </exec>
+        <taskdef resource="net/sf/antcontrib/antcontrib.properties"/>
+        <propertyregex property="revision.number" input="${svnlog.out}"
+                       select="\1">
+            <regexp pattern="Revision: ([0-9]*)"/>
+        </propertyregex>
+        <echo>Revision found: ${revision.number}</echo>
+<!--
+        <if>
+            <equals arg1="${revision.number}" arg2="${revision.number}"/>
+            <then>
+                <var name="revision.number" value="${revision.number.fallback}"/>
+                <echo>Revision not found, setting it to: ${revision.number.fallback}</echo>
+            </then>
+        </if>
+-->
+    </target>
+
+    <target name="token_copy-j15">
+        <var name="joomla.version" value="1.5"/>
+        <antcall target="token_copy"/>
+    </target>
+
+    <target name="token_copy-j16">
+        <var name="joomla.version" value="1.6"/>
+        <antcall target="token_copy"/>
+    </target>
+
+    <target name="token_copy" depends="find_revision">
+        <echo>joomla version : ${joomla.version}</echo>
+        <delete dir="${build.tokenized}"/>
+        <mkdir dir="${build.tokenized}/components/com_extrawatch"/>
+        <copy todir="${build.tokenized}/components/com_extrawatch" overwrite="true">
+            <fileset dir="components/com_extrawatch"/>
+            <filterset>
+                <filter token="YEAR" value="${year}"/>
+                <filter token="VERSION" value="${version}"/>
+                <filter token="REVISION" value="${revision.number}"/>
+                <filter token="JOOMLA_VERSION" value="${joomla.version}"/>
+                <filter token="LICENSE" value="${license}"/>
+            </filterset>
+        </copy>
+
+        <!-- deleting the folders, because using filters, it was corrupted for binary files -->
+        <delete dir="${build.tokenized}/components/com_extrawatch/flags"/>
+        <copy todir="${build.tokenized}/components/com_extrawatch/flags" overwrite="true">
+            <fileset dir="${dir}/components/com_extrawatch/flags"/>
+        </copy>
+        <delete dir="${build.tokenized}/components/com_extrawatch/icons"/>
+        <copy todir="${build.tokenized}/components/com_extrawatch/icons" overwrite="true">
+            <fileset dir="${dir}/components/com_extrawatch/icons"/>
+        </copy>
+        <delete dir="${build.tokenized}/components/com_extrawatch/js/OpenLayers/img"/>
+        <copy todir="${build.tokenized}/components/com_extrawatch/js/OpenLayers/img" overwrite="true">
+            <fileset dir="${dir}/components/com_extrawatch/js/OpenLayers/img"/>
+        </copy>
+        <delete dir="${build.tokenized}/components/com_extrawatch/lang"/>
+        <copy todir="${build.tokenized}/components/com_extrawatch/lang" overwrite="true">
+            <fileset dir="${dir}/components/com_extrawatch/lang"/>
+        </copy>
+        <!-- deleting the folders, because using filters, it was corrupted for binary files -->
+
+        <mkdir dir="${build.tokenized}/administrator/components/com_extrawatch"/>
+        <copy todir="${build.tokenized}/administrator/components/com_extrawatch" overwrite="true">
+            <fileset dir="administrator/components/com_extrawatch"/>
+            <filterset>
+                <filter token="YEAR" value="${year}"/>
+                <filter token="VERSION" value="${version}"/>
+                <filter token="REVISION" value="${revision.number}"/>
+                <filter token="JOOMLA_VERSION" value="${joomla.version}"/>
+                <filter token="LICENSE" value="${license}"/>
+            </filterset>
+        </copy>
+        <!-- overwrite security_certificate.pdf with it's correct binary file corrupted after copy -->
+        <copy todir="${build.tokenized}/administrator/components/com_extrawatch" overwrite="true">
+            <fileset dir="${dir}/administrator/components/com_extrawatch">
+                <include name="security_certificate.pdf"/>
+            </fileset>
+        </copy>
+
+
+        <mkdir dir="${build.tokenized}/modules/mod_extrawatch_agent"/>
+        <copy todir="${build.tokenized}/modules/mod_extrawatch_agent" overwrite="true">
+            <fileset dir="modules/mod_extrawatch_agent"/>
+            <filterset>
+                <filter token="YEAR" value="${year}"/>
+                <filter token="VERSION" value="${version}"/>
+                <filter token="REVISION" value="${revision.number}"/>
+                <filter token="JOOMLA_VERSION" value="${joomla.version}"/>
+                <filter token="LICENSE" value="${license}"/>
+            </filterset>
+        </copy>
+        <mkdir dir="${build.tokenized}/modules/mod_extrawatch_users"/>
+        <copy todir="${build.tokenized}/modules/mod_extrawatch_users" overwrite="true">
+            <fileset dir="modules/mod_extrawatch_users"/>
+            <filterset>
+                <filter token="YEAR" value="${year}"/>
+                <filter token="VERSION" value="${version}"/>
+                <filter token="REVISION" value="${revision.number}"/>
+                <filter token="JOOMLA_VERSION" value="${joomla.version}"/>
+                <filter token="LICENSE" value="${license}"/>
+            </filterset>
+        </copy>
+        <mkdir dir="${build.tokenized}/modules/mod_extrawatch_visitors"/>
+        <copy todir="${build.tokenized}/modules/mod_extrawatch_visitors" overwrite="true">
+            <fileset dir="modules/mod_extrawatch_visitors"/>
+            <filterset>
+                <filter token="YEAR" value="${year}"/>
+                <filter token="VERSION" value="${version}"/>
+                <filter token="REVISION" value="${revision.number}"/>
+                <filter token="JOOMLA_VERSION" value="${joomla.version}"/>
+                <filter token="LICENSE" value="${license}"/>
+            </filterset>
+        </copy>
+    </target>
+
+
+    <target name="build-j16" depends="token_copy-j16">
+        <mkdir dir="${build}/j16"/>
+        <delete dir="${build}/j15"/>
+        <zip destfile="${build}/j16/com_extrawatch.zip">
+            <fileset dir="${build.tokenized}/administrator/components/com_extrawatch">
+                <exclude name="extrawatch.j15.xml"/>
+                <exclude name="security_certificate.pdf"/>
+            </fileset>
+            <fileset dir="${build.tokenized}/components/com_extrawatch">
+                <exclude name="**/_THIS_IS_A_DEVELOPMENT_VERSION"/>
+                <exclude name="**/TODO.txt"/>
+                <exclude name="**/build.xml"/>
+                <exclude name="**/build.bat"/>
+                <exclude name="**/ip-to-country.csv"/>
+                <exclude name="**/csv2sql.csv"/>
+                <exclude name="**/*.bat"/>
+            </fileset>
+
+        </zip>
+        <zip destfile="${build}/j16/mod_extrawatch_agent.zip">
+            <fileset dir="${build.tokenized}/modules/mod_extrawatch_agent" includes="**/*">
+                <exclude name="mod_extrawatch_agent.j15.xml"/>
+            </fileset>
+        </zip>
+        <zip destfile="${build}/j16/mod_extrawatch_visitors.zip">
+            <fileset dir="${build.tokenized}/modules/mod_extrawatch_visitors" includes="**/*">
+                <exclude name="mod_extrawatch_visitors.j15.xml"/>
+            </fileset>
+        </zip>
+        <zip destfile="${build}/j16/mod_extrawatch_users.zip">
+            <fileset dir="${build.tokenized}/modules/mod_extrawatch_users" includes="**/*">
+                <exclude name="mod_extrawatch_users.j15.xml"/>
+            </fileset>
+        </zip>
+
+        <copy file="${build.tokenized}\components\com_extrawatch\INSTALL.txt" tofile="${build}\j16\INSTALL.txt"/>
+        <copy file="${build.tokenized}\components\com_extrawatch\README.txt" tofile="${build}\j16\README.txt"/>
+        <copy file="${build.tokenized}\components\com_extrawatch\LICENSE.txt" tofile="${build}\j16\LICENSE.txt"/>
+        <copy file="${build.tokenized}\components\com_extrawatch\UPGRADE.txt" tofile="${build}\j16\UPGRADE.txt"/>
+        <copy file="${build.tokenized}\components\com_extrawatch\TERMS_AND_CONDITIONS.txt"
+              tofile="${build}\j16\TERMS_AND_CONDITIONS.txt"/>
+        <zip destfile="${build}/ExtraWatch-${version}-Joomla1.6-UnzipFirst.zip">
+            <fileset dir="${build}/j16/" includes="com_extrawatch.zip"/>
+            <fileset dir="${build}/j16/" includes="mod_extrawatch_agent.zip"/>
+            <fileset dir="${build}/j16/" includes="mod_extrawatch_visitors.zip"/>
+            <fileset dir="${build}/j16/" includes="mod_extrawatch_users.zip"/>
+            <fileset dir="${build}/j16/" includes="INSTALL.txt"/>
+            <fileset dir="${build}/j16/" includes="README.txt"/>
+            <fileset dir="${build}/j16/" includes="LICENSE.txt"/>
+            <fileset dir="${build}/j16/" includes="UPGRADE.txt"/>
+            <fileset dir="${build}/j16/" includes="TERMS_AND_CONDITIONS.txt"/>
+            <fileset dir="${dir}/administrator/components/com_extrawatch" includes="security_certificate.pdf"/>
+        </zip>
+    </target>
+
+    <target name="wordpress">
+        <echo message="@@@@@@@@@@@@@@@ WORDPRESS: ${version}-${license}" />
+        <mkdir dir="${build}/wordpress/extrawatch" />
+        <copy todir="${build}/wordpress/extrawatch" overwrite="true">
+            <fileset dir="${build.tokenized}" includes="**/*" />
+        </copy>
+        <copy file="${build.tokenized}\components\com_extrawatch\env\wordpress\extrawatch.php" tofile="${build}/wordpress/extrawatch/extrawatch.php"/>
+        <mkdir dir="${build}/wordpress/extrawatch-${version}-${license}"/>
+        <zip destfile="${build}/wordpress/extrawatch-${version}-${license}/extrawatch.zip">
+            <fileset dir="${build}/wordpress/extrawatch" />
+        </zip>
+    </target>
+
+</project>

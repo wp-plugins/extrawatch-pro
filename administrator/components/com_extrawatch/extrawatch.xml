@@ -1,0 +1,475 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension type="component" version="1.6.0" method="upgrade">
+
+    <name>ExtraWatch</name>
+    <creationDate>2012</creationDate>
+    <author>Matej Koval - http://www.codegravity.com</author>
+    <copyright>Copyright 2006-2012 by Matej Koval</copyright>
+    <authorEmail>foo@codegravity.com</authorEmail>
+    <authorUrl>http://www.codegravity.com</authorUrl>
+    <version>1.2.18.41</version>
+    <license>http://www.gnu.org/licenses/gpl-3.0.txt GNU/GPLv3</license>
+    <description>
+        ExtraWatch is an AJAX component and module for Joomla CMS that allows you to watch
+        your website visitors and bots in real-time from the administration menu. Specially
+        their IP addresses, countries they come from, geographical location on a map, which
+        pages they are viewing, their browser and operating system, it creates daily and
+        all-time stats from these information plus unique, pageload and total hits statistics.
+        Furthermore, you can block harmful IP addresses, see blocked attempts stats, evaluate
+        the trend charts, and create goals based on many parameters. In the frontend, it can
+        show the top countries information and visit counts for certain periods of time.
+    </description>
+
+    <install>
+        <sql>
+            <file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+        </sql>
+    </install>
+
+    <uninstall> <!-- Runs on uninstall -->
+        <!--
+      <sql>
+                          <file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
+                  </sql>
+                  -->
+    </uninstall>
+    <!--        <update>
+                 <schemas>
+                         <schemapath type="mysql">sql/updates/mysql</schemapath>
+                 </schemas>
+         </update>
+          -->
+
+    <!-- Site Main File Copy Section -->
+    <!-- Note the folder attribute: This attribute describes the folder
+to copy FROM in the package to install therefore files copied
+in this section are copied from /site/ in the package -->
+    <files>
+        <folder>js</folder>
+        <folder>lang</folder>
+        <folder>log</folder>
+        <folder>flags</folder>
+        <folder>icons</folder>
+        <folder>env</folder>
+        <folder>view</folder>
+        <folder>css</folder>
+
+        <filename>admin.extrawatch.html.php</filename>
+        <filename>block.php</filename>
+        <filename>class.ip2country.php</filename>
+        <filename>class.ipinfodb.php</filename>
+        <filename>class.extrawatch.block.html.php</filename>
+        <filename>class.extrawatch.block.php</filename>
+        <filename>class.extrawatch.cache.php</filename>
+        <filename>class.extrawatch.config.php</filename>
+        <filename>class.extrawatch.date.php</filename>
+        <filename>class.extrawatch.db.php</filename>
+        <filename>class.extrawatch.flow.html.php</filename>
+        <filename>class.extrawatch.flow.php</filename>
+        <filename>class.extrawatch.goal.html.php</filename>
+        <filename>class.extrawatch.goal.php</filename>
+        <filename>class.extrawatch.heatmap.html.php</filename>
+        <filename>class.extrawatch.heatmap.php</filename>
+        <filename>class.extrawatch.helper.php</filename>
+        <filename>class.extrawatch.html.php</filename>
+        <filename>class.extrawatch.log.php</filename>
+        <filename>class.extrawatch.php</filename>
+        <filename>class.extrawatch.seo.php</filename>
+        <filename>class.extrawatch.seo.html.php</filename>
+        <filename>class.extrawatch.sizes.php</filename>
+        <filename>class.extrawatch.stat.html.php</filename>
+        <filename>class.extrawatch.stat.php</filename>
+        <filename>class.extrawatch.trend.html.php</filename>
+        <filename>class.extrawatch.visit.history.html.php</filename>
+        <filename>class.extrawatch.visit.history.php</filename>
+        <filename>class.extrawatch.visit.html.php</filename>
+        <filename>class.extrawatch.visit.php</filename>
+        <filename>config.php</filename>
+        <filename>heatmap.php</filename>
+        <filename>img.php</filename>
+        <filename>inc.extrawatch.env.php</filename>
+        <filename>includes.php</filename>
+        <filename>index.html</filename>
+        <filename>INSTALL.txt</filename>
+        <filename>last.php</filename>
+        <filename>lastvisit.php</filename>
+        <filename>LICENSE.txt</filename>
+        <filename>README.txt</filename>
+        <filename>sizequery.php</filename>
+        <filename>sizequerytotal.php</filename>
+        <filename>stats.php</filename>
+        <filename>TERMS_AND_CONDITIONS.txt</filename>
+        <filename>timezone.php</filename>
+        <filename>tooltip.php</filename>
+        <filename>trendtooltip.php</filename>
+        <filename>UPGRADE.txt</filename>
+        <filename>vars.php</filename>
+        <filename>visits.php</filename>
+
+        <folder>css/images</folder>
+
+        <filename>sql/extrawatch-1.sql</filename>
+        <filename>sql/extrawatch-2.sql</filename>
+        <filename>sql/extrawatch-3.sql</filename>
+        <filename>sql/extrawatch-4.sql</filename>
+        <filename>sql/extrawatch-5.sql</filename>
+        <filename>sql/extrawatch-6.sql</filename>
+        <filename>sql/extrawatch-7.sql</filename>
+        <filename>sql/extrawatch-8.sql</filename>
+        <filename>sql/extrawatch-9.sql</filename>
+
+        <filename>sql/extrawatch-10.sql</filename>
+        <filename>sql/extrawatch-11.sql</filename>
+        <filename>sql/extrawatch-12.sql</filename>
+        <filename>sql/extrawatch-13.sql</filename>
+        <filename>sql/extrawatch-14.sql</filename>
+        <filename>sql/extrawatch-15.sql</filename>
+        <filename>sql/extrawatch-16.sql</filename>
+        <filename>sql/extrawatch-17.sql</filename>
+        <filename>sql/extrawatch-18.sql</filename>
+        <filename>sql/extrawatch-19.sql</filename>
+
+        <filename>sql/extrawatch-20.sql</filename>
+        <filename>sql/extrawatch-21.sql</filename>
+        <filename>sql/extrawatch-22.sql</filename>
+        <filename>sql/extrawatch-23.sql</filename>
+        <filename>sql/extrawatch-24.sql</filename>
+        <filename>sql/extrawatch-25.sql</filename>
+        <filename>sql/extrawatch-26.sql</filename>
+        <filename>sql/extrawatch-27.sql</filename>
+        <filename>sql/extrawatch-28.sql</filename>
+        <filename>sql/extrawatch-29.sql</filename>
+
+        <filename>sql/extrawatch-30.sql</filename>
+        <filename>sql/extrawatch-31.sql</filename>
+        <filename>sql/extrawatch-32.sql</filename>
+        <filename>sql/extrawatch-33.sql</filename>
+        <filename>sql/extrawatch-34.sql</filename>
+        <filename>sql/extrawatch-35.sql</filename>
+        <filename>sql/extrawatch-36.sql</filename>
+        <filename>sql/extrawatch-37.sql</filename>
+        <filename>sql/extrawatch-38.sql</filename>
+        <filename>sql/extrawatch-39.sql</filename>
+
+        <filename>sql/extrawatch-40.sql</filename>
+        <filename>sql/extrawatch-41.sql</filename>
+        <filename>sql/extrawatch-42.sql</filename>
+        <filename>sql/extrawatch-43.sql</filename>
+        <filename>sql/extrawatch-44.sql</filename>
+        <filename>sql/extrawatch-45.sql</filename>
+        <filename>sql/extrawatch-46.sql</filename>
+        <filename>sql/extrawatch-47.sql</filename>
+        <filename>sql/extrawatch-48.sql</filename>
+        <filename>sql/extrawatch-49.sql</filename>
+
+        <filename>sql/extrawatch-50.sql</filename>
+        <filename>sql/extrawatch-51.sql</filename>
+        <filename>sql/extrawatch-52.sql</filename>
+        <filename>sql/extrawatch-53.sql</filename>
+        <filename>sql/extrawatch-54.sql</filename>
+        <filename>sql/extrawatch-55.sql</filename>
+        <filename>sql/extrawatch-56.sql</filename>
+        <filename>sql/extrawatch-57.sql</filename>
+        <filename>sql/extrawatch-58.sql</filename>
+        <filename>sql/extrawatch-59.sql</filename>
+
+
+        <filename>sql/extrawatch-60.sql</filename>
+        <filename>sql/extrawatch-61.sql</filename>
+        <filename>sql/extrawatch-62.sql</filename>
+        <filename>sql/extrawatch-63.sql</filename>
+        <filename>sql/extrawatch-64.sql</filename>
+        <filename>sql/extrawatch-65.sql</filename>
+        <filename>sql/extrawatch-66.sql</filename>
+        <filename>sql/extrawatch-67.sql</filename>
+        <filename>sql/extrawatch-68.sql</filename>
+        <filename>sql/extrawatch-69.sql</filename>
+
+        <filename>sql/extrawatch-70.sql</filename>
+        <filename>sql/extrawatch-71.sql</filename>
+        <filename>sql/extrawatch-72.sql</filename>
+        <filename>sql/extrawatch-73.sql</filename>
+        <filename>sql/extrawatch-74.sql</filename>
+        <filename>sql/extrawatch-75.sql</filename>
+        <filename>sql/extrawatch-76.sql</filename>
+        <filename>sql/extrawatch-77.sql</filename>
+        <filename>sql/extrawatch-78.sql</filename>
+        <filename>sql/extrawatch-79.sql</filename>
+
+        <filename>sql/extrawatch-80.sql</filename>
+        <filename>sql/extrawatch-81.sql</filename>
+        <filename>sql/extrawatch-82.sql</filename>
+        <filename>sql/extrawatch-83.sql</filename>
+        <filename>sql/extrawatch-84.sql</filename>
+        <filename>sql/extrawatch-85.sql</filename>
+        <filename>sql/extrawatch-86.sql</filename>
+        <filename>sql/extrawatch-87.sql</filename>
+        <filename>sql/extrawatch-88.sql</filename>
+        <filename>sql/extrawatch-89.sql</filename>
+
+        <filename>sql/extrawatch-90.sql</filename>
+        <filename>sql/extrawatch-91.sql</filename>
+        <filename>sql/extrawatch-92.sql</filename>
+        <filename>sql/extrawatch-93.sql</filename>
+        <filename>sql/extrawatch-94.sql</filename>
+        <filename>sql/extrawatch-95.sql</filename>
+        <filename>sql/extrawatch-96.sql</filename>
+        <filename>sql/extrawatch-97.sql</filename>
+        <filename>sql/extrawatch-98.sql</filename>
+        <filename>sql/extrawatch-99.sql</filename>
+
+        <filename>sql/extrawatch-100.sql</filename>
+        <filename>sql/extrawatch-101.sql</filename>
+        <filename>sql/extrawatch-102.sql</filename>
+        <filename>sql/extrawatch-103.sql</filename>
+        <filename>sql/extrawatch-104.sql</filename>
+        <filename>sql/extrawatch-105.sql</filename>
+        <filename>sql/extrawatch-106.sql</filename>
+        <filename>sql/extrawatch-107.sql</filename>
+        <filename>sql/extrawatch-108.sql</filename>
+        <filename>sql/extrawatch-109.sql</filename>
+
+        <filename>sql/extrawatch-110.sql</filename>
+        <filename>sql/extrawatch-111.sql</filename>
+        <filename>sql/extrawatch-112.sql</filename>
+        <filename>sql/extrawatch-113.sql</filename>
+        <filename>sql/extrawatch-114.sql</filename>
+        <filename>sql/extrawatch-115.sql</filename>
+        <filename>sql/extrawatch-116.sql</filename>
+        <filename>sql/extrawatch-117.sql</filename>
+        <filename>sql/extrawatch-118.sql</filename>
+        <filename>sql/extrawatch-119.sql</filename>
+
+        <filename>sql/extrawatch-120.sql</filename>
+        <filename>sql/extrawatch-121.sql</filename>
+        <filename>sql/extrawatch-122.sql</filename>
+        <filename>sql/extrawatch-123.sql</filename>
+        <filename>sql/extrawatch-124.sql</filename>
+        <filename>sql/extrawatch-125.sql</filename>
+        <filename>sql/extrawatch-126.sql</filename>
+        <filename>sql/extrawatch-127.sql</filename>
+        <filename>sql/extrawatch-128.sql</filename>
+        <filename>sql/extrawatch-129.sql</filename>
+
+        <filename>sql/extrawatch-130.sql</filename>
+        <filename>sql/extrawatch-131.sql</filename>
+        <filename>sql/extrawatch-132.sql</filename>
+        <filename>sql/extrawatch-133.sql</filename>
+        <filename>sql/extrawatch-134.sql</filename>
+        <filename>sql/extrawatch-135.sql</filename>
+        <filename>sql/extrawatch-136.sql</filename>
+        <filename>sql/extrawatch-137.sql</filename>
+        <filename>sql/extrawatch-138.sql</filename>
+        <filename>sql/extrawatch-139.sql</filename>
+
+        <filename>sql/extrawatch-140.sql</filename>
+        <filename>sql/extrawatch-141.sql</filename>
+        <filename>sql/extrawatch-142.sql</filename>
+        <filename>sql/extrawatch-143.sql</filename>
+        <filename>sql/extrawatch-144.sql</filename>
+        <filename>sql/extrawatch-145.sql</filename>
+        <filename>sql/extrawatch-146.sql</filename>
+        <filename>sql/extrawatch-147.sql</filename>
+        <filename>sql/extrawatch-148.sql</filename>
+        <filename>sql/extrawatch-149.sql</filename>
+
+        <filename>sql/extrawatch-150.sql</filename>
+        <filename>sql/extrawatch-151.sql</filename>
+        <filename>sql/extrawatch-152.sql</filename>
+        <filename>sql/extrawatch-153.sql</filename>
+        <filename>sql/extrawatch-154.sql</filename>
+        <filename>sql/extrawatch-155.sql</filename>
+        <filename>sql/extrawatch-156.sql</filename>
+        <filename>sql/extrawatch-157.sql</filename>
+        <filename>sql/extrawatch-158.sql</filename>
+        <filename>sql/extrawatch-159.sql</filename>
+
+
+        <filename>sql/extrawatch-160.sql</filename>
+        <filename>sql/extrawatch-161.sql</filename>
+        <filename>sql/extrawatch-162.sql</filename>
+        <filename>sql/extrawatch-163.sql</filename>
+        <filename>sql/extrawatch-164.sql</filename>
+        <filename>sql/extrawatch-165.sql</filename>
+        <filename>sql/extrawatch-166.sql</filename>
+        <filename>sql/extrawatch-167.sql</filename>
+        <filename>sql/extrawatch-168.sql</filename>
+        <filename>sql/extrawatch-169.sql</filename>
+
+        <filename>sql/extrawatch-170.sql</filename>
+        <filename>sql/extrawatch-171.sql</filename>
+        <filename>sql/extrawatch-172.sql</filename>
+        <filename>sql/extrawatch-173.sql</filename>
+        <filename>sql/extrawatch-174.sql</filename>
+        <filename>sql/extrawatch-175.sql</filename>
+        <filename>sql/extrawatch-176.sql</filename>
+        <filename>sql/extrawatch-177.sql</filename>
+        <filename>sql/extrawatch-178.sql</filename>
+        <filename>sql/extrawatch-179.sql</filename>
+
+        <filename>sql/extrawatch-180.sql</filename>
+        <filename>sql/extrawatch-181.sql</filename>
+        <filename>sql/extrawatch-182.sql</filename>
+        <filename>sql/extrawatch-183.sql</filename>
+        <filename>sql/extrawatch-184.sql</filename>
+        <filename>sql/extrawatch-185.sql</filename>
+        <filename>sql/extrawatch-186.sql</filename>
+        <filename>sql/extrawatch-187.sql</filename>
+        <filename>sql/extrawatch-188.sql</filename>
+        <filename>sql/extrawatch-189.sql</filename>
+
+        <filename>sql/extrawatch-190.sql</filename>
+        <filename>sql/extrawatch-191.sql</filename>
+        <filename>sql/extrawatch-192.sql</filename>
+        <filename>sql/extrawatch-193.sql</filename>
+        <filename>sql/extrawatch-194.sql</filename>
+        <filename>sql/extrawatch-195.sql</filename>
+        <filename>sql/extrawatch-196.sql</filename>
+        <filename>sql/extrawatch-197.sql</filename>
+        <filename>sql/extrawatch-198.sql</filename>
+        <filename>sql/extrawatch-199.sql</filename>
+
+        <filename>sql/extrawatch-200.sql</filename>
+        <filename>sql/extrawatch-201.sql</filename>
+        <filename>sql/extrawatch-202.sql</filename>
+        <filename>sql/extrawatch-203.sql</filename>
+        <filename>sql/extrawatch-204.sql</filename>
+        <filename>sql/extrawatch-205.sql</filename>
+        <filename>sql/extrawatch-206.sql</filename>
+        <filename>sql/extrawatch-207.sql</filename>
+        <filename>sql/extrawatch-208.sql</filename>
+        <filename>sql/extrawatch-209.sql</filename>
+
+        <filename>sql/extrawatch-210.sql</filename>
+        <filename>sql/extrawatch-211.sql</filename>
+        <filename>sql/extrawatch-212.sql</filename>
+        <filename>sql/extrawatch-213.sql</filename>
+        <filename>sql/extrawatch-214.sql</filename>
+        <filename>sql/extrawatch-215.sql</filename>
+        <filename>sql/extrawatch-216.sql</filename>
+        <filename>sql/extrawatch-217.sql</filename>
+        <filename>sql/extrawatch-218.sql</filename>
+        <filename>sql/extrawatch-219.sql</filename>
+
+        <filename>sql/extrawatch-220.sql</filename>
+
+
+    </files>
+
+
+    <installfile>install.extrawatch.php</installfile>
+    <uninstallfile>uninstall.extrawatch.php</uninstallfile>
+
+
+    <administration>
+        <menu task="default" img="components/com_extrawatch/icons/extrawatch-logo-16x16.gif">ExtraWatch</menu>
+        <submenu>
+            <menu
+                    link="option=com_extrawatch"
+                    img="components/com_extrawatch/icons/map_icon.gif"
+                    alt="Live Stats">Live Stats
+            </menu>
+            <menu
+                    link="option=com_extrawatch&amp;task=seo"
+                    img="components/com_extrawatch/icons/seo.png"
+                    alt="SEO">SEO
+            </menu>
+            <menu
+                    link="option=com_extrawatch&amp;task=heatmap"
+                    img="components/com_extrawatch/icons/heatmap.png"
+                    alt="Heatmap">Heatmap
+            </menu>
+            <menu
+                    link="option=com_extrawatch&amp;task=flow"
+                    img="components/com_extrawatch/icons/flow.png"
+                    alt="Traffic Flow">Traffic Flow
+            </menu>
+            <menu
+                    link="option=com_extrawatch&amp;task=graphs"
+                    img="components/com_extrawatch/icons/trend_icon.gif"
+                    alt="Graphs &amp; Trends">Graphs &amp; Trends
+            </menu>
+            <menu
+                    link="option=com_extrawatch&amp;task=goals"
+                    img="components/com_extrawatch/icons/goal.gif"
+                    alt="Goals">Goals
+            </menu>
+            <menu
+                    link="option=com_extrawatch&amp;task=history"
+                    img="components/com_extrawatch/icons/history.png"
+                    alt="Visit History">Visit History
+            </menu>
+            <menu
+                    link="option=com_extrawatch&amp;task=antiSpam"
+                    img="components/com_extrawatch/icons/antispam.png"
+                    alt="Anti-spam &amp; Blocking">Anti-spam / Blocking
+            </menu>
+            <menu
+                    link="option=com_extrawatch&amp;task=emails"
+                    img="components/com_extrawatch/icons/emails.png"
+                    alt="Email Reports">Email Reports
+            </menu>
+            <menu
+                    link="option=com_extrawatch&amp;task=license"
+                    img="components/com_extrawatch/icons/license.png"
+                    alt="Your License">Your License
+            </menu>
+            <menu
+                    link="option=com_extrawatch&amp;task=status"
+                    img="components/com_extrawatch/icons/status.png"
+                    alt="Database Status">Database Status
+            </menu>
+            <menu
+                    link="option=com_extrawatch&amp;task=sizes"
+                    img="components/com_extrawatch/icons/sizes.png"
+                    alt="Modules / Components Sizes">Modules / Components Sizes
+            </menu>
+            <menu
+                    link="option=com_extrawatch&amp;task=settings"
+                    img="components/com_extrawatch/icons/settings.gif"
+                    alt="Settings">Settings
+            </menu>
+            <menu
+                    link="option=com_extrawatch&amp;task=update"
+                    img="components/com_extrawatch/icons/update.png"
+                    alt="Update">Update
+            </menu>
+            <menu
+                    link="option=com_extrawatch&amp;task=credits"
+                    img="components/com_extrawatch/icons/credits.png"
+                    alt="Credits">Credits
+            </menu>
+        </submenu>
+
+
+        <files folder="admin">
+            <folder>sql</folder>
+            <folder>icons</folder>
+            <filename>icons/extrawatch-logo-16x16.gif</filename>
+            <filename>icons/map_icon.gif</filename>
+            <filename>icons/flow.png</filename>
+            <filename>icons/trend_icon.gif</filename>
+            <filename>icons/goal.gif</filename>
+            <filename>icons/history.png</filename>
+            <filename>icons/antispam.gif</filename>
+            <filename>icons/emails.png</filename>
+            <filename>icons/license.png</filename>
+            <filename>icons/status.png</filename>
+            <filename>icons/sizes.png</filename>
+            <filename>icons/settings.gif</filename>
+            <filename>icons/update.png</filename>
+            <filename>icons/credits.png</filename>
+            <filename>admin.extrawatch.php</filename>
+        </files>
+    </administration>
+
+    <administration>
+    </administration>
+
+    <updateservers>
+        <server type="extension" priority="1" name="ExtraWatch Update Site">
+            http://www.codegravity.com/update/extrawatch/extrawatch-update.xml
+        </server>
+    </updateservers>
+
+</extension>

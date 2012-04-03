@@ -1,0 +1,332 @@
+2011-12-27 seo: seo functions moved to ExtraWatchSEO class
+2011-12-27 seo: seo functions moved to ExtraWatchSEO class
+2011-12-27 seo: seo functions moved to ExtraWatchSEO class
+2011-12-27 seo: seo functions moved to ExtraWatchSEO class
+2011-12-27 seo: seo functions moved to ExtraWatchSEO class
+2011-12-27 seo: seo functions moved to ExtraWatchSEO class
+2011-12-27 heatmap: toggle heatmap display, ignore heatmap page from stats
+2011-12-27 heatmap: protected with hash
+2011-12-27 blocking: blocked IP rows styling
+2011-12-27 blocking: blocking ordered by date desc with date displayed
+2011-12-27 blocking: highlight spam words in reason for blocking
+2011-12-27 blocking: return bad word if there is none in reason in anti-spam list
+2011-12-27 block: caching countries, displaying bad word
+2011-12-27 block: caching countries, displaying bad word
+2011-12-27 database: jos_extrawatch_config name as unique
+2011-12-27 build: extrawatch.j15.xml now contains folders (not individual files in the folders)
+2011-12-27 stat: optimize tables in extrawatch status page
+2011-12-27 heatmap: table cells now use style class
+2011-12-27 seo: order of seo report by difference desc
+2011-12-26 seo: report which displays position changes
+2011-12-26 visits: position number in Live Stats
+2011-12-26 bugfix: HTTP_X_FORWARDED_FOR changed to: HTTP_X_REAL_IP
+2011-12-26 seo: render most dynamic keyphrases
+2011-12-26 seo: fixed uriId -> uri2titleId
+2011-12-25 heatmap: heatmap link fix
+2011-12-25 emails: unique/loads/hits included into email report
+2011-12-25 refactor: checkbox values to save moved to config.php
+2011-12-25 added text: "this section contains no data"
+2011-12-25 refactor: truncate tables in array
+2011-12-25 installation: install descriptors now use folders instead of all filenames
+2011-12-25 seo: uriId renamed to uri2titleId
+2011-12-25 seo: uriId renamed to uri2titleId
+2011-12-25 seo: total visits from search engines
+2011-12-25 seo: show correct name in popup window of seo trends
+2011-12-25 seo: extrawatch seo as separate class, nightly email report replaced with new one
+2011-12-24 seo: calendar control, day differences and graph icon for each line of report
+2011-12-24 seo: brand new seo report
+2011-12-24 seo: uri2keyphraseId to position mapping
+2011-12-23 heatmap: show title 'click to open heatmap'  in visits
+2011-12-23 seo: uri2title's uri set as unique
+2011-12-23 seo: uri2title's uri set as unique
+2011-12-23 heatmap: heatmap license included into license.php and credits.php, heatmap legend drawn on semi-transparent rectangle
+2011-12-23 heatmap: in menu and icon files in install descriptors
+2011-12-23 heatmap: create table #__extrawatch_heatmap
+2011-12-23 heatmap: using own heatmap keep days parameter in config.php
+2011-12-23 heatmap: deleting old heatmap entries, refactor
+2011-12-23 heatmap: displays now a legend in english
+2011-12-18 bug fix: returning internal IP instead of remote IP address
+2011-12-16 bugfix: problem with sending nightly emails fixed
+2011-12-15 error message in loading visits, loading stats ...
+2011-12-07 translations: urdu.utf-8.php
+2011-12-04 Bugfix: rows empty in class.extrawatch.flow.php on line 91, seo.php on line 34
+2011-11-26 seo: fixed saving position and count into db, heatmap name in trends
+2011-11-26 seo: keyphrase id is now taken from keyphrase table instead of stats
+2011-11-26 bug fix
+2011-11-25 only keep: DB_KEY_UNIQUE, DB_KEY_LOADS after x days in DB
+2011-11-25 heatmap: heatmap stats being inserted into stats every night
+2011-11-25 heatmap: heatmap stats being inserted into stats every night
+2011-11-25 seo: trends icon refactor, displayed in Best positioned keyphrases
+2011-11-25 seo: do not delete search position from previous day
+2011-11-21 environment: page attribute in extrawatch activations screen (for wordpress)
+2011-11-18 heatmap: move between days using keyboard shortcuts
+2011-11-18 heatmap: using heatmap icon instead of 'hand' icon
+2011-11-18 heatmap: colored number of clicks in visits
+2011-11-18 heatmap: colored number of clicks in visits
+2011-11-18 heatmap: functions moved from visits to heatmap class
+2011-11-18 heatmap: performance optimized
+2011-11-18 heatmap: not querying everytime for click counts, but only when there is new visit
+2011-11-18 heatmap: refactor
+2011-11-18 heatmap: heatmap icons directly in visits list
+2011-11-17 heatmap: heatmap day navigation fixed
+2011-11-17 heatmap: heatmap navigation added in the administration
+2011-11-17 heatmap: heatmap icon
+2011-11-17 environment: nocms now works also when there is no subdir and no joomla installed
+2011-11-17 environment: parameter fix
+2011-11-17 environment: fixes to NoCMS classes
+2011-11-16 bug fix: ExtraWatchHelper -> ExtraWatchDate
+2011-11-15 heatmap: listing heatmap clicks also in vars ajax dialog when hovering over url
+2011-11-13 heatmap: extrawatch heatmap loads only when enabled (was rendering canvas all the time)
+2011-11-13 heatmap: onresize clears the datamap
+2011-11-13 heatmap: transform coordinates removed
+2011-11-13 heatmap: heatmap renders only when all elements are loaded so the canvas has it's correct width/height
+2011-11-13 heatmap: showing heatmap based on element xpath (need to take offset into account too)
+2011-11-13 heatmap: storing xpath of clicked element
+2011-11-12 heatmap: onresize redraw
+2011-11-12 heatmap: strip additional jw parameters added to the URI
+2011-11-11 heatmap: heatmap includes in modules
+2011-11-11 heatmap: heatmap includes in modules
+2011-11-11 heatmap: heatmap includes in modules
+2011-11-11 heatmap: links instead of combobox, when clicked on link, the new window is open with heatmap rendered for that current day
+2011-11-11 heatmap: combobox with top clicked pages
+2011-11-11 seo report: not inserting google position if it's 0
+2011-11-11 seo report: added 1,7,28-day difference in position
+2011-11-11 feature: best positioned keywords
+2011-11-11 timezone: fixed missing ExtraWatchHelper -> ExtraWatchDate
+2011-11-11 bugfix: bars in visits stats were not correct
+2011-11-11 translations: romanian.utf-8.php
+2011-11-10 translations: serbian.utf-8.php
+2011-11-09 feature: google placement (came from which result) inserted into DB
+2011-11-09 feature: google placement (came from which result) inserted into DB
+2011-11-07 translations: german.utf-8.php corrected
+2011-11-06 translations: hungarian.utf-8.php
+2011-11-06 merge: module class suffix fix merged from 1.2.17
+2011-11-06 merge: module class suffix fix merged from 1.2.17
+2011-11-06 merge: module class suffix fix merged from 1.2.17
+2011-11-06 flow: erasing flow values each night, putting them into reports
+2011-11-06 refactoring: date functions from ExtraWatchHelper moved to new class ExtraWatchDate
+2011-11-06 refactoring: date functions from ExtraWatchHelper moved to new class ExtraWatchDate
+2011-11-06 refactoring: date functions from ExtraWatchHelper moved to new class ExtraWatchDate
+2011-11-06 refactoring: date functions from ExtraWatchHelper moved to new class ExtraWatchDate
+2011-11-06 refactoring: date functions from ExtraWatchHelper moved to new class ExtraWatchDate
+2011-11-06 refactoring: date functions from ExtraWatchHelper moved to new class ExtraWatchDate
+2011-11-06 translations: croatian.php
+2011-11-05 merge: timezone offset bugfix merged into trunk
+2011-11-05 heatmap: changes
+2011-11-05 translations: turkish.utf-8.php updated
+2011-11-05 translations: macedonian.utf-8.php
+2011-11-05 translations: turkish.utf-8.php updated
+2011-11-05 translations: english.php minor errors fixed
+2011-11-04 translations: ukrainian.utf-8.php
+2011-11-04 translations: vietnamese.utf-8.php
+2011-10-30 translations: german.utf-8.php updated
+2011-10-28 translations: slovak.iso8859-2.php updated (converted from slovak.utf-8.php)
+2011-10-28 translations: slovak.utf-8.php updated
+2011-10-28 translations: slovak.utf-8.php updated (part 1)
+2011-10-26 bug fix: /components/com_extrawatch/js/OpenLayers/theme/default/style.css does not excist
+2011-10-25 translations: spanish.utf-8.php updated
+2011-10-24 translations: bulgarian.utf-8.php, estonian.utf-8.php, italian.utf-8.php updated
+2011-10-24 translations: russian.utf-8.php updated
+2011-10-17 translations: arabic.utf-8.php, hebrew.utf-8.php, japanese.utf-8.php
+2011-10-15 translations: czech.utf-8.php, arabic.utf-8.php, hindi.utf-8.php
+2011-10-11 translation: bengali.utf-8.php fixed
+2011-10-11 translations: chinese-traditional.utf-8.php fix - syntax error, problem with "
+2011-10-11 translations: bengali updated
+2011-10-11 translations: polish.utf-8.php updated
+2011-10-11 translations: bengali.utf-8.php, chinese-simplified.utf-8.php, chinese-traditional.utf-8.php
+2011-10-09 translations: added indonesian.php and albanian.php
+2011-10-08 translations: added new strings and updated ones for french, greek, latvian, swedish
+2011-09-23 environment: extraWatch in joomla fix after changes to make it work in wordpress
+2011-09-23 environment: extraWatch in joomla fix after changes to make it work in wordpress
+2011-09-23 environment: extraWatch in joomla fix after changes to make it work in wordpress
+2011-09-23 environment: extraWatch in joomla fix after changes to make it work in wordpress
+2011-09-18 license update: difference between lite and pro
+2011-09-18 install: fixed creation of tables
+2011-09-18 environment: create table fix !!!
+2011-09-18 build: version information in extrawatch.php
+2011-09-18 environment: drop table fix on uninstall, unlink extrawatch.zip from uploads folder
+2011-09-18 lite/pro: frame fix
+2011-09-18 lite/pro: description updated, JoomlWatchConfig replace in lite version
+2011-09-18 build: version in build.xml is now 1.2.18 BETA
+2011-09-18 setup: ExtraWatchInstall interface renamed to ExtraWatchSetup
+2011-09-18 lite/pro version: added PRO into files
+2011-09-18 environment: map was not loading - env suffix fix
+2011-09-18 environment: install class for joomla
+2011-09-18 environment: frame in free version in separate file
+2011-09-17 frontend logo fix
+2011-09-17 environment: fixed agent image problem, was not showing on frontend because of environment
+2011-09-17 environment: extrawatch installation for wordpress
+2011-09-17 environment: interfaces refactored, classes sorted to directories
+2011-09-17 build: extrawatch.php copied to wordpress .zip plugin
+2011-09-17 build: excluding .csv, all other excluded files were packed too (removed now)
+2011-09-17 environment: other option=com_extrawatch links changed to be universal according to environment
+2011-09-17 environment: fixed new links, sizes now display only tables with wp_ prefix
+2011-09-17 environment: seo report links fix, trend form render link, "module not published " message only in joomla environment
+2011-09-17 environment: passing env variable to all .php files loaded via ajax
+2011-09-17 environment: wordpress database adapter, loading wp globals from .php files which use ajax
+2011-09-16 environment: frontend modules shown in widgets section
+2011-09-16 environment: ExtraWatch modules now displayed on wordpress homepage in footer. It also records url visits
+2011-09-16 environment: fixed problem with opening .js files from wordpress / nocms, using absolute path in includes
+2011-09-16 environment: fixed problem with opening .js files from wordpress / nocms, using absolute path in includes
+2011-09-14 getURI() passed by reference
+2011-09-10 build: now creates 2 versions, PRO and LITE with overwritten files
+2011-09-09 nocms backend login form/authentication better design
+2011-09-09 nocms backend login form/authentication
+2011-09-09 frontend index.php
+2011-09-09 frontend directory
+2011-09-09 admin index.php, authorization form
+2011-09-09 admin folder created
+2011-09-09 getUser(), getTitle(), getUsername(), sendMail(), getDbPrefix(); now in environment interface
+2011-09-09 fixed problem with russian utf-8 characters (ant build was corrupting them) (trunk)
+2011-09-09 added svn path d:\prog\svn\bin\ into build.bat (trunk)
+2011-09-09 Fix: Warning: Invalid argument supplied for foreach() in /home/slcubec1/public_html/components/com_extrawatch/class.extrawatch.visit.html.php on line 89
+2011-08-28 build: wordpress build script to create installable extrawatch.zip
+2011-08-28 environment: navigation links now work for joomla,wordpress and nocms
+2011-08-27 environment: extrawatch now as joomla, standalone and wordpress application (admin)
+2011-08-27 environment: extrawatch now as joomla, standalone and wordpress application
+2011-08-26 wordpress integration: first plugin - now in correct div
+2011-08-26 wordpress integration: first plugin
+2011-08-26 environment: username and timezone now in environment
+2011-08-25 environment: ExtraWatch now works without Joomla ! :)
+2011-08-25 environment: ExtraWatch now works without Joomla ! :)
+2011-08-24 environment: new methods added to interface.extrawatch.env.php
+2011-08-24 environment: new methods added to interface.extrawatch.env.php
+2011-08-19 environment: moved to env folder
+2011-08-19 environment: moved to env folder
+2011-08-19 environment: one require which contains all environment implementations
+2011-08-19 environment: one require which contains all environment implementations
+2011-08-18 uml: drupal / wordpress integration
+2011-08-18 uml: new features analysis
+2011-08-18 uml folder
+2011-08-12 environment interface, joomla implementation (mod_extrawatch_visitors)
+2011-08-12 environment interface, joomla implementation (mod_extrawatch_users)
+2011-08-12 environment interface, joomla implementation (mod_extrawatch_agent)
+2011-08-12 environment interface, joomla implementation (admin)
+2011-08-12 environment interface, joomla implementation
+2011-08-12 gradient changes: when the color is too dark, it's turning lighter and vice-versa
+2011-08-12 admin header now contains "cast your vote" and "write a review" in main menu instead of right side
+2011-08-12 tests: Added selenium tests for AntiSpam.php, IPBlocking.php, Goal.php, Install_Component, Login, Settings .. etc
+2011-07-25 number of visits set to 60
+2011-07-11 bug: map icons were missing (were corrupted)
+2011-07-08 license, terms and conditions update - support section update
+2011-07-08 license, terms and conditions update
+2011-07-08 fixed: require_once(components/com_extrawatch/config.php) [function.require-once]: failed to open stream in mod_extrawatch_users.php
+2011-07-08 Update to INSTALL.txt: video instructions how to install and use ExtraWatch
+2011-07-08 agent module text changed to: Joomla visitors traffic monitor and live stats
+2011-07-07 a version check (doesn't allow to install 1.5 package on joomla 1.6 or vice versa)
+2011-07-07 demo link in the admin header
+2011-07-07 : 1.5, build: joomla version check (doesn't allow to install 1.5 package on joomla 1.6 or vice versa)
+2011-07-07 activation screen embeds the demo page with an iframe
+2011-07-06 build: joomla version check (doesn't allow to install 1.5 package on joomla 1.6 or vice versa)
+2011-07-05 blocking: check also GET request for spam, some forms are not posted using POST but GET
+2011-06-27 build: switch_to_trunk.bat switch_to_branch.bat are now not being included to com_*.zip file
+2011-06-27 build: security certificate now bundled with every .zip file
+2011-06-27 build: security certificate now bundled with every .zip file
+2011-06-27 upgrade information updated, describing the new way to update
+2011-06-21 datecontrolget.php was not in install descriptor
+2011-06-21 seo report: removing trailing / from uri to include it into link
+2011-06-20 watch installation demo link if no module is published
+2011-06-20 heatmap: enabled in agent only, not in component (when users will update the component only, this will work, they don't need to update the module)
+2011-06-20 fix: empty country displaying in the list of countries
+2011-06-20 fontend nofollow in settings wasn't saving properly
+2011-06-20 ip blocking fixed
+2011-06-20 SEO report fix
+2011-06-19 fixed problem with &amp; in referer
+2011-06-19 heatmap disabled
+2011-06-19 seo reports: checkbox in email section, send nightly emails
+2011-06-19 install: jos_extrawatch_keyphrases / jos_extrawatch_uri2keyphrase tables in install descriptors
+2011-06-19 install: seo.php in install descriptors
+2011-06-19 icons corrected, license-free update (SEO report, update)
+2011-06-19 heatmap: disabled
+2011-06-19 update: fixing extension_id = 0 in jos_updates table
+2011-06-19 install: author set as Matej Koval - http://www.codegravity.com, added updateservers
+2011-06-19 install: author set as Matej Koval - http://www.codegravity.com, added updateservers
+2011-06-19 install: author set as Matej Koval - http://www.codegravity.com
+2011-06-19 build: fixed bug - 1.6 files were not replaced with version / revision / year
+2011-06-19 update: update.png in install descriptors
+2011-06-19 update: removed class.update and class.zip, not needed anymore
+2011-06-19 update: removed class.update and class.zip, not needed anymore
+2011-06-19 update: update icon & removed old not working update mechanism
+2011-06-19 build: replacing 2010 for 2012 in language files
+2011-06-19 build: updating descriptors so they contain the 1.2.18 and BETA
+2011-06-19 build: updating descriptors so they contain the 1.2.18 and BETA
+2011-06-19 build: updating descriptors so they contain the 1.2.18 and BETA
+2011-06-19 build: updating descriptors so they contain the 1.2.18 and BETA
+2011-06-19 getDomainFromLiveSite: check if it's an IP address
+2011-06-19 optimize tables on midnight (using serialize to be able to define array in config)
+2011-06-19 optimize tables on midnight
+2011-06-19 blocking fix: if there were values in post which were array
+2011-06-18 seo report: deleting obsolete keyphrases after period of time (runAtMidnight)
+2011-06-18 seo report: deleting obsolete keyphrases after period of time
+2011-06-18 security enhancements: if accessing the back-end without security code, the IP is being blocked and not able to access back-end until unblocked
+2011-06-18 database sizes: added records column, added into language files
+2011-06-18 db status: 30-days changed to 28-days
+2011-06-18 db status report improved: added graph icon, which displays popup graph on each db table name
+2011-06-18 slider bug fix: in opera it was scrolling with bad offset
+2011-06-17 security enhancements: html strip tags for uri/referer
+2011-06-17 antispam broken text fixed
+2011-06-17 security enhancements: if accessing the back-end without security code, the IP is being blocked and not able to access back-end until unblocked
+2011-06-17 rand is no longer an integer, but md5
+2011-06-17 rand is no longer an integer, but md5
+2011-06-17 rand is no longer an integer, but md5
+2011-06-17 security enhancements: striptags, htmlspecialchars, sizequeries allowed dirs
+2011-06-17 security enhancements: post/get vars from JRequest object escaped
+2011-06-17 antispam broken text fixed
+2011-06-14 update: using joomla 1.6 native update mechanism
+2011-06-14 build: svn update before revision retrieving
+2011-06-14 restricted access fix
+2011-06-12 heatmap: only showing for user matto
+2011-06-12 update: updating the modules successfully
+2011-06-12 update fix
+2011-06-12 update fix: not checking exec
+2011-06-12 restricted access fix
+2011-06-12 build: year in build.xml, replacing 2012 token in copyright, revision number in config.php
+2011-06-12 adding 1.2.18, BETA, 2012 into header of .php files (mod_extrawatch_visitors)
+2011-06-12 adding 1.2.18, BETA, 2012 into header of .php files (mod_extrawatch_users)
+2011-06-12 adding 1.2.18, BETA, 2012 into header of .php files (mod_extrawatch_agent)
+2011-06-12 adding 1.2.18, BETA, 2012 into header of .php files (administrator)
+2011-06-12 build: adding 1.2.18, BETA, 2012 into header of .php files
+2011-06-12 build: 1.2.18, BETA is being replaced in all source files
+2011-06-12 build: find revision number using ant task
+2011-06-09 heatmap: toogle display
+2011-06-09 removed prioritized support line
+2011-06-08 heatmap: in agent module
+2011-06-08 percentage of daily traffic in SEO report
+2011-06-08 30-day change -> 28-day change (7*4 = 28)
+2011-06-08 30-day change -> 28-day change (7*4 = 28)
+2011-06-07 upgrade information updated
+2011-06-07 switch to branch/trunk .bat script added
+2011-06-03 seo report now contains "-" values instead of 100% if the value appears for the first time
+2011-06-02 heatmap implementation - heatmap scaling corrected
+2011-06-01 the new defines and used in view/antispam.php
+2011-06-01 changed the antilspam loading text from language files _EW_ANTISPAM_BLOCKING_TEXT
+2011-06-01 Chaned to load from language files for the configuration texts
+2011-05-29 heatmap: IP added into db table
+2011-05-29 heatmap: different way of storing clicks, computing right click place based on screen width
+2011-05-29 heatmap implementation - showing heatmap on page
+2011-05-28 heatmap implementation - added screen resolution factor
+2011-05-28 heatmap implementation - inserting click into the db on page
+2011-05-27 upgrade function refactor
+2011-05-27 upgrade function refactor
+2011-05-27 upgrade function refactor
+2011-05-27 upgrade function refactor
+2011-05-27 upgrade function refactor
+2011-05-27 upgrade function refactor
+2011-05-27 upgrade function refactor
+2011-05-27 upgrade function refactor
+2011-05-27 upgrade function refactor
+2011-05-27 upgrade function refactor
+2011-05-27 upgrade function refactor
+2011-05-27 upgrade function refactor
+2011-05-27 Fixed relative diff of two days (was not showing 100% when first value was 0)
+2011-05-27 MERGE(trunk): incorrect key request: now in bold when the wrong key is entered
+2011-05-27 keyphrases renamed to SEO, fixed error on ajax popup close
+2011-05-27 keyphrases renamed to SEO, fixed error on ajax popup close (admin)
+2011-05-27 keyphrases renamed to SEO, fixed error on ajax popup close
+2011-05-27 keyphrases: showing graphs next to each value in popup
+2011-05-27 keyphrases report header
+2011-05-27 keyphrases report calendar control
+2011-05-27 keyphrases report calendar control
+2011-05-27 keyphrases report for: 1-day, 7-day, 28-day
+2011-05-26 keywords -> keyphrases
+2011-05-26 keywords -> keyphrases

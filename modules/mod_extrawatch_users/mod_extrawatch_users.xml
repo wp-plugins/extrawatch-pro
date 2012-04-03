@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<install type="module" version="1.5.0" method="upgrade">
+    <name>ExtraWatch Users</name>
+    <author>Matej Koval - http://www.codegravity.com</author>
+    <creationDate>2012</creationDate>
+    <copyright>www.codegravity.com</copyright>
+    <license>http://www.gnu.org/licenses/gpl-3.0.txt GNU/GPLv3</license>
+    <authorEmail>foo@codegravity.com</authorEmail>
+    <authorUrl>http://www.codegravity.com</authorUrl>
+    <version>1.2.18.41</version>
+    <description>
+        INSTRUCTIONS: This module allows to display the most active users and their total count for the current day in
+        the frontend.
+    </description>
+    <files>
+        <filename module="mod_extrawatch_users">mod_extrawatch_users.php</filename>
+    </files>
+    <config>
+        <fields name="params">
+            <fieldset name="basic" label="Module Parameters" description="Module settings">
+                <field name="moduleclass_sfx" type="text" default="" label="Module Class Suffix"
+                       description="Module class suffix"></field>
+            </fieldset>
+        </fields>
+    </config>
+    <updateservers>
+        <server type="extension" priority="1" name="ExtraWatch Update Site">
+            http://www.codegravity.com/update/extrawatch/extrawatch-update.xml
+        </server>
+    </updateservers>
+
+</install>
