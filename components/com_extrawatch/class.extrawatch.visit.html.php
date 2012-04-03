@@ -333,6 +333,13 @@ class ExtraWatchVisitHTML
     /* visits */
     function renderVisitors()
     {
+	/** message if no modules are published */
+        if ($this->extraWatch->config->getEnvironment() == "ExtraWatchWordpressEnv") {
+            if (!is_active_widget( false, false, "extrawatchagentwidget", true )) {
+                $message = "Warning: No visits are being recorded. You must go to Appearance->Widgets section, <br/>find ExtraWatchAgent widget and drag&drop it to some of the containers on the right side. <br/>You can publish also other ExtraWatch modules this way.";
+                return ("<br/><br/><span style='color: red; font-weight: bold;'>".$message."</span>");
+            }
+        }
         //$rows = $this->extraWatch->visit->getVisitors();
         $this->lastDate = "";
         $output = $this->renderTable(false);

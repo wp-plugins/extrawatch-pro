@@ -1,0 +1,48 @@
+<?php
+/**
+ * ExtraWatch - A real-time ajax monitor and live stats
+ * @package ExtraWatch
+ * @version 1.2.18
+ * @revision 58
+ * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
+ * @copyright (C) 2012 by Matej Koval - All rights reserved!
+ * @website http://www.codegravity.com
+ **/
+class ExtraWatchUsersWidget extends WP_Widget {
+
+    function ExtraWatchUsersWidget()
+    {
+        $widget_ops = array('classname' => 'ExtraWatchUsersWidget', 'description' => 'Optional ExtraWatch widget which display most active users today' );
+        $this->WP_Widget('ExtraWatchUsersWidget', 'ExtraWatch Users', $widget_ops);
+    }
+
+    function form($instance)
+    {
+        $instance = wp_parse_args( (array) $instance, array( 'title' => '' ) );
+        $title = $instance['title'];
+    }
+
+    function update($new_instance, $old_instance)
+    {
+        $instance = $old_instance;
+        $instance['title'] = $new_instance['title'];
+        return $instance;
+    }
+
+    function widget($args, $instance)
+    {
+        include_once (WP_PLUGIN_DIR.DS."extrawatch".DS."modules".DS."mod_extrawatch_users" . DS . "mod_extrawatch_users.php");
+        echo renderExtraWatchUsers();
+    }
+
+}
+
+/*register widget */
+function ExtraWatchUsersWidget_init()
+{
+    register_widget('ExtraWatchUsersWidget');
+}
+
+
+add_action('widgets_init', 'ExtraWatchUsersWidget_init');
+?>
