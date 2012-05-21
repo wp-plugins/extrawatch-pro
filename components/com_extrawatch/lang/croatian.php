@@ -1,6 +1,7 @@
-﻿<?php
+<?php
 
 /**
+ * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version @VERSION@
@@ -8,12 +9,12 @@
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) @YEAR@ by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
- **/
+ */
 defined('_JEXEC') or die('Ograničen pristup');
 
 #ExtraWatch language file - to create a new language file, just copy the english.php to eg. german.php and place into /components/com_extrawatch/lang/
 
-# Main Menu
+// Main Menu
 DEFINE('_EW_MENU_STATS', "Statistika uživo");
 DEFINE('_EW_MENU_GOALS', "Ciljevi");
 DEFINE('_EW_MENU_SETTINGS', "Postavke");
@@ -25,14 +26,14 @@ DEFINE('_EW_MENU_DONATORS', "Donatori");
 DEFINE('_EW_MENU_SUPPORT', "Podrži ExtraWatch i makni reklame sa backenda.");
 
 
-# Left visitors real-time window
+// Left visitors real-time window
 DEFINE('_EW_VISITS_VISITORS', "Najnoviji posjetitelji");
 DEFINE('_EW_VISITS_BOTS', "Botovi");
 DEFINE('_EW_VISITS_CAME_FROM', "Dolazi iz");
 DEFINE('_EW_VISITS_MODULE_NOT_PUBLISHED', "Vas ExtraWatch module nije objavljen! Nove statistike se ne bilježe. Za objavljivanje idite na sekciju Moduli i objavite na svim stranicama");
 DEFINE('_EW_VISITS_PANE_LOADING', "Učitavanje posjeta...");
 
-# Right stats window
+// Right stats window
 DEFINE('_EW_STATS_TITLE', "Tjedna statistika posjetitelja.");
 DEFINE('_EW_STATS_WEEK', "Tjedan");
 DEFINE('_EW_STATS_THIS_WEEK', "ovaj tjedan");
@@ -65,7 +66,7 @@ DEFINE('_EW_STATS_IP_BLOCKING_MANUALLY', "Unesite IP koji želite blokirati. (np
 DEFINE('_EW_STATS_IP_BLOCKING_TOGGLE', "Podešavanje blokiranja");
 DEFINE('_EW_STATS_PANE_LOADING', "Učitavanje statistike...");
 
-# Settings
+// Settings
 DEFINE('_EW_SETTINGS_TITLE', "Postavke");
 DEFINE('_EW_SETTINGS_DEFAULT', "Početne postavke");
 DEFINE('_EW_SETTINGS_SAVE', "Spremi");
@@ -84,7 +85,7 @@ DEFINE('_EW_SETTINGS_SAVED', "Postavke spremljene");
 DEFINE('_EW_SETTINGS_ADD_YOUR_IP', "Dodaj IP");
 DEFINE('_EW_SETTINGS_TO_THE_LIST', "na listu.");
 
-# Other / mostly general
+// Other / mostly general
 DEFINE('_EW_TITLE', "AJAX joomla monitor uživo");
 DEFINE('_EW_BACK', "Natrag");
 DEFINE('_EW_ACCESS_DENIED', "Nemate ovlasti za pregledavanje ovog!");
@@ -100,12 +101,12 @@ DEFINE('_EW_AJAX_PERMISSION_DENIED_2', "Možda ste zaboravili www. ispred domene
 DEFINE('_EW_AJAX_PERMISSION_DENIED_3', "iz");
 DEFINE('_EW_AJAX_PERMISSION_DENIED_4', "zbog čega misli da je to druga domena.");
 
-# Header
+// Header
 DEFINE('_EW_HEADER_DOWNLOAD', "Preuzmite posljednji kod proširenja");
 DEFINE('_EW_HEADER_CAST_YOUR', "Molimo, dajte svoj");
 DEFINE('_EW_HEADER_VOTE', "glas");
 
-# Tooltips
+// Tooltips
 DEFINE('_EW_TOOLTIP_CLICK', "Kliknite za prikaz opisa alata");
 DEFINE('_EW_TOOLTIP_MOUSE_OVER', "Usmjerite pokazivač preko za pregled opisa alata");
 DEFINE('_EW_TOOLTIP_YESTERDAY_INCREASE', "jučerašnji porast");
@@ -113,7 +114,7 @@ DEFINE('_EW_TOOLTIP_HELP', "Otvara online pomoć za");
 DEFINE('_EW_TOOLTIP_WINDOW_CLOSE', "Zatvori prozor");
 DEFINE('_EW_TOOLTIP_PRINT', "Printaj");
 
-# Goals
+// Goals
 DEFINE('_EW_GOALS_INSERT', "Unesite novi cilj");
 DEFINE('_EW_GOALS_UPDATE', "Azurirajte cilj br.");
 DEFINE('_EW_GOALS_ACTION', "Radnja");
@@ -142,7 +143,7 @@ DEFINE('_EW_GOALS_EDIT', "Uredi");
 DEFINE('_EW_GOALS_DELETE', "Obriši");
 DEFINE('_EW_GOALS_DELETE_CONFIRM', "Izgubit ćete sve statističke podatke za ovaj cilj. Jeste li sigurni da želite obrisati cilj br.");
 
-# Frontend
+// Frontend
 DEFINE('_EW_FRONTEND_COUNTRIES', "Države");
 DEFINE('_EW_FRONTEND_VISITORS', "Posjetitelji");
 DEFINE('_EW_FRONTEND_TODAY', "Danas");
@@ -153,7 +154,7 @@ DEFINE('_EW_FRONTEND_THIS_MONTH', "Ovaj mjesec");
 DEFINE('_EW_FRONTEND_LAST_MONTH', "Prošli mjesec");
 DEFINE('_EW_FRONTEND_TOTAL', "Ukupno");
 
-# Settings description - quite long
+// Settings description - quite long
 DEFINE('_EW_DESC_DEBUG', "ExtraWatch je u debug načinu rada. Ovim načinom možete otkriti uzrok grešaka. Za isključivanje ovog načina rada promijenite vrijednost EXTRAWATCH_DEBUG u /components/com_extrawatch/config.php sa 1 na 0");
 DEFINE('_EW_DESC_STATS_MAX_ROWS', "Najveći broj redova koji se prikazuju kad su statistike u proširenom načinu rada.");
 DEFINE('_EW_DESC_STATS_IP_HITS', "Sve IP adrese koje prethodnih dana imaju manje pregleda od zadane vrijednosti bit će obrisane iz povijesti IP adresa.");
@@ -214,7 +215,7 @@ DEFINE('_EW_DESC_GOALS_BLOCK', "Podesiti na 1 ukoliko želite blokirati posjetit
 
 /* new translations */
 DEFINE('_EW_GOALS_COUNTRY_CONDITION', "Uvjet za državu");
-DEFINE('_EW_GOALS_CONTRY_INVERSED', "Suprotni uvjet za državu");
+DEFINE('_EW_GOALS_COUNTRY_INVERSED', "Suprotni uvjet za državu");
 DEFINE('_EW_DESC_GOALS_COUNTRY_CONDITION', "Dvoslovni kod države velikim slovima (Npr: &lt;b&gt;TH&lt;/b&gt;)");
 DEFINE('_EW_STATS_INTERNAL', "Interno");
 DEFINE('_EW_STATS_FROM', "Od");
@@ -462,7 +463,7 @@ DEFINE('_EW_BLOCKING_MESSAGE', "Poruka za blokirane");
 DEFINE('_EW_SERVER_URI_KEY', "Serverski URI ključ");
 DEFINE('_EW_FRONTEND_VISITORS_TOTAL_INITIAL', "Frontend početni broj ukupnih posjeta");
 DEFINE('_EW_SIZEDATABASE_RECORDS', "Zapisi");
-/***********EDITs******************/
+/***********EDITs*****************/
 DEFINE('_EW_ANTISPAM_BLOCKING_TEXT', " Kako bi blokiranje bilo omogućeno morate objaviti ExtraWatch agenta PRIJE sadržaja ili obrazaca. Pr. na lijevoj strani predloška.
                     &lt;br/&gt;
                     Otiđite na Module Manager -&gt; ExtraWatch agent -&gt; označite lijevi položaj");
@@ -499,4 +500,4 @@ DEFINE('_EW_RENDERED_IN', "Rendered in");
 DEFINE('_EW_DESC_SEO_RENDER_ONLY_CHANGED', "Render only values which were already used in previous days (have some percentage in change column)");
 DEFINE('_EW_SEO_REPORT_SETTINGS', "SEO Report Settings");
 
-?>
+

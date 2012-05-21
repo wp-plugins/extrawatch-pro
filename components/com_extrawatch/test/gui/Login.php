@@ -34,4 +34,3 @@ class Login extends PHPUnit_Extensions_SeleniumTestCase
     }
 }
 
-?>

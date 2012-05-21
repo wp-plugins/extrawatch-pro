@@ -38,4 +38,4 @@ class Install_Component extends PHPUnit_Extensions_SeleniumTestCase
     }
 }
 
-?>
+

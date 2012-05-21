@@ -2,7 +2,7 @@
 
 #ExtraWatch language file - to create a new language file, just copy the english.php to eg. german.php and place into /components/com_extrawatch/lang/
 
-# Menu główne
+// Menu główne
 DEFINE('_EW_MENU_STATS', "Statystyki");
 DEFINE('_EW_MENU_GOALS', "Cele");
 DEFINE('_EW_MENU_SETTINGS', "Ustawienia");
@@ -13,14 +13,14 @@ DEFINE('_EW_MENU_LICENSE', "Licencja");
 DEFINE('_EW_MENU_DONATORS', "Darczyńcy");
 DEFINE('_EW_MENU_SUPPORT', "Wesprzyj ExtraWatch i pozbądź się reklam.");
 
-# Lewe okno panelu
+// Lewe okno panelu
 DEFINE('_EW_VISITS_VISITORS', "Goście portalu");
 DEFINE('_EW_VISITS_BOTS', "Boty");
 DEFINE('_EW_VISITS_CAME_FROM', "Przekierowanie z");
 DEFINE('_EW_VISITS_MODULE_NOT_PUBLISHED', "Nie opublikowałeś modułu ExtraWatch, dlatego statystyki nie są rejestrowane. Przejdź do działu Moduły i opublikuj ten moduł na wszystkich stronach portalu.");
 DEFINE('_EW_VISITS_PANE_LOADING', "Trwa odczyt...");
 
-# Prawe okno panelu
+// Prawe okno panelu
 DEFINE('_EW_STATS_TITLE', "Tydzień");
 DEFINE('_EW_STATS_WEEK', "Tydzień");
 DEFINE('_EW_STATS_THIS_WEEK', "Bieżący tydzień");
@@ -53,7 +53,7 @@ DEFINE('_EW_STATS_IP_BLOCKING_MANUALLY', "Wprowadź adres IP, który chcesz zabl
 DEFINE('_EW_STATS_IP_BLOCKING_TOGGLE', "Czy na pewno chcesz zablokować adres ");
 DEFINE('_EW_STATS_PANE_LOADING', "Trwa odczyt...");
 
-# Ustawienia
+// Ustawienia
 DEFINE('_EW_SETTINGS_TITLE', "Ustawienia");
 DEFINE('_EW_SETTINGS_DEFAULT', "Domyślne");
 DEFINE('_EW_SETTINGS_SAVE', "Zapisz");
@@ -72,7 +72,7 @@ DEFINE('_EW_SETTINGS_SAVED', "Ustawienia zostały zapisane.");
 DEFINE('_EW_SETTINGS_ADD_YOUR_IP', "Dodaj swój adres IP");
 DEFINE('_EW_SETTINGS_TO_THE_LIST', "do listy.");
 
-# Inne
+// Inne
 DEFINE('_EW_TITLE', "AJAX. Monitor portalu Joomla!");
 DEFINE('_EW_BACK', "Wstecz");
 DEFINE('_EW_ACCESS_DENIED', "Nie masz uprawnień do oglądania tych danych!");
@@ -88,12 +88,12 @@ DEFINE('_EW_AJAX_PERMISSION_DENIED_2', "Być może zapomniałeś o wpisaniu lite
 DEFINE('_EW_AJAX_PERMISSION_DENIED_3', "z");
 DEFINE('_EW_AJAX_PERMISSION_DENIED_4', "co jest interpretowane jako inny adres.");
 
-# Nagłówek
+// Nagłówek
 DEFINE('_EW_HEADER_DOWNLOAD', "Pobierz najnowsze aktualizacje ze strony");
 DEFINE('_EW_HEADER_CAST_YOUR', "Oddaj na nas swój");
 DEFINE('_EW_HEADER_VOTE', "głos");
 
-# Tooltip
+// Tooltip
 DEFINE('_EW_TOOLTIP_CLICK', "Kliknij, aby wyświetlić tooltip...");
 DEFINE('_EW_TOOLTIP_MOUSE_OVER', "Wskaż myszą, aby wyświetlić tooltip");
 DEFINE('_EW_TOOLTIP_YESTERDAY_INCREASE', "wczorajszy wzrost");
@@ -101,7 +101,7 @@ DEFINE('_EW_TOOLTIP_HELP', "Otwiera zewnętrzny system pomocy dla");
 DEFINE('_EW_TOOLTIP_WINDOW_CLOSE', "Zamknij to okno");
 DEFINE('_EW_TOOLTIP_PRINT', "Drukuj");
 
-# Cele
+// Cele
 DEFINE('_EW_GOALS_INSERT', "Dodaj nowy cel");
 DEFINE('_EW_GOALS_UPDATE', "Zmień cel nr");
 DEFINE('_EW_GOALS_ACTION', "Akcja");
@@ -128,7 +128,7 @@ DEFINE('_EW_GOALS_EDIT', "Edytuj");
 DEFINE('_EW_GOALS_DELETE', "Usuń");
 DEFINE('_EW_GOALS_DELETE_CONFIRM', "Skasujesz wszystkie statystyki dla tego celu. Czy na pewno chcesz usunąć cel nr");
 
-# Frontend
+// Frontend
 DEFINE('_EW_FRONTEND_COUNTRIES', "Kraje");
 DEFINE('_EW_FRONTEND_VISITORS', "Goście");
 DEFINE('_EW_FRONTEND_TODAY', "Dzisiaj");
@@ -139,7 +139,7 @@ DEFINE('_EW_FRONTEND_THIS_MONTH', "Bieżący miesiąc");
 DEFINE('_EW_FRONTEND_LAST_MONTH', "Poprzedni miesiąc");
 DEFINE('_EW_FRONTEND_TOTAL', "Ogółem");
 
-# Opisy ustawień
+// Opisy ustawień
 DEFINE('_EW_DESC_DEBUG', "ExtraWatch działa w trybie debuggera. Pozwala on na wykrycie błędów. Aby wyłączyć ten tryb, zmień wartość EXTRAWATCH_DEBUG w pliku /components/com_extrawatch/config.php Z 1 na 0.");
 DEFINE('_EW_DESC_STATS_MAX_ROWS', "Maksymalna liczba wierszy wyświetlanych po rozwinięciu statystyk.");
 DEFINE('_EW_DESC_STATS_IP_HITS', "Liczba kliknięć powodująca usunięcie adresu IP z historii (usuwane są adresy, dla których liczba kliknięć w ostatnich dniach jest mniejsza od podanej tutaj).");
@@ -240,8 +240,6 @@ DEFINE('_EW_DESC_EMAIL_SEVEN_DAY_CHANGE_POSITIVE', "Uwzględnij w raporcie tylko
 DEFINE('_EW_DESC_EMAIL_SEVEN_DAY_CHANGE_NEGATIVE', "Uwzględnij w raporcie tylko <b>ujemne 7-dniowe zmiany</b> mniesze niż {podana wartość}&nbsp;%. Wpisz 0, jeżeli nie chcesz używać tej funkcji. Przykład: -13.");
 DEFINE('_EW_DESC_EMAIL_TWENTY_EIGHT_DAY_CHANGE_POSITIVE', "Uwzględnij w raporcie tylko <b>dodatnie 28-dniowe zmiany</b> większe niż {podana wartość}&nbsp;%. Wpisz 0, jeżeli nie chcesz używać tej funkcji. Przykład: 2.");
 DEFINE('_EW_DESC_EMAIL_TWENTY_EIGHT_DAY_CHANGE_NEGATIVE', "Uwzględnij w raporcie tylko <b>ujemne 28-dniowe zmiany</b> mniesze niż {podana wartość}&nbsp;%. Wpisz 0, jeżeli nie chcesz używać tej funkcji. Przykład: -13.");
-DEFINE('_EW_DESC_EMAIL_TWENTY_EIGHT_DAY_CHANGE_POSITIVE', "Uwzględnij w raporcie tylko <b>dodatnie 30-dniowe zmiany</b> większe niż {podana wartość}&nbsp;%. Wpisz 0, jeżeli nie chcesz używać tej funkcji. Przykład: 2.");
-DEFINE('_EW_DESC_EMAIL_TWENTY_EIGHT_DAY_CHANGE_NEGATIVE', "Uwzględnij w raporcie tylko <b>ujemne 30-dniowe zmiany</b> mniesze niż {podana wartość}&nbsp;%. Wpisz 0, jeżeli nie chcesz używać tej funkcji. Przykład: -13.");
 
 DEFINE('_EW_DESC_FRONTEND_NOFOLLOW', "<b>(Dotyczy wersji PRO)</b> Zaznacz, aby dodać do brazka loga atrybut rel='nofollow'.");
 DEFINE('_EW_DESC_EMAIL_NAME_TRUNCATE', "Maksymalna liczba znaków w nazwie wiersza. Zmień, jeśli Twoje okno klienta poczty jest za małe.");
@@ -475,7 +473,7 @@ DEFINE('_EW_SERVER_URI_KEY', "Klucz URI serwera");
 DEFINE('_EW_SEO_TOP_REFERRED_PAGES', "Najczęściej odwiedzane strony (wg fraz kluczowych) - ");
 DEFINE('_EW_SEO_NOT_VISITED', "Nie zanotowano dotąd żadnych odwiedzin.");
 
-/***********EDITs******************/
+/***********EDITs*****************/
 DEFINE('_EW_EMAIL_SEO_REPORTS', "Raporty SEO");
 DEFINE('_EW_DESC_EMAIL_SEO_REPORTS_ENABLED', "Zaznacz, aby otrzymywać raporty SEO.");
 DEFINE('_EW_WATCH_INSTALLATION_DEMO', "Demo instalacji");
@@ -512,4 +510,4 @@ DEFINE('_EW_RENDERED_IN', "Rendered in");
 DEFINE('_EW_DESC_SEO_RENDER_ONLY_CHANGED', "Render only values which were already used in previous days (have some percentage in change column)");
 DEFINE('_EW_SEO_REPORT_SETTINGS', "SEO Report Settings");
 
-?>
+

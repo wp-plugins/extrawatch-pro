@@ -36,4 +36,4 @@ class BaseTestExtraWatchGUI extends PHPUnit_Extensions_SeleniumTestCase
 
 }
 
-?>
+

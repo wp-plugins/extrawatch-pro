@@ -1,1 +1,2 @@
-<?php die('Restricted access'); ?>
+<?php die('Restricted access');
+

@@ -1,6 +1,7 @@
 <?php
 
 /**
+ * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version @VERSION@
@@ -8,14 +9,14 @@
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) @YEAR@ by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
- **/
+ */
 defined('_JEXEC') or die('Restricted access');
 
 
 #ExtraWatch: Estonian language - Eesti keel
 
 
-# Main Menu
+// Main Menu
 
 DEFINE('_EW_MENU_STATS', "Live statistika");
 
@@ -36,7 +37,7 @@ DEFINE('_EW_MENU_DONATORS', "Toetajad");
 DEFINE('_EW_MENU_SUPPORT', "Toeta ExtraWatch'i ja saad oma reklaamid eemaldada administraatori lehel.");
 
 
-# Left visitors real-time window
+// Left visitors real-time window
 
 DEFINE('_EW_VISITS_VISITORS', "Viimased k&uuml;lastajad");
 
@@ -49,7 +50,7 @@ DEFINE('_EW_VISITS_MODULE_NOT_PUBLISHED', "Sinu ExtraWatch moodul ei ole avaldat
 DEFINE('_EW_VISITS_PANE_LOADING', "Laen k&uuml;lastusi...");
 
 
-# Right stats window
+// Right stats window
 
 DEFINE('_EW_STATS_TITLE', "N&auml;dala k&uuml;lastuste statistika");
 
@@ -114,7 +115,7 @@ DEFINE('_EW_STATS_IP_BLOCKING_TOGGLE', "T&otilde;esti l&uuml;lita blokeerimine "
 DEFINE('_EW_STATS_PANE_LOADING', "Laen andmeid...");
 
 
-# Settings
+// Settings
 
 DEFINE('_EW_SETTINGS_TITLE', "Seaded");
 
@@ -151,7 +152,7 @@ DEFINE('_EW_SETTINGS_ADD_YOUR_IP', "Lisa oma IP");
 DEFINE('_EW_SETTINGS_TO_THE_LIST', "nimekirja.");
 
 
-# Other / mostly general
+// Other / mostly general
 
 DEFINE('_EW_TITLE', "Reaalajas AJAX Joomla j&auml;lgija");
 
@@ -182,7 +183,7 @@ DEFINE('_EW_AJAX_PERMISSION_DENIED_3', "");
 DEFINE('_EW_AJAX_PERMISSION_DENIED_4', "Mis teeb seda arvama, et see on erinev domeen.");
 
 
-# Header
+// Header
 
 DEFINE('_EW_HEADER_DOWNLOAD', "Hangi uusim pikendamis kood");
 
@@ -191,7 +192,7 @@ DEFINE('_EW_HEADER_CAST_YOUR', "Sisesta oma");
 DEFINE('_EW_HEADER_VOTE', "h&auml;&auml;l");
 
 
-# Tooltips
+// Tooltips
 
 DEFINE('_EW_TOOLTIP_CLICK', "Vajuta, et n&auml;ha kohtspikrit");
 
@@ -206,7 +207,7 @@ DEFINE('_EW_TOOLTIP_WINDOW_CLOSE', "Sulge see aken");
 DEFINE('_EW_TOOLTIP_PRINT', "Prindi");
 
 
-# Goals
+// Goals
 
 DEFINE('_EW_GOALS_INSERT', "Sisesta uus eesm&auml;rk");
 
@@ -259,7 +260,7 @@ DEFINE('_EW_GOALS_DELETE', "Kustuta");
 DEFINE('_EW_GOALS_DELETE_CONFIRM', "Sa kaotad selle eesm&auml;rgi k&otilde;ik hiljutised statistika andmed. Kas sa t&otilde;esti soovid kustutada eesm&auml;rki nr ");
 
 
-# Frontend
+// Frontend
 
 DEFINE('_EW_FRONTEND_COUNTRIES', "Riigid");
 
@@ -280,7 +281,7 @@ DEFINE('_EW_FRONTEND_LAST_MONTH', "Viimane kuu");
 DEFINE('_EW_FRONTEND_TOTAL', "Kokku");
 
 
-# Settings description - quite long
+// Settings description - quite long
 
 DEFINE('_EW_DESC_DEBUG', "ExtraWatch on silumis reziimis. Sel moel saab leida vigade p&otilde;hjuseid. Et see v&auml;lja l&uuml;litada, palun muuda EXTRAWATCH_DEBUG /components/com_extrawatch/config.php v&auml;&auml;rtust. Muuda 1 tagasi 0");
 
@@ -717,7 +718,7 @@ DEFINE('_EW_BLOCKING_MESSAGE', "Blocking Message");
 DEFINE('_EW_SERVER_URI_KEY', "Server URI key");
 DEFINE('_EW_FRONTEND_VISITORS_TOTAL_INITIAL', "Front End Visitors Total Initial");
 DEFINE('_EW_SIZEDATABASE_RECORDS', "Records");
-/***********EDITs******************/
+/***********EDITs*****************/
 DEFINE('_EW_ANTISPAM_BLOCKING_TEXT', " To make the blocking effective, you need to publish ExtraWatch agent BEFORE any content or forms. Eg. on left side in your template.
                     <br/>
                     Go to Module Manager -> ExtraWatch agent -> select position as left");
@@ -753,4 +754,4 @@ DEFINE('_EW_RENDERED_IN', "Rendered in");
 DEFINE('_EW_DESC_SEO_RENDER_ONLY_CHANGED', "Render only values which were already used in previous days (have some percentage in change column)");
 DEFINE('_EW_SEO_REPORT_SETTINGS', "SEO Report Settings");
 
-?>
+

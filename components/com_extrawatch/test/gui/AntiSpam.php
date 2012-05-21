@@ -36,4 +36,4 @@ class Anti_spam extends PHPUnit_Extensions_SeleniumTestCase
     }
 }
 
-?>
+

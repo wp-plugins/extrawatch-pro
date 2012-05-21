@@ -1,14 +1,15 @@
 <?php
 
 /**
+ * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 41
+ * @revision 150
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
- **/
+ */
 
 /** ensure this file is being included by a parent file */
 if (!defined('_JEXEC') && !defined('_VALID_MOS'))
@@ -17,12 +18,12 @@ if (!defined('_JEXEC') && !defined('_VALID_MOS'))
 class ExtraWatchCache
 {
 
-    var $database;
-    var $helper;
-    var $config;
-    var $date;
+    public $database;
+    public $helper;
+    public $config;
+    public $date;
 
-    function ExtraWatchCache($database)
+    function __construct($database)
     {
         $this->database = $database;
         $this->helper = new ExtraWatchHelper($this->database);
@@ -43,7 +44,7 @@ class ExtraWatchCache
         if ($time - @ $cacheInterval < @ $row->lastUpdate) {
             return @ $row->cache;
         } else {
-            return false;
+            return FALSE;
         }
 
     }
@@ -74,11 +75,11 @@ class ExtraWatchCache
     /**
      * cache
      */
-    function clearCache()
+    static function clearCache($database)
     {
         $query = sprintf("delete from #__extrawatch_cache");
-        $result1 = $this->database->executeQuery($query);
+        $database->executeQuery($query);
     }
 }
 
-?>
+

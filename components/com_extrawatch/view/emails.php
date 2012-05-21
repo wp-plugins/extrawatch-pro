@@ -1,14 +1,15 @@
 <?php
 
 /**
+ * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 41
+ * @revision 150
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
- **/
+ */
 
 defined('_JEXEC') or die('Restricted access');
 ?>
@@ -16,37 +17,37 @@ defined('_JEXEC') or die('Restricted access');
 <h2><?php echo(_EW_EMAIL_REPORTS);?></h2>
 <form action='<?php echo $this->extraWatch->config->renderLink("emails", "action=save");?>' method='POST' id='settingsForm'>
     <table width='100%'>
-        <?php echo ExtraWatchHTML :: renderInputElement('EMAIL_REPORTS_ENABLED', $color); ?>
-        <?php echo ExtraWatchHTML :: renderInputElement('EMAIL_REPORTS_ADDRESS', $color); ?>
+        <?php echo $this->renderInputElement('EMAIL_REPORTS_ENABLED', $color); ?>
+        <?php echo $this->renderInputElement('EMAIL_REPORTS_ADDRESS', $color); ?>
 
-        <?php echo ExtraWatchHTML :: renderInputElement('EMAIL_NAME_TRUNCATE', $color); ?>
+        <?php echo $this->renderInputElement('EMAIL_NAME_TRUNCATE', $color); ?>
         <tr>
             <td><h2><?php echo(_EW_EMAIL_REPORTS_VALUE_FILTERS);?>:</h2></td>
         </tr>
-        <?php echo ExtraWatchHTML :: renderInputElement('EMAIL_PERCENT_HIGHER_THAN', $color); ?>
+        <?php echo $this->renderInputElement('EMAIL_PERCENT_HIGHER_THAN', $color); ?>
         <tr>
             <td>&nbsp;</td>
         </tr>
 
-        <?php echo ExtraWatchHTML :: renderInputElement('EMAIL_ONE_DAY_CHANGE_POSITIVE', $color); ?>
-        <?php echo ExtraWatchHTML :: renderInputElement('EMAIL_ONE_DAY_CHANGE_NEGATIVE', $color); ?>
+        <?php echo $this->renderInputElement('EMAIL_ONE_DAY_CHANGE_POSITIVE', $color); ?>
+        <?php echo $this->renderInputElement('EMAIL_ONE_DAY_CHANGE_NEGATIVE', $color); ?>
         <tr>
             <td>&nbsp;</td>
         </tr>
 
-        <?php echo ExtraWatchHTML :: renderInputElement('EMAIL_SEVEN_DAY_CHANGE_POSITIVE', $color); ?>
-        <?php echo ExtraWatchHTML :: renderInputElement('EMAIL_SEVEN_DAY_CHANGE_NEGATIVE', $color); ?>
+        <?php echo $this->renderInputElement('EMAIL_SEVEN_DAY_CHANGE_POSITIVE', $color); ?>
+        <?php echo $this->renderInputElement('EMAIL_SEVEN_DAY_CHANGE_NEGATIVE', $color); ?>
         <tr>
             <td>&nbsp;</td>
         </tr>
 
-        <?php echo ExtraWatchHTML :: renderInputElement('EMAIL_TWENTY_EIGHT_DAY_CHANGE_POSITIVE', $color); ?>
-        <?php echo ExtraWatchHTML :: renderInputElement('EMAIL_TWENTY_EIGHT_DAY_CHANGE_NEGATIVE', $color); ?>
+        <?php echo $this->renderInputElement('EMAIL_TWENTY_EIGHT_DAY_CHANGE_POSITIVE', $color); ?>
+        <?php echo $this->renderInputElement('EMAIL_TWENTY_EIGHT_DAY_CHANGE_NEGATIVE', $color); ?>
 
         <tr>
             <td><h2><?php echo(_EW_EMAIL_SEO_REPORTS);?>:</h2></td>
         </tr>
-        <?php echo ExtraWatchHTML :: renderInputElement('EMAIL_SEO_REPORTS_ENABLED', $color); ?>
+        <?php echo $this->renderInputElement('EMAIL_SEO_REPORTS_ENABLED', $color); ?>
 
         <tr>
             <td colspan='3'>

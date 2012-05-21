@@ -1,6 +1,7 @@
 <?php
 
 /**
+ * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version @VERSION@
@@ -8,12 +9,12 @@
  * @license http://www.gnu.org/licenses/gpl-3.0.txt GNU General Public License v3
  * @copyright (C) @YEAR@ by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
- **/
+ */
 defined('_JEXEC') or die('Restricted access');
 
 #ExtraWatch language file - to create a new language file, just copy the english.php to eg. german.php and place into /components/com_extrawatch/lang/
 
-# Main Menu
+// Main Menu
 DEFINE('_EW_MENU_STATS', "Él&#337; statisztikák");
 DEFINE('_EW_MENU_GOALS', "Célok");
 DEFINE('_EW_MENU_SETTINGS', "Beállítások");
@@ -25,14 +26,14 @@ DEFINE('_EW_MENU_DONATORS', "Támogatók");
 DEFINE('_EW_MENU_SUPPORT', "Támogassa ExtraWatch-ot és a hirdetések elt&#369;nnek a háttérb&#337;l.");
 
 
-# Left visitors real-time window
+// Left visitors real-time window
 DEFINE('_EW_VISITS_VISITORS', "Utolsó látogatók");
 DEFINE('_EW_VISITS_BOTS', "Bots");
 DEFINE('_EW_VISITS_CAME_FROM', "Érkezési hely");
 DEFINE('_EW_VISITS_MODULE_NOT_PUBLISHED', "Az Ön ExtraWatch modulja nem publikus! Új statisztikák nem készülnek. Publikálni úgy tudja, hogy elmegy a Modulok szekcióra és publikussá tesz minden oldalt.");
 DEFINE('_EW_VISITS_PANE_LOADING', "Látogatások betöltése...");
 
-# Right stats window
+// Right stats window
 DEFINE('_EW_STATS_TITLE', "Heti látogatói statisztikák");
 DEFINE('_EW_STATS_WEEK', "Hét");
 DEFINE('_EW_STATS_THIS_WEEK', "ez a hét");
@@ -65,7 +66,7 @@ DEFINE('_EW_STATS_IP_BLOCKING_MANUALLY', "Írja be az IP címet, amit blokkolni 
 DEFINE('_EW_STATS_IP_BLOCKING_TOGGLE', "A blokkoló tényleges bekapcsolása a ");
 DEFINE('_EW_STATS_PANE_LOADING', "Statisztikák betöltése...");
 
-# Settings
+// Settings
 DEFINE('_EW_SETTINGS_TITLE', "Beállítások");
 DEFINE('_EW_SETTINGS_DEFAULT', "Alapértelmezés");
 DEFINE('_EW_SETTINGS_SAVE', "Mentés");
@@ -84,7 +85,7 @@ DEFINE('_EW_SETTINGS_SAVED', "Beállítások elmentve");
 DEFINE('_EW_SETTINGS_ADD_YOUR_IP', "Adja meg IP címét");
 DEFINE('_EW_SETTINGS_TO_THE_LIST', "a listához.");
 
-# Other / mostly general
+// Other / mostly general
 DEFINE('_EW_TITLE', "Él&#337; AJAX joomla monitor");
 DEFINE('_EW_BACK', "Vissza");
 DEFINE('_EW_ACCESS_DENIED', "Nincs hozzáférési joga ehhez a nézethez!");
@@ -100,12 +101,12 @@ DEFINE('_EW_AJAX_PERMISSION_DENIED_2', "Talán elfelejtette megadni a 'www.'-ot 
 DEFINE('_EW_AJAX_PERMISSION_DENIED_3', "tól");
 DEFINE('_EW_AJAX_PERMISSION_DENIED_4', "mit&#337;l t&#369;nik úgy, hogy ez egy másik domain.");
 
-# Header
+// Header
 DEFINE('_EW_HEADER_DOWNLOAD', "A program utolsó verzióját letöltheti innen");
 DEFINE('_EW_HEADER_CAST_YOUR', "Kérem szavazzon ránk");
 DEFINE('_EW_HEADER_VOTE', "szavazás");
 
-# Tooltips
+// Tooltips
 DEFINE('_EW_TOOLTIP_CLICK', "Klikkeljen a hasznos tippeket megmutatni");
 DEFINE('_EW_TOOLTIP_MOUSE_OVER', "Mozgassa az egeret, hogy megmutassa a hasznos tippeket");
 DEFINE('_EW_TOOLTIP_YESTERDAY_INCREASE', "tegnapi növekmény");
@@ -113,7 +114,7 @@ DEFINE('_EW_TOOLTIP_HELP', "Megnyit küls&#337; segítséget");
 DEFINE('_EW_TOOLTIP_WINDOW_CLOSE', "Ablak becsukása");
 DEFINE('_EW_TOOLTIP_PRINT', "Nyomtatás");
 
-# Goals
+// Goals
 DEFINE('_EW_GOALS_INSERT', "Új cél beírása");
 DEFINE('_EW_GOALS_UPDATE', "Cél módosítása szám.");
 DEFINE('_EW_GOALS_ACTION', "Esemény");
@@ -142,7 +143,7 @@ DEFINE('_EW_GOALS_EDIT', "Módosítás");
 DEFINE('_EW_GOALS_DELETE', "Törlés");
 DEFINE('_EW_GOALS_DELETE_CONFIRM', "El fogja veszteni a statisztikai adatokat erre a célra. Biztosan törölni akarja ezt a célt - szám.");
 
-# Frontend
+// Frontend
 DEFINE('_EW_FRONTEND_COUNTRIES', "Országok");
 DEFINE('_EW_FRONTEND_VISITORS', "Látogatók");
 DEFINE('_EW_FRONTEND_TODAY', "Ma");
@@ -153,7 +154,7 @@ DEFINE('_EW_FRONTEND_THIS_MONTH', "Mostani hónap");
 DEFINE('_EW_FRONTEND_LAST_MONTH', "Múlt hónap");
 DEFINE('_EW_FRONTEND_TOTAL', "Összesen");
 
-# Settings description - quite long
+// Settings description - quite long
 DEFINE('_EW_DESC_DEBUG', "ExtraWatch hibakeres&#337; állapot. Ezen az úton megtalálhatja a hiba okát. Ha ki akarja kapcsolni változtassa meg EXTRAWATCH_DEBUG értékét /components/com_extrawatch/config.php 1-r&#337;l 0-ra");
 DEFINE('_EW_DESC_STATS_MAX_ROWS', "Maximális sorok megmutatása, ha a statisztika a kib&#337;vített módban van.");
 DEFINE('_EW_DESC_STATS_IP_HITS', "Az összes IP cím, aminek kevesebb találata van az el&#337;z&#337; napokban mint a megadott szám, törl&#337;dik a rendszerb&#337;l.");
@@ -214,7 +215,7 @@ DEFINE('_EW_DESC_GOALS_BLOCK', "Állítsa be 1-re, ha a látogatót blokkolni ak
 
 /* new translations */
 DEFINE('_EW_GOALS_COUNTRY_CONDITION', "Ország feltétel");
-DEFINE('_EW_GOALS_CONTRY_INVERSED', "Ország fordított feltétel");
+DEFINE('_EW_GOALS_COUNTRY_INVERSED', "Ország fordított feltétel");
 DEFINE('_EW_DESC_GOALS_COUNTRY_CONDITION', "2-bet&#369;s ország kód nagybet&#369;kkel (Pl: <b>TH</b>)");
 DEFINE('_EW_STATS_INTERNAL', "Bels&#337;");
 DEFINE('_EW_STATS_FROM', "Tól");
@@ -459,7 +460,7 @@ DEFINE('_EW_BLOCKING_MESSAGE', "Üzenet blokkolása");
 DEFINE('_EW_SERVER_URI_KEY', "Szerver URI kulcs");
 DEFINE('_EW_FRONTEND_VISITORS_TOTAL_INITIAL', "Látogatók összes kezd&#337;érték");
 DEFINE('_EW_SIZEDATABASE_RECORDS', "Adattételek");
-/***********EDITs******************/
+/***********EDITs*****************/
 DEFINE('_EW_ANTISPAM_BLOCKING_TEXT', " A blokkolás úgy lesz effektív, ha publikálja ExtraWatch agent-et MIEL&#336;TT tartalom vagy adatlapok. Pl. a template baloldalán.
 <br/>
 Go to Module Manager -> ExtraWatch agent -> select position as left");
@@ -495,5 +496,5 @@ DEFINE('_EW_RENDERED_IN', "Rendered in");
 DEFINE('_EW_DESC_SEO_RENDER_ONLY_CHANGED', "Render only values which were already used in previous days (have some percentage in change column)");
 DEFINE('_EW_SEO_REPORT_SETTINGS', "SEO Report Settings");
 
-?>
+
 

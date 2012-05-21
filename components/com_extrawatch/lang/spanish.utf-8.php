@@ -1,6 +1,7 @@
 <?php
 
 /**
+ * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version @VERSION@
@@ -8,12 +9,12 @@
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) @YEAR@ by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
- **/
+ */
 defined('_JEXEC') or die('Restricted access');
 
 #ExtraWatch language file - to create a new language file, just copy the english.php to eg. german.php and place into /components/com_extrawatch/lang/
 
-# Main Menu
+// Main Menu
 DEFINE('_EW_MENU_STATS', "Estadísticas");
 DEFINE('_EW_MENU_GOALS', "Metas");
 DEFINE('_EW_MENU_SETTINGS', "Configuración");
@@ -24,14 +25,14 @@ DEFINE('_EW_MENU_LICENSE', "Licencia Ad-free");
 DEFINE('_EW_MENU_DONATORS', "Donantes");
 DEFINE('_EW_MENU_SUPPORT', "Apoye ExtraWatch y olvídese de los avisos publicitarios en la consola de administración.");
 
-# Left visitors real-time window
+// Left visitors real-time window
 DEFINE('_EW_VISITS_VISITORS', "Últimos visitantes");
 DEFINE('_EW_VISITS_BOTS', "Bots");
 DEFINE('_EW_VISITS_CAME_FROM', "Viene de");
 DEFINE('_EW_VISITS_MODULE_NOT_PUBLISHED', "Su módulo ExtraWatch no está publicado! Las estadísticas no se están capturando. Para publicarlos, vaya a la sección de Módulos y publíquelo en todas las páginas de su sitio.");
 DEFINE('_EW_VISITS_PANE_LOADING', "Cargando visitas...");
 
-# Right stats window
+// Right stats window
 DEFINE('_EW_STATS_TITLE', "Estadísticas de visitas por semana");
 DEFINE('_EW_STATS_WEEK', "Semana");
 DEFINE('_EW_STATS_THIS_WEEK', "esta semana");
@@ -64,7 +65,7 @@ DEFINE('_EW_STATS_IP_BLOCKING_MANUALLY', "Ingrese una dirección IP que desee bl
 DEFINE('_EW_STATS_IP_BLOCKING_TOGGLE', "Realmente desea alternar el bloqueo para ");
 DEFINE('_EW_STATS_PANE_LOADING', "cargando estadísticas...");
 
-# Settings
+// Settings
 DEFINE('_EW_SETTINGS_TITLE', "Configuraciones");
 DEFINE('_EW_SETTINGS_DEFAULT', "Por defecto");
 DEFINE('_EW_SETTINGS_SAVE', "Guardar");
@@ -83,7 +84,7 @@ DEFINE('_EW_SETTINGS_SAVED', "Las configuraciones fueron guardadas");
 DEFINE('_EW_SETTINGS_ADD_YOUR_IP', "Añada su IP");
 DEFINE('_EW_SETTINGS_TO_THE_LIST', "a la lista.");
 
-# Other / mostly general
+// Other / mostly general
 DEFINE('_EW_TITLE', "Un monitor AJAX para joomla en tiempo real");
 DEFINE('_EW_BACK', "Atrás");
 DEFINE('_EW_ACCESS_DENIED', "No tiene permisos para ver esto !");
@@ -99,12 +100,12 @@ DEFINE('_EW_AJAX_PERMISSION_DENIED_2', "Talvés solo haya olvidado poner www. an
 DEFINE('_EW_AJAX_PERMISSION_DENIED_3', "desde");
 DEFINE('_EW_AJAX_PERMISSION_DENIED_4', "lo que lo hace pensar que es un dominio diferente.");
 
-# Header
+// Header
 DEFINE('_EW_HEADER_DOWNLOAD', "Obtenga el código más reciente de esta extensión en");
 DEFINE('_EW_HEADER_CAST_YOUR', "Haga su");
 DEFINE('_EW_HEADER_VOTE', "Voto");
 
-# ToolTips
+// ToolTips
 DEFINE('_EW_TOOLTIP_CLICK', "Haga clic para mostrar un mensaje de ayuda");
 DEFINE('_EW_TOOLTIP_MOUSE_OVER', "Ponga el cursor encima para mostrar un mensaje de ayuda");
 DEFINE('_EW_TOOLTIP_YESTERDAY_INCREASE', "incremento de ayer");
@@ -112,7 +113,7 @@ DEFINE('_EW_TOOLTIP_HELP', "Abre ayuda externa online para");
 DEFINE('_EW_TOOLTIP_WINDOW_CLOSE', "Cerrar esta ventana");
 DEFINE('_EW_TOOLTIP_PRINT', "Imprimir");
 
-# Goals
+// Goals
 DEFINE('_EW_GOALS_INSERT', "Insertar una nueva meta");
 DEFINE('_EW_GOALS_UPDATE', "Actualice un no. de meta");
 DEFINE('_EW_GOALS_ACTION', "Acción");
@@ -139,7 +140,7 @@ DEFINE('_EW_GOALS_EDIT', "Editar");
 DEFINE('_EW_GOALS_DELETE', "Borrar");
 DEFINE('_EW_GOALS_DELETE_CONFIRM', "Va a perder toda las estadísticas recientes para esta meta. Realmente desea eliminar un no. de meta.");
 
-# Frontend
+// Frontend
 DEFINE('_EW_FRONTEND_COUNTRIES', "Países");
 DEFINE('_EW_FRONTEND_VISITORS', "Visitantes");
 DEFINE('_EW_FRONTEND_TODAY', "Hoy");
@@ -150,7 +151,7 @@ DEFINE('_EW_FRONTEND_THIS_MONTH', "Este mes");
 DEFINE('_EW_FRONTEND_LAST_MONTH', "Mes pasado");
 DEFINE('_EW_FRONTEND_TOTAL', "Total");
 
-# Settings description - quite long
+// Settings description - quite long
 DEFINE('_EW_DESC_DEBUG', "ExtraWatch está en modo de depuración. De esta manera puede descubrir las causas de error. Para salir del modo, por favor cambie el valor de EXTRAWATCH_DEBUG en /components/com_extrawatch/config.php de 1 a 0");
 DEFINE('_EW_DESC_STATS_MAX_ROWS', "Máximo de filas a mostrar cuando las estadísticas están en modo expandido.");
 DEFINE('_EW_DESC_STATS_IP_HITS', "Todas las direcciones IP que tengan menos hits en días anteriores que en este su valor será eliminado del historial IP.");
@@ -455,7 +456,7 @@ DEFINE('_EW_BLOCKING_MESSAGE', "Bloquear Mensaje");
 DEFINE('_EW_SERVER_URI_KEY', "Clave URI del servidor");
 DEFINE('_EW_FRONTEND_VISITORS_TOTAL_INITIAL', "Total Inicial de Visitantes en la fachada");
 DEFINE('_EW_SIZEDATABASE_RECORDS', "Registros");
-/***********EDITs******************/
+/***********EDITs*****************/
 
 DEFINE('_EW_ANTISPAM_BLOCKING_TEXT', " Para que el bloqueo sea efectivo, debe publicar el 'ExtraWatch agent' ANTES que cualquier contenido o formulario. Ej. en la parte izquierda de su plantilla.
                     <br/>
@@ -492,4 +493,4 @@ DEFINE('_EW_RENDERED_IN', "Rendered in");
 DEFINE('_EW_DESC_SEO_RENDER_ONLY_CHANGED', "Render only values which were already used in previous days (have some percentage in change column)");
 DEFINE('_EW_SEO_REPORT_SETTINGS', "SEO Report Settings");
 
-?>
+

@@ -1,17 +1,20 @@
 <?php
 
 /**
+ * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 41
+ * @revision 150
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
- **/
+ */
 
 /** ensure this file is being included by a parent file */
-if (!defined('_JEXEC') && !defined('_VALID_MOS')) die('Restricted access');
+if (!defined('_JEXEC') && !defined('_VALID_MOS')) {
+	die('Restricted access');
+}
 
 /* This is the main file with basic settings */
 
@@ -23,7 +26,7 @@ if (!defined('_JEXEC') && !defined('_VALID_MOS')) die('Restricted access');
 # define('EXTRAWATCH_LIVE_SITE','/');
 
 define('EXTRAWATCH_VERSION', "1.2.18");
-define('EXTRAWATCH_REVISION', "851");
+define('EXTRAWATCH_REVISION', "150");
 
 define('EXTRAWATCH_DEBUG', 0);
 
@@ -157,7 +160,7 @@ define('TYPE_EXTRAWATCH_FRONTEND_VISITORS_TOTAL', "checkbox");
 define('EXTRAWATCH_FRONTEND_COUNTRIES_FIRST', 1);
 define('TYPE_EXTRAWATCH_FRONTEND_COUNTRIES_FIRST', "checkbox");
 
-define('EXTRAWATCH_SEO_RENDER_ONLY_CHANGED', false);
+define('EXTRAWATCH_SEO_RENDER_ONLY_CHANGED', FALSE);
 define('TYPE_EXTRAWATCH_SEO_RENDER_ONLY_CHANGED', "checkbox");
 
 define('EXTRAWATCH_FRONTEND_VISITORS_TOTAL_INITIAL', 0);
@@ -550,19 +553,19 @@ define('EXTRAWATCH_HISTORY_MAX_DB_RECORDS', 200);
 define('TYPE_HISTORY_MAX_DB_RECORDS', "text");
 
 
-define('EXTRAWATCH_ONLY_LAST_URI', false);
+define('EXTRAWATCH_ONLY_LAST_URI', FALSE);
 define('TYPE_EXTRAWATCH_ONLY_LAST_URI', "checkbox");
 
-define('EXTRAWATCH_HIDE_REPETITIVE_TITLE', false);
+define('EXTRAWATCH_HIDE_REPETITIVE_TITLE', FALSE);
 define('TYPE_EXTRAWATCH_HIDE_REPETITIVE_TITLE', "checkbox");
 
-define('EXTRAWATCH_UNINSTALL_KEEP_DATA', false);
+define('EXTRAWATCH_UNINSTALL_KEEP_DATA', FALSE);
 define('TYPE_EXTRAWATCH_UNINSTALL_KEEP_DATA', "checkbox");
 
-define('EXTRAWATCH_EMAIL_REPORTS_ENABLED', false);
+define('EXTRAWATCH_EMAIL_REPORTS_ENABLED', FALSE);
 define('TYPE_EXTRAWATCH_EMAIL_REPORTS_ENABLED', "checkbox");
 
-define('EXTRAWATCH_EMAIL_SEO_REPORTS_ENABLED', false);
+define('EXTRAWATCH_EMAIL_SEO_REPORTS_ENABLED', FALSE);
 define('TYPE_EXTRAWATCH_EMAIL_SEO_REPORTS_ENABLED', "checkbox");
 
 define('EXTRAWATCH_EMAIL_REPORTS_ADDRESS', "@");
@@ -711,4 +714,4 @@ serialize(array(
 define('EXTRAWATCH_HEATMAP_KEEP_DAYS', 7);
 
 
-?>
+

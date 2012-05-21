@@ -1,14 +1,15 @@
 <?php
 
 /**
+ * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 41
+ * @revision 150
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
- **/
+ */
 
 /** ensure this file is being included by a parent file */
 if (!defined('_JEXEC') && !defined('_VALID_MOS'))
@@ -17,7 +18,7 @@ if (!defined('_JEXEC') && !defined('_VALID_MOS'))
 class ExtraWatchTrendHTML
 {
 
-    var $extraWatch;
+    public $extraWatch;
 
     const COLOR_GRAY = "gray";
 
@@ -25,7 +26,7 @@ class ExtraWatchTrendHTML
 
     const COLOR_GREEN = "green";
 
-    function ExtraWatchTrendHTML($extraWatch)
+    function __construct($extraWatch)
     {
         $this->extraWatch = $extraWatch;
     }
@@ -49,7 +50,7 @@ class ExtraWatchTrendHTML
         return $diffOutput;
     }
 
-    function getDiffColor($relDiff, $inversed = false)
+    static function getDiffColor($relDiff, $inversed = FALSE)
     {
         if (!$relDiff) {
             $color = ExtraWatchTrendHTML::COLOR_GRAY;
@@ -138,7 +139,8 @@ class ExtraWatchTrendHTML
 
         $groupTranslated = @constant("_EW_STATS_" . strtoupper($dbKeysArray[$group]));
 
-        $helpId = ExtraWatchHTML::renderOnlineHelp("trends");
+        $extraWatchHTML = new ExtraWatchHTML();
+        $helpId = $extraWatchHTML->renderOnlineHelp("trends");
         $output = "<center><h2>" . _EW_TRENDS_DAILY_WEEKLY . " $groupTranslated : $nameTranslated $helpId</h2><br/>";
         $output .= "<table cellpadding='0' cellspacing='0'>";
         $output .= "<tr>";
@@ -269,7 +271,7 @@ class ExtraWatchTrendHTML
 
         $date = $this->extraWatch->date->jwDateToday();
 
-        $rows = $this->extraWatch->stat->getIntValuesByName($group, $date, false, 10);
+        $rows = $this->extraWatch->stat->getIntValuesByName($group, $date, FALSE, 10);
 
         $output = $this->renderGraphSelectionForm($group);
         if (!$rows) {
@@ -302,4 +304,4 @@ class ExtraWatchTrendHTML
     }
 }
 
-?>
+

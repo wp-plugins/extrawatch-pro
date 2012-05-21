@@ -1,25 +1,28 @@
 <?php
 
 /**
+ * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 41
+ * @revision 150
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
- **/
+ */
 
 /** ensure this file is being included by a parent file */
-if (!defined('_JEXEC') && !defined('_VALID_MOS')) die('Restricted access');
+if (!defined('_JEXEC') && !defined('_VALID_MOS')) {
+	die('Restricted access');
+}
 
 class ExtraWatchSEO
 {
 
-    var $database;
-    var $date;
+    public $database;
+    public $date;
 
-    function ExtraWatchSEO($database)
+    function __construct($database)
     {
         $this->database = $database;
         $this->date = new ExtraWatchDate($database);
@@ -201,7 +204,8 @@ class ExtraWatchSEO
             WHERE info.`group` = %d
             AND uri2keyphraseId = %d
             GROUP BY `date`
-            ORDER BY `date` DESC , `#__extrawatch_uri2keyphrase_pos`.`uri2keyphraseId` ASC",
+            ORDER BY `date` DESC , `#__extrawatch_uri2keyphrase_pos`.`uri2keyphraseId` ASC
+            LIMIT 2",
             DB_KEY_SEARCH_RESULT_NUM, $uri2keyphraseId);
         return $this->database->objectListQuery($query);
     }
@@ -209,8 +213,8 @@ class ExtraWatchSEO
     function getAveragePositionChangesByUri2KeyphraseIdLimited($uri2keyphraseId)
     {
         $rows = $this->getAveragePositionChangesByUri2KeyphraseId($uri2keyphraseId);
-        if (@$rows && sizeof($rows) >= 2) {
-            return array($rows[0], $rows[1]);
+        if (@$rows && sizeof($rows) > 1) {
+            return array($rows[0],$rows[1]);
         }
         return $rows;
     }

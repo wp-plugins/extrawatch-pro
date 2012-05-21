@@ -1,17 +1,18 @@
 <?php
 
 /**
+ * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 41
+ * @revision 150
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
- **/
+ */
 ?>
 
-<span style='color: black;'>&nbsp;<?php echo ($extraWatch->date->getActualDateTime()); ?></span>
+<span style='color: black;'>&nbsp;<?php echo (ExtraWatchDate::getActualDateTime()); ?></span>
 
 <?php
 if (@!defined('ENV') && !$extraWatch->helper->isModulePublished()) {
@@ -20,7 +21,7 @@ if (@!defined('ENV') && !$extraWatch->helper->isModulePublished()) {
 }
 ?>
 <br/>
-<?php echo($extraWatchBlockHTML->renderBlockedInfo(true)); ?>
+<?php echo($extraWatchBlockHTML->renderBlockedInfo(TRUE)); ?>
 
 <table cellpadding='2' cellspacing='0' width='100%' border='0'>
     <tr>

@@ -1,14 +1,15 @@
 <?php
 
 /**
+ * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 41
+ * @revision 150
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
- **/
+ */
 
 /** ensure this file is being included by a parent file */
 if (!defined('_JEXEC') && !defined('_VALID_MOS'))
@@ -17,13 +18,13 @@ if (!defined('_JEXEC') && !defined('_VALID_MOS'))
 class ExtraWatchBlock
 {
 
-    var $database;
-    var $config;
-    var $helper;
-    var $date;
-    var $BLOCKING_REASON = "The IP: %s is blocked due to attempt to access back-end without security code";
+    public $database;
+    public $config;
+    public $helper;
+    public $date;
+    public $BLOCKING_REASON = "The IP: %s is blocked due to attempt to access back-end without security code";
 
-    function ExtraWatchBlock($database)
+    function __construct($database)
     {
         $this->database = $database;
         $this->config = new ExtraWatchConfig($this->database);
@@ -36,6 +37,7 @@ class ExtraWatchBlock
      */
     function blockIp($ip, $reason = "", $date = 0, $spamWord)
     {
+        $ip = htmlentities(strip_tags($ip));
         $query = sprintf("INSERT into #__extrawatch_blocked (id, ip, hits, `date`, reason, country, badWord) values ('','%s','','%d', '%s', null, '%s')", $this->database->getEscaped($ip), (int)$date, $this->database->getEscaped($reason), $this->database->getEscaped($spamWord));
         $this->database->executeQuery($query);
     }
@@ -52,7 +54,7 @@ class ExtraWatchBlock
     /**
      * block
      */
-    function blockIpToggle($ip)
+    function extraWatchBlockIpToggle($ip)
     {
 
         $count = $this->getBlockedIp($ip);
@@ -84,9 +86,9 @@ class ExtraWatchBlock
     function isBlockedIp($ip)
     {
         if ($this->searchBlockedIp($ip) > 0) {
-            return true;
+            return TRUE;
         }
-        return false;
+        return FALSE;
     }
 
     /**
@@ -105,12 +107,12 @@ class ExtraWatchBlock
     function getBlockedIp($ip)
     {
 
-        $ipExploded = explode('.', $ip);
-
         if ($this->searchBlockedIp($ip)) {
             return $ip;
         } else {
             if (strstr($ip, '.')) { //is IPv4
+                $ipExploded = explode('.', $ip);
+
                 $ip = $ipExploded[0] . "." . $ipExploded[1] . "." . $ipExploded[2] . ".*";
                 if ($this->searchBlockedIpWildcard($ip)) {
                     return $ip;
@@ -227,7 +229,7 @@ class ExtraWatchBlock
 
         /** if nothing is there in the post request */
         if (@!$post) {
-            return true;
+            return TRUE;
         }
         $ip = $_SERVER['REMOTE_ADDR'];
 
@@ -320,4 +322,4 @@ class ExtraWatchBlock
 
 }
 
-?>
+

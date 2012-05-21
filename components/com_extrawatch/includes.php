@@ -1,14 +1,15 @@
 <?php
 
 /**
+ * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 41
+ * @revision 150
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
- **/
+ */
 
 if (!defined('DS')) define('DS', DIRECTORY_SEPARATOR);
 $jBasePath = dirname(__FILE__) . DS . ".." . DS . "..";
@@ -37,7 +38,7 @@ switch ($env) {
 
     case "ExtraWatchWordpressEnv":
         {
-        require_once(dirname(__FILE__) . '/../../../../../wp-load.php');
+        require_once dirname(__FILE__) . '/../../../../../wp-load.php';
         if (!defined('ENV')) define('ENV', 1);
         break;
         }
@@ -105,4 +106,4 @@ function initializeJoomla()
     return $mainframe;
 }
 
-?>
+

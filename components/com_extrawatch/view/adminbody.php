@@ -1,14 +1,15 @@
 <?php
 
 /**
+ * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 41
+ * @revision 150
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
- **/
+ */
 
 defined('_JEXEC') or die('Restricted access');
 ?>
@@ -50,7 +51,7 @@ if (!$this->extraWatch->config->checkLiveSite()) {
                 </div>
             </td>
             <td valign="top">
-                <?php require_once("lastvisitmap.php");?>
+                <?php require_once "lastvisitmap.php";?>
             </td>
         </tr>
         <tr>
@@ -71,11 +72,11 @@ if (!$this->extraWatch->config->isFree()) {
         <?php } ?>
     <script type='text/javascript'>
             <?php if ($this->extraWatch->config->getConfigValue("EXTRAWATCH_MAP_GOOGLEMAP")) { ?>
-        GoogleMapLoad();
+        extraWatchGoogleMapLoad();
             <?php } ?>
             <?php if ($this->extraWatch->config->getConfigValue("EXTRAWATCH_MAP_OPENMAP")) { ?>
         try {
-            OpenMapLoad();
+            extraWatchOpenMapLoad();
         } catch (e) {
             alert("Could not initialize ExtraWatch javascript functions, browser could not load: <?php echo $this->extraWatch->config->getLiveSite(); ?>components/com_extrawatch/js/maps.js.php?rand=<?php echo $this->extraWatch->config->getRand();?>, because it returned HTTP 500 internal server error. This is a misconfiguration of your directory permissions. Please read: http://support.lunarpages.com/knowledge_bases/article/324 or search for: PHP permissions 500 Internal server error");
         }
@@ -87,5 +88,5 @@ if (!$this->extraWatch->config->isFree()) {
 ?>
 
 
-<script type="text/javascript">sendLastIdReq();</script>
+<script type="text/javascript">extraWatchSendLastIdReq();</script>
 

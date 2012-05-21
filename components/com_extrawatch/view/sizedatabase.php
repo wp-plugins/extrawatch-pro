@@ -1,14 +1,15 @@
 <?php
 
 /**
+ * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 41
+ * @revision 150
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
- **/
+ */
 defined('_JEXEC') or die('Restricted access');
 
 ?>
@@ -103,7 +104,7 @@ defined('_JEXEC') or die('Restricted access');
         } else {
             if ($size1 < 0) {
                 $size1font = "color: green;";
-            } else if ($size1 > 0) {
+            } elseif ($size1 > 0) {
                 $size1font = "color: red;";
             } else {
                 $size1font = "color: grey";
@@ -125,7 +126,7 @@ defined('_JEXEC') or die('Restricted access');
         } else {
             if ($size7 < 0) {
                 $size7font = "color: green;";
-            } else if ($size7 > 0) {
+            } elseif ($size7 > 0) {
                 $size7font = "color: red;";
             } else {
                 $size7font = "color: grey";
@@ -147,7 +148,7 @@ defined('_JEXEC') or die('Restricted access');
         } else {
             if ($size28 < 0) {
                 $size28font = "color: green;";
-            } else if ($size28 > 0) {
+            } elseif ($size28 > 0) {
                 $size28font = "color: red;";
             } else {
                 $size28font = "color: grey";
@@ -172,7 +173,7 @@ defined('_JEXEC') or die('Restricted access');
 
         $day = $this->extraWatch->date->jwDateToday();
 
-        $trendsIcon = "<img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/icons/trend_icon.gif' border='0'  " . $this->extraWatch->helper->getTooltipOnEvent() . "=\"ajax_showTooltip('" . $this->extraWatch->config->getLiveSite() . "components/com_extrawatch/trendtooltip.php?rand=" . $this->extraWatch->config->getRand() . "&group=" . DB_KEY_SIZE_DB . "&name=" . $row->Name . "&date=$day',this);return false\"/>";
+        $trendsIcon = "<img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/icons/trend_icon.gif' border='0'  " . $this->extraWatch->helper->getTooltipOnEvent() . "=\"ajax_showTooltip('" . $this->extraWatch->config->getLiveSite() . "components/com_extrawatch/trendtooltip.php?rand=" . $this->extraWatch->config->getRand() . "&group=" . DB_KEY_SIZE_DB . "&name=" . $row->Name . "&date=$day&env=".get_class($this->extraWatch->env)."',this);return FALSE\"/>";
 
         echo("<td style='background-color: $color;' align='center'>" . $trendsIcon . "</td>");
 

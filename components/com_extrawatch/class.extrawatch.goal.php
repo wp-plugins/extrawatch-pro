@@ -1,14 +1,15 @@
 <?php
 
 /**
+ * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 41
+ * @revision 150
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
- **/
+ */
 
 /** ensure this file is being included by a parent file */
 if (!defined('_JEXEC') && !defined('_VALID_MOS'))
@@ -17,12 +18,12 @@ if (!defined('_JEXEC') && !defined('_VALID_MOS'))
 class ExtraWatchGoal
 {
 
-    var $database;
-    var $helper;
-    var $stat;
-    var $block;
+    public $database;
+    public $helper;
+    public $stat;
+    public $block;
 
-    function ExtraWatchGoal($database)
+    function __construct($database)
     {
         $this->database = $database;
         $this->helper = new ExtraWatchHelper($this->database);
@@ -189,7 +190,7 @@ class ExtraWatchGoal
         if (@$rows)
             foreach ($rows as $row) {
 
-                $achieved = false;
+                $achieved = FALSE;
                 if ($row->disabled)
                     continue;
 
@@ -198,12 +199,12 @@ class ExtraWatchGoal
                         if (@ $this->helper->wildcardSearch($row->uri_condition, trim($this->helper->getURI()))) {
                             continue;
                         } else
-                            $achieved = true;
+                            $achieved = TRUE;
                     }
                 } else {
                     if (trim($row->uri_condition)) {
                         if (@ $this->helper->wildcardSearch($row->uri_condition, trim($this->helper->getURI()))) {
-                            $achieved = true;
+                            $achieved = TRUE;
                         } else
                             continue;
                     }
@@ -215,25 +216,25 @@ class ExtraWatchGoal
                             continue;
                         } else
                             if ($row->get_var == "*") {
-                                $found = false;
+                                $found = FALSE;
                                 foreach (ExtraWatchHelper::requestGet() as $get) {
                                     if ($this->helper->wildcardSearch($row->get_condition, trim($get))) {
-                                        $found = true;
+                                        $found = TRUE;
                                     }
                                 }
                                 if ($found) continue;
                             } else
-                                $achieved = true;
+                                $achieved = TRUE;
                     }
                 } else {
                     if (trim($row->get_condition)) {
                         if (@ $this->helper->wildcardSearch($row->get_condition, trim(ExtraWatchHelper::requestGet($row->get_var)))) {
-                            $achieved = true;
+                            $achieved = TRUE;
                         } else
                             if ($row->get_var == "*") {
                                 foreach (ExtraWatchHelper::requestGet() as $get) {
                                     if ($this->helper->wildcardSearch($row->get_condition, trim($get))) {
-                                        $achieved = true;
+                                        $achieved = TRUE;
                                     }
                                 }
                             } else
@@ -247,25 +248,25 @@ class ExtraWatchGoal
                             continue;
                         } else
                             if ($row->post_var == "*") {
-                                $found = false;
+                                $found = FALSE;
                                 foreach (ExtraWatchHelper::requestPost() as $post) {
                                     if ($this->helper->wildcardSearch($row->post_condition, trim($post))) {
-                                        $found = true;
+                                        $found = TRUE;
                                     }
                                 }
                                 if ($found) continue;
                             } else
-                                $achieved = true;
+                                $achieved = TRUE;
                     }
                 } else {
                     if (trim($row->post_condition)) {
                         if (@ $this->helper->wildcardSearch($row->post_condition, trim(ExtraWatchHelper::requestPost($row->post_var)))) {
-                            $achieved = true;
+                            $achieved = TRUE;
                         } else
                             if ($row->post_var == "*") {
                                 foreach (ExtraWatchHelper::requestPost() as $post) {
                                     if ($this->helper->wildcardSearch($row->post_condition, trim($post))) {
-                                        $achieved = true;
+                                        $achieved = TRUE;
                                     }
                                 }
                             } else
@@ -278,12 +279,12 @@ class ExtraWatchGoal
                         if (@ $this->helper->wildcardSearch($row->title_condition, trim($title))) {
                             continue;
                         } else
-                            $achieved = true;
+                            $achieved = TRUE;
                     }
                 } else {
                     if (trim($row->title_condition)) {
                         if (@ $this->helper->wildcardSearch($row->title_condition, trim($title))) {
-                            $achieved = true;
+                            $achieved = TRUE;
                         } else
                             continue;
                     }
@@ -294,12 +295,12 @@ class ExtraWatchGoal
                         if (@ $this->helper->wildcardSearch($row->username_condition, trim($username))) {
                             continue;
                         } else
-                            $achieved = true;
+                            $achieved = TRUE;
                     }
                 } else {
                     if (trim($row->username_condition)) {
                         if (@ $this->helper->wildcardSearch($row->username_condition, trim($username))) {
-                            $achieved = true;
+                            $achieved = TRUE;
                         } else
                             continue;
                     }
@@ -310,12 +311,12 @@ class ExtraWatchGoal
                         if (@ $this->helper->wildcardSearch($row->ip_condition, trim($ip))) {
                             continue;
                         } else
-                            $achieved = true;
+                            $achieved = TRUE;
                     }
                 } else {
                     if (trim($row->ip_condition)) {
                         if (@ $this->helper->wildcardSearch($row->ip_condition, trim($ip))) {
-                            $achieved = true;
+                            $achieved = TRUE;
                         } else
                             continue;
                     }
@@ -326,12 +327,12 @@ class ExtraWatchGoal
                         if (@ $this->helper->wildcardSearch($row->came_from_condition, trim($came_from)) || $this->helper->wildcardSearch($liveSite . $row->came_from_condition, trim($came_from))) {
                             continue;
                         } else
-                            $achieved = true;
+                            $achieved = TRUE;
                     }
                 } else {
                     if (trim($row->came_from_condition)) {
                         if (@ $this->helper->wildcardSearch($row->came_from_condition, trim($came_from)) || $this->helper->wildcardSearch($liveSite . $row->came_from_condition, trim($came_from))) {
-                            $achieved = true;
+                            $achieved = TRUE;
                         } else
                             continue;
                     }
@@ -342,12 +343,12 @@ class ExtraWatchGoal
                         if (@ $this->helper->wildcardSearch($row->country_condition, trim($country))) {
                             continue;
                         } else
-                            $achieved = true;
+                            $achieved = TRUE;
                     }
                 } else {
                     if (trim($row->country_condition)) {
                         if (@ $this->helper->wildcardSearch($row->country_condition, trim($country))) {
-                            $achieved = true;
+                            $achieved = TRUE;
                         } else
                             continue;
                     }
@@ -375,4 +376,4 @@ class ExtraWatchGoal
 
 }
 
-?>
+

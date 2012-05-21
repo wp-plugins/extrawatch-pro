@@ -1,6 +1,7 @@
 <?php
 
 /**
+ * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version @VERSION@
@@ -8,7 +9,7 @@
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) @YEAR@ by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
- **/
+ */
 defined('_JEXEC') or die('Restricted access');
 
 #ExtraWatch language file - to create a new language file, just copy the english.php to eg. german.php and place into /components/com_extrawatch/lang/
@@ -214,7 +215,7 @@ DEFINE('_EW_DESC_GOALS_BLOCK', "Beri nilai 1, jika anda ingin pengunjung dibloki
 
 /* new translations */
 DEFINE('_EW_GOALS_COUNTRY_CONDITION', "Kondisi negara");
-DEFINE('_EW_GOALS_CONTRY_INVERSED', "Kondisi inversi negara");
+DEFINE('_EW_GOALS_COUNTRY_INVERSED', "Kondisi inversi negara");
 DEFINE('_EW_DESC_GOALS_COUNTRY_CONDITION', "2-huruf kode negara dengan huruf kapital (Contoh: <b>TH</b>)");
 DEFINE('_EW_STATS_INTERNAL', "Internal");
 DEFINE('_EW_STATS_FROM', "Dari");
@@ -462,7 +463,7 @@ DEFINE('_EW_BLOCKING_MESSAGE', "Blokir Pesan");
 DEFINE('_EW_SERVER_URI_KEY', "Kunci URI Serveer");
 DEFINE('_EW_FRONTEND_VISITORS_TOTAL_INITIAL', "Inisial Total Pengunjung Halaman Depan");
 DEFINE('_EW_SIZEDATABASE_RECORDS', "Record");
-/***********EDITs******************/
+/***********EDITs*****************/
 DEFINE('_EW_ANTISPAM_BLOCKING_TEXT', " Agar pemblokiran efektif, anda harus menerbitkan agen ExtraWatch SEBELUM konten atau form apapun. Contoh: pada sebelah kiri template anda.
                     <br/>
                     Pergi ke Module Manager -> ExtraWatch agent -> select position as left");
@@ -499,4 +500,4 @@ DEFINE('_EW_RENDERED_IN', "Rendered in");
 DEFINE('_EW_DESC_SEO_RENDER_ONLY_CHANGED', "Render only values which were already used in previous days (have some percentage in change column)");
 DEFINE('_EW_SEO_REPORT_SETTINGS', "SEO Report Settings");
 
-?>
+

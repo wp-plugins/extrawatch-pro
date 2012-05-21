@@ -48,13 +48,14 @@
 </a> |
 <a href='<?php echo $this->extraWatch->config->renderLink('credits');?>'><img
     src='<?php echo($this->extraWatch->config->getLiveSiteWithSuffix());?>components/com_extrawatch/icons/credits.png'/>&nbsp;<?php echo _EW_MENU_CREDITS;?>
-</a> |
+</a>
 <?php
 if ($this->extraWatch->config->getEnvironment() == "ExtraWatchJoomlaEnv") {
     ?>
+|
 <a href='<?php echo $this->extraWatch->config->renderLink('update');?>'><img
     src='<?php echo($this->extraWatch->config->getLiveSiteWithSuffix());?>components/com_extrawatch/icons/update.png'/>&nbsp;<?php echo _EW_MENU_UPDATE;?>
 </a>
 <?php
 }
-?>
+

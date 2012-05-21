@@ -19,4 +19,4 @@ require_once (JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "en
 require_once (JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "env" . DS . "drupal" . DS . "class.extrawatch.db.drupal.php");
 require_once (JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "env" . DS . "drupal" . DS . "class.extrawatch.env.drupal.php");
 
-?>
+

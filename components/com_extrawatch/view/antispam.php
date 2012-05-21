@@ -1,14 +1,15 @@
 <?php
 
 /**
+ * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 41
+ * @revision 150
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
- **/
+ */
 
 defined('_JEXEC') or die('Restricted access');
 ?>
@@ -31,7 +32,7 @@ defined('_JEXEC') or die('Restricted access');
 
                     <div style="height: 300px; overflow: auto;">
                         <table>
-                            <?php echo($extraWatchBlockHTML->renderBlockedIPs(0, true, false)); ?>
+                            <?php echo($extraWatchBlockHTML->renderBlockedIPs(0, TRUE, FALSE)); ?>
                         </table>
                     </div>
                     <br/>
@@ -41,9 +42,9 @@ defined('_JEXEC') or die('Restricted access');
                         <tr>
                             <td colspan='2'><h3><?php echo(_EW_ANTISPAM_SETTINGS);?></h3></td>
                         </tr>
-                        <?php echo ExtraWatchHTML :: renderInputElement('SPAMWORD_BANS_ENABLED', $color); ?>
+                        <?php echo $this->renderInputElement('SPAMWORD_BANS_ENABLED', $color); ?>
 
-                        <?php echo ExtraWatchHTML :: renderInputElement('SPAMWORD_LIST', $color); ?>
+                        <?php echo $this->renderInputElement('SPAMWORD_LIST', $color); ?>
 
                         <tr>
                             <td></td>

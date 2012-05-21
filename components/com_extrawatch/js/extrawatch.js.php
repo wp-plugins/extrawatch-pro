@@ -1,14 +1,15 @@
 <?php
 
 /**
+ * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 41
+ * @revision 150
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
- **/
+ */
 
 if (!defined('_JEXEC')) define('_JEXEC', 1);
 define('DS', DIRECTORY_SEPARATOR);
@@ -37,7 +38,7 @@ switch ($env) {
 
     case "ExtraWatchWordpressEnv":
         {
-        require_once(dirname(__FILE__) . '/../../../../../../wp-load.php');
+        require_once dirname(__FILE__) . '/../../../../../../wp-load.php';
         break;
         }
     case "ExtraWatchNoCMSEnv":
@@ -97,6 +98,7 @@ require_once (JPATH_BASE . DS . "components" . DS . "com_extrawatch" . DS . "lan
 
 $extraWatchHTML = new ExtraWatchHTML();
 $extraWatch->block->checkPermissions();
+
 ?>
 
 var rand='<?php echo $extraWatch->config->getRand(); ?>';
@@ -116,23 +118,23 @@ var statsType = "0";
 
 var traffic = 0;
 
-function setDay(_day) {
+function extraWatchSetDay(_day) {
 day = _day;
 document.getElementById(_day).innerHTML = "<?php echo(_EW_STATS_LOADING_WAIT); ?>";
-sendStatsReq();
+extraWatchSendStatsReq();
 }
-function setStatsType(_statsType) {
+function extraWatchSetStatsType(_statsType) {
 statsType = _statsType;
 document.getElementById(_statsType).innerHTML = "<?php echo(_EW_STATS_LOADING); ?>";
-sendStatsReq();
+extraWatchSendStatsReq();
 }
-function setWeek(_week) {
+function extraWatchSetWeek(_week) {
 week = _week;
 document.getElementById("visits_" + _week).innerHTML = "<?php echo(_EW_STATS_LOADING_WAIT); ?>";
-sendStatsReq();
+extraWatchSendStatsReq();
 }
 
-function createRequestObject() {
+function extraWatchCreateRequestObject() {
 var ro;
 if(window.ActiveXObject){
 ro = new ActiveXObject("Microsoft.XMLHTTP");
@@ -142,10 +144,10 @@ ro = new XMLHttpRequest();
 return ro;
 }
 
-function sendLastIdReq() {
+function extraWatchSendLastIdReq() {
 try {
-http4 = createRequestObject();
-http4.onreadystatechange = needLastIdRefresh;
+http4 = extraWatchCreateRequestObject();
+http4.onreadystatechange = extraWatchNeedLastIdRefresh;
 var newdate = new Date();
 var url = "<?php echo($extraWatch->config->getLiveSiteWithSuffix()); ?>components/com_extrawatch/last.php?rand=" + rand + "&timeID="+newdate.getTime() + "&traffic="+traffic + "&env=<?php echo(get_class($extraWatch->env)); ?>";
 http4.open("GET", url, true);
@@ -162,9 +164,9 @@ alert(err2);
 }
 }
 
-function sendVisitsReq() {
+function extraWatchSendVisitsReq() {
 try {
-http = createRequestObject();
+http = extraWatchCreateRequestObject();
 http.onreadystatechange = needVisitsRefresh;
 var newdate = new Date();
 var url = "<?php echo($extraWatch->config->getLiveSiteWithSuffix()); ?>components/com_extrawatch/visits.php?rand=" + rand + "&timeID="+newdate.getTime() + "&traffic="+ traffic + "&env=<?php echo(get_class($extraWatch->env)); ?>";
@@ -183,22 +185,22 @@ alert(err2);
 
 }
 
-function sendStatsReq() {
+function extraWatchSendStatsReq() {
 try {
-http2 = createRequestObject();
+http2 = extraWatchCreateRequestObject();
 http2.onreadystatechange = needStatsRefresh;
 var newdate = new Date();
-var url = "<?php echo($extraWatch->config->getLiveSiteWithSuffix()); ?>components/com_extrawatch/stats.php?rand=" + rand + "&timeID="+newdate.getTime() + "&env=<?php echo(get_class($extraWatch->env)); ?>";;
+var url = "<?php echo($extraWatch->config->getLiveSiteWithSuffix()); ?>components/com_extrawatch/stats.php?rand=" + rand + "&timeID="+newdate.getTime() + "&env=<?php echo(get_class($extraWatch->env)); ?>";
 if (day != 0) url += "&day="+day;
 if (week != 0) url += "&week="+week;
 
 <?php
 
 foreach ($keysArray as $key) {
-    echo("if (expand['" . $key . "']) url += '&" . $key . "=true';");
+    echo("if (extraWatchExpand['" . $key . "']) url += '&" . $key . "=true';");
 }
 foreach ($keysArray as $key) {
-    echo("if (expand['" . $key . "_total']) url += '&" . $key . "_total=true';");
+    echo("if (extraWatchExpand['" . $key . "_total']) url += '&" . $key . "_total=true';");
 }
 ?>
 
@@ -212,17 +214,17 @@ alert(err);
 }
 
 
-function blockIpToggle(_ip) {
+function extraWatchBlockIpToggle(_ip) {
 try {
 if (confirm("<?php echo(_EW_STATS_IP_BLOCKING_TOGGLE); ?> " + _ip + " ?")) {
-http3 = createRequestObject();
+http3 = extraWatchCreateRequestObject();
 http3.onreadystatechange = needStatsRefresh;
 var newdate = new Date();
 var url3 = "<?php echo($extraWatch->config->getLiveSiteWithSuffix()); ?>components/com_extrawatch/block.php?ip="+ _ip +"&rand=" + rand + "&timeID="+newdate.getTime()+ "&env=<?php echo($extraWatch->config->getEnvironment()); ?>";
 http3.open("GET", url3, true);
 http3.send(null);
-sendStatsReq();
-sendVisitsReq();
+extraWatchSendStatsReq();
+extraWatchSendVisitsReq();
 }
 }
 catch (err) {
@@ -230,33 +232,33 @@ alert(err);
 }
 }
 
-function blockIpManually() {
+function extraWatchBlockIpManually() {
 try {
 var ipManual = prompt("<?php echo(_EW_STATS_IP_BLOCKING_MANUALLY); ?>","");
-if (ipManual) blockIpToggle(ipManual);
+if (ipManual) extraWatchBlockIpToggle(ipManual);
 }
 catch (err) {
 alert(err);
 }
 }
 
-function expand(_element) {
-if (!expand[_element]) expand[_element] = true;
-else expand[_element] = false;
+function extraWatchExpand(_element) {
+if (!extraWatchExpand[_element]) extraWatchExpand[_element] = true;
+else extraWatchExpand[_element] = false;
 document.getElementById(_element).innerHTML = "<?php echo(_EW_STATS_LOADING_WAIT); ?>";
-sendStatsReq();
+extraWatchSendStatsReq();
 }
 
-function needLastIdRefresh() {
+function extraWatchNeedLastIdRefresh() {
 if (http4.readyState == 4) {
 if(http4.status == 200) {
 if (http4.responseText != lastId) {
-sendVisitsReq();
-sendStatsReq();
+extraWatchSendVisitsReq();
+extraWatchSendStatsReq();
 lastId = http4.responseText;
 }
 
-lastTimeoutId = window.setTimeout("sendLastIdReq()",<?php echo($extraWatch->config->getConfigValue('EXTRAWATCH_UPDATE_TIME_STATS')); ?>);
+lastTimeoutId = window.setTimeout("extraWatchSendLastIdReq()",<?php echo($extraWatch->config->getConfigValue('EXTRAWATCH_UPDATE_TIME_STATS')); ?>);
 }
 }
 }
@@ -290,7 +292,7 @@ last = parsedNumber;
 fade("id" + last);
 }
 }
-/*       visitsTimeoutId = window.setTimeout("sendVisitsReq()",<?php echo($extraWatch->config->getConfigValue('EXTRAWATCH_UPDATE_TIME_VISITS')); ?>); */
+/*       visitsTimeoutId = window.setTimeout("extraWatchSendVisitsReq()",<?php echo($extraWatch->config->getConfigValue('EXTRAWATCH_UPDATE_TIME_VISITS')); ?>); */
 traffic += http.responseText.length;
 
 
@@ -319,7 +321,7 @@ traffic += http2.responseText.length;
 <?php if ($extraWatch->config->getConfigValue("EXTRAWATCH_MAP_OPENMAP")) {
         if ($extraWatch->visit->getLastIp()) {
             ?>
-        OpenMapUpdate();
+        extraWatchOpenMapUpdate();
         <?php
         }
     } ?>
@@ -327,7 +329,7 @@ traffic += http2.responseText.length;
 
 } else {
 }
-/*    if(statsType != "2")  statsTimeoutId = window.setTimeout("sendStatsReq()",<?php echo($extraWatch->config->getConfigValue('EXTRAWATCH_UPDATE_TIME_STATS')); ?>); */
+/*    if(statsType != "2")  statsTimeoutId = window.setTimeout("extraWatchSendStatsReq()",<?php echo($extraWatch->config->getConfigValue('EXTRAWATCH_UPDATE_TIME_STATS')); ?>); */
 }
 } catch (err) {
 alert(err);
@@ -428,10 +430,10 @@ ajax_tooltipObj_iframe = document.createElement('<IFRAME frameborder="0">');
     function refreshStats() {
     if (refreshStopped) {
     visitsTimeoutId =
-    window.setTimeout("sendVisitsReq()",<?php echo($extraWatch->config->getConfigValue('EXTRAWATCH_UPDATE_TIME_VISITS'));?>
+    window.setTimeout("extraWatchSendVisitsReq()",<?php echo($extraWatch->config->getConfigValue('EXTRAWATCH_UPDATE_TIME_VISITS'));?>
     );
     statsTimeoutId =
-    window.setTimeout("sendStatsReq()",<?php echo($extraWatch->config->getConfigValue('EXTRAWATCH_UPDATE_TIME_STATS'));?>
+    window.setTimeout("extraWatchSendStatsReq()",<?php echo($extraWatch->config->getConfigValue('EXTRAWATCH_UPDATE_TIME_STATS'));?>
     );
     refreshStopped = false;
     }

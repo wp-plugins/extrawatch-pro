@@ -1,14 +1,15 @@
 <?php
 
 /**
+ * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 41
+ * @revision 150
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
- **/
+ */
 defined('_JEXEC') or die('Restricted access');
 ?>
 
@@ -24,7 +25,7 @@ defined('_JEXEC') or die('Restricted access');
         <td colspan='5'>
             <table border='0'>
                 <tr>
-                    <td align='left' width='10%'><a href='javascript:setWeek(<?php echo($prevWeek);?>)'
+                    <td align='left' width='10%'><a href='javascript:extraWatchSetWeek(<?php echo($prevWeek);?>)'
                                                     id='visits_<?php echo($prevWeek);?>'>&lt;
                         <?php echo _EW_STATS_WEEK;?>
                         &nbsp;<?php echo $extraWatch->date->getWeekFromTimestamp($prevWeek * 3600 * 24 * 7);?>
@@ -35,14 +36,14 @@ defined('_JEXEC') or die('Restricted access');
                     <td align='center' width='20%'>
                         <?php if (@$week != $thisWeek) {
                         ?>
-                        <a href='javascript:setWeek(<?php echo($thisWeek);?>)'
+                        <a href='javascript:extraWatchSetWeek(<?php echo($thisWeek);?>)'
                            id='visits_$thisWeek'><?php echo _EW_STATS_THIS_WEEK;?></a>
                         <?php
                     }
                         ?>
                     </td>
                     <td align='right'
-                        width='10%'><?php if ($nextWeek <= $thisWeek) echo("<img src='" . $extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/icons/calendar.gif' border='0' align='center' /></td><td width='20%' align='right'><a href='javascript:setWeek($nextWeek)' id='visits_$nextWeek'>" . _EW_STATS_WEEK . "&nbsp;" . $extraWatch->date->getWeekFromTimestamp($nextWeek * 3600 * 24 * 7) . "&gt;</a>"); ?></td>
+                        width='10%'><?php if ($nextWeek <= $thisWeek) echo("<img src='" . $extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/icons/calendar.gif' border='0' align='center' /></td><td width='20%' align='right'><a href='javascript:extraWatchSetWeek($nextWeek)' id='visits_$nextWeek'>" . _EW_STATS_WEEK . "&nbsp;" . $extraWatch->date->getWeekFromTimestamp($nextWeek * 3600 * 24 * 7) . "&gt;</a>"); ?></td>
                 </tr>
             </table>
             <?php echo $extraWatchStatHTML->renderVisitsGraph($week); ?>

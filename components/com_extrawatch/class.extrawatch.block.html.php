@@ -1,14 +1,15 @@
 <?php
 
 /**
+ * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 41
+ * @revision 150
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
- **/
+ */
 
 /** ensure this file is being included by a parent file */
 if (!defined('_JEXEC') && !defined('_VALID_MOS'))
@@ -17,21 +18,21 @@ if (!defined('_JEXEC') && !defined('_VALID_MOS'))
 class ExtraWatchBlockHTML
 {
 
-    var $extraWatch;
-    var $extraWatchStatHTML;
+    public $extraWatch;
+    public $extraWatchStatHTML;
 
-    function ExtraWatchBlockHTML($extraWatch)
+    function __construct($extraWatch)
     {
         $this->extraWatch = $extraWatch;
         $this->extraWatchStatHTML = new ExtraWatchStatHTML($extraWatch);
     }
 
-    function renderBlockedInfo($renderUpdatesTraffic = false)
+    function renderBlockedInfo($renderUpdatesTraffic = FALSE)
     {
 
         $countToday = $this->extraWatch->block->getBlockedCountByDate($this->extraWatch->date->jwDateToday());
         $output = "";
-        if (true) {
+        if (TRUE) {
             $output = sprintf("<br/><div style='border: 1px solid #ffff00; background-color: #ffffdd; width: 70%%;'>" . _EW_ANTISPAM_BLOCKED, ((int)$countToday), ((int)$this->extraWatch->block->getBlockedCountTotal()));
             if ($renderUpdatesTraffic) {
                 $output .= ". ";
@@ -44,17 +45,17 @@ class ExtraWatchBlockHTML
     }
 
     /* visit */
-    function renderBlockedIPs($date = 0, $expanded = false, $displayedInStats = true)
+    function renderBlockedIPs($date = 0, $expanded = FALSE, $displayedInStats = TRUE)
     {
 
         $output = "";
         if (!$expanded) {
-            $output .= "<a href='javascript:blockIpManually();'>" . (_EW_STATS_IP_BLOCKING_ENTER) . "</a><br/>";
+            $output .= "<a href='javascript:extraWatchBlockIpManually();'>" . (_EW_STATS_IP_BLOCKING_ENTER) . "</a><br/>";
         }
 
-        $total = false;
+        $total = FALSE;
         if (!@$date) {
-            $total = true;
+            $total = TRUE;
         }
 
         $count = $this->extraWatch->block->countBlockedIPs($date);
@@ -89,7 +90,7 @@ class ExtraWatchBlockHTML
             foreach ($rows as $row) {
                 $icon = "";
                 if (!strstr($row->ip, "*")) {
-                    if (!$row->country) {
+                    if (@!$row->country) {
                         $country = $this->extraWatch->helper->countryByIp($row->ip);
                         $this->extraWatch->block->updateCountryForBlockedIp($row->ip, $country);
                     } else {
@@ -102,7 +103,7 @@ class ExtraWatchBlockHTML
                     $icon = "<img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/flags/" . @ strtolower($country) . ".png' title='$countryName' alt='$countryName'/>";
                 }
 
-                $mapsIcon = "<img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/icons/map_icon.gif' border='0'  " . $this->extraWatch->helper->getTooltipOnEvent() . "=\"ajax_showTooltip('" . $this->extraWatch->config->getLiveSite() . $this->extraWatch->env->getEnvironmentSuffix() . "components/com_extrawatch/tooltip.php?rand=" . $this->extraWatch->config->getRand() . "&ip=" . @ $row->ip . "&env=" . $this->extraWatch->config->getEnvironment() . "',this);return false\"/>";
+                $mapsIcon = "<img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/icons/map_icon.gif' border='0'  " . $this->extraWatch->helper->getTooltipOnEvent() . "=\"ajax_showTooltip('" . $this->extraWatch->config->getLiveSite() . $this->extraWatch->env->getEnvironmentSuffix() . "components/com_extrawatch/tooltip.php?rand=" . $this->extraWatch->config->getRand() . "&ip=" . @ $row->ip . "&env=" . $this->extraWatch->config->getEnvironment() . "',this);return FALSE\"/>";
 
                 if (!$displayedInStats && $lastDate != $row->date) {
                     $output .= "<tr><td colspan='4'><u>" . ExtraWatchDate::getDateByDay($row->date) . "</u></td></tr>";
@@ -126,7 +127,7 @@ class ExtraWatchBlockHTML
                 $output .= "<td>";
 
                 if (!$expanded) {
-                    $output .= "<a  id='$row->ip' href='javascript:blockIpToggle(\"$row->ip\");' title='$row->reason'>" . _EW_BLOCKING_UNBLOCK . "</a>";
+                    $output .= "<a  id='$row->ip' href='javascript:extraWatchBlockIpToggle(\"$row->ip\");' title='$row->reason'>" . _EW_BLOCKING_UNBLOCK . "</a>";
                 } else {
                     $output .= "<a  id='$row->ip' href='" . $this->extraWatch->config->renderLink("antiSpam", "&action=toggleBlocking&ip=" . $row->ip) . "' title='$row->reason'>" . _EW_BLOCKING_UNBLOCK . "</a>";
                 }

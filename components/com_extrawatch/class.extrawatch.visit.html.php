@@ -1,14 +1,15 @@
 <?php
 
 /**
+ * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 41
+ * @revision 150
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
- **/
+ */
 
 /** ensure this file is being included by a parent file */
 if (!defined('_JEXEC') && !defined('_VALID_MOS'))
@@ -17,11 +18,11 @@ if (!defined('_JEXEC') && !defined('_VALID_MOS'))
 class ExtraWatchVisitHTML
 {
 
-    var $extraWatch;
-    var $heatmap;
-    var $heatmapHTML;
+    public $extraWatch;
+    public $heatmap;
+    public $heatmapHTML;
 
-    function ExtraWatchVisitHTML($extraWatch)
+    function __construct($extraWatch)
     {
         $this->extraWatch = $extraWatch;
         $this->heatmap = new ExtraWatchHeatmap($this->extraWatch->database);
@@ -80,7 +81,7 @@ class ExtraWatchVisitHTML
     }
 
     /* visits */
-    function renderTable($bots = false)
+    function renderTable($bots = FALSE)
     {
 
         $rows = $this->getJoinedURIRows($bots);
@@ -127,7 +128,7 @@ class ExtraWatchVisitHTML
 
                 $color = sprintf("%x", $i) . sprintf("%x", $i) . sprintf("%x", $i);
 
-                if ($bots == true)
+                if ($bots == TRUE)
                     $color = "ffffff";
 
                 $country = $row->country;
@@ -165,9 +166,9 @@ class ExtraWatchVisitHTML
                         $os = sprintf("<img src='%s' alt='%s' title='%s'/>", $osIcon, $userAgent, $userAgent);
                 }
 
-                if ($bots == true && $osIcon)
+                if ($bots == TRUE && $osIcon)
                     continue; // bot icon fix
-                if ($bots == true) {
+                if ($bots == TRUE) {
                     $osIcon = $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/icons/blank.gif";
                     $browserIcon = $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/icons/blank.gif";
                     $browser = sprintf("<img src='%s' alt='%s' title='%s' />", htmlspecialchars($browserIcon), htmlspecialchars($userAgent), htmlspecialchars($userAgent));
@@ -182,18 +183,18 @@ class ExtraWatchVisitHTML
                 if (@ $row->username) {
                     $username = "<br/><a href='" . $this->extraWatch->config->getAdministratorIndex() . "?option=com_users&task=view&search=$row->username' style='color: black; text-decoration:none;'><i>" . @ htmlspecialchars($row->username) . "</i></a>";
                 }
-                $ipString = sprintf("<a id='%s' href='javascript:blockIpToggle(\"%s\");' style='color:black;'>%s</a>", htmlspecialchars($row->ip), htmlspecialchars($row->ip), $ipString);
+                $ipString = sprintf("<a id='%s' href='javascript:extraWatchBlockIpToggle(\"%s\");' style='color:black;'>%s</a>", htmlspecialchars($row->ip), htmlspecialchars($row->ip), $ipString);
 
                 $dateOfVisit = ExtraWatchDate::date("d.m.Y", $row->timestamp);
                 if (isset($this->lastDate) && $this->lastDate != $dateOfVisit) {
                     $output .= "<tr><td colspan='8' style='background-color: #" . $color . ";'><h3>$dateOfVisit</h3></td></tr>";
                     $this->lastDate = $dateOfVisit;
                 }
-                $mapsIcon = "<img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/icons/map_icon.gif' border='0' " . $this->extraWatch->helper->getTooltipOnEvent() . "=\"ajax_showTooltip('" . $this->extraWatch->config->getLiveSite() . $this->extraWatch->env->getEnvironmentSuffix() . "components/com_extrawatch/tooltip.php?rand=" . $this->extraWatch->config->getRand() . "&ip=$row->ip&env=" . $this->extraWatch->config->getEnvironment() . "',this);return false\"/>";
+                $mapsIcon = "<img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/icons/map_icon.gif' border='0' " . $this->extraWatch->helper->getTooltipOnEvent() . "=\"ajax_showTooltip('" . $this->extraWatch->config->getLiveSite() . $this->extraWatch->env->getEnvironmentSuffix() . "components/com_extrawatch/tooltip.php?rand=" . $this->extraWatch->config->getRand() . "&ip=$row->ip&env=" . $this->extraWatch->config->getEnvironment() . "',this);return FALSE\"/>";
 
-                $displayCountryFlag = false;
+                $displayCountryFlag = FALSE;
                 if ($lastIp != $row->ip) {
-                    $displayCountryFlag = true;
+                    $displayCountryFlag = TRUE;
                     $lastIp = $row->ip;
                     $rowNumber = 1;
                 } else {
@@ -235,7 +236,7 @@ class ExtraWatchVisitHTML
                 $day = $this->extraWatch->date->jwDateFromTimestamp($row->timestamp);
                 $row->timestamp = ExtraWatchDate::date("H:i:s", $row->timestamp);
                 $uriTruncated = $this->extraWatch->helper->truncate($row->uri);
-                $row->title = $this->extraWatch->helper->truncate($row->title);
+                $row->title = $this->extraWatch->helper->truncate($row->title, $this->extraWatch->config->getConfigValue('EXTRAWATCH_TRUNCATE_VISITS'));
                 $row->title = $this->extraWatch->helper->removeRepetitiveTitle($row->title);
 
                 $output .= ("<div id='id$row->id' style='text-decoration: none;' onmouseout=\"toggleElementVisibility('goal_" . $row->id . "',0);\"  onmouseover=\"toggleDiv('".$row->id."','".$row->ip."',1);\" style='background-color: #$color'>");
@@ -333,16 +334,9 @@ class ExtraWatchVisitHTML
     /* visits */
     function renderVisitors()
     {
-	/** message if no modules are published */
-        if ($this->extraWatch->config->getEnvironment() == "ExtraWatchWordpressEnv") {
-            if (!is_active_widget( false, false, "extrawatchagentwidget", true )) {
-                $message = "Warning: No visits are being recorded. You must go to Appearance->Widgets section, <br/>find ExtraWatchAgent widget and drag&drop it to some of the containers on the right side. <br/>You can publish also other ExtraWatch modules this way.";
-                return ("<br/><br/><span style='color: red; font-weight: bold;'>".$message."</span>");
-            }
-        }
         //$rows = $this->extraWatch->visit->getVisitors();
         $this->lastDate = "";
-        $output = $this->renderTable(false);
+        $output = $this->renderTable(FALSE);
         return $output;
     }
 
@@ -352,11 +346,11 @@ class ExtraWatchVisitHTML
 
         //$rows = $this->extraWatch->visit->getBots();
         $this->lastDate = "";
-        $output = $this->renderTable(true);
+        $output = $this->renderTable(TRUE);
 
         return $output;
     }
 
 }
 
-?>
+

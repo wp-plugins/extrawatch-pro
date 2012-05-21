@@ -1,14 +1,15 @@
 <?php
 
 /**
+ * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 41
+ * @revision 150
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
- **/
+ */
 
 /** ensure this file is being included by a parent file */
 if (!defined('_JEXEC') && !defined('_VALID_MOS'))
@@ -17,12 +18,12 @@ if (!defined('_JEXEC') && !defined('_VALID_MOS'))
 class ExtraWatchDBWrapDrupal implements ExtraWatchDBWrap
 {
 
-    var $query;
-    var $dbref;
-    var $result;
-    var $dbprefix;
-    var $errNum;
-    var $errMsg;
+    public $query;
+    public $dbref;
+    public $result;
+    public $dbprefix;
+    public $errNum;
+    public $errMsg;
 
     function ExtraWatchDBWrapDrupal()
     {
@@ -96,13 +97,13 @@ class ExtraWatchDBWrapDrupal implements ExtraWatchDBWrap
     function select($database)
     {
         if (!$database) {
-            return false;
+            return FALSE;
         }
         if (!mysql_select_db($database, $this->dbref)) {
             die ('Could not connect to database');
-            return false;
+            return FALSE;
         }
-        return true;
+        return TRUE;
     }
 
     function setQuery($query)
@@ -163,4 +164,4 @@ class ExtraWatchDBWrapDrupal implements ExtraWatchDBWrap
 
 }
 
-?>
+

@@ -85,4 +85,4 @@ class Publish_Modules extends PHPUnit_Extensions_SeleniumTestCase
     }
 }
 
-?>
+

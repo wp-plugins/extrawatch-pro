@@ -1,6 +1,7 @@
 <?php
 
 /**
+ * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version @VERSION@
@@ -8,12 +9,12 @@
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) @YEAR@ by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
- **/
+ */
 defined('_JEXEC') or die('Restricted access');
 
 #ExtraWatch language file - to create a new language file, just copy the english.php to eg. german.php and place into /components/com_extrawatch/lang/
 
-# Main Menu
+// Main Menu
 DEFINE('_EW_MENU_STATS', "חי סטטיסטיקות");
 DEFINE('_EW_MENU_GOALS', "מטרות");
 DEFINE('_EW_MENU_SETTINGS', "הגדרות");
@@ -25,14 +26,14 @@ DEFINE('_EW_MENU_DONATORS', "תומכי");
 DEFINE('_EW_MENU_SUPPORT', "תמיכה ExtraWatch ולקבל את המודעות שלך להסיר backend.");
 
 
-# Left visitors real-time window
+// Left visitors real-time window
 DEFINE('_EW_VISITS_VISITORS', "מבקרים אחרונים");
 DEFINE('_EW_VISITS_BOTS', "בוטים");
 DEFINE('_EW_VISITS_CAME_FROM', "בא");
 DEFINE('_EW_VISITS_MODULE_NOT_PUBLISHED', "מודול ExtraWatch שלך לא מתפרסם! הנתונים הסטטיסטיים לא חדש מתועדות. כדי לפרסם את זה, ללכת מודולים קטע ולפרסם אותו בכל הדפים.");
 DEFINE('_EW_VISITS_PANE_LOADING', "טוען ביקורים...");
 
-# Right stats window
+// Right stats window
 DEFINE('_EW_STATS_TITLE', "בקר סטטיסטיקת שבוע");
 DEFINE('_EW_STATS_WEEK', "שָׁבוּעַ");
 DEFINE('_EW_STATS_THIS_WEEK', "השבוע");
@@ -65,7 +66,7 @@ DEFINE('_EW_STATS_IP_BLOCKING_MANUALLY', "הזן כתובת ה-IP שברצונך
 DEFINE('_EW_STATS_IP_BLOCKING_TOGGLE', "באמת לעבור חסימת ");
 DEFINE('_EW_STATS_PANE_LOADING', "טוען stats...");
 
-# Settings
+// Settings
 DEFINE('_EW_SETTINGS_TITLE', "הגדרות");
 DEFINE('_EW_SETTINGS_DEFAULT', "בְּרֵרַת מֶחדָל");
 DEFINE('_EW_SETTINGS_SAVE', "לְהַצִיל");
@@ -84,7 +85,7 @@ DEFINE('_EW_SETTINGS_SAVED', "הגדרות ניצלו");
 DEFINE('_EW_SETTINGS_ADD_YOUR_IP', "הוסף ה-IP שלך");
 DEFINE('_EW_SETTINGS_TO_THE_LIST', "לרשימה.");
 
-# Other / mostly general
+// Other / mostly general
 DEFINE('_EW_TITLE', "בזמן אמת AJAX joomla לפקח");
 DEFINE('_EW_BACK', "Back");
 DEFINE('_EW_ACCESS_DENIED', "אתה לא צריך שום הרשאות להציג את זה!");
@@ -100,12 +101,12 @@ DEFINE('_EW_AJAX_PERMISSION_DENIED_2', "אולי אתה שכחת רק www. לפ�
 DEFINE('_EW_AJAX_PERMISSION_DENIED_3', "מִ-");
 DEFINE('_EW_AJAX_PERMISSION_DENIED_4', "מה שעושה אותו חושב שזה תחום שונה.");
 
-# Header
+// Header
 DEFINE('_EW_HEADER_DOWNLOAD', "קבל קוד סיומת של האחרונים");
 DEFINE('_EW_HEADER_CAST_YOUR', "בבקשה להטיל שלך");
 DEFINE('_EW_HEADER_VOTE', "מִניָן");
 
-# Tooltips
+// Tooltips
 DEFINE('_EW_TOOLTIP_CLICK', "לחץ כדי להציג tooltip");
 DEFINE('_EW_TOOLTIP_MOUSE_OVER', "ריחוף העכבר מעל להראות tooltip");
 DEFINE('_EW_TOOLTIP_YESTERDAY_INCREASE', "אֶתמוֹל&apos;s לְהַגדִיל");
@@ -113,7 +114,7 @@ DEFINE('_EW_TOOLTIP_HELP', "פתיחת לעזור חיצוני באינטרנט"
 DEFINE('_EW_TOOLTIP_WINDOW_CLOSE', "סגור חלון זה");
 DEFINE('_EW_TOOLTIP_PRINT', "דְפוּס");
 
-# Goals
+// Goals
 DEFINE('_EW_GOALS_INSERT', "הוספת מטרה חדשה");
 DEFINE('_EW_GOALS_UPDATE', "עדכון מספר המטרה.");
 DEFINE('_EW_GOALS_ACTION', "מַעֲשֶׂה");
@@ -142,7 +143,7 @@ DEFINE('_EW_GOALS_EDIT', "לַעֲרוֹך");
 DEFINE('_EW_GOALS_DELETE', "לִמְחוֹק");
 DEFINE('_EW_GOALS_DELETE_CONFIRM', "אתה משוחרר כל הסטטיסטיקה הנתונים האחרונים עבור מטרה זו. האם אתה באמת רוצה לעשות למחוק מספר המטרה.");
 
-# Frontend
+// Frontend
 DEFINE('_EW_FRONTEND_COUNTRIES', "מדינות");
 DEFINE('_EW_FRONTEND_VISITORS', "המבקרים");
 DEFINE('_EW_FRONTEND_TODAY', "הַיוֹם");
@@ -153,7 +154,7 @@ DEFINE('_EW_FRONTEND_THIS_MONTH', "החודש הזה");
 DEFINE('_EW_FRONTEND_LAST_MONTH', "חודש שעבר");
 DEFINE('_EW_FRONTEND_TOTAL', "גָמוּר");
 
-# Settings description - quite long
+// Settings description - quite long
 DEFINE('_EW_DESC_DEBUG', "ExtraWatch במצב debug. בדרך זו ניתן לגלות גורם שגיאה. על מנת לכבות אותו, בבקשה לשנות אתEXTRAWATCH_DEBUG ערך /components/com_extrawatch/config.php from 1 to 0");
 DEFINE('_EW_DESC_STATS_MAX_ROWS', "מקס שורות להראות כאשר הנתונים הסטטיסטיים נמצא במצב מורחב.");
 DEFINE('_EW_DESC_STATS_IP_HITS', "כל כתובות ה-IP אשר פוגע פחות מאשר בימים הקודמים ערך זה יימחקו מן ההיסטוריה IP.");
@@ -214,7 +215,7 @@ DEFINE('_EW_DESC_GOALS_BLOCK', "הגדר 1, אם אתה רוצה את המבקר
 
 /* new translations */
 DEFINE('_EW_GOALS_COUNTRY_CONDITION', "מדינה מצב");
-DEFINE('_EW_GOALS_CONTRY_INVERSED', "ארץ inversed מצב");
+DEFINE('_EW_GOALS_COUNTRY_INVERSED', "ארץ inversed מצב");
 DEFINE('_EW_DESC_GOALS_COUNTRY_CONDITION', "2 אותיות קוד מדינה במקרה העליון (Eg: <b>TH</b>)");
 DEFINE('_EW_STATS_INTERNAL', "פְּנִימִי");
 DEFINE('_EW_STATS_FROM', "מִ-");
@@ -464,7 +465,7 @@ DEFINE('_EW_BLOCKING_MESSAGE', "חסימת הודעה");
 DEFINE('_EW_SERVER_URI_KEY', "שרת URI מפתח");
 DEFINE('_EW_FRONTEND_VISITORS_TOTAL_INITIAL', "המבקרים חזיתי סך ראשוני");
 DEFINE('_EW_SIZEDATABASE_RECORDS', "רשומות");
-/***********EDITs******************/
+/***********EDITs*****************/
 DEFINE('_EW_ANTISPAM_BLOCKING_TEXT', " כדי להפוך את חוסם יעיל, אתה צריך לפרסם את סוכן ExtraWatch לפני כל תוכן או צורות. Eg. על צד שמאל בתבנית שלך.
                     <br/>
                     Go to Module Manager -> ExtraWatch agent -> select position as left");
@@ -501,4 +502,4 @@ DEFINE('_EW_RENDERED_IN', "Rendered in");
 DEFINE('_EW_DESC_SEO_RENDER_ONLY_CHANGED', "Render only values which were already used in previous days (have some percentage in change column)");
 DEFINE('_EW_SEO_REPORT_SETTINGS', "SEO Report Settings");
 
-?>
+

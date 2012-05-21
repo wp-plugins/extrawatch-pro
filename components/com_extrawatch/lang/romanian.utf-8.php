@@ -1,6 +1,7 @@
-﻿<?php
+<?php
 
 /**
+ * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version @VERSION@
@@ -8,12 +9,12 @@
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) @YEAR@ by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
- **/
+ */
 defined('_JEXEC') or die('Restricted access');
 
 #ExtraWatch language file - to create a new language file, just copy the english.php to eg. german.php and place into /components/com_extrawatch/lang/
 
-# Main Menu
+// Main Menu
 DEFINE('_EW_MENU_STATS', "Statistici în timp real");
 DEFINE('_EW_MENU_GOALS', "Obiective");
 DEFINE('_EW_MENU_SETTINGS', "Setări");
@@ -25,14 +26,14 @@ DEFINE('_EW_MENU_DONATORS', "Suporteri");
 DEFINE('_EW_MENU_SUPPORT', "Deveniţi suporter ExtraWatch şi scăpaţi de reclamele din interfaţa de administrare.");
 
 
-# Left visitors real-time window
+// Left visitors real-time window
 DEFINE('_EW_VISITS_VISITORS', "Ultimii vizitatori");
 DEFINE('_EW_VISITS_BOTS', "Roboţi");
 DEFINE('_EW_VISITS_CAME_FROM', "Venit de la");
 DEFINE('_EW_VISITS_MODULE_NOT_PUBLISHED', "Modulul dvs. ExtraWatch nu este publicat! Noile statistici nu se înregistrează. Pentru a-l publica, mergeţi la secţiunea Module şi activaţi-l pentru toate paginile");
 DEFINE('_EW_VISITS_PANE_LOADING', "Încărcare vizite...");
 
-# Right stats window
+// Right stats window
 DEFINE('_EW_STATS_TITLE', "Statisticile vizitelor pe săptămână");
 DEFINE('_EW_STATS_WEEK', "Săptămână");
 DEFINE('_EW_STATS_THIS_WEEK', "săptămâna aceasta");
@@ -65,7 +66,7 @@ DEFINE('_EW_STATS_IP_BLOCKING_MANUALLY', "Introduceţi adresa IP pe care doriţi
 DEFINE('_EW_STATS_IP_BLOCKING_TOGGLE', "Blocarea schimbării IP-ului pentru ");
 DEFINE('_EW_STATS_PANE_LOADING', "Încărcare statistici...");
 
-# Settings
+// Settings
 DEFINE('_EW_SETTINGS_TITLE', "Setări");
 DEFINE('_EW_SETTINGS_DEFAULT', "Standard");
 DEFINE('_EW_SETTINGS_SAVE', "Salvare");
@@ -84,7 +85,7 @@ DEFINE('_EW_SETTINGS_SAVED', "Setările au fost salvate");
 DEFINE('_EW_SETTINGS_ADD_YOUR_IP', "Adăugaţi IP-ul dvs.");
 DEFINE('_EW_SETTINGS_TO_THE_LIST', "în listă.");
 
-# Other / mostly general
+// Other / mostly general
 DEFINE('_EW_TITLE', "Monitorizare AJAX în timp real pentru joomla");
 DEFINE('_EW_BACK', "Înapoi");
 DEFINE('_EW_ACCESS_DENIED', "Nu aveţi permisiunea să vizualizaţi aceste informaţii!");
@@ -100,12 +101,12 @@ DEFINE('_EW_AJAX_PERMISSION_DENIED_2', "Poate aţi uitat să scrieţi www. în f
 DEFINE('_EW_AJAX_PERMISSION_DENIED_3', "de la");
 DEFINE('_EW_AJAX_PERMISSION_DENIED_4', "care este tratat ca un domeniu diferit.");
 
-# Header
+// Header
 DEFINE('_EW_HEADER_DOWNLOAD', "Descărcaţi cea mai recentă versiune a extensiei de la");
 DEFINE('_EW_HEADER_CAST_YOUR', "Vă rugăm să vă înregistraţi");
 DEFINE('_EW_HEADER_VOTE', "votul");
 
-# Tooltips
+// Tooltips
 DEFINE('_EW_TOOLTIP_CLICK', "Click pentru a afişa informaţii ajutătoare");
 DEFINE('_EW_TOOLTIP_MOUSE_OVER', "Plasaţi mouse-ul deasupra pentru a afişa informaţii ajutătoare");
 DEFINE('_EW_TOOLTIP_YESTERDAY_INCREASE', "creşterea de ieri");
@@ -113,7 +114,7 @@ DEFINE('_EW_TOOLTIP_HELP', "Deschide ajutor online pentru");
 DEFINE('_EW_TOOLTIP_WINDOW_CLOSE', "Închideţi această fereastră");
 DEFINE('_EW_TOOLTIP_PRINT', "Printează");
 
-# Goals
+// Goals
 DEFINE('_EW_GOALS_INSERT', "Introduceţi un nou obiectiv");
 DEFINE('_EW_GOALS_UPDATE', "Actualizaţi numărul unui obiectiv");
 DEFINE('_EW_GOALS_ACTION', "Acţiune");
@@ -142,7 +143,7 @@ DEFINE('_EW_GOALS_EDIT', "Editare");
 DEFINE('_EW_GOALS_DELETE', "Ştergere");
 DEFINE('_EW_GOALS_DELETE_CONFIRM', "Veţi pierde toate statisticile recente pentru acest obiectiv. Sunteţi sigur că doriţi ştergerea?");
 
-# Frontend
+// Frontend
 DEFINE('_EW_FRONTEND_COUNTRIES', "Ţări");
 DEFINE('_EW_FRONTEND_VISITORS', "Vizitatori");
 DEFINE('_EW_FRONTEND_TODAY', "Astăzi");
@@ -153,7 +154,7 @@ DEFINE('_EW_FRONTEND_THIS_MONTH', "Luna aceasta");
 DEFINE('_EW_FRONTEND_LAST_MONTH', "Luna trecută");
 DEFINE('_EW_FRONTEND_TOTAL', "Total");
 
-# Settings description - quite long
+// Settings description - quite long
 DEFINE('_EW_DESC_DEBUG', "ExtraWatch este în modul de depanare. În acest fel puteţi descoperi cauzele erorilor. Pentru a-l opri, vă rugăm să schimbaţi valoarea EXTRAWATCH_DEBUG din /components/com_extrawatch/config.php de la 1 la 0");
 DEFINE('_EW_DESC_STATS_MAX_ROWS', "Numărul maxim de rânduri afişate atunci când statisticile sunt în modul extins.");
 DEFINE('_EW_DESC_STATS_IP_HITS', "Toate adresele IP care înregistrează în zilele anterioare mai puţine afişări decât această valoare vor fi şterse din istoricul IP.");
@@ -214,7 +215,7 @@ DEFINE('_EW_DESC_GOALS_BLOCK', "Setaţi-l la 1, dacă doriţi ca vizitatorul să
 
 /* new translations */
 DEFINE('_EW_GOALS_COUNTRY_CONDITION', "Condiţie ţară");
-DEFINE('_EW_GOALS_CONTRY_INVERSED', "Condiţie inversată ţară");
+DEFINE('_EW_GOALS_COUNTRY_INVERSED', "Condiţie inversată ţară");
 DEFINE('_EW_DESC_GOALS_COUNTRY_CONDITION', "Codul de două litere al ţării scris cu majuscule (exemplu: <b>TH</b>)");
 DEFINE('_EW_STATS_INTERNAL', "Intern");
 DEFINE('_EW_STATS_FROM', "De la");
@@ -463,7 +464,7 @@ DEFINE('_EW_BLOCKING_MESSAGE', "Blocare mesaj");
 DEFINE('_EW_SERVER_URI_KEY', "Cheie server URI");
 DEFINE('_EW_FRONTEND_VISITORS_TOTAL_INITIAL', "Total iniţial vizitatori în interfaţa de vizualizare");
 DEFINE('_EW_SIZEDATABASE_RECORDS', "Înregistrări");
-/***********EDITs******************/
+/***********EDITs*****************/
 DEFINE('_EW_ANTISPAM_BLOCKING_TEXT', " Pentru ca blocarea să aibă efect, trebuie să publicaţi agentul ExtraWatch ÎNAINTE de orice conţinut sau formulare. De exemplu în partea stângă a template-ului dvs.
                     <br/>
                     Mergeţi la Module Manager -> ExtraWatch agent -> selectaţi poziţia la stânga");
@@ -499,4 +500,4 @@ DEFINE('_EW_RENDERED_IN', "Rendered in");
 DEFINE('_EW_DESC_SEO_RENDER_ONLY_CHANGED', "Render only values which were already used in previous days (have some percentage in change column)");
 DEFINE('_EW_SEO_REPORT_SETTINGS', "SEO Report Settings");
 
-?>
+

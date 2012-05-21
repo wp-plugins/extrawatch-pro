@@ -1,6 +1,7 @@
-﻿<?php
+<?php
 
 /**
+ * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version @VERSION@
@@ -8,12 +9,12 @@
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) @YEAR@ by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
- **/
+ */
 defined('_JEXEC') or die('Restricted access');
 
 #ExtraWatch language file - to create a new language file, just copy the english.php to eg. german.php and place into /components/com_extrawatch/lang/
 
-# Main Menu
+// Main Menu
 DEFINE('_EW_MENU_STATS', "لائیو اعدادوشمار");
 DEFINE('_EW_MENU_GOALS', "اہداف");
 DEFINE('_EW_MENU_SETTINGS', "ترتیبات");
@@ -25,14 +26,14 @@ DEFINE('_EW_MENU_DONATORS', "حامی");
 DEFINE('_EW_MENU_SUPPORT', "جملہ واچ کی مدد کریں اور بیک اینڈ سے اپنے اشتہارات ختم کروائیں");
 
 
-# Left visitors real-time window
+// Left visitors real-time window
 DEFINE('_EW_VISITS_VISITORS', "تازہ ترین وزیٹرز");
 DEFINE('_EW_VISITS_BOTS', "بوٹس");
 DEFINE('_EW_VISITS_CAME_FROM', "جہاں سے آئے");
 DEFINE('_EW_VISITS_MODULE_NOT_PUBLISHED', "آپکا جملہ واچ موڈیول شائع نہیں ہوا۔نئے اعدادوشمار ریکارڈ نہیں کیے جا رہے۔ اس کو شائع کرنے کرنے کے لئے، موڈیولز سیکشن میں جائیں اور اس کو تمام صفحات پر شائع کریں");
 DEFINE('_EW_VISITS_PANE_LOADING', "وزٹس لوڈ ہو رہے ہیں۔۔۔");
 
-# Right stats window
+// Right stats window
 DEFINE('_EW_STATS_TITLE', "ہفتہ بھر کےوزٹ کے اعدادوشمار");
 DEFINE('_EW_STATS_WEEK', "ہفتہ");
 DEFINE('_EW_STATS_THIS_WEEK', "اس ہفتہ");
@@ -65,7 +66,7 @@ DEFINE('_EW_STATS_IP_BLOCKING_MANUALLY', "ً آئی پی ایڈریس کا ان�
 DEFINE('_EW_STATS_IP_BLOCKING_TOGGLE', "کیا واقعی بلاکنگ کو ٹوگل کرنا ہے ");
 DEFINE('_EW_STATS_PANE_LOADING', "اعدادوشمار لوڈ ہو رہے ہیں۔۔۔");
 
-# Settings
+// Settings
 DEFINE('_EW_SETTINGS_TITLE', "ترتیبات");
 DEFINE('_EW_SETTINGS_DEFAULT', "ڈیفالٹ");
 DEFINE('_EW_SETTINGS_SAVE', "محفوظ کریں");
@@ -84,7 +85,7 @@ DEFINE('_EW_SETTINGS_SAVED', "ترتیبات محفوظ ہو گئیں");
 DEFINE('_EW_SETTINGS_ADD_YOUR_IP', "شامل کریںIPاپنا");
 DEFINE('_EW_SETTINGS_TO_THE_LIST', "فہرست میں");
 
-# Other / mostly general
+// Other / mostly general
 DEFINE('_EW_TITLE', "جملہ مانیٹر AJAX ایک رئیل ٹائم");
 DEFINE('_EW_BACK', "پیچھے");
 DEFINE('_EW_ACCESS_DENIED', "آپ کے پاس اس کو دیکھنے کی کوئی اجازت نہیں");
@@ -100,12 +101,12 @@ DEFINE('_EW_AJAX_PERMISSION_DENIED_2', "شائد آپ ڈومین کے نام س�
 DEFINE('_EW_AJAX_PERMISSION_DENIED_3', "کی جانب سے");
 DEFINE('_EW_AJAX_PERMISSION_DENIED_4', "کیا چیز اس کو ایک مختلف ڈومین بناتی ہے");
 
-# Header
+// Header
 DEFINE('_EW_HEADER_DOWNLOAD', "تازہ ترین ایکسٹین کا کوڈ حاصل کریں سے");
 DEFINE('_EW_HEADER_CAST_YOUR', "براہ مہربانی اپنا کاسٹ کریں");
 DEFINE('_EW_HEADER_VOTE', "ووٹ");
 
-# Tooltips
+// Tooltips
 DEFINE('_EW_TOOLTIP_CLICK', "ٹول ٹپ دیکھنے کے لئے کلک کریں");
 DEFINE('_EW_TOOLTIP_MOUSE_OVER', "ٹول ٹپ دیکھنے کے لئے ماوس پوائنٹر کو اوپر رکھیں");
 DEFINE('_EW_TOOLTIP_YESTERDAY_INCREASE', "گزشتہ دن کا اضافہ");
@@ -113,7 +114,7 @@ DEFINE('_EW_TOOLTIP_HELP', "آن لائن بیرونی مدد کھولتا ہے�
 DEFINE('_EW_TOOLTIP_WINDOW_CLOSE', "یہ ونڈو بند کر دیں");
 DEFINE('_EW_TOOLTIP_PRINT', "پرنٹ کریں");
 
-# Goals
+// Goals
 DEFINE('_EW_GOALS_INSERT', "ایک نیا ہدف داخل کریں");
 DEFINE('_EW_GOALS_UPDATE', "ایک گول نمبر کو اپ ڈیٹ کریں");
 DEFINE('_EW_GOALS_ACTION', "ایکشن");
@@ -142,7 +143,7 @@ DEFINE('_EW_GOALS_EDIT', "ایڈٹ");
 DEFINE('_EW_GOALS_DELETE', "ڈیلیٹ");
 DEFINE('_EW_GOALS_DELETE_CONFIRM', "آپ تمام حالیہ اعدادوشمار کھو دیں گے۔ کیا آپ واقعی ایک گول نمبر کو ڈیلیٹ کرنا چاہتے ہیں");
 
-# Frontend
+// Frontend
 DEFINE('_EW_FRONTEND_COUNTRIES', "ممالک");
 DEFINE('_EW_FRONTEND_VISITORS', "وزیٹرز");
 DEFINE('_EW_FRONTEND_TODAY', "آج");
@@ -153,7 +154,7 @@ DEFINE('_EW_FRONTEND_THIS_MONTH', "اس ماہ");
 DEFINE('_EW_FRONTEND_LAST_MONTH', "گزشتہ ماہ");
 DEFINE('_EW_FRONTEND_TOTAL', "مجموعہ");
 
-# Settings description - quite long
+// Settings description - quite long
 DEFINE('_EW_DESC_DEBUG', "جملہ واچ ڈی بگ موڈ میں ہے۔ اس طرح سے آپ غلطیوں کی وجہ تلاش کر سکتے ہیں۔ اس کو بند کرنے کے لئے اس کی ویلیو کو 1 سے 0 کر دیں EXTRAWATCH_DEBUG in /components/com_extrawatch/config.php");
 DEFINE('_EW_DESC_STATS_MAX_ROWS', "جب اعدادوشمار پھیلاو والے موڈ میں ہوں تو کتنی قطاریں دکھائی جائیں");
 DEFINE('_EW_DESC_STATS_IP_HITS', "تمام آئی پی ایڈریسز جن پر پچھلے دنوں میں اس ویلیو سے کم ہٹس ہوئی ہیں وہ آئی پی کی ہسٹری میں سے ختم ہو جایئن گے۔");
@@ -214,7 +215,7 @@ DEFINE('_EW_DESC_GOALS_BLOCK', "1 پر سیٹ کریں اگر آپ وزیٹر ک
 
 /* new translations */
 DEFINE('_EW_GOALS_COUNTRY_CONDITION', "ملک کے لیے شرط");
-DEFINE('_EW_GOALS_CONTRY_INVERSED', "ملک کے لیے  الٹی شرط");
+DEFINE('_EW_GOALS_COUNTRY_INVERSED', "ملک کے لیے  الٹی شرط");
 DEFINE('_EW_DESC_GOALS_COUNTRY_CONDITION', " 2 حروف کا ملک کا کوڈ بڑے حروف میں(Eg: <b>TH</b>)");
 DEFINE('_EW_STATS_INTERNAL', "اندرونی");
 DEFINE('_EW_STATS_FROM', "سے");
@@ -460,7 +461,7 @@ DEFINE('_EW_BLOCKING_MESSAGE', "بلاکنگ کا پیغام");
 DEFINE('_EW_SERVER_URI_KEY', "سرور کی یو آر آئی کی");
 DEFINE('_EW_FRONTEND_VISITORS_TOTAL_INITIAL', " فرنٹ اینڈ وزیٹرز کا مجموعہ ابتدائی ");
 DEFINE('_EW_SIZEDATABASE_RECORDS', "ریکارڈز");
-/***********EDITs******************/
+/***********EDITs*****************/
 DEFINE('_EW_ANTISPAM_BLOCKING_TEXT', " بلاکنگ کو موثر بنانے کی لیے، آپ کوکسی بھی مواد یا فارمز سے پہلے جملہ واچ ایجنٹ کو شائع کرنے کی ضرورت ہے۔ مثلاً آپ کے ٹیمپلیٹ کی بائیں جانب.
                     <br/>
                     پر جا ئیں Module Manager -> ExtraWatch agent -> select position as left");
@@ -496,4 +497,4 @@ DEFINE('_EW_RENDERED_IN', "Rendered in");
 DEFINE('_EW_DESC_SEO_RENDER_ONLY_CHANGED', "Render only values which were already used in previous days (have some percentage in change column)");
 DEFINE('_EW_SEO_REPORT_SETTINGS', "SEO Report Settings");
 
-?>
+

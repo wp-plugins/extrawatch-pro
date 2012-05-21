@@ -1,32 +1,35 @@
 <?php
 
 /**
+ * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 41
+ * @revision 150
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
- **/
+ */
 defined('_JEXEC') or die('Restricted access');
 
 /** ensure this file is being included by a parent file */
-if (!defined('_JEXEC') && !defined('_VALID_MOS')) die('Restricted access');
+if (!defined('_JEXEC') && !defined('_VALID_MOS')) {
+	die('Restricted access');
+}
 
 class AdminExtraWatchHTML
 {
 
-    var $env;
+    public $env;
 
-    var $database;
-    var $mosConfig_live_site;
-    var $config;
-    var $helper;
-    var $visit;
-    var $goal;
+    public $database;
+    public $mosConfig_live_site;
+    public $config;
+    public $helper;
+    public $visit;
+    public $goal;
 
-    function AdminExtraWatchHTML()
+    function __construct()
     {
         $this->env = ExtraWatchEnvFactory::getEnvironment();
         $this->database = & $this->env->getDatabase();
@@ -47,4 +50,4 @@ class AdminExtraWatchHTML
 
 }
 
-?>
+

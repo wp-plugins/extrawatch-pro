@@ -1,14 +1,15 @@
 <?php
 
 /**
+ * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 41
+ * @revision 150
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
- **/
+ */
 
 /** ensure this file is being included by a parent file */
 if (!defined('_JEXEC') && !defined('_VALID_MOS'))
@@ -17,23 +18,23 @@ if (!defined('_JEXEC') && !defined('_VALID_MOS'))
 class ExtraWatchVisit
 {
 
-    var $env;
+    public $env;
 
-    var $database;
-    var $config;
-    var $helper;
-    var $stat;
-    var $block;
-    var $goal;
-    var $sizes;
-    var $date;
-    var $heatmap;
-    var $seo;
+    public $database;
+    public $config;
+    public $helper;
+    public $stat;
+    public $block;
+    public $goal;
+    public $sizes;
+    public $date;
+    public $heatmap;
+    public $seo;
 
-    function ExtraWatchVisit()
+    function __construct()
     {
         $this->env = ExtraWatchEnvFactory::getEnvironment();
-        $this->database = & $this->env->getDatabase();
+        $this->database = $this->env->getDatabase();
         $this->config = new ExtraWatchConfig($this->database);
         $this->helper = new ExtraWatchHelper($this->database);
         $this->stat = new ExtraWatchStat($this->database);
@@ -137,25 +138,30 @@ class ExtraWatchVisit
         $maxRows = $this->config->getConfigValue('EXTRAWATCH_STATS_MAX_ROWS');
         $today = $this->date->jwDateToday();
 
-        /** delete visitors */
-        $maxVisitors = $this->config->getConfigValue('EXTRAWATCH_LIMIT_VISITORS');
-        $query = sprintf("SELECT id as maxId FROM #__extrawatch where browser is not NULL ORDER BY id DESC LIMIT %d, 1", (int)($maxVisitors * 2));
-        $maxId = @ $this->database->resultQuery($query);
-        $query = sprintf("DELETE FROM #__extrawatch_uri WHERE browser is not NULL and fk < %d", (int)$maxId);
-        @$this->database->executeQuery($query);
-        $query = sprintf("DELETE FROM #__extrawatch WHERE browser is not NULL and id < %d", (int)$maxId);
-        @$this->database->executeQuery($query);
+        /** get oldest visitor id in database */
+        $query = sprintf("select (max(id)-min(id)) as difference from #__extrawatch where browser is not null ");
+        $difference = $this->database->resultQuery($query);
 
+        $query = sprintf("select id as maxid from #__extrawatch where browser is not NULL order by id desc limit 1");
+        $rows = @ $this->database->objectListQuery($query);
+        $row = @ $rows[0];
+        $maxidvisitors = @ $row->maxid - $this->config->getConfigValue('EXTRAWATCH_MAXID_VISITORS');
+        $maxidbots = @ $row->maxid - $this->config->getConfigValue('EXTRAWATCH_MAXID_BOTS');
 
-        /** delete bots */
-        $maxBots = $this->config->getConfigValue('EXTRAWATCH_LIMIT_BOTS');
-        $query = sprintf("SELECT id as maxId FROM #__extrawatch where browser is NULL ORDER BY id DESC LIMIT %d, 1", (int)($maxBots * 2));
-        $maxId = @ $this->database->resultQuery($query);
-        $query = sprintf("DELETE FROM #__extrawatch_uri WHERE browser is NULL and fk < %d", (int)$maxId);
-        @$this->database->executeQuery($query); //1189132
-        $query = sprintf("DELETE FROM #__extrawatch WHERE browser is NULL and id < %d", (int)$maxId);
-        @$this->database->executeQuery($query);
+        $query = sprintf("select id from #__extrawatch where (id < '%d' and browser is NULL) order by id desc", (int) $maxidbots);
+        $rows = @ $this->database->objectListQuery($query);
 
+        foreach ($rows as $row) {
+
+            $query = sprintf("delete from #__extrawatch where id = '%d' ", (int) $row->id);
+            $this->database->executeQuery($query);
+
+            $query = sprintf("delete from #__extrawatch_uri where fk = '%d' ", (int) $row->id);
+            $this->database->executeQuery($query);
+
+        }
+        
+        
         for ($i = 0; $i < 20; $i++) {
             /** delete records from previous day, which are not in top 20 (or value in maxRows */
             $query = sprintf("SELECT id FROM `#__extrawatch_info` where `group` = '$i' and date = '%d' order by `value` desc limit %d,99999", (int)($today - 1), (int)$maxRows);
@@ -321,14 +327,14 @@ class ExtraWatchVisit
         $liveSite = $this->config->getLiveSite();
 
         if ($this->heatmap->isHeatmapLoaded()) {
-            return true;
+            return TRUE;
         }
 
 
         $ip = addslashes(strip_tags(@ $this->getRemoteIPAddress()));
 
         if ($this->config->isIgnored('IP', $ip) || $this->config->isIgnored('URI', $uri) || $this->config->isIgnored('USER', $newUsername)) {
-            return true;
+            return TRUE;
         }
         $referer = $this->getReferer();
 
@@ -487,7 +493,7 @@ class ExtraWatchVisit
         $userAgent = addslashes(strip_tags(@ $_SERVER['HTTP_USER_AGENT']));
 
         if ($this->config->isIgnored('IP', $ip) || $this->config->isIgnored('URI', $uri)) {
-            return true;
+            return TRUE;
         }
 
         $this->updateBrowserStats($ip, $userAgent);
@@ -525,7 +531,7 @@ class ExtraWatchVisit
         $rows = @ $this->database->objectListQuery($query);
         $row = @ $rows[0];
         if (@ $row->browser == '')
-            $firstTime = true;
+            $firstTime = TRUE;
 
         $country = @$row->country;
         if (!$country) {
@@ -717,7 +723,7 @@ class ExtraWatchVisit
         if (!@$id) {
             $query = sprintf("insert into #__extrawatch_uri2title (id, uri, title, `count`, `timestamp`) values ('','%s','%s',1,'%d') ", $this->database->getEscaped($uri), $this->database->getEscaped($title), (int)ExtraWatchDate::getUTCTimestamp());
             $this->database->executeQuery($query);
-        } else if ($title) { // already exists, but we need to update title if there is any
+        } elseif ($title) { // already exists, but we need to update title if there is any
             $query = sprintf("update #__extrawatch_uri2title set title = '%s' where id = '%d' ", $this->database->getEscaped($title), (int)$id);
             $this->database->executeQuery($query);
         }
@@ -793,9 +799,9 @@ class ExtraWatchVisit
         $ignorePrefix = "www.";
         $comparison = @strstr(str_replace($ignorePrefix, "", $referer), str_replace($ignorePrefix, "", str_replace($ignorePrefix, "", $liveSite)));
         if ($comparison) {
-            return true;
+            return TRUE;
         } else {
-            return false;
+            return FALSE;
         }
     }
 
@@ -920,4 +926,4 @@ class ExtraWatchVisit
 
 }
 
-?>
+

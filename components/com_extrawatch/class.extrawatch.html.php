@@ -1,24 +1,27 @@
 <?php
 
 /**
+ * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 41
+ * @revision 150
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
- **/
+ */
 
 /** ensure this file is being included by a parent file */
-if (!defined('_JEXEC') && !defined('_VALID_MOS')) die('Restricted access');
+if (!defined('_JEXEC') && !defined('_VALID_MOS')) {
+	die('Restricted access');
+}
 
 class ExtraWatchHTML
 {
 
-    var $extraWatch;
+    public $extraWatch;
 
-    function ExtraWatchHTML()
+    function __construct()
     {
         $this->extraWatch = new ExtraWatch();
     }
@@ -50,11 +53,11 @@ class ExtraWatchHTML
         $desc .= $addToDescription;
 
         $keyShortened = str_replace("EXTRAWATCH_", "", $key);
-        /*********changes for load from language file*********************/
+        /*********changes for load from language file********************/
         if (defined('_EW_' . $keyShortened))
             $keyShortened = constant('_EW_' . $keyShortened);
 
-        /*************changes for load from language file ends*************/
+        /*************changes for load from language file ends************/
         $output = "<tr><td style='background-color: " . $color . ";' align='left'>$keyShortened</td><td style='background-color: " . $color . ";' align='center'>";
 
         $key = "EXTRAWATCH_" . $key;
@@ -95,17 +98,17 @@ class ExtraWatchHTML
             case "text":
                 {
 
-                $output .= "<textarea id='$key' cols='15' rows='3' name='$key' style='text-align:center;'>$value</textarea>";
+                $output .= "<textarea id='$key' cols='15' rows='3' name='$key' style='text-align:center;'>".htmlentities(stripslashes($value))."</textarea>";
                 break;
                 }
             case "largetext":
                 {
-                $output .= "<textarea id='$key' cols='40' rows='20' name='$key' style='text-align:center;'>" . stripslashes($value) . "</textarea>";
+                $output .= "<textarea id='$key' cols='40' rows='20' name='$key' style='text-align:center;'>" . htmlentities(stripslashes($value)) . "</textarea>";
                 break;
                 }
             default:
                 {
-                $output .= "<input type='text' id='$key' name='$key' value='$value' size='20' style='text-align:center;'/>";
+                $output .= "<input type='text' id='$key' name='".htmlentities($key)."' value='".htmlentities(stripslashes($value))."' size='20' style='text-align:center;'/>";
                 break;
                 }
 
@@ -135,12 +138,6 @@ class ExtraWatchHTML
 
     function renderOnlineHelp($id)
     {
-        //TODO: should be done separated
-        if (@$this->extraWatch) {
-            $liveSite = $this->extraWatch->config->getLiveSite();
-        } else {
-            $liveSite = $this->extraWatch->config->getLiveSite();
-        }
         $site = $this->extraWatch->config->getLiveSiteWithSuffix();
         $output = "&nbsp;<a href='http://www.codegravity.com/projects/extrawatch#doc-$id' target='_blank'><img src='" . $site ."/components/com_extrawatch/icons/help.gif' border='0' title='" . _EW_TOOLTIP_HELP . ": $id'/></a>";
         return $output;
@@ -152,7 +149,7 @@ class ExtraWatchHTML
         return $output;
     }
 
-    function renderInputField($id, $values, & $color, $required = false)
+    function renderInputField($id, $values, & $color, $required = FALSE)
     {
         if (!@ $values)
             $values = "";
@@ -169,7 +166,7 @@ class ExtraWatchHTML
             $color = "";
 
         $desc = @constant("_EW_DESC_GOALS_" . $id);
-        if ($required == true) {
+        if ($required == TRUE) {
             $requiredText = "<span style='color: red;'>(* required)</span>&nbsp;";
         } else {
             $requiredText = "";
@@ -178,7 +175,7 @@ class ExtraWatchHTML
         return $output;
     }
 
-    function renderInputCheckBox($id, $values, & $color, $disabled = false, $required = false)
+    function renderInputCheckBox($id, $values, & $color, $disabled = FALSE, $required = FALSE)
     {
         if (!@ $values)
             $values = "";
@@ -195,7 +192,7 @@ class ExtraWatchHTML
             $color = "";
 
         $desc = @constant("_EW_DESC_GOALS_" . $id);
-        if ($required == true) {
+        if ($required == TRUE) {
             $requiredText = "<span style='color: red;'>(* required)</span>&nbsp;";
         } else {
             $requiredText = "";
@@ -263,41 +260,41 @@ class ExtraWatchHTML
     function renderHeader()
     {
         // if ($this->extraWatch->config->getTrialVersionTimeLeft() > 0 || $this->extraWatch->config->isAdFree()) {
-        require_once("view" . DS . "adminheader.php");
+        require_once "view" . DS . "adminheader.php";
         // }
     }
 
 
     function renderBody($option)
     {
-        require_once("view" . DS . "adminbody.php");
+        require_once "view" . DS . "adminbody.php";
     }
 
     function renderSettings($result = "")
     {
-        require_once("view" . DS . "settings.php");
+        require_once "view" . DS . "settings.php";
     }
 
 
     function renderCredits()
     {
-        require_once("view" . DS . "credits.php");
+        require_once "view" . DS . "credits.php";
     }
 
     function renderAcceptLicense()
     {
-        require_once("view" . DS . "license.php");
-        return renderLicense($this->extraWatch);
+        require_once "view" . DS . "license.php";
+        return extraWatchRenderLicense($this->extraWatch);
     }
 
     function renderAdFreeLicense()
     {
         if ($this->extraWatch->config->isAdFree()) {
-            require_once("view" . DS . "license-commercial.php");
-            return renderLicense($this->extraWatch);
+            require_once "view" . DS . "license-commercial.php";
+            return extraWatchRenderLicense($this->extraWatch);
         } else {
-            require_once("view" . DS . "license-free.php");
-            return renderLicenseFree($this->extraWatch);
+            require_once "view" . DS . "license-free.php";
+            return extraWatchRenderLicenseFree($this->extraWatch);
         }
     }
 
@@ -305,24 +302,24 @@ class ExtraWatchHTML
     function renderAntiSpam()
     {
         $extraWatchBlockHTML = new ExtraWatchBlockHTML($this->extraWatch);
-        require_once("view" . DS . "antispam.php");
+        require_once "view" . DS . "antispam.php";
     }
 
     function renderStatus()
     {
         $extraWatchStatHTML = new ExtraWatchStatHTML($this->extraWatch);
-        require_once("view" . DS . "status.php");
+        require_once "view" . DS . "status.php";
     }
 
     function renderUpdate()
     {
-        require_once("view" . DS . "update.php");
+        require_once "view" . DS . "update.php";
     }
 
     function renderVisitsHistory()
     {
         $extraWatchVisitHistoryHTML = new ExtraWatchVisitHistoryHTML($this->extraWatch);
-        require_once("view" . DS . "history.php");
+        require_once "view" . DS . "history.php";
     }
 
     function renderEmails()
@@ -333,7 +330,7 @@ class ExtraWatchHTML
             $this->extraWatch->config->saveConfigValue("EXTRAWATCH_EMAIL_REPORTS_ADDRESS", $userEmail);
         }
         $extraWatchStatHTML = new ExtraWatchStatHTML($this->extraWatch);
-        require_once("view" . DS . "emails.php");
+        require_once "view" . DS . "emails.php";
     }
 
     function renderTrialVersionInfo()
@@ -348,33 +345,33 @@ class ExtraWatchHTML
 
     function renderFlow()
     {
-        require_once("view" . DS . "flow.php");
+        require_once "view" . DS . "flow.php";
     }
 
     function renderSizes()
     {
-        require_once("view" . DS . "sizes.php");
+        require_once "view" . DS . "sizes.php";
     }
 
     function renderSizeComponents()
     {
-        require_once("view" . DS . "sizecomponents.php");
+        require_once "view" . DS . "sizecomponents.php";
     }
 
     function renderSizeModules()
     {
-        require_once("view" . DS . "sizemodules.php");
+        require_once "view" . DS . "sizemodules.php";
     }
 
     function renderSizeDatabase()
     {
-        require_once("view" . DS . "sizedatabase.php");
+        require_once "view" . DS . "sizedatabase.php";
     }
 
     function renderSEO()
     {
         $extraWatchStatHTML = new ExtraWatchStatHTML($this->extraWatch);
-        require_once("view" . DS . "seo.php");
+        require_once "view" . DS . "seo.php";
     }
 
     function renderHeatMapJS()
@@ -383,16 +380,16 @@ class ExtraWatchHTML
         $uri = $this->extraWatch->helper->getURI(); //TODO we need to strip the parameters here out of URI !!!
         $uri = $extraWatchHeatmap->stripHeatmapGetParams($uri);
         $id = $this->extraWatch->visit->getUriIdByUriName($uri);
-        require_once("js" . DS . "heatmap.js.php");
+        require_once "js" . DS . "heatmap.js.php";
     }
 
     function renderHeatMap()
     {
         $extraWatchHeatmap = new ExtraWatchHeatmap($this->extraWatch->database);
         $extraWatchHeatmapHTML = new ExtraWatchHeatmapHTML($this->extraWatch->database);
-        require_once("view" . DS . "heatmap.php");
+        require_once "view" . DS . "heatmap.php";
     }
 
 }
 
-?>
+

@@ -17,11 +17,13 @@ $drupalModulePath = realpath('.') . DS . "sites" . DS . "all" . DS . "modules" .
 if (!defined('JPATH_BASE')) define('JPATH_BASE', $drupalModulePath);
 if (!defined('JPATH_BASE2')) define('JPATH_BASE2', $drupalModulePath);
 
+$drupalModulePathExtraWatch = realpath('.') . DS . "sites" . DS . "all" . DS . "modules" . DS . "extrawatch";
+
 function extrawatch_menu()
 {
     $items = array();
 
-    $items['admin/overlay'] = array(
+    $items['admin/extrawatch'] = array(
         'title' => t('ExtraWatch'),
         'type' => MENU_NORMAL_ITEM,
         'menu_name' => 'management',
@@ -79,6 +81,7 @@ function extrawatch_block_info()
  */
 function extrawatch_block_view($delta = '')
 {
+    global $drupalModulePathExtraWatch;
 
     // this is how the block works, we stick in a swich() to make it easier, than a if/else condition
 
@@ -89,19 +92,19 @@ function extrawatch_block_view($delta = '')
         case 'module_1_txt':
 
             $block['subject'] = t('ExtraWatch agent');
-            $block['content'] = extrawatch_agent();
+            $block['content'] = extrawatch_agent($drupalModulePathExtraWatch);
 
             break;
 
         case 'module_2_txt':
             $block['subject'] = t('ExtraWatch users');
-            $block['content'] = extrawatch_users();
+            $block['content'] = extrawatch_users($drupalModulePathExtraWatch);
 
             break;
 
         case 'module_3_txt':
             $block['subject'] = t('ExtraWatch visitors');
-            $block['content'] = extrawatch_visitors();
+            $block['content'] = extrawatch_visitors($drupalModulePathExtraWatch);
 
             break;
 
@@ -110,21 +113,21 @@ function extrawatch_block_view($delta = '')
     return $block;
 }
 
-function extrawatch_agent()
+function extrawatch_agent($drupalModulePathExtraWatch)
 {
-    require_once("modules" . DS . "mod_extrawatch_agent" . DS . "mod_extrawatch_agent.php");
+    require_once($drupalModulePathExtraWatch. DS. "modules" . DS . "mod_extrawatch_agent" . DS . "mod_extrawatch_agent.php");
     return renderExtraWatchAgent();
 }
 
-function extrawatch_users()
+function extrawatch_users($drupalModulePathExtraWatch)
 {
-    require_once("modules" . DS . "mod_extrawatch_users" . DS . "mod_extrawatch_users.php");
+    require_once($drupalModulePathExtraWatch. DS. "modules" . DS . "mod_extrawatch_users" . DS . "mod_extrawatch_users.php");
     return renderExtraWatchUsers();
 }
 
-function extrawatch_visitors()
+function extrawatch_visitors($drupalModulePathExtraWatch)
 {
-    require_once("modules" . DS . "mod_extrawatch_visitors" . DS . "mod_extrawatch_visitors.php");
+    require_once($drupalModulePathExtraWatch. DS. "modules" . DS . "mod_extrawatch_visitors" . DS . "mod_extrawatch_visitors.php");
     return renderExtraWatchVisitors();
 }
 
@@ -142,8 +145,8 @@ function extrawatch_disable()
 
 function extrawatch_initialize_db($drupalModulePath)
 {
-    require_once("components" . DS . "com_extrawatch" . DS . "includes.php");
-    require_once("administrator" . DS . "components" . DS . "com_extrawatch" . DS . "install.extrawatch.php");
+    require_once($drupalModulePath. DS. "components" . DS . "com_extrawatch" . DS . "includes.php");
+    require_once($drupalModulePath. DS. "administrator" . DS . "components" . DS . "com_extrawatch" . DS . "install.extrawatch.php");
 
     $env = ExtraWatchEnvFactory::getEnvironment();
     $env->getDatabase();

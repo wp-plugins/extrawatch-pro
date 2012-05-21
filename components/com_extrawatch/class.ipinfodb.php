@@ -2,7 +2,7 @@
 final class ipinfodb
 {
     protected $errors = array();
-    protected $showTimezone = false;
+    protected $showTimezone = FALSE;
     protected $service = 'api.ipinfodb.com';
     protected $version = 'v2';
     protected $apiKey = '';
@@ -22,7 +22,7 @@ final class ipinfodb
 
     public function showTimezone()
     {
-        $this->showTimezone = true;
+        $this->showTimezone = TRUE;
     }
 
     public function getError()
@@ -85,4 +85,3 @@ final class ipinfodb
     }
 }
 
-?>

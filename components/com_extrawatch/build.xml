@@ -15,12 +15,15 @@
     <property name="build.tokenized" value="${build}/src"/>
     <property name="license" value="PRO"/>
 
+    <property name="j15" value="Joomla1.5"/>
+    <property name="j25" value="Joomla1.6and1.7and2.5"/>
+
     <property name="revision.number.fallback" value="BETA"/>
 
     <target name="build" depends="build-j16,token_copy-j15">
-        <delete dir="${build}/j15"/>
-        <mkdir dir="${build}/j15"/>
-        <zip destfile="${build}/j15/com_extrawatch.zip">
+        <delete dir="${build}/${j15}"/>
+        <mkdir dir="${build}/${j15}"/>
+        <zip destfile="${build}/${j15}/com_extrawatch.zip">
             <fileset dir="${build.tokenized}/administrator/components/com_extrawatch">
                 <exclude name="extrawatch.xml"/>
                 <exclude name="security_certificate.pdf"/>
@@ -36,46 +39,36 @@
             </fileset>
 
         </zip>
-        <zip destfile="${build}/j15/mod_extrawatch_agent.zip">
+        <zip destfile="${build}/${j15}/mod_extrawatch_agent.zip">
             <fileset dir="${build.tokenized}/modules/mod_extrawatch_agent" includes="**/*">
                 <exclude name="mod_extrawatch_agent.xml"/>
             </fileset>
         </zip>
-        <zip destfile="${build}/j15/mod_extrawatch_visitors.zip">
+        <zip destfile="${build}/${j15}/mod_extrawatch_visitors.zip">
             <fileset dir="${build.tokenized}/modules/mod_extrawatch_visitors" includes="**/*">
                 <exclude name="mod_extrawatch_visitors.xml"/>
             </fileset>
         </zip>
-        <zip destfile="${build}/j15/mod_extrawatch_users.zip">
+        <zip destfile="${build}/${j15}/mod_extrawatch_users.zip">
             <fileset dir="${build.tokenized}/modules/mod_extrawatch_users" includes="**/*">
                 <exclude name="mod_extrawatch_users.xml"/>
             </fileset>
         </zip>
 
-        <copy file="${build.tokenized}\components\com_extrawatch\INSTALL.txt" tofile="${build}\j15\INSTALL.txt"/>
-        <copy file="${build.tokenized}\components\com_extrawatch\README.txt" tofile="${build}\j15\README.txt"/>
-        <copy file="${build.tokenized}\components\com_extrawatch\LICENSE.txt" tofile="${build}\j15\LICENSE.txt"/>
-        <copy file="${build.tokenized}\components\com_extrawatch\UPGRADE.txt" tofile="${build}\j15\UPGRADE.txt"/>
+        <copy file="${build.tokenized}\components\com_extrawatch\INSTALL.txt" tofile="${build}\${j15}\INSTALL.txt"/>
+        <copy file="${build.tokenized}\components\com_extrawatch\README.txt" tofile="${build}\${j15}\README.txt"/>
+        <copy file="${build.tokenized}\components\com_extrawatch\LICENSE.txt" tofile="${build}\${j15}\LICENSE.txt"/>
+        <copy file="${build.tokenized}\components\com_extrawatch\UPGRADE.txt" tofile="${build}\${j15}\UPGRADE.txt"/>
         <copy file="${build.tokenized}\components\com_extrawatch\TERMS_AND_CONDITIONS.txt"
-              tofile="${build}\j15\TERMS_AND_CONDITIONS.txt"/>
-        <zip destfile="${build}/ExtraWatch-${version}-Joomla1.5-UnzipFirst.zip">
-            <fileset dir="${build}/j15/" includes="com_extrawatch.zip"/>
-            <fileset dir="${build}/j15/" includes="mod_extrawatch_agent.zip"/>
-            <fileset dir="${build}/j15/" includes="mod_extrawatch_visitors.zip"/>
-            <fileset dir="${build}/j15/" includes="mod_extrawatch_users.zip"/>
-            <fileset dir="${build}/j15/" includes="INSTALL.txt"/>
-            <fileset dir="${build}/j15/" includes="README.txt"/>
-            <fileset dir="${build}/j15/" includes="LICENSE.txt"/>
-            <fileset dir="${build}/j15/" includes="UPGRADE.txt"/>
-            <fileset dir="${build}/j16/" includes="TERMS_AND_CONDITIONS.txt"/>
-            <fileset dir="${dir}/administrator/components/com_extrawatch" includes="security_certificate.pdf"/>
-        </zip>
+              tofile="${build}\${j15}\TERMS_AND_CONDITIONS.txt"/>
         <antcall target="drupal"/>
         <antcall target="wordpress"/>
+        <antcall target="create-zip"/>
+        <antcall target="upload"/>
     </target>
 
     <target name="drupal">
-        <echo message="drupal build ${build.tokenized}  ${build}/j16/"/>
+        <echo message="drupal build ${build.tokenized}  ${build}/${j25}/"/>
         <mkdir dir="${build}/drupal/extrawatch"/>
         <copy todir="${build}/drupal/extrawatch" overwrite="true">
             <fileset dir="${build}/src" includes="**/*"/>
@@ -224,9 +217,9 @@
 
 
     <target name="build-j16" depends="token_copy-j16">
-        <mkdir dir="${build}/j16"/>
-        <delete dir="${build}/j15"/>
-        <zip destfile="${build}/j16/com_extrawatch.zip">
+        <mkdir dir="${build}/${j25}"/>
+        <delete dir="${build}/${j15}"/>
+        <zip destfile="${build}/${j25}/com_extrawatch.zip">
             <fileset dir="${build.tokenized}/administrator/components/com_extrawatch">
                 <exclude name="extrawatch.j15.xml"/>
                 <exclude name="security_certificate.pdf"/>
@@ -242,40 +235,28 @@
             </fileset>
 
         </zip>
-        <zip destfile="${build}/j16/mod_extrawatch_agent.zip">
+        <zip destfile="${build}/${j25}/mod_extrawatch_agent.zip">
             <fileset dir="${build.tokenized}/modules/mod_extrawatch_agent" includes="**/*">
                 <exclude name="mod_extrawatch_agent.j15.xml"/>
             </fileset>
         </zip>
-        <zip destfile="${build}/j16/mod_extrawatch_visitors.zip">
+        <zip destfile="${build}/${j25}/mod_extrawatch_visitors.zip">
             <fileset dir="${build.tokenized}/modules/mod_extrawatch_visitors" includes="**/*">
                 <exclude name="mod_extrawatch_visitors.j15.xml"/>
             </fileset>
         </zip>
-        <zip destfile="${build}/j16/mod_extrawatch_users.zip">
+        <zip destfile="${build}/${j25}/mod_extrawatch_users.zip">
             <fileset dir="${build.tokenized}/modules/mod_extrawatch_users" includes="**/*">
                 <exclude name="mod_extrawatch_users.j15.xml"/>
             </fileset>
         </zip>
 
-        <copy file="${build.tokenized}\components\com_extrawatch\INSTALL.txt" tofile="${build}\j16\INSTALL.txt"/>
-        <copy file="${build.tokenized}\components\com_extrawatch\README.txt" tofile="${build}\j16\README.txt"/>
-        <copy file="${build.tokenized}\components\com_extrawatch\LICENSE.txt" tofile="${build}\j16\LICENSE.txt"/>
-        <copy file="${build.tokenized}\components\com_extrawatch\UPGRADE.txt" tofile="${build}\j16\UPGRADE.txt"/>
+        <copy file="${build.tokenized}\components\com_extrawatch\INSTALL.txt" tofile="${build}\${j25}\INSTALL.txt"/>
+        <copy file="${build.tokenized}\components\com_extrawatch\README.txt" tofile="${build}\${j25}\README.txt"/>
+        <copy file="${build.tokenized}\components\com_extrawatch\LICENSE.txt" tofile="${build}\${j25}\LICENSE.txt"/>
+        <copy file="${build.tokenized}\components\com_extrawatch\UPGRADE.txt" tofile="${build}\${j25}\UPGRADE.txt"/>
         <copy file="${build.tokenized}\components\com_extrawatch\TERMS_AND_CONDITIONS.txt"
-              tofile="${build}\j16\TERMS_AND_CONDITIONS.txt"/>
-        <zip destfile="${build}/ExtraWatch-${version}-Joomla1.6-UnzipFirst.zip">
-            <fileset dir="${build}/j16/" includes="com_extrawatch.zip"/>
-            <fileset dir="${build}/j16/" includes="mod_extrawatch_agent.zip"/>
-            <fileset dir="${build}/j16/" includes="mod_extrawatch_visitors.zip"/>
-            <fileset dir="${build}/j16/" includes="mod_extrawatch_users.zip"/>
-            <fileset dir="${build}/j16/" includes="INSTALL.txt"/>
-            <fileset dir="${build}/j16/" includes="README.txt"/>
-            <fileset dir="${build}/j16/" includes="LICENSE.txt"/>
-            <fileset dir="${build}/j16/" includes="UPGRADE.txt"/>
-            <fileset dir="${build}/j16/" includes="TERMS_AND_CONDITIONS.txt"/>
-            <fileset dir="${dir}/administrator/components/com_extrawatch" includes="security_certificate.pdf"/>
-        </zip>
+              tofile="${build}\${j25}\TERMS_AND_CONDITIONS.txt"/>
     </target>
 
     <target name="wordpress">
@@ -286,9 +267,63 @@
         </copy>
         <copy file="${build.tokenized}\components\com_extrawatch\env\wordpress\extrawatch.php" tofile="${build}/wordpress/extrawatch/extrawatch.php"/>
         <mkdir dir="${build}/wordpress/extrawatch-${version}-${license}"/>
-        <zip destfile="${build}/wordpress/extrawatch-${version}-${license}/extrawatch.zip">
+        <zip destfile="${build}/wordpress/extrawatch-pro.zip">
             <fileset dir="${build}/wordpress/extrawatch" />
         </zip>
+    </target>
+
+    <target name="upload">
+        <ftp server="ftp.codegravity.com"
+             remotedir="/web/update/extrawatch/${version}"
+             userid="codegravity.com"
+             password="${pwd}"
+             passive="yes">
+            <fileset dir="${build}/${j25}">
+                <include name="**/com_extrawatch.zip"/>
+            </fileset>
+            <fileset dir="${build}/src/administrator/components/com_extrawatch">
+                <include name="**/extrawatch-update.xml"/>
+            </fileset>
+        </ftp>
+        <ftp server="ftp.codegravity.com"
+             remotedir="/web/install/"
+             userid="codegravity.com"
+             password="${pwd}"
+             passive="yes">
+            <fileset dir="${build}">
+                <include name="**/ExtraWatch-${version}-PRO-BETA-UnzipFirst.zip"/>
+            </fileset>
+        </ftp>
+    </target>
+
+    <target name="create-zip">
+    <zip destfile="${build}/ExtraWatch-${version}-PRO-BETA-UnzipFirst.zip">
+        <fileset dir="${build}" includes="${j15}/com_extrawatch.zip"/>
+        <fileset dir="${build}" includes="${j15}/mod_extrawatch_agent.zip"/>
+        <fileset dir="${build}" includes="${j15}/mod_extrawatch_visitors.zip"/>
+        <fileset dir="${build}" includes="${j15}/mod_extrawatch_users.zip"/>
+        <fileset dir="${build}" includes="${j15}/INSTALL.txt"/>
+        <fileset dir="${build}" includes="${j15}/README.txt"/>
+        <fileset dir="${build}" includes="${j15}/LICENSE.txt"/>
+        <fileset dir="${build}" includes="${j15}/UPGRADE.txt"/>
+        <fileset dir="${build}" includes="${j15}/TERMS_AND_CONDITIONS.txt"/>
+
+        <fileset dir="${build}" includes="${j25}/com_extrawatch.zip"/>
+        <fileset dir="${build}" includes="${j25}/mod_extrawatch_agent.zip"/>
+        <fileset dir="${build}" includes="${j25}/mod_extrawatch_visitors.zip"/>
+        <fileset dir="${build}" includes="${j25}/mod_extrawatch_users.zip"/>
+        <fileset dir="${build}" includes="${j25}/INSTALL.txt"/>
+        <fileset dir="${build}" includes="${j25}/README.txt"/>
+        <fileset dir="${build}" includes="${j25}/LICENSE.txt"/>
+        <fileset dir="${build}" includes="${j25}/UPGRADE.txt"/>
+        <fileset dir="${build}" includes="${j25}/TERMS_AND_CONDITIONS.txt"/>
+
+        <fileset dir="${build}" includes="drupal/extrawatch-pro.zip"/>
+
+        <fileset dir="${build}" includes="wordpress/extrawatch-pro.zip"/>
+
+        <fileset dir="${dir}/administrator/components/com_extrawatch" includes="security_certificate.pdf"/>
+    </zip>
     </target>
 
 </project>

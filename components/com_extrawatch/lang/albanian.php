@@ -1,6 +1,7 @@
 <?php
 
 /**
+ * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version @VERSION@
@@ -8,12 +9,12 @@
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) @YEAR@ by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
- **/
+ */
 defined('_JEXEC') or die('Restricted access');
 
 #ExtraWatch language file - to create a new language file, just copy the english.php to eg. german.php and place into /components/com_extrawatch/lang/
 
-# Main Menu
+// Main Menu
 DEFINE('_EW_MENU_STATS', "Live Statistika");
 DEFINE('_EW_MENU_GOALS', "Qellimë");
 DEFINE('_EW_MENU_SETTINGS', "cilësime");
@@ -25,14 +26,14 @@ DEFINE('_EW_MENU_DONATORS', "Mbështetës");
 DEFINE('_EW_MENU_SUPPORT', "Mbështetni  ExtraWatch dhe hiqni reclamat nga vëndi i drejtimit.");
 
 
-# Left visitors real-time window
+// Left visitors real-time window
 DEFINE('_EW_VISITS_VISITORS', "Vizitorët e fundit");
 DEFINE('_EW_VISITS_BOTS', "Bots");
 DEFINE('_EW_VISITS_CAME_FROM', "Vjen nga");
 DEFINE('_EW_VISITS_MODULE_NOT_PUBLISHED', "Modeli juaj ExtraWatch nuk është bërë botim! Nuk reggjistrohen statistika të reja. Për ta botuar,shkoni tek seksioni i modelëve dhe botojeni në te gjitha faqet.");
 DEFINE('_EW_VISITS_PANE_LOADING', "Ngarkohen vizitat");
 
-# Right stats window
+// Right stats window
 DEFINE('_EW_STATS_TITLE', "Statistikat e vizitave për këtë javë");
 DEFINE('_EW_STATS_WEEK', "Javë");
 DEFINE('_EW_STATS_THIS_WEEK', "Këtë javë");
@@ -65,7 +66,7 @@ DEFINE('_EW_STATS_IP_BLOCKING_MANUALLY', "Vijni adresën e kompiutrit qe doni te
 DEFINE('_EW_STATS_IP_BLOCKING_TOGGLE', "Bllokim");
 DEFINE('_EW_STATS_PANE_LOADING', "Ngarkohen Statistikat....");
 
-# Settings
+// Settings
 DEFINE('_EW_SETTINGS_TITLE', "Cilësime");
 DEFINE('_EW_SETTINGS_DEFAULT', "Mosplotësim");
 DEFINE('_EW_SETTINGS_SAVE', "Shpëtim");
@@ -84,7 +85,7 @@ DEFINE('_EW_SETTINGS_SAVED', "Parametrat u shpëtuan");
 DEFINE('_EW_SETTINGS_ADD_YOUR_IP', "Vendosni adresën e kompiutrit tuaj");
 DEFINE('_EW_SETTINGS_TO_THE_LIST', "Ne list.");
 
-# Other / mostly general
+// Other / mostly general
 DEFINE('_EW_TITLE', "I vërtete AJAKS joomla monitorë");
 DEFINE('_EW_BACK', "Mbrapsh");
 DEFINE('_EW_ACCESS_DENIED', "Nuk keni leje për te parë ketë !");
@@ -100,12 +101,12 @@ DEFINE('_EW_AJAX_PERMISSION_DENIED_2', "Ndoshta keni harruar www. përpara emrit
 DEFINE('_EW_AJAX_PERMISSION_DENIED_3', "nga");
 DEFINE('_EW_AJAX_PERMISSION_DENIED_4', "Car e bën te mendoj që është një emer tjetër domain.");
 
-# Header
+// Header
 DEFINE('_EW_HEADER_DOWNLOAD', "Merrni kodet e fundit të zgjeresimit");
 DEFINE('_EW_HEADER_CAST_YOUR', "Ju lutem vini");
 DEFINE('_EW_HEADER_VOTE', "votoni");
 
-# Tooltips
+// Tooltips
 DEFINE('_EW_TOOLTIP_CLICK', "Shtypni që të shikoni shigjetën");
 DEFINE('_EW_TOOLTIP_MOUSE_OVER', "Levizni miun që të shikoni");
 DEFINE('_EW_TOOLTIP_YESTERDAY_INCREASE', "Dje&apos;s rritje");
@@ -113,7 +114,7 @@ DEFINE('_EW_TOOLTIP_HELP', "Hapni onlain ndihmën e jashtme");
 DEFINE('_EW_TOOLTIP_WINDOW_CLOSE', "Mbylleni këtë dritare");
 DEFINE('_EW_TOOLTIP_PRINT', "Shtypje");
 
-# Goals
+// Goals
 DEFINE('_EW_GOALS_INSERT', "Vijni nje qëllim tjetër");
 DEFINE('_EW_GOALS_UPDATE', "Rivini numrin e qëllimit");
 DEFINE('_EW_GOALS_ACTION', "Akt");
@@ -142,7 +143,7 @@ DEFINE('_EW_GOALS_EDIT', "I plotësuar");
 DEFINE('_EW_GOALS_DELETE', "Fshirje");
 DEFINE('_EW_GOALS_DELETE_CONFIRM', "Do humbni te gjitha statistikat dhe të dhënat për këtë qëllim.Jeni te sigurt që doni te fshijni numrin e qëllimit.");
 
-# Frontend
+// Frontend
 DEFINE('_EW_FRONTEND_COUNTRIES', "Vënde");
 DEFINE('_EW_FRONTEND_VISITORS', "Vizitor");
 DEFINE('_EW_FRONTEND_TODAY', "Sot");
@@ -153,7 +154,7 @@ DEFINE('_EW_FRONTEND_THIS_MONTH', "Këtë muaj");
 DEFINE('_EW_FRONTEND_LAST_MONTH', "Muajin e kaluar");
 DEFINE('_EW_FRONTEND_TOTAL', "Në gjithësi");
 
-# Settings description - quite long
+// Settings description - quite long
 DEFINE('_EW_DESC_DEBUG', "ExtraWatch është në model debugimi. Në këtë mënyrë mund te zbuloni gabime. Për ta fikur, Ju lutem ndryshoni vlerën EXTRAWATCH_DEBUG ne/components/com_extrawatch/config.php from 1 to 0");
 DEFINE('_EW_DESC_STATS_MAX_ROWS', "Rrjeshta maksimale për të parë kur statistikat janë në mënure të zgjeruar.");
 DEFINE('_EW_DESC_STATS_IP_HITS', "Të gjitha adresat e kompiutrave që kan më pak goditje në ditët e kaluara se nga kjo vlerë do të fshihen nga istoria e kompiutrit.");
@@ -214,7 +215,7 @@ DEFINE('_EW_DESC_GOALS_BLOCK', "Vendosni në  1, në qoftë se doni vizitori të
 
 /* new translations */
 DEFINE('_EW_GOALS_COUNTRY_CONDITION', "Konditat e shtetit");
-DEFINE('_EW_GOALS_CONTRY_INVERSED', "Brënda konditat e shtetit");
+DEFINE('_EW_GOALS_COUNTRY_INVERSED', "Brënda konditat e shtetit");
 DEFINE('_EW_DESC_GOALS_COUNTRY_CONDITION', "Dy shkronja për kodin e shtetit me të mëdhaja (P.sh.: <b>TH</b>)");
 DEFINE('_EW_STATS_INTERNAL', "Përbrëndëshme");
 DEFINE('_EW_STATS_FROM', "Nga");
@@ -462,7 +463,7 @@ DEFINE('_EW_BLOCKING_MESSAGE', "Mesazhe bllokimi");
 DEFINE('_EW_SERVER_URI_KEY', "celesi i URIt te serverit ");
 DEFINE('_EW_FRONTEND_VISITORS_TOTAL_INITIAL', "Initialet totale e vizitorëve në faqe");
 DEFINE('_EW_SIZEDATABASE_RECORDS', "Rekorde");
-/***********EDITs******************/
+/***********EDITs*****************/
 DEFINE('_EW_ANTISPAM_BLOCKING_TEXT', " Për të bërë efektive kete  bllokim, duhet te publikoni ExtraWatch agjent PERPARA nga cdo kontent ose form. P.sh. Ne te majte te tampletes.
                     <br/>
                     Shkoni tek Module Manager -> ExtraWatch agent -> dhe zxhidhni pozicionin në të majtë");
@@ -498,4 +499,4 @@ DEFINE('_EW_RENDERED_IN', "Rendered in");
 DEFINE('_EW_DESC_SEO_RENDER_ONLY_CHANGED', "Render only values which were already used in previous days (have some percentage in change column)");
 DEFINE('_EW_SEO_REPORT_SETTINGS', "SEO Report Settings");
 
-?>
+

@@ -290,7 +290,7 @@
                     y = height - x2;
                 // get the image data for the mouse movement area
                 var image = actx.getImageData(x, y, x2, x2),
-                    // some performance tweaks
+                // some performance tweaks
                     imageData = image.data,
                     length = imageData.length,
                     palette = this.get("gradient"),
@@ -325,7 +325,7 @@
                     r2 = this.get("radiusOut"),
                     ctx = this.get("actx"),
                     max = this.get("max"),
-                    // create a radial gradient with the defined parameters. we want to draw an alphamap
+                // create a radial gradient with the defined parameters. we want to draw an alphamap
                     rgr = ctx.createRadialGradient(x, y, r1, x, y, r2),
                     xb = x - r2, yb = y - r2, mul = 2 * r2;
                 // the center of the radial gradient has .1 alpha value
@@ -402,15 +402,20 @@
                      */
                     var x, y;
 
-                    if (ev.layerX) { // Firefox
-                        x = ev.layerX;
-                        y = ev.layerY;
-                    } else if (ev.offsetX) { // Opera
-                        x = ev.offsetX;
-                        y = ev.offsetY;
-                    }
-                    if (typeof(x) == 'undefined')
+                    try {
+                        if (ev.layerX) { // Firefox
+                            x = ev.layerX;
+                            y = ev.layerY;
+                        } else if (ev.offsetX) { // Opera
+                            x = ev.offsetX;
+                            y = ev.offsetY;
+                        }
+                        if (typeof(x) == 'undefined')
+                            return;
+                    } catch (e) {
+                        // suppress
                         return;
+                    }
 
                     return [x, y];
                 }

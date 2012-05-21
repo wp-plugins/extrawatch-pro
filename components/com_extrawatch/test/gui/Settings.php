@@ -54,4 +54,4 @@ class Settings extends PHPUnit_Extensions_SeleniumTestCase
     }
 }
 
-?>
+

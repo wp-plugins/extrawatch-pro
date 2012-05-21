@@ -1,6 +1,7 @@
 <?php
 
 /**
+ * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version @VERSION@
@@ -8,12 +9,12 @@
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) @YEAR@ by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
- **/
+ */
 defined('_JEXEC') or die('Restricted access');
 
 #ExtraWatch language file - to create a new language file, just copy the english.php to eg. german.php and place into /components/com_extrawatch/lang/
 
-# Main Menu
+// Main Menu
 DEFINE('_EW_MENU_STATS', "Статистика");
 DEFINE('_EW_MENU_GOALS', "Цели");
 DEFINE('_EW_MENU_SETTINGS', "Настройки");
@@ -24,14 +25,14 @@ DEFINE('_EW_MENU_LICENSE', "Лиценз");
 DEFINE('_EW_MENU_DONATORS', "Дарители");
 DEFINE('_EW_MENU_SUPPORT', "Поддържйте ExtraWatch и рекламите няма да се показват.");
 
-# Left visitors real-time window
+// Left visitors real-time window
 DEFINE('_EW_VISITS_VISITORS', "Последни посетители");
 DEFINE('_EW_VISITS_BOTS', "Ботове");
 DEFINE('_EW_VISITS_CAME_FROM', "Идва от");
 DEFINE('_EW_VISITS_MODULE_NOT_PUBLISHED', "Вашият модул JoomlaWach не е публикуван.За това не са записани никакви статистически данни. Отидете в раздел модули и да зададете модул ExtraWatch - да се публикува във всички страници");
 DEFINE('_EW_VISITS_PANE_LOADING', "Зареждане...");
 
-# Right stats window
+// Right stats window
 DEFINE('_EW_STATS_TITLE', "Статистика на посещенията през седмицата");
 DEFINE('_EW_STATS_WEEK', "Седмица");
 DEFINE('_EW_STATS_THIS_WEEK', "Тази седмица");
@@ -64,7 +65,7 @@ DEFINE('_EW_STATS_IP_BLOCKING_MANUALLY', "Напишете IP адреса, ко
 DEFINE('_EW_STATS_IP_BLOCKING_TOGGLE', "Превключване на блокирани IP адреси");
 DEFINE('_EW_STATS_PANE_LOADING', "Зареждам статистиката...");
 
-# Settings
+// Settings
 DEFINE('_EW_SETTINGS_TITLE', "Настройки");
 DEFINE('_EW_SETTINGS_DEFAULT', "Стандартни");
 DEFINE('_EW_SETTINGS_SAVE', "Запомни");
@@ -83,7 +84,7 @@ DEFINE('_EW_SETTINGS_SAVED', "Настройките бяха съхранени
 DEFINE('_EW_SETTINGS_ADD_YOUR_IP', "Добавете Вашия IP адрес");
 DEFINE('_EW_SETTINGS_TO_THE_LIST', "в списъка.");
 
-# Other / mostly general
+// Other / mostly general
 DEFINE('_EW_TITLE', "AJAX монитор за Joomla CMS");
 DEFINE('_EW_BACK', "Назад");
 DEFINE('_EW_ACCESS_DENIED', "Нямате права за достъп");
@@ -99,12 +100,12 @@ DEFINE('_EW_AJAX_PERMISSION_DENIED_2', "Може би просто сте заб
 DEFINE('_EW_AJAX_PERMISSION_DENIED_3', "на");
 DEFINE('_EW_AJAX_PERMISSION_DENIED_4', "това го принуждава да си мисли,че че това е друг домейн.");
 
-# Header
+// Header
 DEFINE('_EW_HEADER_DOWNLOAD', "Вземете най-новия код на това разширение от");
 DEFINE('_EW_HEADER_CAST_YOUR', "Изпратете своя");
 DEFINE('_EW_HEADER_VOTE', "Глас");
 
-# Tooltips
+// Tooltips
 DEFINE('_EW_TOOLTIP_CLICK', "Кликнете за да отворите tooltip прозореца");
 DEFINE('_EW_TOOLTIP_MOUSE_OVER', "Отидете с мишката на tooltip за да отворите прозореца");
 DEFINE('_EW_TOOLTIP_YESTERDAY_INCREASE', "Увеличение от вчера");
@@ -112,7 +113,7 @@ DEFINE('_EW_TOOLTIP_HELP', "Отвари онлайн помощ за");
 DEFINE('_EW_TOOLTIP_WINDOW_CLOSE', "Затворете този прозорец");
 DEFINE('_EW_TOOLTIP_PRINT', "Печат");
 
-# Goals
+// Goals
 DEFINE('_EW_GOALS_INSERT', "Добавяне на нова цел");
 DEFINE('_EW_GOALS_UPDATE', "Редактиране на цел номер");
 DEFINE('_EW_GOALS_ACTION', "Действие");
@@ -139,7 +140,7 @@ DEFINE('_EW_GOALS_EDIT', "Редактиране");
 DEFINE('_EW_GOALS_DELETE', "Изтриване");
 DEFINE('_EW_GOALS_DELETE_CONFIRM', "Вие ще загубите всички съществуващи статистически данни за тази цел. Наистина ли искате да изтриете тази цел?");
 
-# Frontend
+// Frontend
 DEFINE('_EW_FRONTEND_COUNTRIES', "Държава");
 DEFINE('_EW_FRONTEND_VISITORS', "Посетители");
 DEFINE('_EW_FRONTEND_TODAY', "Днес");
@@ -150,7 +151,7 @@ DEFINE('_EW_FRONTEND_THIS_MONTH', "Този месец");
 DEFINE('_EW_FRONTEND_LAST_MONTH', "Миналият месец");
 DEFINE('_EW_FRONTEND_TOTAL', "Общо");
 
-# Settings description - quite long
+// Settings description - quite long
 DEFINE('_EW_DESC_DEBUG', "ExtraWatch е в debug móde. По този начин ще могат да се определят причините за грешки. За да изключите, моля, променете стойността EXTRAWATCH_DEBUG в /components/com_extrawatch/config.php от 1 на 0");
 DEFINE('_EW_DESC_STATS_MAX_ROWS', "Максимален брой на редовете на данни след декомпресия в областта на статистиката");
 DEFINE('_EW_DESC_STATS_IP_HITS', "Всички IP адреси, които имат по-малко хитове от предишните дни, ще бъдат изтрити от историята на IP адреси.");
@@ -453,7 +454,7 @@ DEFINE('_EW_BLOCKING_MESSAGE', "Blocking Message");
 DEFINE('_EW_SERVER_URI_KEY', "Server URI key");
 DEFINE('_EW_FRONTEND_VISITORS_TOTAL_INITIAL', "Front End Visitors Total Initial");
 DEFINE('_EW_SIZEDATABASE_RECORDS', "Records");
-/***********EDITs******************/
+/***********EDITs*****************/
 DEFINE('_EW_ANTISPAM_BLOCKING_TEXT', " To make the blocking effective, you need to publish ExtraWatch agent BEFORE any content or forms. Eg. on left side in your template.
                     <br/>
                     Go to Module Manager -> ExtraWatch agent -> select position as left");
@@ -489,4 +490,4 @@ DEFINE('_EW_RENDERED_IN', "Rendered in");
 DEFINE('_EW_DESC_SEO_RENDER_ONLY_CHANGED', "Render only values which were already used in previous days (have some percentage in change column)");
 DEFINE('_EW_SEO_REPORT_SETTINGS', "SEO Report Settings");
 
-?>
+

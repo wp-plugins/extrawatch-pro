@@ -1,14 +1,15 @@
 <?php
 
 /**
+ * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 41
+ * @revision 150
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
- **/
+ */
 defined('_JEXEC') or die('Restricted access');
 ?>
 
@@ -86,7 +87,7 @@ defined('_JEXEC') or die('Restricted access');
         var target = "item-modules-" + index.toString();
         $.ajax({
             type:"POST",
-            url:"<?php echo $this->extraWatch->config->getLiveSiteWithSuffix(); ?>components/com_extrawatch/sizequery.php?rand=<?php echo $this->extraWatch->config->getRand(); ?>&env=<?php echo $this->extraWatch->env; ?>",
+            url:"<?php echo $this->extraWatch->config->getLiveSiteWithSuffix(); ?>components/com_extrawatch/sizequery.php?rand=<?php echo $this->extraWatch->config->getRand(); ?>&env=<?php echo get_class($this->extraWatch->env); ?>",
             data:"dir=" + dirs_modules[index] + "&mod=" + <?php echo DB_KEY_SIZE_MOD; ?>,
             success:function (resp) {
                 // we have the response
@@ -105,7 +106,7 @@ defined('_JEXEC') or die('Restricted access');
 
         $.ajax({
             type:"POST",
-            url:"<?php echo $this->extraWatch->config->getLiveSiteWithSuffix(); ?>components/com_extrawatch/sizequery.php?rand=<?php echo $this->extraWatch->config->getRand(); ?>&env=<?php echo $this->extraWatch->env; ?>",
+            url:"<?php echo $this->extraWatch->config->getLiveSiteWithSuffix(); ?>components/com_extrawatch/sizequery.php?rand=<?php echo $this->extraWatch->config->getRand(); ?>&env=<?php echo get_class($this->extraWatch->env); ?>",
             data:"dir=" + dirs_modules[index] + "&mod=" + <?php echo DB_KEY_SIZE_MOD; ?>,
             success:function (resp) {
                 // we have the response

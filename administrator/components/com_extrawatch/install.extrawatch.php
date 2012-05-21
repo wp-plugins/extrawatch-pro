@@ -1,24 +1,50 @@
 <?php
 
 /**
+ * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 41
+ * @revision 150
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
- **/
+ */
 
 /** ensure this file is being included by a parent file */
-if (!defined('_JEXEC') && !defined('_VALID_MOS')) die('Restricted access');
+if (!defined('_JEXEC') && !defined('_VALID_MOS')) {
+	die('Restricted access');
+}
+
+function fixFilePermissions() {
+    $filesArray = array(
+        "block.php",
+        "img.php",
+        "last.php",
+        "lastvisit.php",
+        "sizequery.php",
+        "sizequerytotal.php",
+        "stats.php",
+        "timezone.php",
+        "tooltip.php",
+        "trendtooltip.php",
+        "vars.php",
+        "visits.php",
+        "js".DS."extrawatch.js.php",
+        "js".DS."maps.js.php");
+
+    foreach($filesArray as $file) {
+        chmod(JPATH_SITE.DS."components".DS."com_extrawatch".DS.$file, 0755);
+    }
+}
+
 
 function sureRemoveDir($dir, $DeleteMe)
 {
     if (!$dh = @opendir($dir)) return;
-    while (false !== ($obj = readdir($dh))) {
+    while (FALSE !== ($obj = readdir($dh))) {
         if ($obj == '.' || $obj == '..') continue;
-        if (!@unlink($dir . '/' . $obj)) sureRemoveDir($dir . '/' . $obj, true);
+        if (!@unlink($dir . '/' . $obj)) sureRemoveDir($dir . '/' . $obj, TRUE);
     }
     if ($DeleteMe) {
         closedir($dh);
@@ -33,7 +59,7 @@ function extrawatch_initialize_ip2country($rootDir, $database)
     $numberOfFiles = 220;
     for ($j = 1; $j <= $numberOfFiles; $j++) {
         $fileName = $rootDir . DS . "components" . DS . "com_extrawatch" . DS . "sql" . DS . "extrawatch-$j.sql";
-        $lines = file($fileName);
+        $lines = @file($fileName);
         if (!$lines) {
             //die("<span style='color: red'>Error reading file: $fileName, your joomla site path is set to: ".$rootDir." what is probably not correct, check configuration.php</span><br/>");
         }
@@ -42,22 +68,24 @@ function extrawatch_initialize_ip2country($rootDir, $database)
         foreach ($lines as $line_num => $line) {
             $query .= trim($line);
             if (strstr($line, ");")) {
-                if ($j % 20 == 0)
-                    echo ((floor((($j) / $numberOfFiles) * 100)) . "%");
-                else if ($j % 2 == 0)
-                    echo (".");
+                if ($j % 20 == 0) {
+                    //sprintf("%d%%",((floor((($j) / $numberOfFiles) * 100))));
+                }
+                elseif ($j % 2 == 0) {
+                    //echo (".");
+                }
                 $database->setQuery(trim($query));
                 $result = $database->query();
                 if (!$result)
                     echo ("Error: " + $database->getQuery());
-                flush();
+                //flush();
                 $query = "";
                 $i++;
             }
         }
     }
     try {
-        // @sureRemoveDir(dirname($fileName), false);
+        // @sureRemoveDir(dirname($fileName), FALSE);
     } catch (Exception $e) {
         echo 'Cannot remove directory with SQL files: ', $e->getMessage(), "\n";
     }
@@ -145,7 +173,7 @@ function com_install()
     if ("1.5" == "1.5" && !version_compare(JVERSION, '1.6.0', '<')) {
         echo("<span style='color: red'><h2>Error: You are using joomla " . JVERSION . " but the installation package is for version 1.5 ! Uninstall this version, <a href='http://www.codegravity.com/download'>Go to download section</a>, download the package for Joomla " . JVERSION . ", and install again.</h2></span>");
         return -1;
-    } else if ("1.5" == "1.6" && !version_compare(JVERSION, '1.6.0', '>=')) {
+    } elseif ("1.5" == "1.6" && !version_compare(JVERSION, '1.6.0', '>=')) {
         echo("<span style='color: red'><h2>Error: You are using joomla " . JVERSION . " but the installation package is for version 1.5 ! Uninstall this version, <a href='http://www.codegravity.com/download'>Go to download section</a>, download the package for Joomla " . JVERSION . ", and install again.</h2></span>");
         return -1;
     }
@@ -168,6 +196,11 @@ function com_install()
                     <?php
                     extrawatch_initialize_menu($database);
                     extrawatch_initialize_ip2country(JPATH_SITE, $database);
+                    try {
+                        fixFilePermissions();
+                    } catch (Exception $e) {
+                        echo("Could not fix file permissions: ".$e);
+                    }
                     ?>
                     <br/><br/>
                     <font color="green"><b>Installation finished.</b></font><br/><br/>

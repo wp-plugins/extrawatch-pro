@@ -35,7 +35,7 @@ class IP_Blocking_Final extends PHPUnit_Extensions_SeleniumTestCase
             array_push($this->verificationErrors, $e->toString());
         }
         $this->click("219.91.209.116");
-        $this->assertTrue((bool)preg_match('/^Really toggle blocking of  219\.91\.209\.116 [\s\S]$/', $this->getConfirmation());)
+        $this->assertTrue((bool)preg_match('/^Really toggle blocking of  219\.91\.209\.116 [\s\S]$/', $this->getConfirmation()))
         ;
         $this->click("visits");
         // Verify IP is blocked
@@ -56,4 +56,4 @@ class IP_Blocking_Final extends PHPUnit_Extensions_SeleniumTestCase
     }
 }
 
-?>
+

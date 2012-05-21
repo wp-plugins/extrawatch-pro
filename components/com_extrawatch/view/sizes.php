@@ -1,14 +1,15 @@
 <?php
 
 /**
+ * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 41
+ * @revision 150
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
- **/
+ */
 defined('_JEXEC') or die('Restricted access');
 ?>
 <script type="text/javascript"
@@ -37,13 +38,13 @@ defined('_JEXEC') or die('Restricted access');
     </tr>
     <tr>
         <td valign="top" width="50%">
-            <?php require_once("sizecomponents.php"); ?>
+            <?php require_once "sizecomponents.php"; ?>
 
         </td>
         <td valign="top" width="50%">
             <?php
             if (get_class($this->extraWatch->env) == "ExtraWatchJoomlaEnv") {
-                require_once("sizemodules.php");
+                require_once "sizemodules.php";
             }
             ?>
         </td>

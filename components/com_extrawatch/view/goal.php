@@ -1,14 +1,15 @@
 <?php
 
 /**
+ * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 41
+ * @revision 150
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
- **/
+ */
 defined('_JEXEC') or die('Restricted access');
 ?>
 
@@ -18,7 +19,7 @@ defined('_JEXEC') or die('Restricted access');
         <table width='80%' cellpadding='3'>
             <tr>
                 <td valign='top' align='left' colspan='3'>
-                    <h2><?php echo($action);?><?php echo ExtraWatchHTML::renderOnlineHelp("goals-form"); ?></h2>
+                    <h2><?php echo($action);?><?php echo $this->extraWatchHTML->renderOnlineHelp("goals-form"); ?></h2>
 
                     <div align='center'
                          style='border:1px solid black; width:600px; text-align: justify; text-justify: distribute; padding: 5px;'>
@@ -31,7 +32,7 @@ defined('_JEXEC') or die('Restricted access');
             $disabled = $this->extraWatch->config->isFree();
             ?>
             <tr>
-            <tr><?php echo($this->extraWatchHTML->renderInputField("NAME", $values, $color, true)); ?></tr>
+            <tr><?php echo($this->extraWatchHTML->renderInputField("NAME", $values, $color, TRUE)); ?></tr>
             <tr><?php echo($this->extraWatchHTML->renderInputField("URI_CONDITION", $values, $color)); ?></tr>
             <tr><?php echo($this->extraWatchHTML->renderInputCheckBox("URI_INVERSED", $values, $color, $disabled)); ?></tr>
             <tr><?php echo($this->extraWatchHTML->renderInputField("TITLE_CONDITION", $values, $color)); ?></tr>

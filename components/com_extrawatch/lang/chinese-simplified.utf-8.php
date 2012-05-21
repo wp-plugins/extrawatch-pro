@@ -1,6 +1,7 @@
 <?php
 
 /**
+ * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version @VERSION@
@@ -8,12 +9,12 @@
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) @YEAR@ by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
- **/
+ */
 defined('_JEXEC') or die('Restricted access');
 
 #ExtraWatch language file - to create a new language file, just copy the english.php to eg. german.php and place into /components/com_extrawatch/lang/
 
-# Main Menu
+// Main Menu
 DEFINE('_EW_MENU_STATS', "实时统计");
 DEFINE('_EW_MENU_GOALS', "目标");
 DEFINE('_EW_MENU_SETTINGS', "设置");
@@ -25,14 +26,14 @@ DEFINE('_EW_MENU_DONATORS', "支持者");
 DEFINE('_EW_MENU_SUPPORT', "支持ExtraWatch以便从后台删除 ExtraWatch 的广告.");
 
 
-# Left visitors real-time window
+// Left visitors real-time window
 DEFINE('_EW_VISITS_VISITORS', "最新访客");
 DEFINE('_EW_VISITS_BOTS', "机器人");
 DEFINE('_EW_VISITS_CAME_FROM', "来自");
 DEFINE('_EW_VISITS_MODULE_NOT_PUBLISHED', "你的ExtraWatch模块没有发布！没有新的统计信息被记录下来.发布它,去模块部分并把其在所有网页上发布");
 DEFINE('_EW_VISITS_PANE_LOADING', "载入访问...");
 
-# Right stats window
+// Right stats window
 DEFINE('_EW_STATS_TITLE', "一周访问统计");
 DEFINE('_EW_STATS_WEEK', "周");
 DEFINE('_EW_STATS_THIS_WEEK', "本周");
@@ -65,7 +66,7 @@ DEFINE('_EW_STATS_IP_BLOCKING_MANUALLY', "输入你要阻止IP地址. (如217.24
 DEFINE('_EW_STATS_IP_BLOCKING_TOGGLE', "实时阻塞切换");
 DEFINE('_EW_STATS_PANE_LOADING', "载入统计...");
 
-# Settings
+// Settings
 DEFINE('_EW_SETTINGS_TITLE', "设置");
 DEFINE('_EW_SETTINGS_DEFAULT', "默认");
 DEFINE('_EW_SETTINGS_SAVE', "保存");
@@ -84,7 +85,7 @@ DEFINE('_EW_SETTINGS_SAVED', "设置被保存");
 DEFINE('_EW_SETTINGS_ADD_YOUR_IP', "添加您的IP ");
 DEFINE('_EW_SETTINGS_TO_THE_LIST', "到列表.");
 
-# Other / mostly general
+// Other / mostly general
 DEFINE('_EW_TITLE', "一个实时的AJAX joomla监控");
 DEFINE('_EW_BACK', "返回");
 DEFINE('_EW_ACCESS_DENIED', "您没有权限查看此!");
@@ -100,12 +101,12 @@ DEFINE('_EW_AJAX_PERMISSION_DENIED_2', "也许你只是忘记了在您的域名�
 DEFINE('_EW_AJAX_PERMISSION_DENIED_3', "从");
 DEFINE('_EW_AJAX_PERMISSION_DENIED_4', "什么使得它认为这是一个不同的域.");
 
-# Header
+// Header
 DEFINE('_EW_HEADER_DOWNLOAD', "从获取最新的扩展的代码");
 DEFINE('_EW_HEADER_CAST_YOUR', "请投下您的");
 DEFINE('_EW_HEADER_VOTE', "投票");
 
-# Tooltips
+// Tooltips
 DEFINE('_EW_TOOLTIP_CLICK', "单击显示帮助提示");
 DEFINE('_EW_TOOLTIP_MOUSE_OVER', "悬停鼠标显示帮助提示");
 DEFINE('_EW_TOOLTIP_YESTERDAY_INCREASE', "昨日增加");
@@ -113,7 +114,7 @@ DEFINE('_EW_TOOLTIP_HELP', "打开外部网上帮助");
 DEFINE('_EW_TOOLTIP_WINDOW_CLOSE', "关闭此窗口");
 DEFINE('_EW_TOOLTIP_PRINT', "打印");
 
-# Goals
+// Goals
 DEFINE('_EW_GOALS_INSERT', "插入一个新的目标");
 DEFINE('_EW_GOALS_UPDATE', "更新的目标编号.");
 DEFINE('_EW_GOALS_ACTION', "行动");
@@ -142,7 +143,7 @@ DEFINE('_EW_GOALS_EDIT', "编辑");
 DEFINE('_EW_GOALS_DELETE', "删除");
 DEFINE('_EW_GOALS_DELETE_CONFIRM', "你将失去所有这一目标最近的统计数据.你真的要删除这个目标编号.");
 
-# Frontend
+// Frontend
 DEFINE('_EW_FRONTEND_COUNTRIES', "国家");
 DEFINE('_EW_FRONTEND_VISITORS', "访客");
 DEFINE('_EW_FRONTEND_TODAY', "今天");
@@ -153,7 +154,7 @@ DEFINE('_EW_FRONTEND_THIS_MONTH', "本月");
 DEFINE('_EW_FRONTEND_LAST_MONTH', "上个月");
 DEFINE('_EW_FRONTEND_TOTAL', "总计");
 
-# Settings description - quite long
+// Settings description - quite long
 DEFINE('_EW_DESC_DEBUG', "ExtraWatch运行在调试模式.通过这种方式,你可以发现错误的原因.要关闭它,请更改EXTRAWATCH_DEBUG 的值 /components/com_extrawatch/config.php 从1到0 ");
 DEFINE('_EW_DESC_STATS_MAX_ROWS', "当统计在扩展模式时显示的最大行数.");
 DEFINE('_EW_DESC_STATS_IP_HITS', "过去几天中少于这个点击数值的所有IP地址将被从IP历史列表中删除.");
@@ -214,7 +215,7 @@ DEFINE('_EW_DESC_GOALS_BLOCK', "设置为1,如果你想阻挡访客.除了显示
 
 /* new translations */
 DEFINE('_EW_GOALS_COUNTRY_CONDITION', "国家条件");
-DEFINE('_EW_GOALS_CONTRY_INVERSED', "国家反演条件");
+DEFINE('_EW_GOALS_COUNTRY_INVERSED', "国家反演条件");
 DEFINE('_EW_DESC_GOALS_COUNTRY_CONDITION', " 2大写字母的国家代码(如: <b>TH</b>)");
 DEFINE('_EW_STATS_INTERNAL', "内部");
 DEFINE('_EW_STATS_FROM', "从");
@@ -462,7 +463,7 @@ DEFINE('_EW_BLOCKING_MESSAGE', "非阻塞消息");
 DEFINE('_EW_SERVER_URI_KEY', "服务器URI关键码");
 DEFINE('_EW_FRONTEND_VISITORS_TOTAL_INITIAL', "前台访客初步总记");
 DEFINE('_EW_SIZEDATABASE_RECORDS', "记录");
-/***********EDITs******************/
+/***********EDITs*****************/
 DEFINE('_EW_ANTISPAM_BLOCKING_TEXT', "为了使阻塞有效,你需要把ExtraWatch代理 发布在任何内容和表单之前.例如:在您的模板的左侧.
                     <br/>
                     进入模块管理 - >ExtraWatch代理 - >选择位置左");
@@ -498,4 +499,4 @@ DEFINE('_EW_RENDERED_IN', "Rendered in");
 DEFINE('_EW_DESC_SEO_RENDER_ONLY_CHANGED', "Render only values which were already used in previous days (have some percentage in change column)");
 DEFINE('_EW_SEO_REPORT_SETTINGS', "SEO Report Settings");
 
-?>
+

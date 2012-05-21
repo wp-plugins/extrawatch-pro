@@ -1,6 +1,7 @@
 <?php
 
 /**
+ * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version @VERSION@
@@ -8,12 +9,12 @@
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) @YEAR@ by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
- **/
+ */
 defined('_JEXEC') or die('Restricted access');
 
 #ExtraWatch language file - to create a new language file, just copy the english.php to eg. german.php and place into /components/com_extrawatch/lang/
 
-# Main Menu
+// Main Menu
 DEFINE('_EW_MENU_STATS', "Statistieken");
 DEFINE('_EW_MENU_GOALS', "Doelen");
 DEFINE('_EW_MENU_SETTINGS', "Instellingen");
@@ -24,14 +25,14 @@ DEFINE('_EW_MENU_LICENSE', "Reclame vrije licentie");
 DEFINE('_EW_MENU_DONATORS', "Donateuren");
 DEFINE('_EW_MENU_SUPPORT', "Steun ExtraWatch en krijg een administratie zonder reclame.");
 
-# Left visitors real-time window
+// Left visitors real-time window
 DEFINE('_EW_VISITS_VISITORS', "Nieuwste Bezoekers");
 DEFINE('_EW_VISITS_BOTS', "Bots");
 DEFINE('_EW_VISITS_CAME_FROM', "Herkomst");
 DEFINE('_EW_VISITS_MODULE_NOT_PUBLISHED', "Uw ExtraWatch module is niet gepubliceerd! Er worden geen nieuwe statistieken geregistreerd. Om het te publiceren, ga naar de module sectie en activeer de module op alle paginas");
 DEFINE('_EW_VISITS_PANE_LOADING', "Laden bezoekers...");
 
-# Right stats window
+// Right stats window
 DEFINE('_EW_STATS_TITLE', "Bezoekers statistieken voor week");
 DEFINE('_EW_STATS_WEEK', "Week");
 DEFINE('_EW_STATS_THIS_WEEK', "deze week");
@@ -64,7 +65,7 @@ DEFINE('_EW_STATS_IP_BLOCKING_MANUALLY', "Geef het IP adres op dat geblokkeerd m
 DEFINE('_EW_STATS_IP_BLOCKING_TOGGLE', "Wilt U werkelijk de blokkering wijzigen van ");
 DEFINE('_EW_STATS_PANE_LOADING', "Statistieken laden...");
 
-# Settings
+// Settings
 DEFINE('_EW_SETTINGS_TITLE', "Instellingen");
 DEFINE('_EW_SETTINGS_DEFAULT', "Standaard");
 DEFINE('_EW_SETTINGS_SAVE', "Opslaan");
@@ -83,7 +84,7 @@ DEFINE('_EW_SETTINGS_SAVED', "Instellingen zijn opgeslagen");
 DEFINE('_EW_SETTINGS_ADD_YOUR_IP', "Voeg Uw IP toe");
 DEFINE('_EW_SETTINGS_TO_THE_LIST', "aan de lijst.");
 
-# Other / mostly general
+// Other / mostly general
 DEFINE('_EW_TITLE', "Een realtime AJAX Joomla Monitor");
 DEFINE('_EW_BACK', "Terug");
 DEFINE('_EW_ACCESS_DENIED', "U heeft geen toestemming deze gegevens te bekijken !");
@@ -99,12 +100,12 @@ DEFINE('_EW_AJAX_PERMISSION_DENIED_2', "Misschien ben U vergeten www. voor uw do
 DEFINE('_EW_AJAX_PERMISSION_DENIED_3', "van");
 DEFINE('_EW_AJAX_PERMISSION_DENIED_4', "wat ervoor zorgt dat het denkt dat het een ander domein is.");
 
-# Header
+// Header
 DEFINE('_EW_HEADER_DOWNLOAD', "Kijk voor de nieuwste extensies op:");
 DEFINE('_EW_HEADER_CAST_YOUR', "Geef je");
 DEFINE('_EW_HEADER_VOTE', "Stem");
 
-# Tooltips
+// Tooltips
 DEFINE('_EW_TOOLTIP_CLICK', "Klik om de tooltip te zien");
 DEFINE('_EW_TOOLTIP_MOUSE_OVER', "Beweeg hier je muis over om de tootip te zien");
 DEFINE('_EW_TOOLTIP_YESTERDAY_INCREASE', "Stijging van gisteren");
@@ -112,7 +113,7 @@ DEFINE('_EW_TOOLTIP_HELP', "Open externe online help voor");
 DEFINE('_EW_TOOLTIP_WINDOW_CLOSE', "Dit venster sluiten");
 DEFINE('_EW_TOOLTIP_PRINT', "Print");
 
-# Goals
+// Goals
 DEFINE('_EW_GOALS_INSERT', "Doel toevoegen");
 DEFINE('_EW_GOALS_UPDATE', "Bijwerken van doel nr.");
 DEFINE('_EW_GOALS_ACTION', "Actie");
@@ -139,7 +140,7 @@ DEFINE('_EW_GOALS_EDIT', "Wijzigen");
 DEFINE('_EW_GOALS_DELETE', "Verwijderen");
 DEFINE('_EW_GOALS_DELETE_CONFIRM', "U zal alle recente statistieken voor dit doel verliezen. Wilt U werkelijk het doel verwijderen met nr.");
 
-# Frontend
+// Frontend
 DEFINE('_EW_FRONTEND_COUNTRIES', "Landen");
 DEFINE('_EW_FRONTEND_VISITORS', "Bezoekers");
 DEFINE('_EW_FRONTEND_TODAY', "Vandaag");
@@ -150,7 +151,7 @@ DEFINE('_EW_FRONTEND_THIS_MONTH', "Deze Maand");
 DEFINE('_EW_FRONTEND_LAST_MONTH', "Vorige Maand");
 DEFINE('_EW_FRONTEND_TOTAL', "Totaal");
 
-# Settings description - quite long
+// Settings description - quite long
 DEFINE('_EW_DESC_DEBUG', "ExtraWatch is in debug mode. Op deze manier kunt U fouten ontdekken. Om deze mode te deactiveren verander dan de waarde van EXTRAWATCH_DEBUG in /components/com_extrawatch/config.php van 1 naar 0");
 DEFINE('_EW_DESC_STATS_MAX_ROWS', "Maximaal aantal rijen wanneer de statistieken in uitgeklapte vorm getoond worden.");
 DEFINE('_EW_DESC_STATS_IP_HITS', "Alle IP adressen, die minder hits hebben dan deze waarde, worden uit de IP geschiedenis verwijderd.");
@@ -456,7 +457,7 @@ DEFINE('_EW_BLOCKING_MESSAGE', "Blocking Message");
 DEFINE('_EW_SERVER_URI_KEY', "Server URI key");
 DEFINE('_EW_FRONTEND_VISITORS_TOTAL_INITIAL', "Front End Visitors Total Initial");
 DEFINE('_EW_SIZEDATABASE_RECORDS', "Records");
-/***********EDITs******************/
+/***********EDITs*****************/
 DEFINE('_EW_ANTISPAM_BLOCKING_TEXT', " To make the blocking effective, you need to publish ExtraWatch agent BEFORE any content or forms. Eg. on left side in your template.
                     <br/>
                     Go to Module Manager -> ExtraWatch agent -> select position as left");
@@ -492,4 +493,4 @@ DEFINE('_EW_RENDERED_IN', "Rendered in");
 DEFINE('_EW_DESC_SEO_RENDER_ONLY_CHANGED', "Render only values which were already used in previous days (have some percentage in change column)");
 DEFINE('_EW_SEO_REPORT_SETTINGS', "SEO Report Settings");
 
-?>
+

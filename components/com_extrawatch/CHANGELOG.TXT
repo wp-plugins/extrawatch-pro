@@ -281,12 +281,12 @@
 2011-06-12 update fix: not checking exec
 2011-06-12 restricted access fix
 2011-06-12 build: year in build.xml, replacing 2012 token in copyright, revision number in config.php
-2011-06-12 adding 1.2.18, BETA, 2012 into header of .php files (mod_extrawatch_visitors)
-2011-06-12 adding 1.2.18, BETA, 2012 into header of .php files (mod_extrawatch_users)
-2011-06-12 adding 1.2.18, BETA, 2012 into header of .php files (mod_extrawatch_agent)
-2011-06-12 adding 1.2.18, BETA, 2012 into header of .php files (administrator)
-2011-06-12 build: adding 1.2.18, BETA, 2012 into header of .php files
-2011-06-12 build: 1.2.18, BETA is being replaced in all source files
+2011-06-12 adding 1.2.18, 150, 2012 into header of .php files (mod_extrawatch_visitors)
+2011-06-12 adding 1.2.18, 150, 2012 into header of .php files (mod_extrawatch_users)
+2011-06-12 adding 1.2.18, 150, 2012 into header of .php files (mod_extrawatch_agent)
+2011-06-12 adding 1.2.18, 150, 2012 into header of .php files (administrator)
+2011-06-12 build: adding 1.2.18, 150, 2012 into header of .php files
+2011-06-12 build: 1.2.18, 150 is being replaced in all source files
 2011-06-12 build: find revision number using ant task
 2011-06-09 heatmap: toogle display
 2011-06-09 removed prioritized support line

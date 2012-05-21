@@ -22,14 +22,14 @@ class Goal extends PHPUnit_Extensions_SeleniumTestCase
         $Redirect = "Redirect";
         $URL2 = "URI_CONDITION";
         $URL1 = "CAME_FROM_CONDITION";
-        $URI_INVERSED = true;
-        $TITLE_INVERSED = false;
-        $USERNAME_INVERSED = true;
-        $IP_INVERSED = false;
-        $CAME_FROM_INVERSED = true;
-        $COUNTRY_INVERSED = true;
-        $GET_INVERSED = false;
-        $POST_INVERSED = false;
+        $URI_INVERSED = TRUE;
+        $TITLE_INVERSED = FALSE;
+        $USERNAME_INVERSED = TRUE;
+        $IP_INVERSED = FALSE;
+        $CAME_FROM_INVERSED = TRUE;
+        $COUNTRY_INVERSED = TRUE;
+        $GET_INVERSED = FALSE;
+        $POST_INVERSED = FALSE;
         $this->open("/administrator/index.php");
         $this->click("link=Components");
         $this->click("link=extrawatch");
@@ -66,4 +66,4 @@ class Goal extends PHPUnit_Extensions_SeleniumTestCase
     }
 }
 
-?>
+

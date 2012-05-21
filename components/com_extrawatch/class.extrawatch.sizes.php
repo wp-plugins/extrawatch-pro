@@ -1,14 +1,15 @@
 <?php
 
 /**
+ * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 41
+ * @revision 150
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
- **/
+ */
 
 /** ensure this file is being included by a parent file */
 if (!defined('_JEXEC') && !defined('_VALID_MOS'))
@@ -17,18 +18,18 @@ if (!defined('_JEXEC') && !defined('_VALID_MOS'))
 class ExtraWatchSizes
 {
 
-    var $env;
-    var $database;
-    var $config;
-    var $helper;
-    var $date;
+    public $env;
+    public $database;
+    public $config;
+    public $helper;
+    public $date;
 
     const SCAN_DIR_MAIN = 'SCAN_DIR_MAIN';
     const SCAN_DIR_ADMIN = 'SCAN_DIR_ADMIN';
     const REAL_DIR_MAIN = 'REAL_DIR_MAIN';
     const REAL_DIR_ADMIN = 'REAL_DIR_ADMIN';
 
-    function ExtraWatchSizes($database)
+    function __construct($database)
     {
         $this->env = ExtraWatchEnvFactory::getEnvironment();
         $this->database = $database;
@@ -49,12 +50,12 @@ class ExtraWatchSizes
             return $size . " " . _EW_SIZES_BYTES;
             return $sign . $size . " " . _EW_SIZES_BYTES;
         }
-        else if ($size < (1024 * 1024)) {
+        elseif ($size < (1024 * 1024)) {
             $size = round($size / 1024, 1);
             return $size . " " . _EW_SIZES_KB;
             return $sign . $size . " " . _EW_SIZES_KB;
         }
-        else if ($size < (1024 * 1024 * 1024)) {
+        elseif ($size < (1024 * 1024 * 1024)) {
             $size = round($size / (1024 * 1024), 1);
             return $size . " " . _EW_SIZES_MB;
             return $sign . $size . " " . _EW_SIZES_MB;
@@ -72,7 +73,7 @@ class ExtraWatchSizes
         $totalsize = 0;
 
         if ($handle = @opendir($path)) {
-            while (false !== ($file = readdir($handle)))
+            while (FALSE !== ($file = readdir($handle)))
             {
                 $nextpath = $path . '/' . $file;
                 if ($file != '.' && $file != '..' && !is_link($nextpath)) {
@@ -130,19 +131,19 @@ class ExtraWatchSizes
 
         //TODO: Delete older than 30 days!
 
-        $checked = false;
+        $checked = FALSE;
 
         foreach ($rows as $row) {
             $tableName = $row->Name;
             $tableSize = $row->Data_length + $row->Index_length;
 
-            if ($checked == false) {
+            if ($checked == FALSE) {
                 $query = sprintf("SELECT COUNT(*) FROM #__extrawatch_info AS t WHERE date = '%d' AND t.group = '%d';", $lastRunAtMidnightDate, DB_KEY_SIZE_DB);
                 $this->database->setQuery($query);
                 $count = $this->database->resultQuery($query);
 
                 if ($count > 0) return;
-                $checked = true;
+                $checked = TRUE;
             }
 
             $query = sprintf("INSERT INTO #__extrawatch_info (`name`, `value`, `date`, `group`) VALUES ('%s', %d, %d, %d);",
@@ -210,11 +211,11 @@ class ExtraWatchSizes
         return $size;
     }
 
-    var $renderPageItems = 0;
-    var $renderPageHtml = "";
-    var $renderPageJavaArray = "";
-    var $renderPageTotal = 0;
-    var $renderPageTotalRaw = 0;
+    public $renderPageItems = 0;
+    public $renderPageHtml = "";
+    public $renderPageJavaArray = "";
+    public $renderPageTotal = 0;
+    public $renderPageTotalRaw = 0;
 
     /** HTML */
     function renderFileList($group, $scanDirectoryMain, $scanDirectoryAdmin, $realDirectoryMain, $realDirectoryAdmin, $suffix)
@@ -240,12 +241,12 @@ class ExtraWatchSizes
                 $directory = $realDirectoryMain . $dir . "/";
 
                 if (!isset($dirsParsed[$directory])) {
-                    $dirsParsed[$directory] = true;
+                    $dirsParsed[$directory] = TRUE;
                     if ($this->renderPageItems % 2 == 0) $color = "#f9f9f9"; else $color = "#eeeeee";
                     $this->renderPageItems++;
 
                     $this->renderPageJavaArray = $this->renderPageJavaArray . ", \"" . $directory . "\"";
-                    $size = $this->getDirectorySize($directory, $group, false, $this->findLatestCheckDayBySuffix($suffix));
+                    $size = $this->getDirectorySize($directory, $group, FALSE, $this->findLatestCheckDayBySuffix($suffix));
 
                     if ($size != "") {
                         $this->renderPageTotal += $size;
@@ -265,13 +266,13 @@ class ExtraWatchSizes
                 $directory = $realDirectoryAdmin . $dir . "/";
 
                 if (!isset($dirsParsed[$directory])) {
-                    $dirsParsed[$directory] = true;
+                    $dirsParsed[$directory] = TRUE;
                     if ($this->renderPageItems % 2 == 0) $color = "#f9f9f9"; else $color = "#eeeeee";
                     $this->renderPageItems++;
 
                     $this->renderPageJavaArray = $this->renderPageJavaArray . ", \"" . $directory . "\"";
 
-                    $size = $this->getDirectorySize($directory, $group, false, $this->findLatestCheckDayBySuffix($suffix));
+                    $size = $this->getDirectorySize($directory, $group, FALSE, $this->findLatestCheckDayBySuffix($suffix));
 
                     if ($size != "") {
                         $this->renderPageTotal += $size;
@@ -334,22 +335,22 @@ class ExtraWatchSizes
         $realPath = realpath($dir);
         //echo("NEW: checking whether $realPathBase is in $realPath ";
         if (!strstr($realPath, $realPathBase)) {
-            return false;
+            return FALSE;
         }
         $allowedDirs = $this->env->getAllowedDirsToCheckForSize();
         foreach ($allowedDirs as $allowedDir) {
             //echo("NEW: checking whether $realPathBase is in $realPath ".realpath($allowedDir));
             if (!strstr(realpath($allowedDir), $realPathBase)) {
-                return false;
+                return FALSE;
             }
         }
         //TODO finish regular expression
         /*        preg_match("(\\.\\.[\\/\\])[^.]*", $dir, $matches);
                 print_r($matches);
         */
-        return true;
+        return TRUE;
     }
 
 }
 
-?>
+

@@ -2,6 +2,7 @@
 
 
 /**
+ * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version @VERSION@
@@ -9,12 +10,12 @@
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) @YEAR@ by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
- **/
+ */
 defined('_JEXEC') or die('Restricted access');
 
 #ExtraWatch language file - to create a new language file, just copy the english.php to Örnek german.php and place into /components/com_extrawatch/lang/
 
-# Main Menu
+// Main Menu
 DEFINE('_EW_MENU_STATS', "İstatistikler");
 DEFINE('_EW_MENU_GOALS', "Hedefler");
 DEFINE('_EW_MENU_SETTINGS', "Ayarlar");
@@ -25,14 +26,14 @@ DEFINE('_EW_MENU_LICENSE', "Lisans");
 DEFINE('_EW_MENU_DONATORS', "Bağış Yapanlar");
 DEFINE('_EW_MENU_SUPPORT', "Joomla Watch'u Destekle ve Yönetim Panelindeki Reklamları Kaldır.");
 
-# Left visitors real-time window
+// Left visitors real-time window
 DEFINE('_EW_VISITS_VISITORS', "Son Ziyaretçiler");
 DEFINE('_EW_VISITS_BOTS', "Botlar");
 DEFINE('_EW_VISITS_CAME_FROM', "Geldigi Yer");
 DEFINE('_EW_VISITS_MODULE_NOT_PUBLISHED', "ExtraWatch modülü henüz yayinda olmadığı için herhangi bir istatistik verisi bulunmamaktadır. Lütfen modülü kurup yayınlayınız.");
 DEFINE('_EW_VISITS_PANE_LOADING', "Ziyaretler Yükleniyor...");
 
-# Right stats window
+// Right stats window
 DEFINE('_EW_STATS_TITLE', "Haftalık Ziyaret İstatistikleri");
 DEFINE('_EW_STATS_WEEK', "hafta");
 DEFINE('_EW_STATS_THIS_WEEK', "bu hafta");
@@ -65,7 +66,7 @@ DEFINE('_EW_STATS_IP_BLOCKING_MANUALLY', "Engellemek istediginiz IP numarasini g
 DEFINE('_EW_STATS_IP_BLOCKING_TOGGLE', "Gerçekten engellemek istiyor musun ");
 DEFINE('_EW_STATS_PANE_LOADING', "İstatistikler yükleniyor...");
 
-# Settings
+// Settings
 DEFINE('_EW_SETTINGS_TITLE', "Ayarlar");
 DEFINE('_EW_SETTINGS_DEFAULT', "Varsayılan");
 DEFINE('_EW_SETTINGS_SAVE', "Kaydet");
@@ -84,7 +85,7 @@ DEFINE('_EW_SETTINGS_SAVED', "Ayarlar kaydedildi");
 DEFINE('_EW_SETTINGS_ADD_YOUR_IP', "Kendi IP numarani ekle");
 DEFINE('_EW_SETTINGS_TO_THE_LIST', "listeye");
 
-# Other / mostly general
+// Other / mostly general
 DEFINE('_EW_TITLE', "Gerçek zamanlı AJAX Joomla ekranı");
 DEFINE('_EW_BACK', "Geri");
 DEFINE('_EW_ACCESS_DENIED', "Bu içeriği görme izinin yok!");
@@ -100,12 +101,12 @@ DEFINE('_EW_AJAX_PERMISSION_DENIED_2', "Belki de alan adınızın önüne www. e
 DEFINE('_EW_AJAX_PERMISSION_DENIED_3', "dosyasına");
 DEFINE('_EW_AJAX_PERMISSION_DENIED_4', "alan adının farklı olduğunu düşünmesine sebep olan adresinden erişmeyi deniyor.");
 
-# Header
+// Header
 DEFINE('_EW_HEADER_DOWNLOAD', "Son eklenti kodunu al");
 DEFINE('_EW_HEADER_CAST_YOUR', "Bize");
 DEFINE('_EW_HEADER_VOTE', "oy ver");
 
-# Tooltips
+// Tooltips
 DEFINE('_EW_TOOLTIP_CLICK', "İpuçlarini görmek için tıkla");
 DEFINE('_EW_TOOLTIP_MOUSE_OVER', "Tooltipi göstermek için fareyi üstüne getir");
 DEFINE('_EW_TOOLTIP_YESTERDAY_INCREASE', "dünkü artış");
@@ -113,7 +114,7 @@ DEFINE('_EW_TOOLTIP_HELP', "Harici online yardım dökümanını aç");
 DEFINE('_EW_TOOLTIP_WINDOW_CLOSE', "Pencereyi kapat");
 DEFINE('_EW_TOOLTIP_PRINT', "Çıktı al");
 
-# Goals
+// Goals
 DEFINE('_EW_GOALS_INSERT', "Yeni hedef gir");
 DEFINE('_EW_GOALS_UPDATE', "Hedef numarasını değiştir.");
 DEFINE('_EW_GOALS_ACTION', "Eylem");
@@ -140,7 +141,7 @@ DEFINE('_EW_GOALS_EDIT', "Düzenle");
 DEFINE('_EW_GOALS_DELETE', "Sil");
 DEFINE('_EW_GOALS_DELETE_CONFIRM', "Bu hedef için tüm istatistikler silinecek. Gerçekten silmek istiyor musun?");
 
-# Frontend
+// Frontend
 DEFINE('_EW_FRONTEND_COUNTRIES', "Ülkeler");
 DEFINE('_EW_FRONTEND_VISITORS', "Ziyaretçiler");
 DEFINE('_EW_FRONTEND_TODAY', "Bugün");
@@ -151,7 +152,7 @@ DEFINE('_EW_FRONTEND_THIS_MONTH', "Bu Ay");
 DEFINE('_EW_FRONTEND_LAST_MONTH', "Geçen Ay");
 DEFINE('_EW_FRONTEND_TOTAL', "Toplam");
 
-# Settings description - quite long
+// Settings description - quite long
 DEFINE('_EW_DESC_DEBUG', "ExtraWatch hata ayıklama modunda. Bu şekilde hatanın nedenini bulabilirsiniz. Kapatmak için, /components/com_extrawatch/config.php dosyasında EXTRAWATCH_DEBUG değerini 1 yerine 0 yapın");
 DEFINE('_EW_DESC_STATS_MAX_ROWS', "İstatistikler genişletilmiş moda alındığında azami kaç satır gösterileceği.");
 DEFINE('_EW_DESC_STATS_IP_HITS', "Önceki günlerde, girilen değerden daha az hite sahip olan tüm IP adresleri, IP geçmişinden silinecek.");
@@ -212,7 +213,7 @@ DEFINE('_EW_DESC_GOALS_BLOCK', "Ziyaretçinin engellenmesini istiyorsanız değe
 
 /* new translations */
 DEFINE('_EW_GOALS_COUNTRY_CONDITION', "Ülke durumu");
-DEFINE('_EW_GOALS_CONTRY_INVERSED', "Ülke tersine durumu");
+DEFINE('_EW_GOALS_COUNTRY_INVERSED', "Ülke tersine durumu");
 DEFINE('_EW_DESC_GOALS_COUNTRY_CONDITION', "Büyük harflerle 2 harfli ülke kodu (Örnek: <b>TH</b>)");
 DEFINE('_EW_STATS_INTERNAL', "Dahili");
 DEFINE('_EW_STATS_FROM', "Başlangıç");
@@ -400,11 +401,6 @@ DEFINE('_EW_DESC_IPINFODB_KEY', "Son ziyaret haritası ipinfodb.com anahtarı: <
 DEFINE('_EW_SETTINGS_FORCE_TIMEZONE_OFFSET', "Saat Dilimi ayarını zorunlu kıl");
 
 
-//add for upgrade
-DEFINE('_EW_MENU_UPDATE', "Güncelle");
-DEFINE('_EW_MENU_UPDATE_TITLE', "Yedekle & Sürüm yükselt");
-
-
 /* ExtraWatch 1.2.17 translations */
 DEFINE('_EW_MENU_UPDATE', "Güncelle");
 DEFINE('_EW_MENU_UPDATE_TITLE', "Yedekle & Sürüm yükselt");
@@ -465,7 +461,7 @@ DEFINE('_EW_BLOCKING_MESSAGE', "Mesaj engelleniyor");
 DEFINE('_EW_SERVER_URI_KEY', "Sunucu URL anahtarı");
 DEFINE('_EW_FRONTEND_VISITORS_TOTAL_INITIAL', "Ön uçtaki ziyaretçilerin başlangıç toplamı");
 DEFINE('_EW_SIZEDATABASE_RECORDS', "Kayıtlar");
-/***********EDITs******************/
+/***********EDITs*****************/
 DEFINE('_EW_ANTISPAM_BLOCKING_TEXT', " Engellemeyi etkili bir şekilde yapmak isterseniz, ExtraWatch ajanını tüm içerik ve formdan önce paylaşmalısınız. Örnek: temanızın sol tarafı.
                     <br/>
                     Modül Yöneticisi'ne gidin -> ExtraWatch ajanı -> pozisyonu sol olarak seçin");
@@ -500,4 +496,4 @@ DEFINE('_EW_RENDERED_IN', "Rendered in");
 DEFINE('_EW_DESC_SEO_RENDER_ONLY_CHANGED', "Render only values which were already used in previous days (have some percentage in change column)");
 DEFINE('_EW_SEO_REPORT_SETTINGS', "SEO Report Settings");
 
-?>
+

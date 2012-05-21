@@ -1,6 +1,7 @@
-﻿<?php
+<?php
 
 /**
+ * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version @VERSION@
@@ -8,11 +9,11 @@
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) @YEAR@ by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
- **/
+ */
 defined('_JEXEC') or die('Restricted access');
 
 
-# Main Menu
+// Main Menu
 
 DEFINE('_EW_MENU_STATS', "Statistiken");
 
@@ -33,7 +34,7 @@ DEFINE('_EW_MENU_DONATORS', "Spender");
 DEFINE('_EW_MENU_SUPPORT', "Unterstützen Sie ExtraWatch und erhalten Sie einen Backend-Bereich ohne Werbeeinblendungen.");
 
 
-# Left visitors real-time window
+// Left visitors real-time window
 
 DEFINE('_EW_VISITS_VISITORS', "Neue Besucher");
 
@@ -46,7 +47,7 @@ DEFINE('_EW_VISITS_MODULE_NOT_PUBLISHED', "Ihr ExtraWatch Modul ist nicht aktivi
 DEFINE('_EW_VISITS_PANE_LOADING', "Lade Visits...");
 
 
-# Right stats window
+// Right stats window
 
 DEFINE('_EW_STATS_TITLE', "wöchentliche Statistik");
 
@@ -111,7 +112,7 @@ DEFINE('_EW_STATS_IP_BLOCKING_TOGGLE', "Wollen Sie diese IP wirklich blockieren 
 DEFINE('_EW_STATS_PANE_LOADING', "Lade Statistiken...");
 
 
-# Settings
+// Settings
 
 DEFINE('_EW_SETTINGS_TITLE', "Einstellungen");
 
@@ -148,7 +149,7 @@ DEFINE('_EW_SETTINGS_ADD_YOUR_IP', "Fügen Sie ihre IP");
 DEFINE('_EW_SETTINGS_TO_THE_LIST', "zur Liste hinzu.");
 
 
-# Other / mostly general
+// Other / mostly general
 
 DEFINE('_EW_TITLE', "Ein Echtzeit AJAX-Joomla-Monitor");
 
@@ -179,7 +180,7 @@ DEFINE('_EW_AJAX_PERMISSION_DENIED_3', "von");
 DEFINE('_EW_AJAX_PERMISSION_DENIED_4', "was dafür sorgt, dass angenommen wird, es handle sich um eine andere Domain.");
 
 
-# Header
+// Header
 
 DEFINE('_EW_HEADER_DOWNLOAD', "Für die neueste Version, besuchen Sie");
 
@@ -188,7 +189,7 @@ DEFINE('_EW_HEADER_CAST_YOUR', "Geben Sie Ihre");
 DEFINE('_EW_HEADER_VOTE', "Stimme hier ab");
 
 
-# Tooltips
+// Tooltips
 
 DEFINE('_EW_TOOLTIP_CLICK', "Klicken, um Tooltip zu öffnen");
 
@@ -203,7 +204,7 @@ DEFINE('_EW_TOOLTIP_WINDOW_CLOSE', "Dieses Fenster schließen");
 DEFINE('_EW_TOOLTIP_PRINT', "Drucken");
 
 
-# Goals
+// Goals
 
 DEFINE('_EW_GOALS_INSERT', "Ziel einfügen");
 
@@ -256,7 +257,7 @@ DEFINE('_EW_GOALS_DELETE', "löschen");
 DEFINE('_EW_GOALS_DELETE_CONFIRM', "Sie werden alle bisherigen Statistikdaten für dieses Ziel verlieren. Wollen Sie wirklich die Löschung bestätigen für das Ziel mit der ID-Nr.");
 
 
-# Frontend
+// Frontend
 
 DEFINE('_EW_FRONTEND_COUNTRIES', "Länder");
 
@@ -277,7 +278,7 @@ DEFINE('_EW_FRONTEND_LAST_MONTH', "letzter Monat");
 DEFINE('_EW_FRONTEND_TOTAL', "Total");
 
 
-# Settings description - quite long
+// Settings description - quite long
 
 DEFINE('_EW_DESC_DEBUG', "ExtraWatch befindet sich im Fehlersuchmodus. Auf diesem Wege können Sie Fehlerquellen aufspüren. Um diesen Modus zu deaktivieren, ändern Sie bitte den Wert EXTRAWATCH_DEBUG in /components/com_extrawatch/config.php von 1 auf 0");
 
@@ -641,7 +642,7 @@ DEFINE('_EW_BLOCKING_MESSAGE', "Blockiere Nachricht");
 DEFINE('_EW_SERVER_URI_KEY', "Server URI Schlüssel");
 DEFINE('_EW_FRONTEND_VISITORS_TOTAL_INITIAL', "Front End Visitors Gesamt Initial");
 DEFINE('_EW_SIZEDATABASE_RECORDS', "Records/Aufzeichnungen");
-/***********EDITs******************/
+/***********EDITs*****************/
 DEFINE('_EW_ANTISPAM_BLOCKING_TEXT', " To make the blocking effective, you need to publish ExtraWatch agent BEFORE any content or forms. Eg. on left side in your template.
                     <br/>
                     Go to Module Manager -> ExtraWatch agent -> select position as left");
@@ -677,4 +678,4 @@ DEFINE('_EW_RENDERED_IN', "Rendered in");
 DEFINE('_EW_DESC_SEO_RENDER_ONLY_CHANGED', "Render only values which were already used in previous days (have some percentage in change column)");
 DEFINE('_EW_SEO_REPORT_SETTINGS', "SEO Report Settings");
 
-?>
+

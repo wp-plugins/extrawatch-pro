@@ -1,18 +1,19 @@
 <?php
 
 /**
+ * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 41
+ * @revision 150
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
- **/
+ */
 
 $env = @$_REQUEST['env'];
 
-include_once("includes.php");
+include_once "includes.php";
 
 switch ($env) {
     case "ExtraWatchDrupalEnv":
@@ -32,7 +33,7 @@ switch ($env) {
 
     case "ExtraWatchWordpressEnv":
         {
-        require_once(dirname(__FILE__) . '/../../../../../wp-load.php');
+        require_once dirname(__FILE__) . '/../../../../../wp-load.php';
         if (!defined('ENV')) define('ENV', 1);
         break;
         }
@@ -63,8 +64,8 @@ if (!$extraWatch->sizes->isAllowed($dir)) {
     die(_JW_SIZEQUERY_BAD_REQUEST);
 }
 if (is_dir($dir)) {
-    $sizeNow = $extraWatch->sizes->getDirectorySize($dir, $group, true, $extraWatch->date->jwDateToday());
-    $sizePrev = $extraWatch->sizes->getDirectorySize($dir, $group, false, $extraWatch->sizes->findLatestCheckDayByComOrModGroup());
+    $sizeNow = $extraWatch->sizes->getDirectorySize($dir, $group, TRUE, $extraWatch->date->jwDateToday());
+    $sizePrev = $extraWatch->sizes->getDirectorySize($dir, $group, FALSE, $extraWatch->sizes->findLatestCheckDayByComOrModGroup());
 
     if ($sizePrev == $sizeNow)
         $size = "<span style='color: gray;'>" . $extraWatch->sizes->sizeFormat($sizeNow) . "</span>";
@@ -78,4 +79,4 @@ if (is_dir($dir)) {
     die(_JW_SIZEQUERY_BAD_REQUEST);
 }
 
-?>
+

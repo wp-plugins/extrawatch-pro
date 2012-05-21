@@ -1,16 +1,17 @@
 <?php
 
 /**
+ * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 41
+ * @revision 150
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
- **/
+ */
 
-include_once("includes.php");
+include_once "includes.php";
 
 $extraWatch = new ExtraWatch();
 //$extraWatch->block->checkPermissions();
@@ -24,7 +25,7 @@ $h = $extraWatch->helper->requestGet("h");
 $day = $extraWatch->helper->requestGet("day");
 $ip = $extraWatch->helper->requestGet("ip");
 
-$randHash = $extraWatch->helper->requestGet(ExtraWatchHeatmap::HEATMAP_PARAM_HASH);
+$randHash = ExtraWatchHelper::requestGet(ExtraWatchHeatmap::HEATMAP_PARAM_HASH);
 if (!$extraWatch->config->isPermittedWithHash($randHash)) {
     die("Unauthorized access");
 }
@@ -48,4 +49,4 @@ switch ($action) {
 
 
 }
-?>
+

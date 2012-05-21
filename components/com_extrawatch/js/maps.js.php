@@ -1,14 +1,15 @@
 <?php
 
 /**
+ * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 41
+ * @revision 150
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
- **/
+ */
 
 define('_JEXEC', 1);
 define('DS', DIRECTORY_SEPARATOR);
@@ -36,7 +37,7 @@ switch ($env) {
 
     case "ExtraWatchWordpressEnv":
         {
-        require_once(dirname(__FILE__) . '/../../../../../../wp-load.php');
+        require_once dirname(__FILE__) . '/../../../../../../wp-load.php';
         break;
         }
     case "ExtraWatchNoCMSEnv":
@@ -102,15 +103,15 @@ var infowindow;
 var openmap, layer, openmapmarkers;
 
 
-function OpenMapLoad() {
+function extraWatchOpenMapLoad() {
 openmap = new OpenLayers.Map( 'openmap', {
 eventListeners: {
-"zoomend": mapEvent
+"zoomend": extraWatchMapEvent
 }
 }
 );
-function mapEvent(event) {
-saveZoom(openmap.getZoom());
+function extraWatchMapEvent(event) {
+extraWatchSaveZoom(openmap.getZoom());
 }
 layer = new OpenLayers.Layer.OSM( "OSM Map");
 openmap.addLayer(layer);
@@ -118,7 +119,7 @@ openmapmarkers = new OpenLayers.Layer.Markers( "Markers" );
 openmap.addLayer(openmapmarkers);
 }
 
-function GoogleMapLoad() {
+function extraWatchGoogleMapLoad() {
 <?php
 
 $ip = $extraWatch->visit->getLastIp();
@@ -127,7 +128,7 @@ $location = $extraWatch->visit->ip2Country($ip);
 echo "var latlng = new google.maps.LatLng(" . ((int)@$location['latitude']) . ", " . ((int)@$location['longitude']) . ");"
 ?>
 
-var zoom = loadZoom();
+var zoom = extraWatchLoadZoom();
 if (zoom == "")
 {
 zoom = 13;
@@ -150,7 +151,7 @@ var name = markers[i].getAttribute("name");
 var address = markers[i].getAttribute("address");
 var point = new google.maps.LatLng(parseFloat(markers[i].getAttribute("lat")),
 parseFloat(markers[i].getAttribute("lng")));
-var marker = createMarker(point, name, address);
+var marker = extraWatchCreateMarker(point, name, address);
 
 if (oldmarker != null)
 {
@@ -158,7 +159,7 @@ oldmarker.setMap(null);
 }
 oldmarker = marker;
 
-var zoom = loadZoom();
+var zoom = extraWatchLoadZoom();
 if (zoom == "")
 {
 zoom = 13;
@@ -168,13 +169,13 @@ map.setCenter(point);
 map.setZoom(parseInt(zoom));
 
 google.maps.event.addListener(map, 'zoom_changed', function() {
-saveZoom(map.getZoom());
+extraWatchSaveZoom(map.getZoom());
 });
 }
 });
 }
 
-function createMarker(point, name, address) {
+function extraWatchCreateMarker(point, name, address) {
 var marker = new google.maps.Marker({position: point, map: map, title: name});
 var html = "<b>" + name + "</b> <br/>" + address;
 google.maps.event.addListener(marker, 'click', function() {
@@ -185,21 +186,21 @@ infowindow.open(map, marker);
 return marker;
 }
 
-function saveZoom(mapzoom) {
+function extraWatchSaveZoom(mapzoom) {
 var exp = new Date();
 exp.setTime(exp.getTime() + (1000 * 60 * 60 * 24 * 30));
-setCookie("GoogleMapExtraWatchZoomLevel",mapzoom, exp);
+extraWatchSetCookie("GoogleMapExtraWatchZoomLevel",mapzoom, exp);
 }
 
-function loadZoom() {
-return getCookie("GoogleMapExtraWatchZoomLevel");
+function extraWatchLoadZoom() {
+return extraWatchGetCookie("GoogleMapExtraWatchZoomLevel");
 }
 
-function setCookie(name, value, expires) {
+function extraWatchSetCookie(name, value, expires) {
 document.cookie = name + "=" + escape(value) + "; path=/" + ((expires == null) ? "" : "; expires=" + expires.toGMTString());
 }
 
-function getCookie(c_name) {
+function extraWatchGetCookie(c_name) {
 if (document.cookie.length>0) {
 c_start=document.cookie.indexOf(c_name + "=");
 if (c_start!=-1) {
@@ -212,10 +213,10 @@ return unescape(document.cookie.substring(c_start,c_end));
 return "";
 }
 
-function OpenMapUpdate() {
+function extraWatchOpenMapUpdate() {
 downloadUrl("<?php echo $extraWatch->config->getLiveSiteWithSuffix(); ?>components/com_extrawatch/lastvisit.php?rand=<?php echo $extraWatch->config->getRand(); ?>&env=<?php echo(get_class($extraWatch->env)); ?>", function(data) {
 var markers = data.documentElement.getElementsByTagName("marker");
-var zoom = loadZoom();
+var zoom = extraWatchLoadZoom();
 if (zoom == "")
 {
 zoom = 13;

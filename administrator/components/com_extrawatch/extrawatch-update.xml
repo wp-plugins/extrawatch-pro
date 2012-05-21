@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<updates>
+   <update>
+      <name>ExtraWatch</name>
+      <description>ExtraWatch</description>
+      <element>com_extrawatch</element>
+      <type>component</type>
+      <version>1.2.18.150</version>
+       <infourl title="ExtraWatch URL">http://www.codegravity.com</infourl>
+      <downloads>
+         <downloadurl type="full" format="gz">http://www.codegravity.com/update/extrawatch/1.2.18/com_extrawatch.zip</downloadurl>
+      </downloads>
+      <maintainer>CodeGravity.com</maintainer>
+      <maintainerurl>http://www.codegravity.com</maintainerurl>
+      <targetplatform name="joomla" version="1.6" />
+   </update>
+   <update>
+      <name>ExtraWatch</name>
+      <description>ExtraWatch</description>
+      <element>com_extrawatch</element>
+      <type>component</type>
+      <version>1.2.18.150</version>
+       <infourl title="ExtraWatch URL">http://www.codegravity.com</infourl>
+      <downloads>
+         <downloadurl type="full" format="gz">http://www.codegravity.com/update/extrawatch/1.2.18/com_extrawatch.zip</downloadurl>
+      </downloads>
+      <maintainer>CodeGravity.com</maintainer>
+      <maintainerurl>http://www.codegravity.com</maintainerurl>
+      <targetplatform name="joomla" version="1.7" />
+   </update>
+   <update>
+      <name>ExtraWatch</name>
+      <description>ExtraWatch</description>
+      <element>com_extrawatch</element>
+      <type>component</type>
+      <version>1.2.18.150</version>
+       <infourl title="ExtraWatch URL">http://www.codegravity.com</infourl>
+      <downloads>
+         <downloadurl type="full" format="gz">http://www.codegravity.com/update/extrawatch/1.2.18/com_extrawatch.zip</downloadurl>
+      </downloads>
+      <maintainer>CodeGravity.com</maintainer>
+      <maintainerurl>http://www.codegravity.com</maintainerurl>
+      <targetplatform name="joomla" version="2.5" />
+   </update>
+</updates>

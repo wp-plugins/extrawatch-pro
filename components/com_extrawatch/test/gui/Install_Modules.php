@@ -58,4 +58,4 @@ class Install_Modules extends PHPUnit_Extensions_SeleniumTestCase
     }
 }
 
-?>
+

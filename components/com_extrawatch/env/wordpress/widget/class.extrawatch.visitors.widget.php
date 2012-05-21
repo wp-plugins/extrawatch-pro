@@ -1,13 +1,14 @@
 <?php
 /**
+ * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 58
+ * @revision 150
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
- **/
+ */
 class ExtraWatchVisitorsWidget extends WP_Widget {
 
     function ExtraWatchVisitorsWidget()
@@ -31,7 +32,8 @@ class ExtraWatchVisitorsWidget extends WP_Widget {
 
     function widget($args, $instance)
     {
-        include_once (WP_PLUGIN_DIR.DS."extrawatch".DS."modules".DS."mod_extrawatch_visitors" . DS . "mod_extrawatch_visitors.php");
+	$extraWatchPluginDir = realpath(dirname(realpath(__FILE__)).DS."..".DS."..".DS."..".DS."..".DS."..".DS);
+        include_once ($extraWatchPluginDir.DS."modules".DS."mod_extrawatch_visitors" . DS . "mod_extrawatch_visitors.php");
         echo renderExtraWatchVisitors();
     }
 
@@ -45,4 +47,4 @@ function ExtraWatchVisitorsWidget_init()
 
 
 add_action('widgets_init', 'ExtraWatchVisitorsWidget_init');
-?>
+

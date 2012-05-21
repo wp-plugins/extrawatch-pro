@@ -110,4 +110,4 @@ class Uninstall_Joomla extends PHPUnit_Extensions_SeleniumTestCase
   }
 }
 
-?>
+

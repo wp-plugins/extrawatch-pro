@@ -1,6 +1,7 @@
 <?php
 
 /**
+ * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
@@ -8,7 +9,7 @@
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
- **/
+ */
 
 /** ensure this file is being included by a parent file */
 if (!defined('_JEXEC') && !defined('_VALID_MOS'))
@@ -87,8 +88,10 @@ class ExtraWatchSetupWordpress implements ExtraWatchSetup
 
     function drop_tables($database)
     {
+	
         $query = "DROP TABLE #__extrawatch";
         $database->setQuery(trim($database->replaceDbPrefix($query)));
+        $database->query();
 
         $query = "DROP TABLE #__extrawatch_info";
         $database->executeQuery(trim($database->replaceDbPrefix($query)));
@@ -152,8 +155,17 @@ class ExtraWatchSetupWordpress implements ExtraWatchSetup
         $query = "DROP TABLE #__extrawatch_uri2keyphrase";
         $database->executeQuery(trim($database->replaceDbPrefix($query)));
         $database->query();
+		
 
-        echo("ExtraWatch tables deleted successfully");
+        $query = "DROP TABLE #__extrawatch_heatmap";
+        $database->executeQuery(trim($database->replaceDbPrefix($query)));
+        $database->query();
+		
+        $query = "DROP TABLE #__extrawatch_uri2keyphrase_pos";
+        $database->executeQuery(trim($database->replaceDbPrefix($query)));
+        $database->query();
+		
+		//echo("ExtraWatch tables deleted successfully");
 
         //delete file from upload
         @unlink(JPATH_BASE2 . DS . ".." . DS . ".." . DS . "uploads" . DS . "extrawatch.zip");
@@ -161,4 +173,4 @@ class ExtraWatchSetupWordpress implements ExtraWatchSetup
     }
 }
 
-?>
+

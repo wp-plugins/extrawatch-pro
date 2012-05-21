@@ -1,14 +1,15 @@
 <?php
 
 /**
+ * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 41
+ * @revision 150
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
- **/
+ */
 
 /** ensure this file is being included by a parent file */
 if (!defined('_JEXEC') && !defined('_VALID_MOS'))
@@ -17,11 +18,13 @@ if (!defined('_JEXEC') && !defined('_VALID_MOS'))
 class ExtraWatchHelper
 {
 
-    var $env;
-    var $database;
-    var $config;
+    public $env;
+    public $database;
+    public $config;
 
-    function ExtraWatchHelper($database)
+    const DEFAULT_TRUNC_LENGTH = 60;
+
+    function __construct($database)
     {
         $this->env = ExtraWatchEnvFactory::getEnvironment();
         $this->database = $database;
@@ -49,7 +52,7 @@ class ExtraWatchHelper
             $query = sprintf("DELETE FROM `$table`");
             $this->database->executeQuery($query);
         }
-        return true;
+        return TRUE;
     }
 
 
@@ -73,8 +76,8 @@ class ExtraWatchHelper
      */
     function getURI()
     {
-        $redirURI = addslashes(strip_tags(@ $_SERVER[$this->config->getConfigValue('EXTRAWATCH_SERVER_URI_KEY')]));
-        $uri = htmlspecialchars(addslashes(strip_tags(@ $_SERVER['REQUEST_URI'])));
+        $redirURI = addslashes(@strip_tags(@ $_SERVER[$this->config->getConfigValue('EXTRAWATCH_SERVER_URI_KEY')]));
+        $uri = htmlspecialchars(addslashes(@strip_tags(@ $_SERVER['REQUEST_URI'])));
 
         if (@ $redirURI && @ substr($redirURI, -9, 9) != "index.php")
             $uri = $redirURI;
@@ -85,11 +88,8 @@ class ExtraWatchHelper
     /**
      * helper
      */
-    function truncate($str, $len = "")
+    static function truncate($str, $len = ExtraWatchHelper::DEFAULT_TRUNC_LENGTH)
     {
-        if (@ !$len)
-            $len = $this->config->getConfigValue('EXTRAWATCH_TRUNCATE_VISITS');
-
         if (strlen($str) < $len)
             return $str;
         else
@@ -101,37 +101,12 @@ class ExtraWatchHelper
      */
     function saveSettings($post)
     {
-        ExtraWatchHelper :: saveConfigValues(unserialize(EXTRAWATCH_CHECKBOX_NAMES_ARRAY), $post);
-        return true;
-    }
-
-    /**
-     * Used by both - save anti-spam and save settings
-     * @param  $checkboxNamesArray
-     * @param  $post
-     * @return void
-     */
-    function saveConfigValues($checkboxNamesArray, $post)
-    {
-
-        foreach ($post as $key => $value) {
-            if (strstr($key, "EXTRAWATCH_")) {
-                $this->config->saveConfigValue($key, trim($value));
-            }
-        }
-        //hack :( explicitly save checkbox values
-        foreach (@$checkboxNamesArray as $key => $value) {
-            if (@ !$post[$value]) { //if there is no value - checkbox unchecked
-                $this->config->saveConfigValue($value, "Off");
-            }
-        }
-        // explicitly reset chache because of frontend settings
-        ExtraWatchCache :: clearCache();
-
+        $this->config->saveConfigValues(unserialize(EXTRAWATCH_CHECKBOX_NAMES_ARRAY), $post);
+        return TRUE;
     }
 
 
-    function getUser($env)
+    static function getUser($env)
     {
         return $env->getCurrentUser();
     }
@@ -147,7 +122,7 @@ class ExtraWatchHelper
      * helper
      */
     // fnmatch PHP function only on UNIX :(, this replaces the wildcard search
-    function wildcardSearch($pattern, $string)
+    static function wildcardSearch($pattern, $string)
     {
         return preg_match("#^" . strtr(preg_quote($pattern, '#'), array(
             '\*' => '.*',
@@ -197,7 +172,7 @@ class ExtraWatchHelper
         $langDirPath = JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "lang";
 
         if ($handle = @ opendir($langDirPath)) {
-            while (false !== ($file = readdir($handle))) {
+            while (FALSE !== ($file = readdir($handle))) {
                 if (strstr($file, ".php")) {
                     $file = str_replace(".php", "", $file);
                     $langArray[] = $file;
@@ -226,7 +201,7 @@ class ExtraWatchHelper
         if (@ !$row3->country) {
 
             $iplook = new ip2country($ip);
-            $iplook->UseDB = true;
+            $iplook->UseDB = TRUE;
             $iplook->db_tablename = "#__extrawatch_ip2c";
 
             if (($iplook->LookUp())) {
@@ -270,15 +245,15 @@ class ExtraWatchHelper
      * @param  $key
      * @return mixed
      */
-    function requestGet($key = null)
+    static function requestGet($key = null)
     {
         if (isset($key)) {
             //print_r(ExtraWatchEnvFactory::getEnvironment());
-            return strip_tags(ExtraWatchEnvFactory::getEnvironment()->getRequest()->getVar($key));
+            return @strip_tags(ExtraWatchEnvFactory::getEnvironment()->getRequest()->getVar($key));
         } else {
             $getArray = ExtraWatchEnvFactory::getEnvironment()->getRequest()->get('get');
             foreach ($getArray as &$get) { /* traversing the array and stripping tags */
-                $get = strip_tags($get);
+                $get = @strip_tags($get);
             }
             return $getArray;
         }
@@ -289,7 +264,7 @@ class ExtraWatchHelper
      * @param  $key
      * @return mixed
      */
-    function requestPost($key = null)
+    static function requestPost($key = null)
     {
         if (isset($key)) {
             return ExtraWatchEnvFactory::getEnvironment()->getRequest()->getVar($key);
@@ -298,10 +273,10 @@ class ExtraWatchHelper
             foreach ($postArray as &$post) { /* traversing the array and stripping tags */
                 if (is_array($post)) {
                     foreach ($post as &$postNested) {
-                        $postNested = strip_tags($postNested);
+                        $postNested = @strip_tags($postNested);
                     }
                 } else {
-                    $post = strip_tags($post);
+                    $post = @strip_tags($post);
                 }
             }
             return $postArray;
@@ -337,8 +312,8 @@ class ExtraWatchHelper
             'EXTRAWATCH_SPAMWORD_BANS_ENABLED'
         );
 
-        ExtraWatchHelper :: saveConfigValues($checkboxNamesArray, $post);
-        return true;
+        $this->config->saveConfigValues($checkboxNamesArray, $post);
+        return TRUE;
     }
 
     /**
@@ -354,8 +329,8 @@ class ExtraWatchHelper
             'EXTRAWATCH_EMAIL_SEO_REPORTS_ENABLED'
         );
 
-        ExtraWatchHelper :: saveConfigValues($checkboxNamesArray, $post);
-        return true;
+        $this->config->saveConfigValues($checkboxNamesArray, $post);
+        return TRUE;
     }
 
     /**
@@ -370,12 +345,12 @@ class ExtraWatchHelper
             'EXTRAWATCH_SEO_RENDER_ONLY_CHANGED'
         );
 
-        ExtraWatchHelper :: saveConfigValues($checkboxNamesArray, $post);
-        return true;
+        $this->config->saveConfigValues($checkboxNamesArray, $post);
+        return TRUE;
     }
 
     // HSV Values:Number 0-1
-    function HSV_TO_RGB($H, $S, $V)
+    static function HSV_TO_RGB($H, $S, $V)
     { // RGB Results:Number 0-255
         $RGB = array();
 
@@ -395,22 +370,22 @@ class ExtraWatchHelper
                 $var_G = $var_3;
                 $var_B = $var_1;
             }
-            else if ($var_i == 1) {
+            elseif ($var_i == 1) {
                 $var_R = $var_2;
                 $var_G = $V;
                 $var_B = $var_1;
             }
-            else if ($var_i == 2) {
+            elseif ($var_i == 2) {
                 $var_R = $var_1;
                 $var_G = $V;
                 $var_B = $var_3;
             }
-            else if ($var_i == 3) {
+            elseif ($var_i == 3) {
                 $var_R = $var_1;
                 $var_G = $var_2;
                 $var_B = $V;
             }
-            else if ($var_i == 4) {
+            elseif ($var_i == 4) {
                 $var_R = $var_3;
                 $var_G = $var_1;
                 $var_B = $V;
@@ -433,13 +408,13 @@ class ExtraWatchHelper
         return $RGB;
     }
 
-    function  hueFromRatio($ratio)
+    static function hueFromRatio($ratio)
     {
         $offset = 1 / 4;
         return 1 - ($ratio * 3 / 4 + $offset);
     }
 
-    function rgbFromRatio($ratio)
+    static function rgbFromRatio($ratio)
     {
         $hue = ExtraWatchHelper::hueFromRatio($ratio);
         $rgb = ExtraWatchHelper::HSV_TO_RGB($hue, 1, 1);
@@ -447,11 +422,11 @@ class ExtraWatchHelper
         return $rgbString;
     }
 
-    function renderNoData()
+    static function renderNoData()
     {
         return "<i>" . _EW_NO_DATA . "</i>";
     }
 
 }
 
-?>
+

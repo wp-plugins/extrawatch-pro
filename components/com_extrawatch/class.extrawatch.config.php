@@ -1,14 +1,15 @@
 <?php
 
 /**
+ * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 41
+ * @revision 150
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
- **/
+ */
 
 /** ensure this file is being included by a parent file */
 if (!defined('_JEXEC') && !defined('_VALID_MOS'))
@@ -17,11 +18,11 @@ if (!defined('_JEXEC') && !defined('_VALID_MOS'))
 class ExtraWatchConfig
 {
 
-    var $database;
-    var $liveSiteCached;
-    var $env;
+    public $database;
+    public $liveSiteCached;
+    public $env;
 
-    function ExtraWatchConfig($database)
+    function __construct($database)
     {
         $this->env = ExtraWatchEnvFactory::getEnvironment();
         $this->database = $database;
@@ -49,11 +50,11 @@ class ExtraWatchConfig
 
     function isPermitted()
     {
-        $rand = ExtraWatchConfig::getRand();
+        $rand = $this->getRand();
         if (!$rand || $rand != addslashes(strip_tags(@ ExtraWatchHelper::requestGet('rand')))) {
-            return false;
+            return FALSE;
         }
-        return true;
+        return TRUE;
     }
 
 
@@ -76,7 +77,7 @@ class ExtraWatchConfig
     function isIgnored($name, $key)
     {
         if (!@$key) {
-            return false;
+            return FALSE;
         }
         $name = strtoupper($name);
         $query = sprintf("select value from #__extrawatch_config where name='%s' limit 1", $this->database->getEscaped("EXTRAWATCH_IGNORE_" . $name));
@@ -84,10 +85,10 @@ class ExtraWatchConfig
         $exploded = explode("\n", $rowValue);
         foreach ($exploded as $value) {
             if (ExtraWatchHelper::wildcardSearch(trim($value), $key)) {
-                return true;
+                return TRUE;
             }
         }
-        return false;
+        return FALSE;
     }
 
 
@@ -118,7 +119,7 @@ class ExtraWatchConfig
         $value = $this->database->resultQuery($query);
         // explicit off for checkboxes
         if ($value == "Off") {
-            return false;
+            return FALSE;
         }
         if ($value) {
             return addslashes($value);
@@ -171,9 +172,9 @@ class ExtraWatchConfig
     {
         $accepted = $this->getConfigValue("EXTRAWATCH_LICENSE_ACCEPTED");
         if (@ $accepted) {
-            return true;
+            return TRUE;
         }
-        return false;
+        return FALSE;
     }
 
     function getLicenseFilePath()
@@ -196,16 +197,16 @@ class ExtraWatchConfig
     function useTrial()
     {
         if (!$this->isTrial()) {
-            $this->saveConfigValue("EXTRAWATCH_TRIAL_TIME", ExtraWatchDate::getServerTime());
+            $this->saveConfigValue("EXTRAWATCH_TRIAL_TIME", ExtraWatchDate::getUTCTimestamp());
         }
     }
 
     function isTrial()
     {
         if ($this->getConfigValue("EXTRAWATCH_TRIAL_TIME")) {
-            return true;
+            return TRUE;
         }
-        return false;
+        return FALSE;
     }
 
     function isTrialTimeOver()
@@ -238,9 +239,9 @@ class ExtraWatchConfig
     {
         $setting = $this->getConfigValue($key);
         if ($setting == '1' || strtolower($setting) == 'on') {
-            return true;
+            return TRUE;
         }
-        return false;
+        return FALSE;
     }
 
     /**
@@ -248,9 +249,10 @@ class ExtraWatchConfig
      * @param  $originalLink
      * @return mixed
      */
-    function replaceHttpByHttps($originalLink)
+    static function replaceHttpByHttps($originalLink)
     {
-        if ($this->env->isSSL()) {
+        $env = ExtraWatchEnvFactory::getEnvironment();
+        if ($env->isSSL()) {
             return str_ireplace("http://", "https://", $originalLink);
         }
         return str_ireplace("https://", "http://", $originalLink);
@@ -308,9 +310,9 @@ class ExtraWatchConfig
     {
         $regexp = '/^((1?\d{1,2}|2[0-4]\d|25[0-5])\.){3}(1?\d{1,2}|2[0-4]\d|25[0-5])$/';
         if (preg_match($regexp, $string)) {
-            return true;
+            return TRUE;
         }
-        return false;
+        return FALSE;
     }
 
     function getDomainFromLiveSite()
@@ -352,7 +354,7 @@ class ExtraWatchConfig
     function isAdFree()
     {
         if ($this->getConfigValue("EXTRAWATCH_ADFREE")) {
-            return true;
+            return TRUE;
         }
     }
 
@@ -362,9 +364,9 @@ class ExtraWatchConfig
     function isFree()
     {
         if ($this->getConfigValue("EXTRAWATCH_FREE")) {
-            return true;
+            return TRUE;
         }
-        return false;
+        return FALSE;
     }
 
     /**
@@ -413,14 +415,14 @@ class ExtraWatchConfig
     function checkLiveSite()
     {
         if ($this->getLiveSite() == $this->env->getRootSite()) {
-            return true;
+            return TRUE;
         }
-        return false;
+        return FALSE;
     }
 
     function getTrialVersionTimeLeft()
     {
-        return (int)(16 - ((ExtraWatchDate::getServerTime() - $this->getConfigValue("EXTRAWATCH_TRIAL_TIME")) / 3600 / 24) - 0.01); //because it will display 15 days as time left
+        return (int)(16 - ((ExtraWatchDate::getUTCTimestamp() - $this->getConfigValue("EXTRAWATCH_TRIAL_TIME")) / 3600 / 24) - 0.01); //because it will display 15 days as time left
     }
 
     function getLiveSiteWithSuffix()
@@ -440,7 +442,7 @@ class ExtraWatchConfig
 
     function getRandHash()
     {
-        return md5(md5($this->getRand()));
+        return md5(md5(ExtraWatchConfig::getRand()));
     }
 
     /**
@@ -451,12 +453,36 @@ class ExtraWatchConfig
     {
         $randHash = ExtraWatchConfig::getRandHash();
         if (!$randHash || $randHash != addslashes(strip_tags($hash))) {
-            return false;
+            return FALSE;
         }
-        return true;
+        return TRUE;
     }
 
+    /**
+     * Used by both - save anti-spam and save settings
+     * @param  $checkboxNamesArray
+     * @param  $post
+     * @return void
+     */
+    function saveConfigValues($checkboxNamesArray, $post)
+    {
+
+        foreach ($post as $key => $value) {
+            if (strstr($key, "EXTRAWATCH_")) {
+                $this->saveConfigValue($key, trim($value));
+            }
+        }
+        //hack :( explicitly save checkbox values
+        foreach (@$checkboxNamesArray as $key => $value) {
+            if (@ !$post[$value]) { //if there is no value - checkbox unchecked
+                $this->saveConfigValue($value, "Off");
+            }
+        }
+        // explicitly reset chache because of frontend settings
+        ExtraWatchCache::clearCache($this->database);
+
+    }
 
 }
 
-?>
+

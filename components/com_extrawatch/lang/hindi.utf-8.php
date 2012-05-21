@@ -1,6 +1,7 @@
-﻿<?php
+<?php
 
 /**
+ * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version @VERSION@
@@ -8,12 +9,12 @@
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) @YEAR@ by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
- **/
+ */
 defined('_JEXEC') or die('Restricted access');
 
 #ExtraWatch language file - to create a new language file, just copy the english.php to eg. german.php and place into /components/com_extrawatch/lang/
 
-# Main Menu
+// Main Menu
 DEFINE('_EW_MENU_STATS', "लाइव स्थिति");
 DEFINE('_EW_MENU_GOALS', "लक्ष्यों");
 DEFINE('_EW_MENU_SETTINGS', "सेटिंग्स");
@@ -25,14 +26,14 @@ DEFINE('_EW_MENU_DONATORS', "समर्थक");
 DEFINE('_EW_MENU_SUPPORT', "ExtraWatch समर्थन और आपके विज्ञापन बैकेंड से हटाये|");
 
 
-# Left visitors real-time window
+// Left visitors real-time window
 DEFINE('_EW_VISITS_VISITORS', "नवीनतम आगंतुकों");
 DEFINE('_EW_VISITS_BOTS', "Bots");
 DEFINE('_EW_VISITS_CAME_FROM', "से आया");
 DEFINE('_EW_VISITS_MODULE_NOT_PUBLISHED', "आपका ExtraWatch मॉड्यूल प्रकाशित नहीं है! कोई नए आँकड़े दर्ज की जा रही हैं. इसे प्रकाशित करने के लिए, मॉड्यूल के लिए जाना अनुभाग और यह सभी पृष्ठों पर प्रकाशित हे|");
 DEFINE('_EW_VISITS_PANE_LOADING', "लोड हो रहा है दौरा...");
 
-# Right stats window
+// Right stats window
 DEFINE('_EW_STATS_TITLE', "सप्ताह के लिए आँकड़े पर जाएँ");
 DEFINE('_EW_STATS_WEEK', "सप्ताह");
 DEFINE('_EW_STATS_THIS_WEEK', "इस सप्ताह");
@@ -65,7 +66,7 @@ DEFINE('_EW_STATS_IP_BLOCKING_MANUALLY', "एक IP पता दर्ज क�
 DEFINE('_EW_STATS_IP_BLOCKING_TOGGLE', "सच के अवरुद्ध टॉगल ");
 DEFINE('_EW_STATS_PANE_LOADING', "लोड हो रहा है स्थिति...");
 
-# Settings
+// Settings
 DEFINE('_EW_SETTINGS_TITLE', "सेटिंग्स");
 DEFINE('_EW_SETTINGS_DEFAULT', "व्यतिक्रम");
 DEFINE('_EW_SETTINGS_SAVE', "संचय");
@@ -84,7 +85,7 @@ DEFINE('_EW_SETTINGS_SAVED', "सेटिंग्स बचाया गया
 DEFINE('_EW_SETTINGS_ADD_YOUR_IP', "अपने IP जोड़ें");
 DEFINE('_EW_SETTINGS_TO_THE_LIST', "सूची में.");
 
-# Other / mostly general
+// Other / mostly general
 DEFINE('_EW_TITLE', "एक वास्तविक समय AJAX joomla की निगरानी");
 DEFINE('_EW_BACK', "Back");
 DEFINE('_EW_ACCESS_DENIED', "आप किसी भी अनुमतियाँ देखने के लिए नहीं है !");
@@ -100,12 +101,12 @@ DEFINE('_EW_AJAX_PERMISSION_DENIED_2', "शायद तुम सिर्फ �
 DEFINE('_EW_AJAX_PERMISSION_DENIED_3', "ओर से");
 DEFINE('_EW_AJAX_PERMISSION_DENIED_4', "क्या यह सोचने के लिए बनाता है यह एक अलग डोमेन हे .");
 
-# Header
+// Header
 DEFINE('_EW_HEADER_DOWNLOAD', "नवीनतम विस्तार से कोड प्राप्त करें");
 DEFINE('_EW_HEADER_CAST_YOUR', "कृपया अपना");
 DEFINE('_EW_HEADER_VOTE', "वोट डालना");
 
-# Tooltips
+// Tooltips
 DEFINE('_EW_TOOLTIP_CLICK', "टूलटिप दिखाने के लिए क्लिक करें");
 DEFINE('_EW_TOOLTIP_MOUSE_OVER', "टूलटिप दिखाने के लिए माउस मंडराना");
 DEFINE('_EW_TOOLTIP_YESTERDAY_INCREASE', "कल की वृद्धि");
@@ -113,7 +114,7 @@ DEFINE('_EW_TOOLTIP_HELP', "ऑनलाइन के लिए बाहरी 
 DEFINE('_EW_TOOLTIP_WINDOW_CLOSE', "इस विंडो को बंद करो ");
 DEFINE('_EW_TOOLTIP_PRINT', "छापना");
 
-# Goals
+// Goals
 DEFINE('_EW_GOALS_INSERT', "एक नया लक्ष्य सम्मिलित करो ");
 DEFINE('_EW_GOALS_UPDATE', "एक लक्ष्य नंबर अद्यतन करो ");
 DEFINE('_EW_GOALS_ACTION', "कार्रवाई");
@@ -142,7 +143,7 @@ DEFINE('_EW_GOALS_EDIT', "सम्पादन करना");
 DEFINE('_EW_GOALS_DELETE', "काटना");
 DEFINE('_EW_GOALS_DELETE_CONFIRM', "आप इस लक्ष्य के लिए सभी हाल के आँकड़ों डेटा उठ जाएगा. क्या तुम सच में एक लक्ष्य नंबर हटाना चाहते हैं");
 
-# Frontend
+// Frontend
 DEFINE('_EW_FRONTEND_COUNTRIES', "देश");
 DEFINE('_EW_FRONTEND_VISITORS', "आगंतुकों");
 DEFINE('_EW_FRONTEND_TODAY', "आज");
@@ -153,7 +154,7 @@ DEFINE('_EW_FRONTEND_THIS_MONTH', "इस महीने");
 DEFINE('_EW_FRONTEND_LAST_MONTH', "पिछले महीना");
 DEFINE('_EW_FRONTEND_TOTAL', "टोटल");
 
-# Settings description - quite long
+// Settings description - quite long
 DEFINE('_EW_DESC_DEBUG', "ExtraWatch डिबग मोड में है|इस तरह आप त्रुटि का कारण बनता है की खोज कर सकते हैं. इसे बंद करने के लिए, कृपया मूल्य में EXTRAWATCH_DEBUG बदलने /components/com_extrawatch/config.php from 1 to 0");
 DEFINE('_EW_DESC_STATS_MAX_ROWS', "अधिकतम पंक्तियों को दिखाने जब आँकड़े विस्तारित मोड में हैं|");
 DEFINE('_EW_DESC_STATS_IP_HITS', "सभी IP पते है कि पिछले दिनों में इस मान से कम हिट है IP इतिहास से हटा दिया जाएगा");
@@ -214,7 +215,7 @@ DEFINE('_EW_DESC_GOALS_BLOCK', "1Set के लिए 1 के लिए से�
 
 /* new translations */
 DEFINE('_EW_GOALS_COUNTRY_CONDITION', "देश की हालत");
-DEFINE('_EW_GOALS_CONTRY_INVERSED', "देश inversed स्थिति");
+DEFINE('_EW_GOALS_COUNTRY_INVERSED', "देश inversed स्थिति");
 DEFINE('_EW_DESC_GOALS_COUNTRY_CONDITION', "2 - पत्र ऊपरी मामले में देश कोड (Eg: <b>TH</b>)");
 DEFINE('_EW_STATS_INTERNAL', "आंतरिक");
 DEFINE('_EW_STATS_FROM', "से");
@@ -462,7 +463,7 @@ DEFINE('_EW_BLOCKING_MESSAGE', "अवरुद्ध संदेश");
 DEFINE('_EW_SERVER_URI_KEY', "Server URI key");
 DEFINE('_EW_FRONTEND_VISITORS_TOTAL_INITIAL', "रंट एंड आगंतुकों प्रारंभिक कुल");
 DEFINE('_EW_SIZEDATABASE_RECORDS', "अभिलेख");
-/***********EDITs******************/
+/***********EDITs*****************/
 DEFINE('_EW_ANTISPAM_BLOCKING_TEXT', " अवरुद्ध प्रभावी बनाने के लिए, आप किसी भी सामग्री या रूपों से पहले ExtraWatch एजेंट को प्रकाशित करने की जरूरत है.. Eg. on left side in your template.
                     <br/>
                     Go to Module Manager -> ExtraWatch agent -> select position as left");
@@ -498,4 +499,4 @@ DEFINE('_EW_RENDERED_IN', "Rendered in");
 DEFINE('_EW_DESC_SEO_RENDER_ONLY_CHANGED', "Render only values which were already used in previous days (have some percentage in change column)");
 DEFINE('_EW_SEO_REPORT_SETTINGS', "SEO Report Settings");
 
-?>
+

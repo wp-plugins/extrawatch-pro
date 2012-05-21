@@ -1,16 +1,17 @@
 <?php
 
 /**
+ * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 41
+ * @revision 150
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
- **/
+ */
 
-include_once("includes.php");
+include_once "includes.php";
 
 $extraWatch = new ExtraWatch();
 require_once ("lang" . DS . $extraWatch->config->getLanguage() . ".php");
@@ -49,15 +50,15 @@ $t1 = (time() + microtime())
 <table border='0' cellpadding='1' cellspacing='0' width='100%'>
 
     <?php
-    require_once("view" . DS . "stats-header.php");
+    require_once "view" . DS . "stats-header.php";
 
     if (@ExtraWatchHelper::requestGet('tab') == "1") {
-        require_once("view" . DS . "stats-total.php");
+        require_once "view" . DS . "stats-total.php";
     } else {
-        require_once("view" . DS . "stats-today.php");
+        require_once "view" . DS . "stats-today.php";
 
     }
-    require_once("view" . DS . "stats-footer.php");
+    require_once "view" . DS . "stats-footer.php";
     ?>
 
 </table>
