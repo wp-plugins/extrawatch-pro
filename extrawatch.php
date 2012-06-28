@@ -44,7 +44,12 @@ if (@function_exists("extrawatch_admin_menu")) {
     {
         $options = get_option('ew_plugin_options');
 
-        $path = WP_PLUGIN_URL."/extrawatch/";
+        
+
+        /*PRO_START*/
+        $path = WP_PLUGIN_URL."/extrawatch-pro/";
+        /*PRO_END*/
+
         $EC_userLevel = isset($options['accessLevel']) && !empty($options['accessLevel']) ? $options['accessLevel'] : 'level_10';
 
         add_menu_page(__('ExtraWatch', 'extrawatch'), __('ExtraWatch', 'extrawatch'), $EC_userLevel, 'extrawatch', 'ew_plugin_options', $path.'components/com_extrawatch/img/icons/extrawatch-logo-16x16.gif');
