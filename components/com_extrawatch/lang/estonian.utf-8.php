@@ -498,3 +498,20 @@ DEFINE('_EW_DESC_SEO_RENDER_ONLY_CHANGED', "Render only values which were alread
 DEFINE('_EW_SEO_REPORT_SETTINGS', "SEO Report Settings");
 
 
+DEFINE('_EW_HTTP500_ERROR', "Could not initialize ExtraWatch javascript functions! Browser could not load: \\n%s, because it returned HTTP 500 internal server error.  \\nThis usually of security restrictions by other components/plugins. Please check your .htaccess file in your root Joomla directory.  \\nIf you use Akeeba Admin tools, you need to go \ 'Akeeba htaccess maker\ ' -> \ 'Server Protection\ ' -> \ 'Exceptions\ ' -> \ 'Allow direct access to these files\ ', and add: \\n/components/com_joomlawatch/block.php \\n/components/com_joomlawatch/img.php \\n/components/com_joomlawatch/last.php \\n/components/com_joomlawatch/lastvisit.php \\n/components/com_joomlawatch/sizequery.php \\n/components/com_joomlawatch/sizequerytotal.php \\n/components/com_joomlawatch/stats.php \\n/components/com_joomlawatch/timezone.php \\n/components/com_joomlawatch/tooltip.php \\n/components/com_joomlawatch/trendtooltip.php \\n/components/com_joomlawatch/vars.php \\n/components/com_joomlawatch/visits.php \\n/components/com_joomlawatch/js/joomlawatch.js.php \\n/components/com_joomlawatch/js/maps.js.php ");
+
+DEFINE('_EW_NO_VISITS_ERROR',"Warning: No visits are currently being recorded. Your ExtraWatch Agent module is published, but most probably in position which does not exist in your template.
+                <br/><br/>
+                To fix this: <br/>
+                1. go to Modules section -&gt; ExtraWatch Agent <br/>
+                2. change the Position to 'left' or 'footer' (or some other position).<br/>
+                3. check if new visits are being recorded
+                <br/><br/>
+                If this won't help, you can also: <br/>
+                1. set 'Show Title' to 'Yes' in  Modules section -&gt; ExtraWatch Agent <br/>
+                2. try to use some other positions of ExtraWatch agent module<br/>
+                3. save<br/>
+                4. after reload of your main page look for 'ExtraWatch Agent' text.<br/>
+                5. this way you'll make sure the Agent module is published.<br/>
+                6. after that you can set 'Show Title' back to 'No'.
+                ");

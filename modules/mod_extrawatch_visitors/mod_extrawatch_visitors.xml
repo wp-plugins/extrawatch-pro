@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 <install type="module" version="1.5.0" method="upgrade">
-    <name>ExtraWatch Visitors</name>
+    <name>ExtraWatch Visitors Module</name>
     <author>Matej Koval - http://www.codegravity.com</author>
     <creationDate>2012</creationDate>
     <copyright>www.codegravity.com</copyright>
     <license>http://www.gnu.org/licenses/gpl-3.0.txt GNU/GPLv3</license>
     <authorEmail>foo@codegravity.com</authorEmail>
     <authorUrl>www.codegravity.com</authorUrl>
-    <version>1.2.18.150</version>
+    <version>1.2.18.203 PRO</version>
     <description>
         INSTRUCTIONS: This module inserts a small statistical information about where did the visitors came from
         (Countries) and also some information about amount of visits for today, yesterday, this week, last week, this

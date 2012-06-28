@@ -1,3 +1,4 @@
+/*PRO_START*/
 /**
  Copyright (c) 2010 Dennis Hotson
 
@@ -287,3 +288,4 @@
     }
 
 })();
+/*PRO_END*/

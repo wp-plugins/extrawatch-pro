@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 150
+ * @revision 203
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -15,6 +15,7 @@ defined('_JEXEC') or die('Restricted access');
 $extraWatchFlowHTML = new ExtraWatchFlowHTML($this->extraWatch->flow);
 ?>
 
+<!--PRO_START-->
 <script
     src="<?php echo $this->extraWatch->config->getLiveSiteWithSuffix();?>components/com_extrawatch/js/jquery-1.4.2.min.js"></script>
 <script
@@ -69,7 +70,7 @@ $extraWatchFlowHTML = new ExtraWatchFlowHTML($this->extraWatch->flow);
             </td>
             <td align="center" valign="top">
                 <img
-                    src="<?php echo $this->extraWatch->config->getLiveSiteWithSuffix();?>components/com_extrawatch/icons/hsv.png"
+                    src="<?php echo $this->extraWatch->config->getLiveSiteWithSuffix();?>components/com_extrawatch/img/icons/hsv.png"
                     alt=""/><br/>
             </td>
         </tr>
@@ -85,4 +86,4 @@ $extraWatchFlowHTML = new ExtraWatchFlowHTML($this->extraWatch->flow);
         </tr>
     </table>
 </form>
-
+<!--PRO_END-->

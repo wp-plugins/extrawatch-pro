@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 150
+ * @revision 203
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -17,13 +17,13 @@ defined('_JEXEC') or die('Restricted access');
     <tr>
         <td align='left'>
             <a href='<?php echo $this->extraWatch->config->renderLink('goals', "&action=insert");?>'><img
-                src='<?php echo($this->extraWatch->config->getLiveSiteWithSuffix());?>components/com_extrawatch/icons/new.gif'
+                src='<?php echo($this->extraWatch->config->getLiveSiteWithSuffix());?>components/com_extrawatch/img/icons/new.gif'
                 border='0' title='<?php echo _EW_GOALS_NEW;?>' valign='center'/> <?php echo _EW_GOALS_NEW;?></a> &nbsp;
             &nbsp;
         </td>
         <td align='right'>
             <a href='<?php echo $this->extraWatch->config->renderLink('goals');?><img src='
-               <?php echo($this->extraWatch->config->getLiveSiteWithSuffix());?>components/com_extrawatch/icons/reload.gif'
+               <?php echo($this->extraWatch->config->getLiveSiteWithSuffix());?>components/com_extrawatch/img/icons/reload.gif'
             border='0' title='<?php echo _EW_GOALS_RELOAD;?>'/></a>
         </td>
     </tr>

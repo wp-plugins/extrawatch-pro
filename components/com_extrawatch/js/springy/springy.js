@@ -1,3 +1,4 @@
+/*PRO_START*/
 /**
  Copyright (c) 2010 Dennis Hotson
 
@@ -534,4 +535,5 @@ Renderer.prototype.start = function () {
         });
     });
 };
+/*PRO_END*/
 

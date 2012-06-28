@@ -6,7 +6,7 @@
     <copyright>Copyright 2006-2012 by Matej Koval</copyright>
     <authorEmail>foo@codegravity.com</authorEmail>
     <authorUrl>http://www.codegravity.com</authorUrl>
-    <version>1.2.18.785</version>
+    <version>1.2.18.203 PRO</version>
     <license>http://www.gnu.org/licenses/gpl-3.0.txt GNU/GPLv3</license>
     <description>
         ExtraWatch is an AJAX component and module for Joomla CMS that allows you to watch
@@ -19,67 +19,27 @@
         show the top countries information and visit counts for certain periods of time.
     </description>
     <files>
+        <folder>ajax</folder>
+        <folder>css</folder>
+        <folder>img</folder>
         <folder>js</folder>
         <folder>lang</folder>
         <folder>log</folder>
-        <folder>flags</folder>
-        <folder>sql</folder>
-        <folder>icons</folder>
-        <folder>env</folder>
+        <folder>src</folder>
         <folder>view</folder>
-        <folder>css</folder>
+        <folder>sql</folder>
 
-        <filename>admin.extrawatch.html.php</filename>
-        <filename>block.php</filename>
-        <filename>class.ip2country.php</filename>
-        <filename>class.ipinfodb.php</filename>
-        <filename>class.extrawatch.block.html.php</filename>
-        <filename>class.extrawatch.block.php</filename>
-        <filename>class.extrawatch.cache.php</filename>
-        <filename>class.extrawatch.config.php</filename>
-        <filename>class.extrawatch.date.php</filename>
-        <filename>class.extrawatch.db.php</filename>
-        <filename>class.extrawatch.flow.html.php</filename>
-        <filename>class.extrawatch.flow.php</filename>
-        <filename>class.extrawatch.goal.html.php</filename>
-        <filename>class.extrawatch.goal.php</filename>
-        <filename>class.extrawatch.heatmap.html.php</filename>
-        <filename>class.extrawatch.heatmap.php</filename>
-        <filename>class.extrawatch.helper.php</filename>
-        <filename>class.extrawatch.html.php</filename>
-        <filename>class.extrawatch.log.php</filename>
-        <filename>class.extrawatch.php</filename>
-        <filename>class.extrawatch.seo.php</filename>
-        <filename>class.extrawatch.seo.html.php</filename>
-        <filename>class.extrawatch.sizes.php</filename>
-        <filename>class.extrawatch.stat.html.php</filename>
-        <filename>class.extrawatch.stat.php</filename>
-        <filename>class.extrawatch.trend.html.php</filename>
-        <filename>class.extrawatch.visit.history.html.php</filename>
-        <filename>class.extrawatch.visit.history.php</filename>
-        <filename>class.extrawatch.visit.html.php</filename>
-        <filename>class.extrawatch.visit.php</filename>
+        <filename>admin.extrawatch.php</filename>
+
         <filename>config.php</filename>
-        <filename>heatmap.php</filename>
         <filename>img.php</filename>
-        <filename>inc.extrawatch.env.php</filename>
         <filename>includes.php</filename>
         <filename>index.html</filename>
         <filename>INSTALL.txt</filename>
-        <filename>last.php</filename>
-        <filename>lastvisit.php</filename>
         <filename>LICENSE.txt</filename>
         <filename>README.txt</filename>
-        <filename>sizequery.php</filename>
-        <filename>sizequerytotal.php</filename>
-        <filename>stats.php</filename>
         <filename>TERMS_AND_CONDITIONS.txt</filename>
         <filename>timezone.php</filename>
-        <filename>tooltip.php</filename>
-        <filename>trendtooltip.php</filename>
-        <filename>UPGRADE.txt</filename>
-        <filename>vars.php</filename>
-        <filename>visits.php</filename>
 
     </files>
 

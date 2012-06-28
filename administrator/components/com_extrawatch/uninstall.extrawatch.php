@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 150
+ * @revision 203
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -135,5 +135,5 @@ function com_uninstall()
 
 ?>
 
-<iframe src="http://www.codegravity.com/track/extrawatch/1.2.14/uninstall/" width="1px" height="1px" frameborder="0">
+<iframe src="http://www.codegravity.com/track/extrawatch/1.2.18/uninstall/" width="1px" height="1px" frameborder="0">
 </iframe>

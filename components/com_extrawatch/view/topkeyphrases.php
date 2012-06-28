@@ -27,7 +27,7 @@ if (!$day) {
     if (@$rows)
         foreach ($rows as $row) {
             $output .= ("<tr><td width='100%'><a href='http://www.google.com/search?q=" . urlencode($row->name) . "' target='_blank'>" . $row->name . "</a></td><td align='right'>" . $row->position . "</td>" . "<td align='right'>" . $row->count . "</td>" .
-                $extraWatchStatHTML->renderDiffTableCellsAndIcon(DB_KEY_SEARCH_RESULT_NUM, $row->phraseId, $day) .
+                $extraWatchStatHTML->renderDiffTableCellsAndIcon(EW_DB_KEY_SEARCH_RESULT_NUM, $row->phraseId, $day) .
                 "</tr>");
         }
     echo($output);

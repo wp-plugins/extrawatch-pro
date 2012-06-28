@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 150
+ * @revision 203
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -41,21 +41,21 @@ if ($this->extraWatch->config->getEnvironment() != "ExtraWatchJoomlaEnv") {
 
     .tab_active {
         background-position: top center;
-        background-image: url(<?php echo($this->extraWatch->config->getLiveSiteWithSuffix());?>components/com_extrawatch/icons/tab-on.gif);
+        background-image: url(<?php echo($this->extraWatch->config->getLiveSiteWithSuffix());?>components/com_extrawatch/img/icons/tab-on.gif);
         background-repeat: no-repeat;
         width: 100px;
     }
 
     .tab_inactive {
         background-position: top center;
-        background-image: url(<?php echo($this->extraWatch->config->getLiveSiteWithSuffix());?>components/com_extrawatch/icons/tab-off.gif);
+        background-image: url(<?php echo($this->extraWatch->config->getLiveSiteWithSuffix());?>components/com_extrawatch/img/icons/tab-off.gif);
         background-repeat: no-repeat;
         width: 100px;
     }
 
     .tab_none {
         background-position: bottom center;
-        background-image: url(<?php echo($this->extraWatch->config->getLiveSiteWithSuffix());?>components/com_extrawatch/icons/tab-none.gif);
+        background-image: url(<?php echo($this->extraWatch->config->getLiveSiteWithSuffix());?>components/com_extrawatch/img/icons/tab-none.gif);
         background-repeat: repeat-x;
     }
 
@@ -97,7 +97,7 @@ if ($this->extraWatch->config->getEnvironment() != "ExtraWatchJoomlaEnv") {
         width: 1000px;
         background-color: #DDDDDD;
         background-position: top center;
-        background-image: url(<?php echo($this->extraWatch->config->getLiveSiteWithSuffix());?>components/com_extrawatch/icons/credits-background.png);
+        background-image: url(<?php echo($this->extraWatch->config->getLiveSiteWithSuffix());?>components/com_extrawatch/img/icons/credits-background.png);
         background-repeat: repeat;
         border: 1px solid #ddd; /* this is the border. should have the same value for the links */
 

@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 150
+ * @revision 203
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -13,7 +13,7 @@
 defined('_JEXEC') or die('Restricted access');
 
 ?>
-
+<!--PRO_START-->
 <!--
 <form action="<?php echo($this->extraWatch->config->getLiveSite());?>administrator/?option=com_extrawatch&task=status" method="POST">
     <input type="checkbox" onchange="this.form.submit()"/> Show all tables
@@ -173,7 +173,7 @@ defined('_JEXEC') or die('Restricted access');
 
         $day = $this->extraWatch->date->jwDateToday();
 
-        $trendsIcon = "<img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/icons/trend_icon.gif' border='0'  " . $this->extraWatch->helper->getTooltipOnEvent() . "=\"ajax_showTooltip('" . $this->extraWatch->config->getLiveSite() . "components/com_extrawatch/trendtooltip.php?rand=" . $this->extraWatch->config->getRand() . "&group=" . DB_KEY_SIZE_DB . "&name=" . $row->Name . "&date=$day&env=".get_class($this->extraWatch->env)."',this);return FALSE\"/>";
+        $trendsIcon = "<img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/trend_icon.gif' border='0'  " . $this->extraWatch->helper->getTooltipOnEvent() . "=\"ajax_showTooltip('" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/ajax/trendtooltip.php?rand=" . $this->extraWatch->config->getRand() . "&group=" . EW_DB_KEY_SIZE_DB . "&name=" . $row->Name . "&date=$day&env=".get_class($this->extraWatch->env)."',this);return FALSE\"/>";
 
         echo("<td style='background-color: $color;' align='center'>" . $trendsIcon . "</td>");
 
@@ -210,3 +210,4 @@ defined('_JEXEC') or die('Restricted access');
 <br/>
 <br/>
 
+<!--PRO_END-->

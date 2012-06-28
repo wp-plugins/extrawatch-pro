@@ -27,14 +27,14 @@ function extraWatchRenderLicenseFree($extraWatch)
         text-align: center;
     }
     .tick {
-        background-image: url(" . $extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/icons/tick.png);
+        background-image: url(" . $extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/tick.png);
         background-repeat: no-repeat;
         background-position: center center;
         width: 120px;
         align: center;
     }
     .untick {
-        background-image: url(" . $extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/icons/unpublished.png);
+        background-image: url(" . $extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/unpublished.png);
         background-repeat: no-repeat;
         background-position: center center;
         width: 120px;
@@ -50,7 +50,7 @@ function extraWatchRenderLicenseFree($extraWatch)
         font-weight: normal;
     }
 </style>
-<h1>ExtraWatch 1.2.18BETA - PRO</h1>
+<h1>ExtraWatch 1.2.18.203 PRO</h1>
 
 <script type='text/javascript'>
     function toggleNoKeyForm() {

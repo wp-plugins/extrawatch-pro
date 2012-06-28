@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 150
+ * @revision 203
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -26,7 +26,7 @@ if (!defined('_JEXEC') && !defined('_VALID_MOS')) {
 # define('EXTRAWATCH_LIVE_SITE','/');
 
 define('EXTRAWATCH_VERSION', "1.2.18");
-define('EXTRAWATCH_REVISION', "150");
+define('EXTRAWATCH_REVISION', "203");
 
 define('EXTRAWATCH_DEBUG', 0);
 
@@ -179,7 +179,6 @@ adipex
 advicer
 affiliate program
 all natural
-amazing stuff
 an invitation to
 any future mailing
 as seen on
@@ -193,10 +192,8 @@ be amazed
 be your own boss
 beneficiary
 big bucks
-big money
 bill 1618
 billing address
-billion
 billion dollars
 blackjack
 bllogspot
@@ -209,7 +206,6 @@ buy direct
 buying judgments
 byob
 cable converter
-call free
 call now
 calling creditors
 cancel at any time
@@ -225,12 +221,10 @@ casinos
 cell phone cancer scam
 cents on the dollar
 chain letter
-chatroom
 check or money order
 cialis
 claim your
 click this link
-click to remove
 click to remove mailto
 collect child support
 compare rates
@@ -313,13 +307,10 @@ free priority mail
 free to the first
 freenet
 freenet-shopping
-full refund
 gambling-
 get rich
 get started now
 gift certificate
-great offer
-guarantee
 hair loss
 hair-loss
 have you been turned down?
@@ -330,7 +321,6 @@ holdem
 holdempoker
 holdemsoftware
 holdemtexasturbowilson
-home based
 home based business
 home business
 home employment
@@ -346,9 +336,6 @@ if only it were that easy
 if you wish to be removed
 in accordance with laws
 incest
-income from home
-increase sales
-increase traffic
 increase your sales
 incredible deal
 information you requested
@@ -356,7 +343,6 @@ insurance
 insurance-quotesdeals-4u
 insurancedeals-4u
 investment decision
-it's effective
 join millions of american
 jrcreations
 largest payoff
@@ -377,9 +363,6 @@ lowest mortgage interest rates
 lowest price
 luxury car
 mail in order form
-mailing list
-mailinglist
-maintained
 major credit cards
 marketing solutions
 mass email
@@ -437,13 +420,6 @@ online pharmacy
 online-gambling
 onlinegambling-4u
 only $
-opt in
-opt out
-opt-out
-optout
-order by fax
-order by phone
-order within
 orders shipped by priority mail
 ottawavalleyag
 outstanding values
@@ -460,11 +436,9 @@ phentermine
 poker-chip
 potential earnings
 poze
-presently
 print form signature
 print out and fax
 produced and sent out
-profits
 pure profit
 pussy
 rate quote
@@ -476,16 +450,12 @@ refinance
 refinance home
 removal instructions
 remove in the subject line
-remove me
-remove subject
-remove yourself
 removed from future mailing
 removed in subject line
 removes wrinkles
 rental-car-e-site
 reply remove subject
 reply to this message
-reply with
 requires initial investment
 reserves the right
 retirement business
@@ -547,10 +517,10 @@ define('EXTRAWATCH_LANGUAGE', 'english');
 define('TYPE_EXTRAWATCH_LANGUAGE', "select");
 
 define('EXTRAWATCH_HISTORY_MAX_VALUES', 20);
-define('TYPE_HISTORY_MAX_VALUES', "text");
+define('TYPE_EXTRAWATCH_HISTORY_MAX_VALUES', "text");
 
 define('EXTRAWATCH_HISTORY_MAX_DB_RECORDS', 200);
-define('TYPE_HISTORY_MAX_DB_RECORDS', "text");
+define('TYPE_EXTRAWATCH_HISTORY_MAX_DB_RECORDS', "text");
 
 
 define('EXTRAWATCH_ONLY_LAST_URI', FALSE);
@@ -595,29 +565,29 @@ define('EXTRAWATCH_FLOW_DEFAULT_OUTGOING_LINKS_COUNT', 5);
 define('EXTRAWATCH_FLOW_DEFAULT_NESTING_LEVEL', 2);
 
 
-define('DB_KEY_BROWSER', 1);
-define('DB_KEY_COUNTRY', 2);
-define('DB_KEY_GOALS', 3);
-define('DB_KEY_HITS', 4);
-define('DB_KEY_INTERNAL', 5);
-define('DB_KEY_IP', 6);
-define('DB_KEY_KEYWORDS', 7);
-define('DB_KEY_LOADS', 8);
-define('DB_KEY_OS', 9);
-define('DB_KEY_REFERERS', 10);
-define('DB_KEY_UNIQUE', 11);
-define('DB_KEY_URI', 12);
-define('DB_KEY_USERS', 13);
-define('DB_KEY_KEYPHRASE', 14);
-define('DB_KEY_URI2KEYPHRASE', 15);
+define('EW_DB_KEY_BROWSER', 1);
+define('EW_DB_KEY_COUNTRY', 2);
+define('EW_DB_KEY_GOALS', 3);
+define('EW_DB_KEY_HITS', 4);
+define('EW_DB_KEY_INTERNAL', 5);
+define('EW_DB_KEY_IP', 6);
+define('EW_DB_KEY_KEYWORDS', 7);
+define('EW_DB_KEY_LOADS', 8);
+define('EW_DB_KEY_OS', 9);
+define('EW_DB_KEY_REFERERS', 10);
+define('EW_DB_KEY_UNIQUE', 11);
+define('EW_DB_KEY_URI', 12);
+define('EW_DB_KEY_USERS', 13);
+define('EW_DB_KEY_KEYPHRASE', 14);
+define('EW_DB_KEY_URI2KEYPHRASE', 15);
 
-define('DB_KEY_SIZE_DB', 101);
-define('DB_KEY_SIZE_COM', 102);
-define('DB_KEY_SIZE_MOD', 103);
+define('EW_DB_KEY_SIZE_DB', 101);
+define('EW_DB_KEY_SIZE_COM', 102);
+define('EW_DB_KEY_SIZE_MOD', 103);
 
-define('DB_KEY_TRAFFIC_FLOW', 16);
-define('DB_KEY_SEARCH_RESULT_NUM', 17);
-define('DB_KEY_HEATMAP', 18);
+define('EW_DB_KEY_TRAFFIC_FLOW', 16);
+define('EW_DB_KEY_SEARCH_RESULT_NUM', 17);
+define('EW_DB_KEY_HEATMAP', 18);
 
 define('EXTRAWATCH_WARNING_THRESHOLD', 20);
 
@@ -644,40 +614,40 @@ define('EXTRAWATCH_UNKNOWN_COUNTRY', "xx");
 
 define('EXTRAWATCH_TABLES_TO_OPTIMIZE',
 serialize(array(
-        "#__EXTRAWATCH_config",
-        "#__EXTRAWATCH_flow",
-        "#__EXTRAWATCH_goals",
-        "#__EXTRAWATCH_heatmap",
-        "#__EXTRAWATCH_history",
-        "#__EXTRAWATCH_info",
-        "#__EXTRAWATCH_internal",
-        "#__EXTRAWATCH_ip2c",
-        "#__EXTRAWATCH_keyphrase",
-        "#__EXTRAWATCH_uri",
-        "#__EXTRAWATCH_uri2keyphrase",
-        "#__EXTRAWATCH_uri2title",
-        "#__EXTRAWATCH_uri_history",
-        "#__EXTRAWATCH_uri_post")
+        "#__extrawatch_config",
+        "#__extrawatch_flow",
+        "#__extrawatch_goals",
+        "#__extrawatch_heatmap",
+        "#__extrawatch_history",
+        "#__extrawatch_info",
+        "#__extrawatch_internal",
+        "#__extrawatch_ip2c",
+        "#__extrawatch_keyphrase",
+        "#__extrawatch_uri",
+        "#__extrawatch_uri2keyphrase",
+        "#__extrawatch_uri2title",
+        "#__extrawatch_uri_history",
+        "#__extrawatch_uri_post")
 ));
 
 define('EXTRAWATCH_TABLES_TO_TRUNCATE',
 serialize(array(
         "#__extrawatch",
-        "#__EXTRAWATCH_blocked",
-        "#__EXTRAWATCH_cache",
-        "#__EXTRAWATCH_flow",
-        "#__EXTRAWATCH_goals",
-        "#__EXTRAWATCH_heatmap",
-        "#__EXTRAWATCH_history",
-        "#__EXTRAWATCH_info",
-        "#__EXTRAWATCH_internal",
-        "#__EXTRAWATCH_keyphrase",
-        "#__EXTRAWATCH_uri",
-        "#__EXTRAWATCH_uri2keyphrase",
-        "#__EXTRAWATCH_uri2keyphrase_pos",
-        "#__EXTRAWATCH_uri2title",
-        "#__EXTRAWATCH_uri_history",
-        "#__EXTRAWATCH_uri_post",
+        "#__extrawatch_blocked",
+        "#__extrawatch_cache",
+        "#__extrawatch_flow",
+        "#__extrawatch_goals",
+        "#__extrawatch_heatmap",
+        "#__extrawatch_history",
+        "#__extrawatch_info",
+        "#__extrawatch_internal",
+        "#__extrawatch_keyphrase",
+        "#__extrawatch_uri",
+        "#__extrawatch_uri2keyphrase",
+        "#__extrawatch_uri2keyphrase_pos",
+        "#__extrawatch_uri2title",
+        "#__extrawatch_uri_history",
+        "#__extrawatch_uri_post",
     )
 ));
 

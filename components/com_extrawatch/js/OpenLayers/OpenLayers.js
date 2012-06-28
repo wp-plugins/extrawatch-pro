@@ -1,3 +1,4 @@
+/*PRO_START*/
 /*
 
  OpenLayers.js -- OpenLayers Map Viewer Library
@@ -8862,3 +8863,5 @@ OpenLayers.Format.OSM = OpenLayers.Class(OpenLayers.Format.XML, {checkTags:false
         }
     }
 }, CLASS_NAME:"OpenLayers.Format.OSM"});
+/*PRO_END*/
+

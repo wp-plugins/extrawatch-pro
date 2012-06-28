@@ -18,7 +18,7 @@ if (!$day) {
     </tr>
     <?php
     foreach ($rows as $row) {
-        $totalIntValuesForDay = $this->extraWatch->stat->getCountByKeyAndDate(DB_KEY_UNIQUE, $day);
+        $totalIntValuesForDay = $this->extraWatch->stat->getCountByKeyAndDate(EW_DB_KEY_UNIQUE, $day);
         $percentOfHitsPerDay = sprintf("%.2f%%", ($row->total / $totalIntValuesForDay) * 100);
         ?>
         <tr>
@@ -38,7 +38,7 @@ if (!$day) {
             }
             echo("<tr><td title='" . $keyphrase->name . "'><a href='http://www.google.com/search?q=" . urlencode($keyphrase->name) . "'>" . ExtraWatchHelper::truncate($keyphrase->name, 60) . "</a></td>" .
                 "<td style='width: 30px;' align='right'>" . $keyphrase->value . "</td><td style='width: 20px' align='right'>$percent</td>" .
-                $extraWatchStatHTML->renderDiffTableCellsAndIcon(DB_KEY_URI2KEYPHRASE, $keyphrase->uri2keyphraseId, $day) .
+                $extraWatchStatHTML->renderDiffTableCellsAndIcon(EW_DB_KEY_URI2KEYPHRASE, $keyphrase->uri2keyphraseId, $day) .
                 "</tr>");
         }
         ?>
