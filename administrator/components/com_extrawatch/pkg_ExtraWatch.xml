@@ -7,7 +7,7 @@
     <authorEmail>foo@codegravity.com</authorEmail>
     <authorUrl>http://www.codegravity.com</authorUrl>
     <packagename>ExtraWatch</packagename>
-    <version>1.2.18.210 PRO</version>
+    <version>1.2.18.211 FREE</version>
     <license>http://www.gnu.org/licenses/gpl-3.0.txt GNU/GPLv3</license>
     <url>http://www.codegravity.com</url>
     <packager>Matej Koval - http://www.codegravity.com</packager>
@@ -26,7 +26,7 @@
         show the top countries information and visit counts for certain periods of time.<br/>
 
     </description>
-    <update>http://www.codegravity.com/update/extrawatch/1.2.18/PRO/extrawatch-update.xml</update>
+    <update>http://www.codegravity.com/update/extrawatch/1.2.18/FREE/extrawatch-update.xml</update>
     <files>
         <file type="component" id="extrawatch" >com_extrawatch.zip</file>
         <file type="module" id="extrawatch" client="site">mod_extrawatch_agent.zip</file>
