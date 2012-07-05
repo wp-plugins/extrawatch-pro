@@ -4,7 +4,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 209
+ * @revision 210
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -33,7 +33,7 @@ class ExtraWatchAgentWidget extends WP_Widget {
 
     function widget($args, $instance)
     {
-	$extraWatchPluginDir = realpath(dirname(realpath(__FILE__)).DS."..".DS."..".DS."..".DS."..".DS."..".DS);
+	$extraWatchPluginDir = realpath(dirname(realpath(__FILE__)).DS."..".DS."..".DS."..".DS."..".DS."..".DS."..".DS);
         include_once ($extraWatchPluginDir.DS."modules".DS."mod_extrawatch_agent" . DS . "mod_extrawatch_agent.php");
         echo renderExtraWatchAgent();
     }
