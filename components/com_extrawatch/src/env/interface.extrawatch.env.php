@@ -4,7 +4,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 208
+ * @revision 209
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -53,6 +53,12 @@ interface ExtraWatchEnv
 
     function getDirsToCheckForSize();
 
+    /**
+     * Returns FALSE if there are no messages!
+     * @abstract
+     * @param $database
+     * @return mixed
+     */
     function getAgentNotPublishedMsg($database);
 
 }
