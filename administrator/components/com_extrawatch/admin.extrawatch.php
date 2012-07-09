@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 220
+ * @revision 224
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -366,7 +366,7 @@ function extrawatch_mainController() {
             $extraWatchHTML->renderAdminStyles();
             $extraWatchHTML->renderHeader();
             $ip = @ ExtraWatchHelper::requestGet('ip');
-            $extraWatch->block->extraWatchBlockIpToggle($ip);
+            $extraWatch->block->extrawatch_blockIpToggle($ip);
             $extraWatchHTML->renderAntiSpam();
             break;
 

@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 220
+ * @revision 224
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -289,12 +289,12 @@ class ExtraWatchHTML
 
   function renderAdFreeLicense()
   {
-    /*PRO_START*/
-    require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "license-commercial.php";
-    return extrawatch_renderLicense($this->extraWatch);
-    /*PRO_END*/
-
     
+
+    /*PRO_START*/
+    require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "license-free.php";
+    return extrawatch_renderLicenseFree($this->extraWatch);
+    /*PRO_END*/
 
   }
 
