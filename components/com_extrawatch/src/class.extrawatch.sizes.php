@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 224
+ * @revision 227
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -259,7 +259,7 @@ class ExtraWatchSizes
                 "<tr><td style='background-color: $color'>" . $dir . "</td>" .
                 "<td style='background-color: $color' align='center' id='item-" . $suffix . "-" . $this->renderPageItems . "'>$size</td>" .
                 "<td style='background-color: $color' align='center'><a href='javascript:refreshSize_" . $suffix . "(" . $this->renderPageItems . ")'>
-							 <img src='" . $this->config->getLiveSite() . "components/com_extrawatch/img/icons/refresh.png' border='0' title='" . _EW_SIZES_REFRESH . "'/></a></td>";
+							 <img src='" . $this->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/refresh.png' border='0' title='" . _EW_SIZES_REFRESH . "'/></a></td>";
           }
         }
 
@@ -285,7 +285,7 @@ class ExtraWatchSizes
                 "<tr><td style='background-color: $color; color: #5AA1D3'>" . $dir . "</td>" .
                 "<td style='background-color: $color' align='center' id='item-" . $suffix . "-" . $this->renderPageItems . "'>$size</td>" .
                 "<td style='background-color: $color' align='center'><a href='javascript:refreshSize_" . $suffix . "(" . $this->renderPageItems . ")'>
-							 <img src='" . $this->config->getLiveSite() . "components/com_extrawatch/img/icons/refresh.png' border='0' title='" . _EW_SIZES_REFRESH . "'/></a></td>";
+							 <img src='" . $this->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/refresh.png' border='0' title='" . _EW_SIZES_REFRESH . "'/></a></td>";
           }
         }
       }

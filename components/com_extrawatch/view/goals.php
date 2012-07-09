@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 224
+ * @revision 227
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -19,10 +19,10 @@ defined('_JEXEC') or die('Restricted access'); ?>
       <a href='<?php echo $this->extraWatch->config->renderLink('goals', "&action=insert");?>'><img
           src='<?php echo($this->extraWatch->config->getLiveSiteWithSuffix());?>components/com_extrawatch/img/icons/new.gif'
           border='0' title='<?php echo _EW_GOALS_NEW;?>' valign='center'/> <?php echo _EW_GOALS_NEW;?></a> &nbsp;
-      <a href='<?php echo $this->extraWatch->config->getAdministratorIndex();?>?option=com_extrawatch&task=goals&action=export'>
+      <a href='<?php echo $this->extraWatch->config->renderLink('goals', "&action=export");?>'>
         <img src='<?php echo($this->extraWatch->config->getLiveSiteWithSuffix());?>components/com_extrawatch/img/icons/new.gif' border='0' title='<?php echo _EW_GOALS_EXPORT;?>' valign='center'/> <?php echo _EW_GOALS_EXPORT;?>
       </a> &nbsp; &nbsp;
-      <a href='<?php echo $this->extraWatch->config->getAdministratorIndex();?>?option=com_extrawatch&task=goals&action=import'>
+      <a href='<?php echo $this->extraWatch->config->renderLink('goals', "&action=import");?>'>
         <img src='<?php echo($this->extraWatch->config->getLiveSiteWithSuffix());?>components/com_extrawatch/img/icons/new.gif' border='0' title='<?php echo _EW_GOALS_IMPORT;?>' valign='center'/> <?php echo _EW_GOALS_IMPORT;?>
       </a> &nbsp; &nbsp;
     </td>

@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 224
+ * @revision 227
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -162,7 +162,7 @@ function extrawatch_mainController() {
         if ($keyValue) {
           $extraWatch->config->saveConfigValue("EXTRAWATCH_IPINFODB_KEY", $keyValue);
         } else {
-          echo("<br/><div style='border: 1px solid red; width: 50%; padding: 10px;'>" . _JW_STATS_MAP_INVALID_KEY . "</div>");
+          echo("<br/><div style='border: 1px solid red; width: 50%; padding: 10px;'>" . _EW_STATS_MAP_INVALID_KEY . "</div>");
         }
         $extraWatchHTML->renderBody($option);
         break;

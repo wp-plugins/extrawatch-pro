@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 224
+ * @revision 227
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -37,8 +37,8 @@ function extrawatch_renderLicense($extraWatch)
                 <li>You also agree that you can be informed via an email you provided during registration about the information about this software. This makes it easier when there is a need to inform you about the latest versions and/or possible security updates.</li>
             </ul>
 
-            <h2>LITE and PRO difference</h2>
-            You agree that LITE version places the backlink to codegravity.com and displays ad to PRO version in back end.<br/>
+            <h2>FREE and PRO difference</h2>
+            You agree that FREE version places the backlink to codegravity.com and displays ad to PRO version in back end.<br/>
             PRO version has no backlink and features additional functionalities.<br/>
 
             <h2>Security</h2>
