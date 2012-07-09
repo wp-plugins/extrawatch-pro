@@ -10,11 +10,12 @@
  * @copyright (C) @YEAR@ by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
  */
+
 defined('_JEXEC') or die('Restricted access');
 
-#ExtraWatch language file - to create a new language file, just copy the english.php to eg. german.php and place into /components/com_extrawatch/lang/
+//ExtraWatch language file - to create a new language file, just copy the english.php to eg. german.php and place into./components/com_extrawatch/lang/
 
-// Main Menu
+// Main Menu.
 DEFINE('_EW_MENU_STATS', "ライブ開始");
 DEFINE('_EW_MENU_GOALS', "目標");
 DEFINE('_EW_MENU_SETTINGS', "設定");
@@ -26,14 +27,14 @@ DEFINE('_EW_MENU_DONATORS', "サポーター");
 DEFINE('_EW_MENU_SUPPORT', "ジュームラ・ウォッチをサポートしてください。そうすると広告表示なしでご利用いただけます。");
 
 
-// Left visitors real-time window
+// Left visitors real-time window.
 DEFINE('_EW_VISITS_VISITORS', "最近の訪問者");
 DEFINE('_EW_VISITS_BOTS', "ボット");
 DEFINE('_EW_VISITS_CAME_FROM', "出身");
 DEFINE('_EW_VISITS_MODULE_NOT_PUBLISHED', "ジュームラ・ウォッチモジュールが発行されていません！新規状態が記録されていません。 発行するには、モジュールセクションへアクセスし、そして全ページ上に発行してください。");
 DEFINE('_EW_VISITS_PANE_LOADING', "訪問者読込み...");
 
-// Right stats window
+// Right stats window.
 DEFINE('_EW_STATS_TITLE', "週別訪問者状況");
 DEFINE('_EW_STATS_WEEK', "週");
 DEFINE('_EW_STATS_THIS_WEEK', "今週");
@@ -66,7 +67,7 @@ DEFINE('_EW_STATS_IP_BLOCKING_MANUALLY', "ブロックしたいIPアドレスを
 DEFINE('_EW_STATS_IP_BLOCKING_TOGGLE', "実際にトグルブロッキング先 ");
 DEFINE('_EW_STATS_PANE_LOADING', "読込み状況...");
 
-// Settings
+// Settings.
 DEFINE('_EW_SETTINGS_TITLE', "設定");
 DEFINE('_EW_SETTINGS_DEFAULT', "初期設定");
 DEFINE('_EW_SETTINGS_SAVE', "保存");
@@ -85,7 +86,7 @@ DEFINE('_EW_SETTINGS_SAVED', "設定が保存されました。");
 DEFINE('_EW_SETTINGS_ADD_YOUR_IP', "IP追加");
 DEFINE('_EW_SETTINGS_TO_THE_LIST', "リストへ");
 
-// Other / mostly general
+// Other / mostly general.
 DEFINE('_EW_TITLE', "リアルタイムAJAXジュームラ・モニター");
 DEFINE('_EW_BACK', "戻る");
 DEFINE('_EW_ACCESS_DENIED', "これを閲覧承認を得ていません！");
@@ -101,12 +102,12 @@ DEFINE('_EW_AJAX_PERMISSION_DENIED_2', "www.のドメイン名をお忘れです
 DEFINE('_EW_AJAX_PERMISSION_DENIED_3', "アクセス元");
 DEFINE('_EW_AJAX_PERMISSION_DENIED_4', "異なるドメインであるとお考えになったのはなぜですか");
 
-// Header
+// Header.
 DEFINE('_EW_HEADER_DOWNLOAD', "最新の拡張コード取得先");
 DEFINE('_EW_HEADER_CAST_YOUR', "以下を変換してください");
 DEFINE('_EW_HEADER_VOTE', "投票");
 
-// Tooltips
+// Tooltips.
 DEFINE('_EW_TOOLTIP_CLICK', "ツールチップを表示するためにクリック");
 DEFINE('_EW_TOOLTIP_MOUSE_OVER', "ツールチップを表示するためにマウスを重ねる");
 DEFINE('_EW_TOOLTIP_YESTERDAY_INCREASE', "昨日の増加量");
@@ -114,7 +115,7 @@ DEFINE('_EW_TOOLTIP_HELP', "次のオンライン外部ヘルプを開く");
 DEFINE('_EW_TOOLTIP_WINDOW_CLOSE', "このウィンドウを閉じる");
 DEFINE('_EW_TOOLTIP_PRINT', "印刷");
 
-// Goals
+// Goals.
 DEFINE('_EW_GOALS_INSERT', "目標挿入");
 DEFINE('_EW_GOALS_UPDATE', "目標番号更新");
 DEFINE('_EW_GOALS_ACTION', "アクション");
@@ -143,7 +144,7 @@ DEFINE('_EW_GOALS_EDIT', "編集");
 DEFINE('_EW_GOALS_DELETE', "削除");
 DEFINE('_EW_GOALS_DELETE_CONFIRM', "この目標のために全ての最近の統計データを失います。目標番号を本当に削除しますか？");
 
-// Frontend
+// Frontend.
 DEFINE('_EW_FRONTEND_COUNTRIES', "国");
 DEFINE('_EW_FRONTEND_VISITORS', "訪問者");
 DEFINE('_EW_FRONTEND_TODAY', "今日");
@@ -154,7 +155,7 @@ DEFINE('_EW_FRONTEND_THIS_MONTH', "今月");
 DEFINE('_EW_FRONTEND_LAST_MONTH', "先月");
 DEFINE('_EW_FRONTEND_TOTAL', "合計");
 
-// Settings description - quite long
+// Settings description - quite long.
 DEFINE('_EW_DESC_DEBUG', "ジュームラ・ウォッチが修正モードです。これによりエラー原因を修復できます。オフにするには、/components/com_extrawatch/config.phpのEXTRAWATCH_DEBUG値の1から0を変更してください");
 DEFINE('_EW_DESC_STATS_MAX_ROWS', "状態が拡張モードの際、最大行数が表示されます");
 DEFINE('_EW_DESC_STATS_IP_HITS', "数日間ヒットしなかった全IPアドレスです。この値がIP履歴から削除されます");

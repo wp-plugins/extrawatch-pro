@@ -5,13 +5,12 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 212
+ * @revision 220
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
  */
-defined('_JEXEC') or die('Restricted access');
-?>
+defined('_JEXEC') or die('Restricted access'); ?>
 
 <!--
 $today = floor($extraWatch->date->getUTCTimestamp()/ 24 / 3600);
@@ -32,25 +31,23 @@ $prevWeek = $week -1;
 $nextWeek = $week +1;
 -->
 
-<!--PRO_START-->
 <?php echo($extraWatchVisitHistoryHTML->renderHistoryNavigation()); ?>
 
 <table cellpadding='2' cellspacing='0' width='100%' border='0'>
-    <tr>
-        <td colspan='8'><h3><?php echo _EW_HISTORY_VISITORS;?></h3>
+  <tr>
+    <td colspan='8'><h3><?php echo _EW_HISTORY_VISITORS;?></h3>
 
-            <div style='border: 1px solid #FFB7B7; width: 100%; background-color: #FFF5F5; padding: 2px;'>
-                <?php echo sprintf(_EW_HISTORY_SHOWING_ONLY, $this->extraWatch->config->getConfigValue('EXTRAWATCH_HISTORY_MAX_DB_RECORDS'));?>
-            </div>
-            <br/>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <?php echo ($extraWatchVisitHistoryHTML->renderVisitors()); ?>
-        </td>
-    </tr>
+      <div style='border: 1px solid #FFB7B7; width: 100%; background-color: #FFF5F5; padding: 2px;'>
+        <?php echo sprintf(_EW_HISTORY_SHOWING_ONLY, $this->extraWatch->config->getConfigValue('EXTRAWATCH_HISTORY_MAX_DB_RECORDS'));?>
+      </div>
+      <br/>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <?php echo ($extraWatchVisitHistoryHTML->renderVisitors()); ?>
+    </td>
+  </tr>
 </table>
 <br/>
 <?php echo($extraWatchVisitHistoryHTML->renderHistoryNavigation()); ?>
-<!--PRO_END-->

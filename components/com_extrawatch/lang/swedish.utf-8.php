@@ -10,11 +10,12 @@
  * @copyright (C) @YEAR@ by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
  */
+
 defined('_JEXEC') or die('Restricted access');
 
-#ExtraWatch language file - to create a new language file, just copy the english.php to eg. german.php and place into /components/com_extrawatch/lang/
+//ExtraWatch language file - to create a new language file, just copy the english.php to eg. german.php and place into./components/com_extrawatch/lang/
 
-// Main Menu
+// Main Menu.
 DEFINE('_EW_MENU_STATS', "Statistik");
 DEFINE('_EW_MENU_GOALS', "Mål");
 DEFINE('_EW_MENU_SETTINGS', "Inställningar");
@@ -25,14 +26,14 @@ DEFINE('_EW_MENU_LICENSE', "Reklamfri Licens");
 DEFINE('_EW_MENU_DONATORS', "Donatorer");
 DEFINE('_EW_MENU_SUPPORT', "Support ExtraWatch för att få bort reklamen i backend.");
 
-// Left visitors real-time window
+// Left visitors real-time window.
 DEFINE('_EW_VISITS_VISITORS', "Senaste Besökare");
 DEFINE('_EW_VISITS_BOTS', "Bottar");
 DEFINE('_EW_VISITS_CAME_FROM', "Kom från");
 DEFINE('_EW_VISITS_MODULE_NOT_PUBLISHED', "Din ExtraWatch modul är inte publicerad! Ingen statistik kommer att registreras. Publicera modulen på alla sidor.");
 DEFINE('_EW_VISITS_PANE_LOADING', "Laddar besökare...");
 
-// Right stats window
+// Right stats window.
 DEFINE('_EW_STATS_TITLE', "Besökstatistiken för vecka");
 DEFINE('_EW_STATS_WEEK', "Vecka");
 DEFINE('_EW_STATS_THIS_WEEK', "denna vecka");
@@ -65,7 +66,7 @@ DEFINE('_EW_STATS_IP_BLOCKING_MANUALLY', "Skriv in IP-nummer som du vill blocker
 DEFINE('_EW_STATS_IP_BLOCKING_TOGGLE', "Riktig toggle blockering av ");
 DEFINE('_EW_STATS_PANE_LOADING', "Laddar statistik...");
 
-// Settings
+// Settings.
 DEFINE('_EW_SETTINGS_TITLE', "Inställningar");
 DEFINE('_EW_SETTINGS_DEFAULT', "Default");
 DEFINE('_EW_SETTINGS_SAVE', "Spara");
@@ -84,7 +85,7 @@ DEFINE('_EW_SETTINGS_SAVED', "Inställningarna sparades");
 DEFINE('_EW_SETTINGS_ADD_YOUR_IP', "Lägg till ditt IP");
 DEFINE('_EW_SETTINGS_TO_THE_LIST', "till listan.");
 
-// Other / mostly general
+// Other / mostly general.
 DEFINE('_EW_TITLE', "En real-tid AJAX Joomla övervakare");
 DEFINE('_EW_BACK', "Tillbaka");
 DEFINE('_EW_ACCESS_DENIED', "Du har inga privillegier för att se detta!");
@@ -100,12 +101,12 @@ DEFINE('_EW_AJAX_PERMISSION_DENIED_2', "Kanske glömde du www. framför ditt dom
 DEFINE('_EW_AJAX_PERMISSION_DENIED_3', "från");
 DEFINE('_EW_AJAX_PERMISSION_DENIED_4', "varför försöker den tro att det är en annan domän.");
 
-// Header
+// Header.
 DEFINE('_EW_HEADER_DOWNLOAD', "Få den senaste koden för tillägg från");
 DEFINE('_EW_HEADER_CAST_YOUR', "Ge din");
 DEFINE('_EW_HEADER_VOTE', "Röst");
 
-// Tooltips
+// Tooltips.
 DEFINE('_EW_TOOLTIP_CLICK', "Klicka för att visa tooltip");
 DEFINE('_EW_TOOLTIP_MOUSE_OVER', "Hovra musen över tooltip");
 DEFINE('_EW_TOOLTIP_YESTERDAY_INCREASE', "gårdagens&apos;s ökar");
@@ -113,7 +114,7 @@ DEFINE('_EW_TOOLTIP_HELP', "Öppnar extern online hjälp för");
 DEFINE('_EW_TOOLTIP_WINDOW_CLOSE', "Stäng detta fönster");
 DEFINE('_EW_TOOLTIP_PRINT', "SKriv ut");
 
-// Goals
+// Goals.
 DEFINE('_EW_GOALS_INSERT', "Lägg till ett nytt mål");
 DEFINE('_EW_GOALS_UPDATE', "Updatera ett målsnummer.");
 DEFINE('_EW_GOALS_ACTION', "Aktivitet");
@@ -140,7 +141,7 @@ DEFINE('_EW_GOALS_EDIT', "Ändra");
 DEFINE('_EW_GOALS_DELETE', "Radera");
 DEFINE('_EW_GOALS_DELETE_CONFIRM', "Du kommer förlora den senaste statistiken för detta mål. Villd u verkligen radera mål nr.");
 
-// Frontend
+// Frontend.
 DEFINE('_EW_FRONTEND_COUNTRIES', "Länder");
 DEFINE('_EW_FRONTEND_VISITORS', "Besökare");
 DEFINE('_EW_FRONTEND_TODAY', "Idag");
@@ -151,7 +152,7 @@ DEFINE('_EW_FRONTEND_THIS_MONTH', "Denna månad");
 DEFINE('_EW_FRONTEND_LAST_MONTH', "Senaste månad");
 DEFINE('_EW_FRONTEND_TOTAL', "Totalt");
 
-// Settings description - quite long
+// Settings description - quite long.
 DEFINE('_EW_DESC_DEBUG', "ExtraWatch är i debug mode. På detta sätt kan du upptäcka fel. För att ändra, vänligen ändra värdet EXTRAWATCH_DEBUG in /components/com_extrawatch/config.php från 1 till 0");
 DEFINE('_EW_DESC_STATS_MAX_ROWS', "Max rader som visas när statistiken är i expanderbart läge.");
 DEFINE('_EW_DESC_STATS_IP_HITS', "Alla IP addresser som har färre träffar än detta värde kommer raderas från IP-historiken.");

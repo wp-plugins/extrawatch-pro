@@ -10,6 +10,7 @@
  * @copyright (C) @YEAR@ by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
  */
+
 defined('_JEXEC') or die('Restricted access');
 
 /**
@@ -31,9 +32,9 @@ defined('_JEXEC') or die('Restricted access');
  * ===================================================
  */
 
-#ExtraWatch language file - to create a new language file, just copy the english.php to eg. german.php and place into /components/com_extrawatch/lang/
+//ExtraWatch language file - to create a new language file, just copy the english.php to eg. german.php and place into./components/com_extrawatch/lang/
 
-// Main Menu
+// Main Menu.
 
 DEFINE('_EW_MENU_STATS', "Στατιστικά");
 DEFINE('_EW_MENU_GOALS', "Στόχοι");
@@ -45,14 +46,14 @@ DEFINE('_EW_MENU_LICENSE', "Άδεια - Αφαίρεσης Διαφήμισεω
 DEFINE('_EW_MENU_DONATORS', "Δωρητές");
 DEFINE('_EW_MENU_SUPPORT', "Υποστηρίξτε το ExtraWatch κι αφαιρέστε τις διαφημίσεις από το Χορο διαχιρισης.");
 
-// Left visitors real-time window
+// Left visitors real-time window.
 DEFINE('_EW_VISITS_VISITORS', "Τελευταίοι Επισκέπτες");
 DEFINE('_EW_VISITS_BOTS', "Bots");
 DEFINE('_EW_VISITS_CAME_FROM', "Οι επισκεψεις προήλθαν από");
 DEFINE('_EW_VISITS_MODULE_NOT_PUBLISHED', "Το ExtraWatch μοντελο δεν έχει ενεργοποιηθεί! Δεν μπορούν να καταγραφούν Στατιστικά. Για την ενεργοποίησή του , πηγαίνετε στα Ενθέματα και ενεργοποιήστε το σε όλες τις σελίδες");
 DEFINE('_EW_VISITS_PANE_LOADING', "Φορτώνει Επισκέψεις...");
 
-// Right stats window
+// Right stats window.
 DEFINE('_EW_STATS_TITLE', "Στατιστικά Εβδομάδας");
 DEFINE('_EW_STATS_WEEK', "Εβδομάδα");
 DEFINE('_EW_STATS_THIS_WEEK', "Τρέχουσα Εβδομάδα");
@@ -86,7 +87,7 @@ DEFINE('_EW_STATS_IP_BLOCKING_MANUALLY', "Εισάγετε IP που θέλετ�
 DEFINE('_EW_STATS_IP_BLOCKING_TOGGLE', "Να γίνει εναλλαγή μπλοκαρίσματος της ");
 DEFINE('_EW_STATS_PANE_LOADING', "Φόρτωση Στατιστικών...");
 
-// Settings
+// Settings.
 DEFINE('_EW_SETTINGS_TITLE', "Ρυθμίσεις");
 DEFINE('_EW_SETTINGS_DEFAULT', "Προκαθορισμένο");
 DEFINE('_EW_SETTINGS_SAVE', "Αποθήκευση");
@@ -106,7 +107,7 @@ DEFINE('_EW_SETTINGS_ADD_YOUR_IP', "Προσθέστε την IP σας");
 DEFINE('_EW_SETTINGS_TO_THE_LIST', "στην λίστα.");
 
 
-// Other / mostly general
+// Other / mostly general.
 
 DEFINE('_EW_TITLE', "ΑΓΙΑΞ Παρακολούθηση joomla σε πραγματικό χρόνο ");
 DEFINE('_EW_BACK', "Πίσω");
@@ -123,12 +124,12 @@ DEFINE('_EW_AJAX_PERMISSION_DENIED_2', "Μάλλον έχετε ξεχάσει �
 DEFINE('_EW_AJAX_PERMISSION_DENIED_3', "από");
 DEFINE('_EW_AJAX_PERMISSION_DENIED_4', "Τι το κάνει να πιστεύει ότι πρόκειται για διαφορετικό Domain.");
 
-// Header
+// Header.
 DEFINE('_EW_HEADER_DOWNLOAD', "Λάβετε τον τελευταίο Κώδικα για το επέκταση από");
 DEFINE('_EW_HEADER_CAST_YOUR', "Δώστε την");
 DEFINE('_EW_HEADER_VOTE', "Ψήφο σας");
 
-// Tooltips
+// Tooltips.
 DEFINE('_EW_TOOLTIP_CLICK', "Κλικ για να δείτε Πληροφορία");
 DEFINE('_EW_TOOLTIP_MOUSE_OVER', "Περάστε απο πάνω το ποντίκι για να δείτε πληροφορία");
 DEFINE('_EW_TOOLTIP_YESTERDAY_INCREASE', "χθες ,αύξηση");
@@ -136,7 +137,7 @@ DEFINE('_EW_TOOLTIP_HELP', "Ανοίγμα Εξωτερική Βοήθεια");
 DEFINE('_EW_TOOLTIP_WINDOW_CLOSE', "Κλείσιμο Παραθύρου");
 DEFINE('_EW_TOOLTIP_PRINT', "Εκτύπωση");
 
-// Goals
+// Goals.
 DEFINE('_EW_GOALS_INSERT', "Εισάγετε ένα Νέο Στόχο");
 DEFINE('_EW_GOALS_UPDATE', "Ενημέρωση Αρ. Στόχου.");
 DEFINE('_EW_GOALS_ACTION', "Κίνηση");
@@ -163,7 +164,7 @@ DEFINE('_EW_GOALS_EDIT', "Διόρθωση");
 DEFINE('_EW_GOALS_DELETE', "Διαγραφή");
 DEFINE('_EW_GOALS_DELETE_CONFIRM', "Θα χάσετε πρόσφατα Στατιστικά αυτού του Στόχου. Θέλετε πραγματικά να Διαγράψετε Αρ. Στόχου?.");
 
-// Frontend
+// Frontend.
 DEFINE('_EW_FRONTEND_COUNTRIES', "Χώρες");
 DEFINE('_EW_FRONTEND_VISITORS', " Μέλη");
 DEFINE('_EW_FRONTEND_TODAY', "Σήμερα");
@@ -174,7 +175,7 @@ DEFINE('_EW_FRONTEND_THIS_MONTH', "Τρέχων Μήνας");
 DEFINE('_EW_FRONTEND_LAST_MONTH', "Προηγούμενος Μήνας");
 DEFINE('_EW_FRONTEND_TOTAL', "Σύνολο");
 
-// Settings description - quite long
+// Settings description - quite long.
 DEFINE('_EW_DESC_DEBUG', "To ExtraWatch είναι σε κατάσταση αποσφαλμάτωσης. Με αυτόν τον τρόπο μπορείτε να εντοπίσετε λάθη. Για να το απενεργοποιήσετε, αλλάξτε την τιμή EXTRAWATCH_DEBUG στο /components/com_extrawatch/config.php από 1 σε 0");
 DEFINE('_EW_DESC_STATS_MAX_ROWS', "Μέγιστος αριθμός γραμμών όταν τα Στατιστικά είναι σε Ανάπτυξη.");
 DEFINE('_EW_DESC_STATS_IP_HITS', "Όλες οι IP διευθύνσεις που έχουν λιγότερες προβολές τις προηγούμενες μέρες, απο αυτήν την Τιμή θα διαγραφούν από το Ιστορικό IP.");

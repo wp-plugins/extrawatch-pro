@@ -10,11 +10,12 @@
  * @copyright (C) @YEAR@ by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
  */
+
 defined('_JEXEC') or die('Piekļuve liegta');
 
-#ExtraWatch language file - to create a new language file, just copy the english.php to eg. german.php and place into /components/com_extrawatch/lang/
+//ExtraWatch language file - to create a new language file, just copy the english.php to eg. german.php and place into./components/com_extrawatch/lang/
 
-// Main Menu
+// Main Menu.
 DEFINE('_EW_MENU_STATS', "Statistika");
 DEFINE('_EW_MENU_GOALS', "Mērķi");
 DEFINE('_EW_MENU_SETTINGS', "Uzstādījumi");
@@ -25,14 +26,14 @@ DEFINE('_EW_MENU_LICENSE', "No reklāmām brīva licence");
 DEFINE('_EW_MENU_DONATORS', "Ziedotāji");
 DEFINE('_EW_MENU_SUPPORT', "Atbalstiet ExtraWatch un reklāmas no administrācijas paneļa tiks noņemtas.");
 
-// Left visitors real-time window
+// Left visitors real-time window.
 DEFINE('_EW_VISITS_VISITORS', "Jaunākie apmeklētāji");
 DEFINE('_EW_VISITS_BOTS', "Boti");
 DEFINE('_EW_VISITS_CAME_FROM', "Nāca no");
 DEFINE('_EW_VISITS_MODULE_NOT_PUBLISHED', "Jūsu ExtraWatch modulis nav publicēts! Jauna statistika netiek uzskaitīta. Lai to publicētu, ejiet uz Moduļu sekciju un publicējiet to visām lapām");
 DEFINE('_EW_VISITS_PANE_LOADING', "Ielādē apmeklējumus...");
 
-// Right stats window
+// Right stats window.
 DEFINE('_EW_STATS_TITLE', "Apmeklējumi par nedēļu");
 DEFINE('_EW_STATS_WEEK', "Nedēļa");
 DEFINE('_EW_STATS_THIS_WEEK', "šonedēļ");
@@ -65,7 +66,7 @@ DEFINE('_EW_STATS_IP_BLOCKING_MANUALLY', "Ievadīt IP adresi, kuru vēlaties blo
 DEFINE('_EW_STATS_IP_BLOCKING_TOGGLE', "Patiešām bloķēt ");
 DEFINE('_EW_STATS_PANE_LOADING', "Ielādē statistiku...");
 
-// Settings
+// Settings.
 DEFINE('_EW_SETTINGS_TITLE', "Uzstādījumi");
 DEFINE('_EW_SETTINGS_DEFAULT', "Noklusējums");
 DEFINE('_EW_SETTINGS_SAVE', "Saglabāt");
@@ -84,7 +85,7 @@ DEFINE('_EW_SETTINGS_SAVED', "Uzstādījumi saglabāti");
 DEFINE('_EW_SETTINGS_ADD_YOUR_IP', "Pievienot savu IP");
 DEFINE('_EW_SETTINGS_TO_THE_LIST', "sarakstam.");
 
-// Other / mostly general
+// Other / mostly general.
 DEFINE('_EW_TITLE', "Reālā laika AJAX joomla uzraudzība");
 DEFINE('_EW_BACK', "Atpakaļ");
 DEFINE('_EW_ACCESS_DENIED', "Jums nav nepieciešamo atļauju, lai apskatītu šo !");
@@ -100,12 +101,12 @@ DEFINE('_EW_AJAX_PERMISSION_DENIED_2', "Iespējams Jūs esiet aizmirsis norādī
 DEFINE('_EW_AJAX_PERMISSION_DENIED_3', "no");
 DEFINE('_EW_AJAX_PERMISSION_DENIED_4', "kas liek domāt, ka tas ir cits domēns.");
 
-// Header
+// Header.
 DEFINE('_EW_HEADER_DOWNLOAD', "Iegūstiet jaunāko atjauninājuma kodu no");
 DEFINE('_EW_HEADER_CAST_YOUR', "Atdod savu");
 DEFINE('_EW_HEADER_VOTE', "Balsi");
 
-// Tooltips
+// Tooltips.
 DEFINE('_EW_TOOLTIP_CLICK', "Uzklikšķiniet, lai aplūkotu padomu");
 DEFINE('_EW_TOOLTIP_MOUSE_OVER', "Virziet pāri peles kursoru, lai redzētu padomu");
 DEFINE('_EW_TOOLTIP_YESTERDAY_INCREASE', "vakardienas pieaugums");
@@ -113,7 +114,7 @@ DEFINE('_EW_TOOLTIP_HELP', "Atver tiešsaistes ārējo palīdzību priekš");
 DEFINE('_EW_TOOLTIP_WINDOW_CLOSE', "Aizvērt šo logu");
 DEFINE('_EW_TOOLTIP_PRINT', "Printēt");
 
-// Goals
+// Goals.
 DEFINE('_EW_GOALS_INSERT', "Ievietot jaunu mērķi");
 DEFINE('_EW_GOALS_UPDATE', "Atjaunot mērķi nr.");
 DEFINE('_EW_GOALS_ACTION', "Darbība");
@@ -140,7 +141,7 @@ DEFINE('_EW_GOALS_EDIT', "Labot");
 DEFINE('_EW_GOALS_DELETE', "Dzēst");
 DEFINE('_EW_GOALS_DELETE_CONFIRM', "Jūs zaudēsiet visu pēdējo statistiku, kas attiecās uz šo mērķi. Jūs tiešām vēlaties dzēst mērķi nr.");
 
-// Frontend
+// Frontend.
 DEFINE('_EW_FRONTEND_COUNTRIES', "Valstis");
 DEFINE('_EW_FRONTEND_VISITORS', "Apmeklētāji");
 DEFINE('_EW_FRONTEND_TODAY', "Šodien");
@@ -151,7 +152,7 @@ DEFINE('_EW_FRONTEND_THIS_MONTH', "Šomēnes");
 DEFINE('_EW_FRONTEND_LAST_MONTH', "Pagājušo mēnes");
 DEFINE('_EW_FRONTEND_TOTAL', "Kopā");
 
-// Settings description - quite long
+// Settings description - quite long.
 DEFINE('_EW_DESC_DEBUG', "ExtraWatch ir atkļūdošanas režīmā. šādi Jūs variet atklāt kļūdu cēloņus. Lai atslēgtu šo režīmu nomainiet EXTRAWATCH_DEBUG vērtību /components/com_extrawatch/config.php failā no 1 uz 0");
 DEFINE('_EW_DESC_STATS_MAX_ROWS', "Maksimālais attēlojamo rindiņu skaits, kad statistika tiek rādīta izvērstā režīmā.");
 DEFINE('_EW_DESC_STATS_IP_HITS', "Visas IP adreses, kuras iepriekšējās dienās ir apmeklējušas lapu mazāk reižu nekā norādītā vērtība, tiks dzēstas no IP adrešu vēstures.");

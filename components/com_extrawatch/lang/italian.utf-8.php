@@ -10,11 +10,12 @@
  * @copyright (C) @YEAR@ by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
  */
+
 defined('_JEXEC') or die('Restricted access');
 
-#ExtraWatch language file - to create a new language file, just copy the english.php to eg. german.php and place into /components/com_extrawatch/lang/
+//ExtraWatch language file - to create a new language file, just copy the english.php to eg. german.php and place into./components/com_extrawatch/lang/
 
-// Main Menu
+// Main Menu.
 DEFINE('_EW_MENU_STATS', "Statistiche");
 DEFINE('_EW_MENU_GOALS', "Obiettivi");
 DEFINE('_EW_MENU_SETTINGS', "Opzioni");
@@ -25,14 +26,14 @@ DEFINE('_EW_MENU_LICENSE', "Licenza PRO");
 DEFINE('_EW_MENU_DONATORS', "Donazioni");
 DEFINE('_EW_MENU_SUPPORT', "Supporta ExtraWatch per eliminare le pubblicit&agrave;  nel Backend.");
 
-// Left visitors real-time window
+// Left visitors real-time window.
 DEFINE('_EW_VISITS_VISITORS', "Ultimi visitatori");
 DEFINE('_EW_VISITS_BOTS', "Bot");
 DEFINE('_EW_VISITS_CAME_FROM', "Provenienza");
 DEFINE('_EW_VISITS_MODULE_NOT_PUBLISHED', "Non hai pubblicato il modulo ExtraWatch, quindi non viene registrata alcuna statistica! Vai nella sezione Moduli e pubblicalo su tutte le pagine");
 DEFINE('_EW_VISITS_PANE_LOADING', "Carico le visite...");
 
-// Right stats window
+// Right stats window.
 DEFINE('_EW_STATS_TITLE', "Statistiche della settimana");
 DEFINE('_EW_STATS_WEEK', "Settimana");
 DEFINE('_EW_STATS_THIS_WEEK', "questa settimana");
@@ -65,7 +66,7 @@ DEFINE('_EW_STATS_IP_BLOCKING_MANUALLY', "Inserisci l'IP che vuoi bloccare. (es.
 DEFINE('_EW_STATS_IP_BLOCKING_TOGGLE', "Vuoi davvero bloccare/sbloccare ");
 DEFINE('_EW_STATS_PANE_LOADING', "Carico le statistiche...");
 
-// Settings
+// Settings.
 DEFINE('_EW_SETTINGS_TITLE', "Opzioni");
 DEFINE('_EW_SETTINGS_DEFAULT', "Impostazione predefinita");
 DEFINE('_EW_SETTINGS_SAVE', "Salva");
@@ -84,7 +85,7 @@ DEFINE('_EW_SETTINGS_SAVED', "Impostazioni salvate");
 DEFINE('_EW_SETTINGS_ADD_YOUR_IP', "Aggiungi il tuo IP");
 DEFINE('_EW_SETTINGS_TO_THE_LIST', "all'elenco.");
 
-// Other / mostly general
+// Other / mostly general.
 DEFINE('_EW_TITLE', "Monitor AJAX in tempo reale per Joomla");
 DEFINE('_EW_BACK', "Indietro");
 DEFINE('_EW_ACCESS_DENIED', "Non hai i permessi per visualizzare!");
@@ -100,12 +101,12 @@ DEFINE('_EW_AJAX_PERMISSION_DENIED_2', "Forse hai dimenticato di digitare www. p
 DEFINE('_EW_AJAX_PERMISSION_DENIED_3', "da");
 DEFINE('_EW_AJAX_PERMISSION_DENIED_4', "ci&ograve; che gli fa pensare che si tratti di un dominio differente.");
 
-// Header
+// Header.
 DEFINE('_EW_HEADER_DOWNLOAD', "Scarica l'ultima versione da");
 DEFINE('_EW_HEADER_CAST_YOUR', "Invia il tuo");
 DEFINE('_EW_HEADER_VOTE', "Voto");
 
-// Tooltips
+// Tooltips.
 DEFINE('_EW_TOOLTIP_CLICK', "Clicca per visualizzare il messaggio");
 DEFINE('_EW_TOOLTIP_MOUSE_OVER', "Passa sopra con il mouse per visualizzare il messaggio");
 DEFINE('_EW_TOOLTIP_YESTERDAY_INCREASE', "rispetto a ieri");
@@ -113,7 +114,7 @@ DEFINE('_EW_TOOLTIP_HELP', "Accede alla guida online per");
 DEFINE('_EW_TOOLTIP_WINDOW_CLOSE', "Chiudi");
 DEFINE('_EW_TOOLTIP_PRINT', "Stampa");
 
-// Goals
+// Goals.
 DEFINE('_EW_GOALS_INSERT', "Nuovo obiettivo");
 DEFINE('_EW_GOALS_UPDATE', "Aggiorna l'obiettivo ");
 DEFINE('_EW_GOALS_ACTION', "Azione");
@@ -140,7 +141,7 @@ DEFINE('_EW_GOALS_EDIT', "Modifica");
 DEFINE('_EW_GOALS_DELETE', "Cancella");
 DEFINE('_EW_GOALS_DELETE_CONFIRM', "Perderai tutte le statistiche recenti per questo obiettivo. Vuoi eliminarlo davvero?");
 
-// Frontend
+// Frontend.
 DEFINE('_EW_FRONTEND_COUNTRIES', "Nazione di provenienza");
 DEFINE('_EW_FRONTEND_VISITORS', "Numero di visitatori");
 DEFINE('_EW_FRONTEND_TODAY', "Oggi");
@@ -151,7 +152,7 @@ DEFINE('_EW_FRONTEND_THIS_MONTH', "Questo mese");
 DEFINE('_EW_FRONTEND_LAST_MONTH', "Scorso mese");
 DEFINE('_EW_FRONTEND_TOTAL', "Totale");
 
-// Settings description - quite long
+// Settings description - quite long.
 DEFINE('_EW_DESC_DEBUG', "ExtraWatch &egrave; in modalit&agrave;  debug. In questo modo puoi scoprire le cause degli errori. Per disattivarla, modifica la voce EXTRAWATCH_DEBUG in /components/com_extrawatch/config.php da 1 a 0");
 DEFINE('_EW_DESC_STATS_MAX_ROWS', "Numero massimo di righe da mostrare quando espandi le statistiche.");
 DEFINE('_EW_DESC_STATS_IP_HITS', "Tutti gli indirizzi IP che nei giorni passati hanno effettuato un numero di clic minore di questo numero saranno cancellati dalla cronologia degli IP.");

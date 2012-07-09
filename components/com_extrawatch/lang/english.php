@@ -10,11 +10,12 @@
  * @copyright (C) @YEAR@ by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
  */
+
 defined('_JEXEC') or die('Restricted access');
 
-#ExtraWatch language file - to create a new language file, just copy the english.php to eg. german.php and place into /components/com_extrawatch/lang/
+//ExtraWatch language file - to create a new language file, just copy the english.php to eg. german.php and place into./components/com_extrawatch/lang/
 
-// Main Menu
+// Main Menu.
 DEFINE('_EW_MENU_STATS', "Live Stats");
 DEFINE('_EW_MENU_GOALS', "Goals");
 DEFINE('_EW_MENU_SETTINGS', "Settings");
@@ -26,14 +27,14 @@ DEFINE('_EW_MENU_DONATORS', "Supporters");
 DEFINE('_EW_MENU_SUPPORT', "Support ExtraWatch and get your ads removed from backend.");
 
 
-// Left visitors real-time window
+// Left visitors real-time window.
 DEFINE('_EW_VISITS_VISITORS', "Latest Visitors");
 DEFINE('_EW_VISITS_BOTS', "Bots");
 DEFINE('_EW_VISITS_CAME_FROM', "Came from");
 DEFINE('_EW_VISITS_MODULE_NOT_PUBLISHED', "Your ExtraWatch module is not published! No new stats are being recorded. To publish it, go to Modules section and publish it on all pages");
 DEFINE('_EW_VISITS_PANE_LOADING', "Loading visits...");
 
-// Right stats window
+// Right stats window.
 DEFINE('_EW_STATS_TITLE', "Visit stats for week");
 DEFINE('_EW_STATS_WEEK', "Week");
 DEFINE('_EW_STATS_THIS_WEEK', "this week");
@@ -66,7 +67,7 @@ DEFINE('_EW_STATS_IP_BLOCKING_MANUALLY', "Enter IP an address you want to block.
 DEFINE('_EW_STATS_IP_BLOCKING_TOGGLE', "Really toggle blocking of ");
 DEFINE('_EW_STATS_PANE_LOADING', "Loading stats...");
 
-// Settings
+// Settings.
 DEFINE('_EW_SETTINGS_TITLE', "Settings");
 DEFINE('_EW_SETTINGS_DEFAULT', "Default");
 DEFINE('_EW_SETTINGS_SAVE', "Save");
@@ -85,7 +86,7 @@ DEFINE('_EW_SETTINGS_SAVED', "Settings were saved");
 DEFINE('_EW_SETTINGS_ADD_YOUR_IP', "Add your IP");
 DEFINE('_EW_SETTINGS_TO_THE_LIST', "to the list.");
 
-// Other / mostly general
+// Other / mostly general.
 DEFINE('_EW_TITLE', "Real time visitor monitor and live stats ");
 DEFINE('_EW_BACK', "Back");
 DEFINE('_EW_ACCESS_DENIED', "You don't have any permissions to view this !");
@@ -101,12 +102,12 @@ DEFINE('_EW_AJAX_PERMISSION_DENIED_2', "Maybe you just forgotten www. in front o
 DEFINE('_EW_AJAX_PERMISSION_DENIED_3', "from");
 DEFINE('_EW_AJAX_PERMISSION_DENIED_4', "what makes it to think it's a different domain.");
 
-// Header
+// Header.
 DEFINE('_EW_HEADER_DOWNLOAD', "Get the latest extension's code from");
 DEFINE('_EW_HEADER_CAST_YOUR', "Please cast your");
 DEFINE('_EW_HEADER_VOTE', "vote");
 
-// Tooltips
+// Tooltips.
 DEFINE('_EW_TOOLTIP_CLICK', "Click to show tooltip");
 DEFINE('_EW_TOOLTIP_MOUSE_OVER', "Hover a mouse over to show tooltip");
 DEFINE('_EW_TOOLTIP_YESTERDAY_INCREASE', "yesterday&apos;s increase");
@@ -114,7 +115,7 @@ DEFINE('_EW_TOOLTIP_HELP', "Opens online external help for");
 DEFINE('_EW_TOOLTIP_WINDOW_CLOSE', "Close this window");
 DEFINE('_EW_TOOLTIP_PRINT', "Print");
 
-// Goals
+// Goals.
 DEFINE('_EW_GOALS_INSERT', "Insert a new goal");
 DEFINE('_EW_GOALS_UPDATE', "Update a goal no.");
 DEFINE('_EW_GOALS_ACTION', "Action");
@@ -143,7 +144,7 @@ DEFINE('_EW_GOALS_EDIT', "Edit");
 DEFINE('_EW_GOALS_DELETE', "Delete");
 DEFINE('_EW_GOALS_DELETE_CONFIRM', "You will loose all recent statistics data for this goal. Do you really want do delete a goal no.");
 
-// Frontend
+// Frontend.
 DEFINE('_EW_FRONTEND_COUNTRIES', "Countries");
 DEFINE('_EW_FRONTEND_VISITORS', "Visitors");
 DEFINE('_EW_FRONTEND_TODAY', "Today");
@@ -154,7 +155,7 @@ DEFINE('_EW_FRONTEND_THIS_MONTH', "This Month");
 DEFINE('_EW_FRONTEND_LAST_MONTH', "Last Month");
 DEFINE('_EW_FRONTEND_TOTAL', "Total");
 
-// Settings description - quite long
+// Settings description - quite long.
 DEFINE('_EW_DESC_DEBUG', "ExtraWatch is in debug mode. This way you can discover error causes. To turn it off, please change the value EXTRAWATCH_DEBUG in /components/com_extrawatch/config.php from 1 to 0");
 DEFINE('_EW_DESC_STATS_MAX_ROWS', "Max rows to show when stats are in expanded mode.");
 DEFINE('_EW_DESC_STATS_IP_HITS', "All IP addresses that have less hits in previous days than this value will be deleted from IP history.");
@@ -528,4 +529,3 @@ DEFINE('_EW_ANTISPAM_IMPORT_CSV', "import anti-spam ip csv");
 
 DEFINE('_EW_AGENT_NOT_PUBLISHED_ERROR_WORDPRESS',"Warning: No visits are being recorded. You must go to Appearance->Widgets section, <br/>find ExtraWatchAgent widget and drag&drop it to some of the containers on the right side. <br/>You can publish also other ExtraWatch modules this way.");
 
-DEFINE('_EW_AGENT_NOT_PUBLISHED_ERROR_WORDPRESS',"Warning: No visits are being recorded. You must go to Appearance->Widgets section, <br/>find ExtraWatchAgent widget and drag&drop it to some of the containers on the right side. <br/>You can publish also other ExtraWatch modules this way.");

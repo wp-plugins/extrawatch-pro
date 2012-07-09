@@ -10,11 +10,12 @@
  * @copyright (C) @YEAR@ by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
  */
+
 defined('_JEXEC') or die('Restricted access');
 
-#ExtraWatch: Estonian language - Eesti keel
+//ExtraWatch: Estonian language - Eesti.keel
 
-// Main Menu
+// Main Menu.
 DEFINE('_EW_MENU_STATS', "Live statistika");
 DEFINE('_EW_MENU_GOALS', "Eesmärgid");
 DEFINE('_EW_MENU_SETTINGS', "Seaded");
@@ -25,14 +26,14 @@ DEFINE('_EW_MENU_LICENSE', "Litsents");
 DEFINE('_EW_MENU_DONATORS', "Toetajad");
 DEFINE('_EW_MENU_SUPPORT', "Toeta ExtraWatch'i ja sa saad oma reklaamid eemaldada administraatori lehel.");
 
-// Left visitors real-time window
+// Left visitors real-time window.
 DEFINE('_EW_VISITS_VISITORS', "Viimased külastajad");
 DEFINE('_EW_VISITS_BOTS', "Robotid");
 DEFINE('_EW_VISITS_CAME_FROM', "Tuli");
 DEFINE('_EW_VISITS_MODULE_NOT_PUBLISHED', "Sinu ExtraWatch moodul ei ole avaldatud! Uusi andmeid ei salvestata, et seda avaldada, mine Moodulite sektsiooni ja avalda see kõikidel lehtedel");
 DEFINE('_EW_VISITS_PANE_LOADING', "Laen külastusi...");
 
-// Right stats window
+// Right stats window.
 DEFINE('_EW_STATS_TITLE', "Nädala külastuste statistika");
 DEFINE('_EW_STATS_WEEK', "Nädal");
 DEFINE('_EW_STATS_THIS_WEEK', "sel nädalal");
@@ -65,7 +66,7 @@ DEFINE('_EW_STATS_IP_BLOCKING_MANUALLY', "Sisesta IP aadress, mida soovid blokee
 DEFINE('_EW_STATS_IP_BLOCKING_TOGGLE', "Blokeeri järgmine IP: ");
 DEFINE('_EW_STATS_PANE_LOADING', "Laen andmeid...");
 
-// Settings
+// Settings.
 DEFINE('_EW_SETTINGS_TITLE', "Seaded");
 DEFINE('_EW_SETTINGS_DEFAULT', "Vaikeseaded");
 DEFINE('_EW_SETTINGS_SAVE', "Salvesta");
@@ -84,7 +85,7 @@ DEFINE('_EW_SETTINGS_SAVED', "Seaded on salvestatud");
 DEFINE('_EW_SETTINGS_ADD_YOUR_IP', "Lisa oma IP");
 DEFINE('_EW_SETTINGS_TO_THE_LIST', "nimekirja.");
 
-// Other / mostly general
+// Other / mostly general.
 DEFINE('_EW_TITLE', "Reaalajas AJAX Joomla jälgija");
 DEFINE('_EW_BACK', "Tagasi");
 DEFINE('_EW_ACCESS_DENIED', "Sul ei ole õigusi selle lehe vaatamiseks!");
@@ -100,12 +101,12 @@ DEFINE('_EW_AJAX_PERMISSION_DENIED_2', "Võibolla sa lihtsalt unustasid www. oma
 DEFINE('_EW_AJAX_PERMISSION_DENIED_3', "");
 DEFINE('_EW_AJAX_PERMISSION_DENIED_4', "Mis teeb seda arvama, et see on erinev domeen.");
 
-// Header
+// Header.
 DEFINE('_EW_HEADER_DOWNLOAD', "Hangi pikendus kood");
 DEFINE('_EW_HEADER_CAST_YOUR', "Sisesta oma");
 DEFINE('_EW_HEADER_VOTE', "hääl");
 
-// Tooltips
+// Tooltips.
 DEFINE('_EW_TOOLTIP_CLICK', "Vajuta, et näha kohtspikrit");
 DEFINE('_EW_TOOLTIP_MOUSE_OVER', "Hõlju hiirega üle, et näha kohtspikrit");
 DEFINE('_EW_TOOLTIP_YESTERDAY_INCREASE', "eilne kasv");
@@ -113,7 +114,7 @@ DEFINE('_EW_TOOLTIP_HELP', "Avab online välise abi");
 DEFINE('_EW_TOOLTIP_WINDOW_CLOSE', "Sulge see aken");
 DEFINE('_EW_TOOLTIP_PRINT', "Prindi");
 
-// Goals
+// Goals.
 DEFINE('_EW_GOALS_INSERT', "Sisesta uus eesmärk");
 DEFINE('_EW_GOALS_UPDATE', "Update eesmärki nr");
 DEFINE('_EW_GOALS_ACTION', "Toiming");
@@ -142,7 +143,7 @@ DEFINE('_EW_GOALS_EDIT', "Muuda");
 DEFINE('_EW_GOALS_DELETE', "Kustuta");
 DEFINE('_EW_GOALS_DELETE_CONFIRM', "Sa kaotad selle eesmärgi kõik hiljutised statistika andmed. Kas sa tõesti soovid kustutada eesmärki nr ");
 
-// Frontend
+// Frontend.
 DEFINE('_EW_FRONTEND_COUNTRIES', "Riigid");
 DEFINE('_EW_FRONTEND_VISITORS', "Külastajad");
 DEFINE('_EW_FRONTEND_TODAY', "Täna");
@@ -153,7 +154,7 @@ DEFINE('_EW_FRONTEND_THIS_MONTH', "See kuu");
 DEFINE('_EW_FRONTEND_LAST_MONTH', "Eelmine kuu");
 DEFINE('_EW_FRONTEND_TOTAL', "Kokku");
 
-// Settings description - quite long
+// Settings description - quite long.
 DEFINE('_EW_DESC_DEBUG', "ExtraWatch on silumis režiimis. Sel moel saab leida vigade põhjuseid. Et see välja lülitada, palun muuda EXTRAWATCH_DEBUG /components/com_extrawatch/config.php väärtust. Muuda 1 tagasi 0");
 DEFINE('_EW_DESC_STATS_MAX_ROWS', "Max rida, mida näidatakse, kui statistika on laiendatud režiimis.");
 DEFINE('_EW_DESC_STATS_IP_HITS', "Kõikidel IP aadressidel, millel on vähem tabamusi eelmistel päevadel, kui sellel väärtusel siis kustutatakse see IP ajaloost.");

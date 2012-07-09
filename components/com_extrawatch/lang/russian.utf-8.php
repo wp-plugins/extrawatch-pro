@@ -10,11 +10,12 @@
  * @copyright (C) @YEAR@ by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
  */
+
 defined('_JEXEC') or die('Restricted access');
 
-#ExtraWatch language file - to create a new language file, just copy the english.php to eg. german.php and place into /components/com_extrawatch/lang/
+//ExtraWatch language file - to create a new language file, just copy the english.php to eg. german.php and place into./components/com_extrawatch/lang/
 
-// Main Menu
+// Main Menu.
 DEFINE('_EW_MENU_STATS', "Статистика");
 DEFINE('_EW_MENU_GOALS', "Спецзадачи");
 DEFINE('_EW_MENU_SETTINGS', "Настройки");
@@ -26,14 +27,14 @@ DEFINE('_EW_MENU_DONATORS', "Спонсоры");
 DEFINE('_EW_MENU_SUPPORT', "Поддержи ExtraWatch и тогда реклама из админки будет удалкена))).");
 
 
-// Left visitors real-time window
+// Left visitors real-time window.
 DEFINE('_EW_VISITS_VISITORS', "Последние посетители");
 DEFINE('_EW_VISITS_BOTS', "Боты");
 DEFINE('_EW_VISITS_CAME_FROM', "Перешел из");
 DEFINE('_EW_VISITS_MODULE_NOT_PUBLISHED', "Ваш ExtraWatch модуль не опубликован! Новая статистика записана не будет. Для публикации, зайдите в закладку управления модулями и опубликуйте модуль для всех страниц по которым Вы хотите видеть статистику");
 DEFINE('_EW_VISITS_PANE_LOADING', "Загружаем посещения...");
 
-// Right stats window
+// Right stats window.
 DEFINE('_EW_STATS_TITLE', "Статистика визитов за неделю");
 DEFINE('_EW_STATS_WEEK', "Неделя");
 DEFINE('_EW_STATS_THIS_WEEK', "'эта неделя");
@@ -66,7 +67,7 @@ DEFINE('_EW_STATS_IP_BLOCKING_MANUALLY', "Введите IP который хо�
 DEFINE('_EW_STATS_IP_BLOCKING_TOGGLE', "На самом деле забанить ");
 DEFINE('_EW_STATS_PANE_LOADING', "Загружаем статистику...");
 
-// Settings
+// Settings.
 DEFINE('_EW_SETTINGS_TITLE', "Настройки");
 DEFINE('_EW_SETTINGS_DEFAULT', "По умолчанию");
 DEFINE('_EW_SETTINGS_SAVE', "Сохранить");
@@ -85,7 +86,7 @@ DEFINE('_EW_SETTINGS_SAVED', "Настройки были сохранены");
 DEFINE('_EW_SETTINGS_ADD_YOUR_IP', "Можешь добавить свой IP");
 DEFINE('_EW_SETTINGS_TO_THE_LIST', "в список.");
 
-// Other / mostly general
+// Other / mostly general.
 DEFINE('_EW_TITLE', " AJAX монитор joomla в реальном времени");
 DEFINE('_EW_BACK', "Назад");
 DEFINE('_EW_ACCESS_DENIED', "У Вас нет прав для просмота этого !");
@@ -101,12 +102,12 @@ DEFINE('_EW_AJAX_PERMISSION_DENIED_2', "Может ты забыл www. в на�
 DEFINE('_EW_AJAX_PERMISSION_DENIED_3', "из");
 DEFINE('_EW_AJAX_PERMISSION_DENIED_4', "это заставляет его думать что это другой домен.");
 
-// Header
+// Header.
 DEFINE('_EW_HEADER_DOWNLOAD', "получи последние обновления в");
 DEFINE('_EW_HEADER_CAST_YOUR', "Проголосуй");
 DEFINE('_EW_HEADER_VOTE', "за");
 
-// Tooltips
+// Tooltips.
 DEFINE('_EW_TOOLTIP_CLICK', "Кликни для вывода окна доп.инфо");
 DEFINE('_EW_TOOLTIP_MOUSE_OVER', "Наведи мышь для вывода окна доп.инфо");
 DEFINE('_EW_TOOLTIP_YESTERDAY_INCREASE', "yesterday&apos;s increase");
@@ -114,7 +115,7 @@ DEFINE('_EW_TOOLTIP_HELP', "Opens online external help for");
 DEFINE('_EW_TOOLTIP_WINDOW_CLOSE', "Закрыть это окно");
 DEFINE('_EW_TOOLTIP_PRINT', "Печать");
 
-// Goals
+// Goals.
 DEFINE('_EW_GOALS_INSERT', "Вставить новое задание");
 DEFINE('_EW_GOALS_UPDATE', "Обновить no. задания");
 DEFINE('_EW_GOALS_ACTION', "Действие");
@@ -143,7 +144,7 @@ DEFINE('_EW_GOALS_EDIT', "Редактировать");
 DEFINE('_EW_GOALS_DELETE', "Удалить");
 DEFINE('_EW_GOALS_DELETE_CONFIRM', "Вы потеряете всю недавнюю статистику для этой задачи. Вы правда хотите удалить no этого задания.");
 
-// Frontend
+// Frontend.
 DEFINE('_EW_FRONTEND_COUNTRIES', "Страны");
 DEFINE('_EW_FRONTEND_VISITORS', "Посетители");
 DEFINE('_EW_FRONTEND_TODAY', "Сегодня");
@@ -154,7 +155,7 @@ DEFINE('_EW_FRONTEND_THIS_MONTH', "В этом месяце");
 DEFINE('_EW_FRONTEND_LAST_MONTH', "В прошлом месяце");
 DEFINE('_EW_FRONTEND_TOTAL', "Всего");
 
-// Settings description - quite long
+// Settings description - quite long.
 DEFINE('_EW_DESC_DEBUG', "ExtraWatch в режиме отладки. Таким образом легде найти ошибки приложения.Чтобы выключить, измени переменную EXTRAWATCH_DEBUG в /components/com_extrawatch/config.php с 1 на 0");
 DEFINE('_EW_DESC_STATS_MAX_ROWS', "Максимальное количество строк статистики в раскрытом режиме.");
 DEFINE('_EW_DESC_STATS_IP_HITS', "Все IP адреса, у которых меньше хитов в предыдущие дни чем это значение, будут удалены из IP истории.");

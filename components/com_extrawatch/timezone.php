@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 212
+ * @revision 220
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -14,7 +14,7 @@
 include_once "includes.php";
 
 $extraWatch = new ExtraWatch();
-require_once ("lang" . DS . $extraWatch->config->getLanguage() . ".php");
+require_once "lang" . DS . $extraWatch->config->getLanguage() . ".php";
 
 $extraWatchHTML = new ExtraWatchHTML();
 $extraWatchVisitHTML = new ExtraWatchVisitHTML($extraWatch);
@@ -66,25 +66,25 @@ $lastDay = "";
 $lastDateToday = "";
 for ($i = $startTimestamp; $i < $weekStartingDayTimestamp + 14 * 3600 * 24; $i += 3600) {
 
-    $day = $extraWatch->date->jwDateFromTimestamp($i);
-    $week = $extraWatch->date->getWeekSince1970($i);
-    $dow = $extraWatch->date->getDateByDay($day, "D");
-    $dateToday = $extraWatch->date->getDateByDay($day);
+  $day = $extraWatch->date->jwDateFromTimestamp($i);
+  $week = $extraWatch->date->getWeekSince1970($i);
+  $dow = $extraWatch->date->getDateByDay($day, "D");
+  $dateToday = $extraWatch->date->getDateByDay($day);
 
-    if ($week != $lastWeek) {
-        $lastWeek = $week;
-        echo("<br/><b>Week changes on: " . $i . " week: $week dow: $dow  what is locally: " . $extraWatch->date->date("d.m.Y H:i:s", $i) . "</b>");
-        flush();
-    }
-    if ($day != $lastDay) {
-        $lastDay = $day;
-        echo("<br/>Day changes on: " . $i . " week: $week dow: $dow what is locally: " . $extraWatch->date->date("d.m.Y H:i:s", $i));
-        flush();
-    }
-    if ($dateToday != $lastDateToday) {
-        $lastDateToday = $dateToday;
-        echo("<br/>Function getDateByDay changes on: " . $i . " week: $week dow: $dow what is locally: " . $extraWatch->date->date("d.m.Y H:i:s", $i));
-    }
+  if ($week != $lastWeek) {
+    $lastWeek = $week;
+    echo("<br/><b>Week changes on: " . $i . " week: $week dow: $dow  what is locally: " . $extraWatch->date->date("d.m.Y H:i:s", $i) . "</b>");
+    flush();
+  }
+  if ($day != $lastDay) {
+    $lastDay = $day;
+    echo("<br/>Day changes on: " . $i . " week: $week dow: $dow what is locally: " . $extraWatch->date->date("d.m.Y H:i:s", $i));
+    flush();
+  }
+  if ($dateToday != $lastDateToday) {
+    $lastDateToday = $dateToday;
+    echo("<br/>Function getDateByDay changes on: " . $i . " week: $week dow: $dow what is locally: " . $extraWatch->date->date("d.m.Y H:i:s", $i));
+  }
 
 
 }

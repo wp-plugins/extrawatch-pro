@@ -10,11 +10,12 @@
  * @copyright (C) @YEAR@ by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
  */
+
 defined('_JEXEC') or die('Restricted access');
 
-#ExtraWatch language file - to create a new language file, just copy the english.php to eg. german.php and place into /components/com_extrawatch/lang/
+//ExtraWatch language file - to create a new language file, just copy the english.php to eg. german.php and place into./components/com_extrawatch/lang/
 
-// Main Menu
+// Main Menu.
 DEFINE('_EW_MENU_STATS', "Statistika");
 DEFINE('_EW_MENU_GOALS', "Cíle");
 DEFINE('_EW_MENU_SETTINGS', "Nastavení");
@@ -25,14 +26,14 @@ DEFINE('_EW_MENU_LICENSE', "Licence");
 DEFINE('_EW_MENU_DONATORS', "Podporovatelé");
 DEFINE('_EW_MENU_SUPPORT', "Podpořte ExtraWatch a reklamy se Vám nebudou zobrazovat.");
 
-// Left visitors real-time window
+// Left visitors real-time window.
 DEFINE('_EW_VISITS_VISITORS', "Poslední návštevníci");
 DEFINE('_EW_VISITS_BOTS', "Roboti");
 DEFINE('_EW_VISITS_CAME_FROM', "Přišel z");
 DEFINE('_EW_VISITS_MODULE_NOT_PUBLISHED', "Váš JoomlaWach modul není publikovaný. Žádná statistiky se proto nezaznamenávají. Jděte do sekcee modulů a nastavte pro modul ExtraWatch Agent - publikovat na všech stránkách");
 DEFINE('_EW_VISITS_PANE_LOADING', "Načítám...");
 
-// Right stats window
+// Right stats window.
 DEFINE('_EW_STATS_TITLE', "Statistiky návštev pro týden");
 DEFINE('_EW_STATS_WEEK', "Týden");
 DEFINE('_EW_STATS_THIS_WEEK', "tento týden");
@@ -65,7 +66,7 @@ DEFINE('_EW_STATS_IP_BLOCKING_MANUALLY', "Vložte IP adresu, kterou chcete zablo
 DEFINE('_EW_STATS_IP_BLOCKING_TOGGLE', "Skutečně zapnout blokování IP");
 DEFINE('_EW_STATS_PANE_LOADING', "Načítám statistiky...");
 
-// Settings
+// Settings.
 DEFINE('_EW_SETTINGS_TITLE', "Nastavení");
 DEFINE('_EW_SETTINGS_DEFAULT', "Standardně");
 DEFINE('_EW_SETTINGS_SAVE', "Uložit");
@@ -84,7 +85,7 @@ DEFINE('_EW_SETTINGS_SAVED', "Nastavení bylo uloženo");
 DEFINE('_EW_SETTINGS_ADD_YOUR_IP', "Přidejte vaši IP");
 DEFINE('_EW_SETTINGS_TO_THE_LIST', "do seznamu.");
 
-// Other / mostly general
+// Other / mostly general.
 DEFINE('_EW_TITLE', "AJAX monitor pro Joomla CMS");
 DEFINE('_EW_BACK', "Zpět");
 DEFINE('_EW_ACCESS_DENIED', "Nemáte žádné práva na tento obsah");
@@ -100,12 +101,12 @@ DEFINE('_EW_AJAX_PERMISSION_DENIED_2', "Možná jste pouze zapomněli zadat www.
 DEFINE('_EW_AJAX_PERMISSION_DENIED_3', "z");
 DEFINE('_EW_AJAX_PERMISSION_DENIED_4', "co ho nutí si myslet, že je to jiná doména.");
 
-// Header
+// Header.
 DEFINE('_EW_HEADER_DOWNLOAD', "Získejte nejnovější kód tohoto rozšíření z");
 DEFINE('_EW_HEADER_CAST_YOUR', "Zašlete svůj");
 DEFINE('_EW_HEADER_VOTE', "Hlas");
 
-// Tooltips
+// Tooltips.
 DEFINE('_EW_TOOLTIP_CLICK', "Klikněte pro otevření tooltip okna");
 DEFINE('_EW_TOOLTIP_MOUSE_OVER', "Přejeďte myší pro otevření tooltip okna");
 DEFINE('_EW_TOOLTIP_YESTERDAY_INCREASE', "včerejší přírůstek");
@@ -113,7 +114,7 @@ DEFINE('_EW_TOOLTIP_HELP', "Otevře online externí nápovědu pro");
 DEFINE('_EW_TOOLTIP_WINDOW_CLOSE', "Zavřít toto okno");
 DEFINE('_EW_TOOLTIP_PRINT', "Tisk");
 
-// Goals
+// Goals.
 DEFINE('_EW_GOALS_INSERT', "Přidat nový cíl");
 DEFINE('_EW_GOALS_UPDATE', "Uprav cíl číslo");
 DEFINE('_EW_GOALS_ACTION', "Akce");
@@ -140,7 +141,7 @@ DEFINE('_EW_GOALS_EDIT', "Upravit");
 DEFINE('_EW_GOALS_DELETE', "Vymazat");
 DEFINE('_EW_GOALS_DELETE_CONFIRM', "Ztratíte všechny nynější statistická data pro tento cíl. Chcete opravdu vymazat cíl číslo ");
 
-// Frontend
+// Frontend.
 DEFINE('_EW_FRONTEND_COUNTRIES', "Země");
 DEFINE('_EW_FRONTEND_VISITORS', "Návštěvníci");
 DEFINE('_EW_FRONTEND_TODAY', "Dnes");
@@ -151,7 +152,7 @@ DEFINE('_EW_FRONTEND_THIS_MONTH', "Tento měsíc");
 DEFINE('_EW_FRONTEND_LAST_MONTH', "Minulý měsíc");
 DEFINE('_EW_FRONTEND_TOTAL', "Celkově");
 
-// Settings description - quite long
+// Settings description - quite long.
 DEFINE('_EW_DESC_DEBUG', "ExtraWatch je v debug módu. Touto cestou můžete zjistit příčiny chyb. Pro vypnutí, změňte prosím hodnotu EXTRAWATCH_DEBUG v /components/com_extrawatch/config.php z 1 na 0");
 DEFINE('_EW_DESC_STATS_MAX_ROWS', "Maximální počet řádků pro údaje po rozbalení ve statistice");
 DEFINE('_EW_DESC_STATS_IP_HITS', "Všechny IP adresy, které mají méně hitů předchozí den než je nastavená hodnota, budou vymazané z historie IP adres.");

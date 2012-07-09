@@ -8,12 +8,13 @@
  * @license http://www.gnu.org/licenses/gpl-3.0.txt 	GNU General Public License v3
  * @copyright (C) @YEAR@ by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
- **/
+ */
+
 defined( '_JEXEC' ) or die( 'Restricted access' );
 
-#JoomlaWatch language file - to create a new language file, just copy the english.php to eg. german.php and place into /components/com_joomlawatch/lang/
+//JoomlaWatch language file - to create a new language file, just copy the english.php to eg. german.php and place into /components/com_joomlawatch/lang/
 
-# Main Menu
+// Main Menu
 DEFINE('_EW_MENU_STATS', "آمار زنده");
 DEFINE('_EW_MENU_GOALS', "اهداف");
 DEFINE('_EW_MENU_SETTINGS', "تنظیمات");
@@ -25,14 +26,14 @@ DEFINE('_EW_MENU_DONATORS', "حامیان");
 DEFINE('_EW_MENU_SUPPORT', "جهت حذف تبلیغات از بخش مدیریت سایتتان از سیستم آمارگیری پشتیبانی به عمل آورید.");
 
 
-# Left visitors real-time window
+// Left visitors real-time window
 DEFINE('_EW_VISITS_VISITORS', "آخرین بازدیدکنندگان");
 DEFINE('_EW_VISITS_BOTS', "ربات ها");
 DEFINE('_EW_VISITS_CAME_FROM', "آمده از");
 DEFINE('_EW_VISITS_MODULE_NOT_PUBLISHED', "ماژول سیستم آمارگیری در سایت شما منتشر نشده است! هیچ آمار جدیدی ذخیره نمی شود. جهت انتشار آن، به بخش مدیریت ماژول ها رفته و آن را در همه صفحات منتشر نمایید.");
 DEFINE('_EW_VISITS_PANE_LOADING', "در حال بارگذاری بازدیدها...");
 
-# Right stats window
+// Right stats window
 DEFINE('_EW_STATS_TITLE', "مشاهده آمار هفته");
 DEFINE('_EW_STATS_WEEK', "هفته");
 DEFINE('_EW_STATS_THIS_WEEK', "هفته جاری");
@@ -65,7 +66,7 @@ DEFINE('_EW_STATS_IP_BLOCKING_MANUALLY', "آدرس آی پی مورد نظر ر�
 DEFINE('_EW_STATS_IP_BLOCKING_TOGGLE', "ضامن واقعی مسدود سازی آی پی ");
 DEFINE('_EW_STATS_PANE_LOADING', "در حال بارگذاری آمار...");
 
-# Settings
+// Settings
 DEFINE('_EW_SETTINGS_TITLE', "تنظیمات");
 DEFINE('_EW_SETTINGS_DEFAULT', "پیشفرض");
 DEFINE('_EW_SETTINGS_SAVE', "ذخیره");
@@ -85,7 +86,7 @@ DEFINE('_EW_SETTINGS_SAVED', "تنظیات ذخیره شد");
 DEFINE('_EW_SETTINGS_ADD_YOUR_IP', "اضافه کردن آی پی شما");
 DEFINE('_EW_SETTINGS_TO_THE_LIST', "به لیست.");
 
-# Other / mostly general
+// Other / mostly general
 DEFINE('_EW_TITLE', "سیستم لحظه ای مانیتورینگ سایت");
 DEFINE('_EW_BACK', "بازگشت");
 DEFINE('_EW_ACCESS_DENIED', "شما اجازه دسترسی به این صفحه را ندارید!");
@@ -101,12 +102,12 @@ DEFINE('_EW_AJAX_PERMISSION_DENIED_2', "شاید فراموش کرده اید ک
 DEFINE('_EW_AJAX_PERMISSION_DENIED_3', "از");
 DEFINE('_EW_AJAX_PERMISSION_DENIED_4', "چه چیزی باعث اشتباه شدن در تشخیص دامنه می شود.");
 
-# Header
+// Header
 DEFINE('_EW_HEADER_DOWNLOAD', "دریافت آخرین کد افزونه از");
 DEFINE('_EW_HEADER_CAST_YOUR', "لطفا نظر خود را");
 DEFINE('_EW_HEADER_VOTE', "بنویسید");
 
-# Tooltips
+// Tooltips
 DEFINE('_EW_TOOLTIP_CLICK', "جهت مشاهده توضیحات کلیک کنید");
 DEFINE('_EW_TOOLTIP_MOUSE_OVER', "جهت مشاهده توضیحات نشانگر موس را روی آن عبور دهید");
 DEFINE('_EW_TOOLTIP_YESTERDAY_INCREASE', "افزایش روز گذشته");
@@ -114,7 +115,7 @@ DEFINE('_EW_TOOLTIP_HELP', "بازکردن راهنمای خارجی برای");
 DEFINE('_EW_TOOLTIP_WINDOW_CLOSE', "بستن این پنجره");
 DEFINE('_EW_TOOLTIP_PRINT', "چاپ");
 
-# Goals
+// Goals
 DEFINE('_EW_GOALS_INSERT', "درج هدف جدید");
 DEFINE('_EW_GOALS_UPDATE', "بروزرسانی کی هدف");
 DEFINE('_EW_GOALS_ACTION', "عملیات");
@@ -143,7 +144,7 @@ DEFINE('_EW_GOALS_EDIT', "ویرایش");
 DEFINE('_EW_GOALS_DELETE', "حذف");
 DEFINE('_EW_GOALS_DELETE_CONFIRM', "تمامی آمار اخیر مربوط به این هدف حذف خواهد شد. آیا در مورد حذف این هدف مطمئن هستید؟");
 
-# Frontend
+// Frontend
 DEFINE('_EW_FRONTEND_COUNTRIES', "کشورها");
 DEFINE('_EW_FRONTEND_VISITORS', "بازدیدکنندگان");
 DEFINE('_EW_FRONTEND_TODAY', "بازدید امروز");
@@ -154,7 +155,7 @@ DEFINE('_EW_FRONTEND_THIS_MONTH', "بازدید این ماه");
 DEFINE('_EW_FRONTEND_LAST_MONTH', "بازدید ماه قبل");
 DEFINE('_EW_FRONTEND_TOTAL', "بازدید کُل");
 
-# Settings description - quite long
+// Settings description - quite long
 DEFINE('_EW_DESC_DEBUG', "سیستم آمار گیری در حالت خطایابی می باشد. در این حالت شما می توانید علت خطا را کشف نمایید. جهت غیرفعال کردن این حالت، لطفا مقدار JOOMLAWATCH_DEBUG را در /components/com_joomlawatch/config.php از 1 به 0 تغییر دهید");
 DEFINE('_EW_DESC_STATS_MAX_ROWS', "حداکثر ردیف ها جهت نمایش در جالت نمایش آمار به صورت گسترش یافته.");
 DEFINE('_EW_DESC_STATS_IP_HITS', "تمامی آی پی هایی که بازدید آن ها در روزهای قبل کمتر از این مقدار باشند، از تاریخچه آی پی ها حذف خواهند شد.");

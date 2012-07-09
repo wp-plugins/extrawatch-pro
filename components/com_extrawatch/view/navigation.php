@@ -5,14 +5,13 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 212
+ * @revision 220
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
  */
 
-defined('_JEXEC') or die('Restricted access');
-?>
+defined('_JEXEC') or die('Restricted access'); ?>
 
 <a href='<?php echo $this->extraWatch->config->renderLink();?>'><img
     src='<?php echo($this->extraWatch->config->getLiveSiteWithSuffix());?>components/com_extrawatch/img/icons/map_icon.gif'/>&nbsp;<?php echo _EW_MENU_STATS;?>
@@ -62,7 +61,7 @@ defined('_JEXEC') or die('Restricted access');
 </a>
 <?php
 if ($this->extraWatch->config->getEnvironment() == "ExtraWatchJoomlaEnv") {
-    ?>
+  ?>
 |
 <a href='<?php echo $this->extraWatch->config->renderLink('update');?>'><img
     src='<?php echo($this->extraWatch->config->getLiveSiteWithSuffix());?>components/com_extrawatch/img/icons/update.png'/>&nbsp;<?php echo _EW_MENU_UPDATE;?>

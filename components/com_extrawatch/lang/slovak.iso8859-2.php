@@ -10,11 +10,12 @@
  * @copyright (C) @YEAR@ by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
  */
+
 defined('_JEXEC') or die('Restricted access');
 
-#ExtraWatch language file - to create a new language file, just copy the english.php to eg. german.php and place into /components/com_extrawatch/lang/
+//ExtraWatch language file - to create a new language file, just copy the english.php to eg. german.php and place into./components/com_extrawatch/lang/
 
-// Main Menu
+// Main Menu.
 DEFINE('_EW_MENU_STATS', "�tatistika");
 DEFINE('_EW_MENU_GOALS', "Ciele");
 DEFINE('_EW_MENU_SETTINGS', "Nastavenia");
@@ -25,14 +26,14 @@ DEFINE('_EW_MENU_LICENSE', "Licencia");
 DEFINE('_EW_MENU_DONATORS', "Podporovatelia");
 DEFINE('_EW_MENU_SUPPORT', "Podporte ExtraWatch a reklamy sa V�m nebud� zobrazova�.");
 
-// Left visitors real-time window
+// Left visitors real-time window.
 DEFINE('_EW_VISITS_VISITORS', "Posledn� n�v�tevn�ci");
 DEFINE('_EW_VISITS_BOTS', "Roboti");
 DEFINE('_EW_VISITS_CAME_FROM', "Pri�iel z");
 DEFINE('_EW_VISITS_MODULE_NOT_PUBLISHED', "V� JoomlaWach modul nie je publikovan�. �iadne �tatistiky sa preto nezaznamen�vaj�. Cho�te do sekcie modulov a nastavte pre modul ExtraWatch - publikova� na v�etk�ch str�nkach");
 DEFINE('_EW_VISITS_PANE_LOADING', "Na��tavam...");
 
-// Right stats window
+// Right stats window.
 DEFINE('_EW_STATS_TITLE', "�tatistiky n�v�tev pre t�de�");
 DEFINE('_EW_STATS_WEEK', "T�de�");
 DEFINE('_EW_STATS_THIS_WEEK', "tento t�de�");
@@ -65,7 +66,7 @@ DEFINE('_EW_STATS_IP_BLOCKING_MANUALLY', "Vlo�te IP adresu, ktor� chcete zab
 DEFINE('_EW_STATS_IP_BLOCKING_TOGGLE', "Skuto�ne prepn� blokovanie IP");
 DEFINE('_EW_STATS_PANE_LOADING', "Na��tavam �tatistiky...");
 
-// Settings
+// Settings.
 DEFINE('_EW_SETTINGS_TITLE', "Nastavenia");
 DEFINE('_EW_SETTINGS_DEFAULT', "�tandardne");
 DEFINE('_EW_SETTINGS_SAVE', "Ulo�");
@@ -84,7 +85,7 @@ DEFINE('_EW_SETTINGS_SAVED', "Nastavenia boli ulo�en�");
 DEFINE('_EW_SETTINGS_ADD_YOUR_IP', "Pridajte va�u IP");
 DEFINE('_EW_SETTINGS_TO_THE_LIST', "do zoznamu.");
 
-// Other / mostly general
+// Other / mostly general.
 DEFINE('_EW_TITLE', "AJAX monitor pre Joomla CMS");
 DEFINE('_EW_BACK', "Nasp�");
 DEFINE('_EW_ACCESS_DENIED', "Nem�te �iadne pr�va na tento obsah");
@@ -100,12 +101,12 @@ DEFINE('_EW_AJAX_PERMISSION_DENIED_2', "Mo�no ste len zabudli zada� www. pre
 DEFINE('_EW_AJAX_PERMISSION_DENIED_3', "z");
 DEFINE('_EW_AJAX_PERMISSION_DENIED_4', "�o ho n�ti myslie� si, �e je to in� dom�na.");
 
-// Header
+// Header.
 DEFINE('_EW_HEADER_DOWNLOAD', "Z�skajte najnov�� k�d tohto roz��renia z");
 DEFINE('_EW_HEADER_CAST_YOUR', "Za�lite svoj");
 DEFINE('_EW_HEADER_VOTE', "Hlas");
 
-// Tooltips
+// Tooltips.
 DEFINE('_EW_TOOLTIP_CLICK', "Kliknite pre otvorenie tooltip okna");
 DEFINE('_EW_TOOLTIP_MOUSE_OVER', "Prejdite my�ou pre otvorenie tooltip okna");
 DEFINE('_EW_TOOLTIP_YESTERDAY_INCREASE', "v�eraj�� pr�rastok");
@@ -113,7 +114,7 @@ DEFINE('_EW_TOOLTIP_HELP', "Otvor� online extern� help pre");
 DEFINE('_EW_TOOLTIP_WINDOW_CLOSE', "Zatvor toto okno");
 DEFINE('_EW_TOOLTIP_PRINT', "Tla�");
 
-// Goals
+// Goals.
 DEFINE('_EW_GOALS_INSERT', "Pridaj nov� cie�");
 DEFINE('_EW_GOALS_UPDATE', "Uprav cie� ��slo");
 DEFINE('_EW_GOALS_ACTION', "Akcia");
@@ -140,7 +141,7 @@ DEFINE('_EW_GOALS_EDIT', "Uprav");
 DEFINE('_EW_GOALS_DELETE', "Vyma�");
 DEFINE('_EW_GOALS_DELETE_CONFIRM', "Strat�te v�etky doteraj�ie �tatistick� d�ta pre tento cie�. Chcete naozaj vymaza� cie� ��slo ");
 
-// Frontend
+// Frontend.
 DEFINE('_EW_FRONTEND_COUNTRIES', "Krajiny");
 DEFINE('_EW_FRONTEND_VISITORS', "N�v�tevn�ci");
 DEFINE('_EW_FRONTEND_TODAY', "Dnes");
@@ -151,7 +152,7 @@ DEFINE('_EW_FRONTEND_THIS_MONTH', "Tento mesiac");
 DEFINE('_EW_FRONTEND_LAST_MONTH', "Minul� mesiac");
 DEFINE('_EW_FRONTEND_TOTAL', "Celkovo");
 
-// Settings description - quite long
+// Settings description - quite long.
 DEFINE('_EW_DESC_DEBUG', "ExtraWatch je v debug m�de. Touto cestou viete zisti� pr��iny ch�b. Pre vypnutie, zme�te pros�m hodnotu EXTRAWATCH_DEBUG v /components/com_extrawatch/config.php z 1 na 0");
 DEFINE('_EW_DESC_STATS_MAX_ROWS', "Maxim�lny po�et riadkov �dajov po rozbalen� v �tatistike");
 DEFINE('_EW_DESC_STATS_IP_HITS', "V�etky IP adresy, ktor� maj� menej hitov predch�dzaj�ci de� ako dan� hodnota bud� vymazan� z hist�rie IP adries.");

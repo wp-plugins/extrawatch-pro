@@ -3,11 +3,11 @@
  * extraWatch - A real-time ajax joomla monitor and live stats
  * @package extraWatch
  * @version 1.2.18
- * @revision 212
+ * @revision 220
  * @license http://www.gnu.org/licenses/gpl-3.0.txt 	GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
-**/
+ */
 
 defined( '_JEXEC' ) or die( 'Restricted access' );
 
@@ -18,7 +18,7 @@ $xmlFile = "extrawatch-goals-".date('Ymd').".xml";
 $filename = JPATH_ADMINISTRATOR."/".$xmlFile;
 // required for IE, otherwise Content-disposition is ignored
 if(ini_get('zlib.output_compression'))
-    ini_set('zlib.output_compression', 'Off');
+  ini_set('zlib.output_compression', 'Off');
 
 // addition by Jorg Weske
 $file_extension = strtolower(substr(strrchr($filename,"."),1));
@@ -32,20 +32,19 @@ $file_extension = strtolower(substr(strrchr($filename,"."),1));
 //echo "<html><title>eLouai's Download Script</title><body>ERROR: File not found. USE force-download.php?file=filepath</body></html>";
 //exit;
 //};
-switch( $file_extension )
-{
-    case "xml": $ctype="application/xml"; break;
-    // case "pdf": $ctype="application/pdf"; break;
-    // case "exe": $ctype="application/octet-stream"; break;
-    // case "zip": $ctype="application/zip"; break;
-    // case "doc": $ctype="application/msword"; break;
-    // case "xls": $ctype="application/vnd.ms-excel"; break;
-    // case "ppt": $ctype="application/vnd.ms-powerpoint"; break;
-    // case "gif": $ctype="image/gif"; break;
-    // case "png": $ctype="image/png"; break;
-    // case "jpeg":
-    // case "jpg": $ctype="image/jpg"; break;
-    default: $ctype="application/force-download";
+switch( $file_extension ) {
+  case "xml": $ctype="application/xml"; break;
+  // case "pdf": $ctype="application/pdf"; break;
+  // case "exe": $ctype="application/octet-stream"; break;
+  // case "zip": $ctype="application/zip"; break;
+  // case "doc": $ctype="application/msword"; break;
+  // case "xls": $ctype="application/vnd.ms-excel"; break;
+  // case "ppt": $ctype="application/vnd.ms-powerpoint"; break;
+  // case "gif": $ctype="image/gif"; break;
+  // case "png": $ctype="image/png"; break;
+  // case "jpeg":
+  // case "jpg": $ctype="image/jpg"; break;
+  default: $ctype="application/force-download";
 }
 header("Pragma: public"); // required
 header("Expires: 0");
@@ -60,4 +59,3 @@ readfile("$filename");
 unlink($filename);
 exit();
 
-?>

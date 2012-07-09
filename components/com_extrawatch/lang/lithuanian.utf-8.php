@@ -10,11 +10,12 @@
  * @copyright (C) @YEAR@ by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
  */
+
 defined('_JEXEC') or die('Restricted access');
 
-#ExtraWatch language file - to create a new language file, just copy the english.php to eg. german.php and place into /components/com_extrawatch/lang/
+//ExtraWatch language file - to create a new language file, just copy the english.php to eg. german.php and place into./components/com_extrawatch/lang/
 
-// Main Menu
+// Main Menu.
 DEFINE('_EW_MENU_STATS', "Statistika");
 DEFINE('_EW_MENU_GOALS', "Specialios užduotys");
 DEFINE('_EW_MENU_SETTINGS', "Nustatymai");
@@ -25,14 +26,14 @@ DEFINE('_EW_MENU_LICENSE', "Licenzija");
 DEFINE('_EW_MENU_DONATORS', "Sponsoriai");
 DEFINE('_EW_MENU_SUPPORT', "Sumokėk pinigus ExtraWatch ir tada męs pašąlinsime reklaminį spamą.");
 
-// Left visitors real-time window
+// Left visitors real-time window.
 DEFINE('_EW_VISITS_VISITORS', "Paskutiniai lankytojai");
 DEFINE('_EW_VISITS_BOTS', "Botai");
 DEFINE('_EW_VISITS_CAME_FROM', "Perėjo iš");
 DEFINE('_EW_VISITS_MODULE_NOT_PUBLISHED', "Jūsų ExtraWatch modulis nebuvo paskelbtas! Naujos statistikos nebus įrašyta.Publikacijai, užeikite į žymę valdymo modulis ir publikuokite modulį visiems puslapiams kuriuose norite matyti statistiką");
 DEFINE('_EW_VISITS_PANE_LOADING', "Krauname lankytojus...");
 
-// Right stats window
+// Right stats window.
 DEFINE('_EW_STATS_TITLE', "Apsilankymų statistika per savaitę");
 DEFINE('_EW_STATS_WEEK', "Savaitė");
 DEFINE('_EW_STATS_THIS_WEEK', "ši savaitė");
@@ -65,7 +66,7 @@ DEFINE('_EW_STATS_IP_BLOCKING_MANUALLY', "Įveskite IP kurį norite užblokuoti.
 DEFINE('_EW_STATS_IP_BLOCKING_TOGGLE', "Iš tiesų blokuoti ");
 DEFINE('_EW_STATS_PANE_LOADING', "Krauname staistiką...");
 
-// Settings
+// Settings.
 DEFINE('_EW_SETTINGS_TITLE', "Nustatymai");
 DEFINE('_EW_SETTINGS_DEFAULT', "Pagal nutylėjimą");
 DEFINE('_EW_SETTINGS_SAVE', "Išsaugoti");
@@ -84,7 +85,7 @@ DEFINE('_EW_SETTINGS_SAVED', "Nustatymai išsaugoti");
 DEFINE('_EW_SETTINGS_ADD_YOUR_IP', "Įvesti savo IP");
 DEFINE('_EW_SETTINGS_TO_THE_LIST', "į sarašą.");
 
-// Other / mostly general
+// Other / mostly general.
 DEFINE('_EW_TITLE', "AJAX monitorius realiu laiku");
 DEFINE('_EW_BACK', "Atgal");
 DEFINE('_EW_ACCESS_DENIED', "Jūs neturite teisių peržiūrai !");
@@ -100,12 +101,12 @@ DEFINE('_EW_AJAX_PERMISSION_DENIED_2', "Gal pamiršote www. savo domeno pradžio
 DEFINE('_EW_AJAX_PERMISSION_DENIED_3', "iš");
 DEFINE('_EW_AJAX_PERMISSION_DENIED_4', "šitai verčia jį galvoti kad tai kitas domenas.");
 
-// Header
+// Header.
 DEFINE('_EW_HEADER_DOWNLOAD', "gauti paskutinius atnaujinimus iš");
 DEFINE('_EW_HEADER_CAST_YOUR', "Atiduok savo");
 DEFINE('_EW_HEADER_VOTE', "balsą");
 
-// Tooltips
+// Tooltips.
 DEFINE('_EW_TOOLTIP_CLICK', "Spausti papildomai informacijai gauti");
 DEFINE('_EW_TOOLTIP_MOUSE_OVER', "Užvesti pelę papildomai informacijai gauti");
 DEFINE('_EW_TOOLTIP_YESTERDAY_INCREASE', "yesterday&apos;s increase");
@@ -113,7 +114,7 @@ DEFINE('_EW_TOOLTIP_HELP', "Atidaryti online pagalbą");
 DEFINE('_EW_TOOLTIP_WINDOW_CLOSE', "Uždaryti langą");
 DEFINE('_EW_TOOLTIP_PRINT', "Print");
 
-// Goals
+// Goals.
 DEFINE('_EW_GOALS_INSERT', "Įtraukti naują specialią užduotį");
 DEFINE('_EW_GOALS_UPDATE', "Atnaujinti pagal. specialią užduotį.");
 DEFINE('_EW_GOALS_ACTION', "Veiksmai");
@@ -140,7 +141,7 @@ DEFINE('_EW_GOALS_EDIT', "Redaguoti");
 DEFINE('_EW_GOALS_DELETE', "Pašąlinti");
 DEFINE('_EW_GOALS_DELETE_CONFIRM', "Jūs prarasite visą statistiką šitos spec.užduoties. Jūs iš tikrūjų norite pašąlinti.");
 
-// Frontend
+// Frontend.
 DEFINE('_EW_FRONTEND_COUNTRIES', "Šalys");
 DEFINE('_EW_FRONTEND_VISITORS', "Lankytojai");
 DEFINE('_EW_FRONTEND_TODAY', "Šiandien");
@@ -151,7 +152,7 @@ DEFINE('_EW_FRONTEND_THIS_MONTH', "Šio mėnesio");
 DEFINE('_EW_FRONTEND_LAST_MONTH', "Praėjusio mėnesio");
 DEFINE('_EW_FRONTEND_TOTAL', "Viso");
 
-// Settings description - quite long
+// Settings description - quite long.
 DEFINE('_EW_DESC_DEBUG', "ExtraWatch derinimo rėžime. Tokiu būdu lengviau surasti programos klaidas.Kad išjungti, pakeiskite kintamajį EXTRAWATCH_DEBUG kuris randasi /components/com_extrawatch/config.php iš 1 į 0");
 DEFINE('_EW_DESC_STATS_MAX_ROWS', "Maksimalus statistikos eilučių kiekis в išskleistame rėžime.");
 DEFINE('_EW_DESC_STATS_IP_HITS', "Visi IP adresai, kurie turi mažiau lankytojų ankstesnėm dienom nei ši reikšmė, bus pašalinti iš IP istorijos.");

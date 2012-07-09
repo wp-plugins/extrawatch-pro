@@ -7,119 +7,118 @@ Demo server: <a href="http://codegravitydemo.com/wordpress/">Frontpage</a> / <a 
 Features: <strong>Visitor Live Stats</strong>, <strong>History</strong>,
 <strong>Graphs</strong>, <strong>Anti-spam</strong>, <strong>Nightly Email Reports</strong>,
 <strong>Front-end Counters</strong>, translated in <strong>42 world languages</strong>
-Version: 1.2.18.212 PRO
+Version: 1.2.18.220 PRO
 Author: Matej Koval
 Author URI: http://www.codegravity.com
 */
 
 /** using native directory separator for paths */
 if (!defined('DS'))
-    define ('DS', DIRECTORY_SEPARATOR);
+  define ('DS', DIRECTORY_SEPARATOR);
 
 if (!defined('_JEXEC')) define("_JEXEC", 1);
 define("ENV", 1);
 if (!defined('JPATH_BASE2')) define("JPATH_BASE2", dirname(__FILE__));
 if (!defined('JPATH_BASE')) define("JPATH_BASE", dirname(__FILE__));
 if ( ! defined( 'WP_PLUGIN_DIR' ) )
-    define( 'WP_PLUGIN_DIR', WP_CONTENT_DIR.'/plugins' );
+  define( 'WP_PLUGIN_DIR', WP_CONTENT_DIR.'/plugins' );
 
 /* this fixes double require by wordpress*/
 if (@function_exists("extrawatch_admin_menu")) {
-    return;
+  return;
 } else {
 
-    add_action('admin_menu', 'extrawatch_admin_menu');
-    add_action('wp_meta', 'extrawatch_frontend');
+  add_action('admin_menu', 'extrawatch_admin_menu');
+  add_action('wp_meta', 'extrawatch_frontend');
 
-    require_once(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "src". DS. "inc.extrawatch.env.php");
+  require_once(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "src" . DS. "inc.extrawatch.env.php");
 
-    require_once(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "src". DS. "env". DS. "wordpress" . DS . "widget" . DS . "class.extrawatch.agent.widget.php");
-    require_once(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "src". DS. "env". DS. "wordpress" . DS . "widget" . DS . "class.extrawatch.users.widget.php");
-    require_once(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "src". DS. "env". DS. "wordpress" . DS . "widget" . DS . "class.extrawatch.visitors.widget.php");
+  require_once(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "src" . DS. "env". DS. "wordpress" . DS . "widget" . DS . "class.extrawatch.agent.widget.php");
+  require_once(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "src" . DS. "env". DS. "wordpress" . DS . "widget" . DS . "class.extrawatch.users.widget.php");
+  require_once(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "src" . DS. "env". DS. "wordpress" . DS . "widget" . DS . "class.extrawatch.visitors.widget.php");
 
-    register_activation_hook(__FILE__, array('ExtraWatchSetupWordpress', 'install'));
-    register_deactivation_hook(__FILE__, array('ExtraWatchSetupWordpress', 'uninstall'));
+  register_activation_hook(__FILE__, array('ExtraWatchSetupWordpress', 'install'));
+  register_deactivation_hook(__FILE__, array('ExtraWatchSetupWordpress', 'uninstall'));
 
-    function extrawatch_admin_menu()
-    {
-        $options = get_option('ew_plugin_options');
+  function extrawatch_admin_menu()
+  {
+    $options = get_option('ew_plugin_options');
 
-        $extraWatchURL = getExtraWatchURL();
+    $extraWatchURL = getExtraWatchURL();
 
-        $EC_userLevel = isset($options['accessLevel']) && !empty($options['accessLevel']) ? $options['accessLevel'] : 'level_10';
+    $EC_userLevel = isset($options['accessLevel']) && !empty($options['accessLevel']) ? $options['accessLevel'] : 'level_10';
 
-        add_menu_page(__('ExtraWatch', 'extrawatch'), __('ExtraWatch', 'extrawatch'), $EC_userLevel, 'extrawatch', 'ew_plugin_options', $extraWatchURL.'components/com_extrawatch/img/icons/extrawatch-logo-16x16.gif');
+    add_menu_page(__('ExtraWatch', 'extrawatch'), __('ExtraWatch', 'extrawatch'), $EC_userLevel, 'extrawatch', 'ew_plugin_options', $extraWatchURL.'components/com_extrawatch/img/icons/extrawatch-logo-16x16.gif');
 
-        add_submenu_page('extrawatch','Live Stats','Live Stats',$EC_userLevel,'extrawatch&task=',array(&$this, 'extrawatch&task='));
-        /*PRO_START*/
-        add_submenu_page('extrawatch','SEO','SEO',$EC_userLevel,'extrawatch&task=seo',array(&$this, 'extrawatch&task=seo'));
-        add_submenu_page('extrawatch','Heatmap','Heatmap',$EC_userLevel,'extrawatch&task=heatmap',array(&$this, 'extrawatch&task=heatmap'));
-        add_submenu_page('extrawatch','Traffic Flow','Traffic Flow',$EC_userLevel,'extrawatch&task=flow',array(&$this, 'extrawatch&task=flow'));
-        /*PRO_END*/
-        add_submenu_page('extrawatch','Graphs and Trends','Graphs and Trends',$EC_userLevel,'extrawatch&task=graphs',array(&$this, 'extrawatch&task=graphs'));
-        add_submenu_page('extrawatch','Goals','Goals',$EC_userLevel,'extrawatch&task=goals',array(&$this, 'extrawatch&task=goals'));
-        add_submenu_page('extrawatch','Visit History','Visit History',$EC_userLevel,'extrawatch&task=history',array(&$this, 'extrawatch&task=history'));
-        add_submenu_page('extrawatch','Anti-spam and Blocking','Anti-spam and Blocking',$EC_userLevel,'extrawatch&task=antiSpam',array(&$this, 'extrawatch&task=antiSpam'));
-        add_submenu_page('extrawatch','Email Reports','Email Reports',$EC_userLevel,'extrawatch&task=emails',array(&$this, 'extrawatch&task=emails'));
-        add_submenu_page('extrawatch','Your License','Your License',$EC_userLevel,'extrawatch&task=license',array(&$this, 'extrawatch&task=license'));
-        /*PRO_START*/
-        add_submenu_page('extrawatch','Database Status','Database Status',$EC_userLevel,'extrawatch&task=status',array(&$this, 'extrawatch&task=status'));
-        add_submenu_page('extrawatch','Directory Sizes','Directory Sizes',$EC_userLevel,'extrawatch&task=sizes',array(&$this, 'extrawatch&task=sizes'));
-        /*PRO_END*/
-        add_submenu_page('extrawatch','Settings','Settings',$EC_userLevel,'extrawatch&task=settings',array(&$this, 'extrawatch&task=settings'));
-        add_submenu_page('extrawatch','Credits','Credits',$EC_userLevel,'extrawatch&task=credits',array(&$this, 'extrawatch&task=credits'));
+    add_submenu_page('extrawatch','Live Stats','Live Stats',$EC_userLevel,'extrawatch&task=',array(&$this, 'extrawatch&task='));
+    /*PRO_START*/
+    add_submenu_page('extrawatch','SEO','SEO',$EC_userLevel,'extrawatch&task=seo',array(&$this, 'extrawatch&task=seo'));
+    add_submenu_page('extrawatch','Heatmap','Heatmap',$EC_userLevel,'extrawatch&task=heatmap',array(&$this, 'extrawatch&task=heatmap'));
+    add_submenu_page('extrawatch','Traffic Flow','Traffic Flow',$EC_userLevel,'extrawatch&task=flow',array(&$this, 'extrawatch&task=flow'));
+    /*PRO_END*/
+    add_submenu_page('extrawatch','Graphs and Trends','Graphs and Trends',$EC_userLevel,'extrawatch&task=graphs',array(&$this, 'extrawatch&task=graphs'));
+    add_submenu_page('extrawatch','Goals','Goals',$EC_userLevel,'extrawatch&task=goals',array(&$this, 'extrawatch&task=goals'));
+    add_submenu_page('extrawatch','Visit History','Visit History',$EC_userLevel,'extrawatch&task=history',array(&$this, 'extrawatch&task=history'));
+    add_submenu_page('extrawatch','Anti-spam and Blocking','Anti-spam and Blocking',$EC_userLevel,'extrawatch&task=antiSpam',array(&$this, 'extrawatch&task=antiSpam'));
+    add_submenu_page('extrawatch','Email Reports','Email Reports',$EC_userLevel,'extrawatch&task=emails',array(&$this, 'extrawatch&task=emails'));
+    add_submenu_page('extrawatch','Your License','Your License',$EC_userLevel,'extrawatch&task=license',array(&$this, 'extrawatch&task=license'));
+    /*PRO_START*/
+    add_submenu_page('extrawatch','Database Status','Database Status',$EC_userLevel,'extrawatch&task=status',array(&$this, 'extrawatch&task=status'));
+    add_submenu_page('extrawatch','Directory Sizes','Directory Sizes',$EC_userLevel,'extrawatch&task=sizes',array(&$this, 'extrawatch&task=sizes'));
+    /*PRO_END*/
+    add_submenu_page('extrawatch','Settings','Settings',$EC_userLevel,'extrawatch&task=settings',array(&$this, 'extrawatch&task=settings'));
+    add_submenu_page('extrawatch','Credits','Credits',$EC_userLevel,'extrawatch&task=credits',array(&$this, 'extrawatch&task=credits'));
 
-        //add_submenu_page( 'edit.php?post_type=theme', __('Theme Page Options'), __('Theme Menu Options'), 'edit_themes', 'theme_options', theme_options);
+    //add_submenu_page( 'edit.php?post_type=theme', __('Theme Page Options'), __('Theme Menu Options'), 'edit_themes', 'theme_options', theme_options);
+  }
+
+  function ew_plugin_options()
+  {
+    $extraWatchPath = getExtraWatchPath();
+
+    if (!current_user_can('manage_options')) {
+      wp_die(__('You do not have sufficient permissions to access this page.'));
     }
+    echo '<div class="wrap">';
+    require_once $extraWatchPath . "components" . DS . "com_extrawatch" . DS . "config.php";
+    require_once $extraWatchPath . "components" . DS . "com_extrawatch" . DS . "src" . DS. "inc.extrawatch.env.php";
+    require_once $extraWatchPath . "administrator" . DS . "components" . DS . "com_extrawatch" . DS . "admin.extrawatch.php";
+    echo '</div>';
+  }
 
-    function ew_plugin_options()
-    {
-        $extraWatchPath = getExtraWatchPath();
+  function extrawatch_frontend()
+  {
+    $extraWatchPath = getExtraWatchPath();
+    echo("<br/>");
+    include_once $extraWatchPath . "modules" . DS . "mod_extrawatch_agent" . DS . "mod_extrawatch_agent.php";
+    include_once $extraWatchPath . "modules" . DS . "mod_extrawatch_users" . DS . "mod_extrawatch_users.php";
+    include_once $extraWatchPath . "modules" . DS . "mod_extrawatch_visitors" . DS . "mod_extrawatch_visitors.php";
 
-        if (!current_user_can('manage_options')) {
-            wp_die(__('You do not have sufficient permissions to access this page.'));
-        }
-        echo '<div class="wrap">';
-        require_once ($extraWatchPath . "components" . DS . "com_extrawatch" . DS . "config.php");
-        require_once ($extraWatchPath . "components" . DS . "com_extrawatch" . DS . "src". DS. "inc.extrawatch.env.php");
-        require_once ($extraWatchPath . "administrator" . DS . "components" . DS . "com_extrawatch" . DS . "admin.extrawatch.php");
-        echo '</div>';
-    }
+    echo renderExtraWatchAgent();
+    echo renderExtraWatchVisitors();
+    echo renderExtraWatchUsers();
+  }
 
-    function extrawatch_frontend()
-    {
-        $extraWatchPath = getExtraWatchPath();
-        echo("<br/>");
-        include_once ($extraWatchPath . "modules" . DS . "mod_extrawatch_agent" . DS . "mod_extrawatch_agent.php");
-        include_once ($extraWatchPath . "modules" . DS . "mod_extrawatch_users" . DS . "mod_extrawatch_users.php");
-        include_once ($extraWatchPath . "modules" . DS . "mod_extrawatch_visitors" . DS . "mod_extrawatch_visitors.php");
+  function getExtraWatchURL() {
+    
 
-        echo renderExtraWatchAgent();
-        echo renderExtraWatchVisitors();
-        echo renderExtraWatchUsers();
-    }
+    /*PRO_START*/
+    $extraWatchPath = WP_PLUGIN_URL."/extrawatch-pro/";
+    /*PRO_END*/
 
-    function getExtraWatchURL() {
-        
+    return $extraWatchPath;
+  }
 
-        /*PRO_START*/
-        $extraWatchPath = WP_PLUGIN_URL."/extrawatch-pro/";
-        /*PRO_END*/
+  function getExtraWatchPath() {
+    
 
-        return $extraWatchPath;
-    }
+    /*PRO_START*/
+    $extraWatchPath = WP_PLUGIN_DIR."/extrawatch-pro/";
+    /*PRO_END*/
 
-    function getExtraWatchPath() {
-        
-
-        /*PRO_START*/
-        $extraWatchPath = WP_PLUGIN_DIR."/extrawatch-pro/";
-        /*PRO_END*/
-
-        return $extraWatchPath;
-    }
+    return $extraWatchPath;
+  }
 
 
 }
-unset( $_GET['error'] );
-?>
+unset($_GET['error'] );

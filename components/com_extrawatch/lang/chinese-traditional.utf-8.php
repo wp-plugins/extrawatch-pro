@@ -10,11 +10,12 @@
  * @copyright (C) @YEAR@ by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
  */
+
 defined('_JEXEC') or die('Restricted access');
 
-#ExtraWatch language file - to create a new language file, just copy the english.php to eg. german.php and place into /components/com_extrawatch/lang/
+//ExtraWatch language file - to create a new language file, just copy the english.php to eg. german.php and place into./components/com_extrawatch/lang/
 
-// Main Menu
+// Main Menu.
 DEFINE('_EW_MENU_STATS', "實時統計");
 DEFINE('_EW_MENU_GOALS', "目標");
 DEFINE('_EW_MENU_SETTINGS', "設置");
@@ -26,14 +27,14 @@ DEFINE('_EW_MENU_DONATORS', "支持者");
 DEFINE('_EW_MENU_SUPPORT', "支持ExtraWatch以便從後台刪除ExtraWatch 的廣告.");
 
 
-// Left visitors real-time window
+// Left visitors real-time window.
 DEFINE('_EW_VISITS_VISITORS', "最新訪客");
 DEFINE('_EW_VISITS_BOTS', "機器人");
 DEFINE('_EW_VISITS_CAME_FROM', "來自");
 DEFINE('_EW_VISITS_MODULE_NOT_PUBLISHED', "你的ExtraWatch模塊沒有發布！沒有新的統計信息被記錄下來.發布它,去模塊部分並把其在所有網頁上發布");
 DEFINE('_EW_VISITS_PANE_LOADING', "載入訪問...");
 
-// Right stats window
+// Right stats window.
 DEFINE('_EW_STATS_TITLE', "一周訪問統計");
 DEFINE('_EW_STATS_WEEK', "週");
 DEFINE('_EW_STATS_THIS_WEEK', "本週");
@@ -66,7 +67,7 @@ DEFINE('_EW_STATS_IP_BLOCKING_MANUALLY', "輸入你要阻止IP地址. (如217.24
 DEFINE('_EW_STATS_IP_BLOCKING_TOGGLE', "實時阻塞切換");
 DEFINE('_EW_STATS_PANE_LOADING', "載入統計...");
 
-// Settings
+// Settings.
 DEFINE('_EW_SETTINGS_TITLE', "設置");
 DEFINE('_EW_SETTINGS_DEFAULT', "默認");
 DEFINE('_EW_SETTINGS_SAVE', "保存");
@@ -85,7 +86,7 @@ DEFINE('_EW_SETTINGS_SAVED', "設置被保存");
 DEFINE('_EW_SETTINGS_ADD_YOUR_IP', "添加您的IP ");
 DEFINE('_EW_SETTINGS_TO_THE_LIST', "到列表.");
 
-// Other / mostly general
+// Other / mostly general.
 DEFINE('_EW_TITLE', "一個實時的AJAX joomla監控");
 DEFINE('_EW_BACK', "返回");
 DEFINE('_EW_ACCESS_DENIED', "您沒有權限查看此!");
@@ -101,12 +102,12 @@ DEFINE('_EW_AJAX_PERMISSION_DENIED_2', "也許你只是忘記了在您的域名�
 DEFINE('_EW_AJAX_PERMISSION_DENIED_3', "從");
 DEFINE('_EW_AJAX_PERMISSION_DENIED_4', "什麼使得它認為這是一個不同的域.");
 
-// Header
+// Header.
 DEFINE('_EW_HEADER_DOWNLOAD', "從獲取最新的擴展的代碼");
 DEFINE('_EW_HEADER_CAST_YOUR', "請投下您的");
 DEFINE('_EW_HEADER_VOTE', "投票");
 
-// Tooltips
+// Tooltips.
 DEFINE('_EW_TOOLTIP_CLICK', "單擊顯示幫助提示");
 DEFINE('_EW_TOOLTIP_MOUSE_OVER', "懸停鼠標顯示幫助提示");
 DEFINE('_EW_TOOLTIP_YESTERDAY_INCREASE', "昨日增加");
@@ -114,7 +115,7 @@ DEFINE('_EW_TOOLTIP_HELP', "打開外部網上幫助");
 DEFINE('_EW_TOOLTIP_WINDOW_CLOSE', "關閉此窗口");
 DEFINE('_EW_TOOLTIP_PRINT', "打印");
 
-// Goals
+// Goals.
 DEFINE('_EW_GOALS_INSERT', "插入一個新的目標");
 DEFINE('_EW_GOALS_UPDATE', "更新的目標編號.");
 DEFINE('_EW_GOALS_ACTION', "行動");
@@ -143,7 +144,7 @@ DEFINE('_EW_GOALS_EDIT', "編輯");
 DEFINE('_EW_GOALS_DELETE', "刪除");
 DEFINE('_EW_GOALS_DELETE_CONFIRM', "你將失去所有這一目標最近的統計數據.你真的要刪除這個目標編號.");
 
-// Frontend
+// Frontend.
 DEFINE('_EW_FRONTEND_COUNTRIES', "國家");
 DEFINE('_EW_FRONTEND_VISITORS', "訪客");
 DEFINE('_EW_FRONTEND_TODAY', "今天");
@@ -154,7 +155,7 @@ DEFINE('_EW_FRONTEND_THIS_MONTH', "本月");
 DEFINE('_EW_FRONTEND_LAST_MONTH', "上個月");
 DEFINE('_EW_FRONTEND_TOTAL', "總計");
 
-// Settings description - quite long
+// Settings description - quite long.
 DEFINE('_EW_DESC_DEBUG', "ExtraWatch運行在調試模式.通過這種方式,你可以發現錯誤的原因.要關閉它,請更改EXTRAWATCH_DEBUG 的值/components/com_extrawatch/config.php 從1到0 ");
 DEFINE('_EW_DESC_STATS_MAX_ROWS', "當統計在擴展模式時顯示的最大行數.");
 DEFINE('_EW_DESC_STATS_IP_HITS', "過去幾天中少於這個點擊數值的所有IP地址將被從IP歷史列表中刪除.");

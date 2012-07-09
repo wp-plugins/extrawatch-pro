@@ -1,33 +1,36 @@
 <?php
 /**
- * Created by JetBrains PhpStorm.
- * User: Administrator
- * Date: 8/12/11
- * Time: 9:51 PM
- * To change this template use File | Settings | File Templates.
+ * @file
+ * ExtraWatch - A real-time ajax monitor and live stats
+ * @package ExtraWatch
+ * @version 1.2.18
+ * @revision 220
+ * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
+ * @copyright (C) 2012 by Matej Koval - All rights reserved!
+ * @website http://www.codegravity.com
  */
 
 interface ExtraWatchDBWrap
 {
 
-    function setQuery($query);
+  public function setQuery($query);
 
-    function query();
+  public function query();
 
-    function getErrorNum();
+  public function getErrorNum();
 
-    function loadAssocList($key = '');
+  public function loadAssocList($key = '');
 
-    function objectListQuery($query);
+  public function objectListQuery($query);
 
-    function getQuery();
+  public function getQuery();
 
-    function getEscaped($sql);
+  public function getEscaped($sql);
 
-    function resultQuery($query);
+  public function resultQuery($query);
 
-    function executeQuery($query);
+  public function executeQuery($query);
 
-    function loadObjectList($key = '');
+  public function loadObjectList($key = '');
 
 }

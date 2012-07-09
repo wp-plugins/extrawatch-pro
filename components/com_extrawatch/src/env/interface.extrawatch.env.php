@@ -4,61 +4,62 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 212
+ * @revision 220
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
  */
 
 /** ensure this file is being included by a parent file */
-if (!defined('_JEXEC') && !defined('_VALID_MOS'))
-    die('Restricted access');
+if (!defined('_JEXEC') && !defined('_VALID_MOS'))  {
+  die('Restricted access');
+}
 
 interface ExtraWatchEnv
 {
 
-    function getDatabase();
+  public function getDatabase();
 
-    function getRequest();
+  public function getRequest();
 
-    function & getURI();
+  public function & getURI();
 
-    function isSSL();
+  public function isSSL();
 
-    function getRootSite();
+  public function getRootSite();
 
-    function getAdminDir();
+  public function getAdminDir();
 
-    function getCurrentUser();
+  public function getCurrentUser();
 
-    function getTimezoneOffset();
+  public function getTimezoneOffset();
 
-    function getUsersCustomTimezoneOffset();
+  public function getUsersCustomTimezoneOffset();
 
-    function getEnvironmentSuffix();
+  public function getEnvironmentSuffix();
 
-    function renderLink($task, $otherParams);
+  public function renderLink($task, $otherParams);
 
-    function getUser();
+  public function getUser();
 
-    function getTitle();
+  public function getTitle();
 
-    function getUsername();
+  public function getUsername();
 
-    function sendMail($recipient, $sender, $recipient, $subject, $body, $true, $cc, $bcc, $attachment, $replyto, $replytoname);
+  public function sendMail($recipient, $sender, $recipient, $subject, $body, $true, $cc, $bcc, $attachment, $replyto, $replytoname);
 
-    function getDbPrefix();
+  public function getDbPrefix();
 
-    function getAllowedDirsToCheckForSize();
+  public function getAllowedDirsToCheckForSize();
 
-    function getDirsToCheckForSize();
+  public function getDirsToCheckForSize();
 
-    /**
-     * Returns FALSE if there are no messages!
-     * @abstract
-     * @param $database
-     * @return mixed
-     */
-    function getAgentNotPublishedMsg($database);
+  /**
+   * Returns FALSE if there are no messages!
+   * @abstract
+   * @param $database
+   * @return mixed
+   */
+  public function getAgentNotPublishedMsg($database);
 
 }

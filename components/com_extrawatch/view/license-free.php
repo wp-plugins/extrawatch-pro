@@ -13,9 +13,9 @@
 
 defined('_JEXEC') or die('Restricted access');
 
-function extraWatchRenderLicenseFree($extraWatch)
+function extrawatch_renderLicenseFree($extraWatch)
 {
-    $output = "
+  $output = "
 
 <style>
     .row1 {
@@ -50,7 +50,7 @@ function extraWatchRenderLicenseFree($extraWatch)
         font-weight: normal;
     }
 </style>
-<h1>ExtraWatch 1.2.18.212 PRO</h1>
+<h1>ExtraWatch 1.2.18.220 PRO</h1>
 
 <script type='text/javascript'>
     function toggleNoKeyForm() {
@@ -343,5 +343,5 @@ function extraWatchRenderLicenseFree($extraWatch)
         </tr>
         </tbody></table>
         ";
-    return $output;
+  return $output;
 }

@@ -31,9 +31,15 @@ var fade_b = FADE_BLUE
 
 function fade(container) {
     try {
-        if (fade_r == 0) fade_r == FADE_RED;
-        if (fade_g == 0) fade_g == FADE_GREEN;
-        if (fade_b == 0) fade_b == FADE_BLUE;
+        if (fade_r == 0) {
+            fade_r == FADE_RED;
+        }
+        if (fade_g == 0) {
+            fade_g == FADE_GREEN;
+        }
+        if (fade_b == 0) {
+            fade_b == FADE_BLUE;
+        }
 
         if (fade_r + fade_g + fade_b != (255 * 3)) {
             document.getElementById(container).style.background = "rgb(" + fade_r + "," + fade_g + "," + fade_b + ")";
@@ -45,9 +51,21 @@ function fade(container) {
                 setTimeout('fade("' + container + '")', FADE_SPEED)
             }
 
-            if ((fade_r >= 255) || (fade_r + FADE_STEP > 255)) fade_r = 255; else fade_r = fade_r + FADE_STEP;
-            if ((fade_g >= 255) || (fade_g + FADE_STEP > 255)) fade_g = 255; else fade_g = fade_g + FADE_STEP;
-            if ((fade_b >= 255) || (fade_b + FADE_STEP > 255)) fade_b = 255; else fade_b = fade_b + FADE_STEP;
+            if ((fade_r >= 255) || (fade_r + FADE_STEP > 255)) {
+                fade_r = 255;
+            } else {
+                fade_r = fade_r + FADE_STEP;
+            }
+            if ((fade_g >= 255) || (fade_g + FADE_STEP > 255)) {
+                fade_g = 255;
+            } else {
+                fade_g = fade_g + FADE_STEP;
+            }
+            if ((fade_b >= 255) || (fade_b + FADE_STEP > 255)) {
+                fade_b = 255;
+            } else {
+                fade_b = fade_b + FADE_STEP;
+            }
         }
         else {
             document.getElementById(container).style.background = "rgb(" + fade_r + "," + fade_g + "," + fade_b + ")";

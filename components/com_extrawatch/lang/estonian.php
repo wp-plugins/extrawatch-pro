@@ -10,13 +10,14 @@
  * @copyright (C) @YEAR@ by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
  */
+
 defined('_JEXEC') or die('Restricted access');
 
 
-#ExtraWatch: Estonian language - Eesti keel
+//ExtraWatch: Estonian language - Eesti.keel
 
 
-// Main Menu
+// Main Menu.
 
 DEFINE('_EW_MENU_STATS', "Live statistika");
 
@@ -37,7 +38,7 @@ DEFINE('_EW_MENU_DONATORS', "Toetajad");
 DEFINE('_EW_MENU_SUPPORT', "Toeta ExtraWatch'i ja saad oma reklaamid eemaldada administraatori lehel.");
 
 
-// Left visitors real-time window
+// Left visitors real-time window.
 
 DEFINE('_EW_VISITS_VISITORS', "Viimased k&uuml;lastajad");
 
@@ -50,7 +51,7 @@ DEFINE('_EW_VISITS_MODULE_NOT_PUBLISHED', "Sinu ExtraWatch moodul ei ole avaldat
 DEFINE('_EW_VISITS_PANE_LOADING', "Laen k&uuml;lastusi...");
 
 
-// Right stats window
+// Right stats window.
 
 DEFINE('_EW_STATS_TITLE', "N&auml;dala k&uuml;lastuste statistika");
 
@@ -115,7 +116,7 @@ DEFINE('_EW_STATS_IP_BLOCKING_TOGGLE', "T&otilde;esti l&uuml;lita blokeerimine "
 DEFINE('_EW_STATS_PANE_LOADING', "Laen andmeid...");
 
 
-// Settings
+// Settings.
 
 DEFINE('_EW_SETTINGS_TITLE', "Seaded");
 
@@ -152,7 +153,7 @@ DEFINE('_EW_SETTINGS_ADD_YOUR_IP', "Lisa oma IP");
 DEFINE('_EW_SETTINGS_TO_THE_LIST', "nimekirja.");
 
 
-// Other / mostly general
+// Other / mostly general.
 
 DEFINE('_EW_TITLE', "Reaalajas AJAX Joomla j&auml;lgija");
 
@@ -183,7 +184,7 @@ DEFINE('_EW_AJAX_PERMISSION_DENIED_3', "");
 DEFINE('_EW_AJAX_PERMISSION_DENIED_4', "Mis teeb seda arvama, et see on erinev domeen.");
 
 
-// Header
+// Header.
 
 DEFINE('_EW_HEADER_DOWNLOAD', "Hangi uusim pikendamis kood");
 
@@ -192,7 +193,7 @@ DEFINE('_EW_HEADER_CAST_YOUR', "Sisesta oma");
 DEFINE('_EW_HEADER_VOTE', "h&auml;&auml;l");
 
 
-// Tooltips
+// Tooltips.
 
 DEFINE('_EW_TOOLTIP_CLICK', "Vajuta, et n&auml;ha kohtspikrit");
 
@@ -207,7 +208,7 @@ DEFINE('_EW_TOOLTIP_WINDOW_CLOSE', "Sulge see aken");
 DEFINE('_EW_TOOLTIP_PRINT', "Prindi");
 
 
-// Goals
+// Goals.
 
 DEFINE('_EW_GOALS_INSERT', "Sisesta uus eesm&auml;rk");
 
@@ -260,7 +261,7 @@ DEFINE('_EW_GOALS_DELETE', "Kustuta");
 DEFINE('_EW_GOALS_DELETE_CONFIRM', "Sa kaotad selle eesm&auml;rgi k&otilde;ik hiljutised statistika andmed. Kas sa t&otilde;esti soovid kustutada eesm&auml;rki nr ");
 
 
-// Frontend
+// Frontend.
 
 DEFINE('_EW_FRONTEND_COUNTRIES', "Riigid");
 
@@ -281,7 +282,7 @@ DEFINE('_EW_FRONTEND_LAST_MONTH', "Viimane kuu");
 DEFINE('_EW_FRONTEND_TOTAL', "Kokku");
 
 
-// Settings description - quite long
+// Settings description - quite long.
 
 DEFINE('_EW_DESC_DEBUG', "ExtraWatch on silumis reziimis. Sel moel saab leida vigade p&otilde;hjuseid. Et see v&auml;lja l&uuml;litada, palun muuda EXTRAWATCH_DEBUG /components/com_extrawatch/config.php v&auml;&auml;rtust. Muuda 1 tagasi 0");
 

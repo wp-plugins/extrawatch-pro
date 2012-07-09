@@ -4,45 +4,45 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 212
+ * @revision 220
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
  */
 class ExtraWatchVisitorsWidget extends WP_Widget {
 
-    function ExtraWatchVisitorsWidget()
-    {
-        $widget_ops = array('classname' => 'ExtraWatchVisitorsWidget', 'description' => 'Optional ExtraWatch widget which displays visitor statistics and their countries' );
-        $this->WP_Widget('ExtraWatchVisitorsWidget', 'ExtraWatch Visitors', $widget_ops);
-    }
+  function ExtraWatchVisitorsWidget()
+  {
+    $widget_ops = array('classname' => 'ExtraWatchVisitorsWidget', 'description' => 'Optional ExtraWatch widget which displays visitor statistics and their countries' );
+    $this->WP_Widget('ExtraWatchVisitorsWidget', 'ExtraWatch Visitors', $widget_ops);
+  }
 
-    function form($instance)
-    {
-        $instance = wp_parse_args( (array) $instance, array( 'title' => '' ) );
-        $title = $instance['title'];
-    }
+  function form($instance)
+  {
+    $instance = wp_parse_args( (array) $instance, array( 'title' => '' ) );
+    $title = $instance['title'];
+  }
 
-    function update($new_instance, $old_instance)
-    {
-        $instance = $old_instance;
-        $instance['title'] = $new_instance['title'];
-        return $instance;
-    }
+  function update($new_instance, $old_instance)
+  {
+    $instance = $old_instance;
+    $instance['title'] = $new_instance['title'];
+    return $instance;
+  }
 
-    function widget($args, $instance)
-    {
-	$extraWatchPluginDir = realpath(dirname(realpath(__FILE__)).DS."..".DS."..".DS."..".DS."..".DS."..".DS."..".DS);
-        include_once ($extraWatchPluginDir.DS."modules".DS."mod_extrawatch_visitors" . DS . "mod_extrawatch_visitors.php");
-        echo renderExtraWatchVisitors();
-    }
+  function widget($args, $instance)
+  {
+    $extraWatchPluginDir = realpath(dirname(realpath(__FILE__)).DS."..".DS."..".DS."..".DS."..".DS."..".DS."..".DS);
+    include_once $extraWatchPluginDir.DS."modules".DS."mod_extrawatch_visitors" . DS . "mod_extrawatch_visitors.php";
+    echo renderExtraWatchVisitors();
+  }
 
 }
 
 /*register widget */
 function ExtraWatchVisitorsWidget_init()
 {
-    register_widget('ExtraWatchVisitorsWidget');
+  register_widget('ExtraWatchVisitorsWidget');
 }
 
 

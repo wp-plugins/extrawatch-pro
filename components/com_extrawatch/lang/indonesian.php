@@ -10,11 +10,12 @@
  * @copyright (C) @YEAR@ by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
  */
+
 defined('_JEXEC') or die('Restricted access');
 
-#ExtraWatch language file - to create a new language file, just copy the english.php to eg. german.php and place into /components/com_extrawatch/lang/
+//ExtraWatch language file - to create a new language file, just copy the english.php to eg. german.php and place into./components/com_extrawatch/lang/
 
-# Main Menu
+// Main Menu
 DEFINE('_EW_MENU_STATS', "Statistik Live");
 DEFINE('_EW_MENU_GOALS', "Sasaran");
 DEFINE('_EW_MENU_SETTINGS', "Pengaturan");
@@ -26,14 +27,14 @@ DEFINE('_EW_MENU_DONATORS', "Pendukung");
 DEFINE('_EW_MENU_SUPPORT', "Dukung ExtraWatch untuk menghilangkan iklan di halaman admin.");
 
 
-# Left visitors real-time window
+// Left visitors real-time window
 DEFINE('_EW_VISITS_VISITORS', "Pengunjung Terakhir");
 DEFINE('_EW_VISITS_BOTS', "Bots");
 DEFINE('_EW_VISITS_CAME_FROM', "Datang dari");
 DEFINE('_EW_VISITS_MODULE_NOT_PUBLISHED', "Modul ExtraWatch anda tidak diterbitkan! Tidak ada statistik baru yang akan tercatat. Agar terbit, masuk ke bagian Modules dan publish it on all pages");
 DEFINE('_EW_VISITS_PANE_LOADING', "Memuat kunjungan...");
 
-# Right stats window
+// Right stats window
 DEFINE('_EW_STATS_TITLE', "Statistik kunjungan pada minggu");
 DEFINE('_EW_STATS_WEEK', "Minggu");
 DEFINE('_EW_STATS_THIS_WEEK', "minggu ini");
@@ -66,7 +67,7 @@ DEFINE('_EW_STATS_IP_BLOCKING_MANUALLY', "Masukkan alamat IP yang akan diblokir.
 DEFINE('_EW_STATS_IP_BLOCKING_TOGGLE', "Yakin mengubah blokir dari ");
 DEFINE('_EW_STATS_PANE_LOADING', "Memuat statistik...");
 
-# Settings
+// Settings
 DEFINE('_EW_SETTINGS_TITLE', "Pengaturan");
 DEFINE('_EW_SETTINGS_DEFAULT', "Standar");
 DEFINE('_EW_SETTINGS_SAVE', "Simpan");
@@ -85,7 +86,7 @@ DEFINE('_EW_SETTINGS_SAVED', "Pengaturan telah disimpan");
 DEFINE('_EW_SETTINGS_ADD_YOUR_IP', "Tambahkan IP anda");
 DEFINE('_EW_SETTINGS_TO_THE_LIST', "ke daftar.");
 
-# Other / mostly general
+// Other / mostly general
 DEFINE('_EW_TITLE', "Monitor joomla AJAX real-time");
 DEFINE('_EW_BACK', "Kembali");
 DEFINE('_EW_ACCESS_DENIED', "Anda tidak memiliki izin untuk melihat ini !");
@@ -101,12 +102,12 @@ DEFINE('_EW_AJAX_PERMISSION_DENIED_2', "Mungkin anda lupa meletakkan www. di dep
 DEFINE('_EW_AJAX_PERMISSION_DENIED_3', "dari");
 DEFINE('_EW_AJAX_PERMISSION_DENIED_4', "sehingga mengira domain tersebut berbeda.");
 
-# Header
+// Header
 DEFINE('_EW_HEADER_DOWNLOAD', "Dapatkan kode ekstensi terbaru dari");
 DEFINE('_EW_HEADER_CAST_YOUR', "Silakan berikan");
 DEFINE('_EW_HEADER_VOTE', "vote");
 
-# Tooltips
+// Tooltips
 DEFINE('_EW_TOOLTIP_CLICK', "Klik untuk menampilkan tooltip");
 DEFINE('_EW_TOOLTIP_MOUSE_OVER', "Arahkan tetikus untuk menampilkan tooltip");
 DEFINE('_EW_TOOLTIP_YESTERDAY_INCREASE', "peningkatan kemarin");
@@ -114,7 +115,7 @@ DEFINE('_EW_TOOLTIP_HELP', "Buka bantuan eksternal online untuk");
 DEFINE('_EW_TOOLTIP_WINDOW_CLOSE', "Tutup jendela ini");
 DEFINE('_EW_TOOLTIP_PRINT', "Cetak");
 
-# Goals
+// Goals
 DEFINE('_EW_GOALS_INSERT', "Masukkan sasaran baru");
 DEFINE('_EW_GOALS_UPDATE', "Perbarui sasaran no.");
 DEFINE('_EW_GOALS_ACTION', "Aksi");
@@ -143,7 +144,7 @@ DEFINE('_EW_GOALS_EDIT', "Edit");
 DEFINE('_EW_GOALS_DELETE', "Hapus");
 DEFINE('_EW_GOALS_DELETE_CONFIRM', "Semua data statistik terbaru akan hilang untuk sasaran ini. Anda yakin ingin menghapus sasaran no.");
 
-# Frontend
+// Frontend
 DEFINE('_EW_FRONTEND_COUNTRIES', "Negara");
 DEFINE('_EW_FRONTEND_VISITORS', "Pengunjung");
 DEFINE('_EW_FRONTEND_TODAY', "Hari ini");
@@ -154,7 +155,7 @@ DEFINE('_EW_FRONTEND_THIS_MONTH', "Bulan Ini");
 DEFINE('_EW_FRONTEND_LAST_MONTH', "Bulan Kemarin");
 DEFINE('_EW_FRONTEND_TOTAL', "Total");
 
-# Settings description - quite long
+// Settings description - quite long
 DEFINE('_EW_DESC_DEBUG', "ExtraWatch dalam modus debug untuk mendeteksi penyebab error. Untuk mematikannya, silakan ubah nilai EXTRAWATCH_DEBUG di /components/com_extrawatch/config.php dari 1 ke 0");
 DEFINE('_EW_DESC_STATS_MAX_ROWS', "Maks baris yang ditampilkan ketika statistik dalam modus diluaskan.");
 DEFINE('_EW_DESC_STATS_IP_HITS', "Semua alamat IP yang hitsnya beberapa hari ini lebih sedikit dari nilai ini akan dihapus dari sejarah IP.");

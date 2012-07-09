@@ -10,11 +10,12 @@
  * @copyright (C) @YEAR@ by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
  */
+
 defined('_JEXEC') or die('Restricted access');
 
-#ExtraWatch language file - to create a new language file, just copy the english.php to eg. german.php and place into /components/com_extrawatch/lang/
+//ExtraWatch language file - to create a new language file, just copy the english.php to eg. german.php and place into./components/com_extrawatch/lang/
 
-// Main Menu
+// Main Menu.
 DEFINE('_EW_MENU_STATS', "Thống kê");
 DEFINE('_EW_MENU_GOALS', "Mục tiêu");
 DEFINE('_EW_MENU_SETTINGS', "Cài đặt");
@@ -26,14 +27,14 @@ DEFINE('_EW_MENU_DONATORS', "Những người ủng hộ");
 DEFINE('_EW_MENU_SUPPORT', "Hỗ trợ ExtraWatch và quảng cáo của bạn bị từ phụ trợ.");
 
 
-// Left visitors real-time window
+// Left visitors real-time window.
 DEFINE('_EW_VISITS_VISITORS', "Ghé thăm cuối");
 DEFINE('_EW_VISITS_BOTS', "Chương trình");
 DEFINE('_EW_VISITS_CAME_FROM', "Đến từ");
 DEFINE('_EW_VISITS_MODULE_NOT_PUBLISHED', "Module ExtraWatch của bạn không phải là xuất bản Không có số liệu thống kê mới được ghi nhận xuất bản nó, đi vào phần Modules và công bố nó trên tất cả các trang. ");
 DEFINE('_EW_VISITS_PANE_LOADING', "Đang tải thăm ...");
 
-// Right stats window
+// Right stats window.
 DEFINE('_EW_STATS_TITLE', "Số liệu thống kê Truy cập trong tuần");
 DEFINE('_EW_STATS_WEEK', "Tuần");
 DEFINE('_EW_STATS_THIS_WEEK', "tuần này");
@@ -66,7 +67,7 @@ DEFINE('_EW_STATS_IP_BLOCKING_MANUALLY', "Nhập IP một địa chỉ mà bạn
 DEFINE('_EW_STATS_IP_BLOCKING_TOGGLE', "Thực sự ngăn chặn chuyển đổi của ");
 DEFINE('_EW_STATS_PANE_LOADING', "Tải số liệu thống kê ...");
 
-// Settings
+// Settings.
 DEFINE('_EW_SETTINGS_TITLE', "Cài đặt");
 DEFINE('_EW_SETTINGS_DEFAULT', "Mặc định");
 DEFINE('_EW_SETTINGS_SAVE', "Lưu");
@@ -85,7 +86,7 @@ DEFINE('_EW_SETTINGS_SAVED', "Cài đặt đã được lưu");
 DEFINE('_EW_SETTINGS_ADD_YOUR_IP', "Thêm IP của bạn");
 DEFINE('_EW_SETTINGS_TO_THE_LIST', "vào danh sách.");
 
-// Other / mostly general
+// Other / mostly general.
 DEFINE('_EW_TITLE', "AJAX Joomla theo dõi thời gian thực");
 DEFINE('_EW_BACK', "Trở lại");
 DEFINE('_EW_ACCESS_DENIED', "Bạn không có bất kỳ quyền truy cập để xem này!");
@@ -101,12 +102,12 @@ DEFINE('_EW_AJAX_PERMISSION_DENIED_2', "Có thể bạn chỉ bị lãng quên w
 DEFINE('_EW_AJAX_PERMISSION_DENIED_3', "Từ");
 DEFINE('_EW_AJAX_PERMISSION_DENIED_4', "Những gì làm cho nó nghĩ rằng nó là một miền khác nhau.");
 
-// Header
+// Header.
 DEFINE('_EW_HEADER_DOWNLOAD', "Nhận mã của phần mở rộng mới nhất của từ");
 DEFINE('_EW_HEADER_CAST_YOUR', "Cast của bạn");
 DEFINE('_EW_HEADER_VOTE', "Bỏ phiếu");
 
-// Tooltips
+// Tooltips.
 DEFINE('_EW_TOOLTIP_CLICK', "Click vào để hiển thị tooltip");
 DEFINE('_EW_TOOLTIP_MOUSE_OVER', "Đưa một con chuột trên để hiển thị tooltip");
 DEFINE('_EW_TOOLTIP_YESTERDAY_INCREASE', "Ngày hôm qua tăng");
@@ -114,7 +115,7 @@ DEFINE('_EW_TOOLTIP_HELP', "Mở trợ giúp trực tuyến bên ngoài để");
 DEFINE('_EW_TOOLTIP_WINDOW_CLOSE', "Đóng cửa sổ này");
 DEFINE('_EW_TOOLTIP_PRINT', "In");
 
-// Goals
+// Goals.
 DEFINE('_EW_GOALS_INSERT', "Chèn một mục tiêu mới");
 DEFINE('_EW_GOALS_UPDATE', "Cập nhật một không có mục tiêu.");
 DEFINE('_EW_GOALS_ACTION', "Hành động");
@@ -143,7 +144,7 @@ DEFINE('_EW_GOALS_EDIT', "Chỉnh sửa");
 DEFINE('_EW_GOALS_DELETE', "xóa");
 DEFINE('_EW_GOALS_DELETE_CONFIRM', "Bạn sẽ mất tất cả các số liệu thống kê gần đây cho mục tiêu này. Bạn có thực sự muốn xóa một mục tiêu không.");
 
-// Frontend
+// Frontend.
 DEFINE('_EW_FRONTEND_COUNTRIES', "Nước");
 DEFINE('_EW_FRONTEND_VISITORS', "Khách thăm");
 DEFINE('_EW_FRONTEND_TODAY', "Hôm nay");
@@ -154,7 +155,7 @@ DEFINE('_EW_FRONTEND_THIS_MONTH', "Tháng này");
 DEFINE('_EW_FRONTEND_LAST_MONTH', "Tháng trước");
 DEFINE('_EW_FRONTEND_TOTAL', "Tổng số");
 
-// Settings description - quite long
+// Settings description - quite long.
 DEFINE('_EW_DESC_DEBUG', "ExtraWatch là trong chế độ gỡ lỗi. Bằng cách này bạn có thể khám phá ra nguyên nhân lỗi. Để tắt nó đi, hãy thay đổi EXTRAWATCH_DEBUG giá trị trong / thành phần / com_extrawatch / config.php 1-0");
 DEFINE('_EW_DESC_STATS_MAX_ROWS', "Max hàng để hiển thị khi số liệu thống kê đang ở chế độ mở rộng.");
 DEFINE('_EW_DESC_STATS_IP_HITS', "Tất cả các địa chỉ IP có số truy cập ít hơn trong những ngày trước hơn giá trị này sẽ được xóa khỏi lịch sử IP.");

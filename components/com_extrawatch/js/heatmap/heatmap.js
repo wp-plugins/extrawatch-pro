@@ -36,20 +36,23 @@
                 };
         }
 
-        ;
-
         store.prototype = {
             // function for adding datapoints to the store
             // datapoints are usually defined by x and y but could also contain a third parameter which represents the occurrence
             addDataPoint:function (x, y) {
-                if (x < 0 || y < 0)
+                if (x < 0 || y < 0) {
                     return;
+                }
 
                 var heatmap = this.get("heatmap"),
                     data = this.get("data");
 
-                if (!data[x]) data[x] = [];
-                if (!data[x][y]) data[x][y] = 1;
+                if (!data[x]) {
+                    data[x] = [];
+                }
+                if (!data[x][y]) {
+                    data[x][y] = 1;
+                }
                 // if count parameter is set increment by count otherwise by 1
                 data[x][y] += (arguments.length < 3) ? 1 : arguments[2];
 
@@ -89,8 +92,12 @@
                         point.x = position[0] + point.x;
                         point.y = position[1] + point.y;
                         heatmap.drawAlpha(point.x, point.y, point.count);
-                        if (!data[point.x]) data[point.x] = [];
-                        if (!data[point.x][point.y]) data[point.x][point.y] = 1;
+                        if (!data[point.x]) {
+                            data[point.x] = [];
+                        }
+                        if (!data[point.x][point.y]) {
+                            data[point.x][point.y] = 1;
+                        }
                         data[point.x][point.y] += point.count;
                     }
                 }
@@ -101,11 +108,13 @@
                 var exportData = [];
                 for (var one in data) {
                     // jump over undefined indexes
-                    if (one === undefined)
+                    if (one === undefined) {
                         continue;
+                    }
                     for (var two in data[one]) {
-                        if (two === undefined)
+                        if (two === undefined) {
                             continue;
+                        }
                         // if both indexes are defined, push the values into the array
                         exportData.push({x:parseInt(one, 10), y:parseInt(two, 10), count:data[one][two]});
                     }
@@ -255,19 +264,23 @@
             },
             getWidth:function (element) {
                 var width = element.offsetWidth;
-                if (element.style.paddingLeft)
+                if (element.style.paddingLeft) {
                     width += element.style.paddingLeft;
-                if (element.style.paddingRight)
+                }
+                if (element.style.paddingRight) {
                     width += element.style.paddingRight;
+                }
 
                 return width;
             },
             getHeight:function (element) {
                 var height = element.offsetHeight;
-                if (element.style.paddingTop)
+                if (element.style.paddingTop) {
                     height += element.style.paddingTop;
-                if (element.style.paddingBottom)
+                }
+                if (element.style.paddingBottom) {
                     height += element.style.paddingBottom;
+                }
 
                 return height;
             },
@@ -281,8 +294,9 @@
 
                 var x2 = radiusOut * 2;
 
-                if (x + x2 > width)
+                if (x + x2 > width) {
                     x = width - x2;
+                }
                 if (x < 0)
                     x = 0;
                 if (y < 0)
