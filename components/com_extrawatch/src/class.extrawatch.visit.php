@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 227
+ * @revision 228
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -387,7 +387,9 @@ class ExtraWatchVisit
         $phrase = str_replace("%2B", "+", $phrase);
         $this->stat->increaseKeyValueInGroup(EW_DB_KEY_KEYPHRASE, $phrase);
 
+        /*PRO_START*/
         $this->insertSearchResultPage($uri, $phrase, $referer, $title);
+        /*PRO_END*/
 
         $keywords = explode(' ', $phrase); //using space instead of + because google has changed it
         if (trim($phrase)) {
