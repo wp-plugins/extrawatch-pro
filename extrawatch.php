@@ -7,7 +7,7 @@ Demo server: <a href="http://codegravitydemo.com/wordpress/">Frontpage</a> / <a 
 Features: <strong>Visitor Live Stats</strong>, <strong>History</strong>,
 <strong>Graphs</strong>, <strong>Anti-spam</strong>, <strong>Nightly Email Reports</strong>,
 <strong>Front-end Counters</strong>, translated in <strong>42 world languages</strong>
-Version: 1.2.18.230 PRO
+Version: 1.2.18.232 PRO
 Author: Matej Koval
 Author URI: http://www.codegravity.com
 */

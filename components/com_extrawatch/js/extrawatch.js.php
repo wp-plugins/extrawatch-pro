@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 230
+ * @revision 232
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -25,44 +25,6 @@ $env = @$_REQUEST['env'];
 $frontend = @$_REQUEST['frontend'];
 
 require_once JPATH_BASE . "components" . DS . "com_extrawatch" . DS . "includes.php";
-
-switch (@$env) {
-  case "ExtraWatchDrupalEnv":
-    {
-    define('DRUPAL_ROOT', dirname('../../../../../../../../../../'));
-    require_once DRUPAL_ROOT . '/includes/bootstrap.inc';
-    drupal_bootstrap(DRUPAL_BOOTSTRAP_DATABASE);
-    if (!defined('ENV')) define('ENV', 1);
-    break;
-    }
-
-  case "ExtraWatchJoomlaEnv":
-    {
-    $mainframe = initializeJoomla();
-    break;
-    }
-
-  case "ExtraWatchWordpressEnv":
-    {
-    require_once dirname(__FILE__) . '/../../../../../../wp-load.php';
-    break;
-    }
-  case "ExtraWatchNoCMSEnv":
-    {
-    if (!defined('ENV')) define('ENV', 1);
-    break;
-    }
-
-  default:
-    {
-    initializeJoomla();
-    break;
-    }
-
-}
-
-
-
 
 $extraWatch = new ExtraWatch();
 require_once JPATH_BASE . DS . "components" . DS . "com_extrawatch" . DS . "lang" . DS . $extraWatch->config->getLanguage() . ".php";
