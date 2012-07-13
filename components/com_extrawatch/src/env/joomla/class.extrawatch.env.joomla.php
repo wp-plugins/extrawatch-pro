@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 233
+ * @revision 234
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -160,7 +160,7 @@ class ExtraWatchJoomlaEnv implements ExtraWatchEnv
     $query = sprintf("select published from #__modules where module = 'mod_extrawatch_agent' order by id desc limit 1; ");
     $published = $database->resultQuery($query);
     if (!$published) {
-      return _EW_AGENT_NOT_PUBLISHED_JOOMLA_ERROR;
+      return _EW_AGENT_NOT_PUBLISHED_ERROR_JOOMLA;
     }
     return FALSE;
   }

@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 233
+ * @revision 234
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -14,8 +14,9 @@
 <span style='color: black;'>&nbsp;<?php echo (ExtraWatchDate::getActualDateTime()); ?></span>
 
 <?php
-if (@!defined('ENV') && !$extraWatch->env->isAgentPublished($extraWatch->database)) {
-  echo("<h4 style='color: red;'>" . _EW_VISITS_MODULE_NOT_PUBLISHED . "</h4>");
+$agentNotPublishedMsg = $extraWatch->env->getAgentNotPublishedMsg($extraWatch->database);
+if (@!defined('ENV') && $agentNotPublishedMsg) {
+  echo("<h4 style='color: red;'>" . $agentNotPublishedMsg . "</h4>");
   echo ("<h3><a href='http://www.codegravity.com/demo/extrawatch/1.2.x/install/' target='_blank'>" . _EW_WATCH_INSTALLATION_DEMO . "</a></h3>");
 } ?>
 <br/>

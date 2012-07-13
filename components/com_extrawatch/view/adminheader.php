@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 233
+ * @revision 234
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 byMatej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -17,6 +17,8 @@ defined('_JEXEC') or die('Restricted access'); ?>
 <script type="text/javascript">
   $.noConflict();
 </script>
+<script type="text/javascript"
+        src="<?php echo($this->extraWatch->config->getLiveSiteWithSuffix());?>components/com_extrawatch/js/ajax-dynamic-content.js"></script>
 <script type="text/javascript"
         src="<?php echo($this->extraWatch->config->getLiveSiteWithSuffix());?>components/com_extrawatch/js/ajax.js"></script>
 <script type="text/javascript"
