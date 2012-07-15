@@ -290,8 +290,8 @@ class ExtraWatchHTML
   function renderAdFreeLicense()
   {
     /*PRO_START*/
-    require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "license-commercial.php";
-    return extrawatch_renderLicense($this->extraWatch);
+    require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "license-free.php";
+    return extrawatch_renderLicenseFree($this->extraWatch);
     /*PRO_END*/
 
     
