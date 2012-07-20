@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 234
+ * @revision 242
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -17,7 +17,7 @@ defined('_JEXEC') or die('Restricted access'); ?>
 
     <div class="panel">
       <div class="wrapper">
-        <table border='0' style='border: 1px solid #dddddd; padding: 2px;>
+        <table style='border: 1px solid #dddddd; padding: 2px;>
                 <tr><td colspan='
         4' align='left'><h2><?php echo(_EW_SETTINGS_ANTI_SPAM);?></h2></td></tr>
         <tr>

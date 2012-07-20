@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 234
+ * @revision 242
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -110,10 +110,10 @@ class ExtraWatchVisitHTML
     $rowNumber = 0;
 
     $dateToday = $this->extraWatch->date->jwDateToday();
-    /*PRO_START*/
+    
     $uri2HeatmapClicksAssoc = $this->heatmap->heatmapForDayAsAsoc($dateToday);
     $maxClicksOfDay = $this->heatmap->getMaxClicksForDay($dateToday);
-    /*PRO_END*/
+    
 
     if (@$rows)
       foreach ($rows as $row) {
@@ -254,7 +254,7 @@ class ExtraWatchVisitHTML
 
         $output .= ("$row->timestamp <a href='$row->uri' target='_blank'>$row->title</a> $uriTruncated");
 
-        /*PRO_START*/
+        
         $userHeatmapClicks = $this->heatmap->getHeatmapClickNums($row->ip, $row->uri, ExtraWatchDate::jwDateFromTimestamp($row->timestamp));
         if ($userHeatmapClicks > 0) {
           $output .= $this->heatmapHTML->renderHeatmapLink($row->uri, $day, "&nbsp;<img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/click.png' title='" . _EW_HEATMAP_CLICK_OPEN . "'/> <span style='color: " . $color . "' title='" . _EW_HEATMAP_CLICK_OPEN . "'>$userHeatmapClicks</span>", $row->ip);
@@ -271,7 +271,7 @@ class ExtraWatchVisitHTML
           }
           $output .= $this->heatmapHTML->renderHeatmapLink($row->uri, $day, "&nbsp;<img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/click.png' title='" . _EW_HEATMAP_CLICK_OPEN . "'/> <span style='color: " . $color . "' title='" . _EW_HEATMAP_CLICK_OPEN . "'>$clicks</span>");
         }
-        /*PRO_END*/
+        
 
         $postData = $this->extraWatch->visit->arePostDataForUri($row->id);
 
@@ -329,12 +329,12 @@ class ExtraWatchVisitHTML
     $refererTruncated = $this->extraWatch->helper->truncate($referer);
     $output .= sprintf("<i style='color: gray;'> " . _EW_VISITS_CAME_FROM . ": <a href='%s' target='_blank' style='color: gray;' title='%s'>%s</a></i>", htmlspecialchars($referer), htmlspecialchars($referer), $refererTruncated);
 
-    /*PRO_START*/
+    
     $position = $this->extraWatch->seo->extractGooglePageNumberFromReferer($referer);
     if (@$position) {
       $output .= "<i style='color: gray;'> " . _EW_POSITION . ":$position</i> ";
     }
-    /*PRO_END*/
+    
 
     $phrase = $this->extraWatch->visit->extractPhraseFromUrl($referer);
     if (@$phrase) {

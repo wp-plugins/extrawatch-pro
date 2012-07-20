@@ -5,13 +5,13 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 234
+ * @revision 242
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
  */
 
-/*PRO_START*/
+
 define('_JEXEC', 1);
 define('DS', DIRECTORY_SEPARATOR);
 $jBasePath = realpath(dirname(__FILE__) . DS . ".." . DS . ".." . DS . "..". DS);
@@ -63,5 +63,5 @@ $data = array(
 
 echo json_encode($data);
 
-/*PRO_END*/
+
 

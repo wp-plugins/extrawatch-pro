@@ -7,7 +7,7 @@
     <copyright>Copyright 2006-2012 by Matej Koval</copyright>
     <authorEmail>foo@codegravity.com</authorEmail>
     <authorUrl>http://www.codegravity.com</authorUrl>
-    <version>1.2.18.234 PRO</version>
+    <version>1.2.18.242 PRO</version>
     <license>http://www.gnu.org/licenses/gpl-3.0.txt GNU/GPLv3</license>
     <description>
         ExtraWatch is an AJAX component and module for Joomla CMS that allows you to watch
@@ -85,7 +85,7 @@ in this section are copied from /site/ in the package -->
                     img="components/com_extrawatch/img/icons/map_icon.gif"
                     alt="Live Stats">Live Stats
             </menu>
-            <!--PRO_START-->
+            
             <menu
                     link="option=com_extrawatch&amp;task=seo"
                     img="components/com_extrawatch/img/icons/seo.png"
@@ -101,7 +101,7 @@ in this section are copied from /site/ in the package -->
                     img="components/com_extrawatch/img/icons/flow.png"
                     alt="Traffic Flow">Traffic Flow
             </menu>
-            <!--PRO_END-->
+            
             <menu
                     link="option=com_extrawatch&amp;task=graphs"
                     img="components/com_extrawatch/img/icons/trend_icon.gif"
@@ -132,7 +132,7 @@ in this section are copied from /site/ in the package -->
                     img="components/com_extrawatch/img/icons/license.png"
                     alt="Your License">Your License
             </menu>
-            <!--PRO_START-->
+            
             <menu
                     link="option=com_extrawatch&amp;task=status"
                     img="components/com_extrawatch/img/icons/status.png"
@@ -143,7 +143,7 @@ in this section are copied from /site/ in the package -->
                     img="components/com_extrawatch/img/icons/sizes.png"
                     alt="Modules / Components Sizes">Modules / Components Sizes
             </menu>
-            <!--PRO_END-->
+            
             <menu
                     link="option=com_extrawatch&amp;task=settings"
                     img="components/com_extrawatch/img/icons/settings.gif"

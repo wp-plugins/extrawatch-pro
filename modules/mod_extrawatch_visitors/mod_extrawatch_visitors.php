@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 234
+ * @revision 242
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -13,11 +13,11 @@
 
 /** ensure this file is being included by a parent file */
 if (!defined('_JEXEC') && !defined('_VALID_MOS')) {
-  die('Restricted access');
+    die('Restricted access');
 }
 
 if (!defined("JPATH_BASE2")) {
-  define("JPATH_BASE2", JPATH_BASE);
+    define("JPATH_BASE2", JPATH_BASE);
 }
 
 
@@ -51,17 +51,17 @@ require_once JPATH_BASE . DS . "components" . DS . "com_extrawatch" . DS . "src"
 
 function renderExtraWatchVisitors()
 {
-  $output = "";
+    $output = "";
 
-  $extraWatch = new ExtraWatch();
-  require_once JPATH_BASE . DS . "components" . DS . "com_extrawatch" . DS . "lang" . DS . $extraWatch->config->getLanguage() . ".php";
+    $extraWatch = new ExtraWatch();
+    require_once JPATH_BASE . DS . "components" . DS . "com_extrawatch" . DS . "lang" . DS . $extraWatch->config->getLanguage() . ".php";
 
-  if (EXTRAWATCH_DEBUG) {
-    $output .= (_JW_DESC_DEBUG);
-  }
-  $extraWatchStatHTML = new ExtraWatchStatHTML($extraWatch);
-  $output .= $extraWatchStatHTML->renderFrontendStats($extraWatch);
-  return $output;
+    if (EXTRAWATCH_DEBUG) {
+        $output .= (_JW_DESC_DEBUG);
+    }
+    $extraWatchStatHTML = new ExtraWatchStatHTML($extraWatch);
+    $output .= $extraWatchStatHTML->renderFrontendStats($extraWatch);
+    return $output;
 }
 
 if (!defined('ENV')) echo renderExtraWatchVisitors();

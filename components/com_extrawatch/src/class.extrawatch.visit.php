@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 234
+ * @revision 242
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -360,11 +360,11 @@ class ExtraWatchVisit
     $newUsername = @ $this->env->getUsername();
     $liveSite = $this->config->getLiveSite();
 
-    /*PRO_START*/
+    
     if ($this->heatmap->isHeatmapLoaded()) {
       return TRUE;
     }
-    /*PRO_END*/
+    
 
 
     $ip = addslashes(strip_tags(@ $this->getRemoteIPAddress()));
@@ -387,9 +387,9 @@ class ExtraWatchVisit
         $phrase = str_replace("%2B", "+", $phrase);
         $this->stat->increaseKeyValueInGroup(EW_DB_KEY_KEYPHRASE, $phrase);
 
-        /*PRO_START*/
+        
         $this->insertSearchResultPage($uri, $phrase, $referer, $title);
-        /*PRO_END*/
+        
 
         $keywords = explode(' ', $phrase); //using space instead of + because google has changed it
         if (trim($phrase)) {
@@ -435,9 +435,9 @@ class ExtraWatchVisit
 
     if ($this->date->getUTCTimestamp() % 10 == 0) {
       $this->deleteOldVisits();
-      /*PRO_START*/
+      
       $this->seo->cleanUnimportantKeyphrases();
-      /*PRO_END*/
+      
     }
 
     $time = $this->date->getUTCTimestamp();
@@ -856,11 +856,11 @@ class ExtraWatchVisit
 
         /* functions to run at midnight */
         $this->sendNightlyEmails();
-        /*PRO_START*/
+        
         $this->sizes->updateTableSizes($lastRunAtMidnightDate);
         $this->heatmap->updateHeatmapStats($lastRunAtMidnightDate);
         $this->flow->updateFlowStats($lastRunAtMidnightDate);
-        /*PRO_END*/
+        
         $this->stat->optimizeTables();
         /* functions to run at midnight */
       }
