@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 242
+ * @revision 245
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -19,46 +19,49 @@ define('JPATH_BASE2', $jBasePath);
 
 include_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS. "includes.php";
 
-$joomlaWatch = new JoomlaWatch();
-$joomlaWatch->block->checkPermissions();
+$extraWatch = new ExtraWatch();
+$extraWatch->block->checkPermissions();
 
-require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS. "lang" . DS . $joomlaWatch->config->getLanguage() . ".php";
+require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS. "lang" . DS . $extraWatch->config->getLanguage() . ".php";
 
 
-$group = JoomlaWatchHelper::requestPost('mod');
-$prevSum = JoomlaWatchHelper::requestPost('prev');
-$suffix = JoomlaWatchHelper::requestPost('suffix');
+$group = ExtraWatchHelper::requestPost('mod');
+$prevSum = ExtraWatchHelper::requestPost('prev');
+$suffix = ExtraWatchHelper::requestPost('suffix');
 
-$realDirectoryMain = JoomlaWatchHelper::requestPost('dir1');
-$realDirectoryAdmin = JoomlaWatchHelper::requestPost('dir2');
+$realDirectoryMain = ExtraWatchHelper::requestPost('dir1');
+$realDirectoryAdmin = ExtraWatchHelper::requestPost('dir2');
 
-if (!$joomlaWatch->sizes->isAllowed($realDirectoryMain) || !$joomlaWatch->sizes->isAllowed($realDirectoryAdmin)) {
+$realDirectoryMain = realpath("..". DS . $realDirectoryMain);
+$realDirectoryAdmin = realpath("..". DS . $realDirectoryAdmin);
+
+if (!$extraWatch->sizes->isAllowed($realDirectoryMain) || !$extraWatch->sizes->isAllowed($realDirectoryAdmin)) {
   die(_JW_SIZEQUERY_BAD_REQUEST);
 }
 
 
-$joomlaWatch->sizes->renderFileList($group, $realDirectoryMain, $realDirectoryAdmin, $realDirectoryMain, $realDirectoryAdmin, $suffix);
+$extraWatch->sizes->renderFileList($group, $realDirectoryMain, $realDirectoryAdmin, $realDirectoryMain, $realDirectoryAdmin, $suffix);
 
-$result = $joomlaWatch->sizes->renderPageTotal;
+$result = $extraWatch->sizes->renderPageTotal;
 
-if ($joomlaWatch->sizes->renderPageTotalRaw == $prevSum) {
-  $result = $result . " (" . sprintf("+%.2f", ($joomlaWatch->sizes->renderPageTotalRaw - $prevSum) / $joomlaWatch->sizes->renderPageTotalRaw * 100) . "%)";
+if ($extraWatch->sizes->renderPageTotalRaw == $prevSum) {
+  $result = $result . " (" . sprintf("+%.2f", ($extraWatch->sizes->renderPageTotalRaw - $prevSum) / $extraWatch->sizes->renderPageTotalRaw * 100) . "%)";
 } else {
-  if ($joomlaWatch->sizes->renderPageTotalRaw > $prevSum) {
-    if ($joomlaWatch->sizes->renderPageTotalRaw) {
-      $result = $result . "<span style='color: red;'> (+" . sprintf("%.2f", ($joomlaWatch->sizes->renderPageTotalRaw - $prevSum) / $joomlaWatch->sizes->renderPageTotalRaw * 100) . "%)</span>";
+  if ($extraWatch->sizes->renderPageTotalRaw > $prevSum) {
+    if ($extraWatch->sizes->renderPageTotalRaw) {
+      $result = $result . "<span style='color: red;'> (+" . sprintf("%.2f", ($extraWatch->sizes->renderPageTotalRaw - $prevSum) / $extraWatch->sizes->renderPageTotalRaw * 100) . "%)</span>";
     }
   }
-  if ($joomlaWatch->sizes->renderPageTotalRaw < $prevSum) {
-    if ($joomlaWatch->sizes->renderPageTotalRaw) {
-      $result = $result . "<span style='color: green;'> (-" . sprintf("%.2f", ($prevSum - $joomlaWatch->sizes->renderPageTotalRaw) / $joomlaWatch->sizes->renderPageTotalRaw * 100) . "%)</span>";
+  if ($extraWatch->sizes->renderPageTotalRaw < $prevSum) {
+    if ($extraWatch->sizes->renderPageTotalRaw) {
+      $result = $result . "<span style='color: green;'> (-" . sprintf("%.2f", ($prevSum - $extraWatch->sizes->renderPageTotalRaw) / $extraWatch->sizes->renderPageTotalRaw * 100) . "%)</span>";
     }
   }
 }
 
 $data = array(
   "text" => $result,
-  "total" => $joomlaWatch->sizes->renderPageTotalRaw
+  "total" => $extraWatch->sizes->renderPageTotalRaw
 );
 
 echo json_encode($data);

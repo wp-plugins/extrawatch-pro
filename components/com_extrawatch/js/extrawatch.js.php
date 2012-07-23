@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 242
+ * @revision 245
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -23,6 +23,12 @@ if (!defined('JPATH_BASE2')) {
 
 $env = @$_REQUEST['env'];
 $frontend = @$_REQUEST['frontend'];
+
+// compatibility with ZOO
+if (defined('JVERSION') && version_compare( JVERSION, '2.5.0', '<' )) {
+    $mainframe = & JFactory :: getApplication('site');
+    $mainframe->initialise();
+}
 
 require_once JPATH_BASE . "components" . DS . "com_extrawatch" . DS . "includes.php";
 
