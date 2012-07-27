@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 248
+ * @revision 253
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -406,7 +406,7 @@ class ExtraWatchStatHTML
     ;
 
     foreach ($keysArray as $key) {
-      if ($key == 'ip' && !$this->extraWatch->config->getConfigValue('EXTRAWATCH_IP_STATS')) {
+      if ($key == 'ip' && !$this->extraWatch->config->getCheckboxValue('EXTRAWATCH_IP_STATS')) {
         continue;
       }
       $output .= nl2br($this->renderIntValuesByNameForEmail($key, TRUE, FALSE, $day, 10, FALSE, TRUE));
@@ -425,14 +425,14 @@ class ExtraWatchStatHTML
     $domain = $this->extraWatch->config->getDomainFromLiveSite();
     $email = $this->extraWatch->config->getConfigValue("EXTRAWATCH_EMAIL_REPORTS_ADDRESS");
     $date = ExtraWatchDate::date("d.m.Y", ExtraWatchDate::getUserTimestamp() - 24 * 3600); // date of report from yesterday, not today);
-    ExtraWatchHelper::sendEmail("$email", "$email", "ExtraWatch report - $domain - $date", $output);
+    ExtraWatchHelper::sendEmail($this->extraWatch->env, "$email", "$email", "ExtraWatch report - $domain - $date", $output);
 
     if ($this->extraWatch->config->getCheckboxValue("EXTRAWATCH_EMAIL_SEO_REPORTS_ENABLED")) {
       // old one: $outputSEOReport = "<table>".$this->renderSEOReport($this->extraWatch->date->jwDateToday()-1, TRUE)."</table>";
       $extraWatchSEOHTML = new ExtraWatchSEOHTML($this->extraWatch);
       $day = $this->extraWatch->date->jwDateToday();
       $outputSEOReport = $extraWatchSEOHTML->renderSEOReport($day - 1, TRUE);
-      ExtraWatchHelper::sendEmail("$email", "$email", "ExtraWatch SEO report - $domain - $date", $outputSEOReport);
+      ExtraWatchHelper::sendEmail($this->extraWatch->env, "$email", "$email", "ExtraWatch SEO report - $domain - $date", $outputSEOReport);
     }
 
     return $output;
@@ -558,7 +558,7 @@ class ExtraWatchStatHTML
 
             }
 
-            if (@ $row->name && $relOneDayDiff != 0) {
+            if (@ $row->name && ($relOneDayDiff == "-" || $relOneDayDiff != 0)) {
               $output .= sprintf("<tr><td>%s</td><td align='right'>%.1f</td><td align='right'>%.1f%%</td><td align='right' style='color: $oneDayDiffColor'>$oneDayDiffSign%.1f%%</td><td align='right' style='color: $sevenDayDiffColor'>$sevenDayDiffSign%.1f%%</td><td align='right' style='color: " . $thirtyDayDiffColor . "'>$thirtyDayDiffSign%.1f%%</td></tr>",
                 $row->name,
                 $row->value,

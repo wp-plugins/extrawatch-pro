@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 248
+ * @revision 253
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -139,15 +139,15 @@ class ExtraWatchJoomlaEnv implements ExtraWatchEnv
     return $dirs;
   }
 
-  function getDirsToCheckForSize()
+  function getDirsToCheckForSize($directory)
   {
     $dirs = array();
 
-    $dirs[ExtraWatchSizes::SCAN_DIR_MAIN] = "../components/";
-    $dirs[ExtraWatchSizes::SCAN_DIR_ADMIN] = "./components/";
+    $dirs[ExtraWatchSizes::SCAN_DIR_MAIN] = "../$directory/";
+    $dirs[ExtraWatchSizes::SCAN_DIR_ADMIN] = "../administrator/$directory/";
 
-    $dirs[ExtraWatchSizes::REAL_DIR_MAIN] = "../";
-    $dirs[ExtraWatchSizes::REAL_DIR_ADMIN] = "../../administrator/components/";
+    $dirs[ExtraWatchSizes::REAL_DIR_MAIN] = "../../../$directory/";
+    $dirs[ExtraWatchSizes::REAL_DIR_ADMIN] = "../../../administrator/$directory/";
 
     return $dirs;
   }

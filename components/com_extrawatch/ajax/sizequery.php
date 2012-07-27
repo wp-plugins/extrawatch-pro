@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 248
+ * @revision 253
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -65,8 +65,6 @@ require_once JPATH_BASE2 . DS .  "components" . DS . "com_extrawatch" .DS. "lang
 
 $dir = ExtraWatchHelper::requestPost('dir');
 $group = ExtraWatchHelper::requestPost('mod');
-
-$dir = ".." . DS . $dir;
 
 if (!$extraWatch->sizes->isAllowed($dir)) {
   die(_EW_SIZEQUERY_BAD_REQUEST);

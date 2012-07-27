@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 248
+ * @revision 253
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -26,14 +26,16 @@ defined('_JEXEC') or die('Restricted access'); ?>
   </tr>
 
   <?php
+    $directory = "modules";
+    $dirs = $this->extraWatch->env->getDirsToCheckForSize($directory);
 
-  $scanDirectoryMain = "../modules/";
-  $scanDirectoryAdmin = "./modules/";
+    $scanDirectoryMain = $dirs[ExtraWatchSizes::SCAN_DIR_MAIN];
+    $scanDirectoryAdmin = $dirs[ExtraWatchSizes::SCAN_DIR_ADMIN];
 
-  $realDirectoryMain = "../../modules/";
-  $realDirectoryAdmin = "../../administrator/modules/";
+    $realDirectoryMain = $dirs[ExtraWatchSizes::REAL_DIR_MAIN];
+    $realDirectoryAdmin = $dirs[ExtraWatchSizes::REAL_DIR_ADMIN];
 
-  $this->extraWatch->sizes->renderFileList(EW_DB_KEY_SIZE_MOD, $scanDirectoryMain, $scanDirectoryAdmin, $realDirectoryMain, $realDirectoryAdmin, "modules");
+  $this->extraWatch->sizes->renderFileList(EW_DB_KEY_SIZE_MOD, $scanDirectoryMain, $scanDirectoryAdmin, $realDirectoryMain, $realDirectoryAdmin, $directory);
   echo $this->extraWatch->sizes->renderPageHtml;
 
   ?>
@@ -68,7 +70,7 @@ defined('_JEXEC') or die('Restricted access'); ?>
     $.ajax({
       type:"POST",
       url:"<?php echo $this->extraWatch->config->getLiveSiteWithSuffix(); ?>components/com_extrawatch/ajax/sizequerytotal.php?rand=<?php echo $this->extraWatch->config->getRand(); ?>",
-      data:"prev=" + total_modules + "&mod=<?php echo EW_DB_KEY_SIZE_COM;
+      data:"prev=" + total_modules + "&mod=<?php echo EW_DB_KEY_SIZE_MOD;
       ?>&dir1=<?php echo $realDirectoryMain;
       ?>&dir2=<?php echo $realDirectoryAdmin; ?>&suffix=modules",
       success:function (resp) {

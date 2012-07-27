@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 248
+ * @revision 253
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -280,11 +280,11 @@ class ExtraWatchHelper
    * @param  $body
    * @return void
    */
-  function sendEmail($recipient, $sender, $subject, $body)
+  function sendEmail(&$env, $recipient, $sender, $subject, $body)
   {
     $body = ("<html><body>" . $body . "</body></html>");
     $cc = $bcc = $attachment = $replyto = $replytoname = "";
-    $this->env->sendMail($recipient, $sender, $recipient, $subject, $body, 1, $cc, $bcc, $attachment, $replyto, $replytoname);
+    $env->sendMail($recipient, $sender, $recipient, $subject, $body, 1, $cc, $bcc, $attachment, $replyto, $replytoname);
   }
 
   /**

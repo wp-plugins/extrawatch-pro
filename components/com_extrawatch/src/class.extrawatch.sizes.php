@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 248
+ * @revision 253
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -239,7 +239,7 @@ class ExtraWatchSizes
         if ($dir == "..") continue;
 
         if (is_dir($scanDirectoryMain . $dir)) {
-          $directory = $realDirectoryMain . $dir . "/";
+          $directory = $realDirectoryMain . $dir;
 
           if (!isset($dirsParsed[$directory])) {
             $dirsParsed[$directory] = TRUE;
@@ -264,7 +264,7 @@ class ExtraWatchSizes
         }
 
         if (is_dir($scanDirectoryAdmin . $dir)) {
-          $directory = $realDirectoryAdmin . $dir . "/";
+          $directory = $realDirectoryAdmin . $dir;
 
           if (!isset($dirsParsed[$directory])) {
             $dirsParsed[$directory] = TRUE;
@@ -345,10 +345,6 @@ class ExtraWatchSizes
         return FALSE;
       }
     }
-    //TODO finish regular expression
-    /*        preg_match("(\\.\\.[\\/\\])[^.]*", $dir, $matches);
-            print_r($matches);
-    */
     return TRUE;
   }
   

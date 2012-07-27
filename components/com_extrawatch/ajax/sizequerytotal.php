@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 248
+ * @revision 253
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -31,9 +31,6 @@ $suffix = ExtraWatchHelper::requestPost('suffix');
 
 $realDirectoryMain = ExtraWatchHelper::requestPost('dir1');
 $realDirectoryAdmin = ExtraWatchHelper::requestPost('dir2');
-
-$realDirectoryMain = realpath("..". DS . $realDirectoryMain);
-$realDirectoryAdmin = realpath("..". DS . $realDirectoryAdmin);
 
 if (!$extraWatch->sizes->isAllowed($realDirectoryMain) || !$extraWatch->sizes->isAllowed($realDirectoryAdmin)) {
   die(_JW_SIZEQUERY_BAD_REQUEST);

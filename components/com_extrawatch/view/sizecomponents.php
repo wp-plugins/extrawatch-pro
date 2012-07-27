@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 248
+ * @revision 253
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -25,14 +25,15 @@ defined('_JEXEC') or die('Restricted access'); ?>
 
   <?php
 
-  $dirs = $this->extraWatch->env->getDirsToCheckForSize();
+    $directory = "components";
+    $dirs = $this->extraWatch->env->getDirsToCheckForSize($directory);
 
-  $scanDirectoryMain = $dirs[ExtraWatchSizes::SCAN_DIR_MAIN]; //"../components/";
-  $scanDirectoryAdmin = $dirs[ExtraWatchSizes::SCAN_DIR_ADMIN]; //"./components/";
+  $scanDirectoryMain = $dirs[ExtraWatchSizes::SCAN_DIR_MAIN];
+  $scanDirectoryAdmin = $dirs[ExtraWatchSizes::SCAN_DIR_ADMIN];
 
-  $realDirectoryMain = $dirs[ExtraWatchSizes::REAL_DIR_MAIN]; //"../";
-  $realDirectoryAdmin = $dirs[ExtraWatchSizes::REAL_DIR_ADMIN]; //"../../administrator/components/";
-  $this->extraWatch->sizes->renderFileList(EW_DB_KEY_SIZE_COM, $scanDirectoryMain, $scanDirectoryAdmin, $realDirectoryMain, $realDirectoryAdmin, "components");
+  $realDirectoryMain = $dirs[ExtraWatchSizes::REAL_DIR_MAIN];
+  $realDirectoryAdmin = $dirs[ExtraWatchSizes::REAL_DIR_ADMIN];
+  $this->extraWatch->sizes->renderFileList(EW_DB_KEY_SIZE_COM, $scanDirectoryMain, $scanDirectoryAdmin, $realDirectoryMain, $realDirectoryAdmin, $directory);
 
   echo $this->extraWatch->sizes->renderPageHtml;
   ?>
