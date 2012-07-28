@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 253
+ * @revision 254
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -253,12 +253,16 @@ traffic += http2.responseText.length;
     <?php
     }
   } ?>
-<?php if ($extraWatch->config->getConfigValue("EXTRAWATCH_MAP_OPENMAP")) {
-    if ($extraWatch->visit->getLastIp()) { ?>
-    extraWatchOpenMapUpdate();
-    <?php
-    }
-  } ?>
+<?php
+    
+    if ($extraWatch->config->getConfigValue("EXTRAWATCH_MAP_OPENMAP")) {
+        if ($extraWatch->visit->getLastIp()) { ?>
+        extraWatchOpenMapUpdate();
+        <?php
+        }
+  }
+  
+    ?>
 <?php } ?>
 
 } else {
