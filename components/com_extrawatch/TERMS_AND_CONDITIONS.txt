@@ -88,6 +88,12 @@ Reviews
             user agreed to, can be treated as defamation with possible
             consequences.
 
+Applicable law / authorized court
+
+			These Terms & Conditions will be governed by Slovak law.
+			Slovak law is applicable to all legal relationships between software provider and the user. 
+			Any legal issues that might arise from these agreements or agreements derived from these agreements, will be settled in Slovak court. The procedure will be conducted in the Slovak language. 
+
 Acknowledgments:
 IP-to-Country Database
 

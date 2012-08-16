@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 254
+ * @revision 270
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -50,9 +50,9 @@ class ExtraWatchGoalHTML
   /* goal */
   function renderGoals($result = "")
   {
-    echo ("<h2>" . _EW_GOALS_TITLE . ExtraWatchHTML :: renderOnlineHelp(EW_DB_KEY_GOALS) . "</h2>");
+    $output = ("<h2>" . _EW_GOALS_TITLE . ExtraWatchHTML :: renderOnlineHelp(EW_DB_KEY_GOALS) . "</h2>");
     if ($result) {
-      echo (_EW_SUCCESS . "<br/>");
+      $output .= (_EW_SUCCESS . "<br/>");
     }
     require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "goals.php";
   }
@@ -79,7 +79,8 @@ class ExtraWatchGoalHTML
   function renderGoalEdit($id)
   {
     $values = $this->extraWatch->goal->getGoalById((int) $id);
-    $this->renderGoalForm(_EW_GOALS_UPDATE . " $id", $values);
+    $output = $this->renderGoalForm(_EW_GOALS_UPDATE . " $id", $values);
+    return $output;
   }
 
 
@@ -163,24 +164,25 @@ class ExtraWatchGoalHTML
     }
     //END POST CODE MOD
 
-    $this->renderGoalForm(_EW_GOALS_INSERT, $values);
+    return $this->renderGoalForm(_EW_GOALS_INSERT, $values);
   }
 
   function renderGoalForm($action, $values = "")
   {
-    require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "goal.php";
+    $output = ExtraWatchHelper::get_include_contents(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "goal.php", array());
+    return $output;
   }
 
   function renderExportGoals($result = "") {
 
-    include(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view".DS."exportxml.php");
-
+      $output = ExtraWatchHelper::get_include_contents(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view".DS."exportxml.php", array());
+      return $output;
   }
 
   function renderImportGoals($result = "") {
 
-    include(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view".DS."importxml.php");
-
+      $output = ExtraWatchHelper::get_include_contents(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view".DS."importxml.php", array());
+      return $output;
   }
 
 }

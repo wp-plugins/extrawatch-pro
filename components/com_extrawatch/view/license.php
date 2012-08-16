@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 254
+ * @revision 270
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -78,6 +78,11 @@ function extrawatch_renderLicense($extraWatch)
             <h2>Reviews</h2>
             We never ask users to submit positive review in Joomla Extensions Directory in return for some value. Users can freely share their opinion on this software,
             but submitting a review which is against these terms and conditions user agreed to, can be treated as defamation with possible consequences.
+
+			<h2>Applicable law / authorized court</h2>
+			These Terms & Conditions will be governed by Slovak law.
+			Slovak law is applicable to all legal relationships between software provider and the user. 
+			Any legal issues that might arise from these agreements or agreements derived from these agreements, will be settled in Slovak court. The procedure will be conducted in the Slovak language. 
 
             <h2>Acknowledgments:</h2>
 

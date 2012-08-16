@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 254
+ * @revision 270
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -13,10 +13,12 @@
 
 defined('_JEXEC') or die('Restricted access'); ?>
 
+
 <script type="text/javascript"
         src="<?php echo $this->extraWatch->config->getLiveSiteWithSuffix(); ?>components/com_extrawatch/js/jxml.js"></script>
 <script type="text/javascript"
         src="<?php echo $this->extraWatch->config->getLiveSiteWithSuffix(); ?>components/com_extrawatch/js/jdownloadurl.js"></script>
+
 <?php if ($this->extraWatch->config->getConfigValue("EXTRAWATCH_MAP_GOOGLEMAP")) { ?>
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 <?php } ?>

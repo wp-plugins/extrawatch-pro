@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 254
+ * @revision 270
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -29,12 +29,15 @@ if (defined('JVERSION') && version_compare( JVERSION, '2.5.0', '<' )) {
     $mainframe = & JFactory :: getApplication('site');
     $mainframe->initialise();
 }
+if ($env == "ExtraWatchMagentoEnv") {
+    $GLOBALS['mageRunCode'] = true;
+}
 
 require_once JPATH_BASE . "components" . DS . "com_extrawatch" . DS . "includes.php";
 
+
 $extraWatch = new ExtraWatch();
 require_once JPATH_BASE . DS . "components" . DS . "com_extrawatch" . DS . "lang" . DS . $extraWatch->config->getLanguage() . ".php";
-
 $extraWatchHTML = new ExtraWatchHTML();
 $extraWatch->block->checkPermissions(); ?>
 
@@ -86,7 +89,7 @@ try {
 http4 = extrawatch_createRequestObject();
 http4.onreadystatechange = extrawatch_needLastIdRefresh;
 var newdate = new Date();
-var url = "<?php echo($extraWatch->config->getLiveSiteWithSuffix()); ?>components/com_extrawatch/ajax/last.php?rand=" + rand + "&timeID="+newdate.getTime() + "&traffic="+traffic + "&env=<?php echo(get_class($extraWatch->env)); ?>";
+var url = "<?php echo($extraWatch->config->getLiveSiteWithSuffix()); ?>components/com_extrawatch/ajax/last.php?rand=" + rand + "&timeID="+newdate.getTime() + "&traffic="+traffic + "&env=<?php echo($env); ?>";
 http4.open("GET", url, true);
 http4.send(null);
 }
@@ -106,7 +109,7 @@ try {
 http = extrawatch_createRequestObject();
 http.onreadystatechange = needVisitsRefresh;
 var newdate = new Date();
-var url = "<?php echo($extraWatch->config->getLiveSiteWithSuffix()); ?>components/com_extrawatch/ajax/visits.php?rand=" + rand + "&timeID="+newdate.getTime() + "&traffic="+ traffic + "&env=<?php echo(get_class($extraWatch->env)); ?>";
+var url = "<?php echo($extraWatch->config->getLiveSiteWithSuffix()); ?>components/com_extrawatch/ajax/visits.php?rand=" + rand + "&timeID="+newdate.getTime() + "&traffic="+ traffic + "&env=<?php echo($env); ?>";
 http.open("GET", url, true);
 http.send(null);
 }
@@ -127,7 +130,7 @@ try {
 http2 = extrawatch_createRequestObject();
 http2.onreadystatechange = needStatsRefresh;
 var newdate = new Date();
-var url = "<?php echo($extraWatch->config->getLiveSiteWithSuffix()); ?>components/com_extrawatch/ajax/stats.php?rand=" + rand + "&timeID="+newdate.getTime() + "&env=<?php echo(get_class($extraWatch->env)); ?>";
+var url = "<?php echo($extraWatch->config->getLiveSiteWithSuffix()); ?>components/com_extrawatch/ajax/stats.php?rand=" + rand + "&timeID="+newdate.getTime() + "&env=<?php echo($env); ?>";
 if (day != 0) url += "&day="+day;
 if (week != 0) url += "&week="+week;
 
@@ -417,7 +420,7 @@ ajax_tooltipObj_iframe = document.createElement('<iframe frameborder="0">');
   var divElementId = "goal_" + id;
 
   if (flagit=="1"){
-  var url = "<?php echo($extraWatch->config->getLiveSiteWithSuffix());?>components/com_extrawatch/ajax/vars.php?rand=<?php echo($extraWatch->config->getRand());?>&uriId=" + id + "&ip=" + ip +"&env=<?php echo(get_class($extraWatch->env));?>";
+  var url = "<?php echo($extraWatch->config->getLiveSiteWithSuffix());?>components/com_extrawatch/ajax/vars.php?rand=<?php echo($extraWatch->config->getRand());?>&uriId=" + id + "&ip=" + ip +"&env=<?php echo($env);?>";
   jQuery.ajax( {
   url: url,
   success: function(result) {

@@ -4,7 +4,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 254
+ * @revision 270
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -20,6 +20,9 @@ class ExtraWatchEnvFactory
 
   static function getEnvironment()
   {
+    if (@isset($GLOBALS['mageRunCode'])) {
+        return new ExtraWatchMagentoEnv();
+    }
     if (@$GLOBALS['conf']) {
       return new ExtraWatchDrupalEnv();
     }

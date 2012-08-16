@@ -4,7 +4,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 254
+ * @revision 270
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 byMatej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -20,7 +20,7 @@ defined('_JEXEC') or die('Restricted access'); ?>
   <div id="map" style="width: 250px; height: 250px"></div>
   <?php } ?>
 <?php } else { ?>
-<form action="<?php echo $this->extraWatch->config->renderLink();?>" method="POST">
+<form action="<?php echo $this->extraWatch->config->renderLink();?>" method="GET">
   <?php echo _EW_STATS_MAP_ENTER_KEY;?>
   <br/><br/>
   <input type="edit" name="storeIpInfoDbKey"/> <br/><br/>

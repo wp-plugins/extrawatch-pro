@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 254
+ * @revision 270
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -29,7 +29,7 @@ if (defined('JVERSION') && version_compare( JVERSION, '2.5.0', '<' )) {
 
 require_once JPATH_BASE . DS."components" . DS . "com_extrawatch" . DS . "includes.php";
 
-switch (@$env) {
+/*switch (@$env) {
   case "ExtraWatchDrupalEnv":
     {
     define('DRUPAL_ROOT', dirname('../../../../../../../../'));
@@ -61,7 +61,7 @@ switch (@$env) {
     break;
     }
 
-}
+}*/
 
 
 $extraWatch = new ExtraWatch();

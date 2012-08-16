@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 254
+ * @revision 270
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -13,382 +13,398 @@
 
 /** ensure this file is being included by a parent file */
 if (!defined('_JEXEC') && !defined('_VALID_MOS')) {
-  die('Restricted access');
+    die('Restricted access');
 }
 
 class ExtraWatchHTML
 {
 
-  public $extraWatch;
+    public $extraWatch;
 
-  function __construct()
-  {
-    $this->extraWatch = new ExtraWatch();
-  }
-
-  function renderInputElement($key, & $color, $addToDescription = "")
-  {
-
-    if (!@ $color) {
-      $color = "#f7f7f7";
-    }
-    else {
-      $color = "";
+    function __construct()
+    {
+        $this->extraWatch = new ExtraWatch();
     }
 
-    $value = "";
-    $value = $this->extraWatch->config->getConfigValue("EXTRAWATCH_" . $key);
-    $defaultValue = @ constant("EXTRAWATCH_" . $key);
+    function renderInputElement($key, & $color, $addToDescription = "")
+    {
 
-    $type = @ constant("TYPE_EXTRAWATCH_" . $key);
-    if ((strcmp($value, $defaultValue)) && ($type != "checkbox") && ($type != "largetext")) {
-      $changed = "<i>(" . _EW_SETTINGS_DEFAULT . ": <a href=\"javascript:setElementValueById('EXTRAWATCH_$key','$defaultValue');\">$defaultValue</a>" . ")</i>&nbsp;";
+        if (!@ $color) {
+            $color = "#f7f7f7";
+        }
+        else {
+            $color = "";
+        }
+
+        $value = "";
+        $value = $this->extraWatch->config->getConfigValue("EXTRAWATCH_" . $key);
+        $defaultValue = @ constant("EXTRAWATCH_" . $key);
+
+        $type = @ constant("TYPE_EXTRAWATCH_" . $key);
+        if ((strcmp($value, $defaultValue)) && ($type != "checkbox") && ($type != "largetext")) {
+            $changed = "<i>(" . _EW_SETTINGS_DEFAULT . ": <a href=\"javascript:setElementValueById('EXTRAWATCH_$key','$defaultValue');\">$defaultValue</a>" . ")</i>&nbsp;";
+        }
+
+        $desc = "";
+        if ($type == "number" && !(is_numeric($value))) {
+            $desc .= " <span style='color: red; font-weight: bold;'>" . _EW_NOT_NUMBER . "</span> ";
+        }
+        $desc .= constant("_EW_DESC_" . $key);
+        $desc .= $addToDescription;
+
+        $keyShortened = str_replace("EXTRAWATCH_", "", $key);
+        /*********changes for load from language file********************/
+        if (defined('_EW_' . $keyShortened))
+            $keyShortened = constant('_EW_' . $keyShortened);
+
+        /*************changes for load from language file ends************/
+        $output = "<tr><td style='background-color: " . $color . ";' align='left'>$keyShortened</td><td style='background-color: " . $color . ";' align='center'>";
+
+        $key = "EXTRAWATCH_" . $key;
+        switch ($type) {
+
+            case "select":
+                {
+
+                if ($value && $value != "Off")
+                    $checked = "checked";
+                else
+                    $checked = "";
+                $output .= "<select align='center' name='$key' id='$key' style='text-align:center;'>";
+
+                $languages = $this->extraWatch->helper->getAvailableLanguages();
+                foreach ($languages as $language) {
+                    if ($value == $language) {
+                        $selected = "selected";
+                    } else {
+                        $selected = "";
+                    }
+                    $output .= "<option align='center' style='text-align:center;' $selected>$language</option>";
+                }
+                $output .= "</select>";
+
+                break;
+                }
+            case "checkbox":
+                {
+
+                if ($value && $value != "Off")
+                    $checked = "checked";
+                else
+                    $checked = "";
+                $output .= "<input type='checkbox' id='$key' name='$key' $checked/>";
+                break;
+                }
+            case "text":
+                {
+
+                $output .= "<textarea id='$key' cols='15' rows='3' name='$key' style='text-align:center;'>".htmlentities(stripslashes($value))."</textarea>";
+                break;
+                }
+            case "largetext":
+                {
+                $output .= "<textarea id='$key' cols='40' rows='20' name='$key' style='text-align:center;'>" . htmlentities(stripslashes($value)) . "</textarea>";
+                break;
+                }
+            default:
+                {
+                $output .= "<input type='text' id='$key' name='".htmlentities($key)."' value='".htmlentities(stripslashes($value))."' size='20' style='text-align:center;'/>";
+                break;
+                }
+
+        }
+
+        $output .= "</td><td style='background-color: " . $color . ";' align='left'>" . @ $changed . " $desc</td></tr>";
+        return $output;
     }
 
-    $desc = "";
-    if ($type == "number" && !(is_numeric($value))) {
-      $desc .= " <span style='color: red; font-weight: bold;'>" . _EW_NOT_NUMBER . "</span> ";
+
+    function renderPrint()
+    {
+        $group = @ ExtraWatchHelper::requestGet('group');
+        $name = @ ExtraWatchHelper::requestGet('name');
+        $date = @ ExtraWatchHelper::requestGet('date');
+        $task = @ ExtraWatchHelper::requestGet('task');
+        $action = @ ExtraWatchHelper::requestGet('action');
+
+        $print = @ ExtraWatchHelper::requestGet('print');
+        if (@ $print) {
+            $output = "<script language='Javascript'>window.print();</script>";
+        } else {
+            $output = ("<table width='100%'><tr><td align='right'><a href='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/ajax/trendtooltip.php?rand=" . $this->extraWatch->config->getRand() . "&group=$group&name=$name&date=$date&print=1&env=".$this->extraWatch->config->getEnvironment()."' target='_blank'><img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/print.gif' border='0' title='" . _EW_TOOLTIP_PRINT . "'/></a></td></tr></table>");
+        }
+        return $output;
     }
-    $desc .= constant("_EW_DESC_" . $key);
-    $desc .= $addToDescription;
 
-    $keyShortened = str_replace("EXTRAWATCH_", "", $key);
-    /*********changes for load from language file********************/
-    if (defined('_EW_' . $keyShortened))
-      $keyShortened = constant('_EW_' . $keyShortened);
+    function renderOnlineHelp($id)
+    {
+        $site = $this->extraWatch->config->getLiveSiteWithSuffix();
+        $output = "&nbsp;<a href='http://www.codegravity.com/projects/extrawatch#doc-$id' target='_blank'><img src='" . $site ."/components/com_extrawatch/img/icons/help.gif' border='0' title='" . _EW_TOOLTIP_HELP . ": $id'/></a>";
+        return $output;
+    }
 
-    /*************changes for load from language file ends************/
-    $output = "<tr><td style='background-color: " . $color . ";' align='left'>$keyShortened</td><td style='background-color: " . $color . ";' align='center'>";
+    function renderCloseWindow()
+    {
+        $output = "<div align='right'><a href='javascript:ajax_hideTooltip();'>X " . _EW_TOOLTIP_WINDOW_CLOSE . "</a></div>";
+        return $output;
+    }
 
-    $key = "EXTRAWATCH_" . $key;
-    switch ($type) {
+    function renderInputField($id, $values, & $color, $required = FALSE)
+    {
+        if (!@ $values)
+            $values = "";
+        if (!@ $color)
+            $color = "";
 
-      case "select":
-        {
+        $name = @constant("_EW_GOALS_" . $id);
+        if ($values)
+            $value = @ $values[strtolower($id)];
 
-        if ($value && $value != "Off")
-          $checked = "checked";
+        if (!@ $color)
+            $color = "#f7f7f7";
         else
-          $checked = "";
-        $output .= "<select align='center' name='$key' id='$key' style='text-align:center;'>";
+            $color = "";
 
-        $languages = $this->extraWatch->helper->getAvailableLanguages();
-        foreach ($languages as $language) {
-          if ($value == $language) {
-            $selected = "selected";
-          } else {
-            $selected = "";
-          }
-          $output .= "<option align='center' style='text-align:center;' $selected>$language</option>";
+        $desc = @constant("_EW_DESC_GOALS_" . $id);
+        if ($required == TRUE) {
+            $requiredText = "<span style='color: red;'>(* required)</span>&nbsp;";
+        } else {
+            $requiredText = "";
         }
-        $output .= "</select>";
+        $output = "<td align='right' valign='top' width='150px;' bgcolor='$color'><b>$name :</b> </td><td valign='top' bgcolor='$color'><input type='text' size='40' name='$id' value='" . @ $value . "'/></td><td style='color: gray;' valign='top' align='left' bgcolor='$color'>$requiredText<i>$desc</i></td>";
+        return $output;
+    }
 
-        break;
-        }
-      case "checkbox":
-        {
+    function renderInputCheckBox($id, $values, & $color, $disabled = FALSE, $required = FALSE)
+    {
+        if (!@ $values)
+            $values = "";
+        if (!@ $color)
+            $color = "";
 
-        if ($value && $value != "Off")
-          $checked = "checked";
+        $name = @constant("_EW_GOALS_" . $id);
+        if ($values)
+            $value = @ $values[strtolower($id)];
+
+        if (!@ $color)
+            $color = "#f7f7f7";
         else
-          $checked = "";
-        $output .= "<input type='checkbox' id='$key' name='$key' $checked/>";
-        break;
+            $color = "";
+
+        $desc = @constant("_EW_DESC_GOALS_" . $id);
+        if ($required == TRUE) {
+            $requiredText = "<span style='color: red;'>(* required)</span>&nbsp;";
+        } else {
+            $requiredText = "";
         }
-      case "text":
-        {
-
-        $output .= "<textarea id='$key' cols='15' rows='3' name='$key' style='text-align:center;'>".htmlentities(stripslashes($value))."</textarea>";
-        break;
+        if (@$value && $value != "Off")
+            $checked = "checked";
+        else
+            $checked = "";
+        if (!$disabled) {
+            $output = "<td align='right' valign='top' width='150px;' bgcolor='$color'><b>$name :</b> </td><td valign='top' align='left' bgcolor='$color'><input type='checkbox' id='$id' name='$id' $checked/></td><td style='color: gray;' valign='top' align='left' bgcolor='$color'>$requiredText<i>$desc</i></td>";
+        } else {
+            $output = "<td align='right' valign='top' width='150px;' bgcolor='$color' class='jwDisabled' title='" . _EW_ADMINHEADER_NA_IN_THIS_VERSION . "'><b>$name :</b> </td><td valign='top' align='left' bgcolor='$color'><input type='checkbox' id='$id' name='$id' $checked disabled/></td><td style='color: gray;' valign='top' align='left' bgcolor='$color'>$requiredText<i>$desc</i></td>";
         }
-      case "largetext":
-        {
-        $output .= "<textarea id='$key' cols='40' rows='20' name='$key' style='text-align:center;'>" . htmlentities(stripslashes($value)) . "</textarea>";
-        break;
+        return $output;
+    }
+
+
+    function renderDateControl()
+    {
+        if (@ ExtraWatchHelper::requestGet('day')) {
+            $day = @ ExtraWatchHelper::requestGet('day');
+        } else {
+            $day = $this->extraWatch->date->jwDateToday();
         }
-      default:
-        {
-        $output .= "<input type='text' id='$key' name='".htmlentities($key)."' value='".htmlentities(stripslashes($value))."' size='20' style='text-align:center;'/>";
-        break;
+        $prev = $day - 1;
+        $next = $day + 1;
+        $today = $this->extraWatch->date->jwDateToday();
+
+        include (JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "datecontrol.php");
+    }
+
+    function renderDateControlGet($task, $day = 0)
+    {
+        if (!$day) {
+            if (@ ExtraWatchHelper::requestGet('day')) {
+                $day = @ ExtraWatchHelper::requestGet('day');
+            } else {
+                $day = $this->extraWatch->date->jwDateToday();
+            }
+        }
+        $today = $this->extraWatch->date->jwDateToday();
+        $prev = $day - 1;
+        $next = $day + 1;
+
+        include (JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "datecontrolget.php");
+    }
+
+    function renderAdminStyles()
+    {
+        $output = ExtraWatchHelper::get_include_contents(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "lang" . DS . $this->extraWatch->config->getLanguage() . ".php", array());
+        $output .= ExtraWatchHelper::get_include_contents(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "adminstyles.php", array("this"=>$this, "test"=>"test1123"));
+        return $output;
+    }
+
+
+    function renderResetData($result = "")
+    {
+        if ($result) {
+            echo ("<h3>" . _EW_RESET_SUCCESS . "</h3>");
+        } else {
+            echo ("<h3>" . _EW_RESET_ERROR . "</h3>");
         }
 
     }
 
-    $output .= "</td><td style='background-color: " . $color . ";' align='left'>" . @ $changed . " $desc</td></tr>";
-    return $output;
-  }
-
-
-  function renderPrint()
-  {
-    $group = @ ExtraWatchHelper::requestGet('group');
-    $name = @ ExtraWatchHelper::requestGet('name');
-    $date = @ ExtraWatchHelper::requestGet('date');
-    $task = @ ExtraWatchHelper::requestGet('task');
-    $action = @ ExtraWatchHelper::requestGet('action');
-
-    $print = @ ExtraWatchHelper::requestGet('print');
-    if (@ $print) {
-      $output = "<script language='Javascript'>window.print();</script>";
-    } else {
-      $output = ("<table width='100%'><tr><td align='right'><a href='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/ajax/trendtooltip.php?rand=" . $this->extraWatch->config->getRand() . "&group=$group&name=$name&date=$date&print=1&env=".$this->extraWatch->config->getEnvironment()."' target='_blank'><img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/print.gif' border='0' title='" . _EW_TOOLTIP_PRINT . "'/></a></td></tr></table>");
-    }
-    return $output;
-  }
-
-  function renderOnlineHelp($id)
-  {
-    $site = $this->extraWatch->config->getLiveSiteWithSuffix();
-    $output = "&nbsp;<a href='http://www.codegravity.com/projects/extrawatch#doc-$id' target='_blank'><img src='" . $site ."/components/com_extrawatch/img/icons/help.gif' border='0' title='" . _EW_TOOLTIP_HELP . ": $id'/></a>";
-    return $output;
-  }
-
-  function renderCloseWindow()
-  {
-    $output = "<div align='right'><a href='javascript:ajax_hideTooltip();'>X " . _EW_TOOLTIP_WINDOW_CLOSE . "</a></div>";
-    return $output;
-  }
-
-  function renderInputField($id, $values, & $color, $required = FALSE)
-  {
-    if (!@ $values)
-      $values = "";
-    if (!@ $color)
-      $color = "";
-
-    $name = @constant("_EW_GOALS_" . $id);
-    if ($values)
-      $value = @ $values[strtolower($id)];
-
-    if (!@ $color)
-      $color = "#f7f7f7";
-    else
-      $color = "";
-
-    $desc = @constant("_EW_DESC_GOALS_" . $id);
-    if ($required == TRUE) {
-      $requiredText = "<span style='color: red;'>(* required)</span>&nbsp;";
-    } else {
-      $requiredText = "";
-    }
-    $output = "<td align='right' valign='top' width='150px;' bgcolor='$color'><b>$name :</b> </td><td valign='top' bgcolor='$color'><input type='text' size='40' name='$id' value='" . @ $value . "'/></td><td style='color: gray;' valign='top' align='left' bgcolor='$color'>$requiredText<i>$desc</i></td>";
-    return $output;
-  }
-
-  function renderInputCheckBox($id, $values, & $color, $disabled = FALSE, $required = FALSE)
-  {
-    if (!@ $values)
-      $values = "";
-    if (!@ $color)
-      $color = "";
-
-    $name = @constant("_EW_GOALS_" . $id);
-    if ($values)
-      $value = @ $values[strtolower($id)];
-
-    if (!@ $color)
-      $color = "#f7f7f7";
-    else
-      $color = "";
-
-    $desc = @constant("_EW_DESC_GOALS_" . $id);
-    if ($required == TRUE) {
-      $requiredText = "<span style='color: red;'>(* required)</span>&nbsp;";
-    } else {
-      $requiredText = "";
-    }
-    if (@$value && $value != "Off")
-      $checked = "checked";
-    else
-      $checked = "";
-    if (!$disabled) {
-      $output = "<td align='right' valign='top' width='150px;' bgcolor='$color'><b>$name :</b> </td><td valign='top' align='left' bgcolor='$color'><input type='checkbox' id='$id' name='$id' $checked/></td><td style='color: gray;' valign='top' align='left' bgcolor='$color'>$requiredText<i>$desc</i></td>";
-    } else {
-      $output = "<td align='right' valign='top' width='150px;' bgcolor='$color' class='jwDisabled' title='" . _EW_ADMINHEADER_NA_IN_THIS_VERSION . "'><b>$name :</b> </td><td valign='top' align='left' bgcolor='$color'><input type='checkbox' id='$id' name='$id' $checked disabled/></td><td style='color: gray;' valign='top' align='left' bgcolor='$color'>$requiredText<i>$desc</i></td>";
-    }
-    return $output;
-  }
-
-
-  function renderDateControl()
-  {
-    if (@ ExtraWatchHelper::requestGet('day')) {
-      $day = @ ExtraWatchHelper::requestGet('day');
-    } else {
-      $day = $this->extraWatch->date->jwDateToday();
-    }
-    $prev = $day - 1;
-    $next = $day + 1;
-    $today = $this->extraWatch->date->jwDateToday();
-
-    include (JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "datecontrol.php");
-  }
-
-  function renderDateControlGet($task, $day = 0)
-  {
-    if (!$day) {
-      if (@ ExtraWatchHelper::requestGet('day')) {
-        $day = @ ExtraWatchHelper::requestGet('day');
-      } else {
-        $day = $this->extraWatch->date->jwDateToday();
-      }
-    }
-    $today = $this->extraWatch->date->jwDateToday();
-    $prev = $day - 1;
-    $next = $day + 1;
-
-    include (JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "datecontrolget.php");
-  }
-
-  function renderAdminStyles()
-  {
-    require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "lang" . DS . $this->extraWatch->config->getLanguage() . ".php";
-    require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "adminstyles.php";
-  }
-
-
-  function renderResetData($result = "")
-  {
-    if ($result) {
-      echo ("<h3>" . _EW_RESET_SUCCESS . "</h3>");
-    } else {
-      echo ("<h3>" . _EW_RESET_ERROR . "</h3>");
+    function renderHeader()
+    {
+        // if ($this->extraWatch->config->getTrialVersionTimeLeft() > 0 || $this->extraWatch->config->isAdFree()) {
+        return ExtraWatchHelper::get_include_contents(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "adminheader.php", array());
+        // }
     }
 
-  }
 
-  function renderHeader()
-  {
-    // if ($this->extraWatch->config->getTrialVersionTimeLeft() > 0 || $this->extraWatch->config->isAdFree()) {
-    require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "adminheader.php";
-    // }
-  }
-
-
-  function renderBody($option)
-  {
-    require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "adminbody.php";
-  }
-
-  function renderSettings($result = "")
-  {
-    require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "settings.php";
-  }
-
-
-  function renderCredits()
-  {
-    require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "credits.php";
-  }
-
-  function renderAcceptLicense()
-  {
-    require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "license.php";
-    return extrawatch_renderLicense($this->extraWatch);
-  }
-
-  function renderAdFreeLicense()
-  {
-    
-
-     
-    require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "license-free.php";
-    return extrawatch_renderLicenseFree($this->extraWatch);
-    
-
-  }
-
-
-  function renderAntiSpam()
-  {
-    $extraWatchBlockHTML = new ExtraWatchBlockHTML($this->extraWatch);
-    require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "antispam.php";
-  }
-
-  function renderStatus()
-  {
-    $extraWatchStatHTML = new ExtraWatchStatHTML($this->extraWatch);
-    require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "status.php";
-  }
-
-  function renderUpdate()
-  {
-    require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "update.php";
-  }
-
-  function renderVisitsHistory()
-  {
-    $extraWatchVisitHistoryHTML = new ExtraWatchVisitHistoryHTML($this->extraWatch);
-    require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "history.php";
-  }
-
-  function renderEmails()
-  {
-    if ($this->extraWatch->config->getConfigValue("EXTRAWATCH_EMAIL_REPORTS_ADDRESS") == "@") {
-      $user = ExtraWatchHelper::getUser($this->extraWatch->env);
-      $userEmail = $user->email;
-      $this->extraWatch->config->saveConfigValue("EXTRAWATCH_EMAIL_REPORTS_ADDRESS", $userEmail);
+    function renderBody($option)
+    {
+        return ExtraWatchHelper::get_include_contents(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "adminbody.php", array());
     }
-    $extraWatchStatHTML = new ExtraWatchStatHTML($this->extraWatch);
-    require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "emails.php";
-  }
 
-  function renderTrialVersionInfo()
-  {
-    if (!$this->extraWatch->config->isAdFree()) {
-      $timeLeft = $this->extraWatch->config->getTrialVersionTimeLeft();
-      if ($timeLeft > 0) {
-        return sprintf("<div style='border: 1px solid #77ADFF; background-color: #E5EFFF; width: 100%%; text-align:center'>" . _EW_EVALUATION_LEFT . "</div><br/>", $timeLeft);
-      }
+    function renderSettings($result = "")
+    {
+        $output = ExtraWatchHelper::get_include_contents(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "settings.php", array());
+        return $output;
     }
-  }
 
-  function renderFlow()
-  {
-    require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "flow.php";
-  }
 
-  function renderSizes()
-  {
-    require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "sizes.php";
-  }
+    function renderCredits()
+    {
+        $output = ExtraWatchHelper::get_include_contents(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "credits.php", array());
+        return $output;
+    }
 
-  function renderSizeComponents()
-  {
-    require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "sizecomponents.php";
-  }
+    function renderAcceptLicense()
+    {
+        $output = ExtraWatchHelper::get_include_contents(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "license.php", array());
+        return extrawatch_renderLicense($this->extraWatch);
+    }
 
-  function renderSizeModules()
-  {
-    require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "sizemodules.php";
-  }
+    function renderAdFreeLicense()
+    {
+        
 
-  function renderSizeDatabase()
-  {
-    require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "sizedatabase.php";
-  }
+        
+        $output = ExtraWatchHelper::get_include_contents(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "license-free.php", array());
+        return extrawatch_renderLicenseFree($this->extraWatch);
+        
 
-  function renderSEO()
-  {
-    $extraWatchStatHTML = new ExtraWatchStatHTML($this->extraWatch);
-    require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "seo.php";
-  }
+    }
 
-  function renderHeatMapJS()
-  {
-    $extraWatchHeatmap = new ExtraWatchHeatmap($this->extraWatch->database);
-    $uri = $this->extraWatch->helper->getURI(); //TODO we need to strip the parameters here out of URI !!!
-    $uri = $extraWatchHeatmap->stripHeatmapGetParams($uri);
-    $id = $this->extraWatch->visit->getUriIdByUriName($uri);
-    require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "js" . DS . "heatmap.js.php";
-  }
 
-  function renderHeatMap()
-  {
-    $extraWatchHeatmap = new ExtraWatchHeatmap($this->extraWatch->database);
-    $extraWatchHeatmapHTML = new ExtraWatchHeatmapHTML($this->extraWatch->database);
-    require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "heatmap.php";
-  }
+    function renderAntiSpam()
+    {
+        $extraWatchBlockHTML = new ExtraWatchBlockHTML($this->extraWatch);
+        $output = ExtraWatchHelper::get_include_contents(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "antispam.php", array("extraWatchBlockHTML" => $extraWatchBlockHTML));
+        return $output;
+    }
+
+    function renderStatus()
+    {
+        $extraWatchStatHTML = new ExtraWatchStatHTML($this->extraWatch);
+        $output = ExtraWatchHelper::get_include_contents(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "status.php", array("extraWatchStatHTML" => $extraWatchStatHTML));
+        return $output;
+    }
+
+    function renderUpdate()
+    {
+        $output = ExtraWatchHelper::get_include_contents(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "update.php", array());
+        return $output;
+    }
+
+    function renderVisitsHistory()
+    {
+        $extraWatchVisitHistoryHTML = new ExtraWatchVisitHistoryHTML($this->extraWatch);
+        $output = ExtraWatchHelper::get_include_contents(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "history.php", array("extraWatchVisitHistoryHTML" => $extraWatchVisitHistoryHTML));
+        return $output;
+    }
+
+    function renderEmails()
+    {
+        if ($this->extraWatch->config->getConfigValue("EXTRAWATCH_EMAIL_REPORTS_ADDRESS") == "@") {
+            $user = ExtraWatchHelper::getUser($this->extraWatch->env);
+            $userEmail = $user->email;
+            $this->extraWatch->config->saveConfigValue("EXTRAWATCH_EMAIL_REPORTS_ADDRESS", $userEmail);
+        }
+        $extraWatchStatHTML = new ExtraWatchStatHTML($this->extraWatch);
+        $output = ExtraWatchHelper::get_include_contents(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "emails.php", array("extraWatchStatHTML" => $extraWatchStatHTML));
+        return $output;
+    }
+
+    function renderTrialVersionInfo()
+    {
+        if (!$this->extraWatch->config->isAdFree()) {
+            $timeLeft = $this->extraWatch->config->getTrialVersionTimeLeft();
+            if ($timeLeft > 0) {
+                return sprintf("<div style='border: 1px solid #77ADFF; background-color: #E5EFFF; width: 100%%; text-align:center'>" . _EW_EVALUATION_LEFT . "</div><br/>", $timeLeft);
+            }
+        }
+    }
+
+    function renderFlow()
+    {
+        $output = ExtraWatchHelper::get_include_contents(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "flow.php", array());
+        return $output;
+    }
+
+    function renderSizes()
+    {
+        $output = ExtraWatchHelper::get_include_contents(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "sizes.php", array());
+        return $output;
+    }
+
+    function renderSizeComponents()
+    {
+        $output = ExtraWatchHelper::get_include_contents(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "sizecomponents.php", array());
+        return $output;
+    }
+
+    function renderSizeModules()
+    {
+        $output = ExtraWatchHelper::get_include_contents(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "sizemodules.php", array());
+        return $output;
+    }
+
+    function renderSizeDatabase()
+    {
+        $output = ExtraWatchHelper::get_include_contents(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "sizedatabase.php", array());
+        return $output;
+    }
+
+    function renderSEO()
+    {
+        $extraWatchStatHTML = new ExtraWatchStatHTML($this->extraWatch);
+        $output = ExtraWatchHelper::get_include_contents(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "seo.php", array("extraWatchStatHTML" => $extraWatchStatHTML));
+        return $output;
+    }
+
+    function renderHeatMapJS()
+    {
+        $extraWatchHeatmap = new ExtraWatchHeatmap($this->extraWatch->database);
+        $uri = $this->extraWatch->helper->getURI(); //TODO we need to strip the parameters here out of URI !!!
+        $uri = $extraWatchHeatmap->stripHeatmapGetParams($uri);
+        $id = $this->extraWatch->visit->getUriIdByUriName($uri);
+        $output = ExtraWatchHelper::get_include_contents(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "js" . DS . "heatmap.js.php", array("extraWatchHeatmap"=>$extraWatchHeatmap, "uri" => $uri, "id" => $id ));
+        return $output;
+    }
+
+    function renderHeatMap()
+    {
+        $extraWatchHeatmap = new ExtraWatchHeatmap($this->extraWatch->database);
+        $extraWatchHeatmapHTML = new ExtraWatchHeatmapHTML($this->extraWatch->database);
+        $output = ExtraWatchHelper::get_include_contents(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "heatmap.php", array("extraWatchHeatmap" => $extraWatchHeatmap, "extraWatchHeatmapHTML" => $extraWatchHeatmapHTML));
+        return $output;
+    }
 
 }
 

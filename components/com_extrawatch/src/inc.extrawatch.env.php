@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 254
+ * @revision 270
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -31,4 +31,6 @@ require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "src
 require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "src" . DS ."env" . DS . "drupal" . DS . "class.extrawatch.db.drupal.php";
 require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "src" . DS ."env" . DS . "drupal" . DS . "class.extrawatch.env.drupal.php";
 
+require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "src" . DS ."env" . DS . "magento" . DS . "class.extrawatch.db.magento.php";
+require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "src" . DS ."env" . DS . "magento" . DS . "class.extrawatch.env.magento.php";
 

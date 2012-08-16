@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 254
+ * @revision 270
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -21,7 +21,14 @@ $env = @$_REQUEST['env'];
 $frontend = @$_REQUEST['frontend'];
 
 switch ($env) {
-  case "ExtraWatchDrupalEnv":
+    case "ExtraWatchMagentoEnv":
+    {
+    $GLOBALS['mageRunCode'] = true;
+    if (!defined('ENV')) define('ENV', 1);
+    break;
+    }
+
+    case "ExtraWatchDrupalEnv":
     {
     define('DRUPAL_ROOT', realpath(dirname(__FILE__).'/../../../../../../'));
     require_once DRUPAL_ROOT . '/includes/bootstrap.inc';

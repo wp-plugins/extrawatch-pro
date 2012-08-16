@@ -21,6 +21,8 @@ body {
 
 body, td, th {
   font-family: Arial, Helvetica, sans-serif;
+  padding: 0px;
+  margin: 0px;
 }
 
 html, body {
@@ -75,4 +77,25 @@ a:visited {
 
 a:hover {
   text-decoration: underline;
+}
+
+/* drupal */
+table td, table th {
+vertical-align: middle;
+padding: 0px;
+border: 0;
+color: black;
+}
+
+/* drupal */
+tr td:last-child {
+border-right: 0px solid #BEBFB9;
+}
+
+/* drupal */
+table {
+width: 100%;
+font-size: 0.923em;
+margin: 0 0 px;
+border: 0px solid #BEBFB9;
 }
