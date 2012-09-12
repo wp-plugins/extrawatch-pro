@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 270
+ * @revision 354
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -145,6 +145,7 @@ class ExtraWatchVisit
     $query = sprintf("select id as maxid from #__extrawatch where browser is not NULL order by id desc limit 1");
     $rows = @ $this->database->objectListQuery($query);
     $row = @ $rows[0];
+
     $maxidvisitors = @ $row->maxid - $this->config->getConfigValue('EXTRAWATCH_MAXID_VISITORS');
     $maxidbots = @ $row->maxid - $this->config->getConfigValue('EXTRAWATCH_MAXID_BOTS');
 
@@ -152,20 +153,22 @@ class ExtraWatchVisit
     $query = sprintf("select count(id) as `total` from #__extrawatch");
     $total = @ $this->database->resultQuery($query);
 
-
-
     $query = sprintf("select id from #__extrawatch where (id < '%d' and browser is NULL) order by id desc", (int) $maxidbots);
     $rows = @ $this->database->objectListQuery($query);
 
-    foreach ($rows as $row) {
+    if (sizeof($rows) > $this->config->getConfigValue('EXTRAWATCH_MAXID_VISITORS')) {   // only when count is higher
 
-      $query = sprintf("delete from #__extrawatch where id = '%d' ", (int) $row->id);
-      $this->database->executeQuery($query);
+        foreach ($rows as $row) {
 
-      $query = sprintf("delete from #__extrawatch_uri where fk = '%d' ", (int) $row->id);
-      $this->database->executeQuery($query);
+        $query = sprintf("delete from #__extrawatch where id = '%d' ", (int) $row->id);
+        $this->database->executeQuery($query);
 
+        $query = sprintf("delete from #__extrawatch_uri where fk = '%d' ", (int) $row->id);
+        $this->database->executeQuery($query);
+
+        }
     }
+
 
     for ($i = 0; $i < 20; $i++) {
       /** delete records from previous day, which are not in top 20 (or value in maxRows */
@@ -282,14 +285,16 @@ class ExtraWatchVisit
       return;
     }
 
-    $query = sprintf("select max(id) as maxId from #__extrawatch");
-    $maxId = @ $this->database->resultQuery($query);
+      /*
+      $query = sprintf("select max(id) as maxId from #__extrawatch");
+      $maxId = @ $this->database->resultQuery($query);
 
-    $query = sprintf("delete from #__extrawatch where id < %d ", ($maxId - ($numvisitors + $numbots)));
-    $this->database->executeQuery($query);
+      $query = sprintf("delete from #__extrawatch where id < %d ", ($maxId - ($numvisitors + $numbots)));
+      $this->database->executeQuery($query);
 
-    $query = sprintf("delete from #__extrawatch_uri where fk < %d ", ($maxId - ($numvisitors + $numbots)));
-    $this->database->executeQuery($query);
+      $query = sprintf("delete from #__extrawatch_uri where fk < %d ", ($maxId - ($numvisitors + $numbots)));
+      $this->database->executeQuery($query);
+      */
   }
 
   function sendNightlyEmails()

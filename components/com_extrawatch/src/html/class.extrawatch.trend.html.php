@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 270
+ * @revision 354
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -152,7 +152,7 @@ class ExtraWatchTrendHTML
       if ($max) {
         $percent = floor(($value / $max) * 1000) / 10;
       }
-      $output .= "<td valign='bottom' align='center'>";
+      $output .= "<td valign='bottom' align='center' style='vertical-align: bottom'>";
       $output .= $this->formatValueBasedOnGroup($group, $value);
       $output .= "<br/><img src='$progressBarIcon' height='$percent' width='10' /><br/>";
       $output .= $this->renderDayDiff($group, $name, $i - 1, $i);
@@ -200,7 +200,7 @@ class ExtraWatchTrendHTML
       if ($max) {
         $percent = floor(($value / $max) * 1000) / 10;
       }
-      $output .= "<td valign='bottom' align='center'>";
+      $output .= "<td valign='bottom' align='center' style='vertical-align: bottom'>";
       $output .= $this->formatValueBasedOnGroup($group, $value);
       $output .= "<br/><img src='$progressBarIcon' height='$percent' width='$NUMBER_OF_BARS' /><br/>";
       $relDiff = $this->extraWatch->stat->getRelDiffOfTwoWeeks($i, $i + 7, $group, $name);
@@ -254,7 +254,9 @@ class ExtraWatchTrendHTML
 
       $output .= "<option value='$key2' $selected>$value</option>";
     }
+    $formKey = $this->extraWatch->env->getFormKey();
     $output .= "</select>
+        <input name='form_key' type='hidden' value=".$formKey." />
         </form></div>
         ";
     return $output;

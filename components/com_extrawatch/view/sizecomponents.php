@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 270
+ * @revision 354
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -26,16 +26,16 @@ defined('_JEXEC') or die('Restricted access'); ?>
   <?php
 
     $directory = "components";
-    $dirs = $this->extraWatch->env->getDirsToCheckForSize($directory);
+    $dirs = $extraWatch->env->getDirsToCheckForSize($directory);
 
   $scanDirectoryMain = $dirs[ExtraWatchSizes::SCAN_DIR_MAIN];
   $scanDirectoryAdmin = $dirs[ExtraWatchSizes::SCAN_DIR_ADMIN];
 
   $realDirectoryMain = $dirs[ExtraWatchSizes::REAL_DIR_MAIN];
   $realDirectoryAdmin = $dirs[ExtraWatchSizes::REAL_DIR_ADMIN];
-  $this->extraWatch->sizes->renderFileList(EW_DB_KEY_SIZE_COM, $scanDirectoryMain, $scanDirectoryAdmin, $realDirectoryMain, $realDirectoryAdmin, $directory);
+  $extraWatch->sizes->renderFileList(EW_DB_KEY_SIZE_COM, $scanDirectoryMain, $scanDirectoryAdmin, $realDirectoryMain, $realDirectoryAdmin, $directory);
 
-  echo $this->extraWatch->sizes->renderPageHtml;
+  echo $extraWatch->sizes->renderPageHtml;
   ?>
   <tr>
     <td colspan="3">
@@ -45,11 +45,11 @@ defined('_JEXEC') or die('Restricted access'); ?>
   <tr>
     <th align="left"><?php echo (_EW_SIZECOMPONENTS_TOTAL); ?></th>
     <th align='center' id='total_components'
-        style="font-weight: bold;"><?php echo $this->extraWatch->sizes->renderPageTotal; ?></th>
+        style="font-weight: bold;"><?php echo $extraWatch->sizes->renderPageTotal; ?></th>
     <td align='center'><a
-        href='javascript:refreshComponentsAll(1,<?php echo $this->extraWatch->sizes->renderPageItems;?>)'>
+        href='javascript:refreshComponentsAll(1,<?php echo $extraWatch->sizes->renderPageItems;?>)'>
       <img
-          src='<?php echo $this->extraWatch->config->getLiveSiteWithSuffix();?>components/com_extrawatch/img/icons/refresh_all.png'
+          src='<?php echo $extraWatch->config->getLiveSiteWithSuffix();?>components/com_extrawatch/img/icons/refresh_all.png'
           border='0' title='<?php echo _EW_SIZECOMPONENTS_REFRESH_ALL;?>'/></a>
     </td>
   </tr>
@@ -58,15 +58,15 @@ defined('_JEXEC') or die('Restricted access'); ?>
 <script type="text/javascript">
 
   <?php
-  echo $this->extraWatch->sizes->renderPageJavaArray;
-  echo "var total_components = " . $this->extraWatch->sizes->renderPageTotalRaw . ";";
-  echo "document.getElementById(\"uprefreshComponents\").innerHTML = \"<br/><a href='javascript:refreshComponentsAll(1, " . $this->extraWatch->sizes->renderPageItems . ")'><img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/refresh_all.png' border='0' title='" . _EW_SIZECOMPONENTS_REFRESH_ALL . "'/></a>\"";
+  echo $extraWatch->sizes->renderPageJavaArray;
+  echo "var total_components = " . $extraWatch->sizes->renderPageTotalRaw . ";";
+  echo "document.getElementById(\"uprefreshComponents\").innerHTML = \"<br/><a href='javascript:refreshComponentsAll(1, " . $extraWatch->sizes->renderPageItems . ")'><img src='" . $extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/refresh_all.png' border='0' title='" . _EW_SIZECOMPONENTS_REFRESH_ALL . "'/></a>\"";
   ?>
 
   function refreshComponentsTotal() {
     $.ajax({
       type:"POST",
-      url:"<?php echo $this->extraWatch->config->getLiveSiteWithSuffix(); ?>components/com_extrawatch/ajax/sizequerytotal.php?rand=<?php echo $this->extraWatch->config->getRand(); ?>",
+      url:"<?php echo $extraWatch->config->getLiveSiteWithSuffix(); ?>components/com_extrawatch/ajax/sizequerytotal.php?rand=<?php echo $extraWatch->config->getRand(); ?>",
       data:"prev=" + total_components + "&mod=<?php echo EW_DB_KEY_SIZE_COM;
       ?>&dir1=<?php echo $realDirectoryMain;
       ?>&dir2=<?php echo $realDirectoryAdmin; ?>&suffix=components",
@@ -86,7 +86,7 @@ defined('_JEXEC') or die('Restricted access'); ?>
     var target = "item-components-" + index.toString();
     $.ajax({
       type:"POST",
-      url:"<?php echo $this->extraWatch->config->getLiveSiteWithSuffix(); ?>components/com_extrawatch/ajax/sizequery.php?rand=<?php echo $this->extraWatch->config->getRand(); ?>&env=<?php echo get_class($this->extraWatch->env); ?>",
+      url:"<?php echo $extraWatch->config->getLiveSiteWithSuffix(); ?>components/com_extrawatch/ajax/sizequery.php?rand=<?php echo $extraWatch->config->getRand(); ?>&env=<?php echo get_class($extraWatch->env); ?>",
       data:"dir=" + dirs_components[index] + "&mod=" + <?php echo EW_DB_KEY_SIZE_COM; ?>,
       success:function (resp) {
         document.getElementById(target).innerHTML = resp;
@@ -103,7 +103,7 @@ defined('_JEXEC') or die('Restricted access'); ?>
 
     $.ajax({
       type:"POST",
-      url:"<?php echo $this->extraWatch->config->getLiveSiteWithSuffix(); ?>components/com_extrawatch/ajax/sizequery.php?rand=<?php echo $this->extraWatch->config->getRand(); ?>&env=<?php echo get_class($this->extraWatch->env); ?>",
+      url:"<?php echo $extraWatch->config->getLiveSiteWithSuffix(); ?>components/com_extrawatch/ajax/sizequery.php?rand=<?php echo $extraWatch->config->getRand(); ?>&env=<?php echo get_class($extraWatch->env); ?>",
       data:"dir=" + dirs_components[index] + "&mod=" + <?php echo EW_DB_KEY_SIZE_COM; ?>,
       success:function (resp) {
         document.getElementById(target).innerHTML = resp;

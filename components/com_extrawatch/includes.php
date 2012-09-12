@@ -5,19 +5,26 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 270
+ * @revision 354
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
  */
 
-if (!defined('DS')) define('DS', DIRECTORY_SEPARATOR);
+$env = @$_REQUEST['env'];
+if (!$env) {
+    $env = @$_REQUEST['amp;env'];  // env passed this way because of xhtml compatibility
+}
+
+if (!defined('DS')) {
+    define('DS', DIRECTORY_SEPARATOR);
+}
+
 $jBasePath = dirname(__FILE__) . DS . ".." . DS . "..";
 if (!defined('JPATH_BASE')) define('JPATH_BASE', $jBasePath);
 if (!defined('JPATH_BASE2')) define('JPATH_BASE2', $jBasePath);
 if (!defined('_JEXEC')) define("_JEXEC", 1);
 
-$env = @$_REQUEST['env'];
 $frontend = @$_REQUEST['frontend'];
 
 switch ($env) {
@@ -25,6 +32,7 @@ switch ($env) {
     {
     $GLOBALS['mageRunCode'] = true;
     if (!defined('ENV')) define('ENV', 1);
+
     break;
     }
 

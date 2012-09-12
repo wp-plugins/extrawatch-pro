@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 270
+ * @revision 354
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -14,6 +14,7 @@ defined('_JEXEC') or die('Restricted access');
 
 function extrawatch_renderLicense($extraWatch)
 {
+
   $output = "
 <center>
     <script>
@@ -188,6 +189,9 @@ function extrawatch_renderLicense($extraWatch)
 
         <br/>
 
+        <input name='form_key' type='hidden' value=".$extraWatch->env->getFormKey()." />
+
+        <input type='hidden' id='licenseAccepted' value='1'/>
         <input type='checkbox' id='accept' value='" . _EW_LICENSE_AGREE . "' onClick='javascript:enableContinue();'/>" . _EW_LICENSE_AGREE . "&nbsp; &nbsp;
         <input type='submit' name='continue' id='continue' value='" . _EW_LICENSE_CONTINUE . "' disabled/>
 

@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 270
+ * @revision 354
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -96,6 +96,11 @@ class ExtraWatchHelper
     static function getUser($env)
     {
         return $env->getCurrentUser();
+    }
+
+    static function getAdminEmail($env)
+    {
+        return $env->getAdminEmail();
     }
 
     function getUsername()
@@ -415,7 +420,7 @@ class ExtraWatchHelper
     }
 
 
-    function get_include_contents($filename, $param) {
+    static function get_include_contents($filename, $param) {
         if (is_file($filename)) {
             ob_start();
             extract($param);

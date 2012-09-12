@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 270
+ * @revision 354
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -14,14 +14,13 @@
 if (!defined('_JEXEC')) {
   define('_JEXEC', 1);
 }
-define('DS', DIRECTORY_SEPARATOR);
-$jBasePath = dirname(__FILE__) . DS . ".." . DS . ".." . DS . ".." . DS;
+$env = @$_REQUEST['env'];
+$jBasePath = dirname(__FILE__) . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR;
 define('JPATH_BASE', $jBasePath);
 if (!defined('JPATH_BASE2')) {
   define('JPATH_BASE2', $jBasePath);
 }
 
-$env = @$_REQUEST['env'];
 $frontend = @$_REQUEST['frontend'];
 
 // compatibility with ZOO
@@ -33,11 +32,11 @@ if ($env == "ExtraWatchMagentoEnv") {
     $GLOBALS['mageRunCode'] = true;
 }
 
-require_once JPATH_BASE . "components" . DS . "com_extrawatch" . DS . "includes.php";
+require_once JPATH_BASE . "components" . DIRECTORY_SEPARATOR . "com_extrawatch" . DIRECTORY_SEPARATOR . "includes.php";
 
 
 $extraWatch = new ExtraWatch();
-require_once JPATH_BASE . DS . "components" . DS . "com_extrawatch" . DS . "lang" . DS . $extraWatch->config->getLanguage() . ".php";
+require_once JPATH_BASE . DIRECTORY_SEPARATOR . "components" . DIRECTORY_SEPARATOR . "com_extrawatch" . DIRECTORY_SEPARATOR . "lang" . DIRECTORY_SEPARATOR . $extraWatch->config->getLanguage() . ".php";
 $extraWatchHTML = new ExtraWatchHTML();
 $extraWatch->block->checkPermissions(); ?>
 
@@ -61,17 +60,17 @@ var traffic = 0;
 function extrawatch_setDay(_day) {
 day = _day;
 document.getElementById(_day).innerHTML = "<?php echo(_EW_STATS_LOADING_WAIT); ?>";
-extrawatch_sendStatsReq();
+extrawatch_senDIRECTORY_SEPARATORtatsReq();
 }
 function extrawatch_setStatsType(_statsType) {
 statsType = _statsType;
 document.getElementById(_statsType).innerHTML = "<?php echo(_EW_STATS_LOADING); ?>";
-extrawatch_sendStatsReq();
+extrawatch_senDIRECTORY_SEPARATORtatsReq();
 }
 function extrawatch_setWeek(_week) {
 week = _week;
 document.getElementById("visits_" + _week).innerHTML = "<?php echo(_EW_STATS_LOADING_WAIT); ?>";
-extrawatch_sendStatsReq();
+extrawatch_senDIRECTORY_SEPARATORtatsReq();
 }
 
 function extrawatch_createRequestObject() {
@@ -125,10 +124,10 @@ alert(err2);
 
 }
 
-function extrawatch_sendStatsReq() {
+function extrawatch_senDIRECTORY_SEPARATORtatsReq() {
 try {
 http2 = extrawatch_createRequestObject();
-http2.onreadystatechange = needStatsRefresh;
+http2.onreadystatechange = neeDIRECTORY_SEPARATORtatsRefresh;
 var newdate = new Date();
 var url = "<?php echo($extraWatch->config->getLiveSiteWithSuffix()); ?>components/com_extrawatch/ajax/stats.php?rand=" + rand + "&timeID="+newdate.getTime() + "&env=<?php echo($env); ?>";
 if (day != 0) url += "&day="+day;
@@ -157,12 +156,12 @@ function extrawatch_blockIpToggle(_ip) {
 try {
 if (confirm("<?php echo(_EW_STATS_IP_BLOCKING_TOGGLE); ?> " + _ip + " ?")) {
 http3 = extrawatch_createRequestObject();
-http3.onreadystatechange = needStatsRefresh;
+http3.onreadystatechange = neeDIRECTORY_SEPARATORtatsRefresh;
 var newdate = new Date();
 var url3 = "<?php echo($extraWatch->config->getLiveSiteWithSuffix()); ?>components/com_extrawatch/ajax/block.php?ip="+ _ip +"&rand=" + rand + "&timeID="+newdate.getTime()+ "&env=<?php echo($extraWatch->config->getEnvironment()); ?>";
 http3.open("GET", url3, true);
 http3.send(null);
-extrawatch_sendStatsReq();
+extrawatch_senDIRECTORY_SEPARATORtatsReq();
 extrawatch_sendVisitsReq();
 }
 }
@@ -185,7 +184,7 @@ function extrawatch_expand(_element) {
 if (!extrawatch_expand[_element]) extrawatch_expand[_element] = true;
 else extrawatch_expand[_element] = false;
 document.getElementById(_element).innerHTML = "<?php echo(_EW_STATS_LOADING_WAIT); ?>";
-extrawatch_sendStatsReq();
+extrawatch_senDIRECTORY_SEPARATORtatsReq();
 }
 
 function extrawatch_needLastIdRefresh() {
@@ -193,7 +192,7 @@ if (http4.readyState == 4) {
 if(http4.status == 200) {
 if (http4.responseText != lastId) {
 extrawatch_sendVisitsReq();
-extrawatch_sendStatsReq();
+extrawatch_senDIRECTORY_SEPARATORtatsReq();
 lastId = http4.responseText;
 }
 
@@ -241,7 +240,7 @@ alert(err);
 }
 }
 
-function needStatsRefresh()
+function neeDIRECTORY_SEPARATORtatsRefresh()
 {
 try {
 if (http2.readyState == 4) {
@@ -270,7 +269,7 @@ traffic += http2.responseText.length;
 
 } else {
 }
-/*    if(statsType != "2")  statsTimeoutId = window.setTimeout("extrawatch_sendStatsReq()",<?php echo($extraWatch->config->getConfigValue('EXTRAWATCH_UPDATE_TIME_STATS')); ?>); */
+/*    if(statsType != "2")  statsTimeoutId = window.setTimeout("extrawatch_senDIRECTORY_SEPARATORtatsReq()",<?php echo($extraWatch->config->getConfigValue('EXTRAWATCH_UPDATE_TIME_STATS')); ?>); */
 }
 } catch (err) {
 alert(err);
@@ -374,7 +373,7 @@ ajax_tooltipObj_iframe = document.createElement('<iframe frameborder="0">');
   window.setTimeout("extrawatch_sendVisitsReq()",<?php echo($extraWatch->config->getConfigValue('EXTRAWATCH_UPDATE_TIME_VISITS'));?>
   );
   statsTimeoutId =
-  window.setTimeout("extrawatch_sendStatsReq()",<?php echo($extraWatch->config->getConfigValue('EXTRAWATCH_UPDATE_TIME_STATS'));?>
+  window.setTimeout("extrawatch_senDIRECTORY_SEPARATORtatsReq()",<?php echo($extraWatch->config->getConfigValue('EXTRAWATCH_UPDATE_TIME_STATS'));?>
   );
   refreshStopped = false;
   }

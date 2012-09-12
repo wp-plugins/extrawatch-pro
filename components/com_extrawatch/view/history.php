@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 270
+ * @revision 354
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -38,7 +38,7 @@ $nextWeek = $week +1;
     <td colspan='8'><h3><?php echo _EW_HISTORY_VISITORS;?></h3>
 
       <div style='border: 1px solid #FFB7B7; width: 100%; background-color: #FFF5F5; padding: 2px;'>
-        <?php echo sprintf(_EW_HISTORY_SHOWING_ONLY, $this->extraWatch->config->getConfigValue('EXTRAWATCH_HISTORY_MAX_DB_RECORDS'));?>
+        <?php echo sprintf(_EW_HISTORY_SHOWING_ONLY, $extraWatch->config->getConfigValue('EXTRAWATCH_HISTORY_MAX_DB_RECORDS'));?>
       </div>
       <br/>
     </td>

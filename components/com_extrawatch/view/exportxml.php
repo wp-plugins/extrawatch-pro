@@ -3,7 +3,7 @@
  * extraWatch - A real-time ajax joomla monitor and live stats
  * @package extraWatch
  * @version 1.2.18
- * @revision 270
+ * @revision 354
  * @license http://www.gnu.org/licenses/gpl-3.0.txt 	GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -11,7 +11,7 @@
 
 defined( '_JEXEC' ) or die( 'Restricted access' );
 
-$output = $this->extraWatch->goal->exportGoals();
+$output = $extraWatch->goal->exportGoals();
 
 $xmlFile = "extrawatch-goals-".date('Ymd').".xml";
 

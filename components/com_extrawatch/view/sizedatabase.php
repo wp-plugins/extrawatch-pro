@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 270
+ * @revision 354
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -14,7 +14,7 @@ defined('_JEXEC') or die('Restricted access'); ?>
 
 
 <!--
-<form action="<?php echo($this->extraWatch->config->getLiveSite());?>administrator/?option=com_extrawatch&task=status" method="POST">
+<form action="<?php echo($extraWatch->config->getLiveSite());?>administrator/?option=com_extrawatch&task=status" method="POST">
     <input type="checkbox" onchange="this.form.submit()"/> Show all tables
     <input type="hidden" task="toggleShowAllDBTables">
 </form>
@@ -35,12 +35,12 @@ defined('_JEXEC') or die('Restricted access'); ?>
     $day = ExtraWatchDate::jwDateToday();
   }
 
-  $this->extraWatch->sizes->updateTableSizes($day - 1);
+  $extraWatch->sizes->updateTableSizes($day - 1);
 
-  $rows0 = $this->extraWatch->sizes->getTableSizes();
-  $rows1 = $this->extraWatch->sizes->getTableSizesForDay(1);
-  $rows7 = $this->extraWatch->sizes->getTableSizesForDay(7);
-  $rows28 = $this->extraWatch->sizes->getTableSizesForDay(28);
+  $rows0 = $extraWatch->sizes->getTableSizes();
+  $rows1 = $extraWatch->sizes->getTableSizesForDay(1);
+  $rows7 = $extraWatch->sizes->getTableSizesForDay(7);
+  $rows28 = $extraWatch->sizes->getTableSizesForDay(28);
 
   $total0 = 0;
   $total1 = 0;
@@ -55,7 +55,7 @@ defined('_JEXEC') or die('Restricted access'); ?>
       $color = "#eeeeee";
     }
 
-    $size0output = $this->extraWatch->sizes->sizeFormat($row->Data_length + $row->Index_length);
+    $size0output = $extraWatch->sizes->sizeFormat($row->Data_length + $row->Index_length);
     $total0 += $row->Data_length + $row->Index_length;
 
     $size1 = _EW_SIZEDATABASE_NO_DATA;
@@ -170,9 +170,9 @@ defined('_JEXEC') or die('Restricted access'); ?>
         "<td style='background-color: $color; $size7font' align='center'>$size7output</td>" .
         "<td style='background-color: $color; $size28font' align='center'>$size28output</td>";
 
-    $day = $this->extraWatch->date->jwDateToday();
+    $day = $extraWatch->date->jwDateToday();
 
-    $trendsIcon = "<img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/trend_icon.gif' border='0'  " . $this->extraWatch->helper->getTooltipOnEvent() . "=\"ajax_showTooltip('" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/ajax/trendtooltip.php?rand=" . $this->extraWatch->config->getRand() . "&group=" . EW_DB_KEY_SIZE_DB . "&name=" . $row->Name . "&date=$day&env=".get_class($this->extraWatch->env)."',this);return FALSE\"/>";
+    $trendsIcon = "<img src='" . $extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/trend_icon.gif' border='0'  " . $extraWatch->helper->getTooltipOnEvent() . "=\"ajax_showTooltip('" . $extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/ajax/trendtooltip.php?rand=" . $extraWatch->config->getRand() . "&group=" . EW_DB_KEY_SIZE_DB . "&name=" . $row->Name . "&date=$day&env=".get_class($extraWatch->env)."',this);return FALSE\"/>";
 
     echo("<td style='background-color: $color;' align='center'>" . $trendsIcon . "</td>");
 
@@ -193,7 +193,7 @@ defined('_JEXEC') or die('Restricted access'); ?>
 
   echo "<tr><th style='background-color: #cccccc;'>" . _EW_SIZEDATABASE_TOTAL . "</th>" .
       "<th style='background-color: #cccccc;'></th>" .
-      "<th style='background-color: #cccccc;' align='center'>" . $this->extraWatch->sizes->sizeFormat($total0) . "</td>" .
+      "<th style='background-color: #cccccc;' align='center'>" . $extraWatch->sizes->sizeFormat($total0) . "</td>" .
       "<th style='background-color: #cccccc; $size1font' align='center'>" . sprintf("%.2f", $total1) . "%</td>" .
       "<th style='background-color: #cccccc; $size7font' align='center'>" . sprintf("%.2f", $total7) . "%</td>" .
       "<th style='background-color: #cccccc; $size28font' align='center'>" . sprintf("%.2f", $total28) . "%</td>" .

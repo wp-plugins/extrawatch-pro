@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 270
+ * @revision 354
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -13,7 +13,7 @@
 
 /** ensure this file is being included by a parent file */
 if (!defined('_JEXEC') && !defined('_VALID_MOS')) {
-	die('Restricted access');
+    die('Restricted access');
 }
 
 /* This is the main file with basic settings */
@@ -26,7 +26,7 @@ if (!defined('_JEXEC') && !defined('_VALID_MOS')) {
 # define('EXTRAWATCH_LIVE_SITE','/');
 
 define('EXTRAWATCH_VERSION', "1.2.18");
-define('EXTRAWATCH_REVISION', "270");
+define('EXTRAWATCH_REVISION', "354");
 
 define('EXTRAWATCH_DEBUG', 0);
 
@@ -683,5 +683,10 @@ serialize(array(
 /* version 1.2.18 */
 define('EXTRAWATCH_HEATMAP_KEEP_DAYS', 7);
 
+define('EXTRAWATCH_GOALS_ALLOWED_FIELDS',
+    serialize(
+        array(1=>"NAME","USERNAME_INVERSED","URI_CONDITION","URI_INVERSED","GET_VAR","GET_CONDITION","GET_INVERSED","POST_VAR","POST_CONDITION","POST_INVERSED","TITLE_CONDITION","TITLE_INVERSED","USERNAME_CONDITION","IP_CONDITION","IP_INVERSED","CAME_FROM_CONDITION","CAME_FROM_INVERSED","COUNTRY_CONDITION","COUNTRY_INVERSED","BLOCK","REDIRECT")
+    )
+);
 
 

@@ -1,11 +1,11 @@
 <?php
 $day = ExtraWatchHelper::requestGet('day');
 if (!$day) {
-  $day = $this->extraWatch->date->jwDateToday(); // yesterday by default, because it contains
+  $day = $extraWatch->date->jwDateToday(); // yesterday by default, because it contains
 } ?>
 
 
-<h2>Best positioned keyphrases for <?php echo $this->extraWatch->date->getDateByDay($day); ?></h2>
+<h2>Best positioned keyphrases for <?php echo $extraWatch->date->getDateByDay($day); ?></h2>
 <table width='700px' border="0">
   <tr>
     <th>phrase</th>
@@ -21,7 +21,7 @@ if (!$day) {
     </td>
   </tr>
   <?php
-  $rows = $this->extraWatch->stat->getSearchResultStats($day);
+  $rows = $extraWatch->stat->getSearchResultStats($day);
   $output = "";
   if (@$rows)
     foreach ($rows as $row) {
@@ -30,6 +30,6 @@ if (!$day) {
           "</tr>");
     }
   echo($output);
-  $rows = $this->extraWatch->seo->retrieveTopUrisReferedByKeyphrase($day);
+  $rows = $extraWatch->seo->retrieveTopUrisReferedByKeyphrase($day);
   ?>
 </table>

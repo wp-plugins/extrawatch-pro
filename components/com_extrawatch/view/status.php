@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 270
+ * @revision 354
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -39,11 +39,11 @@ defined('_JEXEC') or die('Restricted access'); ?>
     <th align='right'><?php echo(_EW_STATUS_DATABASE_ROWS);?></th>
     <th align='right'><?php echo(_EW_STATUS_DATABASE_DATA);?></th>
   </tr>
-  <?php $rows = $this->extraWatch->stat->getDatabaseStatus();
+  <?php $rows = $extraWatch->stat->getDatabaseStatus();
   $total = 0;
   $j = 0;
   foreach ($rows as $row) {
-    if ($this->extraWatch->stat->isSystemTable($row->Name)) {
+    if ($extraWatch->stat->isSystemTable($row->Name)) {
       // omit system tables
       continue;
     }

@@ -5,20 +5,21 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 270
+ * @revision 354
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
  */
-defined('_JEXEC') or die('Restricted access'); ?>
+defined('_JEXEC') or die('Restricted access');
+?>
 
 <script type="text/javascript"
-        src="<?php echo $this->extraWatch->config->getLiveSiteWithSuffix(); ?>components/com_extrawatch/js/heatmap/heatmap.js"></script>
+        src="<?php echo $extraWatch->config->getLiveSiteWithSuffix(); ?>components/com_extrawatch/js/heatmap/heatmap.js"></script>
 <script type="text/javascript"
-        src="<?php echo $this->extraWatch->config->getLiveSiteWithSuffix(); ?>components/com_extrawatch/js/jdownloadurl.js"></script>
+        src="<?php echo $extraWatch->config->getLiveSiteWithSuffix(); ?>components/com_extrawatch/js/jdownloadurl.js"></script>
 <script type="text/javascript">
   /* <![CDATA[ */
-  var urlBase = "<?php echo $this->extraWatch->config->getLiveSiteWithSuffix(); ?>components/com_extrawatch/ajax/heatmap.php?rand=<?php echo $this->extraWatch->config->getRand();?>&env=<?php echo $this->extraWatch->config->getEnvironment(); ?>";
+  var urlBase = "<?php echo $extraWatch->config->getLiveSiteWithSuffix(); ?>components/com_extrawatch/ajax/heatmap.php?rand=<?php echo $extraWatch->config->getRand();?>&env=<?php echo $extraWatch->config->getEnvironment(); ?>";
   var clickDoc = (document.documentElement != undefined && document.documentElement.clientHeight != 0) ? document.documentElement : document.body;
   //        var w = clickDoc.clientWidth != undefined ? clickDoc.clientWidth : window.innerWidth;
   //        var h = clickDoc.clientHeight != undefined ? clickDoc.clientHeight : window.innerHeight;
@@ -27,7 +28,7 @@ defined('_JEXEC') or die('Restricted access'); ?>
   var xx;
 
   <?php
-  $request = $this->extraWatch->env->getRequest();
+  $request = $extraWatch->env->getRequest();
   $heatmapEnabled = $request->getVar(ExtraWatchHeatmap::HEATMAP_PARAM_NAME);
   $day = $request->getVar(ExtraWatchHeatmap::HEATMAP_PARAM_DAY_NAME);
   ?>
@@ -135,7 +136,7 @@ defined('_JEXEC') or die('Restricted access'); ?>
       //alert("x: " +x + "y: " + y + " scrollx: " + scrollx + " scrolly:" + scrolly + " w:" + w + " h:" + h);
 
       /* Is the click in the viewing area? Not on scrollbars. The problem still exists for FF on the horizontal scrollbar */
-      var randHashToPass = '<?php echo($this->extraWatch->config->getRandHash()); ?>';
+      var randHashToPass = '<?php echo($extraWatch->config->getRandHash()); ?>';
       var url = urlBase + "&action=click&uri2titleId=<?php echo($id);?>&x=" + x + "&y=" + y + "&w=" + w + "&h=" + h + "&randHash=" + randHashToPass + "&xpath=" + xpath;
       //xx.store.addDataPoint(x,y);
       downloadUrl(url, function (e) {

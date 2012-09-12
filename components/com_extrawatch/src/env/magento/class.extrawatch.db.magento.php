@@ -5,15 +5,16 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 270
+ * @revision 354
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
  */
 
 /** ensure this file is being included by a parent file */
-if (!defined('_JEXEC') && !defined('_VALID_MOS'))
+if (!defined('_JEXEC') && !defined('_VALID_MOS'))  {
   die('Restricted access');
+}
 
 class ExtraWatchDBWrapMagento implements ExtraWatchDBWrap
 {
@@ -27,67 +28,77 @@ class ExtraWatchDBWrapMagento implements ExtraWatchDBWrap
 
   function ExtraWatchDBWrapMagento()
   {
-    $host = 'localhost';
-    $user = 'root';
-    $password = '';
-    $database = 'magento';
-    $this->dbprefix = 'mgt_';
-    $select = TRUE;
+    $thisDir = realpath(dirname(__FILE__));
+    $magentoPath =  realpath($thisDir.DS."..".DS."..".DS."..".DS."..".DS."..".DS."..".DS."..".DS."..".DS."..".DS."..".DS."..".DS);
+    $xmlLocation = $magentoPath.DS."app".DS."etc".DS."local.xml";
+    $path = simplexml_load_file($xmlLocation);
+    $dbConfigElement = $path->global->resources->default_setup->connection;
 
-    if (!($this->dbref = @mysql_connect($host, $user, $password, TRUE))) {
-      die("cannot connect");
-    }
-    if ($select) {
-      $this->select($database);
-    }
+    $host = $dbConfigElement->host->__toString();
+    $user = $dbConfigElement->username->__toString();
+    $password = $dbConfigElement->password->__toString();
+    $database = $dbConfigElement->dbname->__toString();
+    $this->dbprefix = $path->global->resources->db->table_prefix->__toString();
+    $select = TRUE;
+	$driver="mysql";
+
+    $this->dbref = new PDO("$driver:host=$host;dbname=$database", $user, $password);
   }
 
   function __destruct()
   {
-    return mysql_close($this->dbref);
+    //return mysql_close($this->dbref);
   }
 
   function getEscaped($sql)
   {
-    return mysql_real_escape_string($sql, $this->dbref);
+    return $sql;
   }
 
   function query()
   {
     $sql = $this->query;
     $sql = $this->replaceDbPrefix($sql);
-    $this->result = mysql_query($sql, $this->dbref);
-
-    if (!$this->result) {
-      $this->errNum = mysql_errno($this->dbref);
-      $this->errMsg = mysql_error($this->dbref) . " in query $sql";
-      return FALSE;
+    $STH = $this->dbref->query($sql);
+    if (!$STH) {
+      return null;
     }
-    return $this->result;
+    $STH->setFetchMode(PDO::FETCH_ASSOC);
+    $result = $STH->fetch();
+    return $result;
   }
 
   function loadResult()
   {
-    if (!($result = $this->query())) {
+    $this->query = $this->replaceDbPrefix($this->query);
+    $STH = $this->dbref->query($this->query);
+    if (!$STH) {
       return null;
     }
+    $STH->setFetchMode(PDO::FETCH_ASSOC);
+
     $return = null;
-    if ($row = mysql_fetch_row($result)) {
-      $return = $row[0];
+    if ($row = $STH->fetch()) {
+      $return = @$row['value'];
+      if (!$return) {
+        $key = @key($row);
+        $return = @$row[$key];
+      }
     }
-    mysql_free_result($result);
     return $return;
   }
 
   function loadAssocList($key = '')
   {
-    $result = $this->query();
-    $array = array();
-    while ($row = mysql_fetch_assoc($result)) {
-      $array[] = $row;
+    $this->query = $this->replaceDbPrefix($this->query);
+    $STH = $this->dbref->query($this->query);
+    $STH->setFetchMode(PDO::FETCH_ASSOC);
+
+    $return = null;
+    if ($row = $STH->fetchAll()) {
+      $return = @$row;
     }
-    mysql_free_result($result);
-    return $array;
+    return $return;
   }
 
   function select($database)
@@ -138,6 +149,7 @@ class ExtraWatchDBWrapMagento implements ExtraWatchDBWrap
   function assocListQuery($query)
   {
     $this->query = $query;
+    $this->executeQuery($query);
     return $this->loadAssocList();
   }
 
@@ -148,19 +160,14 @@ class ExtraWatchDBWrapMagento implements ExtraWatchDBWrap
 
   function loadObjectList($key = '')
   {
-    if (!($cur = $this->query())) {
+    $sql = $this->replaceDbPrefix($this->query);
+    $STH = $this->dbref->query($sql);
+    if (!$STH) {
       return null;
     }
-    $array = array();
-    while ($row = mysql_fetch_object($cur)) {
-      if ($key) {
-        $array[$row->$key] = $row;
-      } else {
-        $array[] = $row;
-      }
-    }
-    mysql_free_result($cur);
-    return $array;
+    $STH->setFetchMode(PDO::FETCH_OBJ);
+    $result = $STH->fetchAll();
+    return $result;
   }
 
 }

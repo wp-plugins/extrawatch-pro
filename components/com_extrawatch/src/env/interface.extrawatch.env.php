@@ -4,7 +4,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 270
+ * @revision 354
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -46,6 +46,8 @@ interface ExtraWatchEnv
 
   public function getUsername();
 
+  public function getAdminEmail();
+
   public function sendMail($recipient, $sender, $recipient, $subject, $body, $true, $cc, $bcc, $attachment, $replyto, $replytoname);
 
   public function getDbPrefix();
@@ -61,5 +63,14 @@ interface ExtraWatchEnv
    * @return mixed
    */
   public function getAgentNotPublishedMsg($database);
+
+  /* used only by magento, empty in other environments */
+  public function getFormKey();
+
+  public function getReviewLink();
+
+  public function getVoteLink();
+
+  public function getEnvironmentName();
 
 }

@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 270
+ * @revision 354
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -194,13 +194,7 @@ function com_install()
       <td colspan="2"><br/>
         <code>Installation Process :<br/>
           <?php
-          extrawatch_initialize_menu($database);
-          extrawatch_initialize_ip2country(JPATH_SITE, $database);
-          try {
-            extrawatch_fixFilePermissions();
-          } catch (Exception $e) {
-            echo("Could not fix file permissions: ".$e);
-          }
+            extrawatch_install($database, JPATH_SITE);
           ?>
           <br/><br/>
           <font color="green"><b>Installation finished.</b></font><br/><br/>
@@ -218,5 +212,15 @@ function com_install()
 </center>
 <?php
 
+}
 
+function extrawatch_install($database, $sitePath)
+{
+    extrawatch_initialize_menu($database);
+    extrawatch_initialize_ip2country($sitePath, $database);
+    try {
+        extrawatch_fixFilePermissions();
+    } catch (Exception $e) {
+        echo("Could not fix file permissions: " . $e);
+    }
 }

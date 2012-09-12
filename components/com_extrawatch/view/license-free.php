@@ -15,6 +15,7 @@ defined('_JEXEC') or die('Restricted access');
 
 function extrawatch_renderLicenseFree($extraWatch)
 {
+
   $output = "
 
 <style>
@@ -50,7 +51,7 @@ function extrawatch_renderLicenseFree($extraWatch)
         font-weight: normal;
     }
 </style>
-<h1>ExtraWatch 1.2.18.270 PRO</h1>
+<h1>ExtraWatch 1.2.18.354 PRO</h1>
 
 <script type='text/javascript'>
     function toggleNoKeyForm() {
@@ -131,7 +132,7 @@ function extrawatch_renderLicenseFree($extraWatch)
 
         <tr><td valign='top' colspan='2'>
 
-            <iframe src='http://www.codegravity.com/demo/extrawatch/1.2.18/' width='1100' height='768'>
+            <iframe src='http://www.codegravity.com/demo/extrawatch/1.2.18/".($extraWatch->env->getEnvironmentName())."/' width='1100' height='768'>
             </iframe>
             <br/><br/>
 

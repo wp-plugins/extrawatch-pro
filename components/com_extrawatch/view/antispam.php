@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 270
+ * @revision 354
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -13,7 +13,7 @@
 
 defined('_JEXEC') or die('Restricted access'); ?>
 
-<form action="<?php echo $this->extraWatch->config->renderLink("antiSpamSave");?>" method='POST' id='settingsForm'" method="POST">
+<form action="<?php echo $extraWatch->config->renderLink("antiSpamSave");?>" method='POST' id='settingsForm'" method="POST">
 
     <div class="panel">
       <div class="wrapper">
@@ -33,12 +33,12 @@ defined('_JEXEC') or die('Restricted access'); ?>
         </tr>
         <tr>
           <td colspan='4' align='left'><h2><?php echo(_EW_ANTISPAM_IMPORT_CSV);?>:</h2>
-            <form action="<?php echo $this->extraWatch->config->getAdministratorIndex();?>?option=com_joomlawatch&task=antiSpam" method="post" enctype="multipart/form-data">
+            <form action="<?php echo $extraWatch->config->getAdministratorIndex();?>?option=com_joomlawatch&task=antiSpam" method="post" enctype="multipart/form-data">
               <input type="file" name="file" id="file"/>
               <input type='hidden' name='option' value='com_joomlawatch'/>
               <input type='hidden' name='task' value='antiSpam'/>
               <input type='hidden' name='action' value='saveAntiSpamCsv'/>
-
+              <input name='form_key' type='hidden' value="<?php echo $extraWatch->env->getFormKey();?>" />
               <input type="submit" name="submit" value="Submit"/>
             </form>
           </td>
@@ -56,9 +56,9 @@ defined('_JEXEC') or die('Restricted access'); ?>
               <tr>
                 <td colspan='2'><h3><?php echo(_EW_ANTISPAM_SETTINGS);?></h3></td>
               </tr>
-              <?php echo $this->renderInputElement('SPAMWORD_BANS_ENABLED', $color); ?>
+              <?php echo $extraWatchHTML->renderInputElement('SPAMWORD_BANS_ENABLED', $color); ?>
 
-              <?php echo $this->renderInputElement('SPAMWORD_LIST', $color); ?>
+              <?php echo $extraWatchHTML->renderInputElement('SPAMWORD_LIST', $color); ?>
 
               <tr>
                 <td></td>
@@ -80,6 +80,6 @@ defined('_JEXEC') or die('Restricted access'); ?>
       </div>
     </div>
     <br/><br/>
-
+    <input name='form_key' type='hidden' value="<?php echo $extraWatch->env->getFormKey();?>" />
 </form>
 

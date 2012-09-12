@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 270
+ * @revision 354
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -16,19 +16,19 @@ defined('_JEXEC') or die('Restricted access'); ?>
   <tr>
     <td align='left'>
 
-      <a href='<?php echo $this->extraWatch->config->renderLink('goals', "&action=insert");?>'><img
-          src='<?php echo($this->extraWatch->config->getLiveSiteWithSuffix());?>components/com_extrawatch/img/icons/new.gif'
+      <a href='<?php echo $extraWatch->config->renderLink('goals', "insert");?>'><img
+          src='<?php echo($extraWatch->config->getLiveSiteWithSuffix());?>components/com_extrawatch/img/icons/new.gif'
           border='0' title='<?php echo _EW_GOALS_NEW;?>' valign='center'/> <?php echo _EW_GOALS_NEW;?></a> &nbsp;
-      <a href='<?php echo $this->extraWatch->config->renderLink('goals', "&action=export");?>'>
-        <img src='<?php echo($this->extraWatch->config->getLiveSiteWithSuffix());?>components/com_extrawatch/img/icons/new.gif' border='0' title='<?php echo _EW_GOALS_EXPORT;?>' valign='center'/> <?php echo _EW_GOALS_EXPORT;?>
+      <a href='<?php echo $extraWatch->config->renderLink('goals', "export");?>'>
+        <img src='<?php echo($extraWatch->config->getLiveSiteWithSuffix());?>components/com_extrawatch/img/icons/goals-export.gif' border='0' title='<?php echo _EW_GOALS_EXPORT;?>' valign='center'/> <?php echo _EW_GOALS_EXPORT;?>
       </a> &nbsp; &nbsp;
-      <a href='<?php echo $this->extraWatch->config->renderLink('goals', "&action=import");?>'>
-        <img src='<?php echo($this->extraWatch->config->getLiveSiteWithSuffix());?>components/com_extrawatch/img/icons/new.gif' border='0' title='<?php echo _EW_GOALS_IMPORT;?>' valign='center'/> <?php echo _EW_GOALS_IMPORT;?>
+      <a href='<?php echo $extraWatch->config->renderLink('goals', "import");?>'>
+        <img src='<?php echo($extraWatch->config->getLiveSiteWithSuffix());?>components/com_extrawatch/img/icons/goals-import.gif' border='0' title='<?php echo _EW_GOALS_IMPORT;?>' valign='center'/> <?php echo _EW_GOALS_IMPORT;?>
       </a> &nbsp; &nbsp;
     </td>
     <td align='right'>
-      <a href='<?php echo $this->extraWatch->config->renderLink('goals');?><img src='
-         <?php echo($this->extraWatch->config->getLiveSiteWithSuffix());?>components/com_extrawatch/img/icons/reload.gif'
+      <a href='<?php echo $extraWatch->config->renderLink('goals');?><img src='
+         <?php echo($extraWatch->config->getLiveSiteWithSuffix());?>components/com_extrawatch/img/icons/reload.gif'
       border='0' title='<?php echo _EW_GOALS_RELOAD;?>'/></a>
     </td>
   </tr>
@@ -57,7 +57,7 @@ defined('_JEXEC') or die('Restricted access'); ?>
   </tr>
   <?php
 
-  $rows = $this->extraWatch->goal->getGoals();        //TODO change to style
+  $rows = $extraWatch->goal->getGoals();        //TODO change to style
 
   $i = 0;
   if ($rows)
@@ -70,25 +70,25 @@ defined('_JEXEC') or die('Restricted access'); ?>
       $style = "background-color: $color;";
       ?>
       <tr>
-        <?php echo $this->renderCell($style, @$row->id);?>
-        <?php echo $this->renderCell($style, @$row->name, 1);?>
-        <?php echo $this->renderCell($style, @$row->uri_condition);?>
-        <?php echo $this->renderCell($style, @$row->title_condition);?>
-        <?php echo $this->renderCell($style, @$row->username_condition);?>
-        <?php echo $this->renderCell($style, @$row->came_from_condition);?>
-        <?php echo $this->renderCell($style, @$row->country_condition);?>
-        <?php echo $this->renderCell($style, @$row->ip_condition);?>
-        <?php echo $this->renderCell($style, @$row->get_var);?>
-        <?php echo $this->renderCell($style, @$row->get_condition);?>
-        <?php echo $this->renderCell($style, @$row->get_inversed);?>
-        <?php echo $this->renderCell($style, @$row->post_var); ?>
-        <?php echo $this->renderCell($style, @$row->post_condition);?>
-        <?php echo $this->renderCell($style, @$row->post_inversed);?>
+        <?php echo $extraWatchGoalHTML->renderCell($style, @$row->id);?>
+        <?php echo $extraWatchGoalHTML->renderCell($style, @$row->name, 1);?>
+        <?php echo $extraWatchGoalHTML->renderCell($style, @$row->uri_condition);?>
+        <?php echo $extraWatchGoalHTML->renderCell($style, @$row->title_condition);?>
+        <?php echo $extraWatchGoalHTML->renderCell($style, @$row->username_condition);?>
+        <?php echo $extraWatchGoalHTML->renderCell($style, @$row->came_from_condition);?>
+        <?php echo $extraWatchGoalHTML->renderCell($style, @$row->country_condition);?>
+        <?php echo $extraWatchGoalHTML->renderCell($style, @$row->ip_condition);?>
+        <?php echo $extraWatchGoalHTML->renderCell($style, @$row->get_var);?>
+        <?php echo $extraWatchGoalHTML->renderCell($style, @$row->get_condition);?>
+        <?php echo $extraWatchGoalHTML->renderCell($style, @$row->get_inversed);?>
+        <?php echo $extraWatchGoalHTML->renderCell($style, @$row->post_var); ?>
+        <?php echo $extraWatchGoalHTML->renderCell($style, @$row->post_condition);?>
+        <?php echo $extraWatchGoalHTML->renderCell($style, @$row->post_inversed);?>
         <td align='center'
-            style='<?php echo $style;?>'><?php echo $this->extraWatch->goal->getGoalCount($row->id);?></td>
+            style='<?php echo $style;?>'><?php echo $extraWatch->goal->getGoalCount($row->id);?></td>
         <td align='center'
-            style='<?php echo $style;?>'><?php echo $this->renderEnabled($row->id, $row->disabled);?></td>
-        <td align='center' style='<?php echo $style;?>'><?php echo @$this->renderActionButtons($row->id);?></td>
+            style='<?php echo $style;?>'><?php echo $extraWatchGoalHTML->renderEnabled($row->id, $row->disabled);?></td>
+        <td align='center' style='<?php echo $style;?>'><?php echo @$extraWatchGoalHTML->renderActionButtons($row->id);?></td>
 
       </tr>
       <?php

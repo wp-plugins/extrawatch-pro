@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 270
+ * @revision 354
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -17,7 +17,7 @@ if (!defined('_JEXEC') && !defined('_VALID_MOS'))
 
 class ExtraWatchNoCMSEnv implements ExtraWatchEnv
 {
-
+  const EW_ENV_NAME = "nocms";
 
   function getDatabase()
   {
@@ -134,6 +134,29 @@ class ExtraWatchNoCMSEnv implements ExtraWatchEnv
   }
 
 
+    public function getAdminEmail()
+    {
+        // TODO: Implement getUserEmail() method.
+    }
+
+    function getFormKey() {
+        return "";
+    }
+
+    public function getReviewLink()
+    {
+        // TODO: Implement getReviewLink() method.
+    }
+
+    public function getVoteLink()
+    {
+        // TODO: Implement getVoteLink() method.
+    }
+
+    public function getEnvironmentName()
+    {
+        return self::EW_ENV_NAME;
+    }
 }
 
 

@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 270
+ * @revision 354
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -33,9 +33,9 @@ class ExtraWatchGoalHTML
   function renderActionButtons($id)
   {
     $output = "";
-    $output .= "<a href='" . $this->extraWatch->config->renderLink("goals", "action=edit&goalId=$id") . "'><img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/edit.gif' border='0' title='" . _EW_GOALS_EDIT . "'/></a> ";
+    $output .= "<a href='" . $this->extraWatch->config->renderLink("goals", "edit&goalId=$id") . "'><img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/edit.gif' border='0' title='" . _EW_GOALS_EDIT . "'/></a> ";
     $output .= "&nbsp;&nbsp;";
-    $output .= "<a href='" . $this->extraWatch->config->renderLink("goals", "action=delete&goalId=$id") . "' onClick='return confirm(\"" . _EW_GOALS_DELETE_CONFIRM . " $id? \");'><img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/delete.gif' border='0' title='" . _EW_GOALS_DELETE . "'/></a> ";
+    $output .= "<a href='" . $this->extraWatch->config->renderLink("goals", "delete&goalId=$id") . "' onClick='return confirm(\"" . _EW_GOALS_DELETE_CONFIRM . " $id? \");'><img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/delete.gif' border='0' title='" . _EW_GOALS_DELETE . "'/></a> ";
     return $output;
   }
 
@@ -50,20 +50,21 @@ class ExtraWatchGoalHTML
   /* goal */
   function renderGoals($result = "")
   {
-    $output = ("<h2>" . _EW_GOALS_TITLE . ExtraWatchHTML :: renderOnlineHelp(EW_DB_KEY_GOALS) . "</h2>");
+    $output = ("<h2>" . _EW_GOALS_TITLE . $this->extraWatchHTML->renderOnlineHelp(EW_DB_KEY_GOALS) . "</h2>");
     if ($result) {
       $output .= (_EW_SUCCESS . "<br/>");
     }
-    require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "goals.php";
+    $output .=  ExtraWatchHelper::get_include_contents(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "goals.php", array("extraWatch" => $this->extraWatchHTML->extraWatch, "extraWatchGoalHTML" => $this));
+    return $output;
   }
 
   /* goal */
   function renderEnabled($id, $disabled)
   {
     if ($disabled)
-      $output = "<a href='" . $this->extraWatch->config->renderLink("goals", "action=enable&goalId=$id") . "'><img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/unpublished.png' border='0'/></a>";
+      $output = "<a href='" . $this->extraWatch->config->renderLink("goals", "enable&goalId=$id") . "'><img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/unpublished.png' border='0'/></a>";
     else
-      $output = "<a href='" . $this->extraWatch->config->renderLink("goals", "action=disable&goalId=$id") . "'><img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/published.png' border='0'/></a>";
+      $output = "<a href='" . $this->extraWatch->config->renderLink("goals", "disable&goalId=$id") . "'><img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/published.png' border='0'/></a>";
 
     return $output;
   }
@@ -169,19 +170,19 @@ class ExtraWatchGoalHTML
 
   function renderGoalForm($action, $values = "")
   {
-    $output = ExtraWatchHelper::get_include_contents(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "goal.php", array());
+    $output = ExtraWatchHelper::get_include_contents(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "goal.php", array("extraWatch"=>$this->extraWatch, "extraWatchHTML"=>$this->extraWatchHTML, "action"=>$action, "values"=>$values));
     return $output;
   }
 
   function renderExportGoals($result = "") {
 
-      $output = ExtraWatchHelper::get_include_contents(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view".DS."exportxml.php", array());
+      $output = ExtraWatchHelper::get_include_contents(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view".DS."exportxml.php", array("extraWatch"=>$this->extraWatch));
       return $output;
   }
 
   function renderImportGoals($result = "") {
 
-      $output = ExtraWatchHelper::get_include_contents(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view".DS."importxml.php", array());
+      $output = ExtraWatchHelper::get_include_contents(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view".DS."importxml.php", array("extraWatch"=>$this->extraWatch));
       return $output;
   }
 

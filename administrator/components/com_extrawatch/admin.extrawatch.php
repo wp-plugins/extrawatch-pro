@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 270
+ * @revision 354
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -51,34 +51,9 @@ require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "inc
 
 $env = ExtraWatchEnvFactory::getEnvironment();
 
-switch (@get_class($env)) {
-
-    case 'ExtraWatchWordpressEnv':
-        {
-        echo extrawatch_mainController();
-        break;
-        }
-
-    case 'ExtraWatchJoomlaEnv':
-        {
-        if (!defined('JPATH_ROOT'))
-            require_once JPATH_BASE2 . DS . 'includes' . DS . 'defines.php';
-
-        if (!defined('JDEBUG'))
-            @ require_once JPATH_BASE2 . DS . 'includes' . DS . 'framework.php';
-
-        if (!version_compare(JVERSION, '2.5.0', '<')) {
-            $mainframe = & JFactory :: getApplication('site');
-            $mainframe->initialise();
-        }
-        echo extrawatch_mainController();
-        break;
-        }
-
-}
 
 
-function extrawatch_mainController() {
+function extrawatch_mainController($task = "") {
 
     $extraWatch = new ExtraWatch();
     $extraWatchHTML = new ExtraWatchHTML();
@@ -87,7 +62,12 @@ function extrawatch_mainController() {
     $env = ExtraWatchEnvFactory::getEnvironment();
 
     $action = @ ExtraWatchHelper::requestGet('action');
-    $task = @ ExtraWatchHelper::requestGet('task');
+    $taskFromNavigation = @ ExtraWatchHelper::requestGet('task');
+
+    if ($taskFromNavigation) {
+        $task = $taskFromNavigation;
+    }
+
     $option = @ ExtraWatchHelper::requestGet('option');
     $result = @ ExtraWatchHelper::requestGet('result');
 
@@ -100,7 +80,7 @@ function extrawatch_mainController() {
          *
          *     case "useTrial" :
                 {
-                    $output .= $extraWatchHTML->renderAdminStyles();
+                    $output .= $extraWatchHTML->renderAdminStyles($extraWatch);
                     $extraWatch->config->useTrial();
                     $extraWatch->config->saveVersionIntoDatabase();
                     $extraWatch->config->setLiveSite($env->getRootSite());
@@ -109,7 +89,7 @@ function extrawatch_mainController() {
         */
         case "useFreeVersion" :
             {
-            $output .= $extraWatchHTML->renderAdminStyles();
+            $output .= $extraWatchHTML->renderAdminStyles($extraWatch);
             $extraWatch->config->useFreeVersion();
             $extraWatch->config->saveVersionIntoDatabase();
             $extraWatch->config->setLiveSite($env->getRootSite());
@@ -119,7 +99,7 @@ function extrawatch_mainController() {
 
         case "activate" :
             {
-            $output .= $extraWatchHTML->renderAdminStyles();
+            $output .= $extraWatchHTML->renderAdminStyles($extraWatch);
             $extraWatch->config->activate(ExtraWatchHelper::requestGet('key'));
             $extraWatch->config->saveVersionIntoDatabase();
             $extraWatch->config->setLiveSite($env->getRootSite());
@@ -142,14 +122,14 @@ function extrawatch_mainController() {
             }
     }
     if (!$extraWatch->config->checkLicenseAccepted()) {
-        $output .= $extraWatchHTML->renderAdminStyles();
+        $output .= $extraWatchHTML->renderAdminStyles($extraWatch);
         $output .= $extraWatchHTML->renderAcceptLicense();
         return $output;
     } else {
 
         
         if (!$extraWatch->config->isFree() && !$extraWatch->config->isAdFree()  /* disabled trial || ($extraWatch->config->isTrial() && !$extraWatch->config->isTrialTimeOver())*/) {
-            $output .= $extraWatchHTML->renderAdminStyles();
+            $output .= $extraWatchHTML->renderAdminStyles($extraWatch);
             $output .= $extraWatchHTML->renderAdFreeLicense();
             return $output;
         }
@@ -159,8 +139,8 @@ function extrawatch_mainController() {
 
             case "storeIpInfoDbKey":
                 {
-                $output .= $extraWatchHTML->renderAdminStyles();
-                $output .= $extraWatchHTML->renderHeader();
+                $output .= $extraWatchHTML->renderAdminStyles($extraWatch);
+                $output .= $extraWatchHTML->renderHeader($extraWatch);
                 $keyValue = ExtraWatchHelper::requestPost('storeIpInfoDbKey');
                 if ($keyValue) {
                     $extraWatch->config->saveConfigValue("EXTRAWATCH_IPINFODB_KEY", $keyValue);
@@ -173,8 +153,8 @@ function extrawatch_mainController() {
 
             case "update" :
                 {
-                $output .= $extraWatchHTML->renderAdminStyles();
-                $output .= $extraWatchHTML->renderHeader();
+                $output .= $extraWatchHTML->renderAdminStyles($extraWatch);
+                $output .= $extraWatchHTML->renderHeader($extraWatch);
                 $output .= $extraWatchHTML->renderUpdate();
                 break;
                 }
@@ -182,8 +162,8 @@ function extrawatch_mainController() {
             case "sizes" :
                 {
                 if (!$extraWatch->config->isFree()) {
-                    $output .= $extraWatchHTML->renderAdminStyles();
-                    $output .= $extraWatchHTML->renderHeader();
+                    $output .= $extraWatchHTML->renderAdminStyles($extraWatch);
+                    $output .= $extraWatchHTML->renderHeader($extraWatch);
                     $output .= $extraWatchHTML->renderSizes();
                 }
 
@@ -199,8 +179,8 @@ function extrawatch_mainController() {
                         }
                     default:
                         {
-                        $output .= $extraWatchHTML->renderAdminStyles();
-                        $output .= $extraWatchHTML->renderHeader();
+                        $output .= $extraWatchHTML->renderAdminStyles($extraWatch);
+                        $output .= $extraWatchHTML->renderHeader($extraWatch);
                         $output .= $extraWatchHTML->renderSEO();
                         break;
                         }
@@ -210,24 +190,24 @@ function extrawatch_mainController() {
 
             case "graphs" :
                 {
-                $output .= $extraWatchHTML->renderAdminStyles();
-                $output .= $extraWatchHTML->renderHeader();
+                $output .= $extraWatchHTML->renderAdminStyles($extraWatch);
+                $output .= $extraWatchHTML->renderHeader($extraWatch);
                 $output .= $extraWatchTrendHTML->renderGraphsForGroup(ExtraWatchHelper::requestGet('group'));
                 break;
                 }
 
             case "trends" :
                 {
-                $output .= $extraWatchHTML->renderAdminStyles();
-                $output .= $extraWatchHTML->renderHeader();
+                $output .= $extraWatchHTML->renderAdminStyles($extraWatch);
+                $output .= $extraWatchHTML->renderHeader($extraWatch);
                 $extraWatchTrendHTML->renderTrends();
                 break;
                 }
 
             case "credits" :
                 {
-                $output .= $extraWatchHTML->renderAdminStyles();
-                $output .= $extraWatchHTML->renderHeader();
+                $output .= $extraWatchHTML->renderAdminStyles($extraWatch);
+                $output .= $extraWatchHTML->renderHeader($extraWatch);
                 $output .= $extraWatchHTML->renderCredits();
                 break;
                 }
@@ -237,16 +217,16 @@ function extrawatch_mainController() {
 
                     case "insert":
                         {
-                        $output .= $extraWatchHTML->renderAdminStyles();
-                        $output .= $extraWatchHTML->renderHeader();
+                        $output .= $extraWatchHTML->renderAdminStyles($extraWatch);
+                        $output .= $extraWatchHTML->renderHeader($extraWatch);
                         $output .= $extraWatchGoalHTML->renderBackToGoals();
                         $output .= $extraWatchGoalHTML->renderGoalsInsert(@ ExtraWatchHelper::requestGet('id'), @ ExtraWatchHelper::requestGet('postid'));
                         break;
                         }
                     case "save":
                         {
-                        $output .= $extraWatchHTML->renderAdminStyles();
-                        $output .= $extraWatchHTML->renderHeader();
+                        $output .= $extraWatchHTML->renderAdminStyles($extraWatch);
+                        $output .= $extraWatchHTML->renderHeader($extraWatch);
                         $extraWatch->goal->saveGoal(ExtraWatchHelper::requestPost());
                         $output .= $extraWatchGoalHTML->renderGoals(@$result);
 
@@ -254,45 +234,45 @@ function extrawatch_mainController() {
                         }
                     case "edit":
                         {
-                        $output .= $extraWatchHTML->renderAdminStyles();
-                        $output .= $extraWatchHTML->renderHeader();
-                        $extraWatchGoalHTML->renderBackToGoals();
-                        $extraWatchGoalHTML->renderGoalEdit(@ ExtraWatchHelper::requestGet('goalId'));
+                        $output .= $extraWatchHTML->renderAdminStyles($extraWatch);
+                        $output .= $extraWatchHTML->renderHeader($extraWatch);
+                        $output .= $extraWatchGoalHTML->renderBackToGoals();
+                        $output .= $extraWatchGoalHTML->renderGoalEdit(@ ExtraWatchHelper::requestGet('goalId'));
 
                         break;
                         }
                     case "delete":
                         {
-                        $output .= $extraWatchHTML->renderAdminStyles();
-                        $output .= $extraWatchHTML->renderHeader();
+                        $output .= $extraWatchHTML->renderAdminStyles($extraWatch);
+                        $output .= $extraWatchHTML->renderHeader($extraWatch);
                         $result = $extraWatch->goal->deleteGoal(@ ExtraWatchHelper::requestGet('goalId'));
-                        $extraWatchGoalHTML->renderGoals(@ $result);
+                        $output .= $extraWatchGoalHTML->renderGoals(@ $result);
 
                         break;
                         }
                     case "enable":
                         {
-                        $output .= $extraWatchHTML->renderAdminStyles();
-                        $output .= $extraWatchHTML->renderHeader();
+                        $output .= $extraWatchHTML->renderAdminStyles($extraWatch);
+                        $output .= $extraWatchHTML->renderHeader($extraWatch);
                         $result = $extraWatch->goal->enableGoal(@ ExtraWatchHelper::requestGet('goalId'));
-                        $extraWatchGoalHTML->renderGoals(@ $result);
+                        $output .= $extraWatchGoalHTML->renderGoals(@ $result);
 
                         break;
                         }
                     case "disable":
                         {
-                        $output .= $extraWatchHTML->renderAdminStyles();
-                        $output .= $extraWatchHTML->renderHeader();
+                        $output .= $extraWatchHTML->renderAdminStyles($extraWatch);
+                        $output .= $extraWatchHTML->renderHeader($extraWatch);
                         $result = $extraWatch->goal->disableGoal(@ ExtraWatchHelper::requestGet('goalId'));
-                        $extraWatchGoalHTML->renderGoals(@ $result);
+                        $output .= $extraWatchGoalHTML->renderGoals(@ $result);
 
                         break;
                         }
 
                     case "export":
                         {
-                        //$output .= $extraWatchHTML->renderAdminStyles();
-                        //$output .= $extraWatchHTML->renderHeader();
+                        //$output .= $extraWatchHTML->renderAdminStyles($extraWatch);
+                        //$output .= $extraWatchHTML->renderHeader($extraWatch);
                         $extraWatch->goal->exportGoals(ExtraWatchHelper::requestPost());
                         $extraWatchGoalHTML->renderExportGoals(@ $result);
 
@@ -301,26 +281,26 @@ function extrawatch_mainController() {
 
                     case "import":
                         {
-                        $output .= $extraWatchHTML->renderAdminStyles();
-                        $output .= $extraWatchHTML->renderHeader();
+                        $output .= $extraWatchHTML->renderAdminStyles($extraWatch);
+                        $output .= $extraWatchHTML->renderHeader($extraWatch);
                         $output .= $extraWatchGoalHTML->renderImportGoals();
                         break;
                         }
 
                     case "saveImportGoal":
                         {
-                        $output .= $extraWatchHTML->renderAdminStyles();
-                        $output .= $extraWatchHTML->renderHeader();
+                        $output .= $extraWatchHTML->renderAdminStyles($extraWatch);
+                        $output .= $extraWatchHTML->renderHeader($extraWatch);
                         $extraWatch->goal->saveImportGoal(ExtraWatchHelper::requestPost());
-                        $extraWatchGoalHTML->renderGoals(@ $result);
+                        $output .= $extraWatchGoalHTML->renderGoals(@ $result);
 
                         }
 
                     default:
                         {
-                        $output .= $extraWatchHTML->renderAdminStyles();
-                        $output .= $extraWatchHTML->renderHeader();
-                        $extraWatchGoalHTML->renderGoals(@ $result);
+                        $output .= $extraWatchHTML->renderAdminStyles($extraWatch);
+                        $output .= $extraWatchHTML->renderHeader($extraWatch);
+                        $output .= $extraWatchGoalHTML->renderGoals(@ $result);
 
                         break;
                         }
@@ -331,8 +311,8 @@ function extrawatch_mainController() {
                 }
             case "settings" :
                 {
-                $output .= $extraWatchHTML->renderAdminStyles();
-                $output .= $extraWatchHTML->renderHeader();
+                $output .= $extraWatchHTML->renderAdminStyles($extraWatch);
+                $output .= $extraWatchHTML->renderHeader($extraWatch);
                 $output .= $extraWatchHTML->renderSettings(@ $result);
 
                 break;
@@ -340,16 +320,16 @@ function extrawatch_mainController() {
             case "settingsSave" :
                 {
                 $result = $extraWatch->helper->saveSettings(ExtraWatchHelper::requestPost());
-                $output .= $extraWatchHTML->renderAdminStyles();
-                $output .= $extraWatchHTML->renderHeader();
+                $output .= $extraWatchHTML->renderAdminStyles($extraWatch);
+                $output .= $extraWatchHTML->renderHeader($extraWatch);
                 $output .= $extraWatchHTML->renderSettings(@ $result);
 
                 break;
                 }
             case "resetData" :
                 {
-                $output .= $extraWatchHTML->renderAdminStyles();
-                $output .= $extraWatchHTML->renderHeader();
+                $output .= $extraWatchHTML->renderAdminStyles($extraWatch);
+                $output .= $extraWatchHTML->renderHeader($extraWatch);
                 $result = $extraWatch->helper->resetData(ExtraWatchHelper::requestPost());
                 $output .= $extraWatchHTML->renderResetData($result);
                 break;
@@ -362,8 +342,8 @@ function extrawatch_mainController() {
 
                     case "toggleBlocking":
                         {
-                        $output .= $extraWatchHTML->renderAdminStyles();
-                        $output .= $extraWatchHTML->renderHeader();
+                        $output .= $extraWatchHTML->renderAdminStyles($extraWatch);
+                        $output .= $extraWatchHTML->renderHeader($extraWatch);
                         $ip = @ ExtraWatchHelper::requestGet('ip');
                         $extraWatch->block->extrawatch_blockIpToggle($ip);
                         $output .= $extraWatchHTML->renderAntiSpam();
@@ -374,8 +354,8 @@ function extrawatch_mainController() {
                     case "save" :
                         {
                         $result = $extraWatch->helper->saveAntiSpamSettings(ExtraWatchHelper::requestPost());
-                        $output .= $extraWatchHTML->renderAdminStyles();
-                        $output .= $extraWatchHTML->renderHeader();
+                        $output .= $extraWatchHTML->renderAdminStyles($extraWatch);
+                        $output .= $extraWatchHTML->renderHeader($extraWatch);
                         $output .= $extraWatchHTML->renderAntiSpam();
                         break;
                         }
@@ -383,8 +363,8 @@ function extrawatch_mainController() {
 
                     default:
                         {
-                        $output .= $extraWatchHTML->renderAdminStyles();
-                        $output .= $extraWatchHTML->renderHeader();
+                        $output .= $extraWatchHTML->renderAdminStyles($extraWatch);
+                        $output .= $extraWatchHTML->renderHeader($extraWatch);
                         $output .= $extraWatchHTML->renderAntiSpam();
                         break;
                         }
@@ -397,8 +377,8 @@ function extrawatch_mainController() {
             case "status" :
                 {
                 if (!$extraWatch->config->isFree()) {
-                    $output .= $extraWatchHTML->renderAdminStyles();
-                    $output .= $extraWatchHTML->renderHeader();
+                    $output .= $extraWatchHTML->renderAdminStyles($extraWatch);
+                    $output .= $extraWatchHTML->renderHeader($extraWatch);
                     $output .= $extraWatchHTML->renderStatus();
                 }
                 break;
@@ -406,8 +386,8 @@ function extrawatch_mainController() {
 
             /*			case "upgrade" :
             {
-                $output .= $extraWatchHTML->renderAdminStyles();
-                $output .= $extraWatchHTML->renderHeader();
+                $output .= $extraWatchHTML->renderAdminStyles($extraWatch);
+                $output .= $extraWatchHTML->renderHeader($extraWatch);
                 $output .= $extraWatchHTML->renderUpgrade();
                 break;
             }*/
@@ -415,8 +395,8 @@ function extrawatch_mainController() {
 
             case "license" :
                 {
-                $output .= $extraWatchHTML->renderAdminStyles();
-                $output .= $extraWatchHTML->renderHeader();
+                $output .= $extraWatchHTML->renderAdminStyles($extraWatch);
+                $output .= $extraWatchHTML->renderHeader($extraWatch);
                 $output .= $extraWatchHTML->renderAdFreeLicense();
                 break;
                 }
@@ -424,8 +404,8 @@ function extrawatch_mainController() {
 
             case "history" :
                 {
-                $output .= $extraWatchHTML->renderAdminStyles();
-                $output .= $extraWatchHTML->renderHeader();
+                $output .= $extraWatchHTML->renderAdminStyles($extraWatch);
+                $output .= $extraWatchHTML->renderHeader($extraWatch);
                 $output .= $extraWatchHTML->renderVisitsHistory();
                 break;
                 }
@@ -433,8 +413,8 @@ function extrawatch_mainController() {
             case "flow" :
                 {
                 if (!$extraWatch->config->isFree()) {
-                    $output .= $extraWatchHTML->renderAdminStyles();
-                    $output .= $extraWatchHTML->renderHeader();
+                    $output .= $extraWatchHTML->renderAdminStyles($extraWatch);
+                    $output .= $extraWatchHTML->renderHeader($extraWatch);
                     $output .= $extraWatchHTML->renderFlow();
                 }
                 break;
@@ -447,8 +427,8 @@ function extrawatch_mainController() {
 
                     case "save":
                         {
-                        $output .= $extraWatchHTML->renderAdminStyles();
-                        $output .= $extraWatchHTML->renderHeader();
+                        $output .= $extraWatchHTML->renderAdminStyles($extraWatch);
+                        $output .= $extraWatchHTML->renderHeader($extraWatch);
                         $result = $extraWatch->helper->saveEmailSettings(ExtraWatchHelper::requestPost());
                         $output .= $extraWatchHTML->renderEmails();
                         break;
@@ -456,8 +436,8 @@ function extrawatch_mainController() {
                         }
                     default:
                         {
-                        $output .= $extraWatchHTML->renderAdminStyles();
-                        $output .= $extraWatchHTML->renderHeader();
+                        $output .= $extraWatchHTML->renderAdminStyles($extraWatch);
+                        $output .= $extraWatchHTML->renderHeader($extraWatch);
                         $output .= $extraWatchHTML->renderEmails();
                         break;
                         }
@@ -467,8 +447,8 @@ function extrawatch_mainController() {
 
             case "heatmap" :
                 {
-                $output .= $extraWatchHTML->renderAdminStyles();
-                $output .= $extraWatchHTML->renderHeader();
+                $output .= $extraWatchHTML->renderAdminStyles($extraWatch);
+                $output .= $extraWatchHTML->renderHeader($extraWatch);
                 $output .= $extraWatchHTML->renderHeatMap();
                 return $output;
                 break;
@@ -476,11 +456,11 @@ function extrawatch_mainController() {
 
             default :
                 if ($extraWatch->config->checkLicenseAccepted()) {
-                    $output .= $extraWatchHTML->renderAdminStyles();
-                    $output .= $extraWatchHTML->renderHeader();
+                    $output .= $extraWatchHTML->renderAdminStyles($extraWatch);
+                    $output .= $extraWatchHTML->renderHeader($extraWatch);
                     $output .= $extraWatchHTML->renderBody($option);
                 } else {
-                    $output .= $extraWatchHTML->renderAdminStyles();
+                    $output .= $extraWatchHTML->renderAdminStyles($extraWatch);
                     $output .= $extraWatchHTML->renderAcceptLicense();
                 }
                 return $output;
@@ -488,8 +468,8 @@ function extrawatch_mainController() {
         }
         /*
             } else {
-                $output .= $extraWatchHTML->renderAdminStyles();
-                $output .= $extraWatchHTML->renderHeader();
+                $output .= $extraWatchHTML->renderAdminStyles($extraWatch);
+                $output .= $extraWatchHTML->renderHeader($extraWatch);
                 $output .= $extraWatchHTML->renderTrialVersionInfo();
             }
         */

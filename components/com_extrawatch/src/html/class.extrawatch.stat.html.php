@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 270
+ * @revision 354
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -791,7 +791,8 @@ class ExtraWatchStatHTML
         $dom = $this->extraWatch->date->dayOfMonth();
         $numOfDaysActualMonth = ExtraWatchDate::date("t", ExtraWatchDate::getUTCTimestamp());
         $numOfDaysPrevMonth = ExtraWatchDate::date("t", ExtraWatchDate::getUTCTimestamp() - $numOfDaysActualMonth * 24 * 3600);
-        $lastMonthsDate = $todayDate - $numOfDaysActualMonth;
+        $dayInCurrentMonth = ExtraWatchDate::date("d", ExtraWatchDate::getUTCTimestamp());
+        $lastMonthsDate = $todayDate - $dayInCurrentMonth;
 
         $timePeriodArray = array('TODAY', 'YESTERDAY', 'THIS_WEEK', 'LAST_WEEK', 'THIS_MONTH', 'LAST_MONTH', 'TOTAL');
 
@@ -892,7 +893,8 @@ class ExtraWatchStatHTML
       }
 
 
-      $output = "<h2 class='extraWatch'>" . _EW_STATS_USERS . "</h2>";
+      //$output = "<h2 class='extraWatch'>" . _EW_STATS_USERS . "</h2>";
+      $output = "";
 
       $output .= "<table class='extraWatch'><tr><td><u>" . _EW_FRONTEND_USERS_MOST . " $count:</u></td></tr><tr><td>";
       $link = $this->extraWatch->config->getConfigValue('EXTRAWATCH_FRONTEND_USER_LINK');

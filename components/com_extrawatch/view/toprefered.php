@@ -1,10 +1,10 @@
 <?php
 $day = ExtraWatchHelper::requestGet('day');
 if (!$day) {
-  $day = $this->extraWatch->date->jwDateToday(); // yesterday by default, because it contains
+  $day = $extraWatch->date->jwDateToday(); // yesterday by default, because it contains
 } ?>
 
-<h2>Top referred pages by keyphrases for <?php echo $this->extraWatch->date->getDateByDay($day); ?></h2>
+<h2>Top referred pages by keyphrases for <?php echo $extraWatch->date->getDateByDay($day); ?></h2>
 
 <table width='700px' border="0">
   <tr>
@@ -17,7 +17,7 @@ if (!$day) {
   </tr>
   <?php
   foreach ($rows as $row) {
-    $totalIntValuesForDay = $this->extraWatch->stat->getCountByKeyAndDate(EW_DB_KEY_UNIQUE, $day);
+    $totalIntValuesForDay = $extraWatch->stat->getCountByKeyAndDate(EW_DB_KEY_UNIQUE, $day);
     $percentOfHitsPerDay = sprintf("%.2f%%", ($row->total / $totalIntValuesForDay) * 100);
     ?>
     <tr>
@@ -28,7 +28,7 @@ if (!$day) {
     </tr>
 
     <?php
-    $keyphrases = $this->extraWatch->seo->retrieveKeyphrasesForUri($day, $row->uriId);
+    $keyphrases = $extraWatch->seo->retrieveKeyphrasesForUri($day, $row->uriId);
     foreach ($keyphrases as $keyphrase) {
       if (is_numeric($keyphrase->value)) {
         $percent = sprintf("(%.2f%%)", ($keyphrase->value / $row->total) * 100);
