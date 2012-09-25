@@ -474,7 +474,32 @@ DEFINE('_EW_EMAIL_SEO_REPORTS', "گزارشات SEO");
 DEFINE('_EW_DESC_EMAIL_SEO_REPORTS_ENABLED',"گزارشات ایمیلی شبانه SEO فعال شد");
 DEFINE('_EW_WATCH_INSTALLATION_DEMO',"مشاهده دموی نصب");
 
-DEFINE('_EW_HTTP500_ERROR', "Could not initialize JoomlaWatch javascript functions! Browser could not load: \\n%s, because it returned HTTP 500 internal server error.  \\nThis usually of security restrictions by other components/plugins. Please check your .htaccess file in your root Joomla directory.  \\nIf you use Akeeba Admin tools, you need to go \ 'Akeeba htaccess maker\ ' -> \ 'Server Protection\ ' -> \ 'Exceptions\ ' -> \ 'Allow direct access to these files\ ', and add: \\n/components/com_joomlawatch/block.php \\n/components/com_joomlawatch/img.php \\n/components/com_joomlawatch/last.php \\n/components/com_joomlawatch/lastvisit.php \\n/components/com_joomlawatch/sizequery.php \\n/components/com_joomlawatch/sizequerytotal.php \\n/components/com_joomlawatch/stats.php \\n/components/com_joomlawatch/timezone.php \\n/components/com_joomlawatch/tooltip.php \\n/components/com_joomlawatch/trendtooltip.php \\n/components/com_joomlawatch/vars.php \\n/components/com_joomlawatch/visits.php \\n/components/com_joomlawatch/js/joomlawatch.js.php \\n/components/com_joomlawatch/js/maps.js.php ");
+/** JW 1.2.18 */
+DEFINE('_EW_ADMINHEADER_HEATMAP', "Heatmap");
+DEFINE('_EW_HEATMAP_CLICKS', "clicks");
+DEFINE('_EW_HEATMAP_TITLE', "title");
+DEFINE('_EW_HEATMAP_CLICK_OPEN', "Click to open heatmap");
+DEFINE('_EW_NO_DATA', "This section contains no data yet ...");
+DEFINE('_EW_POSITION', "Search result num.");
+DEFINE('_EW_BLOCKING_REASON', 'reason');
+DEFINE('_EW_BLOCKING_UNAUTHORIZED_ACCESS', 'Unauthorized Access');
+DEFINE('_EW_BLOCKING_BLOCKED_MANUALLY', 'Blocked manually');
+DEFINE('_EW_BLOCKING_BAD_WORD', "bad word");
+DEFINE('_EW_HEATMAP_OF', "of");
+DEFINE('_EW_URI', "uri");
+DEFINE('_EW_COUNT', "count");
+DEFINE('_EW_SEO_REPORT_FOR', "SEO report for");
+DEFINE('_EW_SEO_MOST_DYNAMIC_KEYPHRASES', "Most dynamic keyphrases");
+DEFINE('_EW_SEO_MIN_POSITION', "min position");
+DEFINE('_EW_SEO_AVG_POSITION', "average position");
+DEFINE('_EW_SEO_MAX_POSITION', "max position");
+DEFINE('_EW_SEO_CHANGE', "change");
+DEFINE('_EW_SEO_DATE_OF_LAST_CHANGE', "date of last change");
+DEFINE('_EW_SEO_TOTAL_VISITS_FROM_SEARCH_ENGINES', "Total visits by keyphrase from search engines");
+DEFINE('_EW_GOAL_ADD_SUBMITTED_VALUE', "Add submitted variable as goal");
+DEFINE('_EW_RENDERED_IN', "Rendered in");
+DEFINE('_EW_DESC_SEO_RENDER_ONLY_CHANGED', "Render only values which were already used in previous days (have some percentage in change column)");
+DEFINE('_EW_SEO_REPORT_SETTINGS', "SEO Report Settings");
 
 DEFINE('_EW_HTTP500_ERROR', "Could not initialize ExtraWatch javascript functions! Browser could not load: \\n%s, because it returned HTTP 500 internal server error.  \\nThis usually of security restrictions by other components/plugins. Please check your .htaccess file in your root Joomla directory.  \\nIf you use Akeeba Admin tools, you need to go \ 'Akeeba htaccess maker\ ' -> \ 'Server Protection\ ' -> \ 'Exceptions\ ' -> \ 'Allow direct access to these files\ ', and add: \\n/components/com_joomlawatch/block.php \\n/components/com_joomlawatch/img.php \\n/components/com_joomlawatch/last.php \\n/components/com_joomlawatch/lastvisit.php \\n/components/com_joomlawatch/sizequery.php \\n/components/com_joomlawatch/sizequerytotal.php \\n/components/com_joomlawatch/stats.php \\n/components/com_joomlawatch/timezone.php \\n/components/com_joomlawatch/tooltip.php \\n/components/com_joomlawatch/trendtooltip.php \\n/components/com_joomlawatch/vars.php \\n/components/com_joomlawatch/visits.php \\n/components/com_joomlawatch/js/joomlawatch.js.php \\n/components/com_joomlawatch/js/maps.js.php ");
 
@@ -502,3 +527,6 @@ DEFINE('_EW_GOALS_FILENAME', "Select goals previously exported as XML");
 DEFINE('_EW_ANTISPAM_IMPORT_CSV', "import anti-spam ip csv");
 
 DEFINE('_EW_AGENT_NOT_PUBLISHED_ERROR_WORDPRESS',"Warning: No visits are being recorded. You must go to Appearance->Widgets section, <br/>find ExtraWatchAgent widget and drag&drop it to some of the containers on the right side. <br/>You can publish also other ExtraWatch modules this way.");
+
+
+

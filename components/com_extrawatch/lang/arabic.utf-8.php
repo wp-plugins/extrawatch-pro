@@ -485,20 +485,6 @@ DEFINE('_EW_BLOCKING_BLOCKED_MANUALLY', 'Blocked manually');
 DEFINE('_EW_BLOCKING_BAD_WORD', "bad word");
 DEFINE('_EW_HEATMAP_OF', "of");
 DEFINE('_EW_URI', "uri");
-
-/** JW 1.2.18 */
-DEFINE('_EW_ADMINHEADER_HEATMAP', "Heatmap");
-DEFINE('_EW_HEATMAP_CLICKS', "clicks");
-DEFINE('_EW_HEATMAP_TITLE', "title");
-DEFINE('_EW_HEATMAP_CLICK_OPEN', "Click to open heatmap");
-DEFINE('_EW_NO_DATA', "This section contains no data yet ...");
-DEFINE('_EW_POSITION', "Search result num.");
-DEFINE('_EW_BLOCKING_REASON', 'reason');
-DEFINE('_EW_BLOCKING_UNAUTHORIZED_ACCESS', 'Unauthorized Access');
-DEFINE('_EW_BLOCKING_BLOCKED_MANUALLY', 'Blocked manually');
-DEFINE('_EW_BLOCKING_BAD_WORD', "bad word");
-DEFINE('_EW_HEATMAP_OF', "of");
-DEFINE('_EW_URI', "uri");
 DEFINE('_EW_COUNT', "count");
 DEFINE('_EW_SEO_REPORT_FOR', "SEO report for");
 DEFINE('_EW_SEO_MOST_DYNAMIC_KEYPHRASES', "Most dynamic keyphrases");

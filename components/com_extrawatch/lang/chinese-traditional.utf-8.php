@@ -239,7 +239,6 @@ DEFINE('_EW_SETTINGS_ANTI_SPAM', "防垃圾");
 DEFINE('_EW_DESC_FRONTEND_USER_LINK', "在前台用戶模塊的鏈接- 允許你指定一個當用戶點擊用戶名時打開的URL,必須包含字符串{user},這將被實際的用戶名代替. (例如: index. php?option=com_comprofiler&task=userProfile&user={user}) ");
 
 /* translations 1.2.11b */
-DEFINE('_EW_STATS_KEYPHRASE', "關鍵詞");
 DEFINE('_EW_DESC_HISTORY_MAX_VALUES', "在歷史標籤的最大值(例如: <i>100</i>)");
 
 DEFINE('_EW_DESC_ONLY_LAST_URI', "在訪問列表中只顯示訪問的最後一頁,而不是所有");
@@ -462,7 +461,6 @@ DEFINE('_EW_IGNORE_URI', "忽略URI ");
 DEFINE('_EW_IGNORE_USER', "忽略用戶");
 DEFINE('_EW_BLOCKING_MESSAGE', "非阻塞消息");
 DEFINE('_EW_SERVER_URI_KEY', "服務器URI關鍵碼");
-DEFINE('_EW_FRONTEND_VISITORS_TOTAL_INITIAL', "前台訪客初步總記");
 DEFINE('_EW_SIZEDATABASE_RECORDS', "記錄");
 /***********EDITs*****************/
 DEFINE('_EW_ANTISPAM_BLOCKING_TEXT', "為了使阻塞有效,你需要把ExtraWatch代理髮佈在任何內容和表單之前.例如:在您的模板的左側.

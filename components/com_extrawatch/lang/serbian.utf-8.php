@@ -236,6 +236,7 @@ DEFINE('_EW_FRONTEND_USERS_MOST', "Najaktivniji korisnici danas u odnosu na ukup
 DEFINE('_EW_DESC_SPAMWORD_BANS_ENABLED', "Omogućite banovanja zasnovana na rečima sa liste spam reči ispod?");
 DEFINE('_EW_DESC_SPAMWORD_LIST', "Najčešće korišćenje spam reči od strane spam botova. Možete koristiti džokere ovde, (Npr.: ph?rmac*). Ako je opcija iznad omogućena ExtraWatch će proveriti da li je napadač poslao obrazac (HTTP POST request) na vaš sajt sa nekom od ovih spam reči. (Može se primeniti samo ako se obrazac učitava na Joomli baziranom websajtu-forum, komentari, ali je i efikasan prilikom blokiranja spam botova koji pokušavaju da pošalju bilo koji obrazac.");
 DEFINE('_EW_DESC_FRONTEND_USER_LINK', "Link u korisničkom modulu čeone aplikacije omogućava vam da specifirate jedan URL koji se otvara kada korisnik klikne korisničko ime. Mora da sadrži string {user} koji će biti zamenjen pravim korisničkim imenom. (Npr. index.php?option=com_comprofiler&task=userProfile&user={user}) ");
+DEFINE('_EW_SETTINGS_ANTI_SPAM', "Anti-Spam");
 
 /* translations 1.2.11b */
 DEFINE('_EW_STATS_KEYPHRASE', "Ključne fraze");

@@ -231,6 +231,7 @@ DEFINE('_EW_FRONTEND_USERS_MOST', "Najakt�vnej�� pou��vatelia za dnes 
 DEFINE('_EW_DESC_SPAMWORD_BANS_ENABLED', "Povoli� blokovanie na z�klade listu spam slov zobrazen�ho ni��ie?");
 DEFINE('_EW_DESC_SPAMWORD_LIST', "Najpou��vatej�ie spam slov� pou��van� spam robotmi. M��te pou�i� * a ?. (Napr.: ph?rmac*). Ak nastavenie hore je povolen�, ExtraWatch bude zis�ova�, �i �to�n�k odoslal formul�r (HTTP POST po�iadavka) na va�ej str�nke s niektor�m z t�chto slov. (Vz�ahuje sa len na Joomla str�nky - f�rum, koment�re, no je to celkom efekt�vny sp�sob eliminova� spam robotov, ktor� sk�aj� odosla� ka�d� mo�n� formul�r)");
 DEFINE('_EW_SETTINGS_ANTI_SPAM', "Anti-Spam");
+DEFINE('_EW_DESC_FRONTEND_USER_LINK', "A link in the frontend Users module - allows you to specify an URL, which is open when the user clicks the user name. Must contain the string {user}, which will be replaced by the actual user name. (Eg. index.php?option=com_comprofiler&task=userProfile&user={user}) ");
 
 /* translations 1.2.11b */
 DEFINE('_EW_STATS_KEYPHRASE', "K���ov� slov�");

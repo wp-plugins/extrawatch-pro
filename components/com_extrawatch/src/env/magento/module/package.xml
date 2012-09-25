@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 356
+ * @revision 386
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -22,7 +22,7 @@
         ExtraWatch is a module ported from Joomla CMS that allows you to monitor your visitors in real-time.
     </summary>
     <description>
-		ExtraWatch is a component and module for Joomla CMS that allows you to watch<br/>
+		ExtraWatch is a module that allows you to watch<br/>
         your website visitors and bots in real-time from the administration menu. Especially<br/>
         their IP addresses, countries they come from, geographical location on a map, which<br/>
         pages they are viewing, their browser and operating system, it creates daily and<br/>
@@ -975,6 +975,11 @@
                                                 <file name="class.extrawatch.users.widget.php"/>
                                                 <file name="class.extrawatch.visitors.widget.php"/>
                                             </dir>
+                                        </dir>
+                                        <dir name="prestashop">
+                                            <file name="class.extrawatch.db.prestashop.php"/>
+                                            <file name="class.extrawatch.env.prestashop.php"/>
+                                            <file name="index.html"/>
                                         </dir>
                                     </dir>
                                     <dir name="html">

@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 356
+ * @revision 386
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -170,11 +170,11 @@ function com_install()
   $mainframe->initialise();
   $database = & JFactory :: getDBO();
 
-  if ("1.5" == "1.5" && !version_compare(JVERSION, '1.6.0', '<')) {
-    echo("<span style='color: red'><h2>Error: You are using joomla " . JVERSION . " but the installation package is for version 1.5 ! Uninstall this version, <a href='http://www.codegravity.com/download'>Go to download section</a>, download the package for Joomla " . JVERSION . ", and install again.</h2></span>");
+  if ("1.6" == "1.5" && !version_compare(JVERSION, '1.6.0', '<')) {
+    echo("<span style='color: red'><h2>Error: You are using joomla " . JVERSION . " but the installation package is for version 1.6 ! Uninstall this version, <a href='http://www.codegravity.com/download'>Go to download section</a>, download the package for Joomla " . JVERSION . ", and install again.</h2></span>");
     return -1;
-  } elseif ("1.5" == "1.6" && !version_compare(JVERSION, '1.6.0', '>=')) {
-    echo("<span style='color: red'><h2>Error: You are using joomla " . JVERSION . " but the installation package is for version 1.5 ! Uninstall this version, <a href='http://www.codegravity.com/download'>Go to download section</a>, download the package for Joomla " . JVERSION . ", and install again.</h2></span>");
+  } elseif ("1.6" == "1.6" && !version_compare(JVERSION, '1.6.0', '>=')) {
+    echo("<span style='color: red'><h2>Error: You are using joomla " . JVERSION . " but the installation package is for version 1.6 ! Uninstall this version, <a href='http://www.codegravity.com/download'>Go to download section</a>, download the package for Joomla " . JVERSION . ", and install again.</h2></span>");
     return -1;
   }
 
@@ -194,7 +194,13 @@ function com_install()
       <td colspan="2"><br/>
         <code>Installation Process :<br/>
           <?php
-            extrawatch_install($database, JPATH_SITE);
+          extrawatch_initialize_menu($database);
+          extrawatch_initialize_ip2country(JPATH_SITE, $database);
+          try {
+            extrawatch_fixFilePermissions();
+          } catch (Exception $e) {
+            echo("Could not fix file permissions: ".$e);
+          }
           ?>
           <br/><br/>
           <font color="green"><b>Installation finished.</b></font><br/><br/>
@@ -212,15 +218,5 @@ function com_install()
 </center>
 <?php
 
-}
 
-function extrawatch_install($database, $sitePath)
-{
-    extrawatch_initialize_menu($database);
-    extrawatch_initialize_ip2country($sitePath, $database);
-    try {
-        extrawatch_fixFilePermissions();
-    } catch (Exception $e) {
-        echo("Could not fix file permissions: " . $e);
-    }
 }

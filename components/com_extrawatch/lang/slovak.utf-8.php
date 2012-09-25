@@ -231,6 +231,7 @@ DEFINE('_EW_FRONTEND_USERS_MOST', "Najaktívnejší používatelia za dnes z cel
 DEFINE('_EW_DESC_SPAMWORD_BANS_ENABLED', "Povoliť blokovanie na základe listu spam slov zobrazeného nižšie?");
 DEFINE('_EW_DESC_SPAMWORD_LIST', "Najpoužívatejšie spam slové používané spam robotmi. Môžte použiť * a ?. (Napr.: ph?rmac*). Ak nastavenie hore je povolené, ExtraWatch bude zisťovať, či útočník odoslal formulár (HTTP POST požiadavka) na vašej stránke s niektorým z týchto slov. (Vzťahuje sa len na Joomla stránky - fórum, komentáre, no je to celkom efektívny spôsob eliminovať spam robotov, ktorí skúšajú odoslať každý možný formulár)");
 DEFINE('_EW_SETTINGS_ANTI_SPAM', "Anti-Spam");
+DEFINE('_EW_DESC_FRONTEND_USER_LINK', "A link in the frontend Users module - allows you to specify an URL, which is open when the user clicks the user name. Must contain the string {user}, which will be replaced by the actual user name. (Eg. index.php?option=com_comprofiler&task=userProfile&user={user}) ");
 
 /* translations 1.2.11b */
 DEFINE('_EW_STATS_KEYPHRASE', "Kľúčové slová");

@@ -47,6 +47,7 @@ DEFINE('_EW_STATS_ALL_TIME', "Tüm zamanlar");
 DEFINE('_EW_STATS_EXPAND', "genişlet");
 DEFINE('_EW_STATS_COLLAPSE', "Portatif");
 DEFINE('_EW_STATS_URI', "Sayfalar");
+DEFINE('_EW_STATS_COUNTRY', "Ülkeler");
 DEFINE('_EW_STATS_COUNTRIES', "Ülkeler");
 DEFINE('_EW_STATS_USERS', "Kullanıcılar");
 DEFINE('_EW_STATS_REFERERS', "Referanslar");

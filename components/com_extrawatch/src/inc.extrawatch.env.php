@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 356
+ * @revision 386
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -18,19 +18,51 @@ require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "src
 require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "src" . DS ."env" . DS . "class.extrawatch.env.request.php";
 require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "src" . DS ."env" . DS . "class.extrawatch.env.factory.php";
 
-require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "src" . DS ."env" . DS . "joomla" . DS . "class.extrawatch.env.joomla.php";
-require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "src" . DS ."env" . DS . "joomla" . DS . "class.extrawatch.db.joomla.php";
+$env = ExtraWatchEnvFactory::getEnvironment();
 
-require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "src" . DS ."env" . DS . "wordpress" . DS . "class.extrawatch.env.wordpress.php";
-require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "src" . DS ."env" . DS . "wordpress" . DS . "class.extrawatch.db.wordpress.php";
-require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "src" . DS ."env" . DS . "wordpress" . DS . "class.extrawatch.setup.wordpress.php";
+switch (get_class($env)) {
 
-require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "src" . DS ."env" . DS . "nocms" . DS . "class.extrawatch.db.nocms.php";
-require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "src" . DS ."env" . DS . "nocms" . DS . "class.extrawatch.env.nocms.php";
+    case 'ExtraWatchJoomlaEnv': {
+    require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "src" . DS ."env" . DS . "joomla" . DS . "class.extrawatch.env.joomla.php";
+    require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "src" . DS ."env" . DS . "joomla" . DS . "class.extrawatch.db.joomla.php";
+    break;
+    }
 
-require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "src" . DS ."env" . DS . "drupal" . DS . "class.extrawatch.db.drupal.php";
-require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "src" . DS ."env" . DS . "drupal" . DS . "class.extrawatch.env.drupal.php";
+    case 'ExtraWatchWordpressEnv': {
+    require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "src" . DS ."env" . DS . "wordpress" . DS . "class.extrawatch.env.wordpress.php";
+    require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "src" . DS ."env" . DS . "wordpress" . DS . "class.extrawatch.db.wordpress.php";
+    require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "src" . DS ."env" . DS . "wordpress" . DS . "class.extrawatch.setup.wordpress.php";
+    break;
+    }
 
-require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "src" . DS ."env" . DS . "magento" . DS . "class.extrawatch.db.magento.php";
-require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "src" . DS ."env" . DS . "magento" . DS . "class.extrawatch.env.magento.php";
+    case 'ExtraWatchNoCMSEnv': {
+    require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "src" . DS ."env" . DS . "nocms" . DS . "class.extrawatch.db.nocms.php";
+    require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "src" . DS ."env" . DS . "nocms" . DS . "class.extrawatch.env.nocms.php";
+    break;
+    }
+
+    case 'ExtraWatchDrupalEnv': {
+    require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "src" . DS ."env" . DS . "drupal" . DS . "class.extrawatch.db.drupal.php";
+    require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "src" . DS ."env" . DS . "drupal" . DS . "class.extrawatch.env.drupal.php";
+    break;
+    }
+
+    case 'ExtraWatchMagentoEnv': {
+    require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "src" . DS ."env" . DS . "magento" . DS . "class.extrawatch.db.magento.php";
+    require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "src" . DS ."env" . DS . "magento" . DS . "class.extrawatch.env.magento.php";
+    break;
+    }
+
+    case 'ExtraWatchPrestaShopEnv': {
+    require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "src" . DS ."env" . DS . "prestashop" . DS . "class.extrawatch.db.prestashop.php";
+    require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "src" . DS ."env" . DS . "prestashop" . DS . "class.extrawatch.env.prestashop.php";
+    break;
+    }
+
+
+}
+
+
+
+
 

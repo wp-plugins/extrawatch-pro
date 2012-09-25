@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 356
+ * @revision 386
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -49,6 +49,7 @@
                         <sort_order>1</sort_order>
                         <action>extrawatch/adminhtml_extrawatch</action>
                     </extrawatchLiveStats>
+					
                     <extrawatchTrafficFlow translate="title" module="extrawatch">
                         <title>Traffic Flow</title>
                         <sort_order>2</sort_order>
@@ -64,6 +65,7 @@
                         <sort_order>4</sort_order>
                         <action>extrawatch/adminhtml_extrawatch/heatmap</action>
                     </extrawatchHeatMap>
+					
                     <extrawatchGraphs translate="title" module="extrawatch">
                         <title>Graphs</title>
                         <sort_order>5</sort_order>
@@ -89,6 +91,7 @@
                         <sort_order>9</sort_order>
                         <action>extrawatch/adminhtml_extrawatch/emails</action>
                     </extrawatchEmails>
+					
                     <extrawatchDBStatus translate="title" module="extrawatch">
                         <title>DB Status</title>
                         <sort_order>10</sort_order>
@@ -99,6 +102,7 @@
                         <sort_order>11</sort_order>
                         <action>extrawatch/adminhtml_extrawatch/sizes</action>
                     </extrawatchSizes>
+					
                     <extrawatchSettings translate="title" module="extrawatch">
                         <title>Settings</title>
                         <sort_order>12</sort_order>

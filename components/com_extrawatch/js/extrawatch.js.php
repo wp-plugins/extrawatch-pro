@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 356
+ * @revision 386
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -14,7 +14,6 @@
 if (!defined('_JEXEC')) {
   define('_JEXEC', 1);
 }
-$env = @$_REQUEST['env'];
 $jBasePath = dirname(__FILE__) . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR;
 define('JPATH_BASE', $jBasePath);
 if (!defined('JPATH_BASE2')) {
@@ -28,6 +27,8 @@ if (defined('JVERSION') && version_compare( JVERSION, '2.5.0', '<' )) {
     $mainframe = & JFactory :: getApplication('site');
     $mainframe->initialise();
 }
+
+$env = @$_REQUEST['env'];
 if ($env == "ExtraWatchMagentoEnv") {
     $GLOBALS['mageRunCode'] = true;
 }
@@ -38,7 +39,10 @@ require_once JPATH_BASE . "components" . DIRECTORY_SEPARATOR . "com_extrawatch" 
 $extraWatch = new ExtraWatch();
 require_once JPATH_BASE . DIRECTORY_SEPARATOR . "components" . DIRECTORY_SEPARATOR . "com_extrawatch" . DIRECTORY_SEPARATOR . "lang" . DIRECTORY_SEPARATOR . $extraWatch->config->getLanguage() . ".php";
 $extraWatchHTML = new ExtraWatchHTML();
-$extraWatch->block->checkPermissions(); ?>
+$extraWatch->block->checkPermissions();
+$env = @$_REQUEST['env'];
+?>
+
 
 var rand='<?php echo $extraWatch->config->getRand(); ?>';
 

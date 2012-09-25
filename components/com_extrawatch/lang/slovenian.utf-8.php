@@ -231,6 +231,7 @@ DEFINE('_EW_FRONTEND_USERS_MOST', "Most active users today from total of");
 DEFINE('_EW_DESC_SPAMWORD_BANS_ENABLED', "Enable the bans based on the words from the spamword list below ?");
 DEFINE('_EW_DESC_SPAMWORD_LIST', "Most common spam words used by spam bots. You can use the wildcards here, (Eg.: ph?rmac*). If the setting above is enabled, ExtraWatch will check whether the attacker submitted a form (the HTTP POST request) on your website with some of these spam words. (Applies if the form loads the Joomla-based website only - forum, comments, but is quite effective to block spam bots which try to submit every possible form)");
 DEFINE('_EW_SETTINGS_ANTI_SPAM', "Anti-Spam");
+DEFINE('_EW_DESC_FRONTEND_USER_LINK', "A link in the frontend Users module - allows you to specify an URL, which is open when the user clicks the user name. Must contain the string {user}, which will be replaced by the actual user name. (Eg. index.php?option=com_comprofiler&task=userProfile&user={user}) ");
 
 /* translations 1.2.11b */
 DEFINE('_EW_STATS_KEYPHRASE', "Keyphrases");
