@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 388
+ * @revision 431
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -23,9 +23,11 @@ if (!defined('DS')) {
     define('DS', DIRECTORY_SEPARATOR);
 }
 
+$scriptFilename = $_SERVER['SCRIPT_FILENAME'];
+$scriptFilename = str_replace("/",DS, $scriptFilename);
 
 //Fix by el_oskaros
-$jPathBase2 = str_replace(DIRECTORY_SEPARATOR . 'administrator' . DIRECTORY_SEPARATOR . 'index.php', '', $_SERVER['SCRIPT_FILENAME']);
+$jPathBase2 = str_replace(DIRECTORY_SEPARATOR . 'administrator' . DIRECTORY_SEPARATOR . 'index.php', '', $scriptFilename);
 $jPathBase2 = str_replace(DIRECTORY_SEPARATOR . 'administrator' . DIRECTORY_SEPARATOR . 'index2.php', '', $jPathBase2);
 
 /* replace all possible combinations */
@@ -47,7 +49,7 @@ if (!defined('JPATH_BASE2'))
         define('JPATH_BASE2', JPATH_BASE);
     }*/
 
-require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "includes.php";
+require_once (JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "includes.php");
 
 $env = ExtraWatchEnvFactory::getEnvironment();
 
@@ -478,5 +480,5 @@ function extrawatch_mainController($task = "") {
 }
 
 if (get_class($env) == "ExtraWatchJoomlaEnv") {
-    echo extrawatch_mainController($task);
+    echo @extrawatch_mainController($task);
 }

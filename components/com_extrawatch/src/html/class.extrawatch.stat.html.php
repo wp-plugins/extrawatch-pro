@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 388
+ * @revision 404
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -255,11 +255,11 @@ class ExtraWatchStatHTML
       $color = "ffffff";
       if (@ $row->name) {
         if (!$total) {
-          $output .= "<tr><td>" . @ $icon . "&nbsp;" . $row->name . "</td><td align='right'><table><tr><td align='right'>" . $row->value . "</td></tr></table></td><td> <table border='0'><tr><td>" . @ $diffOutput . "</td><td>" . @ $trendsIcon . "</td><td><img src='$progressBarIcon' width='" . $imgWidth . "' height='10' /></td><td align='left'>$percent%</td></tr></table></td></tr>";
+          $output .= "<tr><td>" . @ $icon . "&nbsp;" . $row->name . "</td><td align='right'><table><tr><td align='right'>" . $row->value . "</td></tr></table></td><td> <table border='0'><tr><td>" . @ $diffOutput . "</td><td>" . @ $trendsIcon . "</td><td><img src='$progressBarIcon' class='extraWatchBarImg' width='" . $imgWidth . "' style='height:10px' /></td><td align='left'>$percent%</td></tr></table></td></tr>";
 
         } else {
           if (!@ $frontend) {
-            $output .= "<tr><td align='left' style='background-color: " . "#" . $color . ";'>" . @ $icon . "&nbsp;" . $row->name . "</td><td style='background-color: #" . $color . ";' align='right'>" . $row->value . "</td><td style='background-color: #" . $color . ";'> <table><tr><td><img src='$progressBarIcon' width='" . $imgWidth . "' height='10' /></td>
+            $output .= "<tr><td align='left' style='background-color: " . "#" . $color . ";'>" . @ $icon . "&nbsp;" . $row->name . "</td><td style='background-color: #" . $color . ";' align='right'>" . $row->value . "</td><td style='background-color: #" . $color . ";'> <table><tr><td><img src='$progressBarIcon' class='extraWatchBarImg' width='" . $imgWidth . "' style='height:10px' /></td>
                         <td  " . $this->extraWatch->helper->getTooltipOnEvent() . "=\"ajax_showTooltip('" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/ajax/trendtooltip.php?rand=" . $this->extraWatch->config->getRand() . "&group=$group&name=" . urlencode($origName) . "&date=$date&env=".$this->extraWatch->config->getEnvironment()."',this);return FALSE\">$percent%</td>
                         </tr></table></td></tr>";
           } else {
@@ -669,13 +669,13 @@ class ExtraWatchStatHTML
             case 'loads':
               {
               $fontColor = "#00C000";
-              $output .= "<td align='right' style='color:" . $fontColor . "; background-color: " . $color . ";'>" . $value . "</td><td style='background-color: " . $color . ";'> <table cellpadding='0' cellspacing='0' ><tr><td style='background-color: " . $color . ";'><img src='$progressBarIcon' width='$percentWidth' height='10' /></td><td style='color:" . $fontColor . "; background-color: " . $color . ";'></td></tr></table></td>";
+              $output .= "<td align='right' style='color:" . $fontColor . "; background-color: " . $color . ";'>" . $value . "</td><td style='background-color: " . $color . ";'> <table cellpadding='0' cellspacing='0' ><tr><td style='background-color: " . $color . ";'><img src='$progressBarIcon' style='width: $percentWidth; height:10px' /></td><td style='color:" . $fontColor . "; background-color: " . $color . ";'></td></tr></table></td>";
               break;
               }
             default:
               {
               $fontColor = "black";
-              $output .= "<td align='right' style='color:" . $fontColor . "; background-color: " . $color . ";'>" . $value . "</td><td style='background-color: " . $color . ";'> <table cellpadding='0' cellspacing='0' ><tr><td style='background-color: " . $color . ";'><img src='$progressBarIcon' width='$percentWidth' height='10' /></td><td style='color:" . $fontColor . "; background-color: " . $color . ";'>&nbsp;$ratio</td></tr></table></td>";
+              $output .= "<td align='right' style='color:" . $fontColor . "; background-color: " . $color . ";'>" . $value . "</td><td style='background-color: " . $color . ";'> <table cellpadding='0' cellspacing='0' ><tr><td style='background-color: " . $color . ";'><img src='$progressBarIcon' style='width: $percentWidth; height:10px' /></td><td style='color:" . $fontColor . "; background-color: " . $color . ";'>&nbsp;$ratio</td></tr></table></td>";
               }
           }
         } else

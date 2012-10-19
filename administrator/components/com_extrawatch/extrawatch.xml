@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<extension type="component" version="1.6.0" method="upgrade">
+<extension type="component" version="3.0" method="upgrade">
 
     <name>ExtraWatch</name>
     <creationDate>2012</creationDate>
@@ -7,7 +7,7 @@
     <copyright>Copyright 2006-2012 by Matej Koval</copyright>
     <authorEmail>foo@codegravity.com</authorEmail>
     <authorUrl>http://www.codegravity.com</authorUrl>
-    <version>1.2.18.388 PRO</version>
+    <version>1.2.18.431 PRO</version>
     <license>http://www.gnu.org/licenses/gpl-3.0.txt GNU/GPLv3</license>
     <description>
         ExtraWatch is an AJAX component and module for Joomla CMS that allows you to watch
@@ -72,7 +72,6 @@ in this section are copied from /site/ in the package -->
 
     <installfile>install.extrawatch.php</installfile>
     <uninstallfile>uninstall.extrawatch.php</uninstallfile>
-
 
     <administration>
         <menu task="default" img="components/com_extrawatch/img/icons/extrawatch-logo-16x16.gif">ExtraWatch</menu>
@@ -176,15 +175,19 @@ in this section are copied from /site/ in the package -->
             <filename>img/icons/settings.gif</filename>
             <filename>img/icons/update.png</filename>
             <filename>img/icons/credits.png</filename>
+            <filename>script.extrawatch.php</filename>
+            <filename>install.extrawatch.php</filename>
+            <filename>uninstall.extrawatch.php</filename>
             <filename>admin.extrawatch.php</filename>
+            <filename>extrawatch.php</filename>
+            <filename>index.html</filename>
         </files>
     </administration>
 
-    <administration>
-    </administration>
+    <scriptfile>script.extrawatch.php</scriptfile>
 
     <updateservers>
-        <server type="extension" priority="1" name="ExtraWatch Update Site">http://www.codegravity.com/update/extrawatch/1.2.18/PRO/extrawatch-update.xml</server>
+        <server type="extension" priority="1" name="ExtraWatch Update Site"><![CDATA[http://www.codegravity.com/update/extrawatch/1.2.18/PRO/extrawatch-update.xml]]></server>
     </updateservers>
 
 </extension>

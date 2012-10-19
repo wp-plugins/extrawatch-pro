@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 388
+ * @revision 431
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -41,7 +41,7 @@ class ExtraWatchHeatmap
   {
     $day = $this->date->jwDateToday();
     $timestamp = $this->date->getUTCTimestamp();
-    $ip = $_SERVER['REMOTE_ADDR'];
+    $ip = ExtraWatchVisit::getRemoteIPAddress();
 
     $query = sprintf("INSERT INTO #__extrawatch_heatmap (`id`, `uri2titleId`, `x`, `y`, `w`, `h`, `ip`, `day`, `timestamp`, `xpath`) values ('','%d','%d','%d','%d','%d','%s','%d','%d','%s')", (int) $uri2titleId, (int) $x, (int) $y, (int) $w, (int) $h, $this->database->getEscaped($ip), (int) $day, (int) $timestamp, $this->database->getEscaped($xpath));
     $this->database->executeQuery($query);

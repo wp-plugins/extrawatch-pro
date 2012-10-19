@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 388
+ * @revision 431
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -33,7 +33,7 @@ $frontend = @$_REQUEST['frontend'];
 
 switch ($env) {
     case "ExtraWatchPrestaShopEnv":
-        {
+    {
         if (!defined('ENV')) define('ENV', 1);
         $GLOBALS['smarty'] = true;
         $GLOBALS['_MODULES'] = true;
@@ -41,50 +41,50 @@ switch ($env) {
         require_once(realpath(dirname(__FILE__)).''.DS.'..'.DS.'..'.DS.'..'.DS.'..'.DS.'..'.DS.'config'.DS.'config.inc.php');
 
         break;
-        }
+    }
 
     case "ExtraWatchMagentoEnv":
     {
-    $GLOBALS['mageRunCode'] = true;
-    if (!defined('ENV')) define('ENV', 1);
+        $GLOBALS['mageRunCode'] = true;
+        if (!defined('ENV')) define('ENV', 1);
 
-    break;
+        break;
     }
 
     case "ExtraWatchDrupalEnv":
     {
-    define('DRUPAL_ROOT', realpath(dirname(__FILE__).'/../../../../../../'));
-    require_once DRUPAL_ROOT . '/includes/bootstrap.inc';
-    drupal_bootstrap(DRUPAL_BOOTSTRAP_DATABASE);
-    define('ENV', 1);
-    break;
+        define('DRUPAL_ROOT', realpath(dirname(__FILE__).'/../../../../../../'));
+        require_once DRUPAL_ROOT . '/includes/bootstrap.inc';
+        drupal_bootstrap(DRUPAL_BOOTSTRAP_DATABASE);
+        define('ENV', 1);
+        break;
     }
 
-  case "ExtraWatchJoomlaEnv":
+    case "ExtraWatchJoomlaEnv":
     {
-    $mainframe = initializeJoomla();
-    break;
+        $mainframe = initializeJoomla();
+        break;
     }
 
-  case "ExtraWatchWordpressEnv":
+    case "ExtraWatchWordpressEnv":
     {
-    require_once dirname(__FILE__) . '/../../../../../wp-load.php';
-    if (!defined('ENV')) define('ENV', 1);
-    break;
+        require_once dirname(__FILE__) . '/../../../../../wp-load.php';
+        if (!defined('ENV')) define('ENV', 1);
+        break;
     }
-  case "ExtraWatchNoCMSEnv":
+    case "ExtraWatchNoCMSEnv":
     {
-    if (!defined('ENV')) define('ENV', 1);
-    break;
+        if (!defined('ENV')) define('ENV', 1);
+        break;
     }
 
-  default:
-    {
-    if (!defined('ENV')) {
-      $mainframe = initializeJoomla();
-    }
-    break;
-    }
+    default:
+        {
+        if (!defined('ENV')) {
+            $mainframe = initializeJoomla();
+        }
+        break;
+        }
 
 }
 
@@ -123,19 +123,26 @@ require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "src
 
 function initializeJoomla()
 {
-  global $mainframe;
+    global $mainframe;
 
-  if (!defined('JPATH_ROOT'))
-    require_once JPATH_BASE . DS . 'includes' . DS . 'defines.php';
-  if (!defined('JDEBUG'))
-    require_once JPATH_BASE . DS . 'includes' . DS . 'framework.php';
+    if (!defined('JPATH_ROOT'))
+        require_once JPATH_BASE . DS . 'includes' . DS . 'defines.php';
+    if (!defined('JDEBUG'))
+        require_once JPATH_BASE . DS . 'includes' . DS . 'framework.php';
 
-  require_once JPATH_BASE2 . DS . 'libraries' . DS . 'joomla' . DS . 'application' . DS . 'application.php';
+    if (version_compare(JVERSION,"3.0","<")) {
 
-  require_once JPATH_BASE2 . DS . 'libraries' . DS . 'joomla' . DS . 'application' . DS . 'module' . DS . 'helper.php';
-  $mainframe = & JFactory :: getApplication('site');
-  $mainframe->initialise();
-  return $mainframe;
+        require_once (JPATH_BASE2 . DS . 'libraries' . DS . 'joomla' . DS . 'application' . DS . 'application.php');
+
+        require_once (JPATH_BASE2 . DS . 'libraries' . DS . 'joomla' . DS . 'application' . DS . 'module' . DS . 'helper.php');
+        $mainframe = & JFactory :: getApplication('site');
+        $mainframe->initialise();
+        return $mainframe;
+    } else {
+        $app = JFactory::getApplication('site');
+        $app->initialise();
+    }
 }
+
 
 

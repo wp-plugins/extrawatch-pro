@@ -4,7 +4,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 388
+ * @revision 431
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -22,18 +22,22 @@ class extrawatchmodule extends Module
     {
         $this->name = 'extrawatchmodule';
         $this->tab = 'Stats'; // back-end name
-        $this->version = '1.0';
-        $this->displayName = 'ExtraWatch';
-        $this->module_key = '';
+        $this->version = '1.2.18.431';
+        $this->displayName = 'ExtraWatch PRO';
+		$this->tab = 'analytics_stats'; 
+		$this->module_key='868a02da3cb4442e41507b564b9da2f9';
 
         parent::__construct();
 
-        $this->displayName = $this->l('ExtraWatch');
-        $this->description = $this->l('ExtraWatch description');
+        $this->displayName = $this->l('ExtraWatch PRO');
+		
+		
+		
+		
+        $this->description = $this->l('Real-time Live Stats, Traffic Flow, SEO, Click Heatmap, Graphs, Goals, Nightly emails, DB Status, Dir Sizes. ExtraWatch allows you to watch your visitors and bots in real-time from the administration back-end. Especially their IP addresses, countries they come from, which pages they are viewing, their browser and operating system, it creates daily and all-time stats from these information plus unique, pageload and total hits statistics. Furthermore, you can block harmful IP addresses and see blocked attempts stats.');
+		
+		
         $this->confirmUninstall = $this->l('Are you sure you want to uninstall this module ?');
-
-        /*        /** Backward compatibility 1.4 / 1.5
-        require(dirname(__FILE__).'/backward_compatibility/backward.php');*/
     }
 
 

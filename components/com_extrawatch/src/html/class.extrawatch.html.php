@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 388
+ * @revision 431
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -389,11 +389,14 @@ class ExtraWatchHTML
 
     function renderHeatMapJS()
     {
+        $output = "";
+        
         $extraWatchHeatmap = new ExtraWatchHeatmap($this->extraWatch->database);
         $uri = $this->extraWatch->helper->getURI(); //TODO we need to strip the parameters here out of URI !!!
         $uri = $extraWatchHeatmap->stripHeatmapGetParams($uri);
         $id = $this->extraWatch->visit->getUriIdByUriName($uri);
-        $output = ExtraWatchHelper::get_include_contents(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "js" . DS . "heatmap.js.php", array("extraWatch" => $this->extraWatch, "extraWatchHeatmap"=>$extraWatchHeatmap, "uri" => $uri, "id" => $id, "extraWatch" => $this->extraWatch ));
+        $output .= ExtraWatchHelper::get_include_contents(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "js" . DS . "heatmap.js.php", array("extraWatch" => $this->extraWatch, "extraWatchHeatmap"=>$extraWatchHeatmap, "uri" => $uri, "id" => $id, "extraWatch" => $this->extraWatch ));
+        
         return $output;
     }
 

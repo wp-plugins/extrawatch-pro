@@ -51,7 +51,7 @@ function extrawatch_renderLicenseFree($extraWatch)
         font-weight: normal;
     }
 </style>
-<h1>ExtraWatch 1.2.18.388 PRO</h1>
+<h1>ExtraWatch 1.2.18.431 PRO</h1>
 
 <script type='text/javascript'>
     function toggleNoKeyForm() {
@@ -132,7 +132,7 @@ function extrawatch_renderLicenseFree($extraWatch)
 
         <tr><td valign='top' colspan='2'>
 
-            <iframe src='http://www.codegravity.com/demo/extrawatch/1.2.18/".($extraWatch->env->getEnvironmentName())."/' width='1100' height='768'>
+            <iframe src='http://www.codegravity.com/demo/extrawatch/1.2.18/".strtolower($extraWatch->env->getEnvironmentName())."/' width='1100' height='768'>
             </iframe>
             <br/><br/>
 

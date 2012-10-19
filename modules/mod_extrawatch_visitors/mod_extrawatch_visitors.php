@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 388
+ * @revision 431
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -20,6 +20,9 @@ if (!defined("JPATH_BASE2")) {
     define("JPATH_BASE2", JPATH_BASE);
 }
 
+if (!defined("DS")) {
+    define("DS", DIRECTORY_SEPARATOR);
+}
 
 require_once JPATH_BASE . DS . "components" . DS . "com_extrawatch" . DS . "config.php";
 require_once JPATH_BASE . DS . "components" . DS . "com_extrawatch" . DS . "src" . DS. "inc.extrawatch.env.php";

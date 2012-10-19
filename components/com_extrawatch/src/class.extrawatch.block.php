@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 388
+ * @revision 431
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -231,7 +231,7 @@ class ExtraWatchBlock
     if (@!$post) {
       return TRUE;
     }
-    $ip = $_SERVER['REMOTE_ADDR'];
+    $ip = ExtraWatchVisit::getRemoteIPAddress();
 
     if (@$this->searchBlockedIp($ip)) {
       $this->dieWithBlockingMessage($ip);
@@ -290,7 +290,7 @@ class ExtraWatchBlock
 
   function checkPermissions()
   {
-    $ip = @$_SERVER['REMOTE_ADDR'];
+    $ip = ExtraWatchVisit::getRemoteIPAddress();
     $reason = sprintf($this->BLOCKING_REASON, $ip);
     if ($this->checkBlocked($ip)) {
       die($reason);

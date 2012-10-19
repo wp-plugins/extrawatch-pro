@@ -5,7 +5,7 @@
       <description>ExtraWatch</description>
       <element>com_extrawatch</element>
       <type>component</type>
-      <version>1.2.18.388 PRO</version>
+      <version>1.2.18.431 PRO</version>
        <infourl title="ExtraWatch URL">http://www.codegravity.com</infourl>
       <downloads>
          <downloadurl type="full" format="gz">http://www.codegravity.com/update/extrawatch/1.2.18/PRO/com_extrawatch.zip</downloadurl>
@@ -19,7 +19,7 @@
       <description>ExtraWatch</description>
       <element>com_extrawatch</element>
       <type>component</type>
-      <version>1.2.18.388 PRO</version>
+      <version>1.2.18.431 PRO</version>
        <infourl title="ExtraWatch URL">http://www.codegravity.com</infourl>
       <downloads>
          <downloadurl type="full" format="gz">http://www.codegravity.com/update/extrawatch/1.2.18/PRO/com_extrawatch.zip</downloadurl>
@@ -33,7 +33,7 @@
       <description>ExtraWatch</description>
       <element>com_extrawatch</element>
       <type>component</type>
-      <version>1.2.18.388 PRO</version>
+      <version>1.2.18.431 PRO</version>
        <infourl title="ExtraWatch URL">http://www.codegravity.com</infourl>
       <downloads>
          <downloadurl type="full" format="gz">http://www.codegravity.com/update/extrawatch/1.2.18/PRO/com_extrawatch.zip</downloadurl>
@@ -41,5 +41,19 @@
       <maintainer>CodeGravity.com</maintainer>
       <maintainerurl>http://www.codegravity.com</maintainerurl>
       <targetplatform name="joomla" version="2.5" />
+   </update>
+   <update>
+      <name>ExtraWatch</name>
+      <description>ExtraWatch</description>
+      <element>com_extrawatch</element>
+      <type>component</type>
+      <version>1.2.18.431 PRO</version>
+       <infourl title="ExtraWatch URL">http://www.codegravity.com</infourl>
+      <downloads>
+         <downloadurl type="full" format="gz">http://www.codegravity.com/update/extrawatch/1.2.18/PRO/com_extrawatch.zip</downloadurl>
+      </downloads>
+      <maintainer>CodeGravity.com</maintainer>
+      <maintainerurl>http://www.codegravity.com</maintainerurl>
+      <targetplatform name="joomla" version="3.0" />
    </update>
 </updates>

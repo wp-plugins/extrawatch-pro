@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 388
+ * @revision 431
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -74,7 +74,7 @@ class ExtraWatchJoomlaEnv implements ExtraWatchEnv
 
   function renderLink($task, $otherParams)
   {
-    return $this->getRootSite() . $this->getAdminDir() . "/index.php?option=com_extrawatch&task=" . $task . "&". $otherParams;
+    return $this->getRootSite() . $this->getAdminDir() . "/index.php?option=com_extrawatch&task=" . $task . "&action=". $otherParams;
   }
 
   function getUser()
@@ -127,10 +127,28 @@ class ExtraWatchJoomlaEnv implements ExtraWatchEnv
   function getTimezoneOffset()
   {
     $conf =& JFactory::getConfig();
-    return $conf->getValue('config.offset');
+      if ($conf instanceof JRegistry) { //Joomla 3.0
+
+          $timezoneName = $conf->toObject()->offset;
+          $userTimezone = $this->timezoneNameToOffset($timezoneName);
+          return $userTimezone;
+
+      } else {
+        return $conf->getValue('config.offset');
+      }
   }
 
-  function getAllowedDirsToCheckForSize()
+    private function timezoneNameToOffset($timezoneName) {
+        if (is_numeric($timezoneName)) {
+            return $timezoneName;
+        }
+        $dtz = new DateTimeZone($timezoneName);
+        $time = new DateTime('now', $dtz);
+        $userTimezone = $time->format('Z') / 3600;
+        return $userTimezone; // timezone difference in seconds / 3600
+    }
+
+    function getAllowedDirsToCheckForSize()
   {
     $dirs = array(
       "../../../administrator/components/",
@@ -169,7 +187,12 @@ class ExtraWatchJoomlaEnv implements ExtraWatchEnv
 
     public function getAdminEmail()
     {
-        return $this->getUser()->getEmail();
+        if (version_compare(JVERSION, '2.5', 'ge')) {
+            $email = $this->getUser()->email;
+        } else {
+            $email = $this->getUser()->getEmail();
+        }
+        return $email;
     }
 
     function getFormKey() {

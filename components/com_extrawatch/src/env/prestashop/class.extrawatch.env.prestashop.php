@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 388
+ * @revision 431
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -50,12 +50,14 @@ class ExtraWatchPrestaShopEnv implements ExtraWatchEnv
     $hostname = "http://" . $_SERVER['HTTP_HOST'];
     $scriptName = $_SERVER['SCRIPT_NAME'];
     $subdir = str_replace("/index.php", "", $scriptName);
-    $subdir = str_replace("/admin-matto", "", $subdir); //todo replace by name of actual admin dir
+
+    $adminDirName = $this->getAdminDirName();
+    $subdir = str_replace("/".$adminDirName, "", $subdir);
 
     return $hostname . $subdir . "/modules/extrawatchmodule/extrawatch/";
   }
 
-  function getAdminDir()
+    function getAdminDir()
   {
     return "";
   }
@@ -78,7 +80,7 @@ class ExtraWatchPrestaShopEnv implements ExtraWatchEnv
 
   function renderLink($task, $otherParams)
   {
-    return "index.php?controller=ExtraWatchAdmin&token=fbe47980dadc205cabbb2028c5b3ca7c&task=$task&action=$otherParams";
+    return "index.php?controller=ExtraWatchAdmin&token=".Tools::getValue('token')."&task=$task&action=$otherParams";
   }
 
   function getUser()
@@ -170,6 +172,14 @@ class ExtraWatchPrestaShopEnv implements ExtraWatchEnv
     {
         return self::EW_ENV_NAME;
     }
+
+    private function getAdminDirName() {
+        $adminDir = realpath(_PS_ADMIN_DIR_);
+        $adminDirSplitted = split(DS, $adminDir);
+        $lastDir = $adminDirSplitted[sizeof($adminDirSplitted)-1];
+        return $lastDir;
+    }
+
 }
 
 

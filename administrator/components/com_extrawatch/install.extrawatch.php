@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 388
+ * @revision 431
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -34,7 +34,7 @@ function extrawatch_fixFilePermissions() {
     "js" . DS . "maps.js.php");
 
   foreach($filesArray as $file) {
-    chmod(JPATH_SITE.DS."components".DS."com_extrawatch".DS.$file, 0755);
+    @chmod(JPATH_SITE.DS."components".DS."com_extrawatch".DS.$file, 0755);
   }
 }
 
@@ -75,9 +75,7 @@ function extrawatch_initialize_ip2country($rootDir, $database)
           //echo (".");
         }
         $database->setQuery(trim($query));
-        $result = $database->query();
-        if (!$result)
-          echo ("Error: " + $database->getQuery());
+        $result = @$database->query();
         //flush();
         $query = "";
         $i++;
