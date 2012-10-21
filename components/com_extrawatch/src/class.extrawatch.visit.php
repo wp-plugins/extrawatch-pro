@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 432
+ * @revision 443
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -77,6 +77,9 @@ class ExtraWatchVisit
     $ipinfodb = new ipinfodb;
     $ipinfodb->setKey($this->config->getConfigValue("EXTRAWATCH_IPINFODB_KEY"));
     $locations = $ipinfodb->getGeoLocation($ip);
+
+    $ip = $city = $country = $countryCode = $latitude = $longitude = $referer = "";
+
     if (!empty($locations) && is_array($locations)) {
       foreach ($locations as $field => $val)
       {

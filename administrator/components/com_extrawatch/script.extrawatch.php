@@ -5,42 +5,84 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 432
+ * @revision 443
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
  */
 
 /** ensure this file is being included by a parent file */
-if (!defined('_JEXEC') && !defined('_VALID_MOS')) {
+if (!defined('_JEXEC')) {
     die('Restricted access');
 }
 
 jimport('joomla.filesystem.folder');
 jimport('joomla.filesystem.file');
 
-require('install.extrawatch.php');
 
-class Com_AdmintoolsInstallerScript {
+class com_extrawatchInstallerScript {
 
-    /**
-     * Runs after install, update or discover_update
-     * @param string $type install, update or discover_update
-     * @param JInstaller $parent
-     */
-    function postflight( $type, $parent )
+
+    function postflight($action, $installer)
     {
-        com_install();
+        switch ($action)
+        {
+            case "install":
+                $extraWatchAdminDir = JPATH_ADMINISTRATOR.DIRECTORY_SEPARATOR."components".DIRECTORY_SEPARATOR."com_extrawatch";
+                require($extraWatchAdminDir.DIRECTORY_SEPARATOR."install.extrawatch.php");
+                $database = & JFactory :: getDBO();
+                extrawatch_initialize_ip2country(JPATH_SITE, $database);
+                $this->publishExtraWatchModules($database);
+                try {
+                    extrawatch_fixFilePermissions();
+                } catch (Exception $e) {
+                    echo("Could not fix file permissions: ".$e);
+                }
+
+                break;
+        }
     }
 
     /**
+     * this initializes modules to particular position
+     * @param $database
+     */
+    private function publishExtraWatchModules($database)
+    {
+        /*
+         must be done later, triggered after the modules are initialized
+
+         $database->setQuery("UPDATE #__modules set position = 'position-7', published = 1, ordering = 1 where `module` like 'mod_extrawatch_%' ");
+         $database->query();
+
+         $database->setQuery("SELECT `id` from #__modules where `module` like 'mod_extrawatch_%' ");
+         $database->query();
+         $idList = $database->loadObjectList();
+         if (@$idList) {
+             foreach ($idList as $id) {
+                 $database->setQuery(sprintf("INSERT INTO #__modules_menu (`moduleid`, `menuid`) values '%d', '0'", (int)$id));
+                 $database->query();
+             }
+         }*/
+    }
+
+
+/*    /**
      * Runs on uninstallation
      *
      * @param JInstaller $parent
      */
     function uninstall($parent)
     {
-        com_uninstall();
+
+        $extraWatchAdminDir = JPATH_ADMINISTRATOR.DIRECTORY_SEPARATOR."components".DIRECTORY_SEPARATOR."com_extrawatch";
+        $path = $extraWatchAdminDir.DIRECTORY_SEPARATOR."uninstall.extrawatch.php";
+        if (file_exists($path)) {
+            require($path);
+            uninstallExtraWatch();
+            return true;
+        }
+
     }
 
 

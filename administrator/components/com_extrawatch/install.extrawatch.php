@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 432
+ * @revision 443
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -20,21 +20,21 @@ function extrawatch_fixFilePermissions() {
   $filesArray = array(
     "img.php",
     "timezone.php",
-    "ajax" . DS . "block.php",
-    "ajax" . DS . "last.php",
-    "ajax" . DS . "lastvisit.php",
-    "ajax" . DS . "sizequery.php",
-    "ajax" . DS . "sizequerytotal.php",
-    "ajax" . DS . "stats.php",
-    "ajax" . DS . "tooltip.php",
-    "ajax" . DS . "trendtooltip.php",
-    "ajax" . DS . "vars.php",
-    "ajax" . DS . "visits.php",
-    "js" . DS . "extrawatch.js.php",
-    "js" . DS . "maps.js.php");
+    "ajax" . DIRECTORY_SEPARATOR . "block.php",
+    "ajax" . DIRECTORY_SEPARATOR . "last.php",
+    "ajax" . DIRECTORY_SEPARATOR . "lastvisit.php",
+    "ajax" . DIRECTORY_SEPARATOR . "sizequery.php",
+    "ajax" . DIRECTORY_SEPARATOR . "sizequerytotal.php",
+    "ajax" . DIRECTORY_SEPARATOR . "stats.php",
+    "ajax" . DIRECTORY_SEPARATOR . "tooltip.php",
+    "ajax" . DIRECTORY_SEPARATOR . "trendtooltip.php",
+    "ajax" . DIRECTORY_SEPARATOR . "vars.php",
+    "ajax" . DIRECTORY_SEPARATOR . "visits.php",
+    "js" . DIRECTORY_SEPARATOR . "extrawatch.js.php",
+    "js" . DIRECTORY_SEPARATOR . "maps.js.php");
 
   foreach($filesArray as $file) {
-    @chmod(JPATH_SITE.DS."components".DS."com_extrawatch".DS.$file, 0755);
+    @chmod(JPATH_SITE.DIRECTORY_SEPARATOR."components".DIRECTORY_SEPARATOR."com_extrawatch".DIRECTORY_SEPARATOR.$file, 0755);
   }
 }
 
@@ -58,7 +58,7 @@ function extrawatch_initialize_ip2country($rootDir, $database)
 
   $numberOfFiles = 220;
   for ($j = 1; $j <= $numberOfFiles; $j++) {
-    $fileName = $rootDir . DS . "components" . DS . "com_extrawatch" . DS . "sql" . DS . "extrawatch-$j.sql";
+    $fileName = $rootDir . DIRECTORY_SEPARATOR . "components" . DIRECTORY_SEPARATOR . "com_extrawatch" . DIRECTORY_SEPARATOR . "sql" . DIRECTORY_SEPARATOR . "extrawatch-$j.sql";
     $lines = @file($fileName);
     if (!$lines) {
       //die("<span style='color: red'>Error reading file: $fileName, your joomla site path is set to: ".$rootDir." what is probably not correct, check configuration.php</span><br/>");
@@ -124,7 +124,7 @@ function extrawatch_initialize_menu($database)
   $query = sprintf("   INSERT INTO #__components values ('', 'Traffic Flow', '', 0, %d, 'option=com_extrawatch&task=flow', '', '', 3, '../components/com_extrawatch/img/icons/flow.png', 0, '', 1)", (int)$id);
   $database->setQuery($query);
   $database->query();
-  $query = sprintf("   INSERT INTO #__components values ('', 'Graphs & Trends', '', 0, %d, 'option=com_extrawatch&task=graphs', '', '', 4, '../components/com_extrawatch/img/icons/trend_icon.gif', 0, '', 1)", (int)$id);
+  $query = sprintf("   INSERT INTO #__components values ('', 'Graphs & TrenDIRECTORY_SEPARATOR', '', 0, %d, 'option=com_extrawatch&task=graphs', '', '', 4, '../components/com_extrawatch/img/icons/trend_icon.gif', 0, '', 1)", (int)$id);
   $database->setQuery($query);
   $database->query();
   $query = sprintf("   INSERT INTO #__components values ('', 'Goals', '', 0, %d, 'option=com_extrawatch&task=goals', '', '', 5, '../components/com_extrawatch/img/icons/goal.gif', 0, '', 1)", (int)$id);
