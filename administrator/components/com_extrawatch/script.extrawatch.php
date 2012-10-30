@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 448
+ * @revision 454
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -29,7 +29,7 @@ class com_extrawatchInstallerScript {
         {
             case "install":
                 $extraWatchAdminDir = JPATH_ADMINISTRATOR.DIRECTORY_SEPARATOR."components".DIRECTORY_SEPARATOR."com_extrawatch";
-                require($extraWatchAdminDir.DIRECTORY_SEPARATOR."install.extrawatch.php");
+                require_once($extraWatchAdminDir.DIRECTORY_SEPARATOR."install.extrawatch.php");
                 $database = & JFactory :: getDBO();
                 extrawatch_initialize_ip2country(JPATH_SITE, $database);
                 $this->publishExtraWatchModules($database);
@@ -78,7 +78,7 @@ class com_extrawatchInstallerScript {
         $extraWatchAdminDir = JPATH_ADMINISTRATOR.DIRECTORY_SEPARATOR."components".DIRECTORY_SEPARATOR."com_extrawatch";
         $path = $extraWatchAdminDir.DIRECTORY_SEPARATOR."uninstall.extrawatch.php";
         if (file_exists($path)) {
-            require($path);
+            require_once($path);
             uninstallExtraWatch();
             return true;
         }

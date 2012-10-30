@@ -36,6 +36,15 @@ Enjoy!
 
 == Screenshots ==
 
+1. Live Stats
+2. Front-end modules (Users by countries, Stats per time period)
+3. Graphs & Trends
+4. Insert new Goal (conditions)
+5. Anti-Spam and IP Blocking
+6. Email Reports
+7. Settings
+8. Geolocation Map
+9. Goals Form
 
 == Frequently Asked Questions ==
 

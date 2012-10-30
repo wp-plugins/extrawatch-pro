@@ -51,7 +51,7 @@ function extrawatch_renderLicenseFree($extraWatch)
         font-weight: normal;
     }
 </style>
-<h1>ExtraWatch 1.2.18.448 PRO</h1>
+<h1>ExtraWatch 1.2.18.454 PRO</h1>
 
 <script type='text/javascript'>
     function toggleNoKeyForm() {
@@ -68,7 +68,7 @@ function extrawatch_renderLicenseFree($extraWatch)
             <table>
                 <tr>
                     <td>
-                        <form action='" . $extraWatch->config->renderLink() . "' method='POST'>
+                        <form action='" . $extraWatch->config->renderLink("activate") . "' method='POST'>
                             <input type='text' name='key' size='50'/> <input type='submit' value='activate'/>
                             <input type='hidden' name='option' value='com_extrawatch'/>
                             <input type='hidden' name='task' value='activate'/>

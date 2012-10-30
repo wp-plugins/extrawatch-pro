@@ -5,19 +5,20 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 448
+ * @revision 454
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
  */
 
 if (!defined('_JEXEC')) {
-  define('_JEXEC', 1);
+    define('_JEXEC', 1);
 }
+$env = @$_REQUEST['env'];
 $jBasePath = dirname(__FILE__) . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR;
 define('JPATH_BASE', $jBasePath);
 if (!defined('JPATH_BASE2')) {
-  define('JPATH_BASE2', $jBasePath);
+    define('JPATH_BASE2', $jBasePath);
 }
 
 $frontend = @$_REQUEST['frontend'];
@@ -43,7 +44,6 @@ $extraWatch->block->checkPermissions();
 $env = @$_REQUEST['env'];
 ?>
 
-
 var rand='<?php echo $extraWatch->config->getRand(); ?>';
 
 var lastTimeoutId = null;
@@ -64,17 +64,17 @@ var traffic = 0;
 function extrawatch_setDay(_day) {
 day = _day;
 document.getElementById(_day).innerHTML = "<?php echo(_EW_STATS_LOADING_WAIT); ?>";
-extrawatch_senDIRECTORY_SEPARATORtatsReq();
+extrawatch_sendStatsReq();
 }
 function extrawatch_setStatsType(_statsType) {
 statsType = _statsType;
 document.getElementById(_statsType).innerHTML = "<?php echo(_EW_STATS_LOADING); ?>";
-extrawatch_senDIRECTORY_SEPARATORtatsReq();
+extrawatch_sendStatsReq();
 }
 function extrawatch_setWeek(_week) {
 week = _week;
 document.getElementById("visits_" + _week).innerHTML = "<?php echo(_EW_STATS_LOADING_WAIT); ?>";
-extrawatch_senDIRECTORY_SEPARATORtatsReq();
+extrawatch_sendStatsReq();
 }
 
 function extrawatch_createRequestObject() {
@@ -128,10 +128,10 @@ alert(err2);
 
 }
 
-function extrawatch_senDIRECTORY_SEPARATORtatsReq() {
+function extrawatch_sendStatsReq() {
 try {
 http2 = extrawatch_createRequestObject();
-http2.onreadystatechange = neeDIRECTORY_SEPARATORtatsRefresh;
+http2.onreadystatechange = needStatsRefresh;
 var newdate = new Date();
 var url = "<?php echo($extraWatch->config->getLiveSiteWithSuffix()); ?>components/com_extrawatch/ajax/stats.php?rand=" + rand + "&timeID="+newdate.getTime() + "&env=<?php echo($env); ?>";
 if (day != 0) url += "&day="+day;
@@ -140,10 +140,10 @@ if (week != 0) url += "&week="+week;
 <?php
 
 foreach ($keysArray as $key) {
-  echo("if (extrawatch_expand['" . $key . "']) url += '&" . $key . "=true';");
+    echo("if (extrawatch_expand['" . $key . "']) url += '&" . $key . "=true';");
 }
 foreach ($keysArray as $key) {
-  echo("if (extrawatch_expand['" . $key . "_total']) url += '&" . $key . "_total=true';");
+    echo("if (extrawatch_expand['" . $key . "_total']) url += '&" . $key . "_total=true';");
 } ?>
 
 url += "&tab="+statsType;
@@ -160,12 +160,12 @@ function extrawatch_blockIpToggle(_ip) {
 try {
 if (confirm("<?php echo(_EW_STATS_IP_BLOCKING_TOGGLE); ?> " + _ip + " ?")) {
 http3 = extrawatch_createRequestObject();
-http3.onreadystatechange = neeDIRECTORY_SEPARATORtatsRefresh;
+http3.onreadystatechange = needStatsRefresh;
 var newdate = new Date();
 var url3 = "<?php echo($extraWatch->config->getLiveSiteWithSuffix()); ?>components/com_extrawatch/ajax/block.php?ip="+ _ip +"&rand=" + rand + "&timeID="+newdate.getTime()+ "&env=<?php echo($extraWatch->config->getEnvironment()); ?>";
 http3.open("GET", url3, true);
 http3.send(null);
-extrawatch_senDIRECTORY_SEPARATORtatsReq();
+extrawatch_sendStatsReq();
 extrawatch_sendVisitsReq();
 }
 }
@@ -188,7 +188,7 @@ function extrawatch_expand(_element) {
 if (!extrawatch_expand[_element]) extrawatch_expand[_element] = true;
 else extrawatch_expand[_element] = false;
 document.getElementById(_element).innerHTML = "<?php echo(_EW_STATS_LOADING_WAIT); ?>";
-extrawatch_senDIRECTORY_SEPARATORtatsReq();
+extrawatch_sendStatsReq();
 }
 
 function extrawatch_needLastIdRefresh() {
@@ -196,7 +196,7 @@ if (http4.readyState == 4) {
 if(http4.status == 200) {
 if (http4.responseText != lastId) {
 extrawatch_sendVisitsReq();
-extrawatch_senDIRECTORY_SEPARATORtatsReq();
+extrawatch_sendStatsReq();
 lastId = http4.responseText;
 }
 
@@ -244,7 +244,7 @@ alert(err);
 }
 }
 
-function neeDIRECTORY_SEPARATORtatsRefresh()
+function needStatsRefresh()
 {
 try {
 if (http2.readyState == 4) {
@@ -254,11 +254,11 @@ traffic += http2.responseText.length;
 
 <?php if ($extraWatch->config->getConfigValue("EXTRAWATCH_IPINFODB_KEY")) { ?>
 <?php if ($extraWatch->config->getConfigValue("EXTRAWATCH_MAP_GOOGLEMAP")) {
-    if ($extraWatch->visit->getLastIp()) { ?>
-    GoogleMapUpdate();
-    <?php
-    }
-  } ?>
+        if ($extraWatch->visit->getLastIp()) { ?>
+        GoogleMapUpdate();
+        <?php
+        }
+    } ?>
 <?php
     
     if ($extraWatch->config->getConfigValue("EXTRAWATCH_MAP_OPENMAP")) {
@@ -266,14 +266,14 @@ traffic += http2.responseText.length;
         extraWatchOpenMapUpdate();
         <?php
         }
-  }
-  
+    }
+    
     ?>
 <?php } ?>
 
 } else {
 }
-/*    if(statsType != "2")  statsTimeoutId = window.setTimeout("extrawatch_senDIRECTORY_SEPARATORtatsReq()",<?php echo($extraWatch->config->getConfigValue('EXTRAWATCH_UPDATE_TIME_STATS')); ?>); */
+/*    if(statsType != "2")  statsTimeoutId = window.setTimeout("extrawatch_sendStatsReq()",<?php echo($extraWatch->config->getConfigValue('EXTRAWATCH_UPDATE_TIME_STATS')); ?>); */
 }
 } catch (err) {
 alert(err);
@@ -321,194 +321,194 @@ contentDiv.id = 'ajax_tooltip_content';
 
 if(ajax_tooltip_MSIE){    /* Create iframe object for MSIE in order to make the tooltip cover select boxes */
 ajax_tooltipObj_iframe = document.createElement('<iframe frameborder="0">');
-  ajax_tooltipObj_iframe.style.position = 'absolute';
-  ajax_tooltipObj_iframe.border='0';
-  ajax_tooltipObj_iframe.frameborder=0;
-  ajax_tooltipObj_iframe.style.backgroundColor='#FFF';
-  ajax_tooltipObj_iframe.src = 'about:blank';
-  contentDiv.appendChild(ajax_tooltipObj_iframe);
-  ajax_tooltipObj_iframe.style.left = '0px';
-  ajax_tooltipObj_iframe.style.top = '0px';
-  }
+    ajax_tooltipObj_iframe.style.position = 'absolute';
+    ajax_tooltipObj_iframe.border='0';
+    ajax_tooltipObj_iframe.frameborder=0;
+    ajax_tooltipObj_iframe.style.backgroundColor='#FFF';
+    ajax_tooltipObj_iframe.src = 'about:blank';
+    contentDiv.appendChild(ajax_tooltipObj_iframe);
+    ajax_tooltipObj_iframe.style.left = '0px';
+    ajax_tooltipObj_iframe.style.top = '0px';
+    }
 
 
-  }
-  // Find position of tooltip
-  ajax_tooltipObj.style.display='block';
-  ajax_loadContent('ajax_tooltip_content',externalFile);
-  if(ajax_tooltip_MSIE){
-  ajax_tooltipObj_iframe.style.width = ajax_tooltipObj.clientWidth + 'px';
-  ajax_tooltipObj_iframe.style.height = ajax_tooltipObj.clientHeight + 'px';
-  }
+    }
+    // Find position of tooltip
+    ajax_tooltipObj.style.display='block';
+    ajax_loadContent('ajax_tooltip_content',externalFile);
+    if(ajax_tooltip_MSIE){
+    ajax_tooltipObj_iframe.style.width = ajax_tooltipObj.clientWidth + 'px';
+    ajax_tooltipObj_iframe.style.height = ajax_tooltipObj.clientHeight + 'px';
+    }
 
-  ajax_positionTooltip(inputObj);
-  }
+    ajax_positionTooltip(inputObj);
+    }
 
-  function ajax_positionTooltip(inputObj)
-  {
-  var leftPos = (ajaxTooltip_getLeftPos(inputObj) + inputObj.offsetWidth);
-  var topPos = ajaxTooltip_getTopPos(inputObj);
+    function ajax_positionTooltip(inputObj)
+    {
+    var leftPos = (ajaxTooltip_getLeftPos(inputObj) + inputObj.offsetWidth);
+    var topPos = ajaxTooltip_getTopPos(inputObj);
 
-  /*
-  var rightedge=ajax_tooltip_MSIE? document.body.clientWidth-leftPos : window.innerWidth-leftPos
-  var bottomedge=ajax_tooltip_MSIE? document.body.clientHeight-topPos : window.innerHeight-topPos
-  */
-  var tooltipWidth = document.getElementById('ajax_tooltip_content').offsetWidth +
-  document.getElementById('ajax_tooltip_arrow').offsetWidth;
-  // Dropping this reposition for now because of flickering
-  //var offset = tooltipWidth - rightedge;
-  //if(offset>0)leftPos = Math.max(0,leftPos - offset - 5);
+    /*
+    var rightedge=ajax_tooltip_MSIE? document.body.clientWidth-leftPos : window.innerWidth-leftPos
+    var bottomedge=ajax_tooltip_MSIE? document.body.clientHeight-topPos : window.innerHeight-topPos
+    */
+    var tooltipWidth = document.getElementById('ajax_tooltip_content').offsetWidth +
+    document.getElementById('ajax_tooltip_arrow').offsetWidth;
+    // Dropping this reposition for now because of flickering
+    //var offset = tooltipWidth - rightedge;
+    //if(offset>0)leftPos = Math.max(0,leftPos - offset - 5);
 
-  ajax_tooltipObj.style.left = leftPos + 'px';
-  ajax_tooltipObj.style.top = topPos + 'px';
-
-
-  }
+    ajax_tooltipObj.style.left = leftPos + 'px';
+    ajax_tooltipObj.style.top = topPos + 'px';
 
 
-  function ajax_hideTooltip()
-  {
-  ajax_tooltipObj.style.display='none';
-  }
-
-  function refreshStats() {
-  if (refreshStopped) {
-  visitsTimeoutId =
-  window.setTimeout("extrawatch_sendVisitsReq()",<?php echo($extraWatch->config->getConfigValue('EXTRAWATCH_UPDATE_TIME_VISITS'));?>
-  );
-  statsTimeoutId =
-  window.setTimeout("extrawatch_senDIRECTORY_SEPARATORtatsReq()",<?php echo($extraWatch->config->getConfigValue('EXTRAWATCH_UPDATE_TIME_STATS'));?>
-  );
-  refreshStopped = false;
-  }
-  }
-
-  function ajaxTooltip_getTopPos(inputObj)
-  {
-  var returnValue = inputObj.offsetTop;
-  while((inputObj = inputObj.offsetParent) != null){
-  if(inputObj.tagName!='HTML')returnValue += inputObj.offsetTop;
-  }
-  return returnValue;
-  }
-
-  function ajaxTooltip_getLeftPos(inputObj)
-  {
-  var returnValue = inputObj.offsetLeft;
-  while((inputObj = inputObj.offsetParent) != null){
-  if(inputObj.tagName!='HTML')returnValue += inputObj.offsetLeft;
-  }
-  return returnValue;
-  }
-  function setElementValueById(_id, _value) {
-  document.getElementById(_id).value = _value;
-  }
-  function addElementValueById(_id, _value) {
-  value = document.getElementById(_id).value;
-  if (value) document.getElementById(_id).value +="\n";
-  document.getElementById(_id).value += _value;
-  }
-
-  function toggleElementVisibility(id, flagit) {
-  if (flagit=="1"){
-  document.getElementById(id).style.display = "block";
-  }
-  else
-  if (flagit=="0"){
-  document.getElementById(id).style.display = "";
-  }
-  }
-
-  function toggleDiv(id, ip, flagit) {
-  var divElementId = "goal_" + id;
-
-  if (flagit=="1"){
-  var url = "<?php echo($extraWatch->config->getLiveSiteWithSuffix());?>components/com_extrawatch/ajax/vars.php?rand=<?php echo($extraWatch->config->getRand());?>&uriId=" + id + "&ip=" + ip +"&env=<?php echo($env);?>";
-  jQuery.ajax( {
-  url: url,
-  success: function(result) {
-  document.getElementById(divElementId).innerHTML = result;
-  }
-  });
-  document.getElementById(divElementId).style.display = "block";
-  }
-  else
-  if (flagit=="0"){
-  document.getElementById(divElementId).style.display = "";
-  }
-  }
-
-  function highlightDiv(id,flagit) {
-  if (flagit=="1"){
-  document.getElementById(id).style.textDecoration = "underline";
-  }
-  else
-  if (flagit=="0"){
-  document.getElementById(id).style.textDecoration = "";
-  }
-  }
+    }
 
 
-  var cX = 0; var cY = 0; var rX = 0; var rY = 0;
-  function UpdateCursorPosition(){ cX = event.pageX; cY = event.pageY;}
-  function UpdateCursorPositionDocAll(){ cX = event.clientX; cY = event.clientY;}
-  //if(document.all) { document.onmousemove = UpdateCursorPositionDocAll; }
-  //else { document.onmousemove = UpdateCursorPosition; }
+    function ajax_hideTooltip()
+    {
+    ajax_tooltipObj.style.display='none';
+    }
 
-  function popupDiv(id, flagit) {
-  if (flagit=="1"){
-  document.getElementById(id).style.display = "block";
-  if(self.pageYOffset) {
-  rX = self.pageXOffset;
-  rY = self.pageYOffset;
-  }
-  else if(document.documentElement && document.documentElement.scrollTop) {
-  rX = document.documentElement.scrollLeft;
-  rY = document.documentElement.scrollTop;
-  }
-  else if(document.body) {
-  rX = document.body.scrollLeft;
-  rY = document.body.scrollTop;
-  }
-  if(document.all) {
-  cX += rX;
-  cY += rY;
-  }
-  document.getElementById(id).style.left = cX + "px";
-  document.getElementById(id).style.top = cY + "px";
-  }
-  else
-  if (flagit=="0"){
-  document.getElementById(id).style.display = "";
-  }
-  }
+    function refreshStats() {
+    if (refreshStopped) {
+    visitsTimeoutId =
+    window.setTimeout("extrawatch_sendVisitsReq()",<?php echo($extraWatch->config->getConfigValue('EXTRAWATCH_UPDATE_TIME_VISITS'));?>
+    );
+    statsTimeoutId =
+    window.setTimeout("extrawatch_sendStatsReq()",<?php echo($extraWatch->config->getConfigValue('EXTRAWATCH_UPDATE_TIME_STATS'));?>
+    );
+    refreshStopped = false;
+    }
+    }
+
+    function ajaxTooltip_getTopPos(inputObj)
+    {
+    var returnValue = inputObj.offsetTop;
+    while((inputObj = inputObj.offsetParent) != null){
+    if(inputObj.tagName!='HTML')returnValue += inputObj.offsetTop;
+    }
+    return returnValue;
+    }
+
+    function ajaxTooltip_getLeftPos(inputObj)
+    {
+    var returnValue = inputObj.offsetLeft;
+    while((inputObj = inputObj.offsetParent) != null){
+    if(inputObj.tagName!='HTML')returnValue += inputObj.offsetLeft;
+    }
+    return returnValue;
+    }
+    function setElementValueById(_id, _value) {
+    document.getElementById(_id).value = _value;
+    }
+    function addElementValueById(_id, _value) {
+    value = document.getElementById(_id).value;
+    if (value) document.getElementById(_id).value +="\n";
+    document.getElementById(_id).value += _value;
+    }
+
+    function toggleElementVisibility(id, flagit) {
+    if (flagit=="1"){
+    document.getElementById(id).style.display = "block";
+    }
+    else
+    if (flagit=="0"){
+    document.getElementById(id).style.display = "";
+    }
+    }
+
+    function toggleDiv(id, ip, flagit) {
+    var divElementId = "goal_" + id;
+
+    if (flagit=="1"){
+    var url = "<?php echo($extraWatch->config->getLiveSiteWithSuffix());?>components/com_extrawatch/ajax/vars.php?rand=<?php echo($extraWatch->config->getRand());?>&uriId=" + id + "&ip=" + ip +"&env=<?php echo($env);?>";
+    jQuery.ajax( {
+    url: url,
+    success: function(result) {
+    document.getElementById(divElementId).innerHTML = result;
+    }
+    });
+    document.getElementById(divElementId).style.display = "block";
+    }
+    else
+    if (flagit=="0"){
+    document.getElementById(divElementId).style.display = "";
+    }
+    }
+
+    function highlightDiv(id,flagit) {
+    if (flagit=="1"){
+    document.getElementById(id).style.textDecoration = "underline";
+    }
+    else
+    if (flagit=="0"){
+    document.getElementById(id).style.textDecoration = "";
+    }
+    }
 
 
-  //callback function to bring a hidden box back
-  function effectCallback(effectElementId){
-  setTimeout(function(){
-  $("#"+effectElementId+":hidden").removeAttr('style').hide().fadeIn();
-  }, 100);
-  };
+    var cX = 0; var cY = 0; var rX = 0; var rY = 0;
+    function UpdateCursorPosition(){ cX = event.pageX; cY = event.pageY;}
+    function UpdateCursorPositionDocAll(){ cX = event.clientX; cY = event.clientY;}
+    //if(document.all) { document.onmousemove = UpdateCursorPositionDocAll; }
+    //else { document.onmousemove = UpdateCursorPosition; }
 
-  /** usage: showEffect("visits2","bounce",500); */
-  function showEffect(effectElementId, effectName, duration) {
-  //alert(effectElementId);
-  effectElementId = "#"+ effectElementId;
-  //alert($("status"));
-  var options = {};
-  //alert($$("status"));
-  $(effectElementId).show(effectName,options,duration,effectCallback(effectElementId));
-  }
+    function popupDiv(id, flagit) {
+    if (flagit=="1"){
+    document.getElementById(id).style.display = "block";
+    if(self.pageYOffset) {
+    rX = self.pageXOffset;
+    rY = self.pageYOffset;
+    }
+    else if(document.documentElement && document.documentElement.scrollTop) {
+    rX = document.documentElement.scrollLeft;
+    rY = document.documentElement.scrollTop;
+    }
+    else if(document.body) {
+    rX = document.body.scrollLeft;
+    rY = document.body.scrollTop;
+    }
+    if(document.all) {
+    cX += rX;
+    cY += rY;
+    }
+    document.getElementById(id).style.left = cX + "px";
+    document.getElementById(id).style.top = cY + "px";
+    }
+    else
+    if (flagit=="0"){
+    document.getElementById(id).style.display = "";
+    }
+    }
 
-  /** usage:
-  ajaxRequest("http://localhost:88/components/com_extrawatch/ajax/trendtooltip.php?rand=&group=12&name=/&date=14730","visits2");
-  */
-  function ajaxRequest(url, elementId, options) {
-  $.get(url, options, //options
-  function(response){
-  $("#"+elementId+"").html(response);
-  }
-  );
-  }
+
+    //callback function to bring a hidden box back
+    function effectCallback(effectElementId){
+    setTimeout(function(){
+    $("#"+effectElementId+":hidden").removeAttr('style').hide().fadeIn();
+    }, 100);
+    };
+
+    /** usage: showEffect("visits2","bounce",500); */
+    function showEffect(effectElementId, effectName, duration) {
+    //alert(effectElementId);
+    effectElementId = "#"+ effectElementId;
+    //alert($("status"));
+    var options = {};
+    //alert($$("status"));
+    $(effectElementId).show(effectName,options,duration,effectCallback(effectElementId));
+    }
+
+    /** usage:
+    ajaxRequest("http://localhost:88/components/com_extrawatch/ajax/trendtooltip.php?rand=&group=12&name=/&date=14730","visits2");
+    */
+    function ajaxRequest(url, elementId, options) {
+    $.get(url, options, //options
+    function(response){
+    $("#"+elementId+"").html(response);
+    }
+    );
+    }
 
