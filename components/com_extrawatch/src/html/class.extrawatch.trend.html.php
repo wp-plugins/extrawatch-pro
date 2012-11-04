@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 457
+ * @revision 459
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2012 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -239,7 +239,7 @@ class ExtraWatchTrendHTML
   function renderGraphSelectionForm($group)
   {
 
-    $keysArray = array('goals', 'referers', 'internal', 'keyphrase', 'keywords', 'uri', 'users', 'country', 'ip', 'browser', 'os', 'size_db');
+    $keysArray = array('referers', 'internal', 'keyphrase', 'keywords', 'uri', 'users', 'goals', 'country', 'ip', 'browser', 'os', 'size_db');
 
     $output = "<br/><br/><div align='center'>
         <form action='".$this->extraWatch->env->renderLink("graphs","")."' method='POST'>
