@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <extension type="package" version="3.0">
     <name>ExtraWatch</name>
-    <creationDate>2012</creationDate>
+    <creationDate>2013</creationDate>
     <author>Matej Koval - http://www.codegravity.com</author>
-    <copyright>Copyright 2006-2012 by Matej Koval</copyright>
+    <copyright>Copyright 2006-2013 by Matej Koval</copyright>
     <authorEmail>foo@codegravity.com</authorEmail>
     <authorUrl>http://www.codegravity.com</authorUrl>
     <packagename>ExtraWatch</packagename>
-    <version>1.2.18.459 PRO</version>
+    <version>1.2.18.465 PRO</version>
     <license>http://www.gnu.org/licenses/gpl-3.0.txt GNU/GPLv3</license>
     <url>http://www.codegravity.com</url>
     <packager>Matej Koval - http://www.codegravity.com</packager>

@@ -2,12 +2,12 @@
 <install type="module" version="1.5.0">
     <name>ExtraWatch Agent Module</name>
     <author>Matej Koval - http://www.codegravity.com</author>
-    <creationDate>2012</creationDate>
+    <creationDate>2013</creationDate>
     <copyright>www.codegravity.com</copyright>
     <license>http://www.gnu.org/licenses/gpl-3.0.txt GNU/GPLv3</license>
     <authorEmail>foo@codegravity.com</authorEmail>
     <authorUrl>www.codegravity.com</authorUrl>
-    <version>1.2.18.459 PRO</version>
+    <version>1.2.18.465 PRO</version>
     <description>
         INSTRUCTIONS: This is the basic 'agent' module, which has to be inserted everywhere, where you want the visit to
         be recorded. It's best to place it into the footer of your Joomla website template.

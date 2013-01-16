@@ -5,9 +5,9 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 459
+ * @revision 465
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
- * @copyright (C) 2012 by Matej Koval - All rights reserved!
+ * @copyright (C) 2013 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
  */
 
@@ -127,7 +127,7 @@ class ExtraWatchBlockHTML
         $output .= "<td>";
 
         if (!$expanded) {
-          $output .= "<a  id='$row->ip' href='javascript:extrawatch_blockIpToggle(\"$row->ip\");' title='$row->reason'>" . _EW_BLOCKING_UNBLOCK . "</a>";
+          $output .= "<a  id='$row->ip' href='javascript:extrawatch_blockIpToggle(\"$row->ip\");history.go(0);' title='$row->reason'>" . _EW_BLOCKING_UNBLOCK . "</a>";
         } else {
           $output .= "<a  id='$row->ip' href='" . $this->extraWatch->config->renderLink("antiSpam", "&action=toggleBlocking&ip=" . $row->ip) . "' title='$row->reason'>" . _EW_BLOCKING_UNBLOCK . "</a>";
         }

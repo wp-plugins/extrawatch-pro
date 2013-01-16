@@ -127,7 +127,7 @@ class ExtraWatchStatHTML
       }
       $ip = $row->name;
       $icon = "<table><tr><td>" . $mapsIcon . "</td><td><img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/flags/" . strtolower($country) . ".png' title='$countryName' alt='$countryName'/></td>";
-      $row->name = "<td><a  id='$row->name' href='javascript:extrawatch_blockIpToggle(\"$row->name\");' style='color: black;'>" . $ipStrikedOut . "</a></td></tr></table>";
+      $row->name = "<td><a  id='$row->name' href='javascript:extrawatch_blockIpToggle(\"$row->name\");history.go(0);' style='color: black;'>" . $ipStrikedOut . "</a></td></tr></table>";
 
     }
   }

@@ -5,9 +5,9 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 459
+ * @revision 465
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
- * @copyright (C) 2012 by Matej Koval - All rights reserved!
+ * @copyright (C) 2013 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
  */
 
@@ -160,7 +160,7 @@ function extrawatch_blockIpToggle(_ip) {
 try {
 if (confirm("<?php echo(_EW_STATS_IP_BLOCKING_TOGGLE); ?> " + _ip + " ?")) {
 http3 = extrawatch_createRequestObject();
-http3.onreadystatechange = needStatsRefresh;
+http3.onreadystatechange = history.go(0);
 var newdate = new Date();
 var url3 = "<?php echo($extraWatch->config->getLiveSiteWithSuffix()); ?>components/com_extrawatch/ajax/block.php?ip="+ _ip +"&rand=" + rand + "&timeID="+newdate.getTime()+ "&env=<?php echo($extraWatch->config->getEnvironment()); ?>";
 http3.open("GET", url3, true);

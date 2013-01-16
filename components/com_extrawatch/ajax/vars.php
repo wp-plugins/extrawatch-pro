@@ -5,9 +5,9 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 459
+ * @revision 465
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
- * @copyright (C) 2012 by Matej Koval - All rights reserved!
+ * @copyright (C) 2013 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
  */
 
@@ -34,7 +34,7 @@ $extraWatchHeatmapHTML = new ExtraWatchHeatmapHTML($extraWatch->database);
 $output = "";
 
 $output .= ("
-        <a href='javascript:extrawatch_blockIpToggle(\"$ip\");'><img src='" . $extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/block.png' />" . _EW_VISIT_BLOCK_IP . "</a><br/>
+        <a href='javascript:extrawatch_blockIpToggle(\"$ip\");extrawatch_sendVisitsReq();'><img src='" . $extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/block.png' />" . _EW_VISIT_BLOCK_IP . "</a><br/>
         <a href='" . $extraWatch->config->renderLink("goals", "&action=insert&id=" . $uriId) . "' '" . _EW_VISIT_ADD_PAGE . "'><img src='" . $extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/goal.gif' />" . _EW_VISIT_ADD_PAGE . "</a>");
 
 

@@ -5,9 +5,9 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 459
+ * @revision 465
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
- * @copyright (C) 2012 byMatej Koval - All rights reserved!
+ * @copyright (C) 2013 byMatej Koval - All rights reserved!
  * @website http://www.codegravity.com
  */
 defined('_JEXEC') or die('Restricted access'); ?>
@@ -22,7 +22,7 @@ defined('_JEXEC') or die('Restricted access'); ?>
 <script type="text/javascript"
         src="<?php echo($extraWatch->config->getLiveSiteWithSuffix());?>components/com_extrawatch/js/ajax.js"></script>
 <script type="text/javascript"
-        src="<?php echo($extraWatch->config->getLiveSiteWithSuffix());?>components/com_extrawatch/js/extrawatch.js.php?rand=<?php echo ($extraWatch->config->getRand());?>&env=<?php echo ($extraWatch->config->getEnvironment());?>"></script>
+        src="<?php echo($extraWatch->config->getLiveSiteWithSuffix());?>components/com_extrawatch/js/extrawatch.js.php?rand=<?php echo ($extraWatch->config->getRand());?>&time=<?php echo time();?>&env=<?php echo ($extraWatch->config->getEnvironment());?>"></script>
 <script type="text/javascript"
         src='<?php echo($extraWatch->config->getLiveSiteWithSuffix());?>components/com_extrawatch/js/fade.js'></script>
 

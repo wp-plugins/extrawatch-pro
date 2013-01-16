@@ -5,9 +5,9 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 459
+ * @revision 465
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
- * @copyright (C) 2012 by Matej Koval - All rights reserved!
+ * @copyright (C) 2013 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
  */
 
@@ -194,7 +194,7 @@ class ExtraWatchVisitHTML
         if (@ $row->username) {
           $username = "<br/><a href='" . $this->extraWatch->config->getAdministratorIndex() . "?option=com_users&task=view&search=$row->username' style='color: black; text-decoration:none;'><i>" . @ htmlspecialchars($row->username) . "</i></a>";
         }
-        $ipString = sprintf("<a id='%s' href='javascript:extrawatch_blockIpToggle(\"%s\");' style='color:black;'>%s</a>", htmlspecialchars($row->ip), htmlspecialchars($row->ip), $ipString);
+        $ipString = sprintf("<a id='%s' href='javascript:extrawatch_blockIpToggle(\"%s\");extrawatch_sendVisitsReq();' style='color:black;'>%s</a>", htmlspecialchars($row->ip), htmlspecialchars($row->ip), $ipString);
 
         $dateOfVisit = ExtraWatchDate::date("d.m.Y", $row->timestamp);
         if (isset($this->lastDate) && $this->lastDate != $dateOfVisit) {
