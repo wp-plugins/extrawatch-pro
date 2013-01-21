@@ -21,6 +21,7 @@ class ExtraWatchSetupWordpress implements ExtraWatchSetup
 
   function install()
   {
+	return;
     $env = ExtraWatchEnvFactory::getEnvironment();
     $database = $env->getDatabase();
     ExtraWatchSetupWordpress::create_tables($database);
@@ -30,6 +31,7 @@ class ExtraWatchSetupWordpress implements ExtraWatchSetup
 
   function uninstall()
   {
+	return;
     $env = ExtraWatchEnvFactory::getEnvironment();
     $database = $env->getDatabase();
     ExtraWatchSetupWordpress::drop_tables($database);
