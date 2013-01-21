@@ -17,7 +17,8 @@ if (!defined('DS'))
   define ('DS', DIRECTORY_SEPARATOR);
 
 if (!defined('_JEXEC')) define("_JEXEC", 1);
-define("ENV", 1);
+if (!defined("ENV"))  define("ENV", 1);
+
 if (!defined('JPATH_BASE2')) define("JPATH_BASE2", dirname(__FILE__));
 if (!defined('JPATH_BASE')) define("JPATH_BASE", dirname(__FILE__));
 if ( ! defined( 'WP_PLUGIN_DIR' ) )
