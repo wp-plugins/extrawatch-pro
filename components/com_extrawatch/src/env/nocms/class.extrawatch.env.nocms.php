@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 469
+ * @revision 479
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -40,18 +40,19 @@ class ExtraWatchNoCMSEnv implements ExtraWatchEnv
     return FALSE;
   }
 
-  function getRootSite()
-  {
-    //print_r($_SERVER);
-    $hostname = "http://" . $_SERVER['HTTP_HOST'];
-    $scriptName = $_SERVER['SCRIPT_NAME'];
-    $subdir = str_replace($this->getAdminDir() . DS . "index.php", "", $scriptName);
-    return $hostname . $subdir;
-  }
-
+    function getRootSite()
+    {
+        //print_r($_SERVER);
+        $hostname = "http://" . $_SERVER['HTTP_HOST'];
+        $scriptName = $_SERVER['SCRIPT_NAME'];
+        $subdir = str_replace("index.php", "", $scriptName);
+		$rootSite = $hostname . $subdir;
+        return $rootSite;
+    } 
+	
   function getAdminDir()
   {
-    return "admin";
+    return "";
   }
 
 
@@ -97,7 +98,8 @@ class ExtraWatchNoCMSEnv implements ExtraWatchEnv
 
   function getDbPrefix()
   {
-    return "jos_";
+	$db = $this->getDatabase();
+    return $db->dbprefix;
   }
 
   function getTimezoneOffset()

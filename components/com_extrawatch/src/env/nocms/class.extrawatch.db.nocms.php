@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 469
+ * @revision 479
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -27,11 +27,12 @@ class ExtraWatchDBWrapNoCMS implements ExtraWatchDBWrap
 
   function ExtraWatchDBWrapNoCMS()
   {
-    $host = 'localhost';
-    $user = 'root';
-    $password = '';
-    $database = 'cg15';
-    $this->dbprefix = 'jos_';
+  
+    $host = _EW_HOST;
+    $user = _EW_USER;
+    $password = _EW_PASSWORD;
+    $database = _EW_DB;
+    $this->dbprefix = _EW_PREFIX;
     $select = TRUE;
 
     if (!($this->dbref = @mysql_connect($host, $user, $password, TRUE))) {
@@ -162,6 +163,8 @@ class ExtraWatchDBWrapNoCMS implements ExtraWatchDBWrap
     mysql_free_result($cur);
     return $array;
   }
+  
+
 
 }
 

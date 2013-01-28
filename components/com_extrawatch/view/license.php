@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 469
+ * @revision 479
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -44,14 +44,6 @@ function extrawatch_renderLicense($extraWatch)
 
             <h2>Security</h2>
             This software has been thoroughly and manually tested for several vulnerabilities. Further details are in security_certificate.pdf included in the downloaded package.
-
-            <h2>License key</h2>
-            License key is issued per domain. After the purchase via paypal, user is redirected to codegravity.com, where he fills his domain name.
-            The system generated the key based on this domain name and sends it via email. The key works for all sub-domains as well.
-            If user made the purchase and received no license key, it is because he interrupted the process and was not returned back to codegravity.com.
-            In this case, the use can request the correct license key from initial license activation screen. User agree not to abuse this mechanism.
-            Transfer of license to other domain is permitted in special cases.
-            User must prove that the age of domain to transfer the license to is newer than the original one the license key was issued for.
 
             <h2>Updates</h2>
             License owner has right for free lifetime updates of this software.

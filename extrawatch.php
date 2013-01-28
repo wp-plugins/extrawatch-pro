@@ -7,7 +7,7 @@ Demo server: <a href="http://codegravitydemo.com/wordpress/PRO/">Frontpage</a> /
 Features: <strong>Visitor Live Stats</strong>, <strong>History</strong>,
 <strong>Graphs</strong>, <strong>Anti-spam</strong>, <strong>Nightly Email Reports</strong>,
 <strong>Front-end Counters</strong>, translated in <strong>42 world languages</strong>
-Version: 1.2.18.469 PRO
+Version: 1.2.18.479 PRO
 Author: Matej Koval
 Author URI: http://www.codegravity.com
 */
@@ -17,7 +17,10 @@ if (!defined('DS'))
   define ('DS', DIRECTORY_SEPARATOR);
 
 if (!defined('_JEXEC')) define("_JEXEC", 1);
-if (!defined("ENV"))  define("ENV", 1);
+
+if (!defined("ENV")) {
+	define("ENV", 1);
+}
 
 if (!defined('JPATH_BASE2')) define("JPATH_BASE2", dirname(__FILE__));
 if (!defined('JPATH_BASE')) define("JPATH_BASE", dirname(__FILE__));
