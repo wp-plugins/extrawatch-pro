@@ -74,8 +74,8 @@ class ExtraWatchSetupWordpress implements ExtraWatchSetup
           //                        echo (".");
 
           $result = $database->executeQuery(trim($query));
-          if (!$result)
-            echo ("Error: " + $database->getQuery());
+          //if (!$result)
+          //  echo ("Error: " + $database->getQuery());
           flush();
 
           $query = "";

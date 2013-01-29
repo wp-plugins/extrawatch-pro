@@ -4,7 +4,7 @@ Donate link: http://www.codegravity.com/
 Tags: admin, widget, plugin, counter, anti-spam, stats, visitors, click map, countries, tracking, maps, location, geolocation, statistics, spam, flags, goals
 Requires at least: 3.2.1.
 Tested up to: 3.2.1.
-Stable tag: 1.2.18.479
+Stable tag: 1.2.18.481
 
 Popular visitor live tracking component ported from Joomla. Features: live stats,graphs,goals,history,anti-spam,blocking,nightly reports and more..
 
