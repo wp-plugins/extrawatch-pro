@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 483
+ * @revision 484
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -21,6 +21,7 @@ class ExtraWatchSetupWordpress implements ExtraWatchSetup
 
   function install()
   {
+    error_reporting(E_ALL);
     $env = ExtraWatchEnvFactory::getEnvironment();
     $database = $env->getDatabase();
     ExtraWatchSetupWordpress::create_tables($database);
@@ -44,7 +45,7 @@ class ExtraWatchSetupWordpress implements ExtraWatchSetup
     $sqlFile = JPATH_BASE2 . DS . "administrator" . DS . "components" . DS . "com_extrawatch" . DS . "sql" . DS . "install.mysql.utf8.sql";
     $sql = file_get_contents($sqlFile);
     $sql = $database->replaceDbPrefix($sql);
-    $sqlSplitted = split(";", $sql);
+    $sqlSplitted = @split(";", $sql);
     foreach ($sqlSplitted as $sql) {
       $sql .= ";";
       $database->executeQuery($sql);
