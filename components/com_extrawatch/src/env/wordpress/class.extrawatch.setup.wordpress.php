@@ -39,7 +39,7 @@ class ExtraWatchSetupWordpress implements ExtraWatchSetup
   {
   }
 
-  function create_tables($database)
+  static function create_tables($database)
   {
     $sqlFile = JPATH_BASE2 . DS . "administrator" . DS . "components" . DS . "com_extrawatch" . DS . "sql" . DS . "install.mysql.utf8.sql";
     $sql = file_get_contents($sqlFile);
@@ -52,7 +52,7 @@ class ExtraWatchSetupWordpress implements ExtraWatchSetup
     }
   }
 
-  function install_geolocation($database)
+  static function install_geolocation($database)
   {
 
     $i = 0;
@@ -87,7 +87,7 @@ class ExtraWatchSetupWordpress implements ExtraWatchSetup
     // echo ("100%");
   }
 
-  function drop_tables($database)
+  static function drop_tables($database)
   {
 
     $query = "DROP TABLE #__extrawatch";

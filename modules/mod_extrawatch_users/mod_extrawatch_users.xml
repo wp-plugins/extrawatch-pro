@@ -7,7 +7,7 @@
     <license>http://www.gnu.org/licenses/gpl-3.0.txt GNU/GPLv3</license>
     <authorEmail>foo@codegravity.com</authorEmail>
     <authorUrl>http://www.codegravity.com</authorUrl>
-    <version>1.2.18.481 PRO</version>
+    <version>1.2.18.482 PRO</version>
     <description>
         INSTRUCTIONS: This module allows to display the most active users and their total count for the current day in
         the frontend.
