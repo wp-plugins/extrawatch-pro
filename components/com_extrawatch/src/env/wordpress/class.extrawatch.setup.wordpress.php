@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 484
+ * @revision 485
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -77,8 +77,6 @@ class ExtraWatchSetupWordpress implements ExtraWatchSetup
           $result = $database->executeQuery(trim($query));
           //if (!$result)
           //  echo ("Error: " + $database->getQuery());
-          flush();
-
           $query = "";
           $i++;
         }
