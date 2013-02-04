@@ -5,10 +5,10 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 489
+ * @revision 500
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by Matej Koval - All rights reserved!
- * @website http://www.codegravity.com
+ * @website http://www.extrawatch.com
  */
 
 /** ensure this file is being included by a parent file */
@@ -169,10 +169,10 @@ function com_install()
   $database = & JFactory :: getDBO();
 
   if ("1.6" == "1.5" && !version_compare(JVERSION, '1.6.0', '<')) {
-    echo("<span style='color: red'><h2>Error: You are using joomla " . JVERSION . " but the installation package is for version 1.6 ! Uninstall this version, <a href='http://www.codegravity.com/download'>Go to download section</a>, download the package for Joomla " . JVERSION . ", and install again.</h2></span>");
+    echo("<span style='color: red'><h2>Error: You are using joomla " . JVERSION . " but the installation package is for version 1.6 ! Uninstall this version, <a href='http://www.extrawatch.com/download'>Go to download section</a>, download the package for Joomla " . JVERSION . ", and install again.</h2></span>");
     return -1;
   } elseif ("1.6" == "1.6" && !version_compare(JVERSION, '1.6.0', '>=')) {
-    echo("<span style='color: red'><h2>Error: You are using joomla " . JVERSION . " but the installation package is for version 1.6 ! Uninstall this version, <a href='http://www.codegravity.com/download'>Go to download section</a>, download the package for Joomla " . JVERSION . ", and install again.</h2></span>");
+    echo("<span style='color: red'><h2>Error: You are using joomla " . JVERSION . " but the installation package is for version 1.6 ! Uninstall this version, <a href='http://www.extrawatch.com/download'>Go to download section</a>, download the package for Joomla " . JVERSION . ", and install again.</h2></span>");
     return -1;
   }
 
@@ -183,8 +183,8 @@ function com_install()
       <td></td>
       <td>
         <strong>ExtraWatch </strong><br/>
-        <font class="small">&copy; Copyright 2006-2013 by Matej Koval - <a href='http://www.codegravity.com'
-                                                                             target='_blank'>www.codegravity.com</a><br/>
+        <font class="small">&copy; Copyright 2006-2013 by Matej Koval - <a href='http://www.extrawatch.com'
+                                                                             target='_blank'>www.extrawatch.com</a><br/>
           This component is copyrighted software. Distribution is prohibited.</font><br/>
       </td>
     </tr>
@@ -205,7 +205,7 @@ function com_install()
           <br/>
         </code>
 
-        <iframe src="http://www.codegravity.com/track/extrawatch/1.2.18/install/" width="1px" frameborder="0"
+        <iframe src="http://www.extrawatch.com/track/extrawatch/1.2.18/install/" width="1px" frameborder="0"
                 height="1px">
         </iframe>
 

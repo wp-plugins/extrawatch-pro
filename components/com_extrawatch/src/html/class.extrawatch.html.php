@@ -5,10 +5,10 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 489
+ * @revision 500
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by Matej Koval - All rights reserved!
- * @website http://www.codegravity.com
+ * @website http://www.extrawatch.com
  */
 
 /** ensure this file is being included by a parent file */
@@ -139,7 +139,7 @@ class ExtraWatchHTML
     function renderOnlineHelp($id)
     {
         $site = $this->extraWatch->config->getLiveSiteWithSuffix();
-        $output = "&nbsp;<a href='http://www.codegravity.com/projects/extrawatch#doc-$id' target='_blank'><img src='" . $site ."/components/com_extrawatch/img/icons/help.gif' border='0' title='" . _EW_TOOLTIP_HELP . ": $id'/></a>";
+        $output = "&nbsp;<a href='http://www.extrawatch.com/projects/extrawatch#doc-$id' target='_blank'><img src='" . $site ."/components/com_extrawatch/img/icons/help.gif' border='0' title='" . _EW_TOOLTIP_HELP . ": $id'/></a>";
         return $output;
     }
 

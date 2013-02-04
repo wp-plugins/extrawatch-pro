@@ -1,10 +1,10 @@
 === ExtraWatch Live Stats and Visitor Counter PRO ===
 Contributors: matto3c
-Donate link: http://www.codegravity.com/
+Donate link: http://www.extrawatch.com/
 Tags: admin, widget, plugin, counter, anti-spam, stats, visitors, click map, countries, tracking, maps, location, geolocation, statistics, spam, flags, goals
 Requires at least: 3.2.1.
 Tested up to: 3.2.1.
-Stable tag: 1.2.18.489
+Stable tag: 1.2.18.500
 
 Popular visitor live tracking component ported from Joomla. Features: live stats,graphs,goals,history,anti-spam,blocking,nightly reports and more..
 
@@ -37,7 +37,7 @@ Manual installation choosing the extrawatch.zip archive
 
 1. In adminstration, choose Plugins -> Add new
 2. Click Upload
-3. Click "Browse ..", find extrawatch.zip which you downloaded from codegravity.com
+3. Click "Browse ..", find extrawatch.zip which you downloaded from extrawatch.com
 4. Then "Install now"
 5. You are still in plugins section, near "ExtraWatch" click "Activate"
 6. On left "ExtraWatch" link will appear, click this link and after confirmation you should see the backend
@@ -61,14 +61,14 @@ Enjoy!
 
 == Frequently Asked Questions ==
 
-Please read http://www.codegravity.com/faq/
+Please read http://www.extrawatch.com/faq/
 
 == Changelog ==
 
 = 1.2.18 BETA =
 Initial release for wordpress CMS !
 This is the BETA version, it's not that much tested, please report possible problems to:
-http://www.codegravity.com/bug/
+http://www.extrawatch.com/bug/
 
 == Upgrade Notice ==
 

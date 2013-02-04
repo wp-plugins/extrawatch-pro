@@ -5,10 +5,10 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 489
+ * @revision 500
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by Matej Koval - All rights reserved!
- * @website http://www.codegravity.com
+ * @website http://www.extrawatch.com
  */
 defined('_JEXEC') or die('Restricted access');
 
@@ -53,7 +53,7 @@ function renderExtraWatchAgent()
 
 
     /*
-     * The following piece of code identifies the userAgent and inserts the backlink to codegravity.com
+     * The following piece of code identifies the userAgent and inserts the backlink to extrawatch.com
      *
      * I would really appreciate, that you would keep the this unchanged.
      *
@@ -79,7 +79,7 @@ function renderExtraWatchAgent()
     }
 
     if (!($extraWatch->config->isAdFree() && $extraWatch->config->getCheckboxValue("EXTRAWATCH_FRONTEND_NO_BACKLINK"))) {
-        $output .= ("<a href='http://www.codegravity.com' target='_blank' $nofollow title='" . $title . "'>");
+        $output .= ("<a href='http://www.extrawatch.com' target='_blank' $nofollow title='" . $title . "'>");
     }
 
     $output .= ("<img src='" . $extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/ajax/img.php?rand=" . (rand() % 100000) . "&amp;env=" . get_class($extraWatch->env) . "' border='0' alt='$title' title='$title'/>");

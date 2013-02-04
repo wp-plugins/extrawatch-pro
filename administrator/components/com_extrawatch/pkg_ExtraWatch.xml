@@ -2,16 +2,16 @@
 <extension type="package" version="3.0">
     <name>ExtraWatch</name>
     <creationDate>2013</creationDate>
-    <author>Matej Koval - http://www.codegravity.com</author>
+    <author>Matej Koval - http://www.extrawatch.com</author>
     <copyright>Copyright 2006-2013 by Matej Koval</copyright>
-    <authorEmail>foo@codegravity.com</authorEmail>
-    <authorUrl>http://www.codegravity.com</authorUrl>
+    <authorEmail>support@extrawatch.com</authorEmail>
+    <authorUrl>http://www.extrawatch.com</authorUrl>
     <packagename>ExtraWatch</packagename>
-    <version>1.2.18.489 PRO</version>
+    <version>1.2.18.500 PRO</version>
     <license>http://www.gnu.org/licenses/gpl-3.0.txt GNU/GPLv3</license>
-    <url>http://www.codegravity.com</url>
-    <packager>Matej Koval - http://www.codegravity.com</packager>
-    <packagerurl>http://www.codegravity.com</packagerurl>
+    <url>http://www.extrawatch.com</url>
+    <packager>Matej Koval - http://www.extrawatch.com</packager>
+    <packagerurl>http://www.extrawatch.com</packagerurl>
     <description>
         <b>ExtraWatch component and modules installed successfully</b>
 
@@ -26,7 +26,7 @@
         show the top countries information and visit counts for certain periods of time.<br/>
 
     </description>
-    <update>http://www.codegravity.com/update/extrawatch/1.2.18/PRO/extrawatch-update.xml</update>
+    <update>http://www.extrawatch.com/update/extrawatch/1.2.18/PRO/extrawatch-update.xml</update>
     <files>
         <file type="component" id="extrawatch" >com_extrawatch.zip</file>
         <file type="module" id="extrawatch" client="site">mod_extrawatch_agent.zip</file>

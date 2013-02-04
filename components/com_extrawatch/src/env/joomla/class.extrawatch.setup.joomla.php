@@ -5,10 +5,10 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 489
+ * @revision 500
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by Matej Koval - All rights reserved!
- * @website http://www.codegravity.com
+ * @website http://www.extrawatch.com
  */
 
 /** ensure this file is being included by a parent file */
@@ -33,10 +33,10 @@ class ExtraWatchSetupJoomla implements ExtraWatchSetup
   function install()
   {
     if ("1.5" == "1.5" && !version_compare(JVERSION, '1.6.0', '<')) {
-      echo("<span style='color: red'><h2>Error: You are using joomla " . JVERSION . " but the installation package is for version 1.5 ! Uninstall this version, <a href='http://www.codegravity.com/download'>Go to download section</a>, download the package for Joomla " . JVERSION . ", and install again.</h2></span>");
+      echo("<span style='color: red'><h2>Error: You are using joomla " . JVERSION . " but the installation package is for version 1.5 ! Uninstall this version, <a href='http://www.extrawatch.com/download'>Go to download section</a>, download the package for Joomla " . JVERSION . ", and install again.</h2></span>");
       return -1;
     } elseif ("1.5" == "1.6" && !version_compare(JVERSION, '1.6.0', '>=')) {
-      echo("<span style='color: red'><h2>Error: You are using joomla " . JVERSION . " but the installation package is for version 1.5 ! Uninstall this version, <a href='http://www.codegravity.com/download'>Go to download section</a>, download the package for Joomla " . JVERSION . ", and install again.</h2></span>");
+      echo("<span style='color: red'><h2>Error: You are using joomla " . JVERSION . " but the installation package is for version 1.5 ! Uninstall this version, <a href='http://www.extrawatch.com/download'>Go to download section</a>, download the package for Joomla " . JVERSION . ", and install again.</h2></span>");
       return -1;
     }
 
