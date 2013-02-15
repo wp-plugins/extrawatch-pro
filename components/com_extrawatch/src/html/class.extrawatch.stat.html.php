@@ -669,13 +669,13 @@ class ExtraWatchStatHTML
             case 'loads':
               {
               $fontColor = "#00C000";
-              $output .= "<td align='right' style='color:" . $fontColor . "; background-color: " . $color . ";'>" . $value . "</td><td style='background-color: " . $color . ";'> <table cellpadding='0' cellspacing='0' ><tr><td style='background-color: " . $color . ";'><img src='$progressBarIcon' style='width: $percentWidth px; height:10px' /></td><td style='color:" . $fontColor . "; background-color: " . $color . ";'></td></tr></table></td>";
+              $output .= "<td align='right' style='color:" . $fontColor . "; background-color: " . $color . ";'>" . $value . "</td><td style='background-color: " . $color . ";'> <table cellpadding='0' cellspacing='0' ><tr><td style='background-color: " . $color . ";'><img src='$progressBarIcon' style='width: ".$percentWidth."px; height:10px' /></td><td style='color:" . $fontColor . "; background-color: " . $color . ";'></td></tr></table></td>";
               break;
               }
             default:
               {
               $fontColor = "black";
-              $output .= "<td align='right' style='color:" . $fontColor . "; background-color: " . $color . ";'>" . $value . "</td><td style='background-color: " . $color . ";'> <table cellpadding='0' cellspacing='0' ><tr><td style='background-color: " . $color . ";'><img src='$progressBarIcon' style='width: $percentWidth px; height:10px' /></td><td style='color:" . $fontColor . "; background-color: " . $color . ";'>&nbsp;$ratio</td></tr></table></td>";
+              $output .= "<td align='right' style='color:" . $fontColor . "; background-color: " . $color . ";'>" . $value . "</td><td style='background-color: " . $color . ";'> <table cellpadding='0' cellspacing='0' ><tr><td style='background-color: " . $color . ";'><img src='$progressBarIcon' style='width: ".$percentWidth."px; height:10px' /></td><td style='color:" . $fontColor . "; background-color: " . $color . ";'>&nbsp;$ratio</td></tr></table></td>";
               }
           }
         } else
