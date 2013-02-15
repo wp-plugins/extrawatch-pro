@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 504
+ * @revision 506
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -22,7 +22,7 @@ if (!EXTRAWATCH_DEBUG) {
     if ($extraWatch->config->isAdFree() && $extraWatch->config->getCheckboxValue('EXTRAWATCH_FRONTEND_HIDE_LOGO'))
         readfile(JPATH_BASE . DS . "components" . DS . "com_extrawatch" . DS . "img" .DS. "icons" . DS . "extrawatch-logo-16x16-blank.gif");
     else
-        readfile(JPATH_BASE . DS . "components" . DS . "com_extrawatch" . DS . "img" .DS. "icons" . DS . "extrawatch-logo-16x16.gif");
+        readfile(JPATH_BASE . DS . "components" . DS . "com_extrawatch" . DS . "img" .DS. "icons" . DS . "extrawatch-logo-16x16.png");
 
 }
 

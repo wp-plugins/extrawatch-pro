@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 504
+ * @revision 506
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by Matej Koval - All rights reserved!
  * @website http://www.extrawatch.com
@@ -103,11 +103,11 @@ function extrawatch_initialize_menu($database)
 
     if (version_compare(JVERSION, "2.5.0", "<")) {
 
-        $query = "UPDATE #__components SET admin_menu_img='../components/com_extrawatch/img/icons/extrawatch-logo-16x16.gif' WHERE admin_menu_link='option=com_extrawatch'";
+        $query = "UPDATE #__components SET admin_menu_img='../components/com_extrawatch/img/icons/extrawatch-logo-16x16.png' WHERE admin_menu_link='option=com_extrawatch'";
         $database->setQuery(trim($query));
         $database->query();
 
-        $query = "DELETE FROM #__components where admin_menu_link like '%option=com_extrawatch%'  and admin_menu_img like '%../components/com_extrawatch/icons/%' and admin_menu_img<>'../components/com_extrawatch/img/icons/extrawatch-logo-16x16.gif'";
+        $query = "DELETE FROM #__components where admin_menu_link like '%option=com_extrawatch%'  and admin_menu_img like '%../components/com_extrawatch/icons/%' and admin_menu_img<>'../components/com_extrawatch/img/icons/extrawatch-logo-16x16.png'";
         $database->setQuery(trim($query));
         $database->query();
 

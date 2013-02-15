@@ -7,7 +7,7 @@
     <copyright>Copyright 2006-2013 by Matej Koval</copyright>
     <authorEmail>support@extrawatch.com</authorEmail>
     <authorUrl>http://www.extrawatch.com</authorUrl>
-    <version>1.2.18.504 PRO</version>
+    <version>1.2.18.506 PRO</version>
     <license>http://www.gnu.org/licenses/gpl-3.0.txt GNU/GPLv3</license>
     <description>
         ExtraWatch is an AJAX component and module for Joomla CMS that allows you to watch
@@ -165,6 +165,8 @@ in this section are copied from /site/ in the package -->
             <folder>sql</folder>
             <folder>img</folder>
             <filename>img/icons/extrawatch-logo-16x16.gif</filename>
+            <filename>img/icons/extrawatch-logo-16x16.png</filename>
+            <filename>img/icons/extrawatch-logo-48x48.png</filename>
             <filename>img/icons/map_icon.gif</filename>
             <filename>img/icons/flow.png</filename>
             <filename>img/icons/trend_icon.gif</filename>
