@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 502
+ * @revision 504
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by Matej Koval - All rights reserved!
  * @website http://www.extrawatch.com
@@ -91,72 +91,77 @@ function extrawatch_initialize_ip2country($rootDir, $database)
 
 function extrawatch_initialize_menu($database)
 {
-  $query = "UPDATE #__components SET admin_menu_img='../components/com_extrawatch/img/icons/extrawatch-logo-16x16.gif' WHERE admin_menu_link='option=com_extrawatch'";
-  $database->setQuery(trim($query));
-  $database->query();
 
-  $query = "DELETE FROM #__extrawatch_config where name like 'rand' ";
-  $database->setQuery(trim($query));
-  $database->query();
-  $query = "DELETE FROM #__components where admin_menu_link like '%option=com_extrawatch%'  and admin_menu_img like '%../components/com_extrawatch/icons/%' and admin_menu_img<>'../components/com_extrawatch/img/icons/extrawatch-logo-16x16.gif'";
-  $database->setQuery(trim($query));
-  $database->query();
+    $query = "DELETE FROM #__extrawatch_config where name like 'rand' ";
+    $database->setQuery(trim($query));
+    $database->query();
 
-  $rand = rand();
-  $query = "INSERT INTO #__extrawatch_config (id, name, value) values ('', 'rand', '$rand') ";
-  $database->setQuery(trim($query));
-  $database->query();
+    $rand = rand();
+    $query = "INSERT INTO #__extrawatch_config (id, name, value) values ('', 'rand', '$rand') ";
+    $database->setQuery(trim($query));
+    $database->query();
 
-  $query = sprintf("select id from #__components where `name` = '%s' limit 1", "ExtraWatch");
-  $database->setQuery(trim($query));
-  $id = $database->loadResult();
+    if (version_compare(JVERSION, "2.5.0", "<")) {
 
+        $query = "UPDATE #__components SET admin_menu_img='../components/com_extrawatch/img/icons/extrawatch-logo-16x16.gif' WHERE admin_menu_link='option=com_extrawatch'";
+        $database->setQuery(trim($query));
+        $database->query();
 
-  $query = sprintf("INSERT INTO #__components values ('', 'Live Stats', '', 0, %d, 'option=com_extrawatch', '', '', 0, '../components/com_extrawatch/img/icons/map_icon.gif', 0, '', 1)", (int)$id);
-  $database->setQuery($query);
-  $database->query();
-  $query = sprintf("INSERT INTO #__components values ('', 'SEO', '', 0, %d, 'option=com_extrawatch&task=seo', '', '', 1, '../components/com_extrawatch/img/icons/seo.png', 0, '', 1)", (int)$id);
-  $database->setQuery($query);
-  $database->query();
-  $query = sprintf("INSERT INTO #__components values ('', 'Heatmap', '', 0, %d, 'option=com_extrawatch&task=heatmap', '', '', 2, '../components/com_extrawatch/img/icons/heatmap.png', 0, '', 1)", (int)$id);
-  $database->setQuery($query);
-  $database->query();
-  $query = sprintf("   INSERT INTO #__components values ('', 'Traffic Flow', '', 0, %d, 'option=com_extrawatch&task=flow', '', '', 3, '../components/com_extrawatch/img/icons/flow.png', 0, '', 1)", (int)$id);
-  $database->setQuery($query);
-  $database->query();
-  $query = sprintf("   INSERT INTO #__components values ('', 'Graphs & Trends', '', 0, %d, 'option=com_extrawatch&task=graphs', '', '', 4, '../components/com_extrawatch/img/icons/trend_icon.gif', 0, '', 1)", (int)$id);
-  $database->setQuery($query);
-  $database->query();
-  $query = sprintf("   INSERT INTO #__components values ('', 'Goals', '', 0, %d, 'option=com_extrawatch&task=goals', '', '', 5, '../components/com_extrawatch/img/icons/goal.gif', 0, '', 1)", (int)$id);
-  $database->setQuery($query);
-  $database->query();
-  $query = sprintf("   INSERT INTO #__components values ('', 'Visit History', '', 0, %d, 'option=com_extrawatch&task=history', '', '', 6, '../components/com_extrawatch/img/icons/history.png', 0, '', 1)", (int)$id);
-  $database->setQuery($query);
-  $database->query();
-  $query = sprintf("   INSERT INTO #__components values ('', 'Anti-spam & Blocking', '', 0, %d, 'option=com_extrawatch&task=antiSpam', '', '', 7, '../components/com_extrawatch/img/icons/antispam.gif', 0, '', 1)", (int)$id);
-  $database->setQuery($query);
-  $database->query();
-  $query = sprintf("   INSERT INTO #__components values ('', 'Email Reports', '', 0, %d, 'option=com_extrawatch&task=emails', '', '', 8, '../components/com_extrawatch/img/icons/emails.png', 0, '', 1)", (int)$id);
-  $database->setQuery($query);
-  $database->query();
-  $query = sprintf("   INSERT INTO #__components values ('', 'Your License', '', 0, %d, 'option=com_extrawatch&task=license', '', '', 9, '../components/com_extrawatch/img/icons/license.png', 0, '', 1)", (int)$id);
-  $database->setQuery($query);
-  $database->query();
-  $query = sprintf("   INSERT INTO #__components values ('', 'Database Status', '', 0, %d, 'option=com_extrawatch&task=status', '', '', 10, '../components/com_extrawatch/img/icons/status.png', 0, '', 1)", (int)$id);
-  $database->setQuery($query);
-  $database->query();
-  $query = sprintf("   INSERT INTO #__components values ('', 'Modules / Components Sizes', '', 0, %d, 'option=com_extrawatch&task=sizes', '', '', 11, '../components/com_extrawatch/img/icons/sizes.png', 0, '', 1)", (int)$id);
-  $database->setQuery($query);
-  $database->query();
-  $query = sprintf("   INSERT INTO #__components values ('', 'Settings', '', 0, %d, 'option=com_extrawatch&task=settings', '', '', 12, '../components/com_extrawatch/img/icons/settings.gif', 0, '', 1)", (int)$id);
-  $database->setQuery($query);
-  $database->query();
-  $query = sprintf("   INSERT INTO #__components values ('', 'Update', '', 0, %d, 'option=com_extrawatch&task=update', '', '', 13, '../components/com_extrawatch/img/icons/update.png', 0, '', 1)", (int)$id);
-  $database->setQuery($query);
-  $database->query();
-  $query = sprintf("   INSERT INTO #__components values ('', 'Credits', '', 0, %d, 'option=com_extrawatch&task=credits', '', '', 14, '../components/com_extrawatch/img/icons/credits.png', 0, '', 1)", (int)$id);
-  $database->setQuery($query);
-  $database->query();
+        $query = "DELETE FROM #__components where admin_menu_link like '%option=com_extrawatch%'  and admin_menu_img like '%../components/com_extrawatch/icons/%' and admin_menu_img<>'../components/com_extrawatch/img/icons/extrawatch-logo-16x16.gif'";
+        $database->setQuery(trim($query));
+        $database->query();
+
+        $query = sprintf("select id from #__components where `name` = '%s' limit 1", "ExtraWatch");
+        $database->setQuery(trim($query));
+        $id = $database->loadResult();
+
+        $query = sprintf("INSERT INTO #__components values ('', 'Live Stats', '', 0, %d, 'option=com_extrawatch', '', '', 0, '../components/com_extrawatch/img/icons/map_icon.gif', 0, '', 1)", (int)$id);
+        $database->setQuery($query);
+        $database->query();
+        $query = sprintf("INSERT INTO #__components values ('', 'SEO', '', 0, %d, 'option=com_extrawatch&task=seo', '', '', 1, '../components/com_extrawatch/img/icons/seo.png', 0, '', 1)", (int)$id);
+        $database->setQuery($query);
+        $database->query();
+        $query = sprintf("INSERT INTO #__components values ('', 'Heatmap', '', 0, %d, 'option=com_extrawatch&task=heatmap', '', '', 2, '../components/com_extrawatch/img/icons/heatmap.png', 0, '', 1)", (int)$id);
+        $database->setQuery($query);
+        $database->query();
+        $query = sprintf("   INSERT INTO #__components values ('', 'Traffic Flow', '', 0, %d, 'option=com_extrawatch&task=flow', '', '', 3, '../components/com_extrawatch/img/icons/flow.png', 0, '', 1)", (int)$id);
+        $database->setQuery($query);
+        $database->query();
+        $query = sprintf("   INSERT INTO #__components values ('', 'Graphs & Trends', '', 0, %d, 'option=com_extrawatch&task=graphs', '', '', 4, '../components/com_extrawatch/img/icons/trend_icon.gif', 0, '', 1)", (int)$id);
+        $database->setQuery($query);
+        $database->query();
+        $query = sprintf("   INSERT INTO #__components values ('', 'Goals', '', 0, %d, 'option=com_extrawatch&task=goals', '', '', 5, '../components/com_extrawatch/img/icons/goal.gif', 0, '', 1)", (int)$id);
+        $database->setQuery($query);
+        $database->query();
+        $query = sprintf("   INSERT INTO #__components values ('', 'Visit History', '', 0, %d, 'option=com_extrawatch&task=history', '', '', 6, '../components/com_extrawatch/img/icons/history.png', 0, '', 1)", (int)$id);
+        $database->setQuery($query);
+        $database->query();
+        $query = sprintf("   INSERT INTO #__components values ('', 'Anti-spam & Blocking', '', 0, %d, 'option=com_extrawatch&task=antiSpam', '', '', 7, '../components/com_extrawatch/img/icons/antispam.gif', 0, '', 1)", (int)$id);
+        $database->setQuery($query);
+        $database->query();
+        $query = sprintf("   INSERT INTO #__components values ('', 'Email Reports', '', 0, %d, 'option=com_extrawatch&task=emails', '', '', 8, '../components/com_extrawatch/img/icons/emails.png', 0, '', 1)", (int)$id);
+        $database->setQuery($query);
+        $database->query();
+        $query = sprintf("   INSERT INTO #__components values ('', 'Your License', '', 0, %d, 'option=com_extrawatch&task=license', '', '', 9, '../components/com_extrawatch/img/icons/license.png', 0, '', 1)", (int)$id);
+        $database->setQuery($query);
+        $database->query();
+        $query = sprintf("   INSERT INTO #__components values ('', 'Database Status', '', 0, %d, 'option=com_extrawatch&task=status', '', '', 10, '../components/com_extrawatch/img/icons/status.png', 0, '', 1)", (int)$id);
+        $database->setQuery($query);
+        $database->query();
+        $query = sprintf("   INSERT INTO #__components values ('', 'Modules / Components Sizes', '', 0, %d, 'option=com_extrawatch&task=sizes', '', '', 11, '../components/com_extrawatch/img/icons/sizes.png', 0, '', 1)", (int)$id);
+        $database->setQuery($query);
+        $database->query();
+        $query = sprintf("   INSERT INTO #__components values ('', 'Settings', '', 0, %d, 'option=com_extrawatch&task=settings', '', '', 12, '../components/com_extrawatch/img/icons/settings.gif', 0, '', 1)", (int)$id);
+        $database->setQuery($query);
+        $database->query();
+        $query = sprintf("   INSERT INTO #__components values ('', 'Update', '', 0, %d, 'option=com_extrawatch&task=update', '', '', 13, '../components/com_extrawatch/img/icons/update.png', 0, '', 1)", (int)$id);
+        $database->setQuery($query);
+        $database->query();
+        $query = sprintf("   INSERT INTO #__components values ('', 'Credits', '', 0, %d, 'option=com_extrawatch&task=credits', '', '', 14, '../components/com_extrawatch/img/icons/credits.png', 0, '', 1)", (int)$id);
+        $database->setQuery($query);
+        $database->query();
+
+    }
 }
 
 function com_install()
