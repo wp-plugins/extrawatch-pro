@@ -3,7 +3,7 @@
 Plugin Name: ExtraWatch Live Stats and Visitor Counter PRO
 Plugin URI: http://www.extrawatch.com
 Description: Popular visitor live tracking component ported from Joomla. <a href="http://www.extrawatch.com/demo/extrawatch/1.2.18/wordpress/">View demo video</a>. Demo server: <a href="http://codegravitydemo.com/wordpress/PRO/">Frontpage</a> / <a href="http://codegravitydemo.com/wordpress/PRO/wp-admin/">Admin</a>. Features: <strong>Visitor Live Stats</strong>, <strong>History</strong>, <strong>Graphs</strong>, <strong>Anti-spam</strong>, <strong>Nightly Email Reports</strong>, <strong>Front-end Counters</strong>, translated in <strong>42 world languages</strong>
-Version: 1.2.18.512 PRO
+Version: 1.2.18.513 PRO
 Author: Matej Koval
 Author URI: http://www.extrawatch.com
 */
@@ -48,7 +48,7 @@ if (@function_exists("extrawatch_admin_menu")) {
 
     $EC_userLevel = isset($options['accessLevel']) && !empty($options['accessLevel']) ? $options['accessLevel'] : 'level_10';
 
-    add_menu_page(__('ExtraWatch', 'extrawatch'), __('ExtraWatch', 'extrawatch'), $EC_userLevel, 'extrawatch', 'ew_plugin_options', $extraWatchURL.'components/com_extrawatch/img/icons/extrawatch-logo-16x16.gif');
+    add_menu_page(__('ExtraWatch', 'extrawatch'), __('ExtraWatch', 'extrawatch'), $EC_userLevel, 'extrawatch', 'ew_plugin_options', $extraWatchURL.'components/com_extrawatch/img/icons/extrawatch-logo-16x16.png');
 
     add_submenu_page('extrawatch','Live Stats','Live Stats',$EC_userLevel,'extrawatch&task=',array(&$this, 'extrawatch&task='));
     
