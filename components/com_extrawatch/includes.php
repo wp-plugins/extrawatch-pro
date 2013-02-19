@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 508
+ * @revision 511
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -24,7 +24,7 @@ if (@$this instanceof extrawatch) { // we're in PrestaShop
     $env = "ExtraWatchPrestaShopEnv";
 }
 
-$jBasePath = dirname(__FILE__) . DS . ".." . DS . "..";
+$jBasePath = realpath(dirname(__FILE__) . DS . ".." . DS . "..");
 if (!defined('JPATH_BASE')) define('JPATH_BASE', $jBasePath);
 if (!defined('JPATH_BASE2')) define('JPATH_BASE2', $jBasePath);
 if (!defined('_JEXEC')) define("_JEXEC", 1);
