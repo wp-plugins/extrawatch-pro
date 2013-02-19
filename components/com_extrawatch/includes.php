@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 513
+ * @revision 514
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -69,6 +69,7 @@ switch ($env) {
     case "ExtraWatchWordpressEnv":
     {
         require_once dirname(__FILE__) . '/../../../../../wp-load.php';
+        ob_end_clean();
         if (!defined('ENV')) define('ENV', 1);
         break;
     }
