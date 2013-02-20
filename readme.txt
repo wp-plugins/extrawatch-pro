@@ -4,7 +4,7 @@ Donate link: http://www.extrawatch.com/
 Tags: admin, widget, plugin, counter, anti-spam, stats, visitors, click map, countries, tracking, maps, location, geolocation, statistics, spam, flags, goals
 Requires at least: 3.2.1.
 Tested up to: 3.2.1.
-Stable tag: 1.2.18.514
+Stable tag: 1.2.18.516
 
 Popular visitor live tracking component ported from Joomla. Features: live stats,graphs,goals,history,anti-spam,blocking,nightly reports and more..
 
@@ -67,10 +67,8 @@ Please read http://www.extrawatch.com/faq/
 
 == Changelog ==
 
-= 1.2.18 BETA =
-Initial release for wordpress CMS !
-This is the BETA version, it's not that much tested, please report possible problems to:
-http://www.extrawatch.com/bug/
+= 1.2.18 =
+Release for wordpress CMS !
 
 == Upgrade Notice ==
 
