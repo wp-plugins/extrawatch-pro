@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 532
+ * @revision 539
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com
@@ -37,7 +37,7 @@ if ($env == "ExtraWatchMagentoEnv") {
 require_once JPATH_BASE . "components" . DIRECTORY_SEPARATOR . "com_extrawatch" . DIRECTORY_SEPARATOR . "includes.php";
 
 
-$extraWatch = new ExtraWatch();
+$extraWatch = new ExtraWatchMain();
 require_once JPATH_BASE . DIRECTORY_SEPARATOR . "components" . DIRECTORY_SEPARATOR . "com_extrawatch" . DIRECTORY_SEPARATOR . "lang" . DIRECTORY_SEPARATOR . $extraWatch->config->getLanguage() . ".php";
 $extraWatchHTML = new ExtraWatchHTML();
 $extraWatch->block->checkPermissions();

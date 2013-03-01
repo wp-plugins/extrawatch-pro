@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 1.2.18
- * @revision 532
+ * @revision 539
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by Matej Koval - All rights reserved!
  * @website http://www.extrawatch.com
@@ -56,7 +56,7 @@ function renderExtraWatchVisitors()
 {
     $output = "";
 
-    $extraWatch = new ExtraWatch();
+    $extraWatch = new ExtraWatchMain();
     require_once JPATH_BASE . DS . "components" . DS . "com_extrawatch" . DS . "lang" . DS . $extraWatch->config->getLanguage() . ".php";
 
     if (EXTRAWATCH_DEBUG) {
