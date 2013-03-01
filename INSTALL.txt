@@ -5,6 +5,33 @@ Please visit http://www.codegravity.com/demo/extrawatch/1.2.18
 to see how to install and use ExtraWatch
 
 
+Installation of ExtraWatch to Magento:
+======================================
+Installation instructions for Magento:
+1. Unzip the package you purchased, 
+2. Login as Admin
+3. Go to System -> Magento Connect -> Magento Connect Manager
+4. Click "Settings" tab
+5. In "Preferred State:" select "Beta", then click "Save Settings"
+6. Click on "Extensions" tab
+7. In section "Direct package file upload" click "Browse" near "Upload package file: "
+choose ExtraWatch-PRO-1.2.18.tgz (which was in the .zip you unzipped)
+8. Click Upload
+9. The console will display:
+Package installed: 
+community ExtraWatch 1.2.18
+
+Cleaning cache
+..
+Cache cleaned successfully
+
+10. Click "Return to Admin"
+11. In main menu, you'll see the new item "ExtraWatch" with it's sub items
+12. Click "ExtraWatch" -> Live Stats and then input the product key you received for your domain. If you haven't received it, click on "request correct key", fill your domain name and submit. You'll purchase will be verified then and you'll receive an email with this activation key.
+
+
+
+
 TEXT INSTALLATION INSTRUCTIONS
 ==============================
 
