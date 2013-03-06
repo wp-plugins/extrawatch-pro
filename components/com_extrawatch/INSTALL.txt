@@ -5,10 +5,28 @@ Please visit http://www.codegravity.com/demo/extrawatch/1.2.18
 to see how to install and use ExtraWatch
 
 
-Installation of ExtraWatch to Magento:
-======================================
-Installation instructions for Magento:
-1. Unzip the package you purchased, 
+Installation of ExtraWatch into Wordpress:
+==========================================
+1. Log in to wordpress back-end
+2. Click "Plugins"
+3. Click "Add new" from the top of the screen
+4. In the Search field type "ExtraWatch"
+5. You should see 2 results: ExtraWatch Live Stats and Visitor Counter FREE and PRO
+6. Depending on which version you'd like to install, Click on link "Install now" and confirm the confirmation dialog
+7. Click "Activate Plugin"
+8. Then, the new menu item "ExtraWatch" appears on left
+9. Confirm the license and / or enter the license key if you want to activate the PRO version
+10. Place the widgets on the front-end:
+11. Click on Appearance -> Then Widgets
+12. Move the "ExtraWatch Agent / Users / Visitors" to the containers on the right side
+to "Primary widget area" or any other widget area which is there. This is where the actual output will be placed
+13. Reload the front-end. After few reloads / new visits, you should be able to see first data in widgets
+13. Click on ExtraWatch icon in the back-end and you should be able to see new visitors in "Live Stats" section
+
+
+Installation of ExtraWatch into Magento:
+========================================
+1. Unzip the package you purchased,
 2. Login as Admin
 3. Go to System -> Magento Connect -> Magento Connect Manager
 4. Click "Settings" tab
