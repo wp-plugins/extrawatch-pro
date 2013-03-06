@@ -3,7 +3,7 @@
  * JoomlaWatch - A real-time ajax joomla monitor and live stats
  * @package JoomlaWatch
  * @version 1.2.18
- * @revision 541
+ * @revision 543
  * @license http://www.gnu.org/licenses/gpl-3.0.txt 	GNU General Public License v3
  * @copyright (C) 2013 by Matej Koval - All rights reserved!
  * @website http://www.codegravity.com

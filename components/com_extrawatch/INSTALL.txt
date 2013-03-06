@@ -10,6 +10,11 @@ Installation of ExtraWatch into Wordpress:
 1. Log in to wordpress back-end
 2. Click "Plugins"
 3. Click "Add new" from the top of the screen
+Method1: Manual installation:
+4. Click "Upload"
+5. Select a .zip file and click "Install now"
+6. Click "Activate plugin"
+Method2: Installation from plugin directory:
 4. In the Search field type "ExtraWatch"
 5. You should see 2 results: ExtraWatch Live Stats and Visitor Counter FREE and PRO
 6. Depending on which version you'd like to install, Click on link "Install now" and confirm the confirmation dialog
