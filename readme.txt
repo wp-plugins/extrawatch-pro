@@ -4,13 +4,13 @@ Donate link: http://www.extrawatch.com/
 Tags: admin, widget, plugin, counter, anti-spam, stats, visitors, click map, countries, tracking, maps, location, geolocation, statistics, spam, flags, goals
 Requires at least: 3.2.1.
 Tested up to: 3.2.1.
-Stable tag: 1.2.18.549
+Stable tag: 1.2.18.550
 
 Popular visitor live tracking component ported from Joomla. Features: live stats,graphs,goals,history,anti-spam,blocking,nightly reports and more..
 
 == Description ==
 Popular visitor live tracking component ported from Joomla. 
-ExtraWatch allows you to watch your joomla visitors live stats and bots in real-time from the administration back-end. 
+ExtraWatch allows you to watch your visitors live stats and bots in real-time from the administration back-end.
 
 For more information and demos please visit: http://www.extrawatch.com
 
@@ -35,16 +35,28 @@ http://www.codegravitydemo.com/wordpress/PRO/wp-admin/
 
 
 == Installation ==
-Manual installation choosing the extrawatch.zip archive
-
-1. In adminstration, choose Plugins -> Add new
-2. Click Upload
-3. Click "Browse ..", find extrawatch.zip which you downloaded from extrawatch.com
-4. Then "Install now"
-5. You are still in plugins section, near "ExtraWatch" click "Activate"
-6. On left "ExtraWatch" link will appear, click this link and after confirmation you should see the backend
-7. Open your wordpress frontend - you should see a ExtraWatch icon logo, users and visitors module
-8. Back in administration, you should see a new recorded visit
+Installation of ExtraWatch into Wordpress:
+==========================================
+1. Log in to wordpress back-end
+2. Click "Plugins"
+3. Click "Add new" from the top of the screen
+Method1: Manual installation:
+4. Click "Upload"
+5. Select a .zip file and click "Install now"
+6. Click "Activate plugin"
+Method2: Installation from plugin directory:
+4. In the Search field type "ExtraWatch"
+5. You should see 2 results: ExtraWatch Live Stats and Visitor Counter FREE and PRO
+6. Depending on which version you'd like to install, Click on link "Install now" and confirm the confirmation dialog
+7. Click "Activate Plugin"
+8. Then, the new menu item "ExtraWatch" appears on left
+9. Confirm the license and / or enter the license key if you want to activate the PRO version
+10. Place the widgets on the front-end:
+11. Click on Appearance -> Then Widgets
+12. Move the "ExtraWatch Agent / Users / Visitors" to the containers on the right side
+to "Primary widget area" or any other widget area which is there. This is where the actual output will be placed
+13. Reload the front-end. After few reloads / new visits, you should be able to see first data in widgets
+13. Click on ExtraWatch icon in the back-end and you should be able to see new visitors in "Live Stats" section
 
 Enjoy!
 
@@ -67,11 +79,13 @@ Please read http://www.extrawatch.com/faq/
 
 == Changelog ==
 
-= 1.2.18 =
-Release for wordpress CMS !
+= version 2.0 =
+https://code.google.com/p/extrawatch/source/list
 
 == Upgrade Notice ==
 
-Initial version, no upgrade possible.
+To upgrade to the latest version, use the standard wordpress update method:
+http://www.youtube.com/watch?v=FnFUo3yID5I
+
 
 == Arbitrary section ==
