@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.0
- * @revision 564
+ * @revision 566
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -125,22 +125,26 @@ defined('_JEXEC') or die('Restricted access');
   winw = Math.max(document.scrollWidth, document.offsetWidth, w);
   winh = Math.max(document.scrollHeight, document.offsetHeight, h);*/
 
-      var pos = h337.util.mousePosition(evt); //relative position to element
-      x = pos[0];
-      y = pos[1];
-      var xpath = createXPathFromElement(evt.target);
+        try {
+            var pos = h337.util.mousePosition(evt); //relative position to element
+            x = pos[0];
+            y = pos[1];
+            var xpath = createXPathFromElement(evt.target);
 
-      var scrollx = window.pageXOffset == undefined ? clickDoc.scrollLeft : window.pageXOffset;
-      var scrolly = window.pageYOffset == undefined ? clickDoc.scrollTop : window.pageYOffset;
+            var scrollx = window.pageXOffset == undefined ? clickDoc.scrollLeft : window.pageXOffset;
+            var scrolly = window.pageYOffset == undefined ? clickDoc.scrollTop : window.pageYOffset;
 
-      //alert("x: " +x + "y: " + y + " scrollx: " + scrollx + " scrolly:" + scrolly + " w:" + w + " h:" + h);
+            //alert("x: " +x + "y: " + y + " scrollx: " + scrollx + " scrolly:" + scrolly + " w:" + w + " h:" + h);
 
-      /* Is the click in the viewing area? Not on scrollbars. The problem still exists for FF on the horizontal scrollbar */
-      var randHashToPass = '<?php echo($extraWatch->config->getRandHash()); ?>';
-      var url = urlBase + "&action=click&uri2titleId=<?php echo($id);?>&x=" + x + "&y=" + y + "&w=" + w + "&h=" + h + "&randHash=" + randHashToPass + "&xpath=" + xpath;
-      //xx.store.addDataPoint(x,y);
-      downloadUrl(url, function (e) {
-      }, true);
+            /* Is the click in the viewing area? Not on scrollbars. The problem still exists for FF on the horizontal scrollbar */
+            var randHashToPass = '<?php echo($extraWatch->config->getRandHash()); ?>';
+            var url = urlBase + "&action=click&uri2titleId=<?php echo($id);?>&x=" + x + "&y=" + y + "&w=" + w + "&h=" + h + "&randHash=" + randHashToPass + "&xpath=" + xpath;
+            //xx.store.addDataPoint(x,y);
+            downloadUrl(url, function (e) {
+            }, true);
+        } catch (e) {
+            // suppress
+        }
 
     }
 
