@@ -209,5 +209,5 @@ mod_extrawatch_users.zip, mod_extrawatch_visitors.zip
 
 Enjoy,
 
-Matej Koval
+CodeGravity.com
 www.codegravity.com

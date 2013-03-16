@@ -6,7 +6,7 @@
  * @version @VERSION@
  * @revision @REVISION@
  * @license http://www.gnu.org/licenses/gpl-3.0.txt 	GNU General Public License v3
- * @copyright (C) @YEAR@ by Matej Koval - All rights reserved!
+ * @copyright (C) @YEAR@ by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
  */
 

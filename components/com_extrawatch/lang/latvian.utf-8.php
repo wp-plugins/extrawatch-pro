@@ -7,7 +7,7 @@
  * @version @VERSION@
  * @revision @REVISION@
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
- * @copyright (C) @YEAR@ by Matej Koval - All rights reserved!
+ * @copyright (C) @YEAR@ by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
  */
 
@@ -391,7 +391,7 @@ DEFINE('_EW_SIZES_MB', "MB");
 DEFINE('_EW_SIZES_GB', "GB");
 DEFINE('_EW_SIZES_REFRESH', "Atjaunināt");
 
-DEFINE('_EW_STATS_FOOTER', "ExtraWatch &cautortiesības;2006-@YEAR@ Matej Koval");
+DEFINE('_EW_STATS_FOOTER', "ExtraWatch &cautortiesības;2006-@YEAR@ CodeGravity.com");
 
 DEFINE('_EW_STATUS_MB', "MB");
 

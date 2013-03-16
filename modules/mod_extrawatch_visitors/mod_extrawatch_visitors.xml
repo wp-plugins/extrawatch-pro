@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 <extension type="module" version="3.0" method="upgrade">
     <name>ExtraWatch Visitors Module</name>
-    <author>Matej Koval - http://www.extrawatch.com</author>
+    <author>CodeGravity.com - http://www.extrawatch.com</author>
     <creationDate>2013</creationDate>
     <copyright>www.extrawatch.com</copyright>
     <license>http://www.gnu.org/licenses/gpl-3.0.txt GNU/GPLv3</license>
     <authorEmail>support@extrawatch.com</authorEmail>
     <authorUrl>www.extrawatch.com</authorUrl>
-    <version>1.2.18.556 PRO</version>
+    <version>1.2.18.561 PRO</version>
     <description>
         INSTRUCTIONS: This module inserts a small statistical information about where did the visitors came from
         (Countries) and also some information about amount of visits for today, yesterday, this week, last week, this

@@ -6,7 +6,7 @@
  * @version 1.2.18
  * @revision 313
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
- * @copyright (C) 2012 by Matej Koval - All rights reserved!
+ * @copyright (C) 2012 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
  */
 

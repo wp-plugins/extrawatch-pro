@@ -2,15 +2,15 @@
 <extension type="package" version="3.0">
     <name>ExtraWatch</name>
     <creationDate>2013</creationDate>
-    <author>Matej Koval - http://www.extrawatch.com</author>
-    <copyright>Copyright 2006-2013 by Matej Koval</copyright>
+    <author>CodeGravity.com - http://www.extrawatch.com</author>
+    <copyright>Copyright 2006-2013 by CodeGravity.com</copyright>
     <authorEmail>support@extrawatch.com</authorEmail>
     <authorUrl>http://www.extrawatch.com</authorUrl>
     <packagename>ExtraWatch</packagename>
-    <version>1.2.18.556 PRO</version>
+    <version>1.2.18.561 PRO</version>
     <license>http://www.gnu.org/licenses/gpl-3.0.txt GNU/GPLv3</license>
     <url>http://www.extrawatch.com</url>
-    <packager>Matej Koval - http://www.extrawatch.com</packager>
+    <packager>CodeGravity.com - http://www.extrawatch.com</packager>
     <packagerurl>http://www.extrawatch.com</packagerurl>
     <description>
         <b>ExtraWatch component and modules installed successfully</b>

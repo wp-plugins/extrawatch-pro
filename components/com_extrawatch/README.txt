@@ -1,6 +1,6 @@
 ExtraWatch - A real-time joomla monitor and live stats
 =======================================================
-by Matej Koval http://www.codegravity.com
+by CodeGravity.com http://www.codegravity.com
 
 Released under the GNU General Public License v3
 
@@ -21,5 +21,5 @@ http://www.extrawatch.com/
 
 Enjoy,
 
-Matej Koval
+CodeGravity.com
 www.codegravity.com

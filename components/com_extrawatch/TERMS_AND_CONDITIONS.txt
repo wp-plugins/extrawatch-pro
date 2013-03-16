@@ -171,6 +171,6 @@ OpenLayers
     OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Enjoy using ExtraWatch
-Matej Koval, author
+CodeGravity.com, author
 www.codegravity.com
-Copyright �2006-2012 by Matej Koval
+Copyright �2006-2012 by CodeGravity.com

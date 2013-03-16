@@ -386,7 +386,7 @@ DEFINE('_EW_SIZES_MB', "MB");
 DEFINE('_EW_SIZES_GB', "GB");
 DEFINE('_EW_SIZES_REFRESH', "Odśwież");
 
-DEFINE('_EW_STATS_FOOTER', "ExtraWatch &copy;2006-2011 by Matej Koval");
+DEFINE('_EW_STATS_FOOTER', "ExtraWatch &copy;2006-2011 by CodeGravity.com");
 
 DEFINE('_EW_STATUS_MB', "MB");
 
