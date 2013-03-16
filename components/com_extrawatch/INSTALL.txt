@@ -1,7 +1,7 @@
 VIDEO INSTALLATION INSTRUCTIONS
 ===============================
 
-Please visit http://www.codegravity.com/demo/extrawatch/1.2.18
+Please visit http://www.codegravity.com/demo/extrawatch/2.0
 to see how to install and use ExtraWatch
 
 

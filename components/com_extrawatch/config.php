@@ -4,8 +4,8 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 1.2.18
- * @revision 561
+ * @version 2.0
+ * @revision 564
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -25,8 +25,8 @@ if (!defined('_JEXEC') && !defined('_VALID_MOS')) {
 
 # define('EXTRAWATCH_LIVE_SITE','/');
 
-define('EXTRAWATCH_VERSION', "1.2.18");
-define('EXTRAWATCH_REVISION', "561");
+define('EXTRAWATCH_VERSION', "2.0");
+define('EXTRAWATCH_REVISION', "564");
 
 define('EXTRAWATCH_DEBUG', 0);
 

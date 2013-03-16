@@ -3,8 +3,8 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 1.2.18
- * @revision 561
+ * @version 2.0
+ * @revision 564
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -21,7 +21,7 @@ defined('_JEXEC') or die('Restricted access'); ?>
    title='<?php echo _EW_MENU_FEATURE;?>'><?php echo _EW_MENU_FEATURE;?></a> <img
     src='<?php echo($extraWatch->config->getLiveSiteWithSuffix());?>components/com_extrawatch/img/icons/external.gif'
     border='0'/></a> |
-<a href='http://www.codegravity.com/demo/extrawatch/1.2.18/' target='_blank' title='Demo'>Demo</a> <img
+<a href='http://www.codegravity.com/demo/extrawatch/2.0/' target='_blank' title='Demo'>Demo</a> <img
     src='<?php echo($extraWatch->config->getLiveSiteWithSuffix());?>components/com_extrawatch/img/icons/external.gif'
     border='0'/></a>
 
