@@ -4,34 +4,53 @@ Donate link: http://www.extrawatch.com/
 Tags: admin, widget, plugin, counter, anti-spam, stats, visitors, click map, countries, tracking, maps, location, geolocation, statistics, spam, flags, goals
 Requires at least: 3.2.1.
 Tested up to: 3.2.1.
-Stable tag: 2.0.567
+Stable tag: 2.0.570
 
 Popular visitor live tracking component ported from Joomla. Features: live stats,graphs,goals,history,anti-spam,blocking,nightly reports and more..
 
 == Description ==
-Popular visitor live tracking component ported from Joomla. 
-ExtraWatch allows you to watch your visitors live stats and bots in real-time from the administration back-end.
+Popular visitor live tracking component ported from Joomla. ExtraWatch allows you to watch your visitors live stats and bots in real-time from the administration back-end.
+
+Especially their IP addresses, countries they come from, geographical location on a map, which pages they are viewing, their browser and operating system, it creates daily and all-time stats from these information plus unique, pageload and total hits statistics.
+Furthermore, you can block harmful IP addresses, see blocked attempts stats, evaluate the trend charts, and create goals based on many parameters. In the front-end, it displays the top countries, user and visit information for certain periods of time.
+
+
+
+
+PRO version features:
+- Live Stats
+- Nightly Email Reports
+- Anti-spam and IP Blocking
+- Graphs and Trends
+- History
+- Goals
+- SEO Report
+- Click Heatmap
+- Traffic Flow
+- Directory Sizes
+- Database Status
+
+Purchase the ExtraWatch PRO lifetime license:
+https://www.e-junkie.com/ecom/gb.php?i=1162853&c=single&cl=189955&on0=Promotion&os0=Promotion
+
 
 For more information and demos please visit: http://www.extrawatch.com
 
-Specially their IP addresses, countries they come from, geographical location on a map, which pages they are viewing, their browser and operating system, it creates daily and all-time stats from these information plus unique, pageload and total hits statistics. 
-Furthermore, you can block harmful IP addresses, see blocked attempts stats, evaluate the trend charts, and create goals based on many parameters. In the front-end, it displays the top countries, user and visit information for certain periods of time.
-
 - translations: brazilian portuguese, dutch, french, german, greek, russian, slovak, slovenian, spanish, swedish, czech, danish, lithuanian, polish italian, turkish, latvian, ukrainian, bulgarian
-
-Purchase the ExtraWatch PRO license: 
-https://www.e-junkie.com/ecom/gb.php?i=1162853&c=single&cl=189955&on0=Promotion&os0=Promotion
 
 Complete description of all features:
 http://www.extrawatch.com/features/
 
-Watch the demo here:
-http://youtu.be/w8-LITejoV0?hd=1
+Watch the demos here:
+http://www.extrawatch.com/demos/
 
 Live working demo deployed at: 
 http://www.codegravitydemo.com/wordpress/PRO/
 
 http://www.codegravitydemo.com/wordpress/PRO/wp-admin/
+
+username: admin
+password: demo
 
 
 == Installation ==
