@@ -4,24 +4,24 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.0
- * @revision 570
+ * @revision 572
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
  */
 defined('_JEXEC') or die('Restricted access'); ?>
-<a href='http://www.codegravity.com/faq/' target='_blank'><?php echo _EW_MENU_FAQ;?> <img
+<a href='http://www.extrawatch.com/faq/' target='_blank'><?php echo _EW_MENU_FAQ;?> <img
     src='<?php echo($extraWatch->config->getLiveSiteWithSuffix());?>components/com_extrawatch/img/icons/external.gif'
     border='0'/></a> |
-<a href='http://www.codegravity.com/support/' target='_blank'
+<a href='http://www.extrawatch.com/support/' target='_blank'
    title='<?php echo _EW_MENU_BUG;?>'><?php echo _EW_MENU_BUG;?></a> <img
     src='<?php echo($extraWatch->config->getLiveSiteWithSuffix());?>components/com_extrawatch/img/icons/external.gif'
     border='0'/></a> |
-<a href='http://www.codegravity.com/feature/' target='_blank'
+<a href='http://www.extrawatch.com/support/' target='_blank'
    title='<?php echo _EW_MENU_FEATURE;?>'><?php echo _EW_MENU_FEATURE;?></a> <img
     src='<?php echo($extraWatch->config->getLiveSiteWithSuffix());?>components/com_extrawatch/img/icons/external.gif'
     border='0'/></a> |
-<a href='http://www.codegravity.com/demo/extrawatch/2.0/' target='_blank' title='Demo'>Demo</a> <img
+<a href='http://www.extrawatch.com/demos/' target='_blank' title='Demo'>Demo</a> <img
     src='<?php echo($extraWatch->config->getLiveSiteWithSuffix());?>components/com_extrawatch/img/icons/external.gif'
     border='0'/></a>
 

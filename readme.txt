@@ -4,7 +4,7 @@ Donate link: http://www.extrawatch.com/
 Tags: admin, widget, plugin, counter, anti-spam, stats, visitors, click map, countries, tracking, maps, location, geolocation, statistics, spam, flags, goals
 Requires at least: 3.2.1.
 Tested up to: 3.2.1.
-Stable tag: 2.0.570
+Stable tag: 2.0.572
 
 Popular visitor live tracking component ported from Joomla. Features: live stats,graphs,goals,history,anti-spam,blocking,nightly reports and more..
 
@@ -18,17 +18,29 @@ Furthermore, you can block harmful IP addresses, see blocked attempts stats, eva
 
 
 PRO version features:
+
 - Live Stats
+
 - Nightly Email Reports
+
 - Anti-spam and IP Blocking
+
 - Graphs and Trends
+
 - History
+
 - Goals
+
 - SEO Report
+
 - Click Heatmap
+
 - Traffic Flow
+
 - Directory Sizes
+
 - Database Status
+
 
 Purchase the ExtraWatch PRO lifetime license:
 https://www.e-junkie.com/ecom/gb.php?i=1162853&c=single&cl=189955&on0=Promotion&os0=Promotion
