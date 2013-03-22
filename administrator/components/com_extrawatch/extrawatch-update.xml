@@ -61,7 +61,7 @@
     <update>
         <name>ExtraWatch</name>
         <description>ExtraWatch</description>
-        <element>com_extrawatch</element>
+        <element>mod_extrawatch_agent</element>
         <type>module</type>
         <version>2.0.577 PRO</version>
         <infourl title="ExtraWatch URL">http://www.extrawatch.com</infourl>
@@ -75,7 +75,7 @@
     <update>
         <name>ExtraWatch</name>
         <description>ExtraWatch</description>
-        <element>com_extrawatch</element>
+        <element>mod_extrawatch_agent</element>
         <type>module</type>
         <version>2.0.577 PRO</version>
         <infourl title="ExtraWatch URL">http://www.extrawatch.com</infourl>
@@ -89,7 +89,7 @@
     <update>
         <name>ExtraWatch</name>
         <description>ExtraWatch</description>
-        <element>com_extrawatch</element>
+        <element>mod_extrawatch_agent</element>
         <type>module</type>
         <version>2.0.577 PRO</version>
         <infourl title="ExtraWatch URL">http://www.extrawatch.com</infourl>
@@ -103,7 +103,7 @@
     <update>
         <name>ExtraWatch</name>
         <description>ExtraWatch</description>
-        <element>com_extrawatch</element>
+        <element>mod_extrawatch_agent</element>
         <type>module</type>
         <version>2.0.577 PRO</version>
         <infourl title="ExtraWatch URL">http://www.extrawatch.com</infourl>
@@ -120,7 +120,7 @@
     <update>
         <name>ExtraWatch</name>
         <description>ExtraWatch</description>
-        <element>com_extrawatch</element>
+        <element>mod_extrawatch_users</element>
         <type>module</type>
         <version>2.0.577 PRO</version>
         <infourl title="ExtraWatch URL">http://www.extrawatch.com</infourl>
@@ -134,7 +134,7 @@
     <update>
         <name>ExtraWatch</name>
         <description>ExtraWatch</description>
-        <element>com_extrawatch</element>
+        <element>mod_extrawatch_users</element>
         <type>module</type>
         <version>2.0.577 PRO</version>
         <infourl title="ExtraWatch URL">http://www.extrawatch.com</infourl>
@@ -148,7 +148,7 @@
     <update>
         <name>ExtraWatch</name>
         <description>ExtraWatch</description>
-        <element>com_extrawatch</element>
+        <element>mod_extrawatch_users</element>
         <type>module</type>
         <version>2.0.577 PRO</version>
         <infourl title="ExtraWatch URL">http://www.extrawatch.com</infourl>
@@ -162,7 +162,7 @@
     <update>
         <name>ExtraWatch</name>
         <description>ExtraWatch</description>
-        <element>com_extrawatch</element>
+        <element>mod_extrawatch_users</element>
         <type>module</type>
         <version>2.0.577 PRO</version>
         <infourl title="ExtraWatch URL">http://www.extrawatch.com</infourl>
@@ -179,7 +179,7 @@
     <update>
         <name>ExtraWatch</name>
         <description>ExtraWatch</description>
-        <element>com_extrawatch</element>
+        <element>mod_extrawatch_visitors</element>
         <type>module</type>
         <version>2.0.577 PRO</version>
         <infourl title="ExtraWatch URL">http://www.extrawatch.com</infourl>
@@ -193,7 +193,7 @@
     <update>
         <name>ExtraWatch</name>
         <description>ExtraWatch</description>
-        <element>com_extrawatch</element>
+        <element>mod_extrawatch_visitors</element>
         <type>module</type>
         <version>2.0.577 PRO</version>
         <infourl title="ExtraWatch URL">http://www.extrawatch.com</infourl>
@@ -207,7 +207,7 @@
     <update>
         <name>ExtraWatch</name>
         <description>ExtraWatch</description>
-        <element>com_extrawatch</element>
+        <element>mod_extrawatch_visitors</element>
         <type>module</type>
         <version>2.0.577 PRO</version>
         <infourl title="ExtraWatch URL">http://www.extrawatch.com</infourl>
@@ -221,7 +221,7 @@
     <update>
         <name>ExtraWatch</name>
         <description>ExtraWatch</description>
-        <element>com_extrawatch</element>
+        <element>mod_extrawatch_visitors</element>
         <type>module</type>
         <version>2.0.577 PRO</version>
         <infourl title="ExtraWatch URL">http://www.extrawatch.com</infourl>
