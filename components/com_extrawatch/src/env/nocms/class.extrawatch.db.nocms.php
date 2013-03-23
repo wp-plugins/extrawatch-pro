@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.0
- * @revision 577
+ * @revision 580
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -27,6 +27,8 @@ class ExtraWatchDBWrapNoCMS implements ExtraWatchDBWrap
 
   function ExtraWatchDBWrapNoCMS()
   {
+
+	require_once(realpath(dirname(__FILE__).DS."..".DS."..".DS."..".DS."..".DS."..".DS."..").DS."config.php");
   
     $host = _EW_HOST;
     $user = _EW_USER;
@@ -36,10 +38,13 @@ class ExtraWatchDBWrapNoCMS implements ExtraWatchDBWrap
     $select = TRUE;
 
     if (!($this->dbref = @mysql_connect($host, $user, $password, TRUE))) {
-      die("cannot connect");
+      die("Error: Cannot connect using parameters specified in config.php");
     }
     if ($select) {
-      $this->select($database);
+      $result = $this->select($database);
+      if (!$result) {
+          die("Error: Cannot select database");
+      }
     }
   }
 

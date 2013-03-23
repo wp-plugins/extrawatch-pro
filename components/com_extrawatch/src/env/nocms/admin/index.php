@@ -5,17 +5,18 @@ session_start();
 define("DS","/");
 define("_JEXEC",1);
 define("ENV",1);
-define("JPATH_BASE2",dirname(__FILE__));
+define("JPATH_BASE2",dirname(__FILE__).DS."extrawatch");
 
 $action = @$_REQUEST['action'];
 $usernameFromSession = @$_SESSION['username'];
 $passwordFromSession = @$_SESSION['password'];
 
-require_once("config.php");
-
 function extrawatch_is_initialized($modulePath) {
 
-  $result = @$database->resultQuery("select `value` from #__extrawatch_config where `name` = 'rand'");
+    $env = ExtraWatchEnvFactory::getEnvironment();
+    $database = $env->getDatabase();
+
+    $result = $database->resultQuery("select `value` from #__extrawatch_config where `name` = 'rand'");
   if ($result) { // already initialized
 	return TRUE;
   }
@@ -29,8 +30,8 @@ function extrawatch_initialize_db($modulePath)
 
   $env = ExtraWatchEnvFactory::getEnvironment();
   $database = $env->getDatabase();
-  
-  if (extrawatch_is_initialized()) {
+
+  if (extrawatch_is_initialized($modulePath)) {
 	return;
   }
 
@@ -78,11 +79,11 @@ else if ($usernameFromSession && $passwordFromSession) {
 
 if (@$authenticated) {
     echo("<div style='text-align: right; width:100%; font-size: 12px; '><a href='?action=logout' style='color: red;'>Logout</a></div>");
-    require_once ("components".DS."com_extrawatch".DS."config.php");
-    require_once ("components".DS."com_extrawatch".DS."src".DS."inc.extrawatch.env.php");
-    require_once ("administrator".DS."components".DS."com_extrawatch".DS."admin.extrawatch.php");
-  
-    $path = realpath(".").DS;
+    require_once ("extrawatch".DS."components".DS."com_extrawatch".DS."config.php");
+    require_once ("extrawatch".DS."components".DS."com_extrawatch".DS."src".DS."inc.extrawatch.env.php");
+    require_once ("extrawatch".DS."administrator".DS."components".DS."com_extrawatch".DS."admin.extrawatch.php");
+
+    $path = realpath(".").DS."extrawatch";
 	echo extrawatch_initialize_db($path);
     echo extrawatch_mainController();
 } else {
