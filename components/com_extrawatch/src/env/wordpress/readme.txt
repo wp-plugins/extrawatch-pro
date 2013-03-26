@@ -4,7 +4,7 @@ Donate link: http://www.extrawatch.com/
 Tags: admin, widget, plugin, counter, anti-spam, stats, visitors, click map, countries, tracking, maps, location, geolocation, statistics, spam, flags, goals
 Requires at least: 3.2.
 Tested up to: 3.5.1.
-Stable tag: 2.0.581
+Stable tag: 2.0.582
 
 Popular visitor live tracking component ported from Joomla. Features: live stats,graphs,goals,history,anti-spam,blocking,nightly reports and more..
 
@@ -67,7 +67,7 @@ password: demo
 
 == Installation ==
 Installation of ExtraWatch into Wordpress:
-==========================================
+
 1. Log in to wordpress back-end
 2. Click "Plugins"
 3. Click "Add new" from the top of the screen
