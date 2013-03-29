@@ -105,17 +105,16 @@ class ExtraWatchSizes
 
   function getTableSizesForDay($day)
   {
-    $dbPrefix = $this->env->getDbPrefix();
-    $query = sprintf("SELECT tableName, FLOOR((tableSizeNow - tableSizePrev)/tableSizeNow*100) AS tableDiff, tableSizeNow, tableSizePrev  FROM
+    $query = sprintf("SELECT tableName, FLOOR((tableSizeNow - tableSizePrev)/tableSizePrev*100*100)/100 AS tableDiff, tableSizeNow, tableSizePrev  FROM
 					(
 						SELECT tableName, CAST(MAX(tableSizeNow) AS SIGNED) AS tableSizeNow, CAST(MAX(tableSizePrev) AS SIGNED) AS tableSizePrev FROM
 						(
-							(SELECT name AS tableName, value AS tableSizePrev, 0 AS tableSizeNow FROM #__extrawatch_info WHERE date = %d)
+							(SELECT name AS tableName, value AS tableSizePrev, 0 AS tableSizeNow FROM #__extrawatch_info WHERE date = %d and `group` = %d)
 							UNION
-							(SELECT name AS tableName, 0 AS tableSizePrev, value AS tableSizeNow FROM #__extrawatch_info WHERE date = %d)
+							(SELECT name AS tableName, 0 AS tableSizePrev, value AS tableSizeNow FROM #__extrawatch_info WHERE date = %d and `group` = %d)
 						) AS jt GROUP BY tableName
 					) AS njt WHERE tableSizeNow > 0 AND tableSizePrev>0;",
-      (int)($this->date->jwDateToday() - $day), (int) $this->date->jwDateToday());
+      (int)($this->date->jwDateToday() - $day), EW_DB_KEY_SIZE_DB, (int) $this->date->jwDateToday(), EW_DB_KEY_SIZE_DB);
 
     $this->database->setQuery($query);
     $rows = $this->database->objectListQuery($query);

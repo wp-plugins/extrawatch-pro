@@ -35,7 +35,7 @@ defined('_JEXEC') or die('Restricted access'); ?>
     $day = ExtraWatchDate::jwDateToday();
   }
 
-  $extraWatch->sizes->updateTableSizes($day - 1);
+  $extraWatch->sizes->updateTableSizes($day);
 
   $rows0 = $extraWatch->sizes->getTableSizes();
   $rows1 = $extraWatch->sizes->getTableSizesForDay(1);
