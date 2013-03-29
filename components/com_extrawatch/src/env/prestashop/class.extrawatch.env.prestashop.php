@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.0
- * @revision 582
+ * @revision 583
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -54,7 +54,10 @@ class ExtraWatchPrestaShopEnv implements ExtraWatchEnv
     $adminDirName = $this->getAdminDirName();
     $subdir = str_replace("/".$adminDirName, "", $subdir);
 
-    return $hostname . $subdir . "/modules/extrawatch/extrawatch/";
+	$url = parse_url($hostname . $subdir);
+	$liveSitePath = $url['path'];
+
+    return $liveSitePath . "/modules/extrawatch/extrawatch/";
   }
 
     function getAdminDir()

@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.0
- * @revision 582
+ * @revision 583
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -42,12 +42,13 @@ class ExtraWatchJoomlaEnv implements ExtraWatchEnv
 
   function getRootSite()
   {
-    $liveSite = JURI::root();
-    if (@strstr($liveSite, "/components/com_extrawatch")) {
-      $liveSite = str_replace("/components/com_extrawatch", "", $liveSite);
+	$url = parse_url(JURI::root());
+    $liveSitePath = $url['path'];
+    if (@strstr($liveSitePath, "/components/com_extrawatch")) {
+      $liveSitePath = str_replace("/components/com_extrawatch", "", $liveSitePath);
     }
-    $liveSite = str_replace("ajax/","", $liveSite);
-    return $liveSite;
+    $liveSitePath = str_replace("ajax/","", $liveSitePath);
+    return $liveSitePath;
   }
 
   function getAdminDir()
