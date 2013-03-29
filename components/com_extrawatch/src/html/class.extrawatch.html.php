@@ -139,7 +139,7 @@ class ExtraWatchHTML
     function renderOnlineHelp($id)
     {
         $site = $this->extraWatch->config->getLiveSiteWithSuffix();
-        $output = "&nbsp;<a href='http://www.extrawatch.com/projects/extrawatch#doc-$id' target='_blank'><img src='" . $site ."/components/com_extrawatch/img/icons/help.gif' border='0' title='" . _EW_TOOLTIP_HELP . ": $id'/></a>";
+        $output = "&nbsp;<a href='http://www.extrawatch.com/projects/extrawatch#doc-$id' target='_blank'><img src='" . $site ."components/com_extrawatch/img/icons/help.gif' border='0' title='" . _EW_TOOLTIP_HELP . ": $id'/></a>";
         return $output;
     }
 
