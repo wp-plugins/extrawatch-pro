@@ -126,14 +126,12 @@ defined('_JEXEC') or die('Restricted access');
   winh = Math.max(document.scrollHeight, document.offsetHeight, h);*/
 
       var pos = h337.util.mousePosition(evt); //relative position to element
-      x = pos[0];
-      y = pos[1];
+      var x = evt.offsetX; // offset relative within the element
+      var y = evt.offsetY;
       var xpath = createXPathFromElement(evt.target);
 
       var scrollx = window.pageXOffset == undefined ? clickDoc.scrollLeft : window.pageXOffset;
       var scrolly = window.pageYOffset == undefined ? clickDoc.scrollTop : window.pageYOffset;
-
-      //alert("x: " +x + "y: " + y + " scrollx: " + scrollx + " scrolly:" + scrolly + " w:" + w + " h:" + h);
 
       /* Is the click in the viewing area? Not on scrollbars. The problem still exists for FF on the horizontal scrollbar */
       var randHashToPass = '<?php echo($extraWatch->config->getRandHash()); ?>';
