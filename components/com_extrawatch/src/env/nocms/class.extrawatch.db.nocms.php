@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.0
- * @revision 586
+ * @revision 593
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -19,7 +19,7 @@ class ExtraWatchDBWrapNoCMS implements ExtraWatchDBWrap
 {
 
   public $query;
-  public $dbref;
+  public static $dbref;
   public $result;
   public $dbprefix;
   public $errNum;
@@ -37,7 +37,7 @@ class ExtraWatchDBWrapNoCMS implements ExtraWatchDBWrap
     $this->dbprefix = _EW_PREFIX;
     $select = TRUE;
 
-    if (!($this->dbref = @mysql_connect($host, $user, $password, TRUE))) {
+    if (!(ExtraWatchDBWrapNoCMS::$dbref = @mysql_connect($host, $user, $password, TRUE))) {
       die("Error: Cannot connect using parameters specified in config.php");
     }
     if ($select) {
@@ -50,23 +50,23 @@ class ExtraWatchDBWrapNoCMS implements ExtraWatchDBWrap
 
   function __destruct()
   {
-    return mysql_close($this->dbref);
+    //return mysql_close($this->dbref);
   }
 
   function getEscaped($sql)
   {
-    return mysql_real_escape_string($sql, $this->dbref);
+    return @mysql_real_escape_string($sql, ExtraWatchDBWrapNoCMS::$dbref);
   }
 
   function query()
   {
     $sql = $this->query;
     $sql = $this->replaceDbPrefix($sql);
-    $this->result = mysql_query($sql, $this->dbref);
+    $this->result = mysql_query($sql, ExtraWatchDBWrapNoCMS::$dbref);
 
     if (!$this->result) {
-      $this->errNum = mysql_errno($this->dbref);
-      $this->errMsg = mysql_error($this->dbref) . " in query $sql";
+      $this->errNum = mysql_errno(ExtraWatchDBWrapNoCMS::$dbref);
+      $this->errMsg = mysql_error(ExtraWatchDBWrapNoCMS::$dbref) . " in query $sql";
       return FALSE;
     }
     return $this->result;
@@ -101,7 +101,7 @@ class ExtraWatchDBWrapNoCMS implements ExtraWatchDBWrap
     if (!$database) {
       return FALSE;
     }
-    if (!mysql_select_db($database, $this->dbref)) {
+    if (!mysql_select_db($database, ExtraWatchDBWrapNoCMS::$dbref)) {
       die ('Could not connect to database');
       return FALSE;
     }

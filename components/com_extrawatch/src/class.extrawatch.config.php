@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.0
- * @revision 586
+ * @revision 593
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -21,6 +21,7 @@ class ExtraWatchConfig
   public $database;
   public $liveSiteCached;
   public $env;
+  public static $configValuesCached;
 
   function __construct($database)
   {
@@ -65,8 +66,9 @@ class ExtraWatchConfig
    */
   function getRand()
   {
-    $query = sprintf("select value from #__extrawatch_config where name = 'rand' order by id desc limit 1; ");
-    $rand = $this->database->resultQuery($query);
+    $rand = $this->getConfigValue("rand");
+    //$query = sprintf("select value from #__extrawatch_config where name = 'rand' order by id desc limit 1; ");
+    //$rand = $this->database->resultQuery($query);
     return $rand;
 
   }
@@ -80,8 +82,10 @@ class ExtraWatchConfig
       return FALSE;
     }
     $name = strtoupper($name);
-    $query = sprintf("select value from #__extrawatch_config where name='%s' limit 1", $this->database->getEscaped("EXTRAWATCH_IGNORE_" . $name));
-    $rowValue = $this->database->resultQuery($query);
+	$rowValue = $this->getConfigValue($this->database->getEscaped("EXTRAWATCH_IGNORE_" . $name));
+
+    //$query = sprintf("select value from #__extrawatch_config where name='%s' limit 1", $this->database->getEscaped("EXTRAWATCH_IGNORE_" . $name));
+    //$rowValue = $this->database->resultQuery($query);
     $exploded = explode("\n", $rowValue);
     foreach ($exploded as $value) {
       if (ExtraWatchHelper::wildcardSearch(trim($value), $key)) {
@@ -114,9 +118,36 @@ class ExtraWatchConfig
 
   function getConfigValue($key)
   {
+	if (!$this->configValuesCached) {
+
+<<<<<<< .mine
+		$query = sprintf("select name, value from #__extrawatch_config ");
+		$values = $this->database->resultQuery($query);
+		print_r($values);
+		die($values);
+	
+	}
 
     $query = sprintf("select value from #__extrawatch_config where name = '%s' limit 1", $this->database->getEscaped($key));
     $value = $this->database->resultQuery($query);
+=======
+  
+  	if (!ExtraWatchConfig::$configValuesCached) {
+		$query = sprintf("select name, value from #__extrawatch_config ");
+		$values = $this->database->objectListQuery($query);
+		foreach($values as $keyAssoc => $valueAssoc) {
+			ExtraWatchConfig::$configValuesCached[$valueAssoc->name] = $valueAssoc->value;
+		}
+		$value = ExtraWatchConfig::$configValuesCached[$key];
+	} else {
+
+			$value = ExtraWatchConfig::$configValuesCached[$key];
+
+		//			$query = sprintf("select value from #__extrawatch_config where name = '%s' limit 1", $this->database->getEscaped($key));
+		//			$value = $this->database->resultQuery($query);
+	
+		}
+>>>>>>> .r593
     // explicit off for checkboxes
     if ($value == "Off") {
       return FALSE;
@@ -134,6 +165,7 @@ class ExtraWatchConfig
    */
   function saveConfigValue($key, $value)
   {
+  
     $query = sprintf("select count(name) as count from #__extrawatch_config where name = '%s' limit 1", $this->database->getEscaped($key));
     $count = $this->database->resultQuery($query);
 

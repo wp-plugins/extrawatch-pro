@@ -50,6 +50,8 @@
                 `uri` varchar(255) default NULL COLLATE utf8_general_ci,
                 `title` varchar(255) default NULL COLLATE utf8_general_ci,
 				  KEY `fk` (`fk`),
+				  KEY `uri` (`uri`),
+				  KEY `title` (`title`),
 				  KEY `timestamp` (`timestamp`)
                 );
 
@@ -425,6 +427,7 @@
 				`type` int(11) NOT NULL,
 				PRIMARY KEY  (`id`),
 				KEY `uriid` (`uriid`),
+				KEY `key` (`key`),
 				KEY `type` (`type`)
 				);
 
