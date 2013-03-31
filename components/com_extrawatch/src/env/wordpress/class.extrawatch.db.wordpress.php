@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.0
- * @revision 593
+ * @revision 594
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -19,15 +19,11 @@ if (!defined('_JEXEC') && !defined('_VALID_MOS'))  {
 class ExtraWatchDBWrapWordpress implements ExtraWatchDBWrap
 {
 
-  public $query;
-  public static $dbref;
+  public $query;public $dbref;
   public $result;
   public $dbprefix;
   public $errNum;
   public $errMsg;
-  
-
-  
 
   function ExtraWatchDBWrapWordpress()
   {
@@ -39,7 +35,7 @@ class ExtraWatchDBWrapWordpress implements ExtraWatchDBWrap
     $this->dbprefix = $wpdb->base_prefix;
     $select = TRUE;
 
-    if (!(ExtraWatchDBWrapWordpress::$dbref = @mysql_connect($host, $user, $password, TRUE))) {
+    if (!($this->dbref = @mysql_connect($host, $user, $password, TRUE))) {
       die("cannot connect");
     }
     if ($select) {
@@ -49,23 +45,23 @@ class ExtraWatchDBWrapWordpress implements ExtraWatchDBWrap
 
   function __destruct()
   {
-    return @mysql_close(ExtraWatchDBWrapWordpress::$dbref);
+    return @mysql_close($this->dbref);
   }
 
   function getEscaped($sql)
   {
-    return mysql_real_escape_string($sql, ExtraWatchDBWrapWordpress::$dbref);
+    return mysql_real_escape_string($sql, $this->dbref);
   }
 
   function query()
   {
     $sql = $this->query;
     $sql = str_replace("#__", $this->dbprefix, $sql);
-    $this->result = mysql_query($sql, ExtraWatchDBWrapWordpress::$dbref);
+    $this->result = mysql_query($sql, $this->dbref);
 
     if (!$this->result) {
-      $this->errNum = mysql_errno(ExtraWatchDBWrapWordpress::$dbref);
-      $this->errMsg = mysql_error(ExtraWatchDBWrapWordpress::$dbref) . " in query $sql";
+      $this->errNum = mysql_errno($this->dbref);
+      $this->errMsg = mysql_error($this->dbref) . " in query $sql";
       return FALSE;
     }
     return $this->result;
@@ -100,7 +96,7 @@ class ExtraWatchDBWrapWordpress implements ExtraWatchDBWrap
     if (!$database) {
       return FALSE;
     }
-    if (!mysql_select_db($database, ExtraWatchDBWrapWordpress::$dbref)) {
+    if (!mysql_select_db($database, $this->dbref)) {
       die ('Could not connect to database');
       return FALSE;
     }
