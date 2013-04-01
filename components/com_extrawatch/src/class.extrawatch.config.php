@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.0
- * @revision 594
+ * @revision 596
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -118,21 +118,8 @@ class ExtraWatchConfig
 
   function getConfigValue($key)
   {
-	if (!$this->configValuesCached) {
 
-<<<<<<< .mine
-		$query = sprintf("select name, value from #__extrawatch_config ");
-		$values = $this->database->resultQuery($query);
-		print_r($values);
-		die($values);
-	
-	}
-
-    $query = sprintf("select value from #__extrawatch_config where name = '%s' limit 1", $this->database->getEscaped($key));
-    $value = $this->database->resultQuery($query);
-=======
-  
-  	if (!ExtraWatchConfig::$configValuesCached) {
+  	if (ExtraWatchConfig::$configValuesCached == NULL) {	//caching of config values
 		$query = sprintf("select name, value from #__extrawatch_config ");
 		$values = $this->database->objectListQuery($query);
 		foreach($values as $keyAssoc => $valueAssoc) {
@@ -140,14 +127,8 @@ class ExtraWatchConfig
 		}
 		$value = ExtraWatchConfig::$configValuesCached[$key];
 	} else {
-
 			$value = ExtraWatchConfig::$configValuesCached[$key];
-
-		//			$query = sprintf("select value from #__extrawatch_config where name = '%s' limit 1", $this->database->getEscaped($key));
-		//			$value = $this->database->resultQuery($query);
-	
 		}
->>>>>>> .r593
     // explicit off for checkboxes
     if ($value == "Off") {
       return FALSE;
@@ -165,7 +146,6 @@ class ExtraWatchConfig
    */
   function saveConfigValue($key, $value)
   {
-  
     $query = sprintf("select count(name) as count from #__extrawatch_config where name = '%s' limit 1", $this->database->getEscaped($key));
     $count = $this->database->resultQuery($query);
 
