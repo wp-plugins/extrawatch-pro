@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.0
- * @revision 605
+ * @revision 607
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -196,11 +196,7 @@ class ExtraWatchVisitHTML
         }
         $ipString = sprintf("<a id='%s' href='javascript:extrawatch_blockIpToggle(\"%s\");extrawatch_sendVisitsReq();' style='color:black;'>%s</a>", htmlspecialchars($row->ip), htmlspecialchars($row->ip), $ipString);
 
-        $dateOfVisit = ExtraWatchDate::date("d.m.Y", $row->timestamp);
-        if (isset($this->lastDate) && $this->lastDate != $dateOfVisit) {
-          $output .= "<tr><td colspan='8' style='background-color: #" . $color . ";'><h3>$dateOfVisit</h3></td></tr>";
-          $this->lastDate = $dateOfVisit;
-        }
+        
         $mapsIcon = "<img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/map_icon.gif' border='0' " . $this->extraWatch->helper->getTooltipOnEvent() . "=\"ajax_showTooltip('" . $this->extraWatch->config->getLiveSite() . $this->extraWatch->env->getEnvironmentSuffix() . "components/com_extrawatch/ajax/tooltip.php?rand=" . $this->extraWatch->config->getRand() . "&ip=$row->ip&env=" . $this->extraWatch->config->getEnvironment() . "',this);return FALSE\"/>";
 
         $displayCountryFlag = FALSE;
@@ -225,7 +221,11 @@ class ExtraWatchVisitHTML
           $lastReferer = $row->referer;
           $lastColor = $color;
         }
-
+        $dateOfVisit = ExtraWatchDate::date("d.m.Y", $row->timestamp);
+        if (isset($this->lastDate) && $this->lastDate != $dateOfVisit) {
+          $output .= "<tr><td colspan='8' style='background-color: #" . $color . ";'><h3>$dateOfVisit</h3></td></tr>";
+          $this->lastDate = $dateOfVisit;
+        }
         $output .= "<tr><td valign='top' align='left' style='background-color: #$color'></td>
 																		<td valign='top' align='left' style='background-color: #$color;'>" . @ $mapsIcon . "</td><td valign='top' align='left' style='background-color: #$color; color: #999999;'>";
 
@@ -284,7 +284,7 @@ class ExtraWatchVisitHTML
         $output .= ("<div id='goal_" . $row->id . "' style='display: none; margin: 0px; padding: 2px; left: 40%;' class='uriDetailDiv'>" . _EW_STATS_LOADING);
 
         $output .= ("</div>");
-        $output .= ("</div>");
+	$output .= ("</div>");
 
 
         //TODO handle post data
@@ -303,11 +303,13 @@ class ExtraWatchVisitHTML
         }
 
         $output .= ("</td></tr>");
-      }
+      }        
+
+   
     $output .= @$this->renderRefererRow($lastReferer, $lastColor);
 
     unset($uri2HeatmapClicksAssoc);
-
+ 
     return $output;
   }
 
