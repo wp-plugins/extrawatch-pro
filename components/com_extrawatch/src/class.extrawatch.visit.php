@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.0
- * @revision 608
+ * @revision 609
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -417,7 +417,9 @@ class ExtraWatchVisit
           }
         }
       } else { /* starts with the live site */
-        $referer = str_replace($liveSite, "", $referer);
+
+        //this is now obsolete, because live site is now relative!
+        //$referer = str_replace($liveSite, "", $referer);
 
         if (substr($referer, 0, 4) != "http" && substr($referer, 0, 1) != "/") {
           $referer = "/" . $referer; // add / prefix, because live site contains already / and it's replaced
