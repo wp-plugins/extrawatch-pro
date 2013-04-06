@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.0
- * @revision 609
+ * @revision 610
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -329,7 +329,8 @@ class ExtraWatchConfig
 
   function getDomainFromLiveSite()
   {
-    $parsedUrl = @ parse_url(@$this->getLiveSite());
+    // $parsedUrl = @ parse_url(@$this->getLiveSite());  - live site could not longer be used, because it's relative path now, using SERVER_NAME
+    $parsedUrl = @ parse_url("http://".@$_SERVER['SERVER_NAME']);
     $domainWithSubdomain = trim($this->cleanUrl(@$parsedUrl[host]));
 
     /* if it's an IP address */
