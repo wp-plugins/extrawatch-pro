@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.0
- * @revision 614
+ * @revision 615
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -43,9 +43,6 @@ defined('_JEXEC') or die('Restricted access'); ?>
     src='<?php echo($extraWatch->config->getLiveSiteWithSuffix());?>components/com_extrawatch/img/icons/emails.png'/>&nbsp;<?php echo _EW_MENU_EMAILS;?>
 </a> |
 
-<a href='<?php echo $extraWatch->config->renderLink('license');?>'><img
-    src='<?php echo($extraWatch->config->getLiveSiteWithSuffix());?>components/com_extrawatch/img/icons/license.png'/>&nbsp;<?php echo _EW_MENU_LICENSE;?>
-</a> |
 <a href='<?php echo $extraWatch->config->renderLink('status');?>'><img
     src='<?php echo($extraWatch->config->getLiveSiteWithSuffix());?>components/com_extrawatch/img/icons/status.png'/>&nbsp;<?php echo _EW_MENU_STATUS;?>
 </a> |
