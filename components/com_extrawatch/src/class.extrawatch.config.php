@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.0
- * @revision 616
+ * @revision 618
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -112,6 +112,14 @@ class ExtraWatchConfig
     }
   }
 
+  function reloadConfigValues() {
+      $query = sprintf("select name, value from #__extrawatch_config ");
+      $values = $this->database->objectListQuery($query);
+      foreach($values as $keyAssoc => $valueAssoc) {
+          ExtraWatchConfig::$configValuesCached[$valueAssoc->name] = $valueAssoc->value;
+      }
+  }
+
   /**
    * config
    */
@@ -120,11 +128,7 @@ class ExtraWatchConfig
   {
 
   	if (ExtraWatchConfig::$configValuesCached == NULL) {	//caching of config values
-		$query = sprintf("select name, value from #__extrawatch_config ");
-		$values = $this->database->objectListQuery($query);
-		foreach($values as $keyAssoc => $valueAssoc) {
-			ExtraWatchConfig::$configValuesCached[$valueAssoc->name] = $valueAssoc->value;
-		}
+        $this->reloadConfigValues();
 		$value = ExtraWatchConfig::$configValuesCached[$key];
 	} else {
 			$value = @ExtraWatchConfig::$configValuesCached[$key];
@@ -493,7 +497,7 @@ class ExtraWatchConfig
     }
     // explicitly reset chache because of frontend settings
     ExtraWatchCache::clearCache($this->database);
-
+    $this->reloadConfigValues();
   }
 
 }
