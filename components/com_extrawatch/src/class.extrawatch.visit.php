@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.0
- * @revision 629
+ * @revision 658
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -852,11 +852,15 @@ class ExtraWatchVisit
   function isVisitFromSameSite($referer)
   {
     $liveSite = $this->config->getDomainFromLiveSite();
+	$refererParsed = parse_url($referer);
+	$referer = $refererParsed['host'];
+	
     $ignorePrefix = "www.";
     $refererWithoutPrefix = str_replace($ignorePrefix, "", $referer);
     $liveSiteWithoutPrefix = str_replace($ignorePrefix, "", $liveSite);
-    $comparison = @stripos($refererWithoutPrefix, $liveSiteWithoutPrefix);
-    if ($comparison >= 0) { //is on 0th position and matches
+    $comparison = strpos($refererWithoutPrefix, $liveSiteWithoutPrefix);
+    
+	if (!$referer || $comparison != FALSE) { 
       return TRUE;
     } else {
       return FALSE;
