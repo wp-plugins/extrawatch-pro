@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.0
- * @revision 663
+ * @revision 662
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -15,11 +15,6 @@ include_once "..".DIRECTORY_SEPARATOR."includes.php";
 
 $extraWatch = new ExtraWatchMain();
 $extraWatchHTML = new ExtraWatchHTML();
-
-$referer = ExtraWatchHelper::requestGet("ref");
-$title = ExtraWatchHelper::requestGet("title");
-$uri = ExtraWatchHelper::requestGet("uri");
-$params = ExtraWatchHelper::requestGet("params");
 
 if (!EXTRAWATCH_DEBUG) {
 
@@ -35,11 +30,12 @@ if (!EXTRAWATCH_DEBUG) {
 }
 
 $redirURI = @ $_SERVER[$extraWatch->config->getConfigValue('EXTRAWATCH_SERVER_URI_KEY')];
+$uri = $extraWatch->helper->getURI();
 
 if (@ $redirURI && @ substr($redirURI, -9, 9) != "index.php")
     $uri = $redirURI;
 
-$extraWatch->visit->updateVisitByBrowser($uri, $referer, $title, $params);
+$extraWatch->visit->updateVisitByBrowser($uri);
 
 //die();
 

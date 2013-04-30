@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.0
- * @revision 663
+ * @revision 662
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -154,7 +154,7 @@ class ExtraWatchTrendHTML
       }
       $output .= "<td valign='bottom' align='center' style='vertical-align: bottom'>";
       $output .= $this->formatValueBasedOnGroup($group, $value);
-      $output .= "<br/><img src='$progressBarIcon' height='$percent' width='10' style='height:".$percent."px;width:10px'/><br/>";
+      $output .= "<br/><img src='$progressBarIcon' height='$percent' width='10' /><br/>";
       $output .= $this->renderDayDiff($group, $name, $i - 1, $i);
       $output .= $this->extraWatch->date->getDateByDay($i, "d.m ") . "&nbsp;<br/>";
       $output .= $this->extraWatch->date->getDateByDay($i, "D") . "<br/>";
@@ -202,7 +202,7 @@ class ExtraWatchTrendHTML
       }
       $output .= "<td valign='bottom' align='center' style='vertical-align: bottom'>";
       $output .= $this->formatValueBasedOnGroup($group, $value);
-      $output .= "<br/><img src='$progressBarIcon' height='$percent' width='$NUMBER_OF_BARS' style='height:".$percent."px;width:".$NUMBER_OF_BARS."px'/><br/>";
+      $output .= "<br/><img src='$progressBarIcon' height='$percent' width='$NUMBER_OF_BARS' /><br/>";
       $relDiff = $this->extraWatch->stat->getRelDiffOfTwoWeeks($i, $i + 7, $group, $name);
       $output .= $this->renderDiff($group, $name, $i + 7, $relDiff);
       $output .= ExtraWatchDate::date("W/y", $i * 24 * 3600) . " &nbsp;<br/>";

@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.0
- * @revision 663
+ * @revision 662
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -19,7 +19,7 @@ class ExtraWatchMagentoEnv implements ExtraWatchEnv
 {
     const EW_ENV_NAME = "magento";
 
-    function getDatabase($user="")
+    function getDatabase()
     {
         return new ExtraWatchDBWrapMagento();
     }

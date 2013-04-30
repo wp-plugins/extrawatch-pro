@@ -4,7 +4,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.0
- * @revision 663
+ * @revision 662
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -28,8 +28,8 @@ $tablesToRemove = array(
 "#__extrawatch_info",
 "#__extrawatch_config",
 "#__extrawatch_blocked",
-//"global_extrawatch_ip2c", removed
-"global_extrawatch_cc2c",
+"#__extrawatch_ip2c",
+"#__extrawatch_cc2c",
 "#__extrawatch_uri",
 "#__extrawatch_cache",
 "#__extrawatch_goals",

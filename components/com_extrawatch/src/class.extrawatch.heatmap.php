@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.0
- * @revision 663
+ * @revision 662
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -46,8 +46,6 @@ class ExtraWatchHeatmap
     $query = sprintf("INSERT INTO #__extrawatch_heatmap (`id`, `uri2titleId`, `x`, `y`, `w`, `h`, `ip`, `day`, `timestamp`, `xpath`) values ('','%d','%d','%d','%d','%d','%s','%d','%d','%s')", (int) $uri2titleId, (int) $x, (int) $y, (int) $w, (int) $h, $this->database->getEscaped($ip), (int) $day, (int) $timestamp, $this->database->getEscaped($xpath));
     $this->database->executeQuery($query);
 
-    $this->stat->increaseKeyValueInGroup($this->database->getEscaped($xpath), EW_DB_KEY_HTML_ELEMENT);
-
   }
 
   /* heatmap */
@@ -70,7 +68,6 @@ class ExtraWatchHeatmap
         }
       }
     $output .= "]}";
-	
     return $output;
   }
 
@@ -195,19 +192,6 @@ class ExtraWatchHeatmap
         ", $this->database->getEscaped($ip), $this->database->getEscaped($uri));
     return $this->database->resultQuery($query);
   }
-
-  function getMostClickedHTMLElements($day) {
-    $query = sprintf("select *,count(*) as `clickCount` from #__extrawatch_heatmap
-    JOIN #__extrawatch_uri2title ON #__extrawatch_uri2title.id = #__extrawatch_heatmap.uri2titleId
-    where day = %d
-    GROUP BY xpath, uri2titleId
-    order by `clickCount` desc limit 40", (int) $day);
-    return $this->database->objectListQuery($query);
-  }
-
-
-
-
   
 
 }
