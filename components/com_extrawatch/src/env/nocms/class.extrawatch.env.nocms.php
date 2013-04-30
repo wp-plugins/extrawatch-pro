@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.0
- * @revision 658
+ * @revision 663
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -19,9 +19,9 @@ class ExtraWatchNoCMSEnv implements ExtraWatchEnv
 {
   const EW_ENV_NAME = "nocms";
 
-  function getDatabase()
+  function getDatabase($user)
   {
-    return new ExtraWatchDBWrapNoCMS();
+    return new ExtraWatchDBWrapNoCMS($user);
   }
 
   function getRequest()
@@ -81,7 +81,7 @@ class ExtraWatchNoCMSEnv implements ExtraWatchEnv
 
   function getUser()
   {
-    return "matto";
+    return "";
   }
 
   function getTitle()
@@ -91,7 +91,7 @@ class ExtraWatchNoCMSEnv implements ExtraWatchEnv
 
   function getUsername()
   {
-    return "matto";
+    return "";
   }
 
   function sendMail($recipient, $sender, $recipient, $subject, $body, $true, $cc, $bcc, $attachment, $replyto, $replytoname)
@@ -101,7 +101,7 @@ class ExtraWatchNoCMSEnv implements ExtraWatchEnv
 
   function getDbPrefix()
   {
-	$db = $this->getDatabase();
+	$db = $this->getDatabase(_EW_USERNAME);
     return $db->dbprefix;
   }
 

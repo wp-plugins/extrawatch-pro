@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.0
- * @revision 658
+ * @revision 663
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -19,6 +19,11 @@ if (!$env) {
 if (!defined('DS')) {
     define('DS', DIRECTORY_SEPARATOR);
 }
+
+if (!defined("_EW_USERNAME")) {
+    define("_EW_USERNAME", @$_REQUEST['username']);
+}
+
 
 if (@$this instanceof extrawatch) { // we're in PrestaShop
     $env = "ExtraWatchPrestaShopEnv";

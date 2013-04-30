@@ -34,7 +34,7 @@
                 );
 
 
-                CREATE TABLE IF NOT EXISTS `#__extrawatch_ip2c` (
+                CREATE TABLE IF NOT EXISTS `global_extrawatch_ip2c` (
                 `start` int(10) unsigned NOT NULL default '0',
                 `end` int(10) unsigned NOT NULL default '0',
                 `country` char(2) NOT NULL default '',
@@ -107,10 +107,7 @@
 
 
 
-                DROP TABLE IF EXISTS `#__extrawatch_cc2c`;
-
-
-                CREATE TABLE `#__extrawatch_cc2c` (
+                CREATE TABLE IF NOT EXISTS `global_extrawatch_cc2c` (
                 `id` tinyint(3) unsigned NOT NULL auto_increment primary key,
                 `cc` char(2) NOT NULL,
                 `country` varchar(50) NOT NULL,
@@ -119,7 +116,7 @@
 
 
 
-                INSERT INTO `#__extrawatch_cc2c` (`id`, `cc`, `country`) VALUES
+                INSERT IGNORE INTO `global_extrawatch_cc2c` (`id`, `cc`, `country`) VALUES
                 (1, 'gb', 'United Kingdom'),
                 (2, 'us', 'United States'),
                 (3, 'bm', 'Bermuda'),

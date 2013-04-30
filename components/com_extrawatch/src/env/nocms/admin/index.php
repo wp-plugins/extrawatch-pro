@@ -11,10 +11,10 @@ $action = @$_REQUEST['action'];
 $usernameFromSession = @$_SESSION['username'];
 $passwordFromSession = @$_SESSION['password'];
 
-function extrawatch_is_initialized($modulePath) {
+function extrawatch_is_initialized($modulePath, $usernameFromSession) {
 
     $env = ExtraWatchEnvFactory::getEnvironment();
-    $database = $env->getDatabase();
+    $database = $env->getDatabase($usernameFromSession);
 
     $result = $database->resultQuery("select `value` from #__extrawatch_config where `name` = 'rand'");
   if ($result) { // already initialized
@@ -23,15 +23,28 @@ function extrawatch_is_initialized($modulePath) {
  return FALSE;
 }
 
-function extrawatch_initialize_db($modulePath)
+function extrawatch_is_ip2c_initialized($modulePath, $usernameFromSession) {
+
+    $env = ExtraWatchEnvFactory::getEnvironment();
+    $database = $env->getDatabase($usernameFromSession);
+
+    $result = $database->resultQuery("select count(*) as total from global_extrawatch_ip2c ");
+    if ($result > 0) { // already initialized
+        return TRUE;
+    }
+    return FALSE;
+}
+
+
+function extrawatch_initialize_db($modulePath, $usernameFromSession)
 {
   require_once($modulePath. DS. "components" . DS . "com_extrawatch" . DS . "includes.php");
   require_once($modulePath. DS. "administrator" . DS . "components" . DS . "com_extrawatch" . DS . "install.extrawatch.php");
 
   $env = ExtraWatchEnvFactory::getEnvironment();
-  $database = $env->getDatabase();
+  $database = $env->getDatabase($usernameFromSession);
 
-  if (extrawatch_is_initialized($modulePath)) {
+  if (extrawatch_is_initialized($modulePath, $usernameFromSession)) {
 	return;
   }
 
@@ -44,18 +57,20 @@ function extrawatch_initialize_db($modulePath)
 
     if (strstr($line, ");")) {
       $query = trim($query);
-      $query = str_replace("#__", $env->getDbPrefix(), $query);
-      $env->getDatabase()->executeQuery($query);
+      $query = str_replace("#__", $env->getDbPrefix($usernameFromSession), $query);
+      $env->getDatabase($usernameFromSession)->executeQuery($query);
       $query = "";
     }
 
   }
 
-  extrawatch_initialize_ip2country($modulePath, $env->getDatabase());
-} 
+    if (!extrawatch_is_ip2c_initialized($modulePath, $usernameFromSession)) {
+      extrawatch_initialize_ip2country($modulePath, $env->getDatabase($usernameFromSession));
+    }
+}
 
-function verify($login, $password) {
-    if ($login == "admin" && $password == "test") {
+function verify($user, $password) {
+    if ($password == "test") {
         return true;
     }
     return false;
@@ -78,17 +93,23 @@ else if ($usernameFromSession && $passwordFromSession) {
 }
 
 if (@$authenticated) {
+    if (!defined("_EW_USERNAME")) {
+        define("_EW_USERNAME",$_SESSION['username']);
+    }
+
     echo("<div style='text-align: right; width:100%; font-size: 12px; '><a href='?action=logout' style='color: red;'>Logout</a></div>");
     require_once ("extrawatch".DS."components".DS."com_extrawatch".DS."config.php");
     require_once ("extrawatch".DS."components".DS."com_extrawatch".DS."src".DS."inc.extrawatch.env.php");
     require_once ("extrawatch".DS."administrator".DS."components".DS."com_extrawatch".DS."admin.extrawatch.php");
 
     $path = realpath(".").DS."extrawatch";
-	echo extrawatch_initialize_db($path);
-    echo extrawatch_mainController();
+
+
+	echo extrawatch_initialize_db($path, $_SESSION['username']);
+    echo extrawatch_mainController($_SESSION['username']);
 } else {
     ?>
 <?php
-    include("login.html");
+    include("login.php");
 }
 ?>

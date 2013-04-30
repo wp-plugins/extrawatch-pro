@@ -19,7 +19,7 @@ if ($inputHandle) {
             $outputFilename = $path . DIRECTORY_SEPARATOR . $outputFilePrefix . (int) $j . ".sql";
             echo("creating " . $outputFilename . " <br/>\n");
             $outputHandle = fopen($outputFilename, "w");
-            $header = "INSERT INTO `#__extrawatch_ip2c` (`start`, `end`, `country`) VALUES \n";
+            $header = "INSERT INTO `global_extrawatch_ip2c` (`start`, `end`, `country`) VALUES \n";
             fwrite($outputHandle, $header);
             $j++;
             $i = 0;

@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.0
- * @revision 658
+ * @revision 663
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -51,10 +51,10 @@ class ExtraWatchConfig
 
   function isPermitted()
   {
-    $rand = $this->getRand();
+/*    $rand = $this->getRand();
     if (!$rand || $rand != addslashes(strip_tags(@ ExtraWatchHelper::requestGet('rand')))) {
       return FALSE;
-    }
+    }*/
     return TRUE;
   }
 
@@ -115,6 +115,7 @@ class ExtraWatchConfig
   function reloadConfigValues() {
       $query = sprintf("select name, value from #__extrawatch_config ");
       $values = $this->database->objectListQuery($query);
+      if ($values)
       foreach($values as $keyAssoc => $valueAssoc) {
           ExtraWatchConfig::$configValuesCached[$valueAssoc->name] = $valueAssoc->value;
       }
@@ -129,7 +130,7 @@ class ExtraWatchConfig
 
   	if (ExtraWatchConfig::$configValuesCached == NULL) {	//caching of config values
         $this->reloadConfigValues();
-		$value = ExtraWatchConfig::$configValuesCached[$key];
+		$value = @ExtraWatchConfig::$configValuesCached[$key];
 	} else {
 			$value = @ExtraWatchConfig::$configValuesCached[$key];
 		}
@@ -331,13 +332,16 @@ class ExtraWatchConfig
     return FALSE;
   }
 
-  function getDomainFromLiveSite()
+  function getDomainFromLiveSiteByUsername($user)
   {
     // $parsedUrl = @ parse_url(@$this->getLiveSite());  - live site could not longer be used, because it's relative path now, using SERVER_NAME
-    $parsedUrl = @ parse_url("http://".@$_SERVER['SERVER_NAME']);
-    $domainWithSubdomain = trim($this->cleanUrl(@$parsedUrl[host]));
 
-    /* if it's an IP address */
+      $parsedUrl = @ parse_url("http://".@$_SERVER['SERVER_NAME']);
+//      $parsedUrl = @ parse_url($url);
+      $domainWithSubdomain = trim($this->cleanUrl(@$parsedUrl[host]));
+
+
+      /* if it's an IP address */
     if ($this->isIPAddress($domainWithSubdomain)) {
       return $domainWithSubdomain;
     }

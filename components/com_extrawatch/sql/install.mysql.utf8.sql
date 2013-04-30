@@ -1,7 +1,7 @@
 
 
 
-                CREATE TABLE IF NOT EXISTS `#__extrawatch` (
+                CREATE TABLE IF NOT EXISTS `global_extrawatch` (
                 `id` int unsigned auto_increment primary key,
                 `ip` varchar(255) default NULL,
                 `country` varchar(2) default NULL,
@@ -14,15 +14,15 @@
                 );
 
 
-                CREATE TABLE IF NOT EXISTS `#__extrawatch_config` (
+                CREATE TABLE IF NOT EXISTS `global_extrawatch_config` (
                 `id` int unsigned auto_increment primary key,
                 `name` varchar(255) default NULL COLLATE utf8_general_ci,
                 `value` TEXT default NULL COLLATE utf8_general_ci
 				);
 
-  			    ALTER IGNORE TABLE #__extrawatch_config ADD UNIQUE INDEX(name);
+  			    ALTER IGNORE TABLE global_extrawatch_config ADD UNIQUE INDEX(name);
 
-                CREATE TABLE IF NOT EXISTS `#__extrawatch_info` (
+                CREATE TABLE IF NOT EXISTS `global_extrawatch_info` (
                 `id` int unsigned auto_increment primary key,
                 `group` int(3) default NULL COLLATE utf8_general_ci,
                 `date` int(6) default NULL COLLATE utf8_general_ci,
@@ -34,7 +34,7 @@
                 );
 
 
-                CREATE TABLE IF NOT EXISTS `#__extrawatch_ip2c` (
+                CREATE TABLE IF NOT EXISTS `global_extrawatch_ip2c` (
                 `start` int(10) unsigned NOT NULL default '0',
                 `end` int(10) unsigned NOT NULL default '0',
                 `country` char(2) NOT NULL default '',
@@ -43,7 +43,7 @@
                 );
 
 
-                CREATE TABLE IF NOT EXISTS `#__extrawatch_uri` (
+                CREATE TABLE IF NOT EXISTS `global_extrawatch_uri` (
                 `id` int unsigned auto_increment primary key,
                 `fk` int unsigned default NULL,
                 `timestamp` int unsigned default NULL,
@@ -57,7 +57,7 @@
 
 
 
-                CREATE TABLE IF NOT EXISTS `#__extrawatch_blocked` (
+                CREATE TABLE IF NOT EXISTS `global_extrawatch_blocked` (
                 `id` int unsigned auto_increment primary key,
                 `ip` varchar(255) default NULL,
                 `hits` int unsigned default NULL,
@@ -70,7 +70,7 @@
                 );
 
 
-                CREATE TABLE IF NOT EXISTS `#__extrawatch_goals` (
+                CREATE TABLE IF NOT EXISTS `global_extrawatch_goals` (
                 `id` int(11) NOT NULL auto_increment primary key,
                 `name` varchar(255) default NULL COLLATE utf8_general_ci,
                 `username_inversed` varchar(3) DEFAULT NULL,
@@ -99,7 +99,7 @@
 
 
 
-                CREATE TABLE IF NOT EXISTS `#__extrawatch_cache` (
+                CREATE TABLE IF NOT EXISTS `global_extrawatch_cache` (
                 `id` int(11) NOT NULL auto_increment primary key,
                 `key` varchar(255) default NULL COLLATE utf8_general_ci,
                 `lastUpdate` int(11) default NULL,
@@ -109,10 +109,10 @@
 
 
 
-                DROP TABLE IF EXISTS `#__extrawatch_cc2c`;
+                DROP TABLE IF EXISTS `global_extrawatch_cc2c`;
 
 
-                CREATE TABLE `#__extrawatch_cc2c` (
+                CREATE TABLE `global_extrawatch_cc2c` (
                 `id` tinyint(3) unsigned NOT NULL auto_increment primary key,
                 `cc` char(2) NOT NULL,
                 `country` varchar(50) NOT NULL,
@@ -121,7 +121,7 @@
 
 
 
-                INSERT INTO `#__extrawatch_cc2c` (`id`, `cc`, `country`) VALUES
+                INSERT INTO `global_extrawatch_cc2c` (`id`, `cc`, `country`) VALUES
                 (1, 'gb', 'United Kingdom'),
                 (2, 'us', 'United States'),
                 (3, 'bm', 'Bermuda'),
@@ -360,7 +360,7 @@
 
 
 
-                CREATE TABLE IF NOT EXISTS `#__extrawatch_uri2title` (
+                CREATE TABLE IF NOT EXISTS `global_extrawatch_uri2title` (
                 `id` int(11) NOT NULL auto_increment primary key,
                 `uri` varchar(255) default NULL COLLATE utf8_general_ci,
                 `title` varchar(255) default NULL COLLATE utf8_general_ci,
@@ -369,9 +369,9 @@
 				KEY `uri` (`uri`)
                 );
 
-                ALTER IGNORE TABLE #__extrawatch_uri2title ADD UNIQUE INDEX(uri);
+                ALTER IGNORE TABLE global_extrawatch_uri2title ADD UNIQUE INDEX(uri);
 
-                CREATE TABLE IF NOT EXISTS `#__extrawatch_internal` (
+                CREATE TABLE IF NOT EXISTS `global_extrawatch_internal` (
                 `id` int(11) NOT NULL auto_increment primary key,
                 `from` varchar(255) default NULL COLLATE utf8_general_ci,
                 `to` varchar(255) default NULL COLLATE utf8_general_ci,
@@ -382,7 +382,7 @@
 
 
 
-                CREATE TABLE IF NOT EXISTS `#__extrawatch_history` (
+                CREATE TABLE IF NOT EXISTS `global_extrawatch_history` (
                 `id` int unsigned auto_increment primary key,
                 `ip` varchar(255) default NULL,
                 `country` varchar(2) default NULL,
@@ -397,7 +397,7 @@
 
 
 
-                CREATE TABLE IF NOT EXISTS `#__extrawatch_uri_history` (
+                CREATE TABLE IF NOT EXISTS `global_extrawatch_uri_history` (
                 `id` int unsigned auto_increment primary key,
                 `fk` int unsigned default NULL,
                 `timestamp` int unsigned default NULL,
@@ -409,7 +409,7 @@
 
 
 
-				CREATE TABLE IF NOT EXISTS `#__extrawatch_flow` (
+				CREATE TABLE IF NOT EXISTS `global_extrawatch_flow` (
 				`id` int(11) NOT NULL auto_increment primary key,
 				`from` int(11) default NULL,
 				`to` int(11) default NULL,
@@ -419,7 +419,7 @@
 				);
 
 
-				CREATE TABLE IF NOT EXISTS `#__extrawatch_uri_post` (
+				CREATE TABLE IF NOT EXISTS `global_extrawatch_uri_post` (
 				`id` int(11) NOT NULL auto_increment,
 				`uriid` int(11) NOT NULL,
 				`key` varchar(255) NOT NULL,
@@ -431,20 +431,20 @@
 				KEY `type` (`type`)
 				);
 
-				CREATE TABLE IF NOT EXISTS `#__extrawatch_keyphrase` (
+				CREATE TABLE IF NOT EXISTS `global_extrawatch_keyphrase` (
 				`id` int(11) NOT NULL AUTO_INCREMENT,
 				`name` varchar(255) DEFAULT NULL,
 				PRIMARY KEY (`id`)
 				);
 
-				CREATE TABLE IF NOT EXISTS `#__extrawatch_uri2keyphrase` (
+				CREATE TABLE IF NOT EXISTS `global_extrawatch_uri2keyphrase` (
 				`id` int(11) NOT NULL AUTO_INCREMENT,
 				`uri2titleId` int(11) NOT NULL,
 				`keyphraseId` int(11) NOT NULL,
 				PRIMARY KEY (`id`)
 				);
 
-				CREATE TABLE IF NOT EXISTS `#__extrawatch_heatmap` (
+				CREATE TABLE IF NOT EXISTS `global_extrawatch_heatmap` (
 				  `id` int(11) NOT NULL auto_increment,
 				  `uri2titleId` int(11) NOT NULL,
 				  `x` smallint(5) unsigned NOT NULL,
@@ -460,7 +460,7 @@
 				  KEY `day` (`day`)
 				);
 
-				CREATE TABLE IF NOT EXISTS `#__extrawatch_uri2keyphrase_pos` (
+				CREATE TABLE IF NOT EXISTS `global_extrawatch_uri2keyphrase_pos` (
 				`id` int(11) NOT NULL auto_increment,
 				`uri2keyphraseId` int(11) default NULL,
 				`position` int(11) default NULL,

@@ -6,7 +6,7 @@
     <copyright>Copyright 2006-2013 by CodeGravity.com</copyright>
     <authorEmail>support@extrawatch.com</authorEmail>
     <authorUrl>http://www.extrawatch.com</authorUrl>
-    <version>2.0.658 PRO</version>
+    <version>2.0.663 PRO</version>
     <license>http://www.gnu.org/licenses/gpl-3.0.txt GNU/GPLv3</license>
     <description>
         ExtraWatch is an AJAX component and module for Joomla CMS that allows you to watch
@@ -87,7 +87,7 @@
             </query>
 
             <query>
-                CREATE TABLE IF NOT EXISTS `#__extrawatch_ip2c` (
+                CREATE TABLE IF NOT EXISTS `global_extrawatch_ip2c` (
                 `start` int(10) unsigned NOT NULL default '0',
                 `end` int(10) unsigned NOT NULL default '0',
                 `country` char(2) NOT NULL default '',
@@ -162,11 +162,11 @@
             </query>
 
             <query>
-                DROP TABLE IF EXISTS `#__extrawatch_cc2c`;
+                DROP TABLE IF EXISTS `global_extrawatch_cc2c`;
             </query>
 
             <query>
-                CREATE TABLE `#__extrawatch_cc2c` (
+                CREATE TABLE `global_extrawatch_cc2c` (
                 `id` tinyint(3) unsigned NOT NULL auto_increment primary key,
                 `cc` char(2) NOT NULL,
                 `country` varchar(50) NOT NULL,
@@ -175,7 +175,7 @@
             </query>
 
             <query>
-                INSERT INTO `#__extrawatch_cc2c` (`id`, `cc`, `country`) VALUES
+                INSERT INTO `global_extrawatch_cc2c` (`id`, `cc`, `country`) VALUES
                 (1, 'gb', 'United Kingdom'),
                 (2, 'us', 'United States'),
                 (3, 'bm', 'Bermuda'),

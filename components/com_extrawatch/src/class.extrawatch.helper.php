@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.0
- * @revision 658
+ * @revision 663
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -60,6 +60,7 @@ class ExtraWatchHelper
      * helper
      *
      * @return unknown
+     * @deprecated
      */
     function getURI()
     {
@@ -183,7 +184,6 @@ class ExtraWatchHelper
     {
 
         if ($ip == '127.0.0.1') {
-            /* ignore localhost */
             return;
         }
 
@@ -194,7 +194,7 @@ class ExtraWatchHelper
 
             $iplook = new ExtraWatchIP2Country($ip);
             $iplook->UseDB = TRUE;
-            $iplook->db_tablename = "#__extrawatch_ip2c";
+            $iplook->db_tablename = _EW_GLOBAL_TABLE_PREFIX."_extrawatch_ip2c";
 
             if (($iplook->LookUp())) {
                 $country = strtolower($iplook->Country);
@@ -217,7 +217,7 @@ class ExtraWatchHelper
      */
     function countryCodeToCountryName($code)
     {
-        $query = sprintf("select country from #__extrawatch_cc2c where cc = '%s' limit 1", $this->database->getEscaped($code));
+        $query = sprintf("select country from global_extrawatch_cc2c where cc = '%s' limit 1", $this->database->getEscaped($code));
         $countryName = $this->database->resultQuery($query);
         return $countryName;
     }
@@ -428,6 +428,18 @@ class ExtraWatchHelper
             return ob_get_clean();
         }
         return false;
+    }
+
+    static function convertUrlQuery($query) {
+        $queryParts = explode('&', $query);
+
+        $params = array();
+        foreach ($queryParts as $param) {
+            $item = explode('=', $param);
+            @$params[$item[0]] = @$item[1];
+        }
+
+        return $params;
     }
 }
 

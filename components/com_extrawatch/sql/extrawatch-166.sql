@@ -1,4 +1,4 @@
-INSERT INTO `#__extrawatch_ip2c` (`start`, `end`, `country`) VALUES
+INSERT INTO `global_extrawatch_ip2c` (`start`, `end`, `country`) VALUES
 (1984135168, 1984151551, 'KR'),
 (1984151552, 1984153599, 'NZ'),
 (1984153600, 1984155647, 'KH'),

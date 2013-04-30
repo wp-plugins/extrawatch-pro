@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.0
- * @revision 658
+ * @revision 663
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 byCodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -22,10 +22,11 @@ defined('_JEXEC') or die('Restricted access'); ?>
 <script type="text/javascript"
         src="<?php echo($extraWatch->config->getLiveSiteWithSuffix());?>components/com_extrawatch/js/ajax.js"></script>
 <script type="text/javascript"
-        src="<?php echo($extraWatch->config->getLiveSiteWithSuffix());?>components/com_extrawatch/js/extrawatch.js.php?rand=<?php echo ($extraWatch->config->getRand());?>&time=<?php echo time();?>&env=<?php echo ($extraWatch->config->getEnvironment());?>"></script>
+        src="<?php echo($extraWatch->config->getLiveSiteWithSuffix());?>components/com_extrawatch/js/extrawatch.js.php?rand=<?php echo ($extraWatch->config->getRand());?>&time=<?php echo time();?>&env=<?php echo ($extraWatch->config->getEnvironment());?>&username=<?php echo(_EW_USERNAME);?>"></script>
 <script type="text/javascript"
         src='<?php echo($extraWatch->config->getLiveSiteWithSuffix());?>components/com_extrawatch/js/fade.js'></script>
 
+USER: <?php echo(_EW_USERNAME);?>
 <div align='left'>
   <table width='100%' <?php echo $extraWatch->helper->getTooltipOnEventHide();?> border='0'>
     <tr>

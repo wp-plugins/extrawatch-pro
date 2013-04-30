@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.0
- * @revision 658
+ * @revision 663
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -32,9 +32,9 @@ $day = $extraWatch->helper->requestGet("day");
 $ip = $extraWatch->helper->requestGet("ip");
 
 $randHash = ExtraWatchHelper::requestGet(ExtraWatchHeatmap::HEATMAP_PARAM_HASH);
-if (!$extraWatch->config->isPermittedWithHash($randHash)) {
-  die("Unauthorized access");
-}
+//TODO if (!$extraWatch->config->isPermittedWithHash($randHash)) {
+//  die("Unauthorized access");
+//}
 
 switch ($action) {
   case 'getHeatMap':

@@ -255,12 +255,22 @@ class ExtraWatchStatHTML
       $color = "ffffff";
       if (@ $row->name) {
         if (!$total) {
-          $output .= "<tr><td>" . @ $icon . "&nbsp;" . $row->name . "</td><td align='right'><table><tr><td align='right'>" . $row->value . "</td></tr></table></td><td> <table border='0'><tr><td>" . @ $diffOutput . "</td><td>" . @ $trendsIcon . "</td><td><img src='$progressBarIcon' class='extraWatchBarImg' width='" . $imgWidth . "' style='height:10px' /></td><td align='left'>$percent%</td></tr></table></td></tr>";
+          $output .= "<tr><td>" . @ $icon . "&nbsp;" . $row->name . "</td><td align='right'>
+          <table><tr><td align='right'>" . $row->value . "</td></tr></table>
+          </td>
+          <td>
+          <table border='0'><tr>
+          <td style='width: 20px'>" . @ $diffOutput . "</td>
+          <td style='width: 20px'>" . @ $trendsIcon . "</td>
+          <td style='text-align: left;'><img src='$progressBarIcon' class='extraWatchBarImg' width='" . $imgWidth . "' style='height:10px' /></td>
+          <td align='left'>$percent%</td>
+          </tr></table>
+          </td></tr>";
 
         } else {
           if (!@ $frontend) {
-            $output .= "<tr><td align='left' style='background-color: " . "#" . $color . ";'>" . @ $icon . "&nbsp;" . $row->name . "</td><td style='background-color: #" . $color . ";' align='right'>" . $row->value . "</td><td style='background-color: #" . $color . ";'> <table><tr><td><img src='$progressBarIcon' class='extraWatchBarImg' width='" . $imgWidth . "' style='height:10px' /></td>
-                        <td  " . $this->extraWatch->helper->getTooltipOnEvent() . "=\"ajax_showTooltip('" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/ajax/trendtooltip.php?rand=" . $this->extraWatch->config->getRand() . "&group=$group&name=" . urlencode($origName) . "&date=$date&env=".$this->extraWatch->config->getEnvironment()."',this);return FALSE\">$percent%</td>
+            $output .= "<tr><td align='left' style='background-color: " . "#" . $color . ";'>" . @ $icon . "&nbsp;" . $row->name . "</td><td style='background-color: #" . $color . ";' align='right'>" . $row->value . "</td><td style='background-color: #" . $color . ";' style='text-align: right;'> <table><tr><td><img src='$progressBarIcon' class='extraWatchBarImg' width='" . $imgWidth . "' style='height:10px; text-align: right;' /></td>
+                        <td " . $this->extraWatch->helper->getTooltipOnEvent() . "=\"ajax_showTooltip('" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/ajax/trendtooltip.php?rand=" . $this->extraWatch->config->getRand() . "&group=$group&name=" . urlencode($origName) . "&date=$date&env=".$this->extraWatch->config->getEnvironment()."',this);return FALSE\" style='width: 20px;'>$percent%</td>
                         </tr></table></td></tr>";
           } else {
             $output .= "<tr><td valign='top' align='right' class='extrawatch'>$percent%</td><td valign='top' align='left' class='extrawatch'>" . @ $icon . "&nbsp;</td><td valign='top' align='left' class='extrawatch'>" . $countryName . "</td></tr>";

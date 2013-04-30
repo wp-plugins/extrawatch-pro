@@ -70,7 +70,7 @@ class ExtraWatchIP2Country {
   function __construct($ip, $usedb = FALSE)
   {
     $this->env = ExtraWatchEnvFactory::getEnvironment();
-    $this->database = $this->env->getDatabase();
+    $this->database = $this->env->getDatabase(_EW_USERNAME);
     // TODO: Add regex to verify ip is valid
     if ($ip) {
       $this->_IPn = $this->inet_aton($ip);
@@ -95,7 +95,7 @@ class ExtraWatchIP2Country {
   {
     if (!@$this->database) {
       $this->env = ExtraWatchEnvFactory::getEnvironment();
-      $this->database = & $this->env->getDatabase();
+      $this->database = & $this->env->getDatabase(_EW_USERNAME);
     }
 
     if ($this->UseDB) {
