@@ -3,7 +3,7 @@
 Plugin Name: ExtraWatch Live Stats and Visitor Counter PRO
 Plugin URI: http://www.extrawatch.com
 Description: Popular visitor live tracking component ported from Joomla. <a href="http://www.extrawatch.com/demo/extrawatch/1.2.18/wordpress/">View demo video</a>. Demo server: <a href="http://codegravitydemo.com/wordpress/PRO/">Frontpage</a> / <a href="http://codegravitydemo.com/wordpress/PRO/wp-admin/">Admin</a>. Features: <strong>Visitor Live Stats</strong>, <strong>History</strong>, <strong>Graphs</strong>, <strong>Anti-spam</strong>, <strong>Nightly Email Reports</strong>, <strong>Front-end Counters</strong>, translated in <strong>42 world languages</strong>
-Version: 2.0.676 PRO
+Version: 2.0.716 PRO
 Author: CodeGravity.com
 Author URI: http://www.extrawatch.com
 */

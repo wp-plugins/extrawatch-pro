@@ -4,7 +4,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.0
- * @revision 676
+ * @revision 716
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -22,7 +22,7 @@ class extrawatch extends Module
     {
         $this->name = 'extrawatch';
         $this->tab = 'Stats'; // back-end name
-        $this->version = '2.0.676';
+        $this->version = '2.0.716';
         $this->displayName = 'ExtraWatch PRO';
 		$this->tab = 'analytics_stats'; 
 		$this->module_key='868a02da3cb4442e41507b564b9da2f9';
@@ -43,10 +43,13 @@ class extrawatch extends Module
 
     public function install()
     {
+
+        $parentTabId = (int)Tab::getIdFromClassName('AdminStats');
+
         if(!parent::install()
             || !$this->registerHook('leftColumn')
             || !Configuration::updateValue('MOD_EXTRAWATCH_IMG', 'http://extrawatch.com/logo.jpg')
-            || !$this->installModuleTab('ExtraWatchAdmin', array(1=>'ExtraWatch Stats'), 92))
+            || !$this->installModuleTab('ExtraWatchAdmin', 'ExtraWatch Stats', $parentTabId))
             return false;
 
         define("ENV", 1);
@@ -70,6 +73,8 @@ class extrawatch extends Module
         $database = $env->getDatabase();
         $this->extrawatch_initialize_db(JPATH_BASE, $env);
         $output = extrawatch_initialize_ip2country(JPATH_BASE2, $database);
+
+        $this->extrawatch_fixFilePermissions();
 
         return true;
     }
@@ -120,7 +125,10 @@ class extrawatch extends Module
     private function installModuleTab($tabClass, $tabName, $idTabParent) {
         @copy(_PS_MODULE_DIR_.$this->name.'/logo.gif', _PS_IMG_DIR_.'t/'.$tabClass.'.gif');
         $tab = new Tab();
-        $tab->name = $tabName;
+        $tab->name = array();
+        foreach (Language::getLanguages(true) as $lang) {
+            $tab->name[$lang['id_lang']] = $tabName;
+        }
         $tab->class_name = $tabClass;
         $tab->module = $this->name;
         $tab->id_parent = $idTabParent;
@@ -159,7 +167,31 @@ class extrawatch extends Module
     }
 
 
+    function extrawatch_fixFilePermissions() {
+        $filesArray = array(
+            "img.php",
+            "timezone.php",
+            "ajax" . DIRECTORY_SEPARATOR . "block.php",
+            "ajax" . DIRECTORY_SEPARATOR . "last.php",
+            "ajax" . DIRECTORY_SEPARATOR . "lastvisit.php",
+            "ajax" . DIRECTORY_SEPARATOR . "sizequery.php",
+            "ajax" . DIRECTORY_SEPARATOR . "sizequerytotal.php",
+            "ajax" . DIRECTORY_SEPARATOR . "stats.php",
+            "ajax" . DIRECTORY_SEPARATOR . "tooltip.php",
+            "ajax" . DIRECTORY_SEPARATOR . "trendtooltip.php",
+            "ajax" . DIRECTORY_SEPARATOR . "vars.php",
+            "ajax" . DIRECTORY_SEPARATOR . "visits.php",
+            "ajax" . DIRECTORY_SEPARATOR . "heatmap.php",
+            "ajax" . DIRECTORY_SEPARATOR . "img.php",
+            "js" . DIRECTORY_SEPARATOR . "extrawatch.js.php",
+            "js" . DIRECTORY_SEPARATOR . "maps.js.php");
 
+        foreach($filesArray as $file) {
+            $file = JPATH_SITE.DIRECTORY_SEPARATOR."components".DIRECTORY_SEPARATOR."com_extrawatch".DIRECTORY_SEPARATOR.$file;
+            //echo("changing permissions of file: $file");
+            @chmod($file, 0755);
+        }
+    }
 
 
 }
