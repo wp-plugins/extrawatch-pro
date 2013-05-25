@@ -14,9 +14,10 @@ Popular visitor live tracking component ported from Joomla. ExtraWatch allows yo
 Especially their IP addresses, countries they come from, geographical location on a map, which pages they are viewing, their browser and operating system, it creates daily and all-time stats from these information plus unique, pageload and total hits statistics.
 Furthermore, you can block harmful IP addresses, see blocked attempts stats, evaluate the trend charts, and create goals based on many parameters. In the front-end, it displays the top countries, user and visit information for certain periods of time.
 
-[ExtraWatch PRO stats for WordPress video](http://www.youtube.com/watch?v=2-lUIPBAA0I)
+[ExtraWatch PRO stats for WordPress video](http://www.youtube.com/watch?v=xIkeC2yveyA)
 
-http://www.youtube.com/watch?v=2-lUIPBAA0I&hd=1
+http://www.youtube.com/watch?v=xIkeC2yveyA&hd=1
+
 
 shown on Joomla, but it's similar for wordpress
 
