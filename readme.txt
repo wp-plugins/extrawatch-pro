@@ -4,7 +4,7 @@ Donate link: http://www.extrawatch.com/
 Tags: admin, widget, plugin, counter, anti-spam, stats, visitors, click map, countries, tracking, maps, location, geolocation, statistics, spam, flags, goals
 Requires at least: 3.2.
 Tested up to: 3.5.1.
-Stable tag: 2.0.717
+Stable tag: 2.0.718
 
 Popular visitor live tracking component ported from Joomla. Features: live stats,graphs,goals,history,anti-spam,blocking,nightly reports and more..
 
@@ -14,10 +14,9 @@ Popular visitor live tracking component ported from Joomla. ExtraWatch allows yo
 Especially their IP addresses, countries they come from, geographical location on a map, which pages they are viewing, their browser and operating system, it creates daily and all-time stats from these information plus unique, pageload and total hits statistics.
 Furthermore, you can block harmful IP addresses, see blocked attempts stats, evaluate the trend charts, and create goals based on many parameters. In the front-end, it displays the top countries, user and visit information for certain periods of time.
 
-[ExtraWatch PRO stats for WordPress video](http://www.youtube.com/watch?v=xIkeC2yveyA)
+[ExtraWatch PRO stats for WordPress video](http://www.youtube.com/watch?v=2-lUIPBAA0I)
 
-http://www.youtube.com/watch?v=xIkeC2yveyA&hd=1
-
+http://www.youtube.com/watch?v=2-lUIPBAA0I&hd=1
 
 shown on Joomla, but it's similar for wordpress
 
