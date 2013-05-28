@@ -4,7 +4,7 @@ Donate link: http://www.extrawatch.com/
 Tags: admin, widget, plugin, counter, anti-spam, stats, visitors, click map, countries, tracking, maps, location, geolocation, statistics, spam, flags, goals
 Requires at least: 3.2.
 Tested up to: 3.5.1.
-Stable tag: 2.0.724
+Stable tag: 2.0.725
 
 Popular visitor live tracking component ported from Joomla. Features: live stats,graphs,goals,history,anti-spam,blocking,nightly reports and more..
 
@@ -22,6 +22,61 @@ shown on Joomla, but it's similar for wordpress
 
 
 
+
+
+Watch your visitors behaviour and optimize your website. Front-end counters with country flags, number of visits per specific time period, latest users, Live Stats, Goals, Block harmful IP addresses, Anti-spam, 38 languages.
+
+** Free Android mobile app **
+- access your stats in one-click from your mobile screen
+
+** Front-end widgets ** 
+- displays number of visitors for today, visitors for yesterday, this week counter, last week, this month, last month, total visitors 
+- logged in users
+- flags of visitor's coutnries
+
+
+** Live Stats ** 
+- displays the your visitor's visits in real-time 
+- pop-up window with 3rd party URL to get more information about IP address
+- IP address, browser, operating system, actual page, where user came from
+- option to block user and add page to goals
+- dashboard with current and previous week visit statistics
+- graphs for today with goals, referers, internal page flow, keyphrases, keywords, visited pages, most active top users, countries, browsers, operating systems
+
+** History ** 
+- displays the same as Live Stats but with more tabs and paging 
+
+** Goals ** 
+- allows you to track various types of user actions, such as:
+visited page, page title, username, IP address, came from, country, URL and Form parameters, option to block or redirect such users
+
+** Graphs ** 
+- section contains daily and weekly bar charts for pages, goals, users .. etc.
+
+** Anti-spam **
+- contains list of pre-defined spam words and blocked IP addresses, you can add your "bad words" into this list based on which the IP addresses will be blocked from your website
+
+** Emails **
+- an email report which is sent overnight so you don't have to log in into Joomla back-end to see how is your site performing
+- nightly email report contains 1-day, 7-day, 28-day change of: 
+- total visits (unique / page loads/ hits), 
+- number of fulfilled goals, pages, referers, countries, browsers, operating systems
+- allows you to configure nightly email reports and filter the results
+
+
+** Settings **
+- possibility to choose from one of these languages: Albanian, Arabic, Bengali, Brazilian Portuguese, Bulgarian, Chinese-simplified, Chinese-traditional, Croatian, Czech, Danish, Dutch, English, Estonian, French, German, Greek, Hebrew, Hindi, Hungarian, Indonesian, Italian, Japanese, Latvian, Lithuanian, Macedonian, polish, Romanian, Russian, Serbian, Slovak, Slovenian, Spanish, Swedish, Turkish, Ukrainian, Urdu, Vietnamese
+- show only last visited page in live stats
+- hide repetitive title (in case page title contains some prefix)
+- number of total visits
+- URL of 3rd party geolocation service opened on popup
+- front-end user widget possibility to set link which displays most active user's info
+- front-end country widget flag settings (name, upper/lower case, number of rows/columns, max rows / columns), toggle 
+- front-end visitor widget settings (to show today, yesterday, this week, last week, this month, last month, total)
+- history settings (max values, update time, max rows, cache settings)
+- option to ignore IP, ignore page, ignore user from statistics
+- blocking message which appears to blocked user
+- possibility to erase all gathered data
 
 PRO version features also:
 
