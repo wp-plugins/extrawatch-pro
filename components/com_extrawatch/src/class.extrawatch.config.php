@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.0
- * @revision 727
+ * @revision 728
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -115,6 +115,7 @@ class ExtraWatchConfig
   function reloadConfigValues() {
       $query = sprintf("select name, value from #__extrawatch_config ");
       $values = $this->database->objectListQuery($query);
+	  if (@$values)
       foreach($values as $keyAssoc => $valueAssoc) {
           ExtraWatchConfig::$configValuesCached[$valueAssoc->name] = $valueAssoc->value;
       }
