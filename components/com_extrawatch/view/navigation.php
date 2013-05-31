@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.0
- * @revision 732
+ * @revision 733
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -27,17 +27,7 @@ defined('_JEXEC') or die('Restricted access'); ?>
     src='<?php echo($extraWatch->config->getLiveSiteWithSuffix());?>components/com_extrawatch/img/icons/click.png'/>&nbsp;<?php echo _EW_ADMINHEADER_HEATMAP;?>
 </a> |
 
-<!--PRO_FREE-->
-<img
-        src='<?php echo($extraWatch->config->getLiveSiteWithSuffix());?>components/com_extrawatch/img/icons/flow-disabled.png' title='Available in PRO version'/>&nbsp;<?php echo _EW_ADMINHEADER_FLOW;?>
- |
-<img
-        src='<?php echo($extraWatch->config->getLiveSiteWithSuffix());?>components/com_extrawatch/img/icons/seo-disabled.png' title='Available in PRO version'/>/>&nbsp;SEO
-|
-<img
-        src='<?php echo($extraWatch->config->getLiveSiteWithSuffix());?>components/com_extrawatch/img/icons/click-disabled.png' title='Available in PRO version'/>/>&nbsp;<?php echo _EW_ADMINHEADER_HEATMAP;?>
- |
-<!--PRO_FREE-->
+
 <a href='<?php echo $extraWatch->config->renderLink('graphs');?>'><img
     src='<?php echo($extraWatch->config->getLiveSiteWithSuffix());?>components/com_extrawatch/img/icons/trend_icon.gif'/>&nbsp;<?php echo _EW_ADMINHEADER_GRAPHS;?>
 </a> |
