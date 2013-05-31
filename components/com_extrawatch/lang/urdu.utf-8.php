@@ -472,7 +472,7 @@ DEFINE('_EW_DESC_EMAIL_SEO_REPORTS_ENABLED', " کی شبانہ ای میل رپ�
 DEFINE('_EW_WATCH_INSTALLATION_DEMO', "انسٹالیشن کی مثال دیکھیں ");
 
 /** JW 1.2.18 */
-DEFINE('_EW_ADMINHEADER_HEATMAP', "Heatmap");
+DEFINE('_EW_ADMINHEADER_HEATMAP', "Clicks");
 DEFINE('_EW_HEATMAP_CLICKS', "clicks");
 DEFINE('_EW_HEATMAP_TITLE', "title");
 DEFINE('_EW_HEATMAP_CLICK_OPEN', "Click to open heatmap");

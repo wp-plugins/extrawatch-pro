@@ -484,7 +484,7 @@ DEFINE('_EW_REGISTERED_AT', "Ostatnie przeładowanie: ");
 DEFINE('_EW_SETLOCALE', "pl_PL.utf-8");
 
 /** JW 1.2.18 */
-DEFINE('_EW_ADMINHEADER_HEATMAP', "Heatmap");
+DEFINE('_EW_ADMINHEADER_HEATMAP', "Clicks");
 DEFINE('_EW_HEATMAP_CLICKS', "clicks");
 DEFINE('_EW_HEATMAP_TITLE', "title");
 DEFINE('_EW_HEATMAP_CLICK_OPEN', "Click to open heatmap");
