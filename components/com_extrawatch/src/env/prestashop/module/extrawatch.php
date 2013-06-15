@@ -4,7 +4,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.0
- * @revision 742
+ * @revision 743
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -22,7 +22,7 @@ class extrawatch extends Module
     {
         $this->name = 'extrawatch';
         $this->tab = 'Stats'; // back-end name
-        $this->version = '2.0.742';
+        $this->version = '2.0.743';
         $this->displayName = 'ExtraWatch PRO';
 		$this->tab = 'analytics_stats'; 
 		
