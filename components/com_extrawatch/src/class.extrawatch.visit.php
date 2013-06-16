@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.1
- * @revision 753
+ * @revision 754
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -354,7 +354,7 @@ class ExtraWatchVisit
   {
     if (@$_SERVER['HTTP_X_REAL_IP']) {
       $ip = $_SERVER['HTTP_X_REAL_IP'];
-    } else 
+    } else
     if (@$_SERVER['HTTP_X_FORWARDED_FOR']) {
       $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
     } else {
@@ -368,7 +368,12 @@ class ExtraWatchVisit
    */
   function insertVisit()
   {
-    $userObject = $this->getUser();
+    $ip = addslashes(strip_tags(@ $this->getRemoteIPAddress()));
+    $count = $this->block->getBlockedIp($ip);
+    if (@ $count) {
+      $this->block->dieWithBlockingMessage($ip);
+    }
+
     $title = $this->getTitle();
     $uri = $this->helper->getURI();
     $newUsername = @ $this->env->getUsername();
@@ -380,8 +385,6 @@ class ExtraWatchVisit
     }
     
 
-
-    $ip = addslashes(strip_tags(@ $this->getRemoteIPAddress()));
 
     if ($this->config->isIgnored('IP', $ip) || $this->config->isIgnored('URI', $uri) || $this->config->isIgnored('USER', $newUsername)) {
       return TRUE;
@@ -445,23 +448,7 @@ class ExtraWatchVisit
       }
     }
 
-    $this->insertIntoHistory();
-    /* execute on midnight */
-    $this->runAtMidnight();
-
-    if ($this->date->getUTCTimestamp() % 10 == 0) {
-      $this->deleteOldVisits();
-      
-      $this->seo->cleanUnimportantKeyphrases();
-      
-    }
-
     $time = $this->date->getUTCTimestamp();
-
-    $count = $this->block->getBlockedIp($ip);
-    if (@ $count) {
-      $this->block->dieWithBlockingMessage($ip);
-    }
 
     $query = sprintf("select id, username from #__extrawatch where ip = '%s' limit 1", $this->database->getEscaped($ip));
     $rows = @ $this->database->objectListQuery($query);
@@ -525,7 +512,6 @@ class ExtraWatchVisit
 
     $this->goal->checkGoals($title, $newUsername, $ip, $referer, $liveSite);
 
-
   }
 
   function insertSearchResultPage($uri, $phrase, $referer, $title)
@@ -573,6 +559,19 @@ class ExtraWatchVisit
         $this->flow->insertFlow($lastUri, $uri);
       }
     }
+
+
+      $this->insertIntoHistory();
+      /* execute on midnight */
+      $this->runAtMidnight();
+
+      if ($this->date->getUTCTimestamp() % 10 == 0) {
+          $this->deleteOldVisits();
+          
+          $this->seo->cleanUnimportantKeyphrases();
+          
+      }
+
 
   }
 
@@ -854,12 +853,12 @@ class ExtraWatchVisit
     $liveSite = $this->config->getDomainFromLiveSite();
 	$refererParsed = parse_url($referer);
 	$referer = $refererParsed['host'];
-	
+
     $ignorePrefix = "www.";
     $refererWithoutPrefix = str_replace($ignorePrefix, "", $referer);
     $liveSiteWithoutPrefix = str_replace($ignorePrefix, "", $liveSite);
     $comparison = strpos($refererWithoutPrefix, $liveSiteWithoutPrefix);
-    
+
 	if (!$referer || $comparison != FALSE || $comparison == 0) {
       return TRUE;
     } else {
