@@ -38,7 +38,7 @@ class ExtraWatchStatHTML
     $groupTruncated = $this->extraWatch->helper->truncate($row->name, $this->extraWatch->config->getConfigValue('EXTRAWATCH_TRUNCATE_STATS'));
     $title = $this->extraWatch->visit->getTitleByUri($row->name);
     $uriEncoded = urlencode($row->name);
-    $row->value = "<table><tr><td>" . $row->value . "</td><td><a href='" . $this->extraWatch->config->renderLink("goals", "action=insert&uri=$uriEncoded") . "' title='" . _EW_STATS_ADD_TO_GOALS . "'><img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/goal.gif' border='0'/></a></td></tr></table>";
+    $row->value = "<table><tr><td>" . $row->value . "</td><td><a href='" . $this->extraWatch->config->renderLink("goals", "insert&uri=$uriEncoded") . "' title='" . _EW_STATS_ADD_TO_GOALS . "'><img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/goal.gif' border='0'/></a></td></tr></table>";
 
     //TODO: $row->name should respect the directory it's in
 
@@ -71,7 +71,7 @@ class ExtraWatchStatHTML
     $goalName = $this->extraWatch->goal->getGoalNameById($row->name);
     $groupTruncated = $this->extraWatch->helper->truncate($goalName, $this->extraWatch->config->getConfigValue('EXTRAWATCH_TRUNCATE_STATS'));
     if (@ $row->name) {
-      $row->name = "<a href='" . $this->extraWatch->config->renderLink("goals", "action=edit&goalId=$row->name") . "' title='".htmlentities($goalName)."'>".htmlentities($groupTruncated)."</a>";
+      $row->name = "<a href='" . $this->extraWatch->config->renderLink("goals", "edit&goalId=$row->name") . "' title='".htmlentities($goalName)."'>".htmlentities($groupTruncated)."</a>";
     }
   }
 
@@ -85,7 +85,7 @@ class ExtraWatchStatHTML
     $fromTruncated = $this->extraWatch->helper->truncate($from, $this->extraWatch->config->getConfigValue('EXTRAWATCH_TRUNCATE_STATS') - 5);
     $toTruncated = $this->extraWatch->helper->truncate($to, $this->extraWatch->config->getConfigValue('EXTRAWATCH_TRUNCATE_STATS') - 5);
     $row->value = "<table><tr><td>" . $row->value . "</td><td>
-    <a href='" . $this->extraWatch->config->renderLink("goals", "action=insert&from=$fromEncoded&uri=$toEncoded") . "' title='" . _EW_STATS_ADD_TO_GOALS . "'>
+    <a href='" . $this->extraWatch->config->renderLink("goals", "insert&from=$fromEncoded&uri=$toEncoded") . "' title='" . _EW_STATS_ADD_TO_GOALS . "'>
     <img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/goal.gif' border='0'/></a></td></tr></table>";
 
     $row->name = "-&gt;<a href='" . $this->extraWatch->config->getLiveSite() . "$to' target='_blank' onmouseover=\"toggleElementVisibility('internalDetailDiv$j',1)\" onmouseout=\"toggleElementVisibility('internalDetailDiv$j',0)\">$toTruncated</a>

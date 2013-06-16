@@ -4,8 +4,8 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.0
- * @revision 743
+ * @version 2.1
+ * @revision 752
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -50,7 +50,7 @@ class ExtraWatchVisitHTML
         $value = $row->value;
 
         $output .= "<tr><td>" . htmlspecialchars($key) . ": </td><td>" . htmlspecialchars($value) . "</td><td>" .
-            "<a href='" . $this->extraWatch->config->renderLink("goals", "&action=insert&id=" . $id . "&postid=" . $row->id) . "'
+            "<a href='" . $this->extraWatch->config->renderLink("goals", "insert&id=" . $id . "&postid=" . $row->id) . "'
                         title='" . _EW_GOAL_ADD_SUBMITTED_VALUE . "'><img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/goal.gif' />" . _EW_VISIT_URL_PARAMETER_GOAL . "</a></td></tr>";
       }
 
@@ -74,7 +74,7 @@ class ExtraWatchVisitHTML
         $value = $row->value;
 
         $output .= "<tr><td>" . htmlspecialchars($key) . ": </td><td>" . htmlspecialchars($value) . "</td><td>" .
-            "<a href='" . $this->extraWatch->config->renderLink("goals", "&action=insert&id=" . $id . "&postid=" . $row->id) . "' title='" . _EW_GOAL_ADD_SUBMITTED_VALUE . "'><img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/goal.gif' />" . _EW_VISIT_SUBMITED_FROM_VARIABLE . "</a></td></tr>";
+            "<a href='" . $this->extraWatch->config->renderLink("goals", "insert&id=" . $id . "&postid=" . $row->id) . "' title='" . _EW_GOAL_ADD_SUBMITTED_VALUE . "'><img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/goal.gif' />" . _EW_VISIT_SUBMITED_FROM_VARIABLE . "</a></td></tr>";
       }
 
     return $output;
@@ -231,7 +231,7 @@ class ExtraWatchVisitHTML
 
 
         if (!$countryUpper) {
-          $output .= "<a href='" . $this->extraWatch->config->renderLink("goals", "&action=insert&country=" . @$countryUpper) . "' style='color: #999999;' title='" . _EW_VISITS_ADD_GOAL_COUNTRY . "'>" . @ $countryUpper . "</a>";
+          $output .= "<a href='" . $this->extraWatch->config->renderLink("goals", "insert&country=" . @$countryUpper) . "' style='color: #999999;' title='" . _EW_VISITS_ADD_GOAL_COUNTRY . "'>" . @ $countryUpper . "</a>";
         }
 
 
@@ -256,8 +256,9 @@ class ExtraWatchVisitHTML
 
         
         $userHeatmapClicks = $this->heatmap->getHeatmapClickNums($row->ip, $row->uri, ExtraWatchDate::jwDateFromTimestamp($row->timestamp));
+        $uri2titleId = $this->extraWatch->visit->getUriIdByUriName($row->uri);
         if ($userHeatmapClicks > 0) {
-          $output .= $this->heatmapHTML->renderHeatmapLink($row->uri, $day, "&nbsp;<img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/click.png' title='" . _EW_HEATMAP_CLICK_OPEN . "'/> <span style='color: " . $color . "' title='" . _EW_HEATMAP_CLICK_OPEN . "'>$userHeatmapClicks</span>", $row->ip);
+          $output .= $this->heatmapHTML->renderHeatmapLink($row->uri, $uri2titleId, $day, "&nbsp;<img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/click.png' title='" . _EW_HEATMAP_CLICK_OPEN . "'/> <span style='color: " . $color . "' title='" . _EW_HEATMAP_CLICK_OPEN . "'>$userHeatmapClicks</span>", $row->ip);
         }
 
         $clicks = @$uri2HeatmapClicksAssoc[$row->uri];
@@ -269,7 +270,7 @@ class ExtraWatchVisitHTML
           if ($userHeatmapClicks > 0) {
             $output .= "&nbsp;" . _EW_HEATMAP_OF . "&nbsp;";
           }
-          $output .= $this->heatmapHTML->renderHeatmapLink($row->uri, $day, "&nbsp;<img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/click.png' title='" . _EW_HEATMAP_CLICK_OPEN . "'/> <span style='color: " . $color . "' title='" . _EW_HEATMAP_CLICK_OPEN . "'>$clicks</span>");
+          $output .= $this->heatmapHTML->renderHeatmapLink($row->uri, $uri2titleId, $day, "&nbsp;<img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/click.png' title='" . _EW_HEATMAP_CLICK_OPEN . "'/> <span style='color: " . $color . "' title='" . _EW_HEATMAP_CLICK_OPEN . "'>$clicks</span>");
         }
         
 

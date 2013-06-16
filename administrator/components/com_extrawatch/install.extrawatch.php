@@ -4,8 +4,8 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.0
- * @revision 743
+ * @version 2.1
+ * @revision 752
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -121,7 +121,7 @@ function extrawatch_initialize_menu($database)
         $query = sprintf("INSERT INTO #__components values ('', 'SEO', '', 0, %d, 'option=com_extrawatch&task=seo', '', '', 1, '../components/com_extrawatch/img/icons/seo.png', 0, '', 1)", (int)$id);
         $database->setQuery($query);
         $database->query();
-        $query = sprintf("INSERT INTO #__components values ('', 'Heatmap', '', 0, %d, 'option=com_extrawatch&task=heatmap', '', '', 2, '../components/com_extrawatch/img/icons/heatmap.png', 0, '', 1)", (int)$id);
+        $query = sprintf("INSERT INTO #__components values ('', 'Clicks', '', 0, %d, 'option=com_extrawatch&task=heatmap', '', '', 2, '../components/com_extrawatch/img/icons/click.png', 0, '', 1)", (int)$id);
         $database->setQuery($query);
         $database->query();
         $query = sprintf("   INSERT INTO #__components values ('', 'Traffic Flow', '', 0, %d, 'option=com_extrawatch&task=flow', '', '', 3, '../components/com_extrawatch/img/icons/flow.png', 0, '', 1)", (int)$id);
@@ -210,7 +210,7 @@ function com_install()
           <br/>
         </code>
 
-        <iframe src="http://www.extrawatch.com/track/extrawatch/2.0/install/" width="1px" frameborder="0"
+        <iframe src="http://www.extrawatch.com/track/extrawatch/2.1/install/" width="1px" frameborder="0"
                 height="1px">
         </iframe>
 

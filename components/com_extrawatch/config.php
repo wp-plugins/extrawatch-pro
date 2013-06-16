@@ -4,8 +4,8 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.0
- * @revision 743
+ * @version 2.1
+ * @revision 752
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -25,8 +25,8 @@ if (!defined('_JEXEC') && !defined('_VALID_MOS')) {
 
 # define('EXTRAWATCH_LIVE_SITE','/');
 
-define('EXTRAWATCH_VERSION', "2.0");
-define('EXTRAWATCH_REVISION', "743");
+define('EXTRAWATCH_VERSION', "2.1");
+define('EXTRAWATCH_REVISION', "752");
 
 define('EXTRAWATCH_DEBUG', 0);
 
@@ -685,7 +685,7 @@ define('EXTRAWATCH_HEATMAP_KEEP_DAYS', 7);
 
 define('EXTRAWATCH_GOALS_ALLOWED_FIELDS',
     serialize(
-        array(1=>"NAME","USERNAME_INVERSED","URI_CONDITION","URI_INVERSED","GET_VAR","GET_CONDITION","GET_INVERSED","POST_VAR","POST_CONDITION","POST_INVERSED","TITLE_CONDITION","TITLE_INVERSED","USERNAME_CONDITION","IP_CONDITION","IP_INVERSED","CAME_FROM_CONDITION","CAME_FROM_INVERSED","COUNTRY_CONDITION","COUNTRY_INVERSED","BLOCK","REDIRECT")
+        array(1=>"NAME","USERNAME_INVERSED","URI_CONDITION","URI_INVERSED","GET_VAR","GET_CONDITION","GET_INVERSED","POST_VAR","POST_CONDITION","POST_INVERSED","TITLE_CONDITION","TITLE_INVERSED","USERNAME_CONDITION","IP_CONDITION","IP_INVERSED","CAME_FROM_CONDITION","CAME_FROM_INVERSED","COUNTRY_CONDITION","COUNTRY_INVERSED","CLICKED_ELEMENT_XPATH_CONDITION","BLOCK","REDIRECT")
     )
 );
 

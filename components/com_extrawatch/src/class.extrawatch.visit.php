@@ -4,8 +4,8 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.0
- * @revision 743
+ * @version 2.1
+ * @revision 752
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -860,7 +860,7 @@ class ExtraWatchVisit
     $liveSiteWithoutPrefix = str_replace($ignorePrefix, "", $liveSite);
     $comparison = strpos($refererWithoutPrefix, $liveSiteWithoutPrefix);
     
-	if (!$referer || $comparison != FALSE) { 
+	if (!$referer || $comparison != FALSE || $comparison == 0) {
       return TRUE;
     } else {
       return FALSE;
