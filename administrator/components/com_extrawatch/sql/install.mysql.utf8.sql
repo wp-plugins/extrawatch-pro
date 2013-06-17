@@ -467,7 +467,7 @@
 
                 DROP TABLE IF EXISTS `#__extrawatch_dm_counter`;
  
-                CREATE TABLE `#__extrawatch_dm_counter` (
+                CREATE TABLE IF NOT EXISTS `#__extrawatch_dm_counter` (
                   `id` int(11) NOT NULL auto_increment,
                   `did` int(11) NOT NULL,
                   `ddate` date NOT NULL,
@@ -477,7 +477,7 @@
 
                 DROP TABLE IF EXISTS `#__extrawatch_dm_paths`;
  
-                CREATE TABLE `#__extrawatch_dm_paths` (
+                CREATE TABLE IF NOT EXISTS `#__extrawatch_dm_paths` (
                   `did` int(11) NOT NULL auto_increment,
                   `dname` varchar(255) NOT NULL,
                   PRIMARY KEY (`did`)
@@ -486,7 +486,7 @@
  
                 DROP TABLE IF EXISTS `#__extrawatch_dm_extension`;
  
-                CREATE TABLE `#__extrawatch_dm_extension` (
+                CREATE TABLE IF NOT EXISTS `#__extrawatch_dm_extension` (
                   `eid` int(11) NOT NULL auto_increment,
                   `extname` varchar(25) NOT NULL,
                   PRIMARY KEY (`eid`)
