@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.1
- * @revision 763
+ * @revision 767
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -26,7 +26,7 @@ if (!defined('_JEXEC') && !defined('_VALID_MOS')) {
 # define('EXTRAWATCH_LIVE_SITE','/');
 
 define('EXTRAWATCH_VERSION', "2.1");
-define('EXTRAWATCH_REVISION', "763");
+define('EXTRAWATCH_REVISION', "767");
 
 define('EXTRAWATCH_DEBUG', 0);
 
@@ -600,7 +600,7 @@ define('EXTRAWATCH_MAP_OPENMAP', 1);
 // not using google map by default
 define('EXTRAWATCH_MAP_GOOGLEMAP', 0);
 
-$keysArray = array('goals', 'referers', 'internal', 'keyphrase', 'keywords', 'uri', 'users', 'country', 'ip', 'browser', 'os','social_media');
+$keysArray = array('goals', 'referers', 'internal', 'keyphrase', 'keywords', 'uri', 'users', 'social_media', 'country', 'ip', 'browser', 'os',);
 
 //upgrade.xml path
 define('TEMP_EXTRAWATCH_UPDATE_FILE_URL', "http://www.codegravity.com/update/extrawatch/update.xml");
