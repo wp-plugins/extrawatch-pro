@@ -527,3 +527,6 @@ DEFINE('_EW_GOALS_FILENAME', "Select goals previously exported as XML");
 DEFINE('_EW_ANTISPAM_IMPORT_CSV', "import anti-spam ip csv");
 
 DEFINE('_EW_AGENT_NOT_PUBLISHED_ERROR_WORDPRESS',"Warning: No visits are being recorded. You must go to Appearance->Widgets section, <br/>find ExtraWatchAgent widget and drag&drop it to some of the containers on the right side. <br/>You can publish also other ExtraWatch modules this way.");
+
+DEFINE('_EW_STATS_SOCIAL_MEDIA', "شبكات اجتماعية");
+

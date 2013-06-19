@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.1
- * @revision 761
+ * @revision 763
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -32,7 +32,7 @@ class ExtraWatchDownloads
         $this->helper = new ExtraWatchHelper($this->database);
         $this->date = new ExtraWatchDate($this->database);
     }
-
+	
     function increaseFileDownload($file) {
 
         $filepathquery = sprintf("SELECT did FROM #__extrawatch_dm_paths where dname='%s'", mysql_escape_string($file));
@@ -114,9 +114,6 @@ class ExtraWatchDownloads
         }
         $ext_n = substr($ext_n,0,strlen($ext_n)-1);
 
-        $findpath = (JURI::root());
-        $p = parse_url( $findpath );
-        $path = $p['path'];
         $path = "";
 
         $writingonht_prev = "RewriteEngine on"."\n"."RewriteRule ^(.*).(".$ext_n_prev.")$ ".$path."/components/com_extrawatch/ajax/download.php?file=$1.$2&rand= [R,L]";
@@ -139,7 +136,7 @@ class ExtraWatchDownloads
                 $handle = fopen($root_file,"w");
                 fwrite($handle,$writingonht);
                 fclose($handle);
-                header("location: index.php?option=com_extrawatch&task=downloads");
+                header("location: ".$this->config->renderLink("downloads"));
             }
             else
             {
@@ -153,7 +150,7 @@ class ExtraWatchDownloads
             {
                 fwrite($handle,$writingonht);
                 fclose($handle);
-                header("location: index.php?option=com_extrawatch&task=downloads");
+                header("location: ".$this->config->renderLink("downloads"));
             }
             else
             {
@@ -166,14 +163,13 @@ class ExtraWatchDownloads
     function addFilePath($filepathnamename) {
         $filepathquery_add = sprintf("insert into #__extrawatch_dm_paths (dname) values ('%s')", mysql_escape_string($filepathnamename));
         $this->database->executeQuery($filepathquery_add);
-        header("location: index.php?option=com_extrawatch&task=downloads");
+        header("location: ".$this->config->renderLink("downloads"));
     }
 
     function updateExtension($eid, $extname) {
 
         $extensionquery_ht_prev = sprintf("SELECT * FROM #__extrawatch_dm_extension");
-        $this->database->setQuery($extensionquery_ht_prev);
-        $extensionar_ht_prev = $this->database->objectListQuery();
+        $extensionar_ht_prev = $this->database->objectListQuery($extensionquery_ht_prev);
 
         $ext_n_prev = "";
         foreach($extensionar_ht_prev as $extensionhtprev)
@@ -189,8 +185,7 @@ class ExtraWatchDownloads
         $this->database->query();
 
         $extensionquery_ht = sprintf("SELECT * FROM #__extrawatch_dm_extension");
-        $this->database->setQuery($extensionquery_ht);
-        $extensionar_ht = $this->database->objectListQuery();
+        $extensionar_ht = $this->database->objectListQuery($extensionquery_ht);
 
         $ext_n = "";
         foreach($extensionar_ht as $extensionht)
@@ -201,9 +196,7 @@ class ExtraWatchDownloads
         }
         $ext_n = substr($ext_n,0,strlen($ext_n)-1);
 
-        $findpath = (JURI::root());
-        $p = parse_url( $findpath );
-        $path = $p['path'];
+        $path = "";
 
 
         $writingonht_prev = "RewriteEngine on"."\n"."RewriteRule ^(.*).(".$ext_n_prev.")$ ".$path."/components/com_extrawatch/ajax/download.php?file=$1.$2&rand= [R,L]";
@@ -229,7 +222,7 @@ class ExtraWatchDownloads
                 $handle = fopen($root_file,"w");
                 fwrite($handle,$writingonht);
                 fclose($handle);
-                header("location: index.php?option=com_extrawatch&task=downloads");
+                header("location: ".$this->config->renderLink("downloads"));
             }
             else
             {
@@ -243,7 +236,7 @@ class ExtraWatchDownloads
             {
                 fwrite($handle,$writingonht);
                 fclose($handle);
-                header("location: index.php?option=com_extrawatch&task=downloads");
+                header("location: ".$this->config->renderLink("downloads"));
             }
             else
             {
@@ -270,7 +263,7 @@ class ExtraWatchDownloads
         $filepathquery = sprintf("update #__extrawatch_dm_paths set dname='%s' where did='%d'", mysql_escape_string($filepathname), (int) $did);
         $this->database->setQuery($filepathquery);
         $this->database->query();
-        header("location: index.php?option=com_extrawatch&task=downloads");
+        header("location: ".$this->config->renderLink("downloads"));
 
     }
 
@@ -301,9 +294,6 @@ class ExtraWatchDownloads
             $ext_n = substr($ext_n,0,strlen($ext_n)-1);
 
 
-            $findpath = (JURI::root());
-            $p = parse_url( $findpath );
-            $path = $p['path'];
             $path = "";
 
             $writingonht_prev = "RewriteEngine on"."\n"."RewriteRule ^(.*).(".$ext_n_prev.")$ ".$path."/components/com_extrawatch/ajax/download.php?file=$1.$2&rand= [R,L]";
@@ -329,7 +319,7 @@ class ExtraWatchDownloads
                         $handle = fopen($root_file,"w");
                         fwrite($handle,$writingonht);
                         fclose($handle);
-                        header("location: index.php?option=com_extrawatch&task=downloads");
+                        header("location: ".$this->config->renderLink("downloads"));
                     }
                 }
                 else
@@ -337,7 +327,7 @@ class ExtraWatchDownloads
                     $handle = fopen($root_file,"w");
                     fwrite($handle,$existingcode_f);
                     fclose($handle);
-                    header("location: index.php?option=com_extrawatch&task=downloads");
+                    header("location: ".$this->config->renderLink("downloads"));
                 }
             }
             else
@@ -347,7 +337,7 @@ class ExtraWatchDownloads
                 {
                     fwrite($handle,$writingonht);
                     fclose($handle);
-                    header("location: index.php?option=com_extrawatch&task=downloads");
+                    header("location: ".$this->config->renderLink("downloads"));
                 }
                 else
                 {
@@ -362,7 +352,7 @@ class ExtraWatchDownloads
         $extensionquery_del = sprintf("delete from #__extrawatch_dm_paths where did='%d'", (int)$co);
         $this->database->setQuery($extensionquery_del);
         $this->database->query();
-        header("location: index.php?option=com_extrawatch&task=downloads");
+        header("location: ".$this->config->renderLink("downloads"));
     }
     
     function getFileStatistics($did) {
@@ -416,7 +406,7 @@ class ExtraWatchDownloads
             "count_tot_dt" => $count_tot_dt);
 
     }
-
+	
 
 }
 

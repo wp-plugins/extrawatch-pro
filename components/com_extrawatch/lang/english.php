@@ -561,4 +561,5 @@ DEFINE('_EW_DOWNLOADS_LAST_MONTH', "Last Month");
 DEFINE('_EW_DOWNLOADS_TOTAL', "Total");
 DEFINE('_EW_DOWNLOADS_INCOMPLETE', "The required Information is incomplete");
 
+DEFINE('_EW_STATS_SOCIAL_MEDIA', "Social Media");
 

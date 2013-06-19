@@ -4,10 +4,10 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 1.2.18
- * @revision 404
+ * @version 2.1
+ * @revision 763
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
- * @copyright (C) 2012 by CodeGravity.com - All rights reserved!
+ * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
  */
 
@@ -52,6 +52,14 @@ class ExtraWatchStatHTML
     }
     return @$icon;
   }
+
+    function changeSocialMedia($j, $row)
+    {
+        if ($row->name) {
+            $icon = "<img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/" . strtolower($row->name) . ".png' />";
+        }
+        return @$icon;
+    }
 
   function changeCountry($j, $row, $frontend)
   {
@@ -145,6 +153,9 @@ class ExtraWatchStatHTML
   /* visit */
   function renderIntValuesByName($groupOriginal, $expanded = FALSE, $total = FALSE, $date = 0, $limit = 5, $frontend = FALSE)
   {
+	  
+	  
+
 
     $group = @ constant('EW_DB_KEY_' . strtoupper($groupOriginal));
 
@@ -244,6 +255,11 @@ class ExtraWatchStatHTML
           {
           $this->changeKeyphrase($j, $row);
           break;
+          }
+          case EW_DB_KEY_SOCIAL_MEDIA :
+          {
+              $icon = $this->changeSocialMedia($j, $row);
+              break;
           }
       }
 

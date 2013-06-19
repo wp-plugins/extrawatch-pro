@@ -4,7 +4,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.1
- * @revision 761
+ * @revision 763
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -29,9 +29,10 @@ defined('_JEXEC') or die('Restricted access'); ?>
                     <input name="task" type="hidden"  value="downloads">
                     <input name="action" type="hidden"  value="saveAddExtension">
                     <input name="Submit" type="submit" class="button" value="Add">
-                    <input name="Submit" type="button" class="button" value="Back" onclick="window.location.href='index.php?option=com_extrawatch&task=downloads&action='">
+                    <input name="Submit" type="button" class="button" value="Back" onclick="window.location.href='<?php echo $extraWatch->config->renderLink("downloads","");?>">
                 </div>                  </td>
         </tr>
     </table>
     <br>
 </form>
+

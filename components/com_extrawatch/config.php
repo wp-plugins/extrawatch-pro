@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.1
- * @revision 761
+ * @revision 763
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -26,7 +26,7 @@ if (!defined('_JEXEC') && !defined('_VALID_MOS')) {
 # define('EXTRAWATCH_LIVE_SITE','/');
 
 define('EXTRAWATCH_VERSION', "2.1");
-define('EXTRAWATCH_REVISION', "761");
+define('EXTRAWATCH_REVISION', "763");
 
 define('EXTRAWATCH_DEBUG', 0);
 
@@ -580,6 +580,7 @@ define('EW_DB_KEY_URI', 12);
 define('EW_DB_KEY_USERS', 13);
 define('EW_DB_KEY_KEYPHRASE', 14);
 define('EW_DB_KEY_URI2KEYPHRASE', 15);
+define('EW_DB_KEY_SOCIAL_MEDIA', 19);
 
 define('EW_DB_KEY_SIZE_DB', 101);
 define('EW_DB_KEY_SIZE_COM', 102);
@@ -599,7 +600,7 @@ define('EXTRAWATCH_MAP_OPENMAP', 1);
 // not using google map by default
 define('EXTRAWATCH_MAP_GOOGLEMAP', 0);
 
-$keysArray = array('goals', 'referers', 'internal', 'keyphrase', 'keywords', 'uri', 'users', 'country', 'ip', 'browser', 'os');
+$keysArray = array('goals', 'referers', 'internal', 'keyphrase', 'keywords', 'uri', 'users', 'country', 'ip', 'browser', 'os','social_media');
 
 //upgrade.xml path
 define('TEMP_EXTRAWATCH_UPDATE_FILE_URL', "http://www.codegravity.com/update/extrawatch/update.xml");
@@ -690,3 +691,37 @@ define('EXTRAWATCH_GOALS_ALLOWED_FIELDS',
 );
 
 
+/* Referer Variables */
+
+
+define('EXTRAWATCH_NAME_SOCIAL_UNKNOWN',"Direct Access");
+
+define('EXTRAWATCH_SOCIAL_MEDIA_REGEX',serialize(array(
+    '/^(https?:\/\/)?(www\.)?facebook\.com/' => "facebook",
+    '/^(https?:\/\/)?(www\.)?twitter\.com/' => "twitter",
+    '/^(https?:\/\/)?(www\.)?t\.com?/' => "twitter",
+    '/^(https?:\/\/)?(www\.)?google\.com/' => "google",
+    '/^(https?:\/\/)?(www\.)?linkedin\.com?/' => "linkedin",
+    '/^(https?:\/\/)?(www\.)?plus\.google\.com?/' => "google+",
+    '/^(https?:\/\/)?(www\.)?pinterest\.com?/' => "pinterest",
+    '/^(https?:\/\/)?(www\.)?myspace\.com?/' => "myspace",
+    '/^(https?:\/\/)?(www\.)?orkut\.com?/' => "orkut",
+    '/^(https?:\/\/)?(www\.)?ning\.com?/' => "ning",
+    '/^(https?:\/\/)?(www\.)?deviantart\.com?/' => "deviantart",
+    '/^(https?:\/\/)?(www\.)?livejournal\.com?/' => "livejournal",
+    '/^(https?:\/\/)?(www\.)?tagged\.com?/' => "tagged",
+    '/^(https?:\/\/)?(www\.)?meetup\.com?/' => "meetup",
+    '/^(https?:\/\/)?(www\.)?mylife\.com?/' => "mylife",
+    '/^(https?:\/\/)?(www\.)?multiply\.com?/' => "multiply",
+    '/^(https?:\/\/)?(www\.)?cafemom\.com?/' => "cafemom",
+
+
+
+
+
+
+
+
+
+
+)));

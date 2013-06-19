@@ -4,7 +4,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.1
- * @revision 761
+ * @revision 763
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -24,7 +24,7 @@ defined('_JEXEC') or die('Restricted access'); ?>
             ?>
             <tr>
                 <td class="table" height="23" width="73%" align="left"><?php echo $filepath->dname;?></td>
-                <td width="9%" class="table" height="23"><div align="center"><a href="index.php?option=com_extrawatch&task=downloads&action=editFile&did=<?php echo $filepath->did?>"><img src="<?php echo $extraWatch->config->getLiveSiteWithSuffix();?>components/com_extrawatch/img/icons/edit.jpg"/></a></div></td>
+                <td width="9%" class="table" height="23"><div align="center"><a href="<?php echo $extraWatch->config->renderLink("downloads","editFile&did=".$filepath->did);?>"><img src="<?php echo $extraWatch->config->getLiveSiteWithSuffix();?>components/com_extrawatch/img/icons/edit.jpg"/></a></div></td>
                 <td width="11%" class="table" height="23"><div align="center"><a href="javascript:confirmChoicefilepath('<?php echo $filepath->did?>')"><img src="<?php echo $extraWatch->config->getLiveSiteWithSuffix();?>components/com_extrawatch/img/icons/delete.jpg" /></a></div></td>
             </tr>
             <?php
@@ -32,3 +32,4 @@ defined('_JEXEC') or die('Restricted access'); ?>
     ?>
 
 </table>
+

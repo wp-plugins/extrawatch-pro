@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.1
- * @revision 761
+ * @revision 763
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -90,6 +90,7 @@ switch ($env) {
 require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "src" . DS . "inc.extrawatch.env.php";
 require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "config.php";
 require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "src" . DS . "class.extrawatch.php";
+require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "src" . DS . "class.extrawatch.referers.php";
 require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "src" . DS . "class.extrawatch.block.php";
 require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "src" . DS . "class.extrawatch.cache.php";
 require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "src" . DS . "class.extrawatch.config.php";
@@ -119,7 +120,6 @@ require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "src
 require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "src" . DS . "html". DS . "class.extrawatch.trend.html.php";
 require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "src" . DS . "html". DS . "class.extrawatch.heatmap.html.php";
 require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "src" . DS . "html". DS . "class.extrawatch.flow.html.php";
-require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "src" . DS . "html". DS . "class.extrawatch.downloads.html.php";
 
 function initializeJoomla()
 {

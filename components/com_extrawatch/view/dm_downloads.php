@@ -4,7 +4,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.1
- * @revision 761
+ * @revision 763
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -159,7 +159,7 @@ $filepathar = $extraWatch->database->objectListQuery($filepathquery);
         userResponse = confirm(msgQuestion);
         if (userResponse == 1)
         {
-            location = "index.php?option=com_extrawatch&task=downloads&action=deleteExtension&co="+j;
+            location = "<?php echo $extraWatch->config->renderLink("downloads","deleteExtension");?>&co="+j;
         }
         else
         {
@@ -172,7 +172,7 @@ $filepathar = $extraWatch->database->objectListQuery($filepathquery);
         userResponse = confirm(msgQuestion);
         if (userResponse == 1)
         {
-            location = "index.php?option=com_extrawatch&task=downloads&action=deleteFile&co="+j;
+            location = "<?php echo $extraWatch->config->renderLink("downloads","deleteFile");?>&co="+j;
         }
         else
         {
@@ -212,7 +212,7 @@ $filepathar = $extraWatch->database->objectListQuery($filepathquery);
                     <td height="23" align="left"><b><?php echo(_EW_DOWNLOADS_EXTENSIONS_BEING_MONITORED);?></b></td>
                 </tr>
                 <tr>
-                    <td class="" height="23" width="73%" align="left"><div align="right"><a href="index.php?option=com_extrawatch&task=downloads&action=addExtension"><?php echo(_EW_DOWNLOADS_ADD_EXTENSION);?></a> </div></td>
+                    <td class="" height="23" width="73%" align="left"><div align="right"><a href="<?php echo $extraWatch->config->renderLink("downloads","addExtension");?>"><?php echo(_EW_DOWNLOADS_ADD_EXTENSION);?></a> </div></td>
                 </tr>
                 <tr>
                     <td class="" height="23" width="73%" align="left">&nbsp;</td>
@@ -226,7 +226,7 @@ $filepathar = $extraWatch->database->objectListQuery($filepathquery);
                     <td height="23" align="left"><b><?php echo(_EW_DOWNLOADS_FILES_PATHS_BEING_MONITORED);?></b></td>
                 </tr>
                 <tr>
-                    <td class="" height="23" width="73%" align="left"><div align="right"><a href="index.php?option=com_extrawatch&task=downloads&action=addFile"><?php echo(_EW_DOWNLOADS_ADD_FILE_PATH);?></a> </div></td>
+                    <td class="" height="23" width="73%" align="left"><div align="right"><a href="<?php echo $extraWatch->config->renderLink("downloads","addFile");?>"><?php echo(_EW_DOWNLOADS_ADD_FILE_PATH);?></a> </div></td>
                 </tr>
                 <tr>
                     <td class="" height="23" width="73%" align="left">&nbsp;</td>
@@ -241,3 +241,4 @@ $filepathar = $extraWatch->database->objectListQuery($filepathquery);
 <br />
 <br />
 <br />
+
