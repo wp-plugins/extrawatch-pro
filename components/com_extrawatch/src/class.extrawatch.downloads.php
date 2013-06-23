@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.1
- * @revision 775
+ * @revision 776
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -201,7 +201,7 @@ class ExtraWatchDownloads
 
         $writingonht_prev = "\nRewriteEngine on"."\n"."RewriteRule ^(.*).(".$ext_n_prev.")$ ".$path."components/com_extrawatch/ajax/download.php?env=$env&file=$1.$2&rand= [R,L]";
 
-        $root_file = $path.DS.".htaccess";
+        $root_file = $this->env->getRootPath().DS.".htaccess";
 
         $existingcode = file_get_contents($root_file);
 
@@ -299,7 +299,7 @@ class ExtraWatchDownloads
 			
             $writingonht_prev = "\nRewriteEngine on"."\n"."RewriteRule ^(.*).(".$ext_n_prev.")$ ".$path."components/com_extrawatch/ajax/download.php?env=$env&file=$1.$2&rand= [R,L]";
 
-            $root_file = $path.DS.".htaccess";
+            $root_file = $this->env->getRootPath().DS.".htaccess";
 
             $existingcode = file_get_contents($root_file);
 
