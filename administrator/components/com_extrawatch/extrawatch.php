@@ -4,7 +4,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.1
- * @revision 770
+ * @revision 771
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -24,7 +24,7 @@ if (!defined('DS')) {
 
 $input = JFactory::getApplication()->input;
 $task = $input->get('task');
-JToolbarHelper::title('ExtraWatch 2.1.770 PRO');
+JToolbarHelper::title('ExtraWatch 2.1.771 PRO');
 require_once (JPATH_BASE.DS."components".DS."com_extrawatch".DS."admin.extrawatch.php");
 
 ?>
