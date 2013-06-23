@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.1
- * @revision 769
+ * @revision 770
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -114,7 +114,7 @@ class ExtraWatchDownloads
         }
         $ext_n = substr($ext_n,0,strlen($ext_n)-1);
 
-        $path = "";
+        $path = $this->env->getRootPath();
 
         $writingonht_prev = "RewriteEngine on"."\n"."RewriteRule ^(.*).(".$ext_n_prev.")$ ".$path."/components/com_extrawatch/ajax/download.php?file=$1.$2&rand= [R,L]";
 
@@ -196,7 +196,7 @@ class ExtraWatchDownloads
         }
         $ext_n = substr($ext_n,0,strlen($ext_n)-1);
 
-        $path = "";
+        $path = $this->env->getRootPath();
 
 
         $writingonht_prev = "RewriteEngine on"."\n"."RewriteRule ^(.*).(".$ext_n_prev.")$ ".$path."/components/com_extrawatch/ajax/download.php?file=$1.$2&rand= [R,L]";
@@ -294,7 +294,7 @@ class ExtraWatchDownloads
             $ext_n = substr($ext_n,0,strlen($ext_n)-1);
 
 
-            $path = "";
+            $path = $this->env->getRootPath();
 
             $writingonht_prev = "RewriteEngine on"."\n"."RewriteRule ^(.*).(".$ext_n_prev.")$ ".$path."/components/com_extrawatch/ajax/download.php?file=$1.$2&rand= [R,L]";
 

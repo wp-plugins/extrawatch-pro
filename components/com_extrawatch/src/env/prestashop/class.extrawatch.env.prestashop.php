@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.1
- * @revision 769
+ * @revision 770
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -182,6 +182,11 @@ class ExtraWatchPrestaShopEnv implements ExtraWatchEnv
         $lastDir = $adminDirSplitted[sizeof($adminDirSplitted)-1];
         return $lastDir;
     }
+
+    public function getRootPath() {
+        return ;
+    }
+
 
 }
 
