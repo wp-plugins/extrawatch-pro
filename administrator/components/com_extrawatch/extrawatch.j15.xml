@@ -6,7 +6,7 @@
     <copyright>Copyright 2006-2013 by CodeGravity.com</copyright>
     <authorEmail>support@extrawatch.com</authorEmail>
     <authorUrl>http://www.extrawatch.com</authorUrl>
-    <version>2.1.780 PRO</version>
+    <version>2.1.781 PRO</version>
     <license>http://www.gnu.org/licenses/gpl-3.0.txt GNU/GPLv3</license>
     <description>
         ExtraWatch is an AJAX component and module for Joomla CMS that allows you to watch
@@ -28,6 +28,7 @@
         <folder>src</folder>
         <folder>view</folder>
         <folder>sql</folder>
+        <folder>sql/scripts</folder>
 
         <filename>config.php</filename>
         <filename>includes.php</filename>
@@ -536,32 +537,12 @@
             </query>
 
             <query>
-                CREATE TABLE `#__extrawatch_dm_counter` (
-                `id` int(11) NOT NULL auto_increment,
-                `did` int(11) NOT NULL,
-                `ddate` date NOT NULL,
-                PRIMARY KEY (`id`)
-                ) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
+				CREATE TABLE IF NOT EXISTS `#__extrawatch_sql_scripts` (
+				`id` int(11) NOT NULL auto_increment,
+				`scriptname` varchar(255) default NULL,
+				PRIMARY KEY  (`id`)
+				);
             </query>
-
-
-            <query>
-                CREATE TABLE `#__extrawatch_dm_paths` (
-                `did` int(11) NOT NULL auto_increment,
-                `dname` varchar(255) NOT NULL,
-                PRIMARY KEY (`did`)
-                )ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
-            </query>
-
-
-            <query>
-                CREATE TABLE `#__extrawatch_dm_extension` (
-                `eid` int(11) NOT NULL auto_increment,
-                `extname` varchar(25) NOT NULL,
-                PRIMARY KEY (`eid`)
-                )ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
-            </query>
-
 
         </queries>
     </install>

@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.1
- * @revision 780
+ * @revision 781
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -162,6 +162,10 @@ class ExtraWatchSetupWordpress implements ExtraWatchSetup
     $database->query();
 
     $query = "DROP TABLE #__extrawatch_uri2keyphrase_pos";
+    $database->executeQuery(trim($database->replaceDbPrefix($query)));
+    $database->query();
+
+    $query = "DROP TABLE #__extrawatch_sql_scripts";
     $database->executeQuery(trim($database->replaceDbPrefix($query)));
     $database->query();
 
