@@ -4,7 +4,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.1
- * @revision 781
+ * @revision 782
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -61,7 +61,7 @@ $filepathar = $extraWatch->database->objectListQuery($filepathquery);
 
         ]);
         var options = {
-            title: 'Total Downloads'
+            title: '<?php echo(_EW_DOWNLOADS_TOTAL);?>'
         };
         var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
         chart.draw(data, options);

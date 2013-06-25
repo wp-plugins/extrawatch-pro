@@ -576,6 +576,7 @@ DEFINE('_EW_DOWNLOADS_INCOMPLETE', "The required Information is incomplete");
 
 DEFINE('_EW_STATS_SOCIAL_MEDIA', "Social Media");
 DEFINE('_EW_MENU_AVAILABLE_IN_PRO',"Available in PRO version");
+DEFINE('_EW_DOWNLOADS_TOTAL',"Total Downloads");
 
 
 /** 3.0 - hosted version */

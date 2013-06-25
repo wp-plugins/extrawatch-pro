@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.1
- * @revision 781
+ * @revision 782
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -26,7 +26,7 @@ if (!defined('_JEXEC') && !defined('_VALID_MOS')) {
 # define('EXTRAWATCH_LIVE_SITE','/');
 
 define('EXTRAWATCH_VERSION', "2.1");
-define('EXTRAWATCH_REVISION', "781");
+define('EXTRAWATCH_REVISION', "782");
 
 define('EXTRAWATCH_DEBUG', 0);
 
@@ -693,8 +693,6 @@ define('EXTRAWATCH_GOALS_ALLOWED_FIELDS',
 
 /* Referer Variables */
 
-
-define('EXTRAWATCH_NAME_SOCIAL_UNKNOWN',"Direct Access");
 
 define('EXTRAWATCH_SOCIAL_MEDIA_REGEX',serialize(array(
     '/^(https?:\/\/)?(www\.)?facebook\.com/' => "facebook",
