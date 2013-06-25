@@ -6,7 +6,7 @@ Plugin URI: http://www.extrawatch.com
 
 Description: Features: <strong>Visitor Live Stats</strong>, <strong>Monitor File Downloads</strong>, <strong>Monitor clicks, Heatmap</strong>, <strong>SEO Report</strong>, <strong>Traffic Flow</strong>, <strong>Front-end Counters</strong>, <strong>Anti-spam</strong>, <strong>Nightly Email Reports</strong>, <strong>History</strong>, <strong>Graphs</strong>, <strong>Directory sizes</strong>, translated in <strong>42 world languages</strong>
 
-Version: 2.1.784 PRO
+Version: 2.1.785 PRO
 Author: ExtraWatch.com
 Author URI: http://www.extrawatch.com
 */
