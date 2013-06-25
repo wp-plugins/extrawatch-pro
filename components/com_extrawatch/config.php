@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.1
- * @revision 782
+ * @revision 784
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -26,7 +26,7 @@ if (!defined('_JEXEC') && !defined('_VALID_MOS')) {
 # define('EXTRAWATCH_LIVE_SITE','/');
 
 define('EXTRAWATCH_VERSION', "2.1");
-define('EXTRAWATCH_REVISION', "782");
+define('EXTRAWATCH_REVISION', "784");
 
 define('EXTRAWATCH_DEBUG', 0);
 
@@ -698,9 +698,9 @@ define('EXTRAWATCH_SOCIAL_MEDIA_REGEX',serialize(array(
     '/^(https?:\/\/)?(www\.)?facebook\.com/' => "facebook",
     '/^(https?:\/\/)?(www\.)?twitter\.com/' => "twitter",
     '/^(https?:\/\/)?(www\.)?t\.com?/' => "twitter",
-    '/^(https?:\/\/)?(www\.)?google\.com/' => "google",
+    '/^(https?:\/\/)?(www\.)?t\.co?/' => "twitter",
     '/^(https?:\/\/)?(www\.)?linkedin\.com?/' => "linkedin",
-    '/^(https?:\/\/)?(www\.)?plus\.google\.com?/' => "google+",
+    '/^(https?:\/\/)?(www\.)?plus\.google\.com?/' => "google_plus",
     '/^(https?:\/\/)?(www\.)?pinterest\.com?/' => "pinterest",
     '/^(https?:\/\/)?(www\.)?myspace\.com?/' => "myspace",
     '/^(https?:\/\/)?(www\.)?orkut\.com?/' => "orkut",

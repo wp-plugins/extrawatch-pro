@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.1
- * @revision 782
+ * @revision 784
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -871,6 +871,8 @@ class ExtraWatchVisit
 
   function runAtMidnight()
   {
+    require_once JPATH_BASE . DS . "components" . DS . "com_extrawatch" . DS . "lang" . DS . $this->config->getLanguage() . ".php";
+
     $lastRunAtMidnightDate = $this->config->getConfigValue("EXTRAWATCH_LAST_RUN_AT_MIDNIGHT_DATE");
     $todayDate = $this->date->jwDateToday();
 
