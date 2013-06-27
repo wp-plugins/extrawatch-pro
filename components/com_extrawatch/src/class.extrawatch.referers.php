@@ -4,7 +4,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.1
- * @revision 790
+ * @revision 791
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -116,14 +116,16 @@ class ExtraWatchReferer
     }
 
     function checkDevice($stringua){
-        $identifiedDeviceJSONDecoded = json_decode($this->identifyDeviceAsJSON($stringua));
-        $this->stat->increaseKeyValueInGroup($this->config->getConfigValue("EW_DB_KEY_DEVICES"),$identifiedDeviceJSONDecoded->name);
+        $identifiedDeviceJSON = $this->identifyDeviceAsJSON($stringua);
+        if ($identifiedDeviceJSON) {
+            $this->stat->increaseKeyValueInGroup($this->config->getConfigValue("EW_DB_KEY_DEVICES"),$identifiedDeviceJSON);
+        }
     }
 
 
     function checkOS($ret){
-        $identifiedOSJSONDecoded = json_decode($this->identifyOSAsJSON($ret));
-        $this->stat->increaseKeyValueInGroup($this->config->getConfigValue("EW_DB_KEY_OS"),$identifiedOSJSONDecoded->name);
+        $identifiedOSJSON = $this->identifyOSAsJSON($ret);
+        $this->stat->increaseKeyValueInGroup($this->config->getConfigValue("EW_DB_KEY_OS"),$identifiedOSJSON);
     }
 
 }
