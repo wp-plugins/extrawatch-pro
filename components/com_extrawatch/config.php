@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.1
- * @revision 787
+ * @revision 788
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -26,7 +26,7 @@ if (!defined('_JEXEC') && !defined('_VALID_MOS')) {
 # define('EXTRAWATCH_LIVE_SITE','/');
 
 define('EXTRAWATCH_VERSION', "2.1");
-define('EXTRAWATCH_REVISION', "787");
+define('EXTRAWATCH_REVISION', "788");
 
 define('EXTRAWATCH_DEBUG', 0);
 
@@ -581,6 +581,7 @@ define('EW_DB_KEY_USERS', 13);
 define('EW_DB_KEY_KEYPHRASE', 14);
 define('EW_DB_KEY_URI2KEYPHRASE', 15);
 define('EW_DB_KEY_SOCIAL_MEDIA', 19);
+define('EW_DB_KEY_DEVICES',21);
 
 define('EW_DB_KEY_SIZE_DB', 101);
 define('EW_DB_KEY_SIZE_COM', 102);
@@ -600,7 +601,7 @@ define('EXTRAWATCH_MAP_OPENMAP', 1);
 // not using google map by default
 define('EXTRAWATCH_MAP_GOOGLEMAP', 0);
 
-$keysArray = array('goals', 'referers', 'internal', 'keyphrase', 'keywords', 'uri', 'users', 'social_media', 'country', 'ip', 'browser', 'os',);
+$keysArray = array('goals', 'referers', 'internal', 'keyphrase', 'keywords', 'uri', 'users', 'country', 'ip', 'browser', 'os','social_media','devices');
 
 //upgrade.xml path
 define('TEMP_EXTRAWATCH_UPDATE_FILE_URL', "http://www.codegravity.com/update/extrawatch/update.xml");
@@ -686,12 +687,13 @@ define('EXTRAWATCH_HEATMAP_KEEP_DAYS', 7);
 
 define('EXTRAWATCH_GOALS_ALLOWED_FIELDS',
     serialize(
-        array(1=>"NAME","USERNAME_INVERSED","URI_CONDITION","URI_INVERSED","GET_VAR","GET_CONDITION","GET_INVERSED","POST_VAR","POST_CONDITION","POST_INVERSED","TITLE_CONDITION","TITLE_INVERSED","USERNAME_CONDITION","IP_CONDITION","IP_INVERSED","CAME_FROM_CONDITION","CAME_FROM_INVERSED","COUNTRY_CONDITION","COUNTRY_INVERSED","CLICKED_ELEMENT_XPATH_CONDITION","BLOCK","REDIRECT")
+        array(1=>"NAME","USERNAME_INVERSED","URI_CONDITION","URI_INVERSED","GET_VAR","GET_CONDITION","GET_INVERSED","POST_VAR","POST_CONDITION","POST_INVERSED","TITLE_CONDITION","TITLE_INVERSED","USERNAME_CONDITION","IP_CONDITION","IP_INVERSED","CAME_FROM_CONDITION","CAME_FROM_INVERSED","COUNTRY_CONDITION","COUNTRY_INVERSED","BLOCK","REDIRECT")
     )
 );
 
 
 /* Referer Variables */
+
 
 
 define('EXTRAWATCH_SOCIAL_MEDIA_REGEX',serialize(array(
@@ -712,14 +714,5 @@ define('EXTRAWATCH_SOCIAL_MEDIA_REGEX',serialize(array(
     '/^(https?:\/\/)?(www\.)?mylife\.com?/' => "mylife",
     '/^(https?:\/\/)?(www\.)?multiply\.com?/' => "multiply",
     '/^(https?:\/\/)?(www\.)?cafemom\.com?/' => "cafemom",
-
-
-
-
-
-
-
-
-
 
 )));
