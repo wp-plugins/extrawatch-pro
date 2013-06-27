@@ -554,3 +554,4 @@ DEFINE('_EW_DOWNLOADS_TOTAL',"Total Downloads");
 DEFINE('_EW_GOALS_CLICKED_ELEMENT_XPATH_CONDITION', "xpath of clicked element condition");
 DEFINE('_EW_DESC_GOALS_CLICKED_ELEMENT_XPATH_CONDITION', "xpath of clicked element condition");
 
+DEFINE('_EW_STATS_DEVICES', "Mobile Devices");

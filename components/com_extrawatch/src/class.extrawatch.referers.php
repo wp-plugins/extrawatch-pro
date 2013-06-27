@@ -4,7 +4,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.1
- * @revision 789
+ * @revision 790
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -22,7 +22,8 @@ class ExtraWatchReferer
     public $env;
     public $date;
     public $stat;
-    public $uasparser;
+
+    public static $uasparser;
 
     function __construct($database)
     {
@@ -32,11 +33,15 @@ class ExtraWatchReferer
         $this->helper = new ExtraWatchHelper($this->database);
         $this->date = new ExtraWatchDate($this->database);
         $this->stat = new ExtraWatchStat($this->database);
-
-        $this->uasparser = new UASparser();
-        $this->uasparser->SetCacheDir($this->env->getTempDirectory());
-        $this->ret = $this->uasparser->Parse();
         $this->user_agent_string = $_SERVER['HTTP_USER_AGENT'];
+    }
+
+    function getUAParser() {    //static method to have only one instance of parser, so we don't have to initialize it all the time
+        if (!@ self::$uasparser) {
+            self::$uasparser = new UASparser();
+            self::$uasparser->SetCacheDir(realpath(dirname(__FILE__).DS."..").DS."data".DS."user-agent");
+        }
+        return self::$uasparser;
     }
 
     function identifyBrowser($userAgent)
@@ -74,7 +79,10 @@ class ExtraWatchReferer
         return  false;
     }
 
-    function identifyDevice($stringua) {
+    function identifyDeviceAsJSON($stringua) {
+        $uaParser = $this->getUAParser();
+        $ret = $uaParser->Parse($stringua);
+
         $pos1 = strpos($stringua, "(");
         $pos2= strpos($stringua,  ")");
         $len = strlen($stringua);
@@ -90,30 +98,32 @@ class ExtraWatchReferer
 
     }
 
-    function identifyOS($ret){
+    function identifyOSAsJSON($stringua){
+        $uaParser = $this->getUAParser();
+        $ret = $uaParser->Parse($stringua);
         $arr = array('name' => $ret['os_name'], 'icon' => $ret['os_icon']);
         $arr=json_encode($arr);
+        return $arr;
     }
-
 
 
     function checkSocialMedia($url){
         $identifiedSocialMedia = $this->identifySocialMedia($url);
-        if(!$referer)  {
+        if(!$identifiedSocialMedia)  {
             $this->stat->increaseKeyValueInGroup($this->config->getConfigValue("EW_DB_KEY_SOCIAL_MEDIA"),$identifiedSocialMedia);
         }
 
     }
 
-    function checkDevice($stringua,$ret){
-        $identifiedDevice = $this->identifyDevice($stringua);
-        $this->stat->increaseKeyValueInGroup($this->config->getConfigValue("EW_DB_KEY_DEVICES"),$identifiedDevice);
+    function checkDevice($stringua){
+        $identifiedDeviceJSONDecoded = json_decode($this->identifyDeviceAsJSON($stringua));
+        $this->stat->increaseKeyValueInGroup($this->config->getConfigValue("EW_DB_KEY_DEVICES"),$identifiedDeviceJSONDecoded->name);
     }
 
 
     function checkOS($ret){
-        $identifiedOS = $this->identifyOS($ret);
-        $this->stat->increaseKeyValueInGroup($this->config->getConfigValue("EW_DB_KEY_OS"),$identifiedOS);
+        $identifiedOSJSONDecoded = json_decode($this->identifyOSAsJSON($ret));
+        $this->stat->increaseKeyValueInGroup($this->config->getConfigValue("EW_DB_KEY_OS"),$identifiedOSJSONDecoded->name);
     }
 
 }

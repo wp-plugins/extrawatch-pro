@@ -28,6 +28,7 @@ class UASparser
      *  @param  string  cache directory to be used by this instance
      */
     public function __construct($cacheDirectory = null, $updateInterval = null) {
+        error_reporting(E_ALL);
         if ($cacheDirectory) $this->SetCacheDir($cacheDirectory);
         if ($updateInterval) $this->updateInterval = $updateInterval;
     }
@@ -184,6 +185,9 @@ class UASparser
      *  Download the data
      */
     private function _downloadData() {
+
+        return; //disabled, stored offline
+
         // support for at least on of the two is needed
         if(!ini_get('allow_url_fopen') && !function_exists('curl_init')) {
             trigger_error('ERROR: function file_get_contents not allowed URL open. Update the datafile (uasdata.ini in Cache Dir) manually.');

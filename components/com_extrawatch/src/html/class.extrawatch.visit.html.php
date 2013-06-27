@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.1
- * @revision 789
+ * @revision 790
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -163,15 +163,14 @@ class ExtraWatchVisitHTML
         if (@ $userAgent) {
           $browser = $this->extraWatch->referer->identifyBrowser(@ $userAgent);
           if (@ $browser)
-            $browserIcon = $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/" . strtolower($browser->name) . ".gif";
+            $browserIcon = $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/" . strtolower($browser) . ".gif";
 
           if (@ $browserIcon)
             $browser = "<img src='$browserIcon' alt='$userAgent' title='$userAgent' />";
 
-          $os = $this->extraWatch->visit->identifyOs(@ $userAgent);
-
-          if (@ $os)
-            $osIcon = $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/" . strtolower($os) . ".gif";
+          $os = json_decode(@$this->extraWatch->referer->identifyOSAsJSON(@ $userAgent));
+          if (@ $os->name)
+            $osIcon = $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/" . strtolower($os->icon);
 
           if (@ $osIcon)
             $os = sprintf("<img src='%s' alt='%s' title='%s'/>", $osIcon, $userAgent, $userAgent);

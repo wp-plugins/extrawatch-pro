@@ -543,3 +543,4 @@ DEFINE('_EW_MENU_AVAILABLE_IN_PRO',"Available in PRO version");
 DEFINE('_EW_GOALS_CLICKED_ELEMENT_XPATH_CONDITION', "xpath of clicked element condition");
 DEFINE('_EW_DESC_GOALS_CLICKED_ELEMENT_XPATH_CONDITION', "xpath of clicked element condition");
 
+DEFINE('_EW_STATS_DEVICES', "Mobile Devices");
