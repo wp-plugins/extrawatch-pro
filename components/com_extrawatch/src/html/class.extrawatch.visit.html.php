@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.1
- * @revision 788
+ * @revision 789
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -161,9 +161,9 @@ class ExtraWatchVisitHTML
         $osIcon = "";
 
         if (@ $userAgent) {
-          $browser = $this->extraWatch->visit->identifyBrowser(@ $userAgent);
+          $browser = $this->extraWatch->referer->identifyBrowser(@ $userAgent);
           if (@ $browser)
-            $browserIcon = $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/" . strtolower($browser) . ".gif";
+            $browserIcon = $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/" . strtolower($browser->name) . ".gif";
 
           if (@ $browserIcon)
             $browser = "<img src='$browserIcon' alt='$userAgent' title='$userAgent' />";

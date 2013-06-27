@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.1
- * @revision 788
+ * @revision 789
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -31,7 +31,6 @@ class ExtraWatchVisit
   public $heatmap;
   public $seo;
   public $referer;
-  public $uasparser;
   public $ret;
   public $user_agent_string;
 
@@ -50,10 +49,6 @@ class ExtraWatchVisit
     $this->heatmap = new ExtraWatchHeatmap($this->database);
     $this->seo = new ExtraWatchSEO($this->database);
 	$this->referer = new ExtraWatchReferer($this->database);
-    $this->uasparser = new UASparser();
-    $this->uasparser->SetCacheDir(getcwd()."./cache/");
-    $this->ret = $this->uasparser->Parse();
-    $this->user_agent_string = $_SERVER['HTTP_USER_AGENT'];
 	}
 
 

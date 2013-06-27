@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.1
- * @revision 788
+ * @revision 789
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -32,6 +32,7 @@ class ExtraWatchMain {
   public $date;
   public $seo;
   public $downloads;
+  public $referer;
 
   function __construct()
   {
@@ -50,6 +51,7 @@ class ExtraWatchMain {
     $this->heatmap = new ExtraWatchHeatmap($this->database);
     $this->seo = new ExtraWatchSEO($this->database);
     $this->downloads = new ExtraWatchDownloads($this->database);
+    $this->referer = new ExtraWatchReferer($this->database);
   }
 
 
