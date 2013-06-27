@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.1
- * @revision 785
+ * @revision 787
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -31,6 +31,9 @@ class ExtraWatchVisit
   public $heatmap;
   public $seo;
   public $referer;
+  public $uasparser;
+  public $ret;
+  public $user_agent_string;
 
   function __construct()
   {
@@ -47,6 +50,10 @@ class ExtraWatchVisit
     $this->heatmap = new ExtraWatchHeatmap($this->database);
     $this->seo = new ExtraWatchSEO($this->database);
 	$this->referer = new ExtraWatchReferer($this->database);
+    $this->uasparser = new UASparser();
+    $this->uasparser->SetCacheDir(getcwd()."./cache/");
+    $this->ret = $this->uasparser->Parse();
+    $this->user_agent_string = $_SERVER['HTTP_USER_AGENT'];
 	}
 
 
@@ -392,7 +399,9 @@ class ExtraWatchVisit
       return TRUE;
     }
     $referer = $this->getReferer();
-	$this->referer->checkCameFrom($referer);
+	$this->referer->checkSocialMedia($referer);
+    $this->referer->checkDevice($this->user_agent_string,$this->ret);
+    $this->referer->checkOS($this->ret);
 
     $this->addUri2Title($uri, $title);
 
@@ -615,11 +624,11 @@ class ExtraWatchVisit
         $this->database->executeQuery($query);
       }
 
-      $browser = $this->identifyBrowser(@ $userAgent);
+      $browser = $this->referer->identifyBrowser(@ $userAgent);
       $this->stat->increaseKeyValueInGroup(EW_DB_KEY_BROWSER, $browser);
 
-      $os = $this->identifyOs(@ $userAgent);
-      $this->stat->increaseKeyValueInGroup(EW_DB_KEY_OS, $os);
+      $os = json_decode($this->referer->identifyOs(@ $userAgent));
+      $this->stat->increaseKeyValueInGroup(EW_DB_KEY_OS, $os->name);
 
       if ($country != EXTRAWATCH_UNKNOWN_COUNTRY) {
         $this->stat->increaseKeyValueInGroup(EW_DB_KEY_COUNTRY, $country);
@@ -627,70 +636,6 @@ class ExtraWatchVisit
 
     }
 
-  }
-
-  /**
-   * visitor
-   */
-  function identifyOs($userAgent)
-  {
-    if (stristr($userAgent, "Mac"))
-      $os = "Mac";
-    else
-      if (stristr($userAgent, "Linux"))
-        $os = "Linux";
-      else
-        if (stristr($userAgent, "Windows 95"))
-          $os = "Windows98";
-        else
-          if (stristr($userAgent, "Windows 98"))
-            $os = "Windows98";
-          else
-            if (stristr($userAgent, "Windows ME"))
-              $os = "Windows98";
-            else
-              if (stristr($userAgent, "Windows NT 4.0"))
-                $os = "WindowsNT";
-              else
-                if (stristr($userAgent, "Windows NT 5.1"))
-                  $os = "WindowsXP";
-                else
-                  if (stristr($userAgent, "Windows NT 6.0"))
-                    $os = "WindowsVista";
-                  else
-                    if (stristr($userAgent, "Windows NT 6.1"))
-                      $os = "Windows7";
-                    else
-                      if (stristr($userAgent, "Windows"))
-                        $os = "Windows";
-
-    return @ $os;
-  }
-
-  /**
-   * visitor
-   */
-  function identifyBrowser($userAgent)
-  {
-    if (stristr($userAgent, "Chrome"))
-      $browser = "Chrome";
-    else
-      if (stristr($userAgent, "Safari"))
-        $browser = "Safari";
-      else
-        if (stristr($userAgent, "MSIE"))
-          $browser = "Explorer";
-        else
-          if (stristr($userAgent, "Firefox"))
-            $browser = "Firefox";
-          else
-            if (stristr($userAgent, "Opera"))
-              $browser = "Opera";
-            else
-              if (stristr($userAgent, "Mozilla"))
-                $browser = "Mozilla";
-
-    return @ $browser;
   }
 
   /**

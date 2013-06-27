@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.1
- * @revision 785
+ * @revision 787
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -33,22 +33,34 @@ class ExtraWatchStatHTML
     $row->name = "<a href='http://$row->name' title='$row->name' target='_blank'>$groupTruncated</a>";
   }
 
+
+
   function changeURI($j, $row)
   {
     $groupTruncated = $this->extraWatch->helper->truncate($row->name, $this->extraWatch->config->getConfigValue('EXTRAWATCH_TRUNCATE_STATS'));
     $title = $this->extraWatch->visit->getTitleByUri($row->name);
     $uriEncoded = urlencode($row->name);
-    $row->value = "<table><tr><td>" . $row->value . "</td><td><a href='" . $this->extraWatch->config->renderLink("goals", "insert&uri=$uriEncoded") . "' title='" . _EW_STATS_ADD_TO_GOALS . "'><img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/goal.gif' border='0'/></a></td></tr></table>";
+    $row->value = "<table><tr><td>" . $row->value . "</td><td><a href='" . $this->extraWatch->config->renderLink("goals", "action=insert&uri=$uriEncoded") . "' title='" . _EW_STATS_ADD_TO_GOALS . "'><img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/goal.gif' border='0'/></a></td></tr></table>";
 
     //TODO: $row->name should respect the directory it's in
 
     $row->name = "<a href='$row->name' onmouseover=\"toggleDiv('uriDetailDiv$j',1);\" onmouseout=\"toggleDiv('uriDetailDiv$j',0);\">$groupTruncated</a><div id='uriDetailDiv$j' class='uriDetailDiv'><table><tr><td><b>$title</b></td></tr><tr><td><a href='" . $this->extraWatch->config->getLiveSite() . "$row->name' title='$row->name'>$row->name</a></td></tr></table></div>";
   }
 
-  function changeBrowserOS($j, $row)
+    function changeBrowser($j, $row)
+    {
+        if ($row->name) {
+            $icon = "<img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/" . strtolower($row->name) .".gif' />";
+        }
+        return @$icon;
+    }
+
+  function changeOS($j, $row)
   {
+
     if ($row->name) {
-      $icon = "<img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/" . strtolower($row->name) . ".gif' />";
+      $data=json_decode($row->name);
+      $icon = "<img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/" . strtolower($data->icon) . "' />";
     }
     return @$icon;
   }
@@ -58,6 +70,16 @@ class ExtraWatchStatHTML
         if ($row->name) {
             $icon = "<img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/" . strtolower($row->name) . ".png' />";
         }
+        return @$icon;
+    }
+
+    function changeDevices($j, $row)
+    {
+        if ($row->name) {
+           $data=json_decode($row->name);
+            $icon = "<img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/" . strtolower($data->icon) . "' />";
+        }
+        return @$icon;
         return @$icon;
     }
 
@@ -209,11 +231,16 @@ class ExtraWatchStatHTML
           $this->changeURI($j, $row);
           break;
           }
-        case ($group == EW_DB_KEY_BROWSER or $group == EW_DB_KEY_OS) :
+        case EW_DB_KEY_OS :
           {
-          $icon = $this->changeBrowserOS($j, $row);
+          $icon = $this->changeOS($j, $row);
           break;
           }
+          case EW_DB_KEY_BROWSER:
+          {
+              $icon = $this->changeBrowser($j, $row);
+              break;
+         }
         case EW_DB_KEY_COUNTRY :
           {
           //TODO refactor this, looks ugly
@@ -261,6 +288,12 @@ class ExtraWatchStatHTML
               $icon = $this->changeSocialMedia($j, $row);
               break;
           }
+          case EW_DB_KEY_DEVICES:
+          {
+              $icon = $this->changeDevices($j, $row);
+              break;
+          }
+
       }
 
       $trendsIcon = "<img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/trend_icon.gif' border='0'  " . $this->extraWatch->helper->getTooltipOnEvent() . "=\"ajax_showTooltip('" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/ajax/trendtooltip.php?rand=" . $this->extraWatch->config->getRand() . "&group=$group&name=" . urlencode($origName) . "&date=$date&env=".$this->extraWatch->config->getEnvironment()."',this);return FALSE\"/>";
@@ -271,7 +304,21 @@ class ExtraWatchStatHTML
       $color = "ffffff";
       if (@ $row->name) {
         if (!$total) {
-          $output .= "<tr><td>" . @ $icon . "&nbsp;" . $row->name . "</td><td align='right'><table><tr><td align='right'>" . $row->value . "</td></tr></table></td><td> <table border='0'><tr><td>" . @ $diffOutput . "</td><td>" . @ $trendsIcon . "</td><td><img src='$progressBarIcon' class='extraWatchBarImg' width='" . $imgWidth . "' style='height:10px' /></td><td align='left'>$percent%</td></tr></table></td></tr>";
+
+            $name_arr= json_decode($row->name);
+            $name="";
+            if(json_last_error() == JSON_ERROR_SYNTAX)
+            {
+                echo $name = $row->name;
+            }
+            else
+            {
+                $name = $name_arr->name;
+
+            }
+
+
+          $output .= "<tr><td>" . @ $icon . "&nbsp;" . $name . "</td><td align='right'><table><tr><td align='right'>" . $row->value . "</td></tr></table></td><td> <table border='0'><tr><td>" . @ $diffOutput . "</td><td>" . @ $trendsIcon . "</td><td><img src='$progressBarIcon' class='extraWatchBarImg' width='" . $imgWidth . "' style='height:10px' /></td><td align='left'>$percent%</td></tr></table></td></tr>";
 
         } else {
           if (!@ $frontend) {
