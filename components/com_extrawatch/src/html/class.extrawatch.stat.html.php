@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.1
- * @revision 791
+ * @revision 793
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -304,16 +304,14 @@ class ExtraWatchStatHTML
       if (@ $row->name) {
         if (!$total) {
 
-            $name_arr= json_decode($row->name);
             $name="";
-            if(json_last_error() == JSON_ERROR_SYNTAX)
-            {
-                echo $name = $row->name;
-            }
-            else
-            {
-                $name = $name_arr->name;
-
+            if ($group == EW_DB_KEY_DEVICES || $group == EW_DB_KEY_OS) {
+                $name_arr = @json_decode($row->name);
+                if (@$name_arr) {
+                    $name = $name_arr->name;
+                }
+            } else {
+                $name = $row->name;
             }
 
 
