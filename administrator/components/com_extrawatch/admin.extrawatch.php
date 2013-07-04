@@ -4,8 +4,8 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.1
- * @revision 815
+ * @version 2.0
+ * @revision 816
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -63,8 +63,8 @@ function extrawatch_mainController($task = "") {
     $extraWatchTrendHTML = new ExtraWatchTrendHTML($extraWatch);
     $env = ExtraWatchEnvFactory::getEnvironment();
 
-    $action = @ ExtraWatchHelper::request('action');
-    $taskFromNavigation = @ ExtraWatchHelper::request('task');
+    $action = @ ExtraWatchHelper::requestGet('action');
+    $taskFromNavigation = @ ExtraWatchHelper::requestGet('task');
 
     if ($taskFromNavigation) {
         $task = $taskFromNavigation;
@@ -455,120 +455,6 @@ function extrawatch_mainController($task = "") {
                 return $output;
                 break;
                 }
-
-            case "downloads" :
-            {
-                $extraWatchDownloads = new ExtraWatchDownloads($extraWatch->database);
-                $extraWatchDownloadsHTML = new ExtraWatchDownloadsHTML($extraWatch->database);
-                switch ($action) {
-
-                    case "addExtension":
-                    {
-
-                        $output .= $extraWatchHTML->renderAdminStyles($extraWatch);
-                        $output .= $extraWatchHTML->renderHeader($extraWatch);
-                        $output .= $extraWatchDownloadsHTML->renderAddExtension();
-                        $output .= $extraWatchHTML->renderDownloads();
-                        break;
-                    }
-                    case "saveAddExtension":
-                    {
-
-                        $output .= $extraWatchHTML->renderAdminStyles($extraWatch);
-                        $output .= $extraWatchHTML->renderHeader($extraWatch);
-                        $output .= $extraWatchDownloads->addExtension(ExtraWatchHelper::requestPost('extname'));
-                        $output .= $extraWatchHTML->renderDownloads();
-                        return $output;
-                        break;
-                    }
-                    case "editExtension":
-                    {
-
-                        $output .= $extraWatchHTML->renderAdminStyles($extraWatch);
-                        $output .= $extraWatchHTML->renderHeader($extraWatch);
-                        $output .= $extraWatchDownloadsHTML->renderEditExtension(ExtraWatchHelper::requestGet('eid'));
-                        $output .= $extraWatchHTML->renderDownloads();
-                        break;
-                    }
-                    case "saveEditExtension":
-                    {
-
-                        $output .= $extraWatchHTML->renderAdminStyles($extraWatch);
-                        $output .= $extraWatchHTML->renderHeader($extraWatch);
-                        $output .= $extraWatchDownloads->updateExtension(ExtraWatchHelper::requestPost('eid'), ExtraWatchHelper::requestPost('extname'));
-                        $output .= $extraWatchHTML->renderDownloads();
-                        return $output;
-                        break;
-                    }
-                    case "deleteExtension":
-                    {
-
-                        $output .= $extraWatchHTML->renderAdminStyles($extraWatch);
-                        $output .= $extraWatchHTML->renderHeader($extraWatch);
-                        $output .= $extraWatchDownloads->deleteExtension(ExtraWatchHelper::requestGet('co'));
-                        $output .= $extraWatchHTML->renderDownloads();
-                        break;
-                    }
-
-                    case "addFile":
-                    {
-
-                        $output .= $extraWatchHTML->renderAdminStyles($extraWatch);
-                        $output .= $extraWatchHTML->renderHeader($extraWatch);
-                        $output .= $extraWatchDownloadsHTML->renderAddFile();
-                        $output .= $extraWatchHTML->renderDownloads();
-                        break;
-                    }
-                    case "editFile":
-                    {
-
-                        $output .= $extraWatchHTML->renderAdminStyles($extraWatch);
-                        $output .= $extraWatchHTML->renderHeader($extraWatch);
-                        $output .= $extraWatchDownloadsHTML->renderEditFile(ExtraWatchHelper::requestGet('did'));
-                        $output .= $extraWatchHTML->renderDownloads();
-                        break;
-                    }
-                    case "saveEditFile":
-                    {
-
-                        $output .= $extraWatchHTML->renderAdminStyles($extraWatch);
-                        $output .= $extraWatchHTML->renderHeader($extraWatch);
-                        $output .= $extraWatchDownloads->updateFilePath(ExtraWatchHelper::requestPost('did'), ExtraWatchHelper::requestPost('filepathname'));
-                        $output .= $extraWatchHTML->renderDownloads();
-                        return $output;
-                        break;
-                    }
-                    case "saveAddFile":
-                    {
-
-                        $output .= $extraWatchHTML->renderAdminStyles($extraWatch);
-                        $output .= $extraWatchHTML->renderHeader($extraWatch);
-                        $output .= $extraWatchDownloads->addFilePath(ExtraWatchHelper::requestPost('filepathname'));
-                        $output .= $extraWatchHTML->renderDownloads();
-                        return $output;
-                        break;
-                    }
-                    case "deleteFile":
-                    {
-
-                        $output .= $extraWatchHTML->renderAdminStyles($extraWatch);
-                        $output .= $extraWatchHTML->renderHeader($extraWatch);
-                        $output .= $extraWatchDownloads->deleteFilePath(ExtraWatchHelper::requestGet('co'));
-                        $output .= $extraWatchHTML->renderDownloads();
-                        break;
-                    }
-
-                    default:
-                        {
-                        $output .= $extraWatchHTML->renderAdminStyles($extraWatch);
-                        $output .= $extraWatchHTML->renderHeader($extraWatch);
-                        $output .= $extraWatchHTML->renderDownloads();
-                        return $output;
-                        break;
-                        }
-                }
-                break;
-            }
 
             default :
                 if ($extraWatch->config->checkLicenseAccepted()) {

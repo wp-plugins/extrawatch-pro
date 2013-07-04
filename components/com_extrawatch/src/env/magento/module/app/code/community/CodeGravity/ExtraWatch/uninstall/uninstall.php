@@ -3,8 +3,8 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.1
- * @revision 815
+ * @version 2.0
+ * @revision 816
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -42,8 +42,7 @@ $tablesToRemove = array(
 "#__extrawatch_keyphrase",
 "#__extrawatch_uri2keyphrase",
 "#__extrawatch_heatmap",
-"#__extrawatch_uri2keyphrase_pos",
-"#__extrawatch_sql_scripts"
+"#__extrawatch_uri2keyphrase_pos"
 );
 
 foreach ($tablesToRemove as $table) {

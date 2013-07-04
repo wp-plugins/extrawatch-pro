@@ -3,8 +3,8 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.1
- * @revision 815
+ * @version 2.0
+ * @revision 816
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -19,6 +19,8 @@ interface ExtraWatchDBWrap
 
   public function getErrorNum();
 
+  public function loadAssocList($key = '');
+
   public function objectListQuery($query);
 
   public function getQuery();
@@ -29,6 +31,6 @@ interface ExtraWatchDBWrap
 
   public function executeQuery($query);
 
-
+  public function loadObjectList($key = '');
 
 }

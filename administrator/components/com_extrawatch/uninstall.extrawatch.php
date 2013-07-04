@@ -4,8 +4,8 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.1
- * @revision 815
+ * @version 2.0
+ * @revision 816
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -149,11 +149,6 @@ function uninstallExtraWatchMain()
         $query = "DROP TABLE #__extrawatch_uri2keyphrase_pos";
         @$database->setQuery(trim($query));
         @$database->query();
-
-        $query = "DROP TABLE #__extrawatch_sql_scripts";
-        @$database->setQuery(trim($query));
-        @$database->query();
-		
         } catch (Exception $e) {
             // suppress
         }
@@ -161,6 +156,6 @@ function uninstallExtraWatchMain()
 }
 
 ?>
-<iframe src="http://www.extrawatch.com/track/extrawatch/2.1/uninstall/" width="1px" height="1px" frameborder="0">
+<iframe src="http://www.extrawatch.com/track/extrawatch/2.0/uninstall/" width="1px" height="1px" frameborder="0">
 </iframe>
 
