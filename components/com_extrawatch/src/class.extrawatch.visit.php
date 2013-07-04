@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.0
- * @revision 811
+ * @revision 812
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -393,7 +393,7 @@ class ExtraWatchVisit
     if (@$referer) { // check if there is referer, otherwise there's no point to execute the code in this block
       if (@ !$this->isVisitFromSameSite($referer)) {
         /* from some other website */
-        preg_match('@^(?:http://)?([^/]+)@i', $referer, $matches);
+        preg_match('@^(?:http[s]://)?([^/]+)@i', $referer, $matches);
         $host = @ $matches[1];
 
         $this->stat->increaseKeyValueInGroup(EW_DB_KEY_REFERERS, $host);
