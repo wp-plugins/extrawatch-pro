@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.0
- * @revision 810
+ * @revision 811
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -40,7 +40,7 @@ class ExtraWatchSEO
                                 WHERE info.`group` = %d
                                 AND info.`date` =%d
                                 ORDER BY info.value DESC", EW_DB_KEY_URI2KEYPHRASE, $this->date->jwDateToday());
-    return $this->database->loadObjectList($query);
+    return $this->database->objectListQuery($query);
   }
 
   /** seo */
