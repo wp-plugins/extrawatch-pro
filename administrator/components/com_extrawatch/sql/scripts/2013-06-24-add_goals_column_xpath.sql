@@ -1,1 +1,1 @@
-ALTER TABLE  `#__extrawatch_goals` ADD  `clicked_element_xpath_condition` VARCHAR( 255 ) NULL DEFAULT NULL
+ALTER TABLE  `#__extrawatch_goals` ADD  `clicked_element_xpath_condition` VARCHAR( 255 ) NULL DEFAULT NULL;

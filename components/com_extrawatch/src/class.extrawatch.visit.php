@@ -4,8 +4,8 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.1
- * @revision 794
+ * @version 2.0
+ * @revision 810
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -30,7 +30,6 @@ class ExtraWatchVisit
   public $date;
   public $heatmap;
   public $seo;
-  public $referer;
 
   function __construct()
   {
@@ -46,8 +45,7 @@ class ExtraWatchVisit
     $this->date = new ExtraWatchDate($this->database);
     $this->heatmap = new ExtraWatchHeatmap($this->database);
     $this->seo = new ExtraWatchSEO($this->database);
-	$this->referer = new ExtraWatchReferer($this->database);
-	}
+  }
 
 
   /**
@@ -356,7 +354,7 @@ class ExtraWatchVisit
   {
     if (@$_SERVER['HTTP_X_REAL_IP']) {
       $ip = $_SERVER['HTTP_X_REAL_IP'];
-    } else
+    } else 
     if (@$_SERVER['HTTP_X_FORWARDED_FOR']) {
       $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
     } else {
@@ -370,12 +368,7 @@ class ExtraWatchVisit
    */
   function insertVisit()
   {
-    $ip = addslashes(strip_tags(@ $this->getRemoteIPAddress()));
-    $count = $this->block->getBlockedIp($ip);
-    if (@ $count) {
-      $this->block->dieWithBlockingMessage($ip);
-    }
-
+    $userObject = $this->getUser();
     $title = $this->getTitle();
     $uri = $this->helper->getURI();
     $newUsername = @ $this->env->getUsername();
@@ -388,13 +381,12 @@ class ExtraWatchVisit
     
 
 
+    $ip = addslashes(strip_tags(@ $this->getRemoteIPAddress()));
+
     if ($this->config->isIgnored('IP', $ip) || $this->config->isIgnored('URI', $uri) || $this->config->isIgnored('USER', $newUsername)) {
       return TRUE;
     }
     $referer = $this->getReferer();
-	$this->referer->checkSocialMedia($referer);
-    $this->referer->checkDevice($_SERVER['HTTP_USER_AGENT']);
-    $this->referer->checkOS($_SERVER['HTTP_USER_AGENT']);
 
     $this->addUri2Title($uri, $title);
 
@@ -410,13 +402,12 @@ class ExtraWatchVisit
         $this->stat->increaseKeyValueInGroup(EW_DB_KEY_KEYPHRASE, $phrase);
 
         
-        $this->insertSearchResultPage($uri, $phrase, $referer, $title);
+        if (trim($phrase)) {
+            $this->insertSearchResultPage($uri, $phrase, $referer, $title);
+        }
         
 
         $keywords = explode(' ', $phrase); //using space instead of + because google has changed it
-        if (trim($phrase)) {
-          $this->insertUri2Keyphrase($uri, $phrase, $title);
-        }
         foreach ($keywords as $keyword) {
 
           $keyword = @ trim(strtolower($keyword));
@@ -453,7 +444,23 @@ class ExtraWatchVisit
       }
     }
 
+    $this->insertIntoHistory();
+    /* execute on midnight */
+    $this->runAtMidnight();
+
+    if ($this->date->getUTCTimestamp() % 10 == 0) {
+      $this->deleteOldVisits();
+      
+      $this->seo->cleanUnimportantKeyphrases();
+      
+    }
+
     $time = $this->date->getUTCTimestamp();
+
+    $count = $this->block->getBlockedIp($ip);
+    if (@ $count) {
+      $this->block->dieWithBlockingMessage($ip);
+    }
 
     $query = sprintf("select id, username from #__extrawatch where ip = '%s' limit 1", $this->database->getEscaped($ip));
     $rows = @ $this->database->objectListQuery($query);
@@ -517,6 +524,7 @@ class ExtraWatchVisit
 
     $this->goal->checkGoals($title, $newUsername, $ip, $referer, $liveSite);
 
+
   }
 
   function insertSearchResultPage($uri, $phrase, $referer, $title)
@@ -565,19 +573,6 @@ class ExtraWatchVisit
       }
     }
 
-
-      $this->insertIntoHistory();
-      /* execute on midnight */
-      $this->runAtMidnight();
-
-      if ($this->date->getUTCTimestamp() % 10 == 0) {
-          $this->deleteOldVisits();
-          
-          $this->seo->cleanUnimportantKeyphrases();
-          
-      }
-
-
   }
 
 
@@ -617,8 +612,11 @@ class ExtraWatchVisit
         $this->database->executeQuery($query);
       }
 
-      $browser = $this->referer->identifyBrowser(@ $userAgent);
+      $browser = $this->identifyBrowser(@ $userAgent);
       $this->stat->increaseKeyValueInGroup(EW_DB_KEY_BROWSER, $browser);
+
+      $os = $this->identifyOs(@ $userAgent);
+      $this->stat->increaseKeyValueInGroup(EW_DB_KEY_OS, $os);
 
       if ($country != EXTRAWATCH_UNKNOWN_COUNTRY) {
         $this->stat->increaseKeyValueInGroup(EW_DB_KEY_COUNTRY, $country);
@@ -626,6 +624,70 @@ class ExtraWatchVisit
 
     }
 
+  }
+
+  /**
+   * visitor
+   */
+  function identifyOs($userAgent)
+  {
+    if (stristr($userAgent, "Mac"))
+      $os = "Mac";
+    else
+      if (stristr($userAgent, "Linux"))
+        $os = "Linux";
+      else
+        if (stristr($userAgent, "Windows 95"))
+          $os = "Windows98";
+        else
+          if (stristr($userAgent, "Windows 98"))
+            $os = "Windows98";
+          else
+            if (stristr($userAgent, "Windows ME"))
+              $os = "Windows98";
+            else
+              if (stristr($userAgent, "Windows NT 4.0"))
+                $os = "WindowsNT";
+              else
+                if (stristr($userAgent, "Windows NT 5.1"))
+                  $os = "WindowsXP";
+                else
+                  if (stristr($userAgent, "Windows NT 6.0"))
+                    $os = "WindowsVista";
+                  else
+                    if (stristr($userAgent, "Windows NT 6.1"))
+                      $os = "Windows7";
+                    else
+                      if (stristr($userAgent, "Windows"))
+                        $os = "Windows";
+
+    return @ $os;
+  }
+
+  /**
+   * visitor
+   */
+  function identifyBrowser($userAgent)
+  {
+    if (stristr($userAgent, "Chrome"))
+      $browser = "Chrome";
+    else
+      if (stristr($userAgent, "Safari"))
+        $browser = "Safari";
+      else
+        if (stristr($userAgent, "MSIE"))
+          $browser = "Explorer";
+        else
+          if (stristr($userAgent, "Firefox"))
+            $browser = "Firefox";
+          else
+            if (stristr($userAgent, "Opera"))
+              $browser = "Opera";
+            else
+              if (stristr($userAgent, "Mozilla"))
+                $browser = "Mozilla";
+
+    return @ $browser;
   }
 
   /**
@@ -791,12 +853,12 @@ class ExtraWatchVisit
     $liveSite = $this->config->getDomainFromLiveSite();
 	$refererParsed = parse_url($referer);
 	$referer = $refererParsed['host'];
-
+	
     $ignorePrefix = "www.";
     $refererWithoutPrefix = str_replace($ignorePrefix, "", $referer);
     $liveSiteWithoutPrefix = str_replace($ignorePrefix, "", $liveSite);
     $comparison = strpos($refererWithoutPrefix, $liveSiteWithoutPrefix);
-
+    
 	if (!$referer || $comparison != FALSE || $comparison == 0) {
       return TRUE;
     } else {
@@ -806,8 +868,6 @@ class ExtraWatchVisit
 
   function runAtMidnight()
   {
-    require_once JPATH_BASE . DS . "components" . DS . "com_extrawatch" . DS . "lang" . DS . $this->config->getLanguage() . ".php";
-
     $lastRunAtMidnightDate = $this->config->getConfigValue("EXTRAWATCH_LAST_RUN_AT_MIDNIGHT_DATE");
     $todayDate = $this->date->jwDateToday();
 

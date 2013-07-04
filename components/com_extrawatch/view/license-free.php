@@ -4,7 +4,7 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.1
+ * @version 2.0
  * @revision 732
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
@@ -51,7 +51,7 @@ function extrawatch_renderLicenseFree($extraWatch)
         font-weight: normal;
     }
 </style>
-<h1>ExtraWatch 2.1.794 PRO</h1>
+<h1>ExtraWatch 2.0.810 PRO</h1>
 
 <script type='text/javascript'>
     function toggleNoKeyForm() {
@@ -133,7 +133,7 @@ function extrawatch_renderLicenseFree($extraWatch)
 
         <tr><td valign='top' colspan='2'>
 
-            <iframe src='http://www.codegravity.com/demo/extrawatch/2.1/".strtolower($extraWatch->env->getEnvironmentName())."/' width='1100' height='768'>
+            <iframe src='http://www.codegravity.com/demo/extrawatch/2.0/".strtolower($extraWatch->env->getEnvironmentName())."/' width='1100' height='768'>
             </iframe>
 
 		</td>

@@ -4,8 +4,8 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.1
- * @revision 794
+ * @version 2.0
+ * @revision 810
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -26,10 +26,6 @@ defined('_JEXEC') or die('Restricted access'); ?>
 <a href='<?php echo $extraWatch->config->renderLink('heatmap');?>'><img
     src='<?php echo($extraWatch->config->getLiveSiteWithSuffix());?>components/com_extrawatch/img/icons/click.png'/>&nbsp;<?php echo _EW_ADMINHEADER_HEATMAP;?>
 </a> |
-<a href='<?php echo $extraWatch->config->renderLink('downloads');?>'><img
-        src='<?php echo($extraWatch->config->getLiveSiteWithSuffix());?>components/com_extrawatch/img/icons/downloads.png'/>&nbsp;<?php echo _EW_MENU_DOWNLOADS;?>
-</a>
-|
 
 
 <a href='<?php echo $extraWatch->config->renderLink('graphs');?>'><img
@@ -62,3 +58,13 @@ defined('_JEXEC') or die('Restricted access'); ?>
 <a href='<?php echo $extraWatch->config->renderLink('credits');?>'><img
     src='<?php echo($extraWatch->config->getLiveSiteWithSuffix());?>components/com_extrawatch/img/icons/credits.png'/>&nbsp;<?php echo _EW_MENU_CREDITS;?>
 </a>
+<?php
+if ($extraWatch->config->getEnvironment() == "ExtraWatchJoomlaEnv") {
+  ?>
+|
+<a href='<?php echo $extraWatch->config->renderLink('update');?>'><img
+    src='<?php echo($extraWatch->config->getLiveSiteWithSuffix());?>components/com_extrawatch/img/icons/update.png'/>&nbsp;<?php echo _EW_MENU_UPDATE;?>
+</a>
+<?php
+}
+

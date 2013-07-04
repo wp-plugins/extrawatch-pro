@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.1
- * @revision 794
+ * @revision 809
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -121,7 +121,7 @@ class ExtraWatchDownloads
 
         $root_file = $this->env->getRootPath().DS.".htaccess";
 		
-        $existingcode = file_get_contents($root_file);
+        $existingcode = @file_get_contents($root_file);
 
         $existingcode_f = str_replace($writingonht_prev,"",$existingcode);
 
@@ -405,7 +405,17 @@ class ExtraWatchDownloads
             "count_tot_dt" => $count_tot_dt);
 
     }
-	
+
+    function getAllExtensions() {
+        $extensionquery = sprintf("SELECT * FROM #__extrawatch_dm_extension");
+        return $this->database->objectListQuery($extensionquery);
+    }
+
+    function getAllFilePaths() {
+        $filepathquery = sprintf("SELECT * FROM #__extrawatch_dm_paths");
+        return $this->database->objectListQuery($filepathquery);
+    }
+
 
 }
 

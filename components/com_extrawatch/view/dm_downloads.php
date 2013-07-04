@@ -4,7 +4,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.1
- * @revision 794
+ * @revision 809
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -36,12 +36,9 @@ if (@isset($_REQUEST["did"]))
     $did=trim(@$_REQUEST["did"]);
 }
 
-$extensionquery = sprintf("SELECT * FROM #__extrawatch_dm_extension");
-$extensionar = $extraWatch->database->objectListQuery($extensionquery);
 
-$filepathquery = sprintf("SELECT * FROM #__extrawatch_dm_paths");
-$filepathar = $extraWatch->database->objectListQuery($filepathquery);
-
+$extensionar = $extraWatch->downloads->getAllExtensions();
+$filepathar = $extraWatch->downloads->getAllDownloadPaths();
 
 
 ?>

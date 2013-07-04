@@ -4,7 +4,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.1
- * @revision 794
+ * @revision 809
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -33,7 +33,7 @@ class ExtraWatchReferer
         $this->helper = new ExtraWatchHelper($this->database);
         $this->date = new ExtraWatchDate($this->database);
         $this->stat = new ExtraWatchStat($this->database);
-        $this->user_agent_string = $_SERVER['HTTP_USER_AGENT'];
+        $this->user_agent_string = @$_SERVER['HTTP_USER_AGENT'];
     }
 
     function getUAParser() {    //static method to have only one instance of parser, so we don't have to initialize it all the time
@@ -91,7 +91,7 @@ class ExtraWatchReferer
         $cnt=count($pieces);
         if($cnt==5)
         {
-            $arr = array('name' => $pieces[4], 'icon' => $ret['os_icon']);
+            $arr = array('name' => trim($pieces[4]), 'icon' => trim($ret['os_icon']));
             $arr=json_encode($arr);
             return $arr;
         }
@@ -101,7 +101,7 @@ class ExtraWatchReferer
     function identifyOSAsJSON($stringua){
         $uaParser = $this->getUAParser();
         $ret = $uaParser->Parse($stringua);
-        $arr = array('name' => $ret['os_name'], 'icon' => $ret['os_icon']);
+        $arr = array('name' => trim($ret['os_name']), 'icon' => trim($ret['os_icon']));
         $arr=json_encode($arr);
         return $arr;
     }
