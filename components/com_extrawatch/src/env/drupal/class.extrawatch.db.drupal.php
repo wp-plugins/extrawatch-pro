@@ -4,8 +4,8 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.0
- * @revision 812
+ * @version 2.1
+ * @revision 815
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -151,7 +151,7 @@ class ExtraWatchDBWrapDrupal implements ExtraWatchDBWrap
     return str_replace("#__", $this->dbprefix, $sql);
   }
 
-  function loadObjectList($key = '')
+  private function loadObjectList($key = '')
   {
     $sql = $this->replaceDbPrefix($this->query);
     $STH = $this->dbref->query($sql);

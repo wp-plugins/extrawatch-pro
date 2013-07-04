@@ -467,3 +467,8 @@
 				PRIMARY KEY  (`id`)
 				);
 
+				CREATE TABLE IF NOT EXISTS `#__extrawatch_sql_scripts` (
+				`id` int(11) NOT NULL auto_increment,
+				`scriptname` varchar(255) default NULL,
+				PRIMARY KEY  (`id`)
+				);

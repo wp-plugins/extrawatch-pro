@@ -4,8 +4,8 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.0
- * @revision 812
+ * @version 2.1
+ * @revision 815
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -40,19 +40,6 @@ class ExtraWatchHelper
         $result = str_replace("{ip}", $ip, $url);
         //TODO : appears to be a bug in str_ireplace - doesn't work!
         return $result;
-    }
-
-    /**
-     * helper
-     */
-    function resetData()
-    {
-
-        foreach (unserialize(EXTRAWATCH_TABLES_TO_TRUNCATE) as $table) {
-            $query = sprintf("DELETE FROM `$table`");
-            $this->database->executeQuery($query);
-        }
-        return TRUE;
     }
 
 
@@ -251,6 +238,15 @@ class ExtraWatchHelper
         }
     }
 
+    static function request($key = null)
+    {
+        $value = ExtraWatchHelper::requestGet($key);
+        if (!$value) {
+            $value = ExtraWatchHelper::requestPost($key);
+        }
+        return $value;
+    }
+
     /**
      * Filtering input post var
      * @param  $key
@@ -429,6 +425,27 @@ class ExtraWatchHelper
         }
         return false;
     }
+
+    static function fixFilePermissions($filesArray) {
+        foreach($filesArray as $file) {
+            @chmod(JPATH_SITE.DIRECTORY_SEPARATOR."components".DIRECTORY_SEPARATOR."com_extrawatch".DIRECTORY_SEPARATOR.$file, 0755);
+        }
+    }
+
+    static function sureRemoveDir($dir, $DeleteMe)
+    {
+        if (!$dh = @opendir($dir)) return;
+        while (FALSE !== ($obj = readdir($dh))) {
+            if ($obj == '.' || $obj == '..') continue;
+            if (!@unlink($dir . '/' . $obj)) extrawatch_sureRemoveDir($dir . '/' . $obj, TRUE);
+        }
+        if ($DeleteMe) {
+            closedir($dh);
+            @rmdir($dir);
+        }
+    }
+
+
 }
 
 
