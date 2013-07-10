@@ -4,8 +4,8 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.0
- * @revision 816
+ * @version 2.1
+ * @revision 834
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -152,7 +152,7 @@ class ExtraWatchDBWrapNoCMS implements ExtraWatchDBWrap
     return str_replace("#__", $this->dbprefix, $sql);
   }
 
-  function loadObjectList($key = '')
+  private function loadObjectList($key = '')
   {
     if (!($cur = $this->query())) {
       return null;

@@ -4,8 +4,8 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.0
- * @revision 816
+ * @version 2.1
+ * @revision 834
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -45,7 +45,11 @@ function renderExtraWatchAgent()
     $extraWatchHTML = new ExtraWatchHTML();
     $extraWatch->block->checkPostRequestForSpam(ExtraWatchHelper::requestGet());
     $extraWatch->block->checkPostRequestForSpam(ExtraWatchHelper::requestPost());
-    $extraWatch->visit->insertVisit();
+    try {
+        $extraWatch->visit->insertVisit();
+    } catch (ExtraWatchIPBlockedException $e) {
+        die($this->config->getConfigValue('EXTRAWATCH_BLOCKING_MESSAGE'));
+    }
 
     
     $output .= $extraWatchHTML->renderHeatMapJS();

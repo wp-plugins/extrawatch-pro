@@ -4,8 +4,8 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.0
- * @revision 816
+ * @version 2.1
+ * @revision 834
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -163,7 +163,7 @@ http3 = extrawatch_createRequestObject();
 http3.onreadystatechange = history.go(0);
 var newdate = new Date();
 var url3 = "<?php echo($extraWatch->config->getLiveSiteWithSuffix()); ?>components/com_extrawatch/ajax/block.php?ip="+ _ip +"&rand=" + rand + "&timeID="+newdate.getTime()+ "&env=<?php echo($extraWatch->config->getEnvironment()); ?>";
-http3.open("GET", url3, true);
+http3.open("GET", url3, false);
 http3.send(null);
 extrawatch_sendStatsReq();
 extrawatch_sendVisitsReq();

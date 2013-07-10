@@ -11,48 +11,6 @@ $action = @$_REQUEST['action'];
 $usernameFromSession = @$_SESSION['username'];
 $passwordFromSession = @$_SESSION['password'];
 
-function extrawatch_is_initialized($modulePath) {
-
-    $env = ExtraWatchEnvFactory::getEnvironment();
-    $database = $env->getDatabase();
-
-    $result = $database->resultQuery("select `value` from #__extrawatch_config where `name` = 'rand'");
-  if ($result) { // already initialized
-	return TRUE;
-  }
- return FALSE;
-}
-
-function extrawatch_initialize_db($modulePath)
-{
-  require_once($modulePath. DS. "components" . DS . "com_extrawatch" . DS . "includes.php");
-  require_once($modulePath. DS. "administrator" . DS . "components" . DS . "com_extrawatch" . DS . "install.extrawatch.php");
-
-  $env = ExtraWatchEnvFactory::getEnvironment();
-  $database = $env->getDatabase();
-
-  if (extrawatch_is_initialized($modulePath)) {
-	return;
-  }
-
-  $lines = file($modulePath . DS . "administrator" . DS . "components" . DS . "com_extrawatch" . DS . "sql" . DS . "install.mysql.utf8.sql");
-
-  $query = "";
-  foreach ($lines as $line_num => $line) {
-
-    $query .= trim($line);
-
-    if (strstr($line, ");")) {
-      $query = trim($query);
-      $query = str_replace("#__", $env->getDbPrefix(), $query);
-      $env->getDatabase()->executeQuery($query);
-      $query = "";
-    }
-
-  }
-
-  extrawatch_initialize_ip2country($modulePath, $env->getDatabase());
-} 
 
 function verify($login, $password) {
     if ($login == "admin" && $password == "test") {

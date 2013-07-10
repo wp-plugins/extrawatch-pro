@@ -7,7 +7,7 @@
     <copyright>Copyright 2006-2013 by CodeGravity.com</copyright>
     <authorEmail>support@extrawatch.com</authorEmail>
     <authorUrl>http://www.extrawatch.com</authorUrl>
-    <version>2.0.816 PRO</version>
+    <version>2.1.834 PRO</version>
     <license>http://www.gnu.org/licenses/gpl-3.0.txt GNU/GPLv3</license>
     <description>
         ExtraWatch is an AJAX component and module for Joomla CMS that allows you to watch
@@ -57,6 +57,7 @@ in this section are copied from /site/ in the package -->
         <folder>src</folder>
         <folder>view</folder>
         <folder>sql</folder>
+        <folder>sql/scripts</folder>
 
         <filename>config.php</filename>
         <filename>includes.php</filename>
@@ -86,14 +87,19 @@ in this section are copied from /site/ in the package -->
             </menu>
             
             <menu
+                    link="option=com_extrawatch&amp;task=downloads"
+                    img="components/com_extrawatch/img/icons/downloads.png"
+                    alt="Downloads">Downloads
+            </menu>
+            <menu
                     link="option=com_extrawatch&amp;task=seo"
                     img="components/com_extrawatch/img/icons/seo.png"
                     alt="SEO">SEO
             </menu>
             <menu
                     link="option=com_extrawatch&amp;task=heatmap"
-                    img="components/com_extrawatch/img/icons/heatmap.png"
-                    alt="Heatmap">Heatmap
+                    img="components/com_extrawatch/img/icons/click.png"
+                    alt="Clicks">Clicks
             </menu>
             <menu
                     link="option=com_extrawatch&amp;task=flow"
@@ -192,7 +198,7 @@ in this section are copied from /site/ in the package -->
     <scriptfile>script.extrawatch.php</scriptfile>
 
     <updateservers>
-        <server type="extension" priority="1" name="ExtraWatch Update Site"><![CDATA[http://www.extrawatch.com/update/extrawatch/2.0/PRO/extrawatch-update.xml]]></server>
+        <server type="extension" priority="1" name="ExtraWatch Update Site"><![CDATA[http://www.extrawatch.com/update/extrawatch/2.1/PRO/extrawatch-update.xml]]></server>
     </updateservers>
 
 </extension>

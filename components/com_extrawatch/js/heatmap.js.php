@@ -4,8 +4,8 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.0
- * @revision 816
+ * @version 2.1
+ * @revision 834
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -31,6 +31,7 @@ defined('_JEXEC') or die('Restricted access');
   $request = $extraWatch->env->getRequest();
   $heatmapEnabled = $request->getVar(ExtraWatchHeatmap::HEATMAP_PARAM_NAME);
   $day = $request->getVar(ExtraWatchHeatmap::HEATMAP_PARAM_DAY_NAME);
+  $xpath = $request->getVar('xpath');
   ?>
 
 
@@ -177,7 +178,15 @@ defined('_JEXEC') or die('Restricted access');
 
     ;
 
-  <?php if (@$heatmapEnabled) { ?>
+  <?php if (@$xpath) { ?>
+      var xpath = '<?php echo urldecode(urldecode($xpath));?>';
+      var elementFound = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null);
+      alert('highlighting element: ' + xpath + 'Element found: ' + elementFound);
+      var element = elementFound.singleNodeValue;
+      if (element != null) {
+          element.style.border="5px dashed red";
+      }
+      <?php } else if (@$heatmapEnabled) { ?>
     xx = h337.create({"element":document.body, "radius":50, "visible":true});
     renderHeatmap();
     <?php } ?>

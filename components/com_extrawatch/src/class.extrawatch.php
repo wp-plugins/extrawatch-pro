@@ -4,8 +4,8 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.0
- * @revision 816
+ * @version 2.1
+ * @revision 834
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -31,11 +31,14 @@ class ExtraWatchMain {
   public $flow;
   public $date;
   public $seo;
+  public $downloads;
+  public $referer;
 
   function __construct()
   {
     $this->env = ExtraWatchEnvFactory::getEnvironment();
     $this->database = $this->env->getDatabase();
+    $this->setup = new ExtraWatchSetup($this->database);
     $this->stat = new ExtraWatchStat($this->database);
     $this->config = new ExtraWatchConfig($this->database);
     $this->helper = new ExtraWatchHelper($this->database);
@@ -48,6 +51,8 @@ class ExtraWatchMain {
     $this->date = new ExtraWatchDate($this->database);
     $this->heatmap = new ExtraWatchHeatmap($this->database);
     $this->seo = new ExtraWatchSEO($this->database);
+    $this->downloads = new ExtraWatchDownloads($this->database);
+    $this->referer = new ExtraWatchReferer($this->database);
   }
 
 

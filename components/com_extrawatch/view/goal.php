@@ -4,8 +4,8 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.0
- * @revision 816
+ * @version 2.1
+ * @revision 834
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -44,6 +44,10 @@ defined('_JEXEC') or die('Restricted access'); ?>
       <tr><?php echo($extraWatchHTML->renderInputCheckBox("CAME_FROM_INVERSED", $values, $color, $disabled)); ?></tr>
       <tr><?php echo($extraWatchHTML->renderInputField("COUNTRY_CONDITION", $values, $color)); ?></tr>
       <tr><?php echo($extraWatchHTML->renderInputCheckBox("COUNTRY_INVERSED", $values, $color, $disabled)); ?></tr>
+
+      <tr><?php echo($extraWatchHTML->renderInputField("CLICKED_ELEMENT_XPATH_CONDITION", $values, $color)); ?></tr>
+
+
       <tr>
         <td></td>
       </tr>

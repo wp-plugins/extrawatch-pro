@@ -4,8 +4,8 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.0
- * @revision 816
+ * @version 2.1
+ * @revision 834
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -30,6 +30,7 @@ class ExtraWatchVisit
   public $date;
   public $heatmap;
   public $seo;
+  public $referer;
 
   function __construct()
   {
@@ -45,7 +46,8 @@ class ExtraWatchVisit
     $this->date = new ExtraWatchDate($this->database);
     $this->heatmap = new ExtraWatchHeatmap($this->database);
     $this->seo = new ExtraWatchSEO($this->database);
-  }
+	$this->referer = new ExtraWatchReferer($this->database);
+	}
 
 
   /**
@@ -354,7 +356,7 @@ class ExtraWatchVisit
   {
     if (@$_SERVER['HTTP_X_REAL_IP']) {
       $ip = $_SERVER['HTTP_X_REAL_IP'];
-    } else 
+    } else
     if (@$_SERVER['HTTP_X_FORWARDED_FOR']) {
       $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
     } else {
@@ -363,12 +365,26 @@ class ExtraWatchVisit
     return $ip;
   }
 
+    function updateRefererForIP($referer, $ip) {
+        $query = sprintf("select referer from #__extrawatch where ip = '%s' ", $this->database->getEscaped($ip));
+        $existingReferer = $this->database->resultQuery($query);
+        if (@$existingReferer) {
+            $query = sprintf("update #__extrawatch set referer = '%s' where ip = '%s' ", $this->database->getEscaped($referer), $this->database->getEscaped($ip));
+            $this->database->executeQuery($query);
+        }
+    }
+
   /**
    * visitor
    */
   function insertVisit()
   {
-    $userObject = $this->getUser();
+    $ip = addslashes(strip_tags(@ $this->getRemoteIPAddress()));
+    $count = $this->block->getBlockedIp($ip);
+    if (@ $count) {
+      $this->block->dieWithBlockingMessage($ip);
+    }
+
     $title = $this->getTitle();
     $uri = $this->helper->getURI();
     $newUsername = @ $this->env->getUsername();
@@ -381,29 +397,35 @@ class ExtraWatchVisit
     
 
 
-    $ip = addslashes(strip_tags(@ $this->getRemoteIPAddress()));
-
     if ($this->config->isIgnored('IP', $ip) || $this->config->isIgnored('URI', $uri) || $this->config->isIgnored('USER', $newUsername)) {
       return TRUE;
     }
     $referer = $this->getReferer();
+	$this->referer->checkSocialMedia($referer);
+    $this->referer->checkDevice(@$_SERVER['HTTP_USER_AGENT']);
+    $this->referer->checkOS(@$_SERVER['HTTP_USER_AGENT']);
 
     $this->addUri2Title($uri, $title);
 
     if (@$referer) { // check if there is referer, otherwise there's no point to execute the code in this block
-      if (@ !$this->isVisitFromSameSite($referer)) { 
+      if (@ !$this->isVisitFromSameSite($referer)) {
         /* from some other website */
+
+        // update referer on each visit, if already exists and came from other site
+        $this->updateRefererForIP($referer, $ip);
+
         preg_match('@^(?:http[s]*://)?([^/]+)@i', $referer, $matches);
         $host = @ $matches[1];
+
         $this->stat->increaseKeyValueInGroup(EW_DB_KEY_REFERERS, $host);
         $phrase = $this->extractPhraseFromUrl($referer);
         $phrase = str_replace("%2B", "+", $phrase);
         $this->stat->increaseKeyValueInGroup(EW_DB_KEY_KEYPHRASE, $phrase);
 
         
-        if (trim($phrase)) {
-            $this->insertSearchResultPage($uri, $phrase, $referer, $title);
-        }
+          if (trim($phrase)) {
+              $this->insertSearchResultPage($uri, $phrase, $referer, $title);
+          }
         
 
         $keywords = explode(' ', $phrase); //using space instead of + because google has changed it
@@ -443,23 +465,7 @@ class ExtraWatchVisit
       }
     }
 
-    $this->insertIntoHistory();
-    /* execute on midnight */
-    $this->runAtMidnight();
-
-    if ($this->date->getUTCTimestamp() % 10 == 0) {
-      $this->deleteOldVisits();
-      
-      $this->seo->cleanUnimportantKeyphrases();
-      
-    }
-
     $time = $this->date->getUTCTimestamp();
-
-    $count = $this->block->getBlockedIp($ip);
-    if (@ $count) {
-      $this->block->dieWithBlockingMessage($ip);
-    }
 
     $query = sprintf("select id, username from #__extrawatch where ip = '%s' limit 1", $this->database->getEscaped($ip));
     $rows = @ $this->database->objectListQuery($query);
@@ -523,16 +529,18 @@ class ExtraWatchVisit
 
     $this->goal->checkGoals($title, $newUsername, $ip, $referer, $liveSite);
 
-
   }
 
+    /*
+     * seo
+     */
   function insertSearchResultPage($uri, $phrase, $referer, $title)
   {
     if (@$phrase) {
       $position = $this->seo->extractGooglePageNumberFromReferer($referer);
       if (@$position) {
-        $uri2keyphraseId = $this->insertUri2Keyphrase($uri, $phrase, $title);
-        $uri2keyphraseId2positionId = $this->insertUri2Keyphrase2Position($uri2keyphraseId, $position);
+        $uri2keyphraseId = $this->insertUri2KeyphraseByUriKeyphraseTitle($uri, $phrase, $title);
+        $uri2keyphraseId2positionId = $this->insertUri2KeyphraseByUriKeyphraseTitle2Position($uri2keyphraseId, $position);
         $this->stat->increaseKeyValueInGroup(EW_DB_KEY_SEARCH_RESULT_NUM, $uri2keyphraseId2positionId);
       }
     }
@@ -571,6 +579,19 @@ class ExtraWatchVisit
         $this->flow->insertFlow($lastUri, $uri);
       }
     }
+
+
+      $this->insertIntoHistory();
+      /* execute on midnight */
+      $this->runAtMidnight();
+
+      if ($this->date->getUTCTimestamp() % 10 == 0) {
+          $this->deleteOldVisits();
+          
+          $this->seo->cleanUnimportantKeyphrases();
+          
+      }
+
 
   }
 
@@ -611,11 +632,8 @@ class ExtraWatchVisit
         $this->database->executeQuery($query);
       }
 
-      $browser = $this->identifyBrowser(@ $userAgent);
+      $browser = $this->referer->identifyBrowser(@ $userAgent);
       $this->stat->increaseKeyValueInGroup(EW_DB_KEY_BROWSER, $browser);
-
-      $os = $this->identifyOs(@ $userAgent);
-      $this->stat->increaseKeyValueInGroup(EW_DB_KEY_OS, $os);
 
       if ($country != EXTRAWATCH_UNKNOWN_COUNTRY) {
         $this->stat->increaseKeyValueInGroup(EW_DB_KEY_COUNTRY, $country);
@@ -623,70 +641,6 @@ class ExtraWatchVisit
 
     }
 
-  }
-
-  /**
-   * visitor
-   */
-  function identifyOs($userAgent)
-  {
-    if (stristr($userAgent, "Mac"))
-      $os = "Mac";
-    else
-      if (stristr($userAgent, "Linux"))
-        $os = "Linux";
-      else
-        if (stristr($userAgent, "Windows 95"))
-          $os = "Windows98";
-        else
-          if (stristr($userAgent, "Windows 98"))
-            $os = "Windows98";
-          else
-            if (stristr($userAgent, "Windows ME"))
-              $os = "Windows98";
-            else
-              if (stristr($userAgent, "Windows NT 4.0"))
-                $os = "WindowsNT";
-              else
-                if (stristr($userAgent, "Windows NT 5.1"))
-                  $os = "WindowsXP";
-                else
-                  if (stristr($userAgent, "Windows NT 6.0"))
-                    $os = "WindowsVista";
-                  else
-                    if (stristr($userAgent, "Windows NT 6.1"))
-                      $os = "Windows7";
-                    else
-                      if (stristr($userAgent, "Windows"))
-                        $os = "Windows";
-
-    return @ $os;
-  }
-
-  /**
-   * visitor
-   */
-  function identifyBrowser($userAgent)
-  {
-    if (stristr($userAgent, "Chrome"))
-      $browser = "Chrome";
-    else
-      if (stristr($userAgent, "Safari"))
-        $browser = "Safari";
-      else
-        if (stristr($userAgent, "MSIE"))
-          $browser = "Explorer";
-        else
-          if (stristr($userAgent, "Firefox"))
-            $browser = "Firefox";
-          else
-            if (stristr($userAgent, "Opera"))
-              $browser = "Opera";
-            else
-              if (stristr($userAgent, "Mozilla"))
-                $browser = "Mozilla";
-
-    return @ $browser;
   }
 
   /**
@@ -771,7 +725,7 @@ class ExtraWatchVisit
     $uri = htmlspecialchars($uri);
     $this->increaseUri2TitleCount($uri);
 
-    $query = sprintf("select id from #__extrawatch_uri2title where (`uri` = '%s') limit 1 ", $this->database->getEscaped($uri), $this->database->getEscaped($title));
+    $query = sprintf("select id from #__extrawatch_uri2title where (`uri` = '%s' and `title` = '%s') limit 1 ", $this->database->getEscaped($uri), $this->database->getEscaped($title));
     $id = $this->database->resultQuery($query);
 
     if (!@$id) {
@@ -847,16 +801,17 @@ class ExtraWatchVisit
     }
   }
 
-    function isVisitFromSameSite($referer) {
+  function isVisitFromSameSite($referer)
+  {
     $liveSite = $this->config->getDomainFromLiveSite();
 	$refererParsed = parse_url($referer);
 	$referer = $refererParsed['host'];
-	
+
     $ignorePrefix = "www.";
     $refererWithoutPrefix = str_replace($ignorePrefix, "", $referer);
     $liveSiteWithoutPrefix = str_replace($ignorePrefix, "", $liveSite);
 
-	if (strpos($refererWithoutPrefix, $liveSiteWithoutPrefix) === 0) {
+    if (strpos($refererWithoutPrefix, $liveSiteWithoutPrefix) === 0) {
       return TRUE;
     } else {
       return FALSE;
@@ -865,6 +820,8 @@ class ExtraWatchVisit
 
   function runAtMidnight()
   {
+    require_once JPATH_BASE . DS . "components" . DS . "com_extrawatch" . DS . "lang" . DS . $this->config->getLanguage() . ".php";
+
     $lastRunAtMidnightDate = $this->config->getConfigValue("EXTRAWATCH_LAST_RUN_AT_MIDNIGHT_DATE");
     $todayDate = $this->date->jwDateToday();
 
@@ -902,29 +859,39 @@ class ExtraWatchVisit
     return $this->database->resultQuery($query);
   }
 
-  function insertUri2Keyphrase($uri, $keyphrase, $title)
-  {
-    $keyphraseId = $this->getKeyphraseId($keyphrase);
-    if (!$keyphraseId) {
-      $this->insertKeyphrase($keyphrase);
-      $keyphraseId = $this->getKeyphraseId($keyphrase);
-    }
-    $uri2titleId = $this->getUriIdByUriName($uri);
-    if (!$uri2titleId) {
-      $uri2titleId = $this->addUri2Title($uri, $title);
+    function insertUri2KeyphraseByUriKeyphraseTitle($uri, $keyphrase, $title) {
+        $keyphraseId = $this->getKeyphraseId($keyphrase);
+        if (!$keyphraseId) {
+            $this->insertKeyphrase($keyphrase);
+            $keyphraseId = $this->getKeyphraseId($keyphrase);
+        }
+        $uri2titleId = $this->getUriIdByUriName($uri);
+        if (!$uri2titleId) {
+            $uri2titleId = $this->addUri2Title($uri, $title);
+        }
+
+        $uri2keyphraseId = $this->getUri2KeyphraseId($uri2titleId, $keyphraseId);
+        if (!$uri2keyphraseId) {
+            $query = sprintf("insert into #__extrawatch_uri2keyphrase values ('','%d','%d') ", (int) $uri2titleId, (int) $keyphraseId);
+            $this->database->executeQuery($query);
+            $uri2keyphraseId = $this->getUri2KeyphraseId($uri2titleId, $keyphraseId);
+        }
+        $this->stat->increaseKeyValueInGroup(EW_DB_KEY_URI2KEYPHRASE, $uri2keyphraseId);
+        return $uri2keyphraseId;
     }
 
-    $id = $this->getUri2KeyphraseId($uri2titleId, $keyphraseId);
-    if (!$id) {
-      $query = sprintf("insert into #__extrawatch_uri2keyphrase values ('','%d','%d') ", (int) $uri2titleId, (int) $keyphraseId);
-      $this->database->executeQuery($query);
-      $id = $this->getUri2KeyphraseId($uri2titleId, $keyphraseId);
-    }
-    $this->stat->increaseKeyValueInGroup(EW_DB_KEY_URI2KEYPHRASE, $id);
-    return $id;
-  }
 
-  function insertUri2Keyphrase2Position($uri2keyphraseId, $position)
+    function getUri2KeyphraseByUriKeyphrase($uri, $keyphrase) {
+        $keyphraseId = $this->getKeyphraseId($keyphrase);
+        if (!$keyphraseId) {
+            $keyphraseId = $this->getKeyphraseId($keyphrase);
+        }
+        $uri2titleId = $this->getUriIdByUriName($uri);
+        $uri2keyphraseId = $this->getUri2KeyphraseId($uri2titleId, $keyphraseId);
+        return $uri2keyphraseId;
+    }
+
+  function insertUri2KeyphraseByUriKeyphraseTitle2Position($uri2keyphraseId, $position)
   {
     $id = $this->getUri2Keyphrase2Position($uri2keyphraseId, $position);
     if (!$id) {
@@ -983,6 +950,15 @@ class ExtraWatchVisit
     $query = sprintf("insert into #__extrawatch_keyphrase (`name`) values ('%s') ", $this->database->getEscaped($keyword));
     $this->database->executeQuery($query);
   }
+
+    public function getKeyphraseByUriId($uri2keyphraseId) {
+        $uri = $this->helper->getUri();
+        $uri2titleId = $this->getUriIdByUriName($uri);
+        $keyphraseId = $this->getUri2KeyphraseId($uri2titleId, $uri2keyphraseId);
+        $keyphrase = $this->getKeyphraseById($keyphraseId);
+        return $keyphrase;
+    }
+
 
 }
 
