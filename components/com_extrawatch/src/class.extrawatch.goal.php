@@ -4,8 +4,8 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.1
- * @revision 834
+ * @version 2.0
+ * @revision 833
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -147,7 +147,7 @@ class ExtraWatchGoal
     /**
      * goals
      */
-    function checkGoals($title, $username, $ip, $came_from, $liveSite = "", $clickedXpath = "")
+    function checkGoals($title, $username, $ip, $came_from, $liveSite = "")
     {
         global $mainframe;
 
@@ -162,169 +162,163 @@ class ExtraWatchGoal
                 if ($row->disabled)
                     continue;
 
-                if (@trim(@$row->clicked_element_xpath_condition) && trim(@$row->clicked_element_xpath_condition) == $clickedXpath) {
-                    $achieved = TRUE;
-
+                if (trim($row->uri_inversed) == "on") {
+                    if (trim($row->uri_condition)) {
+                        if (@ $this->helper->wildcardSearch($row->uri_condition, trim($this->helper->getURI()))) {
+                            continue;
+                        } else
+                            $achieved = TRUE;
+                    }
                 } else {
-
-                    if (trim($row->uri_inversed) == "on") {
-                        if (trim($row->uri_condition)) {
-                            if (@ $this->helper->wildcardSearch($row->uri_condition, trim($this->helper->getURI()))) {
-                                continue;
-                            } else
-                                $achieved = TRUE;
-                        }
-                    } else {
-                        if (trim($row->uri_condition)) {
-                            if (@ $this->helper->wildcardSearch($row->uri_condition, trim($this->helper->getURI()))) {
-                                $achieved = TRUE;
-                            } else
-                                continue;
-                        }
+                    if (trim($row->uri_condition)) {
+                        if (@ $this->helper->wildcardSearch($row->uri_condition, trim($this->helper->getURI()))) {
+                            $achieved = TRUE;
+                        } else
+                            continue;
                     }
+                }
 
-                    if (trim($row->get_inversed) == "on") {
-                        if (trim($row->get_condition)) {
-                            if (@ $this->helper->wildcardSearch($row->get_condition, trim(ExtraWatchHelper::requestGet($row->get_var)))) {
-                                continue;
-                            } else
-                                if ($row->get_var == "*") {
-                                    $found = FALSE;
-                                    foreach (ExtraWatchHelper::requestGet() as $get) {
-                                        if ($this->helper->wildcardSearch($row->get_condition, trim($get))) {
-                                            $found = TRUE;
-                                        }
+                if (trim($row->get_inversed) == "on") {
+                    if (trim($row->get_condition)) {
+                        if (@ $this->helper->wildcardSearch($row->get_condition, trim(ExtraWatchHelper::requestGet($row->get_var)))) {
+                            continue;
+                        } else
+                            if ($row->get_var == "*") {
+                                $found = FALSE;
+                                foreach (ExtraWatchHelper::requestGet() as $get) {
+                                    if ($this->helper->wildcardSearch($row->get_condition, trim($get))) {
+                                        $found = TRUE;
                                     }
-                                    if ($found) continue;
-                                } else
-                                    $achieved = TRUE;
-                        }
-                    } else {
-                        if (trim($row->get_condition)) {
-                            if (@ $this->helper->wildcardSearch($row->get_condition, trim(ExtraWatchHelper::requestGet($row->get_var)))) {
-                                $achieved = TRUE;
+                                }
+                                if ($found) continue;
                             } else
-                                if ($row->get_var == "*") {
-                                    foreach (ExtraWatchHelper::requestGet() as $get) {
-                                        if ($this->helper->wildcardSearch($row->get_condition, trim($get))) {
-                                            $achieved = TRUE;
-                                        }
+                                $achieved = TRUE;
+                    }
+                } else {
+                    if (trim($row->get_condition)) {
+                        if (@ $this->helper->wildcardSearch($row->get_condition, trim(ExtraWatchHelper::requestGet($row->get_var)))) {
+                            $achieved = TRUE;
+                        } else
+                            if ($row->get_var == "*") {
+                                foreach (ExtraWatchHelper::requestGet() as $get) {
+                                    if ($this->helper->wildcardSearch($row->get_condition, trim($get))) {
+                                        $achieved = TRUE;
                                     }
-                                } else
-                                    continue;
-                        }
-                    }
-
-                    if (trim($row->post_inversed) == "on") {
-                        if (trim($row->post_condition)) {
-                            if (@ $this->helper->wildcardSearch($row->post_condition, trim(ExtraWatchHelper::requestPost($row->post_var)))) {
-                                continue;
+                                }
                             } else
-                                if ($row->post_var == "*") {
-                                    $found = FALSE;
-                                    foreach (ExtraWatchHelper::requestPost() as $post) {
-                                        if ($this->helper->wildcardSearch($row->post_condition, trim($post))) {
-                                            $found = TRUE;
-                                        }
+                                continue;
+                    }
+                }
+
+                if (trim($row->post_inversed) == "on") {
+                    if (trim($row->post_condition)) {
+                        if (@ $this->helper->wildcardSearch($row->post_condition, trim(ExtraWatchHelper::requestPost($row->post_var)))) {
+                            continue;
+                        } else
+                            if ($row->post_var == "*") {
+                                $found = FALSE;
+                                foreach (ExtraWatchHelper::requestPost() as $post) {
+                                    if ($this->helper->wildcardSearch($row->post_condition, trim($post))) {
+                                        $found = TRUE;
                                     }
-                                    if ($found) continue;
-                                } else
-                                    $achieved = TRUE;
-                        }
-                    } else {
-                        if (trim($row->post_condition)) {
-                            if (@ $this->helper->wildcardSearch($row->post_condition, trim(ExtraWatchHelper::requestPost($row->post_var)))) {
-                                $achieved = TRUE;
+                                }
+                                if ($found) continue;
                             } else
-                                if ($row->post_var == "*") {
-                                    foreach (ExtraWatchHelper::requestPost() as $post) {
-                                        if ($this->helper->wildcardSearch($row->post_condition, trim($post))) {
-                                            $achieved = TRUE;
-                                        }
+                                $achieved = TRUE;
+                    }
+                } else {
+                    if (trim($row->post_condition)) {
+                        if (@ $this->helper->wildcardSearch($row->post_condition, trim(ExtraWatchHelper::requestPost($row->post_var)))) {
+                            $achieved = TRUE;
+                        } else
+                            if ($row->post_var == "*") {
+                                foreach (ExtraWatchHelper::requestPost() as $post) {
+                                    if ($this->helper->wildcardSearch($row->post_condition, trim($post))) {
+                                        $achieved = TRUE;
                                     }
-                                } else
-                                    continue;
-                        }
+                                }
+                            } else
+                                continue;
                     }
+                }
 
-                    if (trim($row->title_inversed) == "on") {
-                        if (trim($row->title_condition)) {
-                            if (@ $this->helper->wildcardSearch($row->title_condition, trim($title))) {
-                                continue;
-                            } else
-                                $achieved = TRUE;
-                        }
-                    } else {
-                        if (trim($row->title_condition)) {
-                            if (@ $this->helper->wildcardSearch($row->title_condition, trim($title))) {
-                                $achieved = TRUE;
-                            } else
-                                continue;
-                        }
+                if (trim($row->title_inversed) == "on") {
+                    if (trim($row->title_condition)) {
+                        if (@ $this->helper->wildcardSearch($row->title_condition, trim($title))) {
+                            continue;
+                        } else
+                            $achieved = TRUE;
                     }
-
-                    if (trim($row->username_inversed) == "on") {
-                        if (trim($row->username_condition)) {
-                            if (@ $this->helper->wildcardSearch($row->username_condition, trim($username))) {
-                                continue;
-                            } else
-                                $achieved = TRUE;
-                        }
-                    } else {
-                        if (trim($row->username_condition)) {
-                            if (@ $this->helper->wildcardSearch($row->username_condition, trim($username))) {
-                                $achieved = TRUE;
-                            } else
-                                continue;
-                        }
+                } else {
+                    if (trim($row->title_condition)) {
+                        if (@ $this->helper->wildcardSearch($row->title_condition, trim($title))) {
+                            $achieved = TRUE;
+                        } else
+                            continue;
                     }
+                }
 
-                    if (trim($row->ip_inversed) == "on") {
-                        if (trim($row->ip_condition)) {
-                            if (@ $this->helper->wildcardSearch($row->ip_condition, trim($ip))) {
-                                continue;
-                            } else
-                                $achieved = TRUE;
-                        }
-                    } else {
-                        if (trim($row->ip_condition)) {
-                            if (@ $this->helper->wildcardSearch($row->ip_condition, trim($ip))) {
-                                $achieved = TRUE;
-                            } else
-                                continue;
-                        }
+                if (trim($row->username_inversed) == "on") {
+                    if (trim($row->username_condition)) {
+                        if (@ $this->helper->wildcardSearch($row->username_condition, trim($username))) {
+                            continue;
+                        } else
+                            $achieved = TRUE;
                     }
-
-                    if (trim($row->came_from_inversed) == "on") {
-                        if (trim($row->came_from_condition)) {
-                            if (@ $this->helper->wildcardSearch($row->came_from_condition, trim($came_from)) || $this->helper->wildcardSearch($liveSite . $row->came_from_condition, trim($came_from))) {
-                                continue;
-                            } else
-                                $achieved = TRUE;
-                        }
-                    } else {
-                        if (trim($row->came_from_condition)) {
-                            if (@ $this->helper->wildcardSearch($row->came_from_condition, trim($came_from)) || $this->helper->wildcardSearch($liveSite . $row->came_from_condition, trim($came_from))) {
-                                $achieved = TRUE;
-                            } else
-                                continue;
-                        }
+                } else {
+                    if (trim($row->username_condition)) {
+                        if (@ $this->helper->wildcardSearch($row->username_condition, trim($username))) {
+                            $achieved = TRUE;
+                        } else
+                            continue;
                     }
+                }
 
-                    if (trim($row->country_inversed) == "on") {
-                        if (trim($row->country_condition)) {
-                            if (@ $this->helper->wildcardSearch($row->country_condition, trim($country))) {
-                                continue;
-                            } else
-                                $achieved = TRUE;
-                        }
-                    } else {
-                        if (trim($row->country_condition)) {
-                            if (@ $this->helper->wildcardSearch($row->country_condition, trim($country))) {
-                                $achieved = TRUE;
-                            } else
-                                continue;
-                        }
+                if (trim($row->ip_inversed) == "on") {
+                    if (trim($row->ip_condition)) {
+                        if (@ $this->helper->wildcardSearch($row->ip_condition, trim($ip))) {
+                            continue;
+                        } else
+                            $achieved = TRUE;
+                    }
+                } else {
+                    if (trim($row->ip_condition)) {
+                        if (@ $this->helper->wildcardSearch($row->ip_condition, trim($ip))) {
+                            $achieved = TRUE;
+                        } else
+                            continue;
+                    }
+                }
+
+                if (trim($row->came_from_inversed) == "on") {
+                    if (trim($row->came_from_condition)) {
+                        if (@ $this->helper->wildcardSearch($row->came_from_condition, trim($came_from)) || $this->helper->wildcardSearch($liveSite . $row->came_from_condition, trim($came_from))) {
+                            continue;
+                        } else
+                            $achieved = TRUE;
+                    }
+                } else {
+                    if (trim($row->came_from_condition)) {
+                        if (@ $this->helper->wildcardSearch($row->came_from_condition, trim($came_from)) || $this->helper->wildcardSearch($liveSite . $row->came_from_condition, trim($came_from))) {
+                            $achieved = TRUE;
+                        } else
+                            continue;
+                    }
+                }
+
+                if (trim($row->country_inversed) == "on") {
+                    if (trim($row->country_condition)) {
+                        if (@ $this->helper->wildcardSearch($row->country_condition, trim($country))) {
+                            continue;
+                        } else
+                            $achieved = TRUE;
+                    }
+                } else {
+                    if (trim($row->country_condition)) {
+                        if (@ $this->helper->wildcardSearch($row->country_condition, trim($country))) {
+                            $achieved = TRUE;
+                        } else
+                            continue;
                     }
                 }
 

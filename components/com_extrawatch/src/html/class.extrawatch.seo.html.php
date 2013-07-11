@@ -4,8 +4,8 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.1
- * @revision 834
+ * @version 2.0
+ * @revision 833
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -125,7 +125,7 @@ class ExtraWatchSEOHTML
       $output .= "<h2>" . _EW_SEO_MOST_DYNAMIC_KEYPHRASES . "</h2><table style='border: 1px solid black'><tr><th>" . _EW_STATS_KEYPHRASE . "</th><th>" . _EW_SEO_MIN_POSITION . "</th><th>" . _EW_SEO_AVG_POSITION . "</th><th>" . _EW_SEO_MIN_POSITION . "</th><th>" . _EW_COUNT . "</th><th>" . _EW_SEO_CHANGE . "</th><th></th><th>" . _EW_SEO_DATE_OF_LAST_CHANGE . "</th></th></tr>";
       $i = 0;
       foreach ($rows as $row) {
-        $rows2 = $this->extraWatch->seo->getAveragePositionChangesByUri2KeyphraseIdBetweenDays($row->uri2keyphraseId);
+        $rows2 = $this->extraWatch->seo->getAveragePositionChangesByUri2KeyphraseIdLimited($row->uri2keyphraseId);
         if ($this->isChange($day, $rows2))  {
           $changeOutput = $this->renderPositionChangeDiff($rows2, $day);
           if (@$changeOutput) {
