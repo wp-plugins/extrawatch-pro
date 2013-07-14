@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.0
- * @revision 833
+ * @revision 854
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -75,7 +75,7 @@ function renderExtraWatchAgent()
     if ($extraWatch->config->isAdFree()) {
         $title = "";
     } else {
-        $title = "Free live stats and visitor counter and conversion tracking for Joomla, Wordpress, Drupal, Magento and Prestashop";
+        $title = "Free visitor tracking, live stats, counter, conversions for Joomla, Wordpress, Drupal, Magento and Prestashop";
     }
 
     if (!($extraWatch->config->isAdFree() && $extraWatch->config->getCheckboxValue("EXTRAWATCH_FRONTEND_NO_BACKLINK"))) {
