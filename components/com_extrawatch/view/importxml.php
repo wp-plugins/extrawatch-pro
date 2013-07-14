@@ -3,7 +3,7 @@
  * JoomlaWatch - A real-time ajax joomla monitor and live stats
  * @package JoomlaWatch
  * @version 2.0
- * @revision 854
+ * @revision 856
  * @license http://www.gnu.org/licenses/gpl-3.0.txt 	GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -17,5 +17,5 @@ defined( '_JEXEC' ) or die( 'Restricted access' ); ?>
   <label for="file"><?php echo _EW_GOALS_FILENAME;?>:</label><br/><br/>
   <input type="file" name="file" id="file" />
   <input type="submit" name="submit" value="<?php echo _EW_GOALS_IMPORT_XML;?>" />
-  <input name='form_key' type='hidden' value="<?php echo $extraWatch->extraWatch->env->getFormKey();?>" />
+  <input name='form_key' type='hidden' value="<?php echo $extraWatch->env->getFormKey();?>" />
 </form>
