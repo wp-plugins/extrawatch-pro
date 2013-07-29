@@ -3,8 +3,8 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.1
- * @revision 834
+ * @version 2.2
+ * @revision 920
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -38,7 +38,7 @@ if (@isset($_REQUEST["did"]))
 
 
 $extensionar = $extraWatch->downloads->getAllExtensions();
-$filepathar = $extraWatch->downloads->getAllDownloadPaths();
+$filepathar = $extraWatch->downloads->getAllFilePaths();
 
 
 ?>
@@ -46,7 +46,7 @@ $filepathar = $extraWatch->downloads->getAllDownloadPaths();
 
 <script type="text/javascript" src="components/com_extrawatch/views/monitors/tmpl/js/jquery-latest.js"></script>
 <script type="text/javascript" src="components/com_extrawatch/views/monitors/tmpl/js/jquery.tablesorter.js"></script>
-<script type='text/javascript' src='https://www.google.com/jsapi'></script>
+<script type='text/javascript' src='<?php echo $extraWatch->config->getLiveSiteWithSuffix(); ?>components/com_extrawatch/js/jsapi.js'></script>
 
 <script type="text/javascript">
     google.load("visualization", "1", {packages:["corechart"]});
@@ -182,7 +182,7 @@ $filepathar = $extraWatch->downloads->getAllDownloadPaths();
 <body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
 <br />
 
-<table align="center">
+<table>
     <tr><td>
 
         <h2><?php echo(_EW_DOWNLOADS_DOWNLOAD_MONITOR);?></h2>
@@ -218,7 +218,11 @@ $filepathar = $extraWatch->downloads->getAllDownloadPaths();
             </table>
             <?php include("dm_table_extensions.php");?>
             <br><br>
-            <table width="95%" border="0" align="center" cellpadding="3" cellspacing="0">
+
+			<?php include("dm_download_log.php");?>
+			
+			<br/>
+			            <table width="95%" border="0" align="center" cellpadding="3" cellspacing="0">
                 <tr>
                     <td height="23" align="left"><b><?php echo(_EW_DOWNLOADS_FILES_PATHS_BEING_MONITORED);?></b></td>
                 </tr>
@@ -231,9 +235,10 @@ $filepathar = $extraWatch->downloads->getAllDownloadPaths();
 
             </table>
             <?php include("dm_table_filepath.php");?>
-            <br />
-        </td>
-    </tr>
+
+
+	</td>
+	</tr>
 </table>
 <br />
 <br />

@@ -4,8 +4,8 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.0
- * @revision 764
+ * @version 2.2
+ * @revision 920
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -27,6 +27,7 @@ require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS. "lang
 
 $id = ExtraWatchHelper::requestGet("id");
 $params = ExtraWatchHelper::requestGet("params");
+$ip = ExtraWatchHelper::requestGet("ip");
 
 $params=str_replace("?","",$params);    //remove trailing ?
 
@@ -36,8 +37,14 @@ echo("/** query params: \n");
 print_r($queryParams);
 echo("*/");
 
+if (_EW_CLOUD_MODE) {
+    $liveSite = _EW_SCRIPT_HOST._EW_SCRIPT_HOST_DIR;
+} else {
+    $liveSite = $extraWatch->config->getLiveSite();
+}
+
 ?>
-  var urlBase = "<?php echo _EW_SCRIPT_HOST._EW_SCRIPT_HOST_DIR; ?>extrawatch/components/com_extrawatch/ajax/heatmap.php?rand=<?php echo $extraWatch->config->getRand();?>&env=<?php echo $extraWatch->config->getEnvironment();?>&projectId=<?php echo _EW_PROJECT_ID;?>";
+  var urlBase = "<?php echo $liveSite; ?>components/com_extrawatch/ajax/heatmap.php?rand=<?php echo $extraWatch->config->getRand();?>&env=<?php echo $extraWatch->config->getEnvironment();?>&projectId=<?php echo _EW_PROJECT_ID;?>";
   var clickDoc = (document.documentElement != undefined && document.documentElement.clientHeight != 0) ? document.documentElement : document.body;
   //        var w = clickDoc.clientWidth != undefined ? clickDoc.clientWidth : window.innerWidth;
   //        var h = clickDoc.clientHeight != undefined ? clickDoc.clientHeight : window.innerHeight;
@@ -59,7 +66,7 @@ echo("*/");
   function renderHeatmap() {
     var randHash = '<?php echo(@$queryParams[ExtraWatchHeatmap::HEATMAP_PARAM_HASH]);?>';
     var ip = getQueryVariable('ip');
-    var data = "<?php echo str_replace("\"","\\\"",$extraWatch->heatmap->getHeatmapClicksByUri2TitleId($uri2titleId, $w, $h, $day, $ip)); ?>";
+    var data = "<?php echo str_replace("\"","\\\"",$extraWatch->heatmap->getHeatmapClicksByUri2TitleId($uri2titleId, $day, $ip)); ?>";
     var obj = eval('(' + data + ')');
     var transformed = xpathToDataSet(obj);
     xx.displayLoading
@@ -182,12 +189,12 @@ echo("*/");
       return segs.length ? '/' + segs.join('/') : null;
     }
 
-  
-  window.onload = function () {
-    window.document.onclick = function (evt) {
-		extraWatch_click(evt)
-    }
 
+window.onload = function () {
+    window.document.onclick = function (evt) {
+    extraWatch_click(evt)
+    }
+}
 
 	function extraWatch_decorateLinksWithCustomHandler() {
 		var list = document.getElementsByTagName("A");
@@ -215,8 +222,6 @@ extraWatch_decorateLinksWithCustomHandler();
     renderHeatmap();
     <?php } ?>
 
-
-  }
   /* ]]> */
 <?php
 

@@ -4,7 +4,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.0
- * @revision 856
+ * @revision 922
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -12,7 +12,7 @@
 
 if (!defined("_JEXEC")) define("_JEXEC",1);
 if (!defined("ENV")) define("ENV",1);
-$pathSuffix = realpath(".").DS."app".DS."code".DS."community".DS."CodeGravity".DS."ExtraWatch".DS."extrawatch";
+$pathSuffix = realpath(dirname(__FILE__).DS."..".DS."..".DS."..".DS."..".DS."..".DS."..".DS."..").DS."app".DS."code".DS."community".DS."CodeGravity".DS."ExtraWatch".DS."extrawatch";
 
 $GLOBALS['extrawatch_page_title'] = $this->getLayout()->getBlock('head')->getTitle();
 

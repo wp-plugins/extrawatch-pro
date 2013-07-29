@@ -4,11 +4,11 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.1
- * @revision 834
+ * @version 2.2
+ * @revision 920
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
- * @website http://www.extrawatch.com
+ * @website http://www.codegravity.com
  */
 
 /** ensure this file is being included by a parent file */
@@ -32,32 +32,35 @@ class ExtraWatchDownloads
         $this->helper = new ExtraWatchHelper($this->database);
         $this->date = new ExtraWatchDate($this->database);
     }
-	
+
     function increaseFileDownload($file) {
 
-        $filepathquery = sprintf("SELECT did FROM #__extrawatch_dm_paths where dname='%s'", mysql_escape_string($file));
+        $filepathquery = sprintf("SELECT did FROM #__extrawatch_dm_paths where dname='%s'", $this->database->getEscaped($file));
         $filepathid = $this->database->resultQuery($filepathquery);
 
         if($file!='')
         {
             $currdate = date("Y-m-d");
 
-            $filesearchquery = sprintf("SELECT COUNT(*) as `count` FROM #__extrawatch_dm_paths where dname='%s'", mysql_escape_string($file));
+            $filesearchquery = sprintf("SELECT COUNT(*) as `count` FROM #__extrawatch_dm_paths where dname='%s'", $this->database->getEscaped($file));
             $filesearchar = $this->database->resultQuery($filesearchquery);
+			$ip = ExtraWatchVisit::getRemoteIPAddress();
+			$referrer = ExtraWatchVisit::getReferer();
+            $referrerId = $this->findOrAddReferrer($referrer);
             if($filesearchar>0)
             {
-                $filepathquery_add = sprintf("insert into #__extrawatch_dm_counter (did,ddate) values ('%s','%s')", (int)$filepathid, mysql_escape_string($currdate));
+                $filepathquery_add = sprintf("insert into #__extrawatch_dm_counter (did,ddate,ip,refererId) values ('%s','%s','%s','%d')", (int)$filepathid, $this->database->getEscaped($currdate), $ip, (int) $referrerId);
                 $this->database->executeQuery($filepathquery_add);
             }
             else
             {
-                $file_add = sprintf("insert into #__extrawatch_dm_paths (dname) values ('%s')", mysql_escape_string($file));
+                $file_add = sprintf("insert into #__extrawatch_dm_paths (dname) values ('%s')", $this->database->getEscaped($file));
                 $this->database->executeQuery($file_add);
 
                 $path_query = "select did from #__extrawatch_dm_paths where dname = ('$file')";
                 $filepathid = $this->database->resultQuery($path_query);
 
-                $counter_add = sprintf("insert into #__extrawatch_dm_counter (did,ddate) values ('%d','%s')", (int) $filepathid, mysql_escape_string($currdate));
+                $counter_add = sprintf("insert into #__extrawatch_dm_counter (did,ddate,ip,refererId) values ('%d','%s','%s','%d')", (int) $filepathid, $this->database->getEscaped($currdate), $ip, (int) $referrerId);
                 $this->database->executeQuery($counter_add);
 
             }
@@ -68,7 +71,7 @@ class ExtraWatchDownloads
                 header("Content-Type: application/octet-stream");
                 header("Content-Disposition: attachment; filename=".$file);
                 header("Content-Transfer-Encoding: binary");
-                ob_clean();
+                @ob_clean();
                 flush();
                 readfile($filepath);
                 exit;
@@ -98,7 +101,7 @@ class ExtraWatchDownloads
 
 
 
-        $extensionquery_add = sprintf("insert into #__extrawatch_dm_extension (extname) values ('%s')", mysql_escape_string($extName));
+        $extensionquery_add = sprintf("insert into #__extrawatch_dm_extension (extname) values ('%s')", $this->database->getEscaped($extName));
         $this->database->executeQuery($extensionquery_add);
 
         $extensionquery_ht = sprintf("SELECT * FROM #__extrawatch_dm_extension");
@@ -120,7 +123,7 @@ class ExtraWatchDownloads
         $writingonht_prev = "\nRewriteEngine on"."\n"."RewriteRule ^(.*).(".$ext_n_prev.")$ ".$path."components/com_extrawatch/ajax/download.php?env=$env&file=$1.$2&rand= [R,L]";
 
         $root_file = $this->env->getRootPath().DS.".htaccess";
-		
+
         $existingcode = @file_get_contents($root_file);
 
         $existingcode_f = str_replace($writingonht_prev,"",$existingcode);
@@ -160,7 +163,7 @@ class ExtraWatchDownloads
     }
 
     function addFilePath($filepathnamename) {
-        $filepathquery_add = sprintf("insert into #__extrawatch_dm_paths (dname) values ('%s')", mysql_escape_string($filepathnamename));
+        $filepathquery_add = sprintf("insert into #__extrawatch_dm_paths (dname) values ('%s')", $this->database->getEscaped($filepathnamename));
         $this->database->executeQuery($filepathquery_add);
         header("location: ".$this->config->renderLink("downloads"));
     }
@@ -179,7 +182,7 @@ class ExtraWatchDownloads
         }
         $ext_n_prev = substr($ext_n_prev,0,strlen($ext_n_prev)-1);
 
-        $extensionquery = sprintf("update #__extrawatch_dm_extension set extname='%s' where eid='%d'", mysql_escape_string($extname), (int) $eid);
+        $extensionquery = sprintf("update #__extrawatch_dm_extension set extname='%s' where eid='%d'", $this->database->getEscaped($extname), (int) $eid);
         $this->database->setQuery($extensionquery);
         $this->database->query();
 
@@ -257,7 +260,7 @@ class ExtraWatchDownloads
     }
 
     function updateFilePath($did, $filepathname) {
-        $filepathquery = sprintf("update #__extrawatch_dm_paths set dname='%s' where did='%d'", mysql_escape_string($filepathname), (int) $did);
+        $filepathquery = sprintf("update #__extrawatch_dm_paths set dname='%s' where did='%d'", $this->database->getEscaped($filepathname), (int) $did);
         $this->database->setQuery($filepathquery);
         $this->database->query();
         header("location: ".$this->config->renderLink("downloads"));
@@ -296,7 +299,7 @@ class ExtraWatchDownloads
 			$env = $this->config->getEnvironment();
 
 			$env = $this->config->getEnvironment();
-			
+
             $writingonht_prev = "\nRewriteEngine on"."\n"."RewriteRule ^(.*).(".$ext_n_prev.")$ ".$path."components/com_extrawatch/ajax/download.php?env=$env&file=$1.$2&rand= [R,L]";
 
             $root_file = $this->env->getRootPath().DS.".htaccess";
@@ -353,7 +356,7 @@ class ExtraWatchDownloads
         $this->database->query();
         header("location: ".$this->config->renderLink("downloads"));
     }
-    
+
     function getFileStatistics($did) {
 
         $month = date("m");
@@ -374,22 +377,22 @@ class ExtraWatchDownloads
         $weekday = date("Y-m-d", (strtotime($currdate)-($week*60*60*24)));
         $lweekday = date("Y-m-d", (strtotime($weekday)-(7*60*60*24)));
 
-        $filepathquery_curr = sprintf("SELECT COUNT(*) FROM #__extrawatch_dm_counter where ddate='%s' and did='%d'", mysql_escape_string($currdate), (int) $did);
+        $filepathquery_curr = sprintf("SELECT COUNT(*) FROM #__extrawatch_dm_counter where ddate='%s' and did='%d'", $this->database->getEscaped($currdate), (int) $did);
         $count_curr_dt  = $this->database->resultQuery($filepathquery_curr);
 
-        $filepathquery_yes = sprintf("SELECT COUNT(*) FROM #__extrawatch_dm_counter where ddate='%s' and did='%d'", mysql_escape_string($yesterday), (int) $did);
+        $filepathquery_yes = sprintf("SELECT COUNT(*) FROM #__extrawatch_dm_counter where ddate='%s' and did='%d'", $this->database->getEscaped($yesterday), (int) $did);
         $count_yes_dt  = $this->database->resultQuery($filepathquery_yes);
 
-        $filepathquery_cw = sprintf("SELECT COUNT(*) FROM #__extrawatch_dm_counter where ddate>'%s' and did='%d'", mysql_escape_string($weekday), (int) $did);
+        $filepathquery_cw = sprintf("SELECT COUNT(*) FROM #__extrawatch_dm_counter where ddate>'%s' and did='%d'", $this->database->getEscaped($weekday), (int) $did);
         $count_cw_dt  = $this->database->resultQuery($filepathquery_cw);
 
-        $filepathquery_lw = sprintf("SELECT COUNT(*) FROM #__extrawatch_dm_counter where ddate<='%s' and ddate>'%s' and did='%d'", mysql_escape_string($weekday), mysql_escape_string($lweekday), (int) $did);
+        $filepathquery_lw = sprintf("SELECT COUNT(*) FROM #__extrawatch_dm_counter where ddate<='%s' and ddate>'%s' and did='%d'", $this->database->getEscaped($weekday), $this->database->getEscaped($lweekday), (int) $did);
         $count_lw_dt  = $this->database->resultQuery($filepathquery_lw);
 
-        $filepathquery_cm = sprintf("SELECT COUNT(*) FROM #__extrawatch_dm_counter where ddate>='%s' and did='%d'", mysql_escape_string($currmonthday), (int) $did);
+        $filepathquery_cm = sprintf("SELECT COUNT(*) FROM #__extrawatch_dm_counter where ddate>='%s' and did='%d'", $this->database->getEscaped($currmonthday), (int) $did);
         $count_cm_dt  = $this->database->resultQuery($filepathquery_cm);
 
-        $filepathquery_lm = sprintf("SELECT COUNT(*) FROM #__extrawatch_dm_counter where ddate>='%s' and ddate<'%s' and did='%d'", mysql_escape_string($lastmonth), mysql_escape_string($currmonthday), (int) $did);
+        $filepathquery_lm = sprintf("SELECT COUNT(*) FROM #__extrawatch_dm_counter where ddate>='%s' and ddate<'%s' and did='%d'", $this->database->getEscaped($lastmonth), $this->database->getEscaped($currmonthday), (int) $did);
         $count_lm_dt  = $this->database->resultQuery($filepathquery_lm);
 
         $filepathquery_tot = sprintf("SELECT COUNT(*) FROM #__extrawatch_dm_counter where did='%d'", (int) $did);
@@ -416,6 +419,31 @@ class ExtraWatchDownloads
         return $this->database->objectListQuery($filepathquery);
     }
 
+    function getDownloadLog() {
+        $query = sprintf("SELECT * FROM  `#__extrawatch_dm_counter` JOIN #__extrawatch_dm_paths ON #__extrawatch_dm_paths.did = #__extrawatch_dm_counter.did ORDER BY #__extrawatch_dm_counter.id DESC limit 100");
+        return $this->database->objectListQuery($query);
+    }
+
+
+    function findOrAddReferrer($referrer)
+    {
+        $referrer = htmlspecialchars($referrer);
+
+        $id = $this->getReferrerIdByName($referrer);
+
+        if (!@$id) {
+            $query = sprintf("insert into #__extrawatch_dm_referrer (id, referrer) values ('','%s') ", $this->database->getEscaped($referrer));
+            $this->database->executeQuery($query);
+            $id = $this->getReferrerIdByName($referrer);;
+        }
+        return $id;
+    }
+
+    private function getReferrerIdByName($referrer)
+    {
+        $query = sprintf("select id from #__extrawatch_dm_referrer where (`referrer` = '%s') limit 1 ", $this->database->getEscaped($referrer));
+        return $this->database->resultQuery($query);
+    }
 
 }
 

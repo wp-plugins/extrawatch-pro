@@ -1,5 +1,5 @@
 
-<div style='background: url("http://www.extrawatch.com/components/com_extrawatch/img/backend.png"); height: 800px; border: 1px solid #ddd;'>
+<div style='background: url("extrawatch/components/com_extrawatch/img/backend.png"); height: 800px; border: 1px solid #ddd;'>
 <center>
 <br/><br/>&nbsp;<br/><br/>
     <table width="300px" border="0" align="center" cellpadding='10' cellspacing='10' >

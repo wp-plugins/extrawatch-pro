@@ -1,4 +1,14 @@
 <?php
+/**
+ * @file
+ * ExtraWatch - A real-time ajax monitor and live stats
+ * @package ExtraWatch
+ * @version 2.2
+ * @revision 920
+ * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
+ * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
+ * @website http://www.codegravity.com
+ */
 
 session_start();
 
@@ -19,7 +29,7 @@ $url = $_POST['url'];
 
 $id = $database->resultQuery(sprintf("select id from global_user where email = ('%s')  ", $email));
 if (!@$id) {
-	$generatedPassword = substr(str_shuffle('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789') , 0 , 10 );
+	$generatedPassword = substr(str_shuffle('abcdefghijklmnopqrstuvwxyz0123456789') , 0 , 6 );
 	$result = $database->executeQuery(sprintf("insert into global_user (`email`, `password`) values ('%s', '%s')  ", $email, $generatedPassword));
 
 	$userId = $database->resultQuery(sprintf("select max(id) from global_user where email = '%s' ", $email));
@@ -37,10 +47,12 @@ if (!@$id) {
 require_once($path. DS. "components" . DS . "com_extrawatch" . DS . "includes.php");
 require_once($path. DS. "administrator" . DS . "components" . DS . "com_extrawatch" . DS . "install.extrawatch.php");
 
+$extraWatch = new ExtraWatchMain();
+
 $body = "Welcome user $email <br/> your password is: $generatedPassword<br/><br/><br/>";
 
 $body .= "Please include the followith HTML code: <br/>";
-$body .= nl2br(htmlentities(ExtraWatchHelper::renderHTMLCodeSnippet($projectId)));
+$body .= nl2br(htmlentities($extraWatch->helper->renderHTMLCodeSnippet($projectId)));
 
 $body .= "<br/>To check your stats, please use the login information above to log into: <a href='http://stats.extrawatch.com'>stats.extrawatch.com</a>";
 

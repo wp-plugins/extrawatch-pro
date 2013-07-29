@@ -4,8 +4,8 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.1
- * @revision 834
+ * @version 2.2
+ * @revision 920
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -22,41 +22,42 @@ class ExtraWatchSetup {
     private $modulePath;
     private $sqlScriptsModuleDir;
 
-    function __construct($database) {
-        $this->database = $database;
+    function __construct() {
         $this->env = ExtraWatchEnvFactory::getEnvironment();
+        $this->database = $this->env->getDatabase();
         $this->modulePath = realpath(dirname(__FILE__).DS."..".DS."..".DS."..");
-        $this->sqlScriptsModuleDir = $this->modulePath. DS . "administrator".DS."components" . DS . "com_extrawatch" . DS . "sql" . DS . "scripts";
+        $this->sqlScriptsModuleDir = $this->modulePath. DS . "components" . DS . "com_extrawatch" . DS . "sql" . DS . "scripts";
     }
 
     function isEwInitialized() {
 
-        $env = ExtraWatchEnvFactory::getEnvironment();
-        $database = $env->getDatabase();
+        $database = $this->env->getDatabase(_EW_PROJECT_ID);
 
-        $result = $database->resultQuery("select `value` from #__extrawatch_config where `name` = 'rand'");
+		try {
+        $result = @$database->resultQuery("select `value` from #__extrawatch_config where `name` = 'EXTRAWATCH_LIVE_SITE'");
         if ($result) { // already initialized
             return TRUE;
         }
+		} catch (Exception $e) {
+		
+		}
         return FALSE;
     }
 
-    function initializeDB()
+    function initializeDB($doNotInitializeIp2c = FALSE)
     {
-        /*        require_once($this->modulePath. DS. "components" . DS . "com_extrawatch" . DS . "includes.php");
-                require_once($this->modulePath. DS. "administrator" . DS . "components" . DS . "com_extrawatch" . DS . "install.extrawatch.php");*/
-
         if ($this->isEwInitialized()) {
             return;
         }
 
-        $this->runSQLscriptsFromFile($this->modulePath . DS . "administrator" . DS . "components" . DS . "com_extrawatch" . DS . "sql" . DS . "install.mysql.utf8.sql");
+        $this->runSQLscriptsFromFile($this->modulePath . DS .  "components" . DS . "com_extrawatch" . DS . "sql" . DS . "install.mysql.utf8.sql");
         $this->runAdditionalSQLScripts();
-
-//        $this->initializeIp2Country($this->modulePath, $env->getDatabase());
+        if (!$doNotInitializeIp2c) {
+            $this->initializeIp2Country();
+        }
     }
 
-    function runAdditionalSQLScripts() {
+    public function runAdditionalSQLScripts() {
         $files = scandir($this->sqlScriptsModuleDir);
         foreach ($files as $file) {
             if (strstr($file,".sql")) { // should be replaced by ends with
@@ -69,29 +70,29 @@ class ExtraWatchSetup {
     }
 
     private function wasAdditionalSQLScriptRun($script) {
-        $query = sprintf("select count(*) from #__extrawatch_sql_scripts where scriptname = '%s'", $this->database->getEscaped($script));
+        $query = sprintf("select count(*) as count from #__extrawatch_sql_scripts where scriptname = '%s'", $this->database->getEscaped($script));
         return $this->database->resultQuery(trim($query));
     }
 
 
     private function runSQLscriptsFromFile($file) {
-        $lines = @file($file);
+        $database = $this->env->getDatabase();
+        $lines = file($file);
         $query = "";
         foreach ($lines as $line_num => $line) {
             $query .= trim($line);
 
-            if (strstr($line, ";\n")) {
+            if (strstr(trim($line), ";")) {
                 $query = trim($query);
                 $query = str_replace("#__", $this->env->getDbPrefix(), $query);
-                $this->database->executeQuery($query);
+                $database->executeQuery($query);
                 $query = "";
             }
 
         }
     }
 
-    public function initializeIp2Country() {
-        $this->modulePath = realpath(dirname(__FILE__).DS."..".DS."..".DS."..");
+    private function initializeIp2Country() {
         $i = 0;
 
         $numberOfFiles = 220;
@@ -108,17 +109,10 @@ class ExtraWatchSetup {
 
 
 
-    static function initializeMenu($database)
+    static function initializeMenu()
     {
-
-        $query = "DELETE FROM #__extrawatch_config where name like 'rand' ";
-        $database->setQuery(trim($query));
-        $database->query();
-
-        $rand = rand();
-        $query = "INSERT INTO #__extrawatch_config (id, name, value) values ('', 'rand', '$rand') ";
-        $database->setQuery(trim($query));
-        $database->query();
+        $env = ExtraWatchEnvFactory::getEnvironment();
+        $database = $env->getDatabase();
 
         if (version_compare(JVERSION, "2.5.0", "<")) {
 
