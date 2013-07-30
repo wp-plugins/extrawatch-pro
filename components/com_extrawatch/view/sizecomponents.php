@@ -4,8 +4,8 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.2
- * @revision 933
+ * @version 2.0
+ * @revision 932
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -66,7 +66,7 @@ defined('_JEXEC') or die('Restricted access'); ?>
   function refreshComponentsTotal() {
     $.ajax({
       type:"POST",
-      url:"<?php echo $extraWatch->config->getLiveSiteWithSuffix(); ?><?php echo $extraWatch->env->renderAjaxLink('ajax','sizequerytotal.php?rand=<?php echo $extraWatch->config->getRand(); ?>",
+      url:"<?php echo $extraWatch->config->getLiveSiteWithSuffix(); ?>components/com_extrawatch/ajax/sizequerytotal.php?rand=<?php echo $extraWatch->config->getRand(); ?>",
       data:"prev=" + total_components + "&mod=<?php echo EW_DB_KEY_SIZE_COM;
       ?>&dir1=<?php echo $realDirectoryMain;
       ?>&dir2=<?php echo $realDirectoryAdmin; ?>&suffix=components",
@@ -86,7 +86,7 @@ defined('_JEXEC') or die('Restricted access'); ?>
     var target = "item-components-" + index.toString();
     $.ajax({
       type:"POST",
-      url:"<?php echo $extraWatch->config->getLiveSiteWithSuffix(); ?><?php echo $extraWatch->env->renderAjaxLink('ajax','sizequery.php?rand=<?php echo $extraWatch->config->getRand(); ?>&env=<?php echo get_class($extraWatch->env); ?>",
+      url:"<?php echo $extraWatch->config->getLiveSiteWithSuffix(); ?>components/com_extrawatch/ajax/sizequery.php?rand=<?php echo $extraWatch->config->getRand(); ?>&env=<?php echo get_class($extraWatch->env); ?>",
       data:"dir=" + dirs_components[index] + "&mod=" + <?php echo EW_DB_KEY_SIZE_COM; ?>,
       success:function (resp) {
         document.getElementById(target).innerHTML = resp;
@@ -103,7 +103,7 @@ defined('_JEXEC') or die('Restricted access'); ?>
 
     $.ajax({
       type:"POST",
-      url:"<?php echo $extraWatch->config->getLiveSiteWithSuffix(); ?><?php echo $extraWatch->env->renderAjaxLink('ajax','sizequery.php?rand=<?php echo $extraWatch->config->getRand(); ?>&env=<?php echo get_class($extraWatch->env); ?>",
+      url:"<?php echo $extraWatch->config->getLiveSiteWithSuffix(); ?>components/com_extrawatch/ajax/sizequery.php?rand=<?php echo $extraWatch->config->getRand(); ?>&env=<?php echo get_class($extraWatch->env); ?>",
       data:"dir=" + dirs_components[index] + "&mod=" + <?php echo EW_DB_KEY_SIZE_COM; ?>,
       success:function (resp) {
         document.getElementById(target).innerHTML = resp;

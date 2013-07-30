@@ -729,7 +729,7 @@ DEFINE('_EW_WATCH_INSTALLATION_DEMO', "Watch installation demo");
 
 
 /** JW 1.2.18 */
-DEFINE('_EW_ADMINHEADER_HEATMAP', "Heatmap");
+DEFINE('_EW_ADMINHEADER_HEATMAP', "Clicks");
 DEFINE('_EW_HEATMAP_CLICKS', "clicks");
 DEFINE('_EW_HEATMAP_TITLE', "title");
 DEFINE('_EW_HEATMAP_CLICK_OPEN', "Click to open heatmap");
@@ -783,44 +783,4 @@ DEFINE('_EW_ANTISPAM_IMPORT_CSV', "import anti-spam ip csv");
 
 DEFINE('_EW_AGENT_NOT_PUBLISHED_ERROR_WORDPRESS',"Warning: No visits are being recorded. You must go to Appearance->Widgets section, <br/>find ExtraWatchAgent widget and drag&drop it to some of the containers on the right side. <br/>You can publish also other ExtraWatch modules this way.");
 
-
-/** 2.1 */
-DEFINE('_EW_MENU_DOWNLOADS', "Downloads");
-DEFINE('_EW_DOWNLOADS_FILE_NOT_FOUND', "FILE NOT FOUND");
-DEFINE('_EW_DOWNLOADS_HTACCESS_NOT_WRITABLE', "Your .htaccess is not Writable.");
-DEFINE('_EW_DOWNLOADS_HTACCESS_COULD_NOT_BE_CREATED', ".htaccess could not be created, Please create your own.");
-DEFINE('_EW_DOWNLOADS_ADD_EXTENSION', "Add Extension");
-DEFINE('_EW_DOWNLOADS_EXTENSION_NAME', "Extension Name");
-DEFINE('_EW_DOWNLOADS_WARNING', "<b>Warning:</b> always backup your .htaccess file before adding new extension or path! Do not add 'php' as monitored extension. <br/>Be also careful with adding png/jpg, the download count will be increased once someone opens your page which contains images with this extension.");
-DEFINE('_EW_DOWNLOADS_ADD_FILE_PATH', "Add File/Path");
-DEFINE('_EW_DOWNLOADS_FILE_PATH_NAME', "File/Path Name");
-DEFINE('_EW_DOWNLOADS_DOWNLOAD_MONITOR', "Download Monitor");
-DEFINE('_EW_DOWNLOADS_EXTENSIONS_BEING_MONITORED', "Extensions Being Monitored");
-DEFINE('_EW_DOWNLOADS_FILES_PATHS_BEING_MONITORED', "Files/Paths Being Monitored");
-DEFINE('_EW_DOWNLOADS_EDIT_EXTENSION', "Edit Extension");
-DEFINE('_EW_DOWNLOADS_EDIT_FILE_PATH', "Edit File/Path");
-DEFINE('_EW_DOWNLOADS_EXTENSION', "Extension");
-DEFINE('_EW_DOWNLOADS_ACTION', "Action");
-DEFINE('_EW_DOWNLOADS_PATH', "Path");
-DEFINE('_EW_DOWNLOADS_TODAY', "Today");
-DEFINE('_EW_DOWNLOADS_YESTERDAY', "Yesterday");
-DEFINE('_EW_DOWNLOADS_THIS_WEEK', "This Week");
-DEFINE('_EW_DOWNLOADS_LAST_WEEK', "Last Week");
-DEFINE('_EW_DOWNLOADS_THIS_MONTH', "This Month");
-DEFINE('_EW_DOWNLOADS_LAST_MONTH', "Last Month");
-DEFINE('_EW_DOWNLOADS_TOTAL', "Total");
-DEFINE('_EW_DOWNLOADS_INCOMPLETE', "The required Information is incomplete");
-
-DEFINE('_EW_STATS_SOCIAL_MEDIA', "Social Media");
-DEFINE('_EW_MENU_AVAILABLE_IN_PRO',"Available in PRO version");
-DEFINE('_EW_DOWNLOADS_TOTAL',"Total Downloads");
-
-
-/** 3.0 - hosted version */
-DEFINE('_EW_GOALS_CLICKED_ELEMENT_XPATH_CONDITION', "xpath of clicked element condition");
-DEFINE('_EW_DESC_GOALS_CLICKED_ELEMENT_XPATH_CONDITION', "xpath of clicked element condition");
-
-DEFINE('_EW_STATS_DEVICES', "Mobile Devices");
-
 DEFINE('_EW_BLOCKED_BASED_ON_GOAL',"Blocked based on goal no. %s");
-

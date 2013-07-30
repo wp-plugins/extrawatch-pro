@@ -3,20 +3,22 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.2
- * @revision 933
+ * @version 2.0
+ * @revision 932
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
  */
 
 /** ensure this file is being included by a parent file */
-defined('_JEXEC') or die('Restricted access');
+if (!defined('_JEXEC') && !defined('_VALID_MOS'))  {
+  die('Restricted access');
+}
 
 interface ExtraWatchEnv
 {
 
-  public function getDatabase($user = "");
+  public function getDatabase();
 
   public function getRequest();
 
@@ -70,15 +72,5 @@ interface ExtraWatchEnv
   public function getVoteLink();
 
   public function getEnvironmentName();
-
-  public function getRootPath();
-
-  public function getTempDirectory();
-
-  public function getUserId();
-
-  public function getUsernameById($userId);
-
-  public function renderAjaxLink($task, $action);
 
 }

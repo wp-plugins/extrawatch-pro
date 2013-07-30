@@ -4,8 +4,8 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.2
- * @revision 933
+ * @version 2.0
+ * @revision 932
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -25,7 +25,6 @@ if (!$day) {
     <?php
     $color = "";
     echo $extraWatchHTML->renderInputElement('SEO_RENDER_ONLY_CHANGED', $color);
-    echo $extraWatchHTML->renderInputElement('SEO_LIST_ENCRYPTED_KEYWORDS', $color);
     ?>
     <tr>
       <td colspan='3'>
@@ -61,26 +60,6 @@ echo $extraWatchSEOHTML->renderSEOReport($day, FALSE, !$extraWatch->config->getC
     </td>
   </tr>
 </table>
-
-
-
-<table width="100%">
-    <tr>
-        <td colspan="5">
-            <h2>Most popular keyphrases</h2>
-            <?php
-            $mostPopularKeyphrases = $extraWatch->seo->getMostPopularKeywords();
-            $output = "";
-            foreach ($mostPopularKeyphrases as $key => $value) {
-                $output .= (htmlentities(trim($value->name))."\n");
-            }
-            ?>
-            <textarea rows="50" cols="150"><?php echo($output);?></textarea>
-        </td>
-    </tr>
-</table>
-
-
 
 
 

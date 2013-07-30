@@ -5,14 +5,16 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.0
- * @revision 653
+ * @revision 932
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
  */
 
 /** ensure this file is being included by a parent file */
-defined('_JEXEC') or die('Restricted access');
+if (!defined('_JEXEC') && !defined('_VALID_MOS')) {
+    die('Restricted access');
+}
 
 class ExtraWatchHTML
 {
@@ -129,7 +131,7 @@ class ExtraWatchHTML
         if (@ $print) {
             $output = "<script language='Javascript'>window.print();</script>";
         } else {
-            $output = ("<table width='100%'><tr><td align='right'><a href='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "<?php echo $extraWatch->env->renderAjaxLink('ajax','trendtooltip.php?rand=" . $this->extraWatch->config->getRand() . "&group=$group&name=$name&date=$date&print=1&env=".$this->extraWatch->config->getEnvironment()."' target='_blank'><img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/print.gif' border='0' title='" . _EW_TOOLTIP_PRINT . "'/></a></td></tr></table>");
+            $output = ("<table width='100%'><tr><td align='right'><a href='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/ajax/trendtooltip.php?rand=" . $this->extraWatch->config->getRand() . "&group=$group&name=$name&date=$date&print=1&env=".$this->extraWatch->config->getEnvironment()."' target='_blank'><img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/print.gif' border='0' title='" . _EW_TOOLTIP_PRINT . "'/></a></td></tr></table>");
         }
         return $output;
     }
@@ -385,16 +387,15 @@ class ExtraWatchHTML
         return $output;
     }
 
-    function renderHeatMapJS($url, $params)
+    function renderHeatMapJS()
     {
         $output = "";
         
         $extraWatchHeatmap = new ExtraWatchHeatmap($this->extraWatch->database);
-        //$uri = $extraWatchHeatmap->stripHeatmapGetParams($url);
-        $urlParsed = @parse_url($url);
-        $uri = @$urlParsed['path'];
+        $uri = $this->extraWatch->helper->getURI(); //TODO we need to strip the parameters here out of URI !!!
+        $uri = $extraWatchHeatmap->stripHeatmapGetParams($uri);
         $id = $this->extraWatch->visit->getUriIdByUriName($uri);
-        $output .= ExtraWatchHelper::get_include_contents(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "js" . DS . "heatmap.js.php", array("extraWatch" => $this->extraWatch, "extraWatchHeatmap"=>$extraWatchHeatmap, "uri" => $uri, "id" => $id, "extraWatch" => $this->extraWatch, "params" => $params ));
+        $output .= ExtraWatchHelper::get_include_contents(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "js" . DS . "heatmap.js.php", array("extraWatch" => $this->extraWatch, "extraWatchHeatmap"=>$extraWatchHeatmap, "uri" => $uri, "id" => $id, "extraWatch" => $this->extraWatch ));
         
         return $output;
     }
@@ -405,19 +406,6 @@ class ExtraWatchHTML
         $extraWatchHeatmapHTML = new ExtraWatchHeatmapHTML($this->extraWatch->database);
         $output = ExtraWatchHelper::get_include_contents(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "heatmap.php", array("extraWatch" => $this->extraWatch, "extraWatchHeatmap" => $extraWatchHeatmap, "extraWatchHeatmapHTML" => $extraWatchHeatmapHTML, "extraWatchHTML" => $this));
         return $output;
-    }
-
-    function renderDownloads()
-    {
-        $output = ExtraWatchHelper::get_include_contents(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "dm_downloads.php", array("extraWatch" => $this->extraWatch));
-        return $output;
-    }
-
-    function renderUsers()
-    {
-       $extraWatchUserHTML = new ExtraWatchUserHTML($this->extraWatch);
-       $output = ExtraWatchHelper::get_include_contents(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "users.php", array("extraWatch" => $this->extraWatch, "extraWatchUserHTML" => $extraWatchUserHTML));
-       return $output;
     }
 
 }

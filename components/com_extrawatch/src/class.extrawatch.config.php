@@ -4,14 +4,16 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.2
- * @revision 933
+ * @version 2.0
+ * @revision 932
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
  */
 
-defined('_JEXEC') or die('Restricted access');
+/** ensure this file is being included by a parent file */
+if (!defined('_JEXEC') && !defined('_VALID_MOS'))
+  die('Restricted access');
 
 class ExtraWatchConfig
 {
@@ -49,10 +51,10 @@ class ExtraWatchConfig
 
   function isPermitted()
   {
-/*    $rand = $this->getRand();
+    $rand = $this->getRand();
     if (!$rand || $rand != addslashes(strip_tags(@ ExtraWatchHelper::requestGet('rand')))) {
       return FALSE;
-    }*/
+    }
     return TRUE;
   }
 
@@ -113,7 +115,7 @@ class ExtraWatchConfig
   function reloadConfigValues() {
       $query = sprintf("select name, value from #__extrawatch_config ");
       $values = $this->database->objectListQuery($query);
-      if ($values)
+	  if (@$values)
       foreach($values as $keyAssoc => $valueAssoc) {
           ExtraWatchConfig::$configValuesCached[$valueAssoc->name] = $valueAssoc->value;
       }
@@ -330,39 +332,13 @@ class ExtraWatchConfig
     return FALSE;
   }
 
-  function getProjectUrlByUsername($user) {
-      if (_EW_CLOUD_MODE) {
-        return "http://".$this->getDomainFromLiveSiteByUsername($user);
-      } else {
-         return "";
-      }
-  }
-
-
-    function getDomainFromLiveSiteByUsername($user)
-    {
-            $query = sprintf("select `url`  from global_project where `id` = '%s' limit 1", $this->database->getEscaped($user));
-            $url = $this->database->resultQuery($query);
-
-            $parsedUrl = @ parse_url($url);
-        return $parsedUrl;
-
-    }
-
-  function getDomainFromLiveSite($user)
+  function getDomainFromLiveSite()
   {
+    // $parsedUrl = @ parse_url(@$this->getLiveSite());  - live site could not longer be used, because it's relative path now, using SERVER_NAME
+    $parsedUrl = @ parse_url("http://".@$_SERVER['SERVER_NAME']);
+    $domainWithSubdomain = trim($this->cleanUrl(@$parsedUrl[host]));
 
-      if (_EW_CLOUD_MODE) {
-           $this->getDomainFromLiveSiteByUsername($user);
-
-      } else  {
-          $parsedUrl = @ parse_url(@$_SERVER['HTTP_HOST']);
-      }
-
-      $domainWithSubdomain = trim($this->cleanUrl(@$parsedUrl[host]));
-
-
-      /* if it's an IP address */
+    /* if it's an IP address */
     if ($this->isIPAddress($domainWithSubdomain)) {
       return $domainWithSubdomain;
     }
@@ -395,7 +371,7 @@ class ExtraWatchConfig
    */
   function isAdFree()
   {
-   $key = md5(strrev($this->getDomainFromLiveSite(_EW_PROJECT_ID)));
+   $key = md5(strrev($this->getDomainFromLiveSite()));
    if ($key == $this->getConfigValue("EXTRAWATCH_ADFREE")) {
         return TRUE;
    }

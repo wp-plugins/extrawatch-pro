@@ -4,15 +4,17 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.2
- * @revision 933
+ * @version 2.0
+ * @revision 932
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
  */
 
 /** ensure this file is being included by a parent file */
-defined('_JEXEC') or die('Restricted access');
+if (!defined('_JEXEC') && !defined('_VALID_MOS')) {
+  die('Restricted access');
+}
 
 class ExtraWatchSEO
 {
@@ -28,7 +30,21 @@ class ExtraWatchSEO
 
   
   /** seo */
-  function retrieveTopUrisReferedByKeyphraseForDay($day)
+  function retrieveUri2KeyphraseStats()
+  {
+    $query = sprintf("SELECT uri.uri, uri.title, info.value, keyword.name
+                                FROM `#__extrawatch_info` info
+                                JOIN `#__extrawatch_uri2keyphrase` u2k ON u2k.keyphraseId = info.`name`
+                                JOIN `#__extrawatch_uri2title` uri ON u2k.uri2titleId = uri.id
+                                JOIN `#__extrawatch_keyphrase` keyword ON u2k.keyphraseId = keyword.id
+                                WHERE info.`group` = %d
+                                AND info.`date` =%d
+                                ORDER BY info.value DESC", EW_DB_KEY_URI2KEYPHRASE, $this->date->jwDateToday());
+    return $this->database->objectListQuery($query);
+  }
+
+  /** seo */
+  function retrieveTopUrisReferedByKeyphrase($day)
   {
     $query = sprintf("SELECT #__extrawatch_uri2keyphrase.uri2titleId as uriId, uri, title, sum( #__extrawatch_info.value ) AS total
                         FROM #__extrawatch_info
@@ -43,7 +59,7 @@ class ExtraWatchSEO
   }
 
   /** seo */
-  function retrieveKeyphrasesForDayAndUriId($day, $uriId)
+  function retrieveKeyphrasesForUri($day, $uriId)
   {
     $query = sprintf("SELECT #__extrawatch_info.name as uri2keyphraseId, #__extrawatch_keyphrase.name as name, #__extrawatch_keyphrase.id as keyphraseId, #__extrawatch_info.value as value
                                 FROM #__extrawatch_info
@@ -88,9 +104,44 @@ class ExtraWatchSEO
     return $googlePage;
   }
 
+  /** seo */
+  function getUri2KeyphrasePosUris($day)
+  {
+    $query = sprintf(
+      "SELECT
+            DISTINCT (
+            uri
+            ), title, sum( value ) AS valueTotal,
+            #__extrawatch_uri2title.id as uri2titleId
+            FROM #__extrawatch_info
+            JOIN `#__extrawatch_uri2keyphrase_pos` ON #__extrawatch_uri2keyphrase_pos.id = #__extrawatch_info.name
+            JOIN `#__extrawatch_uri2keyphrase` ON #__extrawatch_uri2keyphrase.id = #__extrawatch_uri2keyphrase_pos.uri2keyphraseId
+            JOIN `#__extrawatch_uri2title` ON #__extrawatch_uri2keyphrase.uri2titleId = #__extrawatch_uri2title.id
+            WHERE #__extrawatch_info.`group` = %d and #__extrawatch_info.`date` = %d
+            GROUP BY uri
+            ORDER BY valueTotal DESC, position ASC", EW_DB_KEY_SEARCH_RESULT_NUM, $day);
+    return $this->database->objectListQuery($query);
+  }
 
+  function getUri2KeyphrasePosById($day, $uri2titleId)
+  {
+    if (!$uri2titleId) {
+      return;
+    }
+    $query = sprintf(
+      "SELECT #__extrawatch_uri2keyphrase_pos.id as uri2keyphrasePosId, #__extrawatch_keyphrase.name as keyphrase, #__extrawatch_uri2keyphrase_pos.position as `position`, #__extrawatch_info.`value` as `value`
+                FROM #__extrawatch_info
+                JOIN `#__extrawatch_uri2keyphrase_pos` ON #__extrawatch_uri2keyphrase_pos.id = #__extrawatch_info.name
+                JOIN `#__extrawatch_uri2keyphrase` ON #__extrawatch_uri2keyphrase.id = #__extrawatch_uri2keyphrase_pos.uri2keyphraseId
+                JOIN `#__extrawatch_uri2title` ON #__extrawatch_uri2keyphrase.uri2titleId = #__extrawatch_uri2title.id
+                JOIN `#__extrawatch_keyphrase` ON #__extrawatch_uri2keyphrase.keyphraseId = #__extrawatch_keyphrase.id
+                WHERE #__extrawatch_info.`group` = %d and #__extrawatch_info.`date` = %d
+                and #__extrawatch_uri2title.`id` = %d
+                ORDER BY value DESC, position ASC", EW_DB_KEY_SEARCH_RESULT_NUM, $day, $uri2titleId);
+    return $this->database->objectListQuery($query);
+  }
 
-  function getPositionByUri2KeyphraseId($uri2keyphrasePosId)
+  function getUri2KeyphrasePosNameById($uri2keyphrasePosId)
   {
     $query = sprintf(
       "SELECT name
@@ -130,6 +181,22 @@ class ExtraWatchSEO
     return $this->database->objectListQuery($query);
   }
 
+  /* function getMostChangingKeywords() {
+      $query = sprintf("
+          SELECT uri2titleId, uri2keyphraseId, title, #__extrawatch_keyphrase.`name` , count( position ) AS `count`
+          FROM `#__extrawatch_uri2keyphrase_pos`
+          JOIN #__extrawatch_info info ON info.name = #__extrawatch_uri2keyphrase_pos.id
+          JOIN #__extrawatch_uri2keyphrase ON #__extrawatch_uri2keyphrase.id = uri2keyphraseId
+          JOIN #__extrawatch_keyphrase ON #__extrawatch_keyphrase.id = keyphraseId
+          JOIN #__extrawatch_uri2title ON #__extrawatch_uri2title.id = uri2titleId
+          WHERE info.`group` = %d
+          GROUP BY uri2titleId
+          HAVING `count` >1
+          ORDER by `count` DESC
+          ", EW_DB_KEY_SEARCH_RESULT_NUM);
+      return $this->database->objectListQuery($query);
+  }*/
+
   function getAveragePositionChangesByUri2KeyphraseId($uri2keyphraseId)
   {
     $query = sprintf("SELECT `date` , AVG( position ) as averagePosition
@@ -144,7 +211,7 @@ class ExtraWatchSEO
     return $this->database->objectListQuery($query);
   }
 
-  function getAveragePositionChangesByUri2KeyphraseIdBetweenDays($uri2keyphraseId)
+  function getAveragePositionChangesByUri2KeyphraseIdLimited($uri2keyphraseId)
   {
     $rows = $this->getAveragePositionChangesByUri2KeyphraseId($uri2keyphraseId);
     if (@$rows && sizeof($rows) > 1) {
@@ -152,21 +219,6 @@ class ExtraWatchSEO
     }
     return $rows;
   }
-
-    function getMostPopularKeywords()
-    {
-        $query = sprintf("
-          SELECT #__extrawatch_keyphrase.name as name
-            FROM  `#__extrawatch_keyphrase`
-            JOIN #__extrawatch_info ON #__extrawatch_info.name = #__extrawatch_keyphrase.name
-            AND #__extrawatch_info.`group` =%d
-            ORDER BY #__extrawatch_info.value DESC",
-            (int) EW_DB_KEY_KEYPHRASE);
-        return $this->database->objectListQuery($query);
-    }
-
-
-    
-
+  
 
 }

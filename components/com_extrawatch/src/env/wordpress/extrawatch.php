@@ -1,26 +1,13 @@
 <?php
-/**
- * @file
- * ExtraWatch - A real-time ajax monitor and live stats
- * @package ExtraWatch
- * @version 2.2
- * @revision 933
- * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
- * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
- * @website http://www.codegravity.com
- */
-
-defined('_JEXEC') or die('Restricted access');
-
 /*
 Plugin Name: ExtraWatch Live Stats and Visitor Counter PRO
 Plugin URI: http://www.extrawatch.com
 
 
-Description: Features: <strong>Visitor Live Stats</strong>, <strong>Monitor File Downloads</strong>, <strong>Monitor clicks, Heatmap</strong>, <strong>SEO Report</strong>, <strong>Traffic Flow</strong>, <strong>Front-end Counters</strong>, <strong>Anti-spam</strong>, <strong>Nightly Email Reports</strong>, <strong>History</strong>, <strong>Graphs</strong>, <strong>Directory sizes</strong>, translated in <strong>42 world languages</strong>
+Description: Features: <strong>Visitor Live Stats</strong>, <strong>Monitor clicks, Heatmap</strong>, <strong>Monitor clicks, Heatmap</strong>, <strong>SEO Report</strong>, <strong>Traffic Flow</strong>, <strong>Front-end Counters</strong>, <strong>Anti-spam</strong>, <strong>Nightly Email Reports</strong>, <strong>History</strong>, <strong>Graphs</strong>, <strong>Directory sizes</strong>, translated in <strong>42 world languages</strong>
 
-Version: 2.2.933 PRO
-Author: CodeGravity.com
+Version: 2.0.932 PRO
+Author: ExtraWatch.com
 Author URI: http://www.extrawatch.com
 */
 
@@ -45,7 +32,7 @@ if (@function_exists("extrawatch_admin_menu")) {
 } else {
 
   add_action('admin_menu', 'extrawatch_admin_menu');
-  add_action('wp_meta', 'extrawatch_frontend');
+  //add_action('wp_meta', 'extrawatch_frontend');
 
   require_once(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "src" . DS. "inc.extrawatch.env.php");
 
@@ -68,9 +55,8 @@ if (@function_exists("extrawatch_admin_menu")) {
 
     add_submenu_page('extrawatch','Live Stats','Live Stats',$EC_userLevel,'extrawatch&task=',array(&$this, 'extrawatch&task='));
     
-    add_submenu_page('extrawatch','Downloads','Downloads',$EC_userLevel,'extrawatch&task=downloads',array(&$this, 'extrawatch&task=downloads'));
     add_submenu_page('extrawatch','SEO','SEO',$EC_userLevel,'extrawatch&task=seo',array(&$this, 'extrawatch&task=seo'));
-    add_submenu_page('extrawatch','Clicks','Clicks',$EC_userLevel,'extrawatch&task=heatmap',array(&$this, 'extrawatch&task=heatmap'));
+    add_submenu_page('extrawatch','Heatmap','Heatmap',$EC_userLevel,'extrawatch&task=heatmap',array(&$this, 'extrawatch&task=heatmap'));
     add_submenu_page('extrawatch','Traffic Flow','Traffic Flow',$EC_userLevel,'extrawatch&task=flow',array(&$this, 'extrawatch&task=flow'));
     
     add_submenu_page('extrawatch','Graphs and Trends','Graphs and Trends',$EC_userLevel,'extrawatch&task=graphs',array(&$this, 'extrawatch&task=graphs'));

@@ -4,8 +4,8 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.2
- * @revision 933
+ * @version 2.0
+ * @revision 932
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -61,11 +61,7 @@ defined('_JEXEC') or die('Restricted access'); ?>
   </table>
   <input name='form_key' type='hidden' value="<?php echo $extraWatchHTML->extraWatch->env->getFormKey();?>" />
 </form>
-    <form action='<?php echo $extraWatch->config->renderLink("emails", "send");?>' method='POST' id='settingsForm'>
-        <input type='submit' name='submitForm' value=' [ Send emails now ] '/>
-    </form>
-
-    <br/>
+<br/>
 <hr/>
 
 <h2><?php echo(_EW_EMAIL_REPORT_GENERATED);?></h2>
