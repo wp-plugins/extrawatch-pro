@@ -85,8 +85,13 @@
                 //obj.data.clear();
                 while (dlen--) {
                     var point = d[dlen];
+					var element;
+					try {
                     var elementFound = document.evaluate(point.xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null);
-                    var element = elementFound.singleNodeValue;
+					element = elementFound.singleNodeValue;
+					} catch (e) {
+					// suppress
+					}
                     if (element != null) {
                         var position = findPos(element);
                         point.x = position[0] + point.x;
@@ -100,6 +105,7 @@
                         }
                         data[point.x][point.y] += point.count;
                     }
+					
                 }
                 heatmap.displayDialog();
             },

@@ -4,8 +4,8 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.0
- * @revision 922
+ * @version 2.2
+ * @revision 927
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -172,7 +172,7 @@ defined('_JEXEC') or die('Restricted access'); ?>
 
     $day = $extraWatch->date->jwDateToday();
 
-    $trendsIcon = "<img src='" . $extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/trend_icon.gif' border='0'  " . $extraWatch->helper->getTooltipOnEvent() . "=\"ajax_showTooltip('" . $extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/ajax/trendtooltip.php?rand=" . $extraWatch->config->getRand() . "&group=" . EW_DB_KEY_SIZE_DB . "&name=" . $row->Name . "&date=$day&env=".get_class($extraWatch->env)."',this);return FALSE\"/>";
+    $trendsIcon = "<img src='" . $extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/trend_icon.gif' border='0'  " . $extraWatch->helper->getTooltipOnEvent() . "=\"ajax_showTooltip('" . $extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/ajax/trendtooltip.php?rand=" . $extraWatch->config->getRand() . "&group=" . EW_DB_KEY_SIZE_DB . "&name=" . $row->Name . "&date=$day&env=".get_class($extraWatch->env)."&username="._EW_USERNAME."',this);return FALSE\"/>";
 
     echo("<td style='background-color: $color;' align='center'>" . $trendsIcon . "</td>");
 

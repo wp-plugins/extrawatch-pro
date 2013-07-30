@@ -4,19 +4,26 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.0
- * @revision 922
+ * @version 2.2
+ * @revision 927
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
  */
+
+ if (defined("EW_STANDALONE")) {
+	define("JPATH_BASE",realpath("extrawatch"));
+	define("ENV",1);
+	define("_JEXEC",1);
+}
+
+ 
 defined('_JEXEC') or die('Restricted access');
 
 /** ensure this file is being included by a parent file */
 
-if (!defined('_JEXEC') && !defined('_VALID_MOS')) {
-    die('Restricted access');
-}
+
+defined('_JEXEC') or die('Restricted access');
 
 if (!defined("JPATH_BASE2")) {
     define("JPATH_BASE2", JPATH_BASE);
@@ -29,6 +36,7 @@ if (!defined("DS")) {
 require_once JPATH_BASE . DS . "components" . DS . "com_extrawatch" . DS . "includes.php";
 
 
+
 function renderExtraWatchAgent()
 {
 
@@ -39,17 +47,21 @@ function renderExtraWatchAgent()
     require_once JPATH_BASE . DS . "components" . DS . "com_extrawatch" . DS . "lang" . DS . $extraWatch->config->getLanguage() . ".php";
 
     if (EXTRAWATCH_DEBUG) {
-        $output .= ("<span style='color: #ff3333'>" . _JW_DESC_DEBUG . "</span><br/>");
+        $output .= ("<span style='color: #ff3333'>" . _EW_DESC_DEBUG . "</span><br/>");
     }
 
     $extraWatchHTML = new ExtraWatchHTML();
     $extraWatch->block->checkPostRequestForSpam(ExtraWatchHelper::requestGet());
     $extraWatch->block->checkPostRequestForSpam(ExtraWatchHelper::requestPost());
-    $extraWatch->visit->insertVisit();
+    try {
+        $extraWatch->visit->insertVisit();
+    } catch (ExtraWatchIPBlockedException $e) {
+        die($this->config->getConfigValue('EXTRAWATCH_BLOCKING_MESSAGE'));
+    }
 
     
-    $output .= $extraWatchHTML->renderHeatMapJS();
-    
+    //$output .= $extraWatchHTML->renderHeatMapJS();
+
 
 
     /*
@@ -78,16 +90,20 @@ function renderExtraWatchAgent()
         $title = "Free visitor tracking, live stats, counter, conversions for Joomla, Wordpress, Drupal, Magento and Prestashop";
     }
 
-    if (!($extraWatch->config->isAdFree() && $extraWatch->config->getCheckboxValue("EXTRAWATCH_FRONTEND_NO_BACKLINK"))) {
+/*    if (!($extraWatch->config->isAdFree() && $extraWatch->config->getCheckboxValue("EXTRAWATCH_FRONTEND_NO_BACKLINK"))) {
         $output .= ("<a href='http://www.extrawatch.com' target='_blank' $nofollow title='" . $title . "'>");
-    }
+    }*/
 
-    $output .= ("<img src='" . $extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/ajax/img.php?rand=" . (rand() % 100000) . "&amp;env=" . get_class($extraWatch->env) . "' border='0' alt='$title' title='$title'/>");
+    $host = $extraWatch->config->getLiveSiteWithSuffix();
 
-    if (!($extraWatch->config->isAdFree() && $extraWatch->config->getCheckboxValue("EXTRAWATCH_FRONTEND_NO_BACKLINK"))) {
+    $output = ""; // reset output;
+
+	$output = $extraWatch->helper->renderHTMLCodeSnippet(_EW_PROJECT_ID);
+
+/*    if (!($extraWatch->config->isAdFree() && $extraWatch->config->getCheckboxValue("EXTRAWATCH_FRONTEND_NO_BACKLINK"))) {
 
         $output .= ("</a>");
-    }
+    }*/
     return $output;
 }
 

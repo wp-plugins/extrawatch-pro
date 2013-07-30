@@ -4,8 +4,8 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.0
- * @revision 922
+ * @version 2.2
+ * @revision 927
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -97,7 +97,7 @@ class ExtraWatchSizes
   function getTableSizes()
   {
     $dbPrefix = $this->env->getDbPrefix();
-    $query = sprintf("SHOW TABLE STATUS LIKE '%s" . "%%'", $this->database->getEscaped($dbPrefix));
+    $query = sprintf("SHOW TABLE STATUS LIKE '%%'");
     $this->database->setQuery($query);
     $rows = $this->database->objectListQuery($query);
     return $rows;
@@ -125,7 +125,7 @@ class ExtraWatchSizes
   function updateTableSizes($lastRunAtMidnightDate)
   {
     $dbPrefix = $this->env->getDbPrefix();
-    $query = sprintf("SHOW TABLE STATUS LIKE '%s" . "%%'", $this->database->getEscaped($dbPrefix));
+    $query = sprintf("SHOW TABLE STATUS LIKE '%%'");
     $this->database->setQuery($query);
     $rows = $this->database->objectListQuery($query);
 

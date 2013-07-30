@@ -16,7 +16,7 @@ defined('_JEXEC') or die('Restricted access');
 //ExtraWatch language file - to create a new language file, just copy the english.php to eg. german.php and place into./components/com_extrawatch/lang/
 
 // Main Menu.
-DEFINE('_EW_MENU_STATS', "Live Stats");
+DEFINE('_EW_MENU_STATS', "Visitors");
 DEFINE('_EW_MENU_GOALS', "Goals");
 DEFINE('_EW_MENU_SETTINGS', "Settings");
 DEFINE('_EW_MENU_CREDITS', "Credits");
@@ -527,7 +527,52 @@ DEFINE('_EW_GOALS_EXPORT', "Export goals");
 DEFINE('_EW_GOALS_FILENAME', "Select goals previously exported as XML");
 DEFINE('_EW_ANTISPAM_IMPORT_CSV', "import anti-spam ip csv");
 
-DEFINE('_EW_AGENT_NOT_PUBLISHED_ERROR_WORDPRESS',"Warning: No visits are being recorded. You must go to Appearance->Widgets section, <br/>find ExtraWatchAgent widget and drag&drop it to some of the containers on the right side. <br/>You can publish also other ExtraWatch modules this way. <br/><br/>Check the demonstration video:<br/><br/><iframe id='video-player' width='800' height='468' src='http://www.youtube.com/embed/O47iWuqEh6A?enablejsapi=1&autoplay=0&rel=0&modestbranding=1&showinfo=0&showsearch=0&vq=hd1080' frameborder='0' allowfullscreen></iframe><br/><br/>In case of any questions about installation or problems, you can take advantage of our support on <a href='http://www.extrawatch.com' target='_blank'>http://www.extrawatch.com</a>");
+DEFINE('_EW_AGENT_NOT_PUBLISHED_ERROR_WORDPRESS',"Warning: No visits are being recorded. You must go to Appearance->Widgets section, <br/>find ExtraWatchAgent widget and drag&drop it to some of the containers on the right side. <br/>You can publish also other ExtraWatch modules this way.");
+
+/** 2.1 */
+DEFINE('_EW_MENU_DOWNLOADS', "Downloads");
+DEFINE('_EW_DOWNLOADS_FILE_NOT_FOUND', "FILE NOT FOUND");
+DEFINE('_EW_DOWNLOADS_HTACCESS_NOT_WRITABLE', "Your .htaccess is not Writable.");
+DEFINE('_EW_DOWNLOADS_HTACCESS_COULD_NOT_BE_CREATED', ".htaccess could not be created, Please create your own.");
+DEFINE('_EW_DOWNLOADS_ADD_EXTENSION', "Add Extension");
+DEFINE('_EW_DOWNLOADS_EXTENSION_NAME', "Extension Name");
+DEFINE('_EW_DOWNLOADS_WARNING', "<b>Warning:</b> always backup your .htaccess file before adding new extension or path! Do not add 'php' as monitored extension. <br/>Be also careful with adding png/jpg, the download count will be increased once someone opens your page which contains images with this extension.");
+DEFINE('_EW_DOWNLOADS_ADD_FILE_PATH', "Add File/Path");
+DEFINE('_EW_DOWNLOADS_FILE_PATH_NAME', "File/Path Name");
+DEFINE('_EW_DOWNLOADS_DOWNLOAD_MONITOR', "Download Monitor");
+DEFINE('_EW_DOWNLOADS_EXTENSIONS_BEING_MONITORED', "Extensions Being Monitored");
+DEFINE('_EW_DOWNLOADS_FILES_PATHS_BEING_MONITORED', "Files/Paths Being Monitored");
+DEFINE('_EW_DOWNLOADS_EDIT_EXTENSION', "Edit Extension");
+DEFINE('_EW_DOWNLOADS_EDIT_FILE_PATH', "Edit File/Path");
+DEFINE('_EW_DOWNLOADS_EXTENSION', "Extension");
+DEFINE('_EW_DOWNLOADS_ACTION', "Action");
+DEFINE('_EW_DOWNLOADS_PATH', "Path");
+DEFINE('_EW_DOWNLOADS_TODAY', "Today");
+DEFINE('_EW_DOWNLOADS_YESTERDAY', "Yesterday");
+DEFINE('_EW_DOWNLOADS_THIS_WEEK', "This Week");
+DEFINE('_EW_DOWNLOADS_LAST_WEEK', "Last Week");
+DEFINE('_EW_DOWNLOADS_THIS_MONTH', "This Month");
+DEFINE('_EW_DOWNLOADS_LAST_MONTH', "Last Month");
+DEFINE('_EW_DOWNLOADS_TOTAL', "Total");
+DEFINE('_EW_DOWNLOADS_INCOMPLETE', "The required Information is incomplete");
+
+DEFINE('_EW_STATS_SOCIAL_MEDIA', "Social Media");
+DEFINE('_EW_MENU_AVAILABLE_IN_PRO',"Available in PRO version");
+
+/** 3.0 - hosted version */
+DEFINE('_EW_GOALS_CLICKED_ELEMENT_XPATH_CONDITION', "xpath of clicked element condition");
+DEFINE('_EW_DESC_GOALS_CLICKED_ELEMENT_XPATH_CONDITION', "xpath of clicked element condition");
+
+DEFINE('_EW_STATS_DEVICES', "Mobile Devices");
 
 DEFINE('_EW_BLOCKED_BASED_ON_GOAL',"Blocked based on goal no. %s");
+
+DEFINE('_EW_TIME_BETWEEN_VISITS',"Total time spent");
+DEFINE('_EW_LEFT_WEBSITE',"Left website");
+DEFINE('_EW_MENU_USERS',"Users");
+DEFINE('_EW_USERS_BLOCK_IP_CONFIRM',"Do you really want to block this IP address?");
+DEFINE('_EW_USERS_SHARING_HEADER',"Users sharing same login");
+DEFINE('_EW_USERS_SHARING_DESC',"Contains users who accessed the website from different IP addresses and/or from different country but with same login. This might be a warning for you, that they're sharing their account with someone else.");
+DEFINE('_EW_USERS_ACTIVITY_HEADER',"Latest user activity");
+define('_EW_DESC_SEO_LIST_ENCRYPTED_KEYWORDS', "Google hides passing particular keywords from google search to websites. This will reveal the keyword's position,<br/> but not the keyword itself. Enable this option if you want to see also position of these encrypted keywords in stats.");
 

@@ -4,8 +4,8 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.0
- * @revision 922
+ * @version 2.2
+ * @revision 927
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -18,7 +18,8 @@ defined('_JEXEC') or die('Restricted access'); ?>
     <div class="panel">
       <div class="wrapper">
         <table style='border: 1px solid #dddddd; padding: 2px;>
-                <tr><td colspan='4' align='left'><h2><?php echo(_EW_SETTINGS_ANTI_SPAM);?></h2></td></tr>
+                <tr><td colspan='
+        4' align='left'><h2><?php echo(_EW_SETTINGS_ANTI_SPAM);?></h2></td></tr>
         <tr>
           <td colspan='2'>
           </td>

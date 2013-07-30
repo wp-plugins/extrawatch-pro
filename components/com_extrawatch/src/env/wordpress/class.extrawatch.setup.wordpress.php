@@ -4,19 +4,17 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.0
- * @revision 922
+ * @version 2.2
+ * @revision 927
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
  */
 
 /** ensure this file is being included by a parent file */
-if (!defined('_JEXEC') && !defined('_VALID_MOS'))  {
-  die('Restricted access');
-}
+defined('_JEXEC') or die('Restricted access');
 
-class ExtraWatchSetupWordpress implements ExtraWatchSetup
+class ExtraWatchEnvSetupWordpress implements ExtraWatchEnvSetup
 {
 
   function install()
@@ -24,8 +22,8 @@ class ExtraWatchSetupWordpress implements ExtraWatchSetup
     error_reporting(E_ALL);
     $env = ExtraWatchEnvFactory::getEnvironment();
     $database = $env->getDatabase();
-    ExtraWatchSetupWordpress::create_tables($database);
-    ExtraWatchSetupWordpress::install_geolocation($database);
+    ExtraWatchEnvSetupWordpress::create_tables($database);
+    ExtraWatchEnvSetupWordpress::install_geolocation($database);
 
   }
 
@@ -33,7 +31,7 @@ class ExtraWatchSetupWordpress implements ExtraWatchSetup
   {
     $env = ExtraWatchEnvFactory::getEnvironment();
     $database = $env->getDatabase();
-    ExtraWatchSetupWordpress::drop_tables($database);
+    ExtraWatchEnvSetupWordpress::drop_tables($database);
   }
 
   function activate()
@@ -89,6 +87,18 @@ class ExtraWatchSetupWordpress implements ExtraWatchSetup
   static function drop_tables($database)
   {
 
+      try {
+          $database->setQuery("SELECT `value` as keepData from #__extrawatch_config where `name` = 'EXTRAWATCH_UNINSTALL_KEEP_DATA' limit 1 ");
+          $keepData = @$database->loadResult();
+      } catch (Exception $e) {
+          // suppress
+      }
+
+    if (@$keepData) {
+        echo("<b>Not deleting ExtraWatch database tables, because you set KEEP_DATA in Settings to true. <br/>Do not forget to delete these tables later, or install new version of ExtraWatch</b> <br/><br/>");
+        return;
+    }
+
     $query = "DROP TABLE #__extrawatch";
     $database->setQuery(trim($database->replaceDbPrefix($query)));
     $database->query();
@@ -104,9 +114,10 @@ class ExtraWatchSetupWordpress implements ExtraWatchSetup
     $database->executeQuery(trim($database->replaceDbPrefix($query)));
     $database->query();
 
-    $query = "DROP TABLE #__extrawatch_ip2c";
+/* removed
+ *     $query = "DROP TABLE #__extrawatch_ip2c";
     $database->executeQuery(trim($database->replaceDbPrefix($query)));
-    $database->query();
+    $database->query();*/
 
     $query = "DROP TABLE #__extrawatch_cc2c";
     $database->executeQuery(trim($database->replaceDbPrefix($query)));
@@ -162,6 +173,10 @@ class ExtraWatchSetupWordpress implements ExtraWatchSetup
     $database->query();
 
     $query = "DROP TABLE #__extrawatch_uri2keyphrase_pos";
+    $database->executeQuery(trim($database->replaceDbPrefix($query)));
+    $database->query();
+
+    $query = "DROP TABLE #__extrawatch_sql_scripts";
     $database->executeQuery(trim($database->replaceDbPrefix($query)));
     $database->query();
 

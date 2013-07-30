@@ -4,17 +4,15 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.0
- * @revision 922
+ * @version 2.2
+ * @revision 927
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
  */
 
 /** ensure this file is being included by a parent file */
-if (!defined('_JEXEC') && !defined('_VALID_MOS')) {
-  die('Restricted access');
-}
+defined('_JEXEC') or die('Restricted access');
 
 class ExtraWatchSEOHTML
 {
@@ -44,7 +42,7 @@ class ExtraWatchSEOHTML
     $output .= "<table border='0'>";
     $output .= "<tr><td></td><td align='right'><b>" . _EW_SEO_TOTAL_VISITS_FROM_SEARCH_ENGINES . ": " . $searchEngineHits . " ($percent%)</b></td></tr>";
 
-    $rows = $this->extraWatch->seo->getUri2KeyphrasePosUris($day);
+    $rows = $this->extraWatch->seo->getPositionByUri2KeyphraseId($day);
     if ($rows)
       foreach ($rows as $row) {
         $isChange = FALSE;
@@ -56,10 +54,15 @@ class ExtraWatchSEOHTML
         $outputBlock = "<tr><td><h3><a href='" . $row->uri . "'>" . $row->title . "</a></h3><td align='right'><b>" . _EW_STATS_TOTAL . ": " . $total . " ($percent%)</b></td></tr><tr><td colspan='2'>";
         $rows2 = $this->extraWatch->seo->getUri2KeyphrasePosById($day, $row->uri2titleId);
         if ($rows2) {
-          $outputBlock .= ("<table width='100%' style='border: 1px solid black'><tr><th>" . _EW_URI . "</th><th>" . _EW_POSITION . "</th><th>" . _EW_COUNT . "</th><th>" . _EW_EMAIL_REPORTS_PERCENT . "</th><th>" . _EW_EMAIL_REPORTS_1DAY_CHANGE . "</th><th>" . _EW_EMAIL_REPORTS_7DAY_CHANGE . "</th><th>" . _EW_EMAIL_REPORTS_28DAY_CHANGE . "</th></tr>");
+          $outputBlock .= ("<table width='100%' style='border: 1px solid black'><tr><th>" . _EW_URI . "</th><th>" . _EW_POSITION . "</th><th>" . _EW_COUNT . "</th><th>" . _EW_EMAIL_REPORTS_PERCENT . "</th><th>" . _EW_EMAIL_REPORTS_1DAY_CHANGE . "</th><th>" . _EW_EMAIL_REPORTS_7DAY_CHANGE . "</th><th>" . _EW_EMAIL_REPORTS_28DAY_CHANGE . "</th><th></th></tr>");
           $i = 0;
           foreach ($rows2 as $row2) {
-            if ($loadsPerDay) {
+
+              if (@!$this->extraWatch->config->getCheckboxValue('EXTRAWATCH_SEO_LIST_ENCRYPTED_KEYWORDS') && $row2->keyphrase == "#encrypted#") {
+                  continue;
+              }
+
+              if ($loadsPerDay) {
               $percent = sprintf("%.2f", ($row2->value / $loadsPerDay) * 100);
             }
             $isChangeForRow = $this->extraWatchStatHTML->isChange(EW_DB_KEY_SEARCH_RESULT_NUM, $row2->uri2keyphrasePosId, $day);
@@ -125,7 +128,7 @@ class ExtraWatchSEOHTML
       $output .= "<h2>" . _EW_SEO_MOST_DYNAMIC_KEYPHRASES . "</h2><table style='border: 1px solid black'><tr><th>" . _EW_STATS_KEYPHRASE . "</th><th>" . _EW_SEO_MIN_POSITION . "</th><th>" . _EW_SEO_AVG_POSITION . "</th><th>" . _EW_SEO_MIN_POSITION . "</th><th>" . _EW_COUNT . "</th><th>" . _EW_SEO_CHANGE . "</th><th></th><th>" . _EW_SEO_DATE_OF_LAST_CHANGE . "</th></th></tr>";
       $i = 0;
       foreach ($rows as $row) {
-        $rows2 = $this->extraWatch->seo->getAveragePositionChangesByUri2KeyphraseIdLimited($row->uri2keyphraseId);
+        $rows2 = $this->extraWatch->seo->getAveragePositionChangesByUri2KeyphraseIdBetweenDays($row->uri2keyphraseId);
         if ($this->isChange($day, $rows2))  {
           $changeOutput = $this->renderPositionChangeDiff($rows2, $day);
           if (@$changeOutput) {
