@@ -3,12 +3,14 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.0
- * @revision 926
+ * @version 2.2
+ * @revision 933
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
  */
+
+defined('_JEXEC') or die('Restricted access');
 
 $thisDir = realpath(dirname(__FILE__));
 $magentoPath =  realpath($thisDir.DS."..".DS."..".DS."..".DS."..".DS."..".DS."..".DS."..".DS."..".DS."..".DS."..".DS."..".DS);
@@ -28,7 +30,7 @@ $tablesToRemove = array(
 "#__extrawatch_info",
 "#__extrawatch_config",
 "#__extrawatch_blocked",
-"#__extrawatch_ip2c",
+//"#__extrawatch_ip2c", removed
 "#__extrawatch_cc2c",
 "#__extrawatch_uri",
 "#__extrawatch_cache",
@@ -42,7 +44,8 @@ $tablesToRemove = array(
 "#__extrawatch_keyphrase",
 "#__extrawatch_uri2keyphrase",
 "#__extrawatch_heatmap",
-"#__extrawatch_uri2keyphrase_pos"
+"#__extrawatch_uri2keyphrase_pos",
+"#__extrawatch_sql_scripts"
 );
 
 foreach ($tablesToRemove as $table) {

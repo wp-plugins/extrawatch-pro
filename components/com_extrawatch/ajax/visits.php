@@ -4,19 +4,21 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.0
- * @revision 926
+ * @version 2.2
+ * @revision 933
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
  */
 
-define('_JEXEC', 1);
+defined('_JEXEC') or die('Restricted access');
+
 define('DS', DIRECTORY_SEPARATOR);
 $jBasePath = realpath(dirname(__FILE__) . DS . ".." . DS . ".." . DS . "..". DS);
 define('JPATH_BASE2', $jBasePath);
 
-include JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS. "includes.php";
+
+require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS. "includes.php";
 
 $extraWatch = new ExtraWatchMain();
 require (JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS. "lang" . DS . $extraWatch->config->getLanguage() . ".php");
@@ -24,6 +26,7 @@ require (JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS. "lang" . 
 $extraWatchHTML = new ExtraWatchHTML();
 $extraWatchVisitHTML = new ExtraWatchVisitHTML($extraWatch);
 $extraWatchBlockHTML = new ExtraWatchBlockHTML($extraWatch);
+
 
 $extraWatch->block->checkPermissions();
 

@@ -3,8 +3,8 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.0
- * @revision 926
+ * @version 2.2
+ * @revision 933
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -43,6 +43,6 @@ if (!$day) {
           "</tr>");
     }
   echo($output);
-  $rows = $extraWatch->seo->retrieveTopUrisReferedByKeyphrase($day);
+  $rows = $extraWatch->seo->retrieveTopUrisReferedByKeyphraseForDay($day);
   ?>
 </table>

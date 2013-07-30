@@ -4,8 +4,8 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.0
- * @revision 926
+ * @version 2.2
+ * @revision 933
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -17,13 +17,13 @@ defined('_JEXEC') or die('Restricted access'); ?>
     <td align='left'>
 
       <a href='<?php echo $extraWatch->config->renderLink('goals', "insert");?>'><img
-          src='<?php echo($extraWatch->config->getLiveSiteWithSuffix());?>components/com_extrawatch/img/icons/new.gif'
+          src='<?php echo($extraWatch->config->getLiveSiteWithSuffix());?>components/com_extrawatch/img/icons/new.png'
           border='0' title='<?php echo _EW_GOALS_NEW;?>' valign='center'/> <?php echo _EW_GOALS_NEW;?></a> &nbsp;
       <a href='<?php echo $extraWatch->config->renderLink('goals', "export");?>'>
-        <img src='<?php echo($extraWatch->config->getLiveSiteWithSuffix());?>components/com_extrawatch/img/icons/goals-export.gif' border='0' title='<?php echo _EW_GOALS_EXPORT;?>' valign='center'/> <?php echo _EW_GOALS_EXPORT;?>
+        <img src='<?php echo($extraWatch->config->getLiveSiteWithSuffix());?>components/com_extrawatch/img/icons/goals-export.png' border='0' title='<?php echo _EW_GOALS_EXPORT;?>' valign='center'/> <?php echo _EW_GOALS_EXPORT;?>
       </a> &nbsp; &nbsp;
       <a href='<?php echo $extraWatch->config->renderLink('goals', "import");?>'>
-        <img src='<?php echo($extraWatch->config->getLiveSiteWithSuffix());?>components/com_extrawatch/img/icons/goals-import.gif' border='0' title='<?php echo _EW_GOALS_IMPORT;?>' valign='center'/> <?php echo _EW_GOALS_IMPORT;?>
+        <img src='<?php echo($extraWatch->config->getLiveSiteWithSuffix());?>components/com_extrawatch/img/icons/goals-import.png' border='0' title='<?php echo _EW_GOALS_IMPORT;?>' valign='center'/> <?php echo _EW_GOALS_IMPORT;?>
       </a> &nbsp; &nbsp;
     </td>
     <td align='right'>

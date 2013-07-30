@@ -4,16 +4,14 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 1.2.18
- * @revision 404
+ * @version 2.2
+ * @revision 933
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
- * @copyright (C) 2012 by CodeGravity.com - All rights reserved!
+ * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
  */
 
-/** ensure this file is being included by a parent file */
-if (!defined('_JEXEC') && !defined('_VALID_MOS'))
-  die('Restricted access');
+defined('_JEXEC') or die('Restricted access');
 
 class ExtraWatchStatHTML
 {
@@ -21,10 +19,13 @@ class ExtraWatchStatHTML
   public $extraWatch;
   public $extraWatchTrendHTML;
 
+  public $projectSite;
+
   function __construct($extraWatch)
   {
     $this->extraWatch = $extraWatch;
     $this->extraWatchTrendHTML = new ExtraWatchTrendHTML($extraWatch);
+    $this->projectSite = $this->extraWatch->config->getProjectUrlByUsername(_EW_PROJECT_ID);
   }
 
   function changeReferers($j, $row)
@@ -33,25 +34,54 @@ class ExtraWatchStatHTML
     $row->name = "<a href='http://$row->name' title='$row->name' target='_blank'>$groupTruncated</a>";
   }
 
+
+
   function changeURI($j, $row)
   {
     $groupTruncated = $this->extraWatch->helper->truncate($row->name, $this->extraWatch->config->getConfigValue('EXTRAWATCH_TRUNCATE_STATS'));
     $title = $this->extraWatch->visit->getTitleByUri($row->name);
     $uriEncoded = urlencode($row->name);
-    $row->value = "<table><tr><td>" . $row->value . "</td><td><a href='" . $this->extraWatch->config->renderLink("goals", "action=insert&uri=$uriEncoded") . "' title='" . _EW_STATS_ADD_TO_GOALS . "'><img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/goal.gif' border='0'/></a></td></tr></table>";
+    $row->value = "<table><tr><td>" . $row->value . "</td><td><a href='" . $this->extraWatch->config->renderLink("goals", "insert&uri=$uriEncoded") . "' title='" . _EW_STATS_ADD_TO_GOALS . "'><img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/goal.gif' border='0'/></a></td></tr></table>";
 
     //TODO: $row->name should respect the directory it's in
 
-    $row->name = "<a href='$row->name' onmouseover=\"toggleDiv('uriDetailDiv$j',1);\" onmouseout=\"toggleDiv('uriDetailDiv$j',0);\">$groupTruncated</a><div id='uriDetailDiv$j' class='uriDetailDiv'><table><tr><td><b>$title</b></td></tr><tr><td><a href='" . $this->extraWatch->config->getLiveSite() . "$row->name' title='$row->name'>$row->name</a></td></tr></table></div>";
+    $row->name = "<a href='$this->projectSite"."$row->name' onmouseover=\"toggleDiv('uriDetailDiv$j',1);\" onmouseout=\"toggleDiv('uriDetailDiv$j',0);\">$groupTruncated</a><div id='uriDetailDiv$j' class='uriDetailDiv'><table><tr><td><b>$title</b></td></tr><tr><td><a href='" . $this->extraWatch->config->getDomainFromLiveSiteByUsername(_EW_PROJECT_ID) . "$row->name' title='$row->name'>$row->name</a></td></tr></table></div>";
   }
 
-  function changeBrowserOS($j, $row)
+    function changeBrowser($j, $row)
+    {
+        if ($row->name) {
+            $icon = "<img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/" . strtolower($row->name) .".gif' />";
+        }
+        return @$icon;
+    }
+
+  function changeOS($j, $row)
   {
+
     if ($row->name) {
-      $icon = "<img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/" . strtolower($row->name) . ".gif' />";
+      $data=json_decode($row->name);
+      $icon = "<img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/" . strtolower($data->icon) . "' />";
     }
     return @$icon;
   }
+
+    function changeSocialMedia($j, $row)
+    {
+        if ($row->name) {
+            $icon = "<img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/" . strtolower($row->name) . ".png' />";
+        }
+        return @$icon;
+    }
+
+    function changeDevices($j, $row)
+    {
+        if ($row->name) {
+           $data=json_decode($row->name);
+            $icon = "<img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/" . strtolower($data->icon) . "' />";
+        }
+        return @$icon;
+    }
 
   function changeCountry($j, $row, $frontend)
   {
@@ -71,7 +101,7 @@ class ExtraWatchStatHTML
     $goalName = $this->extraWatch->goal->getGoalNameById($row->name);
     $groupTruncated = $this->extraWatch->helper->truncate($goalName, $this->extraWatch->config->getConfigValue('EXTRAWATCH_TRUNCATE_STATS'));
     if (@ $row->name) {
-      $row->name = "<a href='" . $this->extraWatch->config->renderLink("goals", "action=edit&goalId=$row->name") . "' title='".htmlentities($goalName)."'>".htmlentities($groupTruncated)."</a>";
+      $row->name = "<a href='" . $this->extraWatch->config->renderLink("goals", "edit&goalId=$row->name") . "' title='".htmlentities($goalName)."'>".htmlentities($groupTruncated)."</a>";
     }
   }
 
@@ -85,10 +115,10 @@ class ExtraWatchStatHTML
     $fromTruncated = $this->extraWatch->helper->truncate($from, $this->extraWatch->config->getConfigValue('EXTRAWATCH_TRUNCATE_STATS') - 5);
     $toTruncated = $this->extraWatch->helper->truncate($to, $this->extraWatch->config->getConfigValue('EXTRAWATCH_TRUNCATE_STATS') - 5);
     $row->value = "<table><tr><td>" . $row->value . "</td><td>
-    <a href='" . $this->extraWatch->config->renderLink("goals", "action=insert&from=$fromEncoded&uri=$toEncoded") . "' title='" . _EW_STATS_ADD_TO_GOALS . "'>
+    <a href='" . $this->extraWatch->config->renderLink("goals", "insert&from=$fromEncoded&uri=$toEncoded") . "' title='" . _EW_STATS_ADD_TO_GOALS . "'>
     <img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/goal.gif' border='0'/></a></td></tr></table>";
 
-    $row->name = "-&gt;<a href='" . $this->extraWatch->config->getLiveSite() . "$to' target='_blank' onmouseover=\"toggleElementVisibility('internalDetailDiv$j',1)\" onmouseout=\"toggleElementVisibility('internalDetailDiv$j',0)\">$toTruncated</a>
+    $row->name = "-&gt;<a href='" . $this->projectSite . "$to' target='_blank' onmouseover=\"toggleElementVisibility('internalDetailDiv$j',1)\" onmouseout=\"toggleElementVisibility('internalDetailDiv$j',0)\">$toTruncated</a>
         <div id='internalDetailDiv$j' class='internalDetailDiv'><table><tr><td colspan='3'>" . _EW_STATS_FROM . ": </td></tr><tr><td><b>" . $this->extraWatch->visit->getTitleByUri($from) . "</b></td></tr><tr><td><a href='" . $this->extraWatch->config->getLiveSite() . "/$from'>$from</a></td></tr><tr><td colspan='3'>" . _EW_STATS_TO . ": </td></tr><tr><td><b>" . $this->extraWatch->visit->getTitleByUri($to) . "</b></td></tr><tr><td><a href='" . $this->extraWatch->config->getLiveSite() . "/$to'>$to</a></td></tr></table></div>";
 
 
@@ -110,7 +140,7 @@ class ExtraWatchStatHTML
   function changeIP($j, $row)
   {
     if (@ $row->name) {
-      $mapsIcon = "<img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/map_icon.gif' border='0'  " . $this->extraWatch->helper->getTooltipOnEvent() . "=\"ajax_showTooltip('" . $this->extraWatch->config->getLiveSite() . "components/com_extrawatch/ajax/tooltip.php?rand=" . $this->extraWatch->config->getRand() . "&ip=" . @ $row->name . "',this);return FALSE\"/>";
+      $mapsIcon = "<img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/map_icon.gif' border='0'  " . $this->extraWatch->helper->getTooltipOnEvent() . "=\"ajax_showTooltip('" . $this->extraWatch->config->getLiveSite() . "<?php echo $extraWatch->env->renderAjaxLink('ajax','tooltip.php?rand=" . $this->extraWatch->config->getRand() . "&ip=" . @ $row->name . "&projectId="._EW_PROJECT_ID."',this);return FALSE\"/>";
 
       if ($this->extraWatch->block->getBlockedIp($row->name)) {
         $ipStrikedOut = "<s>" . $row->name . "</s>";
@@ -145,7 +175,6 @@ class ExtraWatchStatHTML
   /* visit */
   function renderIntValuesByName($groupOriginal, $expanded = FALSE, $total = FALSE, $date = 0, $limit = 5, $frontend = FALSE)
   {
-
     $group = @ constant('EW_DB_KEY_' . strtoupper($groupOriginal));
 
     if (!$date) {
@@ -198,11 +227,16 @@ class ExtraWatchStatHTML
           $this->changeURI($j, $row);
           break;
           }
-        case ($group == EW_DB_KEY_BROWSER or $group == EW_DB_KEY_OS) :
+        case EW_DB_KEY_OS :
           {
-          $icon = $this->changeBrowserOS($j, $row);
+          $icon = $this->changeOS($j, $row);
           break;
           }
+          case EW_DB_KEY_BROWSER:
+          {
+              $icon = $this->changeBrowser($j, $row);
+              break;
+         }
         case EW_DB_KEY_COUNTRY :
           {
           //TODO refactor this, looks ugly
@@ -245,9 +279,20 @@ class ExtraWatchStatHTML
           $this->changeKeyphrase($j, $row);
           break;
           }
+          case EW_DB_KEY_SOCIAL_MEDIA :
+          {
+              $icon = $this->changeSocialMedia($j, $row);
+              break;
+          }
+          case EW_DB_KEY_DEVICES:
+          {
+              $icon = $this->changeDevices($j, $row);
+              break;
+          }
+
       }
 
-      $trendsIcon = "<img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/trend_icon.gif' border='0'  " . $this->extraWatch->helper->getTooltipOnEvent() . "=\"ajax_showTooltip('" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/ajax/trendtooltip.php?rand=" . $this->extraWatch->config->getRand() . "&group=$group&name=" . urlencode($origName) . "&date=$date&env=".$this->extraWatch->config->getEnvironment()."',this);return FALSE\"/>";
+      $trendsIcon = "<img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/trend_icon.gif' border='0'  " . $this->extraWatch->helper->getTooltipOnEvent() . "=\"ajax_showTooltip('" . $this->extraWatch->config->getLiveSiteWithSuffix() . "<?php echo $extraWatch->env->renderAjaxLink('ajax','trendtooltip.php?rand=" . $this->extraWatch->config->getRand() . "&group=$group&name=" . urlencode($origName) . "&date=$date&env=".$this->extraWatch->config->getEnvironment()."&projectId="._EW_PROJECT_ID."',this);return FALSE\"/>";
       $progressBarIcon = $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/progress_bar.gif";
 
       $imgWidth = $this->sinusInsteadOfLinear(50, $percent);
@@ -255,12 +300,35 @@ class ExtraWatchStatHTML
       $color = "ffffff";
       if (@ $row->name) {
         if (!$total) {
-          $output .= "<tr><td>" . @ $icon . "&nbsp;" . $row->name . "</td><td align='right'><table><tr><td align='right'>" . $row->value . "</td></tr></table></td><td> <table border='0'><tr><td>" . @ $diffOutput . "</td><td>" . @ $trendsIcon . "</td><td><img src='$progressBarIcon' class='extraWatchBarImg' width='" . $imgWidth . "' style='height:10px' /></td><td align='left'>$percent%</td></tr></table></td></tr>";
+          /*$output .= "<tr id='tr2'><td>" . @ $icon . "&nbsp;" . $row->name . "</td><td align='right'>
+          <table><tr><td align='right'>" . $row->value . "</td></tr></table>
+          </td>
+          <td>
+          <table border='0'><tr>
+          <td style='width: 20px'>" . @ $diffOutput . "</td>
+          <td style='width: 20px'>" . @ $trendsIcon . "</td>
+          <td style='text-align: left;'><img src='$progressBarIcon' class='extraWatchBarImg' width='" . $imgWidth . "' style='height:10px' /></td>
+          <td align='left'>$percent%</td>
+          </tr></table>
+          </td></tr>";*/
+
+            $name="";
+            if ($group == EW_DB_KEY_DEVICES || $group == EW_DB_KEY_OS) {
+                $name_arr = @json_decode($row->name);
+                if (@$name_arr) {
+                    $name = $name_arr->name;
+                }
+            } else {
+                $name = $row->name;
+            }
+
+
+          $output .= "<tr><td>" . @ $icon . "&nbsp;" . $name . "</td><td align='right'><table><tr><td align='right'>" . $row->value . "</td></tr></table></td><td> <table border='0'><tr><td>" . @ $diffOutput . "</td><td>" . @ $trendsIcon . "</td><td><img src='$progressBarIcon' class='extraWatchBarImg' width='" . $imgWidth . "' style='height:10px' /></td><td align='left'>$percent%</td></tr></table></td></tr>";
 
         } else {
           if (!@ $frontend) {
-            $output .= "<tr><td align='left' style='background-color: " . "#" . $color . ";'>" . @ $icon . "&nbsp;" . $row->name . "</td><td style='background-color: #" . $color . ";' align='right'>" . $row->value . "</td><td style='background-color: #" . $color . ";'> <table><tr><td><img src='$progressBarIcon' class='extraWatchBarImg' width='" . $imgWidth . "' style='height:10px' /></td>
-                        <td  " . $this->extraWatch->helper->getTooltipOnEvent() . "=\"ajax_showTooltip('" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/ajax/trendtooltip.php?rand=" . $this->extraWatch->config->getRand() . "&group=$group&name=" . urlencode($origName) . "&date=$date&env=".$this->extraWatch->config->getEnvironment()."',this);return FALSE\">$percent%</td>
+            $output .= "<tr><td align='left' style='background-color: " . "#" . $color . ";'>" . @ $icon . "&nbsp;" . $row->name . "</td><td style='background-color: #" . $color . ";' align='right'>" . $row->value . "</td><td style='background-color: #" . $color . ";' style='text-align: right;'> <table><tr><td><img src='$progressBarIcon' class='extraWatchBarImg' width='" . $imgWidth . "' style='height:10px; text-align: right;' /></td>
+                        <td " . $this->extraWatch->helper->getTooltipOnEvent() . "=\"ajax_showTooltip('" . $this->extraWatch->config->getLiveSiteWithSuffix() . "<?php echo $extraWatch->env->renderAjaxLink('ajax','trendtooltip.php?rand=" . $this->extraWatch->config->getRand() . "&group=$group&name=" . urlencode($origName) . "&date=$date&env=".$this->extraWatch->config->getEnvironment()."&projectId="._EW_PROJECT_ID."',this);return FALSE\" style='width: 20px;'>$percent%</td>
                         </tr></table></td></tr>";
           } else {
             $output .= "<tr><td valign='top' align='right' class='extrawatch'>$percent%</td><td valign='top' align='left' class='extrawatch'>" . @ $icon . "&nbsp;</td><td valign='top' align='left' class='extrawatch'>" . $countryName . "</td></tr>";
@@ -401,9 +469,8 @@ class ExtraWatchStatHTML
     $output .= "<tr><td><h3></h3></td><td align='center'>&nbsp;<u>" . _EW_EMAIL_REPORTS_VALUE . "</u></td><td align='center'>&nbsp;<u>" . _EW_EMAIL_REPORTS_PERCENT . "</u></td><td align='center'>&nbsp;<u>" . _EW_EMAIL_REPORTS_1DAY_CHANGE . "</u></td><td align='center'>&nbsp;<u>" . _EW_EMAIL_REPORTS_7DAY_CHANGE . "</u></td><td align='center'>&nbsp;<u>" . _EW_EMAIL_REPORTS_28DAY_CHANGE . "</u></td></tr>";
     $output .= "<tr><td>" . _EW_STATS_UNIQUE . "</td><td align='right'>" . $this->extraWatch->stat->getCountByKeyAndDate(EW_DB_KEY_UNIQUE, $day - 1) . "</td><td></td>" . $this->renderDiffTableCellsAndIcon(EW_DB_KEY_UNIQUE, EW_DB_KEY_UNIQUE, $day - 1, TRUE) . "</td></tr>";
     $output .= "<tr><td>" . _EW_STATS_LOADS . "</td><td align='right'>" . $this->extraWatch->stat->getCountByKeyAndDate(EW_DB_KEY_LOADS, $day - 1) . "</td><td></td>" . $this->renderDiffTableCellsAndIcon(EW_DB_KEY_LOADS, EW_DB_KEY_LOADS, $day - 1, TRUE) . "</td></tr>";
-    ;
     $output .= "<tr><td>" . _EW_STATS_HITS . "</td><td align='right'>" . $this->extraWatch->stat->getCountByKeyAndDate(EW_DB_KEY_HITS, $day - 1) . "</td><td></td>" . $this->renderDiffTableCellsAndIcon(EW_DB_KEY_HITS, EW_DB_KEY_HITS, $day - 1, TRUE) . "</td></tr>";
-    ;
+
 
     foreach ($keysArray as $key) {
       if ($key == 'ip' && !$this->extraWatch->config->getCheckboxValue('EXTRAWATCH_IP_STATS')) {
@@ -422,17 +489,20 @@ class ExtraWatchStatHTML
   {
 
     $output = $this->renderNightlyEmail();
-    $domain = $this->extraWatch->config->getDomainFromLiveSite();
+    $domain = $this->extraWatch->config->getDomainFromLiveSiteByUsername(_EW_PROJECT_ID);
     $email = $this->extraWatch->config->getConfigValue("EXTRAWATCH_EMAIL_REPORTS_ADDRESS");
+
+	$projectName = ExtraWatchHelper::getProjectNameByProjectId($this->extraWatch->database, _EW_PROJECT_ID);
+
     $date = ExtraWatchDate::date("d.m.Y", ExtraWatchDate::getUserTimestamp() - 24 * 3600); // date of report from yesterday, not today);
-    ExtraWatchHelper::sendEmail($this->extraWatch->env, "$email", "$email", "ExtraWatch report - $domain - $date", $output);
+    ExtraWatchHelper::sendEmail($this->extraWatch->env, "$email", "$email", "ExtraWatch report - ".$projectName." - $date", $output);
 
     if ($this->extraWatch->config->getCheckboxValue("EXTRAWATCH_EMAIL_SEO_REPORTS_ENABLED")) {
       // old one: $outputSEOReport = "<table>".$this->renderSEOReport($this->extraWatch->date->jwDateToday()-1, TRUE)."</table>";
       $extraWatchSEOHTML = new ExtraWatchSEOHTML($this->extraWatch);
       $day = $this->extraWatch->date->jwDateToday();
       $outputSEOReport = $extraWatchSEOHTML->renderSEOReport($day - 1, TRUE);
-      ExtraWatchHelper::sendEmail($this->extraWatch->env, "$email", "$email", "ExtraWatch SEO report - $domain - $date", $outputSEOReport);
+      ExtraWatchHelper::sendEmail($this->extraWatch->env, "$email", _EW_EMAIL_SENDER, "ExtraWatch SEO report - ".$projectName." - $date", $outputSEOReport);
     }
 
     return $output;
@@ -611,9 +681,10 @@ class ExtraWatchStatHTML
 
     $statsMax['unique'] = $this->extraWatch->stat->getMaxValueInGroupForWeek(EW_DB_KEY_UNIQUE, EW_DB_KEY_UNIQUE, $startDay);
     $statsMax['loads'] = $this->extraWatch->stat->getMaxValueInGroupForWeek(EW_DB_KEY_LOADS, EW_DB_KEY_LOADS, $startDay);
-    $statsMax['hits'] = $this->extraWatch->stat->getMaxValueInGroupForWeek(EW_DB_KEY_HITS, EW_DB_KEY_HITS, $startDay);
+    //$statsMax['hits'] = $this->extraWatch->stat->getMaxValueInGroupForWeek(EW_DB_KEY_HITS, EW_DB_KEY_HITS, $startDay);
 
-    if (EXTRAWATCH_DEBUG) echo("Start day: $startDay " . ExtraWatchDate::getDateByDay($startDay));
+
+      if (EXTRAWATCH_DEBUG) echo("Start day: $startDay " . ExtraWatchDate::getDateByDay($startDay));
 
     for ($day = $startDay; $day < $startDay + 7; $day++) {
       $i -= 3;
@@ -628,9 +699,13 @@ class ExtraWatchStatHTML
 
       $percent = 0;
 
+      $stats['search_engines'] = $this->extraWatch->seo->getTotalVisitsByKeyphrasesByDay($day);
+      $statsMax['search_engines'] = $stats['search_engines'];
+
       $stats['unique'] = $this->extraWatch->stat->getKeyValueInGroupByDate(EW_DB_KEY_UNIQUE, EW_DB_KEY_UNIQUE, $day);
       $stats['loads'] = $this->extraWatch->stat->getKeyValueInGroupByDate(EW_DB_KEY_LOADS, EW_DB_KEY_LOADS, $day);
-      $stats['hits'] = $this->extraWatch->stat->getKeyValueInGroupByDate(EW_DB_KEY_HITS, EW_DB_KEY_HITS, $day);
+      //$stats['hits'] = $this->extraWatch->stat->getKeyValueInGroupByDate(EW_DB_KEY_HITS, EW_DB_KEY_HITS, $day);
+
 
       $once = "";
       foreach ($stats as $key => $value) {
@@ -654,17 +729,29 @@ class ExtraWatchStatHTML
 
         $percentWidth = 0;
         if ($statsMax[$key]) {
-          if ($statsMax['loads'])
+          if ($statsMax['loads']) {
             $percent = floor(($value / $statsMax['loads']) * 145);
+          } else if ($stats['search_engines']) {
+                $percent = floor(($value / $statsMax['search_engines']) * 145);
+            }
           $percentWidth = floor($percent);
         }
         if (@ $value) {
           switch ($key) {
-            case 'hits' :
+/*            case 'hits' :
               {
               $fontColor = "#aaaaaa";
-              $output .= "<td align='right' style='color:" . $fontColor . "; background-color: " . $color . ";'>" . $value . "</td><td style='background-color: " . $color . ";'> <table cellpadding='0' cellspacing='0' ><tr><td style='background-color: " . $color . ";'></td><td style='color:" . $fontColor . "; background-color: " . $color . ";'>&nbsp;</td></tr></table></td>";
+              $output .= "";//"<td align='right' style='color:" . $fontColor . "; background-color: " . $color . ";'>" . $value . "</td><td style='background-color: " . $color . ";'> <table cellpadding='0' cellspacing='0' ><tr><td style='background-color: " . $color . ";'></td><td style='color:" . $fontColor . "; background-color: " . $color . ";'>&nbsp;</td></tr></table></td>";
               break;
+              }*/
+              case 'search_engines':
+              {
+                  $fontColor = "#80C8C7";
+                  if ($stats['loads']) {
+                    $percentagefromHits = floor($stats['search_engines'] / $stats['loads'] * 100);
+                  }
+                  $output .= "<td align='right' style='color:" . $fontColor . "; background-color: " . $color . ";'>" . $value . "</td><td style='background-color: " . $color . ";'> <table cellpadding='0' cellspacing='0' ><tr><td style='background-color: " . $color . ";'><img src='$progressBarIcon' style='width: ".$percentWidth."px; height:10px' /></td><td style='color:" . $fontColor . "; background-color: " . $color . ";'> &nbsp;".@$percentagefromHits."%</td></tr></table></td>";
+                  break;
               }
             case 'loads':
               {
@@ -674,8 +761,8 @@ class ExtraWatchStatHTML
               }
             default:
               {
-              $fontColor = "black";
-              $output .= "<td align='right' style='color:" . $fontColor . "; background-color: " . $color . ";'>" . $value . "</td><td style='background-color: " . $color . ";'> <table cellpadding='0' cellspacing='0' ><tr><td style='background-color: " . $color . ";'><img src='$progressBarIcon' style='width: ".$percentWidth."px; height:10px' /></td><td style='color:" . $fontColor . "; background-color: " . $color . ";'>&nbsp;$ratio</td></tr></table></td>";
+              $fontColor = "#411FEF";
+              $output .= "<td align='right' style='color:" . $fontColor . "; background-color: " . $color . ";'>" . $value . "</td><td style='background-color: " . $color . ";'> <table cellpadding='0' cellspacing='0' ><tr><td style='background-color: " . $color . ";'><img src='$progressBarIcon' style='width: ".$percentWidth."px; height:10px' /></td><td style='color: " . $fontColor . "; background-color: ".$color.";'>&nbsp;".$ratio."x</td></tr></table></td>";
               }
           }
         } else
@@ -686,7 +773,7 @@ class ExtraWatchStatHTML
       }
 
     }
-    $output .= "<tr><td colspan='3' align='right'>* <span style='color:#0000FF;'>" . _EW_STATS_UNIQUE . "</span>, <span style='color:#00C000;'>" . _EW_STATS_LOADS . "</span>, <span style='color:#aaaaaa;'>" . _EW_STATS_HITS . "</span></td></tr>";
+    $output .= "<tr><td colspan='3' align='right'>*  <span style='color:#80C8C7;'>" . "from search engines" . "</span>, <span style='color:#0000FF;'>" . _EW_STATS_UNIQUE . "</span>, <span style='color:#00C000;'>" . _EW_STATS_LOADS . "</span></td></tr>";
 
     return $output;
   }
@@ -972,7 +1059,7 @@ class ExtraWatchStatHTML
           continue;
         }
         /* removing trailing / from uri to include it into link */
-        $liveSite = $this->extraWatch->config->getLiveSite();
+        $liveSite = $this->extraWatch->config->getDomainFromLiveSiteByUsername(_EW_PROJECT_ID);
         $uri = $row->uri;
         if (strpos($uri, "/") == 0) { //starts with /
           $uri = substr($uri, 1);
@@ -996,7 +1083,7 @@ class ExtraWatchStatHTML
           $twentyEightDayDiffRendered = $this->renderPercentage($twentyEightDayDiff);
           $origName = $keyphrase->uri2keyphraseId;
 
-          $trendsIcon = "<img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/trend_icon.gif' border='0'  " . $this->extraWatch->helper->getTooltipOnEvent() . "=\"ajax_showTooltip('" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/ajax/trendtooltip.php?rand=" . $this->extraWatch->config->getRand() . "&group=$group&name=" . urlencode($origName) . "&date=$day&env=".$this->extraWatch->config->getEnvironment()."',this);return FALSE\"/>";
+          $trendsIcon = "<img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/trend_icon.gif' border='0'  " . $this->extraWatch->helper->getTooltipOnEvent() . "=\"ajax_showTooltip('" . $this->extraWatch->config->getLiveSiteWithSuffix() . "<?php echo $extraWatch->env->renderAjaxLink('ajax','trendtooltip.php?rand=" . $this->extraWatch->config->getRand() . "&group=$group&name=" . urlencode($origName) . "&date=$day&env=".$this->extraWatch->config->getEnvironment()."&projectId="._EW_PROJECT_ID."',this);return FALSE\"/>";
 
           $output .= ("<tr><td title='" . htmlspecialchars($keyphrase->name) . "'><a href='http://www.google.com/search?q=" . htmlspecialchars(urlencode($keyphrase->name)) . "'>" . htmlspecialchars(ExtraWatchHelper::truncate($keyphrase->name, 100)) . "</a></td>
                     <td style='width: 30px;' align='right'>" . htmlspecialchars($keyphrase->value) . "</td><td style='width: 20px' align='right'>$percent</td><td  align='center'>$oneDayDiffRendered</td><td align='center'>$sevenDayDiffRendered</td><td align='center'>$twentyEightDayDiffRendered</td>");
@@ -1016,7 +1103,7 @@ class ExtraWatchStatHTML
 
   function renderTrendsIcon($group, $origName, $day)
   {
-    $output = "<img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/trend_icon.gif' border='0'  " . $this->extraWatch->helper->getTooltipOnEvent() . "=\"ajax_showTooltip('" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/ajax/trendtooltip.php?rand=" . $this->extraWatch->config->getRand() . "&group=$group&name=" . urlencode($origName) . "&date=$day&env=".$this->extraWatch->config->getEnvironment()."',this);return FALSE\"/>";
+    $output = "<img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/trend_icon.gif' border='0'  " . $this->extraWatch->helper->getTooltipOnEvent() . "=\"ajax_showTooltip('" . $this->extraWatch->config->getLiveSiteWithSuffix() . "<?php echo $extraWatch->env->renderAjaxLink('ajax','trendtooltip.php?rand=" . $this->extraWatch->config->getRand() . "&group=$group&name=" . urlencode($origName) . "&date=$day&env=".$this->extraWatch->config->getEnvironment()."&projectId="._EW_PROJECT_ID."',this);return FALSE\"/>";
     return $output;
   }
 

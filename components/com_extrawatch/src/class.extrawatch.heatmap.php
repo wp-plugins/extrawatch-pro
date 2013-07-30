@@ -4,16 +4,14 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.0
- * @revision 926
+ * @version 2.2
+ * @revision 933
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
  */
 
-/** ensure this file is being included by a parent file */
-if (!defined('_JEXEC') && !defined('_VALID_MOS'))
-  die('Restricted access');
+defined('_JEXEC') or die('Restricted access');
 
 class ExtraWatchHeatmap
 {
@@ -23,6 +21,7 @@ class ExtraWatchHeatmap
   public $stat;
   public $block;
   public $date;
+  public $goal;
 
   const HEATMAP_PARAM_NAME = "extraWatchHeatmap";
   const HEATMAP_PARAM_DAY_NAME = "extraWatchDay";
@@ -34,6 +33,7 @@ class ExtraWatchHeatmap
     $this->helper = new ExtraWatchHelper($this->database);
     $this->stat = new ExtraWatchStat($this->database);
     $this->date = new ExtraWatchDate($this->database);
+    $this->goal = new ExtraWatchGoal($this->database);
   }
 
   
@@ -46,16 +46,24 @@ class ExtraWatchHeatmap
     $query = sprintf("INSERT INTO #__extrawatch_heatmap (`id`, `uri2titleId`, `x`, `y`, `w`, `h`, `ip`, `day`, `timestamp`, `xpath`) values ('','%d','%d','%d','%d','%d','%s','%d','%d','%s')", (int) $uri2titleId, (int) $x, (int) $y, (int) $w, (int) $h, $this->database->getEscaped($ip), (int) $day, (int) $timestamp, $this->database->getEscaped($xpath));
     $this->database->executeQuery($query);
 
+    $this->goal->checkGoals("","","","","",$xpath);
+
+    $this->stat->increaseKeyValueInGroup($this->database->getEscaped($xpath), EW_DB_KEY_HTML_ELEMENT);
+
   }
 
   /* heatmap */
-  function getHeatmapClicksByUri2TitleId($uri2titleId, $targetSizeX, $targetSizeY, $day, $ip = "")
+  function getHeatmapClicksByUri2TitleId($uri2titleId, $day, $ip = "")
   {
     $ipFilter = "";
     if ($ip) {
       $ipFilter = sprintf(" AND ip = '%s' ", $this->database->getEscaped($ip));
     }
-    $query = sprintf("SELECT * FROM #__extrawatch_heatmap WHERE uri2titleId = '%d' and day = '%d' $ipFilter", (int) $uri2titleId, (int) $day);
+    if ($day) {
+      $dayFilter = sprintf(" AND day = '%d' ", (int) $day);
+    }
+
+    $query = sprintf("SELECT * FROM #__extrawatch_heatmap WHERE uri2titleId = '%d' $dayFilter $ipFilter", (int) $uri2titleId);
     $result = $this->database->objectListQuery($query);
     $output = "{max: 90, data: [";
     $i = 0;
@@ -68,6 +76,7 @@ class ExtraWatchHeatmap
         }
       }
     $output .= "]}";
+	
     return $output;
   }
 
@@ -142,7 +151,7 @@ class ExtraWatchHeatmap
     return $assocArray;
   }
 
-  function getMaxClicksForDay($day)
+  function getMaxClicksForDay($day = "")
   {
     $rows = $this->getTopHeatmapUris($day, 1);
     if (@$rows) {
@@ -192,6 +201,19 @@ class ExtraWatchHeatmap
         ", $this->database->getEscaped($ip), $this->database->getEscaped($uri));
     return $this->database->resultQuery($query);
   }
+
+  function getMostClickedHTMLElements($day) {
+    $query = sprintf("select *,count(*) as `clickCount` from #__extrawatch_heatmap
+    JOIN #__extrawatch_uri2title ON #__extrawatch_uri2title.id = #__extrawatch_heatmap.uri2titleId
+    where day = %d
+    GROUP BY xpath, uri2titleId
+    order by `clickCount` desc", (int) $day);
+    return $this->database->objectListQuery($query);
+  }
+
+
+
+
   
 
 }

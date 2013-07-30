@@ -4,8 +4,8 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.0
- * @revision 926
+ * @version 2.2
+ * @revision 933
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -26,7 +26,7 @@ defined('_JEXEC') or die('Restricted access'); ?>
   });
 </script>
 
-<center>
+<br/><br/>
   <form action='<?php echo $extraWatch->config->renderLink("settingsSave");?>' method='POST' id='settingsForm'>
 
 
@@ -206,11 +206,12 @@ defined('_JEXEC') or die('Restricted access'); ?>
           </div>
 
         </div>
+          <center>
+          <?php         if (@$result) echo("<span style='color: green;'>" . _EW_SETTINGS_SAVED . "</span><br/><br/>"); ?>
+          <input type='submit' name='submitForm' style='font-weight: bold' value=' [ <?php echo(_EW_SETTINGS_SAVE);?> ] '/>
+          <input name='form_key' type='hidden' value="<?php echo $extraWatch->env->getFormKey();?>" />
+          </center>
       </div>
     </div>
-    <?php         if (@$result) echo("<span style='color: green;'>" . _EW_SETTINGS_SAVED . "</span><br/><br/>"); ?>
-    <input type='submit' name='submitForm' value=' [ <?php echo(_EW_SETTINGS_SAVE);?> ] '/>
-    <input name='form_key' type='hidden' value="<?php echo $extraWatch->env->getFormKey();?>" />
   </form>
 
-</center>

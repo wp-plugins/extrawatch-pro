@@ -4,8 +4,8 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.0
- * @revision 926
+ * @version 2.2
+ * @revision 933
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -13,7 +13,7 @@
 -->
 <package>
     <name>ExtraWatch</name>
-    <version>2.0.926</version>
+    <version>2.2</version>
     <stability>beta</stability>
     <license>GPL</license>
     <channel>community</channel>
@@ -423,7 +423,6 @@
                                         <file name="extrawatch-logo-16x16.png"/>
                                         <file name="extrawatch-logo-32x32.gif"/>
                                         <file name="extrawatch-logo-48x48.gif"/>
-                                        <file name="extrawatch-logo-48x48.png"/>
                                         <file name="extrawatch-logo.png"/>
                                         <file name="firefox.gif"/>
                                         <file name="flow.png"/>
@@ -481,11 +480,6 @@
                                         <file name="windowsnt.gif"/>
                                         <file name="windowsvista.gif"/>
                                         <file name="windowsxp.gif"/>
-                                        <file name="click-disabled.png"/>
-                                        <file name="flow-disabled.png"/>
-                                        <file name="seo-disabled.png"/>
-                                        <file name="sizes-disabled.png"/>
-                                        <file name="status-disabled.png"/>
                                     </dir>
                                     <file name="index.html"/>
                                 </dir>

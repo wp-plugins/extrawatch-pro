@@ -3,12 +3,14 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.0
- * @revision 926
+ * @version 2.2
+ * @revision 933
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
  */
+
+defined('_JEXEC') or die('Restricted access');
 
 // Security
 if (!defined('_PS_VERSION_'))
@@ -37,4 +39,9 @@ class ExtraWatchAdmin extends AdminTab {
 
         echo $output;
     }
+	
+	public static function addCSS() {
+	//blank, did not work on latest prestashop if this method was missing
+	}
+
 }

@@ -3,17 +3,15 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.0
- * @revision 926
+ * @version 2.2
+ * @revision 933
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
  */
 
 /** ensure this file is being included by a parent file */
-if (!defined('_JEXEC') && !defined('_VALID_MOS'))  {
-  die('Restricted access');
-}
+defined('_JEXEC') or die('Restricted access');
 
 class ExtraWatchEnvFactory
 {
@@ -26,10 +24,10 @@ class ExtraWatchEnvFactory
     if (@isset($GLOBALS['mageRunCode'])) {
         return new ExtraWatchMagentoEnv();
     }
-    if (@isset($GLOBALS['conf'])) {
+    if (@$GLOBALS['conf']) {
       return new ExtraWatchDrupalEnv();
     }
-    if (@isset($GLOBALS['wp_version'])) {
+    if (@$GLOBALS['wp_version']) {
       return new ExtraWatchWordpressEnv();
     }
     if (!defined('ENV')) {

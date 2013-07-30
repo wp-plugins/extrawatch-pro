@@ -4,22 +4,20 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.0
- * @revision 926
+ * @version 2.2
+ * @revision 933
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
  */
 
-/** ensure this file is being included by a parent file */
-if (!defined('_JEXEC') && !defined('_VALID_MOS'))
-    die('Restricted access');
+defined('_JEXEC') or die('Restricted access');
 
 class ExtraWatchMagentoEnv implements ExtraWatchEnv
 {
     const EW_ENV_NAME = "magento";
 
-    function getDatabase()
+    function getDatabase($user = "")
     {
         return new ExtraWatchDBWrapMagento();
     }
@@ -194,6 +192,29 @@ class ExtraWatchMagentoEnv implements ExtraWatchEnv
     {
         return self::EW_ENV_NAME;
     }
+
+    public function getRootPath() {
+        return ;
+    }
+
+    public function getTempDirectory() {
+       return ini_get('upload_tmp_dir');
+    }
+
+    function getUserId()
+    {
+        //TODO implement
+    }
+
+    public function getUsernameById($userId) {
+        //TODO implement
+    }
+
+    public function renderAjaxLink($task, $action) {
+        return $action;
+    }
+
+
 }
 
 

@@ -4,8 +4,8 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.0
- * @revision 926
+ * @version 2.2
+ * @revision 933
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -23,7 +23,7 @@ defined('_JEXEC') or die('Restricted access'); ?>
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 <?php } ?>
 <script type="text/javascript"
-        src="<?php echo $extraWatch->config->getLiveSiteWithSuffix(); ?>components/com_extrawatch/js/maps.js.php?rand=<?php echo $extraWatch->config->getRand();?>&env=<?php echo ($extraWatch->config->getEnvironment());?>"></script>
+        src="<?php echo $extraWatch->config->getLiveSiteWithSuffix(); ?><?php echo $extraWatch->env->renderAjaxLink('js','maps.js');?>&rand=<?php echo $extraWatch->config->getRand();?>&env=<?php echo ($extraWatch->config->getEnvironment());?>&projectId=<?php echo(_EW_PROJECT_ID); ?>"></script>
 
 <?php
 if (!$extraWatch->config->checkLiveSite()) {
@@ -78,7 +78,7 @@ if (!$extraWatch->config->isFree()) {
     try {
       extraWatchOpenMapLoad();
     } catch (e) {
-      alert("Could not initialize ExtraWatch javascript functions, browser could not load: <?php echo $extraWatch->config->getLiveSite(); ?>components/com_extrawatch/js/maps.js.php?rand=<?php echo $extraWatch->config->getRand();?>, because it returned HTTP 500 internal server error. This is a misconfiguration of your directory permissions. Please read: http://support.lunarpages.com/knowledge_bases/article/324 or search for: PHP permissions 500 Internal server error");
+      alert("Could not initialize ExtraWatch javascript functions, browser could not load: <?php echo $extraWatch->config->getLiveSite(); ?><?php echo $extraWatch->env->renderAjaxLink('js','maps.js');?>&rand=<?php echo $extraWatch->config->getRand();?>, because it returned HTTP 500 internal server error. This is a misconfiguration of your directory permissions. Please read: http://support.lunarpages.com/knowledge_bases/article/324 or search for: PHP permissions 500 Internal server error");
     }
       <?php } ?>
   </script>

@@ -4,16 +4,14 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.0
- * @revision 926
+ * @version 2.2
+ * @revision 933
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
  */
 
-/** ensure this file is being included by a parent file */
-if (!defined('_JEXEC') && !defined('_VALID_MOS'))
-  die('Restricted access');
+defined('_JEXEC') or die('Restricted access');
 
 class ExtraWatchDate
 {
@@ -39,7 +37,15 @@ class ExtraWatchDate
     return "$date $time";
   }
 
-  /**
+    static function getDateTimeFromUTC($utcTimestamp)
+    {
+        $date = ExtraWatchDate::date("d.m.Y", $utcTimestamp);
+        $time = ExtraWatchDate::date("H:i:s", $utcTimestamp);
+        return "$date $time";
+    }
+
+
+    /**
    * date
    */
   static function dayOfWeek()
@@ -125,16 +131,7 @@ class ExtraWatchDate
     }
 
     if ($userTimezone && !is_numeric($userTimezone)) {
-      try {
-        $dtz = new DateTimeZone($userTimezone);
-        $time = new DateTime('now', $dtz);
-        $userTimezone = $time->format('Z') / 3600; // timezone difference in seconds / 3600
-        if (EXTRAWATCH_DEBUG) {
-          echo ("<br/>user timezone was not numeric, translated to: " . $userTimezone);
-        }
-      } catch (Exception $e) {
-        echo("<!-- exception " . $e->getMessage() . " -->");
-      }
+		$userTimezone = ExtraWatchHelper::getTimezoneOffsetByTimezoneName($userTimezone);
     }
     return $userTimezone;
   }

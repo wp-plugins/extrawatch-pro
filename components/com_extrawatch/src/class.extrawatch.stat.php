@@ -4,16 +4,14 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.0
- * @revision 926
+ * @version 2.2
+ * @revision 933
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
  */
 
-/** ensure this file is being included by a parent file */
-if (!defined('_JEXEC') && !defined('_VALID_MOS'))
-  die('Restricted access');
+defined('_JEXEC') or die('Restricted access');
 
 class ExtraWatchStat
 {
@@ -170,18 +168,23 @@ class ExtraWatchStat
   /**
    * stats/info
    */
-  function getIntValuesByName($name, $date, $expanded, $limit)
+  function getIntValuesByName($name, $date, $expanded = false, $limit = false)
   {
 
     if ($date == "") {
       $date = $this->date->getUTCTimestamp();
     }
 
+      $limitString = "";
+      if ($limit) {
+          $limitString = " limit ".$limit;
+      }
+
     if (@ $expanded == TRUE) {
-      $query = sprintf("select name, value from #__extrawatch_info where (`group` = '%s' and `date` = '%d') order by value desc limit %d", $this->database->getEscaped($name), (int) $date, (int)20);
+      $query = sprintf("select name, value from #__extrawatch_info where (`group` = '%s' and `date` = '%d') order by value desc ", $this->database->getEscaped($name), (int) $date);
     }
     else {
-      $query = sprintf("select name, value from #__extrawatch_info where (`group` = '%s' and `date` = '%d') order by value desc limit %d", $this->database->getEscaped($name), (int) $date, (int) $limit);
+      $query = sprintf("select name, value from #__extrawatch_info where (`group` = '%s' and `date` = '%d') order by value desc %s", $this->database->getEscaped($name), (int) $date, $this->database->getEscaped($limitString));
     }
 
     $rows = @ $this->database->objectListQuery($query);
