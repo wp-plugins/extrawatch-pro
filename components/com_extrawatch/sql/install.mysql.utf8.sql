@@ -50,6 +50,8 @@
                 `uri` varchar(255) default NULL COLLATE utf8_general_ci,
                 `title` varchar(255) default NULL COLLATE utf8_general_ci,
 				  KEY `fk` (`fk`),
+				  KEY `uri` (`uri`),
+				  KEY `title` (`title`),
 				  KEY `timestamp` (`timestamp`)
                 );
 
@@ -107,7 +109,10 @@
 
 
 
-                CREATE TABLE IF NOT EXISTS `#__extrawatch_cc2c` (
+                DROP TABLE IF EXISTS `#__extrawatch_cc2c`;
+
+
+                CREATE TABLE `#__extrawatch_cc2c` (
                 `id` tinyint(3) unsigned NOT NULL auto_increment primary key,
                 `cc` char(2) NOT NULL,
                 `country` varchar(50) NOT NULL,
@@ -116,7 +121,7 @@
 
 
 
-                INSERT IGNORE INTO `#__extrawatch_cc2c` (`id`, `cc`, `country`) VALUES
+                INSERT INTO `#__extrawatch_cc2c` (`id`, `cc`, `country`) VALUES
                 (1, 'gb', 'United Kingdom'),
                 (2, 'us', 'United States'),
                 (3, 'bm', 'Bermuda'),
@@ -423,6 +428,7 @@
 				`type` int(11) NOT NULL,
 				PRIMARY KEY  (`id`),
 				KEY `uriid` (`uriid`),
+				KEY `key` (`key`),
 				KEY `type` (`type`)
 				);
 
@@ -461,13 +467,4 @@
 				`position` int(11) default NULL,
 				PRIMARY KEY  (`id`)
 				);
-
-
-
-				CREATE TABLE IF NOT EXISTS `#__extrawatch_sql_scripts` (
-				`id` int(11) NOT NULL auto_increment,
-				`scriptname` varchar(255) default NULL,
-				PRIMARY KEY  (`id`)
-				);
-
 

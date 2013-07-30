@@ -4,8 +4,8 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.2
- * @revision 927
+ * @version 2.0
+ * @revision 926
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -91,7 +91,7 @@ class ExtraWatchGoalHTML
 
     $values = "";
 
-    if (isset($id) && $id != "") {
+    if (isset($id)) {
       $rows = $this->extraWatch->visit->getJoinedURIRowById($id);
       if (!$rows) {
         $rows = $this->visitHistory->getJoinedURIRowById($id);
@@ -114,10 +114,6 @@ class ExtraWatchGoalHTML
         $values['country_condition'] = $this->extraWatch->helper->countryByIp($row->ip);
       }
     } else
-     if (@ExtraWatchHelper::requestGet('clicked_element_xpath_condition')) {
-            $xpath = urldecode(@ExtraWatchHelper::requestGet('clicked_element_xpath_condition'));
-            $values['clicked_element_xpath_condition'] = $xpath;
-        } else
       if (@ExtraWatchHelper::requestGet('country')) {
         $country = urldecode(@ExtraWatchHelper::requestGet('country'));
         $values['name'] = _EW_GOALS_COUNTRY . ": $country";
@@ -147,6 +143,8 @@ class ExtraWatchGoalHTML
             $values['name'] = _EW_STATS_TO . ": $toTitle";
             $values['uri_condition'] = $to;
           }
+
+    $uri = @$row->uri;
 
     //START POST CODE MOD
     if (isset($postid)) {

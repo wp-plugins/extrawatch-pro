@@ -4,8 +4,8 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.2
- * @revision 927
+ * @version 2.0
+ * @revision 926
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -25,7 +25,7 @@ class ExtraWatchDBWrapNoCMS implements ExtraWatchDBWrap
   public $errNum;
   public $errMsg;
 
-  function ExtraWatchDBWrapNoCMS($userFromSession)
+  function ExtraWatchDBWrapNoCMS()
   {
 
 	require_once(realpath(dirname(__FILE__).DS."..".DS."..".DS."..".DS."..".DS."..".DS."..").DS."config.php");
@@ -34,7 +34,7 @@ class ExtraWatchDBWrapNoCMS implements ExtraWatchDBWrap
     $user = _EW_USER;
     $password = _EW_PASSWORD;
     $database = _EW_DB;
-    $this->dbprefix = _EW_PREFIX.$userFromSession."_";
+    $this->dbprefix = _EW_PREFIX;
     $select = TRUE;
 
     if (!(ExtraWatchDBWrapNoCMS::$dbref = @mysql_connect($host, $user, $password, TRUE))) {
@@ -152,7 +152,7 @@ class ExtraWatchDBWrapNoCMS implements ExtraWatchDBWrap
     return str_replace("#__", $this->dbprefix, $sql);
   }
 
-  private function loadObjectList($key = '')
+  function loadObjectList($key = '')
   {
     if (!($cur = $this->query())) {
       return null;

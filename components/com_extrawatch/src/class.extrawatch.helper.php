@@ -4,8 +4,8 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.2
- * @revision 927
+ * @version 2.0
+ * @revision 926
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -60,7 +60,6 @@ class ExtraWatchHelper
      * helper
      *
      * @return unknown
-     * @deprecated
      */
     function getURI()
     {
@@ -184,10 +183,10 @@ class ExtraWatchHelper
     {
 
         if ($ip == '127.0.0.1') {
+            /* ignore localhost */
             return;
         }
-		
-		
+
         $query = sprintf("select ip, country from #__extrawatch where (ip = '%s' and country is not NULL) limit 1", $this->database->getEscaped($ip));
         $row3 = $this->database->resultQuery($query);
 
@@ -195,13 +194,7 @@ class ExtraWatchHelper
 
             $iplook = new ExtraWatchIP2Country($ip);
             $iplook->UseDB = TRUE;
-            if (_EW_CLOUD_MODE) {
-                $tablePrefix = _EW_GLOBAL_TABLE_PREFIX;
-            } else {
-                $tablePrefix = $this->env->getDbPrefix();
-            }
-			
-            $iplook->db_tablename = $tablePrefix."extrawatch_ip2c";
+            $iplook->db_tablename = "#__extrawatch_ip2c";
 
             if (($iplook->LookUp())) {
                 $country = strtolower($iplook->Country);
@@ -258,15 +251,6 @@ class ExtraWatchHelper
         }
     }
 
-    static function request($key = null)
-    {
-        $value = ExtraWatchHelper::requestGet($key);
-        if (!$value) {
-            $value = ExtraWatchHelper::requestPost($key);
-        }
-        return $value;
-    }
-
     /**
      * Filtering input post var
      * @param  $key
@@ -301,7 +285,7 @@ class ExtraWatchHelper
      * @param  $body
      * @return void
      */
-    function sendEmail(&$env, $recipient, $sender, $subject, $body, $bcc = "")
+    function sendEmail(&$env, $recipient, $sender, $subject, $body)
     {
         $body = ("<html><body>" . $body . "</body></html>");
         $cc = $bcc = $attachment = $replyto = $replytoname = "";
@@ -350,8 +334,7 @@ class ExtraWatchHelper
     {
 
         $checkboxNamesArray = array(
-            'EXTRAWATCH_SEO_RENDER_ONLY_CHANGED',
-            'EXTRAWATCH_SEO_LIST_ENCRYPTED_KEYWORDS'
+            'EXTRAWATCH_SEO_RENDER_ONLY_CHANGED'
         );
 
         $this->config->saveConfigValues($checkboxNamesArray, $post);
@@ -446,123 +429,6 @@ class ExtraWatchHelper
         }
         return false;
     }
-
-    static function convertUrlQuery($query) {
-        $queryParts = explode('&', $query);
-
-        $params = array();
-        foreach ($queryParts as $param) {
-            $item = explode('=', $param);
-            @$params[$item[0]] = @$item[1];
-        }
-
-        return $params;
-    }
-
-
-function renderHTMLCodeSnippet($projectId) {
-
-    if (_EW_CLOUD_MODE) {
-        $output = "";
-        $output .= ("<script type=\"text/javascript\">\n");
-        $output .= ("<!--\n");
-        $output .= ("var extrawatch_projectId='".$projectId."';\n");
-        $output .= ("document.write(\"");
-        $output .= ("<script src='"._EW_SCRIPT_HOST._EW_SCRIPT_HOST_DIR."extrawatch/components/com_extrawatch/js/agent.js.php?projectId=\"+extrawatch_projectId+\"&env=ExtraWatchNoCMSEnv' type='text/javascript'><\/script>\");\n");
-        $output .= ("");
-        $output .= ("-->\n");
-        $output .= ("</script>\n");
-    } else {
-        $liveSite = $this->config->getLiveSite();
-        $output = "";
-        $output .= ("<script type=\"text/javascript\">\n");
-        $output .= ("<!--\n");
-        $output .= ("document.write(\"");
-        $output .= ("<script src='".$liveSite."components/com_extrawatch/js/agent.js.php?env=".get_class($this->env)."' type='text/javascript'><\/script>\");\n");
-        $output .= ("");
-        $output .= ("-->\n");
-        $output .= ("</script>\n");
-
-    }
-
-return $output;
-}	
-
-function getFirstUsersProject($database, $userId) {
-    $result = $database->resultQuery(sprintf("select id from global_project where `userId` = '%d' order by id asc limit 1", (int) $userId));
-	return $result;
-}
-
-    static function fixFilePermissions($filesArray) {
-        foreach($filesArray as $file) {
-            @chmod(JPATH_SITE.DIRECTORY_SEPARATOR."components".DIRECTORY_SEPARATOR."com_extrawatch".DIRECTORY_SEPARATOR.$file, 0755);
-        }
-    }
-
-    static function sureRemoveDir($dir, $DeleteMe)
-    {
-        if (!$dh = @opendir($dir)) return;
-        while (FALSE !== ($obj = readdir($dh))) {
-            if ($obj == '.' || $obj == '..') continue;
-            if (!@unlink($dir . '/' . $obj)) extrawatch_sureRemoveDir($dir . '/' . $obj, TRUE);
-        }
-        if ($DeleteMe) {
-            closedir($dh);
-            @rmdir($dir);
-        }
-    }
-
-
-function getUserId($database, $user, $password) {
-	$query = sprintf("select id from global_user where `email` = '%s' and `password` = '%s' ", $user, $password);
-    $result = $database->resultQuery($query);
-	return $result;
-}
-
-
-function getProjectNameByProjectId($database, $projectId) {
-    $result = $database->resultQuery(sprintf("select url from global_project where `id` = '%d' order by id asc limit 1", (int) $projectId));
-	return $result;
-}
-
-static function getTimezoneOffsetByTimezoneName($userTimezoneName){
-    try {
-        $dtz = new DateTimeZone($userTimezoneName);
-        $time = new DateTime('now', $dtz);
-        $userTimezone = $time->format('Z') / 3600; // timezone difference in seconds / 3600
-        if (EXTRAWATCH_DEBUG) {
-            echo ("<br/>user timezone was not numeric, translated to: " . $userTimezone);
-        }
-    } catch (Exception $e) {
-        echo("<!-- exception " . $e->getMessage() . " -->");
-    }
-    return $userTimezone;
-}
-
-    function secondsToHumanFormat($d) {
-        $periods = array( 'd'    => 86400,
-            'h'   => 3600,
-            'm' => 60
-        );
-        $parts = array();
-        foreach ( $periods as $name => $dur )
-        {
-            $div = floor( $d / $dur );
-            if ( $div == 0 )
-                continue;
-            else if ( $div == 1 )
-                $parts[] = $div . "" . $name;
-            else
-                $parts[] = $div . "" . $name . "";
-            $d %= $dur;
-        }
-        $last = array_pop( $parts );
-        if ( empty( $parts ) )
-            return $last;
-        else
-            return join( ' ', $parts ) . "  " . $last;
-    }
-
 }
 
 

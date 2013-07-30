@@ -4,15 +4,17 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.2
- * @revision 927
+ * @version 2.0
+ * @revision 926
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
  */
 
 /** ensure this file is being included by a parent file */
-defined('_JEXEC') or die('Restricted access');
+if (!defined('_JEXEC') && !defined('_VALID_MOS')) {
+    die('Restricted access');
+}
 
 if (!defined('_JEXEC')) {
     define('_JEXEC', 1);
@@ -61,8 +63,8 @@ function extrawatch_mainController($task = "") {
     $extraWatchTrendHTML = new ExtraWatchTrendHTML($extraWatch);
     $env = ExtraWatchEnvFactory::getEnvironment();
 
-    $action = @ ExtraWatchHelper::request('action');
-    $taskFromNavigation = @ ExtraWatchHelper::request('task');
+    $action = @ ExtraWatchHelper::requestGet('action');
+    $taskFromNavigation = @ ExtraWatchHelper::requestGet('task');
 
     if ($taskFromNavigation) {
         $task = $taskFromNavigation;
@@ -72,10 +74,6 @@ function extrawatch_mainController($task = "") {
     $result = @ ExtraWatchHelper::requestGet('result');
 
     $output = "";
-
-    if (!$extraWatch->config->getLiveSite()) {
-        $extraWatch->config->setLiveSite($env->getRootSite());
-    }
 
     switch ($task) {
 
@@ -125,16 +123,14 @@ function extrawatch_mainController($task = "") {
             break;
             }
     }
-    if (false) {//remove check license accepted
-    //if (!$extraWatch->config->checkLicenseAccepted()) {
+    if (!$extraWatch->config->checkLicenseAccepted()) {
         $output .= $extraWatchHTML->renderAdminStyles($extraWatch);
         $output .= $extraWatchHTML->renderAcceptLicense();
         return $output;
     } else {
 
         
-        if (false) {    //remove check for license
-        //if (!$extraWatch->config->isFree() && !$extraWatch->config->isAdFree()  /* disabled trial || ($extraWatch->config->isTrial() && !$extraWatch->config->isTrialTimeOver())*/) {
+        if (!$extraWatch->config->isFree() && !$extraWatch->config->isAdFree()  /* disabled trial || ($extraWatch->config->isTrial() && !$extraWatch->config->isTrialTimeOver())*/) {
             $output .= $extraWatchHTML->renderAdminStyles($extraWatch);
             $output .= $extraWatchHTML->renderAdFreeLicense();
             return $output;
@@ -156,14 +152,6 @@ function extrawatch_mainController($task = "") {
                 $output .= $extraWatchHTML->renderBody($option);
                 break;
                 }
-
-            case "users" :
-            {
-                $output .= $extraWatchHTML->renderAdminStyles($extraWatch);
-                $output .= $extraWatchHTML->renderHeader($extraWatch);
-                $output .= $extraWatchHTML->renderUsers($extraWatch);
-                break;
-            }
 
             case "update" :
                 {
@@ -448,15 +436,6 @@ function extrawatch_mainController($task = "") {
                         break;
 
                         }
-                    case "send":
-                    {
-                        $output .= $extraWatchHTML->renderAdminStyles($extraWatch);
-                        $output .= $extraWatchHTML->renderHeader($extraWatch);
-                        $extraWatch->visit->sendNightlyEmails();
-                        $output .= $extraWatchHTML->renderEmails();
-                        break;
-
-                    }
                     default:
                         {
                         $output .= $extraWatchHTML->renderAdminStyles($extraWatch);
@@ -477,125 +456,8 @@ function extrawatch_mainController($task = "") {
                 break;
                 }
 
-            case "downloads" :
-            {
-                $extraWatchDownloads = new ExtraWatchDownloads($extraWatch->database);
-                $extraWatchDownloadsHTML = new ExtraWatchDownloadsHTML($extraWatch->database);
-                switch ($action) {
-
-                    case "addExtension":
-                    {
-
-                        $output .= $extraWatchHTML->renderAdminStyles($extraWatch);
-                        $output .= $extraWatchHTML->renderHeader($extraWatch);
-                        $output .= $extraWatchDownloadsHTML->renderAddExtension();
-                        $output .= $extraWatchHTML->renderDownloads();
-                        break;
-                    }
-                    case "saveAddExtension":
-                    {
-
-                        $output .= $extraWatchHTML->renderAdminStyles($extraWatch);
-                        $output .= $extraWatchHTML->renderHeader($extraWatch);
-                        $output .= $extraWatchDownloads->addExtension(ExtraWatchHelper::requestPost('extname'));
-                        $output .= $extraWatchHTML->renderDownloads();
-                        return $output;
-                        break;
-                    }
-                    case "editExtension":
-                    {
-
-                        $output .= $extraWatchHTML->renderAdminStyles($extraWatch);
-                        $output .= $extraWatchHTML->renderHeader($extraWatch);
-                        $output .= $extraWatchDownloadsHTML->renderEditExtension(ExtraWatchHelper::requestGet('eid'));
-                        $output .= $extraWatchHTML->renderDownloads();
-                        break;
-                    }
-                    case "saveEditExtension":
-                    {
-
-                        $output .= $extraWatchHTML->renderAdminStyles($extraWatch);
-                        $output .= $extraWatchHTML->renderHeader($extraWatch);
-                        $output .= $extraWatchDownloads->updateExtension(ExtraWatchHelper::requestPost('eid'), ExtraWatchHelper::requestPost('extname'));
-                        $output .= $extraWatchHTML->renderDownloads();
-                        return $output;
-                        break;
-                    }
-                    case "deleteExtension":
-                    {
-
-                        $output .= $extraWatchHTML->renderAdminStyles($extraWatch);
-                        $output .= $extraWatchHTML->renderHeader($extraWatch);
-                        $output .= $extraWatchDownloads->deleteExtension(ExtraWatchHelper::requestGet('co'));
-                        $output .= $extraWatchHTML->renderDownloads();
-                        break;
-                    }
-
-                    case "addFile":
-                    {
-
-                        $output .= $extraWatchHTML->renderAdminStyles($extraWatch);
-                        $output .= $extraWatchHTML->renderHeader($extraWatch);
-                        $output .= $extraWatchDownloadsHTML->renderAddFile();
-                        $output .= $extraWatchHTML->renderDownloads();
-                        break;
-                    }
-                    case "editFile":
-                    {
-
-                        $output .= $extraWatchHTML->renderAdminStyles($extraWatch);
-                        $output .= $extraWatchHTML->renderHeader($extraWatch);
-                        $output .= $extraWatchDownloadsHTML->renderEditFile(ExtraWatchHelper::requestGet('did'));
-                        $output .= $extraWatchHTML->renderDownloads();
-                        break;
-                    }
-                    case "saveEditFile":
-                    {
-
-                        $output .= $extraWatchHTML->renderAdminStyles($extraWatch);
-                        $output .= $extraWatchHTML->renderHeader($extraWatch);
-                        $output .= $extraWatchDownloads->updateFilePath(ExtraWatchHelper::requestPost('did'), ExtraWatchHelper::requestPost('filepathname'));
-                        $output .= $extraWatchHTML->renderDownloads();
-                        return $output;
-                        break;
-                    }
-                    case "saveAddFile":
-                    {
-
-                        $output .= $extraWatchHTML->renderAdminStyles($extraWatch);
-                        $output .= $extraWatchHTML->renderHeader($extraWatch);
-                        $output .= $extraWatchDownloads->addFilePath(ExtraWatchHelper::requestPost('filepathname'));
-                        $output .= $extraWatchHTML->renderDownloads();
-                        return $output;
-                        break;
-                    }
-                    case "deleteFile":
-                    {
-
-                        $output .= $extraWatchHTML->renderAdminStyles($extraWatch);
-                        $output .= $extraWatchHTML->renderHeader($extraWatch);
-                        $output .= $extraWatchDownloads->deleteFilePath(ExtraWatchHelper::requestGet('co'));
-                        $output .= $extraWatchHTML->renderDownloads();
-                        break;
-                    }
-
-                    default:
-                        {
-                        $output .= $extraWatchHTML->renderAdminStyles($extraWatch);
-                        $output .= $extraWatchHTML->renderHeader($extraWatch);
-                        $output .= $extraWatchHTML->renderDownloads();
-                        return $output;
-                        break;
-                        }
-                }
-                break;
-            }
-
             default :
-                if (true || $extraWatch->config->checkLicenseAccepted()) { // disable license checking
-
-                    $extraWatch->setup->runAdditionalSQLScripts();  //only run those update scripts when live stats are opene
-
+                if ($extraWatch->config->checkLicenseAccepted()) {
                     $output .= $extraWatchHTML->renderAdminStyles($extraWatch);
                     $output .= $extraWatchHTML->renderHeader($extraWatch);
                     $output .= $extraWatchHTML->renderBody($option);

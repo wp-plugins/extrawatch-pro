@@ -38,6 +38,8 @@
  * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
  */
 
+defined('_JEXEC') or die('Restricted access');
+
 if (version_compare(PHP_VERSION, '5.0.0', '<') ) exit("Sorry, this version of PHPMailer will only run on PHP version 5 or greater!\n");
 
 class PHPMailer {

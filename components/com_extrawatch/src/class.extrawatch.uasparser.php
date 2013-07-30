@@ -12,6 +12,8 @@
  * @link       http://user-agent-string.info/download/UASparser
  */
 
+defined('_JEXEC') or die('Restricted access');
+
 class UASparser
 {
     public $updateInterval =   86400; // 1 day

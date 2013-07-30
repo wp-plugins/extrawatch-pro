@@ -5,15 +5,13 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 927
+ * @revision 931
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
  */
 
-/** ensure this file is being included by a parent file */
-if (!defined('_JEXEC') && !defined('_VALID_MOS'))
-    die('Restricted access');
+defined('_JEXEC') or die('Restricted access');
 
 class ExtraWatchDownloads
 {
@@ -120,7 +118,7 @@ class ExtraWatchDownloads
 
 		$env = $this->config->getEnvironment();
 
-        $writingonht_prev = "\nRewriteEngine on"."\n"."RewriteRule ^(.*).(".$ext_n_prev.")$ ".$path."components/com_extrawatch/ajax/download.php?env=$env&file=$1.$2&rand= [R,L]";
+        $writingonht_prev = "\nRewriteEngine on"."\n"."RewriteRule ^(.*).(".$ext_n_prev.")$ ".$path.$this->env->renderAjaxLink('ajax','download')."&env=$env&file=$1.$2&rand= [R,L]";
 
         $root_file = $this->env->getRootPath().DS.".htaccess";
 
@@ -129,7 +127,7 @@ class ExtraWatchDownloads
         $existingcode_f = str_replace($writingonht_prev,"",$existingcode);
 
         $writingonht = $existingcode_f."\nRewriteEngine on";
-        $writingonht = $writingonht."\n"."RewriteRule ^(.*).(".$ext_n.")$ ".$path."components/com_extrawatch/ajax/download.php?env=$env&file=$1.$2&rand= [R,L]";
+        $writingonht = $writingonht."\n"."RewriteRule ^(.*).(".$ext_n.")$ ".$path.$this->env->renderAjaxLink('ajax','download')."&env=$env&file=$1.$2&rand= [R,L]";
 
         if (file_exists($root_file))
         {
@@ -202,7 +200,7 @@ class ExtraWatchDownloads
 
 		$env = $this->config->getEnvironment();
 
-        $writingonht_prev = "\nRewriteEngine on"."\n"."RewriteRule ^(.*).(".$ext_n_prev.")$ ".$path."components/com_extrawatch/ajax/download.php?env=$env&file=$1.$2&rand= [R,L]";
+        $writingonht_prev = "\nRewriteEngine on"."\n"."RewriteRule ^(.*).(".$ext_n_prev.")$ ".$path.$this->env->renderAjaxLink('ajax','download.php')."&env=$env&file=$1.$2&rand= [R,L]";
 
         $root_file = $this->env->getRootPath().DS.".htaccess";
 
@@ -212,7 +210,7 @@ class ExtraWatchDownloads
         //$existingcode_f = str_replace($writingonht_prev1,"",$existingcode);
 
         $writingonht = $existingcode_f."\nRewriteEngine on";
-        $writingonht = $writingonht."\n"."RewriteRule ^(.*).(".$ext_n.")$ ".$path."components/com_extrawatch/ajax/download.php?env=$env&file=$1.$2&rand= [R,L]";
+        $writingonht = $writingonht."\n"."RewriteRule ^(.*).(".$ext_n.")$ ".$path.$this->env->renderAjaxLink('ajax','download.php')."&env=$env&file=$1.$2&rand= [R,L]";
 
 
         if (file_exists($root_file))
@@ -300,7 +298,7 @@ class ExtraWatchDownloads
 
 			$env = $this->config->getEnvironment();
 
-            $writingonht_prev = "\nRewriteEngine on"."\n"."RewriteRule ^(.*).(".$ext_n_prev.")$ ".$path."components/com_extrawatch/ajax/download.php?env=$env&file=$1.$2&rand= [R,L]";
+            $writingonht_prev = "\nRewriteEngine on"."\n"."RewriteRule ^(.*).(".$ext_n_prev.")$ ".$path.$this->env->renderAjaxLink('ajax','download.php')."&env=$env&file=$1.$2&rand= [R,L]";
 
             $root_file = $this->env->getRootPath().DS.".htaccess";
 
@@ -310,7 +308,7 @@ class ExtraWatchDownloads
             //$existingcode_f = str_replace($writingonht_prev1,"",$existingcode);
 
             $writingonht = $existingcode_f."\nRewriteEngine on";
-            $writingonht = $writingonht."\n"."RewriteRule ^(.*).(".$ext_n.")$ ".$path."components/com_extrawatch/ajax/download.php?env=$env&file=$1.$2&rand= [R,L]";
+            $writingonht = $writingonht."\n"."RewriteRule ^(.*).(".$ext_n.")$ ".$path.$this->env->renderAjaxLink('ajax','download.php')."&?env=$env&file=$1.$2&rand= [R,L]";
 
             if (file_exists($root_file))
             {

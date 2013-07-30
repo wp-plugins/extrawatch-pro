@@ -1,0 +1,27 @@
+`<?php
+/**
+ * @file
+ * ExtraWatch - A real-time ajax monitor and live stats
+ * @package ExtraWatch
+ * @version 2.2
+ * @revision 931
+ * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
+ * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
+ * @website http://www.codegravity.com
+ */
+defined('_JEXEC') or die('Restricted access'); ?>
+
+<h2><?php echo(_EW_USERS_SHARING_HEADER);?></h2>
+<i><?php echo(_EW_USERS_SHARING_DESC);?></i>
+<br/><br/>
+
+<?php echo $extraWatchUserHTML->renderUsersSharingSameLogin(); ?>
+
+<br/><br/>
+<h2><?php echo(_EW_USERS_ACTIVITY_HEADER);?></h2>
+
+<?php echo $extraWatchUserHTML->renderUserLog(); ?>
+
+
+
+

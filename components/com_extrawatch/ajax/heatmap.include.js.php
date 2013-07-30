@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 927
+ * @revision 931
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -13,7 +13,7 @@
 // disabled for now defined('_JEXEC') or die('Restricted access');
 
 
-define('_JEXEC', 1);
+defined('_JEXEC') or die('Restricted access');
 define('DS', DIRECTORY_SEPARATOR);
 $jBasePath = realpath(dirname(__FILE__) . DS . ".." . DS . ".." . DS . "..". DS);
 define('JPATH_BASE2', $jBasePath);
@@ -44,7 +44,7 @@ if (_EW_CLOUD_MODE) {
 }
 
 ?>
-  var urlBase = "<?php echo $liveSite; ?>components/com_extrawatch/ajax/heatmap.php?rand=<?php echo $extraWatch->config->getRand();?>&env=<?php echo $extraWatch->config->getEnvironment();?>&projectId=<?php echo _EW_PROJECT_ID;?>";
+  var urlBase = "<?php echo $liveSite; ?><?php echo $extraWatch->env->renderAjaxLink('ajax','heatmap');?>&rand=<?php echo $extraWatch->config->getRand();?>&env=<?php echo $extraWatch->config->getEnvironment();?>&projectId=<?php echo _EW_PROJECT_ID;?>";
   var clickDoc = (document.documentElement != undefined && document.documentElement.clientHeight != 0) ? document.documentElement : document.body;
   //        var w = clickDoc.clientWidth != undefined ? clickDoc.clientWidth : window.innerWidth;
   //        var h = clickDoc.clientHeight != undefined ? clickDoc.clientHeight : window.innerHeight;
