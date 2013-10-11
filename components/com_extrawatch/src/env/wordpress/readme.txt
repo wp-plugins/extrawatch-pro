@@ -1,49 +1,68 @@
-=== ExtraWatch Live Stats and Visitor Counter PRO ===
+=== ExtraWatch PRO (Live Stats, Heatmap, Click tracking, Download Monitor and more)  ===
 Contributors: matto3c
 Donate link: http://www.extrawatch.com/
-Tags: admin, widget, plugin, counter, anti-spam, stats, visitors, click map, countries, tracking, maps, location, geolocation, statistics, spam, flags, goals
+Tags: analytics, statistics, stats, tracking, widget, heatmap, clicks, conversion tracking, counter, anti-spam, stats, visitors, downloads, download monitor, click map, tracking, maps, location, geolocation, statistics, spam, flags, goals, analytics, click, heat map, mouse click, tap, touch, tracker, tracking, usability
 Requires at least: 3.2.
 Tested up to: 3.5.1.
-Stable tag: 2.2.1210
+Stable tag: 2.2.1214
+License: GNU/GPLv2
 
-Popular visitor live tracking component ported from Joomla. Features: live stats,graphs,goals,history,anti-spam,blocking,nightly reports and more..
+Optimize website and increase sales. Watch your visitors in real time, Click Heatmap, Conversion Tracking, Download monitor, Anti-spam, Email Reports
 
 == Description ==
-Popular visitor live tracking component ported from Joomla. ExtraWatch allows you to watch your visitors live stats and bots in real-time from the administration back-end.
-
-Especially their IP addresses, countries they come from, geographical location on a map, which pages they are viewing, their browser and operating system, it creates daily and all-time stats from these information plus unique, pageload and total hits statistics.
-Furthermore, you can block harmful IP addresses, see blocked attempts stats, evaluate the trend charts, and create goals based on many parameters. In the front-end, it displays the top countries, user and visit information for certain periods of time.
+Analyze your visitor behaviour, optimize website and then increase conversions and sales. Once called the "Swiss Army Knife" for every Wordpress website. See map of clicks on Heatmap, Facebook, Twitter and other Social media
 
 
 
+==  PRO version features: == 
 
-PRO version features:
+➨ Android mobile app
+- access your stats with one-click from your mobile screen
 
-- Live Stats
+➨ See map of clicks on Heatmap
+- see the most "active" spots of your website, optimize page to get better conversions and sales
+- monitoring of unique ids of clicked elements and possibility to set them as goals and watch how it changes in time
+- tracks also link clicks
 
-- Nightly Email Reports
+➨ Monitor Downloaded files
+- transparent way how to monitor which files your users have downloaded
+- interactive HTML5 line chart
+- referer monitoring - from where was file referenced (your own site or 3rd party site)
 
-- Anti-spam and IP Blocking
+➨ Monitor User activity
+- detect last user activity
+- report and send alert emails when users share same login from different IP
 
-- Graphs and Trends
+➨ Facebook, Twitter and other Social media
+- detection from where your users came from such as: facebook, twitter, RSS, etc.
 
-- History
+➨ Mobile devices detection
+- detect most common Android, iOS and other devices and their types
 
-- Goals
+➨ Check Search Engines Reports
+- check percentage of traffic from search engines
+- list of keywords by which users found your website and their stats
+- increase and decrease of search result position and their trends
+- list of most common unique keyphrases so you can export them to 3rd party tool to monitor and increase search rank position
 
-- SEO Report
+➨ Traffic Flow
+- an interactive HTML5 chart of flow of traffic between your pages
 
-- Click Heatmap
+➨ Directory Sizes
+- you can monitor which other extensions are taking up your hosting space
 
-- Traffic Flow
+➨ Database Status
+- monitoring of increase / decrease of database table sizes in time
 
-- Directory Sizes
-
-- Database Status
+➨ Front-end widgets
+- displays number of visits per specific time period
 
 
 Purchase the ExtraWatch PRO lifetime license:
 https://www.e-junkie.com/ecom/gb.php?i=1162853&c=single&cl=189955&on0=Promotion&os0=Promotion
+
+
+
 
 
 For more information and demos please visit: http://www.extrawatch.com
@@ -111,6 +130,9 @@ Please read http://www.extrawatch.com/faq/
 == Changelog ==
 
 = version 2.0 =
+https://code.google.com/p/extrawatch/source/list
+
+= version 2.2 =
 https://code.google.com/p/extrawatch/source/list
 
 == Upgrade Notice ==
