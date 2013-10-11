@@ -5,15 +5,12 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 933
+ * @revision 1204
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
  */
-//defined('_JEXEC') or die('Restricted access');
-
-define("_JEXEC",1);
-require(realpath(dirname(__FILE__).DIRECTORY_SEPARATOR."..").DIRECTORY_SEPARATOR."config.php");
+defined('_JEXEC') or die('Restricted access');
 
 if (!defined('DS')) {
 	define('DS',DIRECTORY_SEPARATOR);
@@ -23,8 +20,6 @@ if (_EW_CLOUD_MODE) {
     $projectId = @$_REQUEST['projectId'];
 	define('ENV',1);
 }
-
-define("JPATH_BASE",realpath(dirname(__FILE__).DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR.".."));
 
 $title = "Free live stats and visitor counter for Joomla, Wordpress, Drupal, Magento and Prestashop";
 
@@ -48,16 +43,16 @@ $env = $_REQUEST['env'];
 if (_EW_CLOUD_MODE) {
     $output = ("var extrawatch_projectId='".$projectId."';\n");
     $output .= ("document.write(\"");
-    $output .= ("<img src='"._EW_SCRIPT_HOST._EW_SCRIPT_HOST_DIR."extrawatch/".echo $extraWatch->env->renderAjaxLink('ajax','img')."&rand=" . (rand() % 100000) . "&amp;env=$env&amp;ref=\"+encodeURIComponent(document.referrer)+\"&amp;title=\"+encodeURIComponent(document.title)+\"&amp;uri=\"+encodeURIComponent(window.location.pathname)+\"&amp;params=\"+encodeURIComponent(location.search)+\"&amp;projectId=\"+extrawatch_projectId+\"' border='0' alt='$title' title='$title' style='width:0px;height:0px'/>");
+    $output .= ("<img src='"._EW_SCRIPT_HOST._EW_SCRIPT_HOST_DIR."extrawatch/".$extraWatch->env->renderAjaxLink('ajax','img')."&rand=" . (rand() % 100000) . "&amp;env=$env&amp;ref=\"+encodeURIComponent(document.referrer)+\"&amp;title=\"+encodeURIComponent(document.title)+\"&amp;uri=\"+encodeURIComponent(window.location.pathname)+\"&amp;params=\"+encodeURIComponent(location.search)+\"&amp;projectId=\"+extrawatch_projectId+\"' border='0' alt='$title' title='$title' style='width:0px;height:0px'/>");
     $output .= ("\");\n");
     $output .= ("document.write(\"");
     $uri = @$_SERVER['HTTP_REFERER'];
     $output .= $extraWatchHTML->renderHeatMapJS($uri, $referringQuery);
     $output .= ("\");\n");
 } else {
-    $liveSite = $extraWatch->config->getLiveSite();
+    $liveSite = $extraWatch->config->getLiveSiteWithSuffix();
     $output = ("document.write(\"");
-    $output .= ("<img src='".$liveSite.echo $extraWatch->env->renderAjaxLink('ajax','img')."&rand=" . (rand() % 100000) . "&amp;env=$env&amp;ref=\"+encodeURIComponent(document.referrer)+\"&amp;title=\"+encodeURIComponent(document.title)+\"&amp;uri=\"+encodeURIComponent(window.location.pathname)+\"&amp;params=\"+encodeURIComponent(location.search)+\"' border='0' style='width:0px;height:0px'/>");
+    $output .= ("<img src='".$liveSite.$extraWatch->env->renderAjaxLink('ajax','img')."&rand=" . (rand() % 100000) . "&amp;env=$env&amp;ref=\"+encodeURIComponent(document.referrer)+\"&amp;title=\"+encodeURIComponent(document.title)+\"&amp;uri=\"+encodeURIComponent(window.location.pathname)+\"&amp;params=\"+encodeURIComponent(location.search)+\"' border='0' style='width:0px;height:0px'/>");
     $output .= ("\");\n");
     $output .= ("document.write(\"");
     $uri = @$_SERVER['HTTP_REFERER'];

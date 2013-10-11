@@ -1,4 +1,17 @@
 <?php
+/**
+ * @file
+ * ExtraWatch - A real-time ajax monitor and live stats
+ * @package ExtraWatch
+ * @version 2.2
+ * @revision 1204
+ * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
+ * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
+ * @website http://www.codegravity.com
+ */
+
+defined('_JEXEC') or die('Restricted access');
+
 final class ipinfodb
 {
   protected $errors = array();
@@ -30,9 +43,11 @@ final class ipinfodb
     return implode("\n", $this->errors);
   }
 
-  public function getGeoLocation($host)
+  public function getGeoLocation($ip)
   {
-    $ip = @gethostbyname($host);
+    if (!ExtraWatchConfig::isIPAddress($ip)) {
+        $ip = @gethostbyname($ip);
+    }
 
     if (preg_match('/^(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]\d|\d)(?:[.](?:25[0-5]|2[0-4]\d|1\d\d|[1-9]\d|\d)){3}$/', $ip)) {
 
@@ -55,7 +70,7 @@ final class ipinfodb
       }
     }
 
-    $this->errors[] = '"' . $host . '" is not a valid IP address or hostname.';
+    $this->errors[] = '"' . @$host . '" is not a valid IP address or hostname.';
     return;
   }
 

@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 933
+ * @revision 1204
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -28,10 +28,10 @@ class ExtraWatchUserHTML
 	
 	private function renderUserList($userLog) {
 		if (@$userLog) {
-        $output = "<table border='0' class='tablesorter'><th>time</th><th>username</th><th>ip</th><th>country</th><th>action</th>";
+        $output = "<table border='0' class='tablesorter'><thead><th>time</th><th>username</th><th>ip</th><th>country</th><th>action</th></thead><tbody>";
         if (@$userLog) {
             foreach($userLog as $user) {
-				$blockingActionOutput = "<a  id='$row->ip' href='" . $this->extraWatch->config->renderLink("antiSpam", "&action=toggleBlocking&ip=" . $user->ip) . "' onclick=\"return confirm('"._EW_USERS_BLOCK_IP_CONFIRM."');\"><img src='" .$this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/unpublished.png'/>&nbsp; ". _EW_GOALS_BLOCK . "</a>";
+				$blockingActionOutput = "<a  id='".$user->ip." href='" . $this->extraWatch->config->renderLink("antiSpam", "&action=toggleBlocking&ip=" . $user->ip) . "' onclick=\"return confirm('"._EW_USERS_BLOCK_IP_CONFIRM."');\"><img src='" .$this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/unpublished.png'/>&nbsp; ". _EW_GOALS_BLOCK . "</a>";
 
 			
 				if (@!$user->countryCode) {
@@ -58,10 +58,10 @@ class ExtraWatchUserHTML
             }
         }
 
-        $output .= "</table>";
+        $output .= "</tbody></table>";
 		return $output;
 		} else {
-		return _EW_NO_DATA;
+		return _EW_NO_DATA."<br/>";
 		}
 	
 	}

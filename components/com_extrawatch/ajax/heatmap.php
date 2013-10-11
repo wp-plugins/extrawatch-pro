@@ -4,34 +4,37 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.0
- * @revision 932
+ * @version 2.2
+ * @revision 1204
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
  */
 
 
-define('_JEXEC', 1);
-define('DS', DIRECTORY_SEPARATOR);
+defined('_JEXEC') or die('Restricted access');
+
+
+/*define('DS', DIRECTORY_SEPARATOR);
 $jBasePath = realpath(dirname(__FILE__) . DS . ".." . DS . ".." . DS . "..". DS);
-define('JPATH_BASE2', $jBasePath);
+define('JPATH_BASE2', $jBasePath);*/
 
 include_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS. "includes.php";
 
 $extraWatch = new ExtraWatchMain();
 //$extraWatch->block->checkPermissions();
+$extraWatch->config->initializeTranslations();
 
-require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS. "lang" . DS . $extraWatch->config->getLanguage() . ".php";
+$params = $extraWatch->helper->convertUrlQuery(urldecode($params));	//params passed from above controller
 
-$action = $extraWatch->helper->requestGet("action");
-$uri2titleId = $extraWatch->helper->requestGet("uri2titleId");
-$w = $extraWatch->helper->requestGet("w");
-$h = $extraWatch->helper->requestGet("h");
-$day = $extraWatch->helper->requestGet("day");
-$ip = $extraWatch->helper->requestGet("ip");
+$action = @$params["action"];
+$uri2titleId = @$params["uri2titleId"];
+$w = @$params["w"];
+$h = @$params["h"];
+$day = @$params["day"];
+$ip = @$params["ip"];
 
-$randHash = ExtraWatchHelper::requestGet(ExtraWatchHeatmap::HEATMAP_PARAM_HASH);
+$randHash = @$params[ExtraWatchHeatmap::HEATMAP_PARAM_HASH];
 if (!$extraWatch->config->isPermittedWithHash($randHash)) {
   die("Unauthorized access");
 }
@@ -39,16 +42,16 @@ if (!$extraWatch->config->isPermittedWithHash($randHash)) {
 switch ($action) {
   case 'getHeatMap':
     {
-    echo $extraWatch->heatmap->getHeatmapClicksByUri2TitleId($uri2titleId, $w, $h, $day, $ip);
+    echo $extraWatch->heatmap->getHeatmapClicksByUri2TitleIdJSON($uri2titleId, $w, $h, $day, $ip);
     break;
     }
 
 
   case 'click':
     {
-    $x = $extraWatch->helper->requestGet("x");
-    $y = $extraWatch->helper->requestGet("y");
-    $xpath = $extraWatch->helper->requestGet("xpath");
+    $x = $params["x"];
+    $y = $params["y"];
+    $xpath = urldecode(urldecode($params["xpath"]));
     $extraWatch->heatmap->insertHeatmapClick($uri2titleId, $x, $y, $w, $h, $xpath);
     break;
     }

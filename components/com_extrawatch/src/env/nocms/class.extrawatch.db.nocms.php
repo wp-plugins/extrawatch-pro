@@ -4,16 +4,14 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.0
- * @revision 932
+ * @version 2.2
+ * @revision 1204
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
  */
 
-/** ensure this file is being included by a parent file */
-if (!defined('_JEXEC') && !defined('_VALID_MOS'))
-  die('Restricted access');
+defined('_JEXEC') or die('Restricted access');
 
 class ExtraWatchDBWrapNoCMS implements ExtraWatchDBWrap
 {
@@ -25,20 +23,21 @@ class ExtraWatchDBWrapNoCMS implements ExtraWatchDBWrap
   public $errNum;
   public $errMsg;
 
-  function ExtraWatchDBWrapNoCMS()
+  function ExtraWatchDBWrapNoCMS($projectIdFromSession)
   {
-
-	require_once(realpath(dirname(__FILE__).DS."..".DS."..".DS."..".DS."..".DS."..".DS."..").DS."config.php");
+	if (!defined('_EW_HOST')) {
+		require_once(realpath(dirname(__FILE__).DS."..".DS."..".DS."..".DS."..".DS."..".DS."..").DS."connection.php");
+	}
   
     $host = _EW_HOST;
     $user = _EW_USER;
     $password = _EW_PASSWORD;
     $database = _EW_DB;
-    $this->dbprefix = _EW_PREFIX;
+    $this->dbprefix = $projectIdFromSession."_";
     $select = TRUE;
 
     if (!(ExtraWatchDBWrapNoCMS::$dbref = @mysql_connect($host, $user, $password, TRUE))) {
-      die("Error: Cannot connect using parameters specified in config.php");
+      die("Error: Cannot connect using parameters specified in connection.php");
     }
     if ($select) {
       $result = $this->select($database);
@@ -62,11 +61,14 @@ class ExtraWatchDBWrapNoCMS implements ExtraWatchDBWrap
   {
     $sql = $this->query;
     $sql = $this->replaceDbPrefix($sql);
+	ExtraWatchLog::debug("$sql");
+	//echo("<!-- query: $sql -->");
     $this->result = mysql_query($sql, ExtraWatchDBWrapNoCMS::$dbref);
 
     if (!$this->result) {
       $this->errNum = mysql_errno(ExtraWatchDBWrapNoCMS::$dbref);
       $this->errMsg = mysql_error(ExtraWatchDBWrapNoCMS::$dbref) . " in query $sql";
+      ExtraWatchLog::error($this->errMsg);
       return FALSE;
     }
     return $this->result;
@@ -149,10 +151,16 @@ class ExtraWatchDBWrapNoCMS implements ExtraWatchDBWrap
 
   function replaceDbPrefix($sql)
   {
+    if (_EW_CLOUD_MODE) {
+        $sql = str_replace("#__extrawatch_ip2c ", "global_extrawatch_ip2c ", $sql);
+        $sql = str_replace("#__extrawatch_cc2c", "global_extrawatch_cc2c", $sql);
+        $sql = str_replace("#__extrawatch_project", "global_extrawatch_project", $sql);
+        $sql = str_replace("#__extrawatch_user", "global_extrawatch_user", $sql);
+    }
     return str_replace("#__", $this->dbprefix, $sql);
   }
 
-  function loadObjectList($key = '')
+  private function loadObjectList($key = '')
   {
     if (!($cur = $this->query())) {
       return null;

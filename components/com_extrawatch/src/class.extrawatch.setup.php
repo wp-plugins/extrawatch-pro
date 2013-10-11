@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 933
+ * @revision 1204
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -20,9 +20,9 @@ class ExtraWatchSetup {
     private $modulePath;
     private $sqlScriptsModuleDir;
 
-    function __construct() {
+    function __construct($database) {
         $this->env = ExtraWatchEnvFactory::getEnvironment();
-        $this->database = $this->env->getDatabase();
+        $this->database = $database;
         $this->modulePath = realpath(dirname(__FILE__).DS."..".DS."..".DS."..");
         $this->sqlScriptsModuleDir = $this->modulePath. DS . "components" . DS . "com_extrawatch" . DS . "sql" . DS . "scripts";
     }
@@ -44,15 +44,14 @@ class ExtraWatchSetup {
 
     function initializeDB($doNotInitializeIp2c = FALSE)
     {
-        if ($this->isEwInitialized()) {
-            return;
+        if (!$this->isEwInitialized()) {
+            $this->runSQLscriptsFromFile($this->modulePath . DS .  "components" . DS . "com_extrawatch" . DS . "sql" . DS . "install.mysql.utf8.sql");
+            if (!$doNotInitializeIp2c) {
+                $this->initializeIp2Country();
+            }
         }
 
-        $this->runSQLscriptsFromFile($this->modulePath . DS .  "components" . DS . "com_extrawatch" . DS . "sql" . DS . "install.mysql.utf8.sql");
         $this->runAdditionalSQLScripts();
-        if (!$doNotInitializeIp2c) {
-            $this->initializeIp2Country();
-        }
     }
 
     public function runAdditionalSQLScripts() {
@@ -74,11 +73,11 @@ class ExtraWatchSetup {
 
 
     private function runSQLscriptsFromFile($file) {
-        $database = $this->env->getDatabase();
+        $database = $this->env->getDatabase(_EW_PROJECT_ID);
         $lines = file($file);
         $query = "";
         foreach ($lines as $line_num => $line) {
-            $query .= trim($line);
+            $query .= " ".trim($line);
 
             if (strstr(trim($line), ";")) {
                 $query = trim($query);
@@ -110,7 +109,7 @@ class ExtraWatchSetup {
     static function initializeMenu()
     {
         $env = ExtraWatchEnvFactory::getEnvironment();
-        $database = $env->getDatabase();
+        $database = $env->getDatabase(_EW_PROJECT_ID);
 
         if (version_compare(JVERSION, "2.5.0", "<")) {
 

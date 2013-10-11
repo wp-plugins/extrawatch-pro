@@ -4,64 +4,66 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.0
- * @revision 932
+ * @version 2.2
+ * @revision 1204
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
  */
 
 /** ensure this file is being included by a parent file */
-if (!defined('_JEXEC') && !defined('_VALID_MOS')) {
-  die('Restricted access');
-}
+defined('_JEXEC') or die('Restricted access');
 
 class ExtraWatchLog
 {
 
 
-  function writeEntry($severity, $file, $line, $sql)
+  static function writeEntry($severity, $sql)
   {
-    if (EXTRAWATCH_DEBUG) {
-      $backTrace = ExtraWatchLog::getDebugBacktrace();
-      $message = ExtraWatchDate::date("d.m.Y H:i:s ", ExtraWatchDate::getUTCTimestamp());
-      $message .= "JoomlaBug Query: \n" . $sql . "\n";
-      $message .= "JoomlaBug BackTrace: " . $backTrace;
-      $logPath = JPATH_BASE . DS . "components" . DS . "com_extrawatch" . DS . "log" . DS . "extrawatch.log.php";
-      $result = error_log($message, 3, $logPath);
-      if (!$result) {
-        echo("Error writing log to: " . $logPath);
+    if (EXTRAWATCH_DEBUG || _EW_CLOUD_MODE) {
+
+      $logFileName = date("Y-m-d").".log.php";
+      $logFilePath = realpath(dirname(__FILE__).DS."..".DS).DS."log".DS.$logFileName;
+
+      //$backTrace = ExtraWatchLog::getDebugBacktrace();
+      $message = date("H:i:s");
+      if (_EW_CLOUD_MODE && defined('_EW_PROJECT_ID')) {
+        $message .= " P:" . sprintf("%4d",_EW_PROJECT_ID) . " ";
       }
-      chmod($logPath, 0700);
+      $message .= $sql . "\n";
+      //$message .= "JoomlaBug BackTrace: " . $backTrace;
+      $result = error_log($message, 3, $logFilePath);
+      if (!$result) {
+        echo("Error writing log to: " . $logFilePath);
+      }
+      chmod($logFilePath, 0700);
     }
   }
 
 
-  function error($file, $line, $message)
+  function error($message)
   {
-
-    // echo("<span style='color: red'>ExtraWatch: SQL error has occured, please check your system logs</span>".$message);
-    ExtraWatchLog::writeEntry("ERROR", $file, $line, $message);
+    ExtraWatchLog::writeEntry("ERROR", $message);
 
   }
 
-  function info($file, $line, $message)
+  function info($message)
   {
 
-    ExtraWatchLog::writeEntry("INFO", $file, $line, $message);
+    ExtraWatchLog::writeEntry("INFO", $message);
 
   }
 
-  function warn($file, $line, $message)
+  function warn($message)
   {
-    ExtraWatchLog::writeEntry("WARN", $file, $line, $message);
+    ExtraWatchLog::writeEntry("WARN", $message);
 
   }
 
 
-  function debug($file, $line, $message)
+  static function debug($message)
   {
-    ExtraWatchLog::writeEntry("DEBUG", $file, $line, $message);
+    ExtraWatchLog::writeEntry("DEBUG", $message);
 
   }
 
@@ -81,8 +83,8 @@ class ExtraWatchLog
     $dbgMsg .= $NL;
     if (isset($dbgTrace)) {
       foreach ($dbgTrace as $dbgIndex => $dbgInfo) {
-        $dbgMsg .= "\t at $dbgIndex  " . $dbgInfo['file'] . " (line {$dbgInfo['line']}) -> {$dbgInfo['function']}(" .
-            join(",", $dbgInfo['args']) . ")$NL";
+        $dbgMsg .= "\t at $dbgIndex  " . @$dbgInfo['file'] . " (line {".@$dbgInfo['line']."}) -> {".@$dbgInfo['function']."}(" .
+            @join(",", @$dbgInfo['args']) . ")$NL";
       }
     }
     $dbgMsg .= $NL;

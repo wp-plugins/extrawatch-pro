@@ -30,7 +30,6 @@ class UASparser
      *  @param  string  cache directory to be used by this instance
      */
     public function __construct($cacheDirectory = null, $updateInterval = null) {
-        error_reporting(E_ALL);
         if ($cacheDirectory) $this->SetCacheDir($cacheDirectory);
         if ($updateInterval) $this->updateInterval = $updateInterval;
     }
@@ -156,6 +155,11 @@ class UASparser
         return $result;
     }
 
+	function convert($size)
+ {
+    $unit=array('b','kb','mb','gb','tb','pb');
+    return @round($size/pow(1024,($i=floor(log($size,1024)))),2).' '.$unit[$i];
+ }
     /**
      *  Load the data from the files
      */
@@ -176,7 +180,10 @@ class UASparser
 
         // we have file with data, parse and return it
         if (file_exists($this->_cache_dir.'/uasdata.ini')) {
-            return @parse_ini_file($this->_cache_dir.'/uasdata.ini', true);
+			//echo "<br/>before mem1: ".$this->convert(memory_get_usage(true));
+             $file = @parse_ini_file($this->_cache_dir.'/uasdata.ini', true);
+			//echo "<br/>after mem2:  ".$this->convert(memory_get_usage(true));
+            return $file;
         }
         else {
             trigger_error('ERROR: No datafile (uasdata.ini in Cache Dir), maybe update the file manually.');

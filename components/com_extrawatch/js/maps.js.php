@@ -4,19 +4,21 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.0
- * @revision 932
+ * @version 2.2
+ * @revision 1204
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
  */
 
+defined('_JEXEC') or die('Restricted access');
 
-define('_JEXEC', 1);
+
+/*define('_JEXEC', 1);
 define('DS', DIRECTORY_SEPARATOR);
 $jBasePath = realpath(dirname(__FILE__) . DS . ".." . DS . ".." . DS . ".." . DS);
 define('JPATH_BASE', $jBasePath);
-define('JPATH_BASE2', $jBasePath);
+define('JPATH_BASE2', $jBasePath);*/
 
 $env = @$_REQUEST['env'];
 $frontend = @$_REQUEST['frontend'];
@@ -65,8 +67,7 @@ require_once JPATH_BASE . DS."components" . DS . "com_extrawatch" . DS . "includ
 
 
 $extraWatch = new ExtraWatchMain();
-require_once JPATH_BASE . DS . "components" . DS . "com_extrawatch" . DS . "lang" . DS . $extraWatch->config->getLanguage() . ".php";
-
+$extraWatch->config->initializeTranslations();
 $extraWatch->block->checkPermissions();
 ?>
 var oldmarker;
@@ -95,7 +96,7 @@ function extraWatchGoogleMapLoad() {
 <?php
 
 $ip = $extraWatch->visit->getLastIp();
-$location = $extraWatch->visit->ip2Country($ip);
+$location = $extraWatch->visit->ip2Location($ip);
 
 echo "var latlng = new google.maps.LatLng(" . ((int)@$location['latitude']) . ", " . ((int)@$location['longitude']) . ");"
 ?>
@@ -116,7 +117,7 @@ map = new google.maps.Map(document.getElementById("map"), myOptions);
 
 function GoogleMapUpdate()
 {
-downloadUrl("<?php echo $extraWatch->config->getLiveSiteWithSuffix(); ?>components/com_extrawatch/ajax/lastvisit.php?rand=<?php echo $extraWatch->config->getRand(); ?>&env=<?php echo(get_class($extraWatch->env)); ?>", function(data) {
+downloadUrl("<?php echo $extraWatch->config->getLiveSiteWithSuffix(); ?><?php echo $extraWatch->env->renderAjaxLink('ajax','lastvisit');?>&rand=<?php echo $extraWatch->config->getRand(); ?>&env=<?php echo(get_class($extraWatch->env)); ?>&projectId=<?php echo(_EW_PROJECT_ID); ?>", function(data) {
 var markers = data.documentElement.getElementsByTagName("marker");
 for (var i = 0; i < markers.length; i++) {
 var name = markers[i].getAttribute("name");
@@ -186,7 +187,7 @@ return "";
 }
 
 function extraWatchOpenMapUpdate() {
-downloadUrl("<?php echo $extraWatch->config->getLiveSiteWithSuffix(); ?>components/com_extrawatch/ajax/lastvisit.php?rand=<?php echo $extraWatch->config->getRand(); ?>&env=<?php echo(get_class($extraWatch->env)); ?>", function(data) {
+downloadUrl("<?php echo $extraWatch->config->getLiveSiteWithSuffix(); ?><?php echo $extraWatch->env->renderAjaxLink('ajax','lastvisit');?>&rand=<?php echo $extraWatch->config->getRand(); ?>&env=<?php echo(get_class($extraWatch->env)); ?>&projectId=<?php echo _EW_PROJECT_ID; ?>", function(data) {
 var markers = data.documentElement.getElementsByTagName("marker");
 var zoom = extraWatchLoadZoom();
 if (zoom == "")

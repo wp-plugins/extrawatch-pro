@@ -4,22 +4,23 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.0
- * @revision 932
+ * @version 2.2
+ * @revision 1204
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
  */
 
-define('_JEXEC', 1);
-define('DS', DIRECTORY_SEPARATOR);
+defined('_JEXEC') or die('Restricted access');
+
+/*define('DS', DIRECTORY_SEPARATOR);
 $jBasePath = realpath(dirname(__FILE__) . DS . ".." . DS . ".." . DS . ".." . DS);
-define('JPATH_BASE2', $jBasePath);
+define('JPATH_BASE2', $jBasePath);*/
 
 include_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "includes.php";
 
 $extraWatch = new ExtraWatchMain();
-require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "lang" . DS . $extraWatch->config->getLanguage() . ".php";
+$extraWatch->config->initializeTranslations();
 
 $t1 = time() + microtime();
 
@@ -49,7 +50,7 @@ else {
 $prevWeek = $week - 1;
 $nextWeek = $week + 1;
 
-if (EXTRAWATCH_DEBUG) echo("day: $day");
+ExtraWatchLog::debug("day: $day");
 $t1 = (time() + microtime()); ?>
 <table border='0' cellpadding='1' cellspacing='0' width='100%'>
 

@@ -7,7 +7,7 @@
     <copyright>Copyright 2006-2013 by CodeGravity.com</copyright>
     <authorEmail>support@extrawatch.com</authorEmail>
     <authorUrl>http://www.extrawatch.com</authorUrl>
-    <version>2.0.932 PRO</version>
+    <version>2.2.1204 PRO</version>
     <license>http://www.gnu.org/licenses/gpl-3.0.txt GNU/GPLv3</license>
     <description>
         ExtraWatch is an AJAX component and module for Joomla CMS that allows you to watch
@@ -29,20 +29,6 @@
         </sql>
     </install>
 
-    <uninstall> <!-- Runs on uninstall -->
-        <!--
-      <sql>
-                          <file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
-                  </sql>
-                  -->
-    </uninstall>
-    <!--        <update>
-                 <schemas>
-                         <schemapath type="mysql">sql/updates/mysql</schemapath>
-                 </schemas>
-         </update>
-          -->
-
     <!-- Site Main File Copy Section -->
     <!-- Note the folder attribute: This attribute describes the folder
 to copy FROM in the package to install therefore files copied
@@ -57,9 +43,15 @@ in this section are copied from /site/ in the package -->
         <folder>src</folder>
         <folder>view</folder>
         <folder>sql</folder>
+        <folder>data</folder>
 
         <filename>config.php</filename>
         <filename>includes.php</filename>
+
+        <filename>extrawatch.php</filename>
+        <filename>controller.php</filename>
+        <filename>router.php</filename>
+
         <filename>index.html</filename>
         <filename>INSTALL.txt</filename>
         <filename>LICENSE.txt</filename>
@@ -86,14 +78,24 @@ in this section are copied from /site/ in the package -->
             </menu>
             
             <menu
+                    link="option=com_extrawatch&amp;task=users"
+                    img="components/com_extrawatch/img/icons/credits.png"
+                    alt="Users">Users
+            </menu>
+            <menu
+                    link="option=com_extrawatch&amp;task=downloads"
+                    img="components/com_extrawatch/img/icons/downloads.png"
+                    alt="Downloads">Downloads
+            </menu>
+            <menu
                     link="option=com_extrawatch&amp;task=seo"
                     img="components/com_extrawatch/img/icons/seo.png"
                     alt="SEO">SEO
             </menu>
             <menu
                     link="option=com_extrawatch&amp;task=heatmap"
-                    img="components/com_extrawatch/img/icons/heatmap.png"
-                    alt="Heatmap">Heatmap
+                    img="components/com_extrawatch/img/icons/click.png"
+                    alt="Clicks">Clicks
             </menu>
             <menu
                     link="option=com_extrawatch&amp;task=flow"
@@ -161,30 +163,15 @@ in this section are copied from /site/ in the package -->
         </submenu>
 
 
-        <files folder="admin">
+        <files>
             <folder>sql</folder>
             <folder>img</folder>
-            <filename>img/icons/extrawatch-logo-16x16.gif</filename>
-            <filename>img/icons/extrawatch-logo-16x16.png</filename>
-            <filename>img/icons/extrawatch-logo-48x48.png</filename>
-            <filename>img/icons/map_icon.gif</filename>
-            <filename>img/icons/flow.png</filename>
-            <filename>img/icons/trend_icon.gif</filename>
-            <filename>img/icons/goal.gif</filename>
-            <filename>img/icons/history.png</filename>
-            <filename>img/icons/antispam.gif</filename>
-            <filename>img/icons/emails.png</filename>
-            <filename>img/icons/license.png</filename>
-            <filename>img/icons/status.png</filename>
-            <filename>img/icons/sizes.png</filename>
-            <filename>img/icons/settings.gif</filename>
-            <filename>img/icons/update.png</filename>
-            <filename>img/icons/credits.png</filename>
+            <folder>img/icons/</folder>
+            <folder>img/flags/</folder>
             <filename>script.extrawatch.php</filename>
             <filename>install.extrawatch.php</filename>
             <filename>uninstall.extrawatch.php</filename>
             <filename>admin.extrawatch.php</filename>
-            <filename>extrawatch.php</filename>
             <filename>index.html</filename>
         </files>
     </administration>
@@ -192,7 +179,7 @@ in this section are copied from /site/ in the package -->
     <scriptfile>script.extrawatch.php</scriptfile>
 
     <updateservers>
-        <server type="extension" priority="1" name="ExtraWatch Update Site"><![CDATA[http://www.extrawatch.com/update/extrawatch/2.0/PRO/extrawatch-update.xml]]></server>
+        <server type="extension" priority="1" name="ExtraWatch Update Site"><![CDATA[http://www.extrawatch.com/update/extrawatch/2.2/PRO/extrawatch-update.xml]]></server>
     </updateservers>
 
 </extension>

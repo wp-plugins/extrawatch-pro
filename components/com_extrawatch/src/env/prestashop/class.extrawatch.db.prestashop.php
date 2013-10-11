@@ -4,17 +4,14 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.0
- * @revision 932
+ * @version 2.2
+ * @revision 1204
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
  */
 
-/** ensure this file is being included by a parent file */
-if (!defined('_JEXEC') && !defined('_VALID_MOS'))  {
-  die('Restricted access');
-}
+defined('_JEXEC') or die('Restricted access');
 
 class ExtraWatchDBWrapPrestaShop implements ExtraWatchDBWrap
 {
@@ -112,6 +109,7 @@ class ExtraWatchDBWrapPrestaShop implements ExtraWatchDBWrap
 
   function objectListQuery($query)
   {
+	ExtraWatchLog::debug("objectListQuery: $query");
     $this->query = $query;
     return $this->loadObjectList();
   }
@@ -123,18 +121,21 @@ class ExtraWatchDBWrapPrestaShop implements ExtraWatchDBWrap
 
   function resultQuery($query)
   {
+	ExtraWatchLog::debug("resultQuery: $query");
     $this->query = $query;
     return $this->loadResult();
   }
 
   function executeQuery($query)
   {
+	ExtraWatchLog::debug("executeQuery: $query");
     $this->query = $query;
     return $this->query();
   }
 
   function assocListQuery($query)
   {
+	ExtraWatchLog::debug("assocListQuery: $query");
     $this->query = $query;
     return $this->loadAssocList();
   }
@@ -144,7 +145,7 @@ class ExtraWatchDBWrapPrestaShop implements ExtraWatchDBWrap
     return str_replace("#__", $this->dbprefix, $sql);
   }
 
-  function loadObjectList($key = '')
+  private function loadObjectList($key = '')
   {
     $sql = $this->replaceDbPrefix($this->query);
     $STH = $this->dbref->query($sql);

@@ -4,7 +4,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 933
+ * @revision 1204
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -13,7 +13,7 @@
 defined('_JEXEC') or die('Restricted access'); ?>
 
 
-<table id="myTable" class="tablesorter">
+<table id="dmStatistics" class="tablesorter">
     <thead>
     <tr>
         <th><?php echo(_EW_DOWNLOADS_PATH);?></th>

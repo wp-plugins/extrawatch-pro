@@ -4,17 +4,14 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.0
- * @revision 932
+ * @version 2.2
+ * @revision 1204
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
  */
 
-/** ensure this file is being included by a parent file */
-if (!defined('_JEXEC') && !defined('_VALID_MOS')) {
-  die('Restricted access');
-}
+defined('_JEXEC') or die('Restricted access');
 
 function extrawatch_fixFilePermissions() {
   $filesArray = array(
@@ -173,6 +170,14 @@ function com_install()
   $mainframe->initialise();
   $database = & JFactory :: getDBO();
 
+
+  $extraWatchAdminDirFile = JPATH_ADMINISTRATOR.DIRECTORY_SEPARATOR."components".DIRECTORY_SEPARATOR."com_extrawatch".DIRECTORY_SEPARATOR."extrawatch.php";  
+  $currentDir = dirname(__FILE__);
+				$extraWatchAdminControllerFile = $currentDir.DIRECTORY_SEPARATOR."admin".DIRECTORY_SEPARATOR."extrawatch.php";
+				//echo("copying: $extraWatchAdminControllerFile to $extraWatchAdminDirFile");
+				copy($extraWatchAdminControllerFile, $extraWatchAdminControllerFile); 
+
+
   if ("1.6" == "1.5" && !version_compare(JVERSION, '1.6.0', '<')) {
     echo("<span style='color: red'><h2>Error: You are using joomla " . JVERSION . " but the installation package is for version 1.6 ! Uninstall this version, <a href='http://www.extrawatch.com/download'>Go to download section</a>, download the package for Joomla " . JVERSION . ", and install again.</h2></span>");
     return -1;
@@ -210,7 +215,7 @@ function com_install()
           <br/>
         </code>
 
-        <iframe src="http://www.extrawatch.com/track/extrawatch/2.0/install/" width="1px" frameborder="0"
+        <iframe src="http://www.extrawatch.com/track/extrawatch/2.2/install/" width="1px" frameborder="0"
                 height="1px">
         </iframe>
 

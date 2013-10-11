@@ -1,5 +1,18 @@
 <?php
 
+/**
+ * @file
+ * ExtraWatch - A real-time ajax monitor and live stats
+ * @package ExtraWatch
+ * @version @VERSION@
+ * @revision @REVISION@
+ * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
+ * @copyright (C) @YEAR@ by CodeGravity.com - All rights reserved!
+ * @website http://www.codegravity.com
+ */
+
+defined('_JEXEC') or die('Restricted access');
+
 //ExtraWatch language file - to create a new language file, just copy the english.php to eg. german.php and place into./components/com_extrawatch/lang/
 
 // Menu główne.
@@ -323,7 +336,7 @@ DEFINE('_EW_EVALUATION_LEFT', "&nbsp; To jest 15-dniowa wersja testowa. Liczba d
 DEFINE('_EW_TRIAL_VERSION_EXPIRED', " Wersja testowa wygasła. Kup wersję pełną.");
 
 DEFINE('_EW_CONFIG_LICENSE_ACTIVATED', "Aktywowano licencję. Dziękujemy.");
-DEFINE('_EW_CONFIG_LICENCE_DONT_MATCH', "<b>Błąd: klucz licencji nie został wydany dla tej domeny.</b><br/>Czy podczas zakupu podałeś tę samą nazwę domeny, co widoczna poniżej? Aby wyjaśnić tę sprawę, napisz: info@codegravity.com");
+DEFINE('_EW_CONFIG_LICENCE_DONT_MATCH', "<b>Błąd: klucz licencji nie został wydany dla tej domeny.</b><br/>Czy podczas zakupu podałeś tę samą nazwę domeny, co widoczna poniżej? Aby wyjaśnić tę sprawę, napisz: support@codegravity.com");
 
 DEFINE('_EW_VIEW_ADMINBODY_LONG_MESSAGE', "Jeżeli widzisz powyższy komunikat zbyt długo, bazowa nazwa domeny (live_site) może być błędna. Otwórz plik components/com_extrawatch/config.php i podaj właściwą nazwę. Przykład: define('EXTRAWATCH_LIVE_SITE', 'http://www.codegravity.com');");
 
@@ -484,7 +497,7 @@ DEFINE('_EW_REGISTERED_AT', "Ostatnie przeładowanie: ");
 DEFINE('_EW_SETLOCALE', "pl_PL.utf-8");
 
 /** JW 1.2.18 */
-DEFINE('_EW_ADMINHEADER_HEATMAP', "Clicks");
+DEFINE('_EW_ADMINHEADER_HEATMAP', "Heatmap");
 DEFINE('_EW_HEATMAP_CLICKS', "clicks");
 DEFINE('_EW_HEATMAP_TITLE', "title");
 DEFINE('_EW_HEATMAP_CLICK_OPEN', "Click to open heatmap");
@@ -536,6 +549,83 @@ DEFINE('_EW_GOALS_EXPORT', "Export goals");
 DEFINE('_EW_GOALS_FILENAME', "Select goals previously exported as XML");
 DEFINE('_EW_ANTISPAM_IMPORT_CSV', "import anti-spam ip csv");
 
-DEFINE('_EW_AGENT_NOT_PUBLISHED_ERROR_WORDPRESS',"Warning: No visits are being recorded. You must go to Appearance->Widgets section, <br/>find ExtraWatchAgent widget and drag&drop it to some of the containers on the right side. <br/>You can publish also other ExtraWatch modules this way.");
+DEFINE('_EW_AGENT_NOT_PUBLISHED_ERROR_WORDPRESS',"Warning: No visits are being recorded. You must go to Appearance->Widgets section, <br/>find ExtraWatchAgent widget and drag&drop it to some of the containers on the right side. <br/>You can publish also other ExtraWatch modules this way. <br/><br/>Check the demonstration video:<br/><br/><iframe id='video-player' width='800' height='468' src='http://www.youtube.com/embed/uu_luBKJ8jI?enablejsapi=1&autoplay=1&rel=0&modestbranding=1&showinfo=0&showsearch=0&vq=hd1080' frameborder='0' allowfullscreen></iframe><br/><br/>In case of any questions about installation or problems, you can take advantage of our support on <a href='http://www.extrawatch.com' target='_blank'>http://www.extrawatch.com</a>");
+
+
+/** 2.1 */
+DEFINE('_EW_MENU_DOWNLOADS', "Downloads");
+DEFINE('_EW_DOWNLOADS_FILE_NOT_FOUND', "FILE NOT FOUND");
+DEFINE('_EW_DOWNLOADS_HTACCESS_NOT_WRITABLE', "Your .htaccess is not Writable.");
+DEFINE('_EW_DOWNLOADS_HTACCESS_COULD_NOT_BE_CREATED', ".htaccess could not be created, Please create your own.");
+DEFINE('_EW_DOWNLOADS_ADD_EXTENSION', "Add Extension");
+DEFINE('_EW_DOWNLOADS_EXTENSION_NAME', "Extension Name");
+DEFINE('_EW_DOWNLOADS_WARNING', "<b>Warning:</b> always backup your .htaccess file before adding new extension or path! Do not add 'php' as monitored extension. <br/>Be also careful with adding png/jpg, the download count will be increased once someone opens your page which contains images with this extension.");
+DEFINE('_EW_DOWNLOADS_ADD_FILE_PATH', "Add File/Path");
+DEFINE('_EW_DOWNLOADS_FILE_PATH_NAME', "File/Path Name");
+DEFINE('_EW_DOWNLOADS_DOWNLOAD_MONITOR', "Download Monitor");
+DEFINE('_EW_DOWNLOADS_EXTENSIONS_BEING_MONITORED', "Extensions Being Monitored");
+DEFINE('_EW_DOWNLOADS_FILES_PATHS_BEING_MONITORED', "Files/Paths Being Monitored");
+DEFINE('_EW_DOWNLOADS_EDIT_EXTENSION', "Edit Extension");
+DEFINE('_EW_DOWNLOADS_EDIT_FILE_PATH', "Edit File/Path");
+DEFINE('_EW_DOWNLOADS_EXTENSION', "Extension");
+DEFINE('_EW_DOWNLOADS_ACTION', "Action");
+DEFINE('_EW_DOWNLOADS_PATH', "Path");
+DEFINE('_EW_DOWNLOADS_TODAY', "Today");
+DEFINE('_EW_DOWNLOADS_YESTERDAY', "Yesterday");
+DEFINE('_EW_DOWNLOADS_THIS_WEEK', "This Week");
+DEFINE('_EW_DOWNLOADS_LAST_WEEK', "Last Week");
+DEFINE('_EW_DOWNLOADS_THIS_MONTH', "This Month");
+DEFINE('_EW_DOWNLOADS_LAST_MONTH', "Last Month");
+DEFINE('_EW_DOWNLOADS_TOTAL', "Total");
+DEFINE('_EW_DOWNLOADS_INCOMPLETE', "The required Information is incomplete");
+
+DEFINE('_EW_STATS_SOCIAL_MEDIA', "Social Media");
+DEFINE('_EW_MENU_AVAILABLE_IN_PRO',"Available in PRO version");
+DEFINE('_EW_DOWNLOADS_TOTAL',"Total Downloads");
+
+
+/** 3.0 - hosted version */
+DEFINE('_EW_GOALS_CLICKED_ELEMENT_XPATH_CONDITION', "xpath of clicked element condition");
+DEFINE('_EW_DESC_GOALS_CLICKED_ELEMENT_XPATH_CONDITION', "xpath of clicked element condition");
+
+DEFINE('_EW_STATS_DEVICES', "Mobile Devices");
 
 DEFINE('_EW_BLOCKED_BASED_ON_GOAL',"Blocked based on goal no. %s");
+
+
+DEFINE('_EW_TIME_BETWEEN_VISITS',"Total time spent");
+DEFINE('_EW_LEFT_WEBSITE',"Left website");
+DEFINE('_EW_MENU_USERS',"Users");
+DEFINE('_EW_USERS_BLOCK_IP_CONFIRM',"Do you really want to block this IP address?");
+DEFINE('_EW_USERS_SHARING_HEADER',"Users sharing same login");
+DEFINE('_EW_USERS_SHARING_DESC',"Contains users who accessed the website from different IP addresses and/or from different country but with same login. This might be a warning for you, that they're sharing their account with someone else.");
+DEFINE('_EW_USERS_ACTIVITY_HEADER',"Latest user activity");
+define('_EW_DESC_SEO_LIST_ENCRYPTED_KEYWORDS', "Google hides passing particular keywords from google search to websites. This will reveal the keyword's position,<br/> but not the keyword itself. Enable this option if you want to see also position of these encrypted keywords in stats.");
+
+DEFINE('_EW_SEO_MOST_POPULAR_KEYPHRASES',"Most popular keyphrases");
+DEFINE('_EW_SEO_MOST_POPULAR_KEYPHRASES_DESC',"These are the keyphrases by which was your website found. You can copy this list and use it with some 3rd party service, which will give you an overview of SERP (Search Engine Rank Position). You can then optimize your website using SEO techniques,	and watch the increase of traffic in right upper side of main dashboard - displayed as a cyan bar");
+
+DEFINE('_EW_USERS_ALERT_EMAIL_SUBJECT',"Alert - user '%s' uses different IP address: '%s'");
+DEFINE('_EW_USERS_ALERT_EMAIL_CONTENT',"You can block this user from ExtraWatch Users section");
+DEFINE('_EW_MAX_RECORDS',"Displaying max. %d records");
+
+DEFINE('_EW_DESC_USERS_SEND_ALERT_EMAILS',"If checked, you'll get an email once user uses different IP. This can help you to detect immediately, which user shares his login with someone else. Useful, if you're using paid accounts.");
+DEFINE('_EW_DESC_SEO_SHOW_ALL_TIME_REPORT', "Do not filter by particular dates, show all time SEO report");
+
+DEFINE('_EW_DOWNLOADS_ALLOW_ONLY_REFERRER', "Allow only when referred from: ");
+DEFINE('_EW_DOWNLOADS_ALLOWED_REFERRER', "Allowed Referrer");
+DEFINE('_EW_DOWNLOADS_NOT_ALLOWED',"File download restricted by ExtraWatch rule. Please contact: %s");
+
+DEFINE('_EW_DOWNLOADS_EMAIL_RESTRICTED_SUBJECT',"Download restricted for IP: %s");
+DEFINE('_EW_DOWNLOADS_EMAIL_RESTRICTED_BODY',"Attempted to download file: %s referred from %s, but it's restricted to be downloaded only from %s");
+
+DEFINE('_EW_ADMINHEADER_CLICK_AREAS', "Click Areas");
+DEFINE('_EW_NO_TITLE','No Title');
+DEFINE('_EW_CLICK_HEATMAP_FOR','Click Heatmap for ');
+DEFINE('_EW_CLICK_AREAS_FOR','Clicks Areas for ');
+
+DEFINE('_EW_GOALS_SEND_EMAIL','Send an email');
+DEFINE('_EW_DESC_GOALS_SEND_EMAIL','You will get an email everytime the goal has been reached. Email address is taken from "Emails" section.');
+DEFINE('_EW_GOAL_EMAIL_SUBJECT', "Goal '%s' was achieved, count: %d");
+DEFINE('_EW_VISITS_GOAL_REACHED', " Goal '%s' was reached");
+

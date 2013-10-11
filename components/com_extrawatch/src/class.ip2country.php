@@ -33,9 +33,7 @@
 //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
 /** ensure this file is being included by a parent file */
-if (!defined('_JEXEC') && !defined('_VALID_MOS')) {
-  die('Restricted access');
-}
+defined('_JEXEC') or die('Restricted access');
 
 
 /** Class renamed only to avoid name clashes (originally named ip2country) */
@@ -70,7 +68,7 @@ class ExtraWatchIP2Country {
   function __construct($ip, $usedb = FALSE)
   {
     $this->env = ExtraWatchEnvFactory::getEnvironment();
-    $this->database = $this->env->getDatabase();
+    $this->database = $this->env->getDatabase(_EW_PROJECT_ID);
     // TODO: Add regex to verify ip is valid
     if ($ip) {
       $this->_IPn = $this->inet_aton($ip);
@@ -95,7 +93,7 @@ class ExtraWatchIP2Country {
   {
     if (!@$this->database) {
       $this->env = ExtraWatchEnvFactory::getEnvironment();
-      $this->database = & $this->env->getDatabase();
+      $this->database = & $this->env->getDatabase(_EW_PROJECT_ID);
     }
 
     if ($this->UseDB) {

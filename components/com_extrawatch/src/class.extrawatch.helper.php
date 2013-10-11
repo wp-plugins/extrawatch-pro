@@ -4,16 +4,14 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.0
- * @revision 932
+ * @version 2.2
+ * @revision 1204
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
  */
 
-/** ensure this file is being included by a parent file */
-if (!defined('_JEXEC') && !defined('_VALID_MOS'))
-    die('Restricted access');
+defined('_JEXEC') or die('Restricted access');
 
 class ExtraWatchHelper
 {
@@ -23,6 +21,7 @@ class ExtraWatchHelper
     public $config;
 
     const DEFAULT_TRUNC_LENGTH = 60;
+    const _EW_ENCRYPTED = "#encrypted#";
 
     function __construct($database)
     {
@@ -60,11 +59,12 @@ class ExtraWatchHelper
      * helper
      *
      * @return unknown
+     * @deprecated
      */
     function getURI()
     {
         $redirURI = addslashes(@strip_tags(@ $_SERVER[$this->config->getConfigValue('EXTRAWATCH_SERVER_URI_KEY')]));
-        $uri = htmlspecialchars(addslashes(@strip_tags(@ $_SERVER['REQUEST_URI'])));
+        $uri = ExtraWatchHelper::htmlspecialchars(addslashes(@strip_tags(@ $_SERVER['REQUEST_URI'])));
 
         if (@ $redirURI && @ substr($redirURI, -9, 9) != "index.php")
             $uri = $redirURI;
@@ -176,6 +176,18 @@ class ExtraWatchHelper
         return @ $langArray;
     }
 
+    function countryByIpCached($ip)
+    {
+        $query = sprintf("select countryCode from #__extrawatch_ip2c_cache where (ip = '%s') limit 1", $this->database->getEscaped($ip));
+        return $this->database->resultQuery($query);
+    }
+
+    function insertCountryByIpCached($ip, $countryCode)
+    {
+        $query = sprintf("insert IGNORE into #__extrawatch_ip2c_cache (ip, countryCode) values ('%s','%s')", $this->database->getEscaped($ip), $this->database->getEscaped($countryCode));
+        return $this->database->executeQuery($query);
+    }
+
     /**
      * helper
      */
@@ -183,10 +195,13 @@ class ExtraWatchHelper
     {
 
         if ($ip == '127.0.0.1') {
-            /* ignore localhost */
             return;
         }
-
+        $countryCached = $this->countryByIpCached($ip);
+        if (@$countryCached) {
+            return $countryCached;
+        }
+		
         $query = sprintf("select ip, country from #__extrawatch where (ip = '%s' and country is not NULL) limit 1", $this->database->getEscaped($ip));
         $row3 = $this->database->resultQuery($query);
 
@@ -194,10 +209,17 @@ class ExtraWatchHelper
 
             $iplook = new ExtraWatchIP2Country($ip);
             $iplook->UseDB = TRUE;
-            $iplook->db_tablename = "#__extrawatch_ip2c";
+            if (_EW_CLOUD_MODE) {
+                $tablePrefix = _EW_GLOBAL_TABLE_PREFIX."_";
+            } else {
+                $tablePrefix = $this->env->getDbPrefix();
+            }
+			
+            $iplook->db_tablename = $tablePrefix."extrawatch_ip2c";
 
             if (($iplook->LookUp())) {
                 $country = strtolower($iplook->Country);
+                $this->insertCountryByIpCached($ip, $country);
             } else {
                 $country = EXTRAWATCH_UNKNOWN_COUNTRY;
             }
@@ -251,6 +273,15 @@ class ExtraWatchHelper
         }
     }
 
+    static function request($key = null)
+    {
+        $value = ExtraWatchHelper::requestGet($key);
+        if (!$value) {
+            $value = ExtraWatchHelper::requestPost($key);
+        }
+        return $value;
+    }
+
     /**
      * Filtering input post var
      * @param  $key
@@ -285,7 +316,7 @@ class ExtraWatchHelper
      * @param  $body
      * @return void
      */
-    function sendEmail(&$env, $recipient, $sender, $subject, $body)
+    function sendEmail(&$env, $recipient, $sender, $subject, $body, $bcc = "")
     {
         $body = ("<html><body>" . $body . "</body></html>");
         $cc = $bcc = $attachment = $replyto = $replytoname = "";
@@ -334,12 +365,31 @@ class ExtraWatchHelper
     {
 
         $checkboxNamesArray = array(
-            'EXTRAWATCH_SEO_RENDER_ONLY_CHANGED'
+            'EXTRAWATCH_SEO_RENDER_ONLY_CHANGED',
+            'EXTRAWATCH_SEO_LIST_ENCRYPTED_KEYWORDS',
+            'EXTRAWATCH_SEO_SHOW_ALL_TIME_REPORT'
         );
 
         $this->config->saveConfigValues($checkboxNamesArray, $post);
         return TRUE;
     }
+
+    /**
+     * Config
+     * @param  $post
+     * @return bool
+     */
+    function saveUserSettings($post)
+    {
+
+        $checkboxNamesArray = array(
+            'EXTRAWATCH_USERS_SEND_ALERT_EMAILS'
+        );
+
+        $this->config->saveConfigValues($checkboxNamesArray, $post);
+        return TRUE;
+    }
+
 
     // HSV Values:Number 0-1
     static function HSV_TO_RGB($H, $S, $V)
@@ -416,7 +466,7 @@ class ExtraWatchHelper
 
     static function renderNoData()
     {
-        return "<i>" . _EW_NO_DATA . "</i>";
+        return "<i>" . _EW_NO_DATA . "</i><br/><br/>";
     }
 
 
@@ -429,6 +479,160 @@ class ExtraWatchHelper
         }
         return false;
     }
+
+    static function convertUrlQuery($query) {
+        $query = str_replace("?","", $query);
+        $queryParts = explode('&', $query);
+
+        $params = array();
+        foreach ($queryParts as $param) {
+            $item = explode('=', $param);
+            @$params[$item[0]] = @$item[1];
+        }
+
+        return $params;
+    }
+
+
+function renderHTMLCodeSnippet($projectId) {
+
+    if (_EW_CLOUD_MODE) {
+        $output = "";
+        $output .= ("<script type=\"text/javascript\">\n");
+        $output .= ("<!--\n");
+        $output .= ("var extrawatch_projectId='".$projectId."';\n");
+        $output .= ("document.write(\"");
+        $output .= ("<script src='"._EW_SCRIPT_HOST._EW_SCRIPT_HOST_DIR."agent.js.php?projectId=\"+extrawatch_projectId+\"&env=ExtraWatchNoCMSEnv' type='text/javascript'><\/script>\");\n");
+        $output .= ("");
+        $output .= ("-->\n");
+        $output .= ("</script>\n");
+    } else {
+        $liveSite = $this->config->getLiveSiteWithSuffix();
+        $output = "";
+        $output .= ("<script type=\"text/javascript\">\n");
+        $output .= ("<!--\n");
+        $output .= ("document.write(\"");
+        $output .= ("<script src='".$liveSite.$this->env->renderAjaxLink('js','agent.js')."&env=".get_class($this->env)."' type='text/javascript'><\/script>\");\n");
+        $output .= ("");
+        $output .= ("-->\n");
+        $output .= ("</script>\n");
+
+    }
+
+return $output;
+}	
+
+function getFirstUsersProject($database, $userId) {
+    $result = $database->resultQuery(sprintf("select id from global_extrawatch_project where `userId` = '%d' order by id asc limit 1", (int) $userId));
+	return $result;
+}
+
+    static function fixFilePermissions($filesArray) {
+        foreach($filesArray as $file) {
+            @chmod(JPATH_SITE.DIRECTORY_SEPARATOR."components".DIRECTORY_SEPARATOR."com_extrawatch".DIRECTORY_SEPARATOR.$file, 0755);
+        }
+    }
+
+    static function sureRemoveDir($dir, $DeleteMe)
+    {
+        if (!$dh = @opendir($dir)) return;
+        while (FALSE !== ($obj = readdir($dh))) {
+            if ($obj == '.' || $obj == '..') continue;
+            if (!@unlink($dir . '/' . $obj)) extrawatch_sureRemoveDir($dir . '/' . $obj, TRUE);
+        }
+        if ($DeleteMe) {
+            closedir($dh);
+            @rmdir($dir);
+        }
+    }
+
+
+function getUserId($database, $user, $password) {
+	$query = sprintf("select id from global_extrawatch_user where `email` = '%s' and `password` = '%s' ", $user, $password);
+    $result = $database->resultQuery($query);
+	return $result;
+}
+
+
+function getProjectNameByProjectId($database, $projectId) {
+    $result = $database->resultQuery(sprintf("select url from global_extrawatch_project where `id` = '%d' order by id asc limit 1", (int) $projectId));
+	return $result;
+}
+
+static function getTimezoneOffsetByTimezoneName($userTimezoneName){
+    try {
+        $dtz = new DateTimeZone($userTimezoneName);
+        $time = new DateTime('now', $dtz);
+        $userTimezone = $time->format('Z') / 3600; // timezone difference in seconds / 3600
+        //ExtraWatchLog::debug("<br/>user timezone was not numeric, translated to: " . $userTimezone);
+    } catch (Exception $e) {
+        echo("<!-- exception " . $e->getMessage() . " -->");
+    }
+    return $userTimezone;
+}
+
+    function secondsToHumanFormat($d) {
+        $periods = array( 'd'    => 86400,
+            'h'   => 3600,
+            'm' => 60
+        );
+        $parts = array();
+        foreach ( $periods as $name => $dur )
+        {
+            $div = floor( $d / $dur );
+            if ( $div == 0 )
+                continue;
+            else if ( $div == 1 )
+                $parts[] = $div . "" . $name;
+            else
+                $parts[] = $div . "" . $name . "";
+            $d %= $dur;
+        }
+        $last = array_pop( $parts );
+        if ( empty( $parts ) )
+            return $last;
+        else
+            return join( ' ', $parts ) . "  " . $last;
+    }
+
+    static function htmlspecialchars($value) {
+        return htmlspecialchars(trim($value), ENT_QUOTES, "UTF-8");
+    }
+
+    static function isValidIPv4($ip) {
+        return preg_match('/\b(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.'.
+            '(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.'.
+            '(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.'.
+            '(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b/', $ip) !== 0;
+    }
+
+    static public function rgbColorFromRatio($ratio)
+    {
+        $hue = ExtraWatchHelper::hueFromRatio($ratio);
+        $rgb = ExtraWatchHelper::HSV_TO_RGB($hue, 1, 1);
+        if ($rgb) {
+            $color = sprintf("#%02x%02x%02x", $rgb['R'], $rgb['G'], $rgb['B']);
+            return $color;
+        }
+        return $color;
+    }
+
+
+	static function getUrlQueryParams() {
+		$url = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+		$query_str = parse_url($url, PHP_URL_QUERY);
+		parse_str($query_str, $query_params);
+		return $query_params;
+	}
+
+	static function updateLastLoginTime($database, $projectId) {
+    $database->executeQuery(sprintf("update global_extrawatch_project set timeOfLastLogin = '%d' where `id` = '%d'", (int) time(), (int) $projectId));
+	}
+
+
+
+
+
 }
 
 

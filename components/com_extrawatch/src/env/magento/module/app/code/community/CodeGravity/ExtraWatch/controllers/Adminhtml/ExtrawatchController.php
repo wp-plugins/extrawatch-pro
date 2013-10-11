@@ -10,6 +10,8 @@
  * @website http://www.extrawatch.com
  */
 
+defined('_JEXEC') or die('Restricted access');
+
 class CodeGravity_ExtraWatch_Adminhtml_ExtraWatchController extends Mage_Adminhtml_Controller_Action
 {
 

@@ -4,8 +4,8 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.0
- * @revision 932
+ * @version 2.2
+ * @revision 1204
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -76,17 +76,16 @@ if ($extraWatch->config->getEnvironment() != "ExtraWatchJoomlaEnv") {
     left: -100;
     width: 500;
     background-color: #eeeeee;
-    border: 1px solid black;
+    border: 1px solid #dddddd;
     display: none;
   }
 
   .uriDetailDiv {
     position: absolute;
-    top: -100;
     left: -100;
     width: 500;
     background-color: #eeeeee;
-    border: 1px solid black;
+    border: 1px solid #dddddd;
     display: none;
   }
 
@@ -122,12 +121,69 @@ if ($extraWatch->config->getEnvironment() != "ExtraWatchJoomlaEnv") {
   .tableRow1 {
     background-color: #f5f5f5;
   }
-/* Joomla 3.0 settings tab width fix */
-  ul, ol {
-      margin: 0px !important;
-  }
   
+  /* tables */
+table.tablesorter {
+	font-family:arial;
+	background-color: #CDCDCD;
+	margin:10px 0pt 15px;
+	font-size: 10pt;
+	width: 100%;
+	text-align: left;
+    border-spacing: 0px;
+    border: 1px solid #dddddd;
+}
+table.tablesorter thead tr th, table.tablesorter tfoot tr th {
+	background-color: #EDF3F3;
+	border: 0px solid #FFF;
+	font-size: 8pt;
+	padding: 2px;
+}
+table.tablesorter thead tr .header {
+	background-image: url(<?php echo($extraWatch->config->getLiveSiteWithSuffix());?>components/com_extrawatch/img/icons/bg.gif);
+	background-repeat: no-repeat;
+	background-position: center right;
+	cursor: pointer;
+}
+table.tablesorter tbody td {
+	color: #3D3D3D;
+	padding: 2px;
+	vertical-align: top;
+}
+
+table.tablesorter  tr:nth-child(even) {background: #f3f3f3}
+table.tablesorter  tr:nth-child(odd) {background: #FFF}
+
+table.tablesorter tbody tr.odd td {
+	background-color:#F0F0F6;
+}
+table.tablesorter thead tr .headerSortUp {
+	background-image: url(<?php echo($extraWatch->config->getLiveSiteWithSuffix());?>components/com_extrawatch/img/icons/asc.gif);
+}
+table.tablesorter thead tr .headerSortDown {
+	background-image: url(<?php echo($extraWatch->config->getLiveSiteWithSuffix());?>components/com_extrawatch/img/icons/desc.gif);
+}
+table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
+background-color: #8dbdd8;
+}
+
 IMG {
 	max-width: none !important; 
 }
+
+A .extraWatchInactiveVisit, .extraWatchInactiveVisit {
+    opacity: 0.7;
+    filter: alpha(opacity=70); /* msie */
+}
+
+.extraWatchInactiveImage {
+    opacity: 0.7;
+    filter: alpha(opacity=70); /* msie */
+}
+
+.disabled {
+	color: #AAA;
+	font-weight: normal;
+}
+
 </style>

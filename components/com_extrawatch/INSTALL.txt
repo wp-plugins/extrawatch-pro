@@ -1,9 +1,12 @@
 VIDEO INSTALLATION INSTRUCTIONS
 ===============================
 
-Please visit http://www.codegravity.com/demo/extrawatch/2.0
+The easiest way:
+
+Please visit http://www.extrawatch.com/installation for DEMO VIDEO 
 to see how to install and use ExtraWatch
 
+Or manual installation instructions:
 
 Installation of ExtraWatch into Wordpress:
 ==========================================

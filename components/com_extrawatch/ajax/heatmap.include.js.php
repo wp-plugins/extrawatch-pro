@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 933
+ * @revision 1204
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -13,34 +13,48 @@
 // disabled for now defined('_JEXEC') or die('Restricted access');
 
 
+
 defined('_JEXEC') or die('Restricted access');
-define('DS', DIRECTORY_SEPARATOR);
+/*define('DS', DIRECTORY_SEPARATOR);
 $jBasePath = realpath(dirname(__FILE__) . DS . ".." . DS . ".." . DS . "..". DS);
-define('JPATH_BASE2', $jBasePath);
+define('JPATH_BASE2', $jBasePath);*/
 
 include_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS. "includes.php";
 
 $extraWatch = new ExtraWatchMain();
 //$extraWatch->block->checkPermissions();
+$extraWatch->config->initializeTranslations();
 
-require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS. "lang" . DS . $extraWatch->config->getLanguage() . ".php";
-
-$id = ExtraWatchHelper::requestGet("id");
 $params = ExtraWatchHelper::requestGet("params");
-$ip = ExtraWatchHelper::requestGet("ip");
-
 $params=str_replace("?","",$params);    //remove trailing ?
 
-$queryParams = ExtraWatchHelper::convertUrlQuery($params);
+$queryParams = ExtraWatchHelper::getUrlQueryParams();
+$getParamsFromQuery = ExtraWatchHelper::convertUrlQuery($queryParams['params']);
+$getParams = ExtraWatchHelper::convertUrlQuery(urldecode(@$getParamsFromQuery['getParams']));
 
-echo("/** query params: \n");
-print_r($queryParams);
-echo("*/");
+$ip = @$getParams["ip"];
+
+//$queryParams = ExtraWatchHelper::convertUrlQuery($params);
+
+//print_r($queryParams);
+
+$title = @$queryParams['title'];
+$uri = @$queryParams['uri'];
+
+
+//echo("url: $uri title: $title");
+
+$extraWatch->visit->addUri2Title($uri, $title);
+$uri2titleId = $extraWatch->visit->getUri2TitleId($uri, $title);
+
+ExtraWatchLog::debug("heatmap.include.js.php - title: ".$title." uri: ".$uri. " uri2titleId: ".$uri2titleId. " ip: $ip queryParams: ". print_r($queryParams, true));
+
+//echo("uri2titleId: $uri2titleId");
 
 if (_EW_CLOUD_MODE) {
-    $liveSite = _EW_SCRIPT_HOST._EW_SCRIPT_HOST_DIR;
+    $liveSite = _EW_SCRIPT_HOST._EW_SCRIPT_HOST_DIR._EW_EXTRAWATCH_DIR;
 } else {
-    $liveSite = $extraWatch->config->getLiveSite();
+    $liveSite = /*"http://www.".$extraWatch->config->getDomainFromLiveSite(_EW_PROJECT_ID).*/ $extraWatch->config->getLiveSiteWithSuffix();
 }
 
 ?>
@@ -54,23 +68,27 @@ if (_EW_CLOUD_MODE) {
 
   <?php
   $request = $extraWatch->env->getRequest();
-  $heatmapEnabled = @$queryParams[ExtraWatchHeatmap::HEATMAP_PARAM_NAME];
-  $day = @$queryParams[ExtraWatchHeatmap::HEATMAP_PARAM_DAY_NAME];
-  $uri2titleId = @$queryParams['uri2titleId'];
-  $xpath = @$queryParams['xpath'];
+
+
+  $heatmapEnabled = @$getParams[ExtraWatchHeatmap::HEATMAP_PARAM_NAME];
+  $day = @$getParams[ExtraWatchHeatmap::HEATMAP_PARAM_DAY_NAME];
+  $xpath = urldecode(@$getParams['xpath']);
 ?>
 
 
   <?php if (@$heatmapEnabled) { ?>
 
   function renderHeatmap() {
-    var randHash = '<?php echo(@$queryParams[ExtraWatchHeatmap::HEATMAP_PARAM_HASH]);?>';
+
+
+    var randHash = '<?php echo(@$getParams[ExtraWatchHeatmap::HEATMAP_PARAM_HASH]);?>';
     var ip = getQueryVariable('ip');
-    var data = "<?php echo str_replace("\"","\\\"",$extraWatch->heatmap->getHeatmapClicksByUri2TitleId($uri2titleId, $day, $ip)); ?>";
+    var data = "<?php echo str_replace("\"","\\\"",$extraWatch->heatmap->getHeatmapClicksByUri2TitleIdJSON($uri2titleId, $day, $ip)); ?>";
     var obj = eval('(' + data + ')');
     var transformed = xpathToDataSet(obj);
     xx.displayLoading
     xx.store.setDataSet(transformed);
+//document.body.appendChild(xx.get("ctx").canvas);
   }
 
   document.onkeypress = keyListener;
@@ -91,7 +109,7 @@ if (_EW_CLOUD_MODE) {
   }
 
   function changeDayInUrl(_increment) {
-    var dayVariable = "<?php echo @$queryParams[ExtraWatchHeatmap::HEATMAP_PARAM_DAY_NAME]; ?>";
+    var dayVariable = "<?php echo ExtraWatchHeatmap::HEATMAP_PARAM_DAY_NAME; ?>";
     var location = document.location.href;
     var extraWatchDay = getQueryVariable(dayVariable);
     var prevDay = parseInt(extraWatchDay) + _increment;
@@ -150,7 +168,7 @@ if (_EW_CLOUD_MODE) {
 
       /* Is the click in the viewing area? Not on scrollbars. The problem still exists for FF on the horizontal scrollbar */
       var randHashToPass = '<?php echo($extraWatch->config->getRandHash()); ?>';
-      var url = urlBase + "&action=click&uri2titleId=<?php echo($id);?>&x=" + x + "&y=" + y + "&w=" + w + "&h=" + h + "&randHash=" + randHashToPass + "&xpath=" + xpath;
+      var url = urlBase + "&params=" + encodeURIComponent("&action=click&uri2titleId=<?php echo($uri2titleId);?>&x=" + x + "&y=" + y + "&w=" + w + "&h=" + h + "&randHash=" + randHashToPass + "&xpath=" + encodeURIComponent(encodeURIComponent(xpath)));
       //xx.store.addDataPoint(x,y);
       downloadUrl(url, function (e) {
       }, true);
@@ -189,37 +207,118 @@ if (_EW_CLOUD_MODE) {
       return segs.length ? '/' + segs.join('/') : null;
     }
 
+	/* attach click event listener on onclick event */
+	function attachExtraWatchClickListener() {
+		window.document.onclick = function (evt) {
+			if(window.addEventListener){
+                window.addEventListener("onclick",extraWatch_click(evt), false);
+            } else if(window.attachEvent){
+                window.attachEvent("onclick", extraWatch_click(evt));
+            } else{
+               document.addEventListener("onclick", extraWatch_click(evt), false);
+            }
+		}
+	}
+	
+	/* attach calling function attachExtraWatchClickListener on window object */
+		if(window.addEventListener){
+                window.addEventListener("onload", attachExtraWatchClickListener(), false);
+            } else if(window.attachEvent){
+                window.attachEvent("onload", attachExtraWatchClickListener());
+            } else{
+               document.addEventListener("onload", attachExtraWatchClickListener(), false);
+            }
 
-window.onload = function () {
-    window.document.onclick = function (evt) {
-    extraWatch_click(evt)
-    }
-}
+
 
 	function extraWatch_decorateLinksWithCustomHandler() {
 		var list = document.getElementsByTagName("A");
 		for(i=0;i<list.length;i++) {
-			var extraWatch_originalOnClickFunction = list[i].onclick;
-			list[i].onclick = function(evt) {
-				extraWatch_originalOnClickFunction();
-				extraWatch_click(evt);
+            try {
+                if (list[i].onclick != null) {
+			    var extraWatch_originalOnClickFunction = list[i].onclick;
+			    list[i].onclick = function(evt) {
+					extraWatch_originalOnClickFunction();
+	    			extraWatch_click(evt);
+		    	}
 			}
+            } catch (e) {
+            }
 		}
 	}
 
-extraWatch_decorateLinksWithCustomHandler();  
+    document.addEventListener('DOMContentLoaded',function(){
+		extraWatch_decorateLinksWithCustomHandler();  
+		  });
+
 	
   <?php if (@$xpath) { ?>
-		var xpath = '<?php echo urldecode(urldecode($xpath));?>';
+  
+  function findPos(obj) {
+    var curtop = 0;
+    if (obj.offsetParent) {
+        do {
+            curtop += obj.offsetTop;
+        } while (obj = obj.offsetParent);
+    return [curtop];
+    }
+	}
+
+var xpathElements = [];
+var xpathElementClicks = [];
+var xpathElementColors = [];
+
+    <?php if (@$xpath == "all") {
+
+    $totalClicksOfUri2TitleId = $extraWatch->heatmap->getTotalMostClickedHTMLElementsByUri2TitleId($uri2titleId);
+    $xpathElements = $extraWatch->heatmap->getAllMostClickedHTMLElementsByUri2TitleId($uri2titleId, $totalClicksOfUri2TitleId);
+    foreach ($xpathElements as $xpathElement ) {
+        echo "xpathElements.push('".urldecode(urldecode($xpathElement->xpath))."');\n";
+        echo "xpathElementClicks.push('".$xpathElement->xpathCount."');\n";
+        echo "xpathElementColors.push('".ExtraWatchHelper::rgbColorFromRatio($xpathElement->ratio)."');\n";
+    }
+    ?>
+
+
+    var length = xpathElements.length;
+    var xpath = null;
+	    document.addEventListener('DOMContentLoaded',function(){
+
+    for (var i = 0; i < length; i++) {
+    xpath = xpathElements[i];
         var elementFound = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null);
-		alert('highlighting element: ' + xpath + 'Element found: ' + elementFound);
         var element = elementFound.singleNodeValue;
         if (element != null) {
+            element.style.border="2px solid " + xpathElementColors[i];
+            element.style.backgroundColor=xpathElementColors[i];
+            //element.style.opacity=0.6;
+        //alert(xpathElementColors[i]);
+        }
+    }
+		  });
+
+
+   <?php } else { ?>
+
+
+    document.addEventListener('DOMContentLoaded',function(){
+		var xpath = '<?php echo urldecode(urldecode($xpath));?>';
+        var elementFound = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null);
+		alert('highlighting element: ' + xpath);
+        var element = elementFound.singleNodeValue;
+        if (element != null) {
+			window.scroll(0,findPos(element));
 			element.style.border="5px dashed red";
 			}
+	  });
+
+  <?php } ?>
+
   <?php } else if (@$heatmapEnabled) { ?>
     xx = h337.create({"element":document.body, "radius":50, "visible":true});
-    renderHeatmap();
+    document.addEventListener('DOMContentLoaded',function(){
+		renderHeatmap();
+	  });
     <?php } ?>
 
   /* ]]> */

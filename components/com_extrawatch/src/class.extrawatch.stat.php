@@ -4,16 +4,14 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.0
- * @revision 932
+ * @version 2.2
+ * @revision 1204
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
  */
 
-/** ensure this file is being included by a parent file */
-if (!defined('_JEXEC') && !defined('_VALID_MOS'))
-  die('Restricted access');
+defined('_JEXEC') or die('Restricted access');
 
 class ExtraWatchStat
 {
@@ -55,23 +53,23 @@ class ExtraWatchStat
   /**
    * stats/info
    */
-  function increaseKeyValueInGroup($name, $key)
+  function increaseKeyValueInGroup($group, $name)
   {
-    if (!@ $key)
+    if (!@ $name)
       return;
 
     $date = $this->date->jwDateToday();
 
-    $query = sprintf("select count(id) as count from #__extrawatch_info where (`group` = '%s' and name = '%s' and date = '%d') ", $this->database->getEscaped($name), $this->database->getEscaped($key), (int) $date);
+    $query = sprintf("select count(id) as count from #__extrawatch_info where (`group` = '%s' and name = '%s' and date = '%d') ", $this->database->getEscaped($group), $this->database->getEscaped($name), (int) $date);
     $rows = @ $this->database->objectListQuery($query);
     $row = $rows[0];
     $count = @ $row->count;
 
     if (@ $count) {
-      $query = sprintf("update #__extrawatch_info set value = value+1 where (`group` = '%s' and name = '%s' and date = '%d') ", $this->database->getEscaped($name), $this->database->getEscaped($key), (int) $date);
+      $query = sprintf("update #__extrawatch_info set value = value+1 where (`group` = '%s' and name = '%s' and date = '%d') ", $this->database->getEscaped($group), $this->database->getEscaped($name), (int) $date);
       $this->database->executeQuery($query);
     } else {
-      $query = sprintf("insert into #__extrawatch_info (id, `group`, date, name, value) values ('', '%s', '%d', '%s', 1)", $this->database->getEscaped($name), (int) $date, $this->database->getEscaped($key));
+      $query = sprintf("insert into #__extrawatch_info (id, `group`, date, name, value) values ('', '%s', '%d', '%s', 1)", $this->database->getEscaped($group), (int) $date, $this->database->getEscaped($name));
       $this->database->executeQuery($query);
 
     }
@@ -145,9 +143,8 @@ class ExtraWatchStat
   function getTotalIntValuesByName($name, $expanded, $limit)
   {
 
-    $maxLimit = $this->config->getConfigValue('EXTRAWATCH_STATS_MAX_ROWS');
     if (@ $expanded == TRUE) {
-      $query = sprintf("select name, sum(value) as value from #__extrawatch_info where (`group` = '%s') group by name order by value desc limit %d", $this->database->getEscaped($name), (int) $maxLimit);
+      $query = sprintf("select name, sum(value) as value from #__extrawatch_info where (`group` = '%s') group by name order by value desc", $this->database->getEscaped($name));
     }
     else {
       $query = sprintf("select name, sum(value) as value from #__extrawatch_info where (`group` = '%s') group by name order by value desc limit %d", $this->database->getEscaped($name), (int) $limit);
@@ -170,23 +167,44 @@ class ExtraWatchStat
   /**
    * stats/info
    */
-  function getIntValuesByName($name, $date, $expanded, $limit)
+  function getIntValuesByName($name, $date, $expanded = false, $limit = false)
   {
-
     if ($date == "") {
-      $date = $this->date->getUTCTimestamp();
+      $date = ExtraWatchDate::jwDateToday();
     }
+      $maxLimit = $this->config->getConfigValue('EXTRAWATCH_STATS_MAX_ROWS');
+
+      $limitString = "";
+      if ($limit) {
+          $limitString = " limit ".$limit;
+      }
 
     if (@ $expanded == TRUE) {
-      $query = sprintf("select name, value from #__extrawatch_info where (`group` = '%s' and `date` = '%d') order by value desc limit %d", $this->database->getEscaped($name), (int) $date, (int)20);
+      $query = sprintf("select name, value from #__extrawatch_info where (`group` = '%s' and `date` = '%d') order by value desc limit %d ", $this->database->getEscaped($name), (int) $date, (int) $maxLimit);
     }
     else {
-      $query = sprintf("select name, value from #__extrawatch_info where (`group` = '%s' and `date` = '%d') order by value desc limit %d", $this->database->getEscaped($name), (int) $date, (int) $limit);
+      $query = sprintf("select name, value from #__extrawatch_info where (`group` = '%s' and `date` = '%d') order by value desc %s", $this->database->getEscaped($name), (int) $date, $this->database->getEscaped($limitString));
     }
 
     $rows = @ $this->database->objectListQuery($query);
     return $rows;
   }
+  
+    /**
+   * stats/info
+   */
+  function getIntValueByNameAndValue($name, $value, $date = FALSE)
+  {
+    if ($date == "") {
+      $date = ExtraWatchDate::jwDateToday();
+    }
+
+    $query = sprintf("select `value` from #__extrawatch_info where (`group` = '%s' and `date` = '%d' and `name` = '%s') limit 1 ", $this->database->getEscaped($name), (int) $date, $this->database->getEscaped($value));
+	
+    $count = @ $this->database->resultQuery($query);
+    return $count;
+  }
+
 
 
   /**
@@ -206,14 +224,16 @@ class ExtraWatchStat
   {
 
     $query = sprintf("SELECT sum(value) as value FROM `#__extrawatch_info` WHERE (`date`='%d' and `group` = '%s' and `name` = '%s')", (int) $date2, $this->database->getEscaped($group), $this->database->getEscaped($name));
-    $value2 = $this->database->resultQuery($query);
+    $value2 = (int) $this->database->resultQuery($query);
 
     $query = sprintf("SELECT sum(value) as value FROM `#__extrawatch_info` WHERE (`date`='%d' and `group` = '%s'  and `name` = '%s')", (int) $date1, $this->database->getEscaped($group), $this->database->getEscaped($name));
-    $value1 = $this->database->resultQuery($query);
+    $value1 = (int) $this->database->resultQuery($query);
 
     $diff = 0;
     if ($value1 && $value2) {
       $diff = floor((($value2 - $value1) / $value1) * 1000) / 10;
+    } elseif (!$value1 && $value2 ) {
+      $diff = +100;
     } elseif ($value1 && !$value2) {
       $diff = -100;
     } elseif (!$value1 && $value2) {

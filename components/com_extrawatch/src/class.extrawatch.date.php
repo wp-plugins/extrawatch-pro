@@ -4,16 +4,14 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.0
- * @revision 932
+ * @version 2.2
+ * @revision 1204
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
  */
 
-/** ensure this file is being included by a parent file */
-if (!defined('_JEXEC') && !defined('_VALID_MOS'))
-  die('Restricted access');
+defined('_JEXEC') or die('Restricted access');
 
 class ExtraWatchDate
 {
@@ -39,7 +37,21 @@ class ExtraWatchDate
     return "$date $time";
   }
 
-  /**
+    static function getActualDate()
+    {
+        $date = ExtraWatchDate::date("Y-m-d", ExtraWatchDate::getUTCTimestamp());
+        return "$date";
+    }
+
+    static function getDateTimeFromUTC($utcTimestamp)
+    {
+        $date = ExtraWatchDate::date("d.m.Y", $utcTimestamp);
+        $time = ExtraWatchDate::date("H:i:s", $utcTimestamp);
+        return "$date $time";
+    }
+
+
+    /**
    * date
    */
   static function dayOfWeek()
@@ -86,7 +98,7 @@ class ExtraWatchDate
   static function getDateByDay($day, $format = "d.m.Y")
   {
     $timestamp = $day * 3600 * 24;
-    if (EXTRAWATCH_DEBUG) echo("Date by day: " . $timestamp);
+    if (EXTRAWATCH_DEBUG) ExtraWatchLog::debug("Date by day: " . $timestamp);
     $date = gmdate($format, $timestamp);
     $output = $date;
     if ($format == "d.m.Y" && ($day == ExtraWatchDate::jwDateToday()))
@@ -106,35 +118,17 @@ class ExtraWatchDate
     //	    if we have an anonymous user, then use global config, instead of the user params
     if ($env->getUsersCustomTimezoneOffset()) {
       $userTimezone = $env->getTimezoneOffset();
-      if (EXTRAWATCH_DEBUG) {
-        echo ("<br/>user timezone returned from user's property: " . $userTimezone);
-      }
     } else {
       $userTimezone = $env->getTimezoneOffset();
-      if (EXTRAWATCH_DEBUG) {
-        echo ("<br/>user timezone returned from config.offset: " . $userTimezone);
-      }
     }
     /* if the user has no timezone defined, use the timezone from server configuratio */
     if (!isset($userTimezone)) {
       $config = new JConfig();
       $userTimezone = $config->offset;
-      if (EXTRAWATCH_DEBUG) {
-        echo ("<br/>user timezone returned from config->offset: " . $userTimezone);
-      }
     }
 
     if ($userTimezone && !is_numeric($userTimezone)) {
-      try {
-        $dtz = new DateTimeZone($userTimezone);
-        $time = new DateTime('now', $dtz);
-        $userTimezone = $time->format('Z') / 3600; // timezone difference in seconds / 3600
-        if (EXTRAWATCH_DEBUG) {
-          echo ("<br/>user timezone was not numeric, translated to: " . $userTimezone);
-        }
-      } catch (Exception $e) {
-        echo("<!-- exception " . $e->getMessage() . " -->");
-      }
+		$userTimezone = ExtraWatchHelper::getTimezoneOffsetByTimezoneName($userTimezone);
     }
     return $userTimezone;
   }
@@ -206,13 +200,13 @@ class ExtraWatchDate
 
   static function getWeekStartingDay($week = 0)
   {
-    if (EXTRAWATCH_DEBUG) echo("getting week starting day: " . $week);
+    ExtraWatchLog::debug("getting week starting day: " . $week);
     if (!$week) {
       $weekDiff = 0;
     } else {
       $currentWeek = ExtraWatchDate::getCurrentWeek(); // OK
       $weekDiff = $currentWeek - $week; // difference between selected week number since 1.1.1970 and current week number
-      if (EXTRAWATCH_DEBUG) echo("current week: $currentWeek weekDiff: $weekDiff");
+      ExtraWatchLog::debug("current week: $currentWeek weekDiff: $weekDiff");
     }
     $dayOfWeek = ExtraWatchDate::dayOfWeek();
     $dateToday = ExtraWatchDate::jwDateToday();

@@ -4,7 +4,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 933
+ * @revision 1204
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -44,8 +44,6 @@ $filepathar = $extraWatch->downloads->getAllFilePaths();
 ?>
 
 
-<script type="text/javascript" src="components/com_extrawatch/views/monitors/tmpl/js/jquery-latest.js"></script>
-<script type="text/javascript" src="components/com_extrawatch/views/monitors/tmpl/js/jquery.tablesorter.js"></script>
 <script type='text/javascript' src='<?php echo $extraWatch->config->getLiveSiteWithSuffix(); ?>components/com_extrawatch/js/jsapi.js'></script>
 
 <script type="text/javascript">
@@ -53,22 +51,27 @@ $filepathar = $extraWatch->downloads->getAllFilePaths();
     google.setOnLoadCallback(drawChart);
     function drawChart()
     {
-        var data = google.visualization.arrayToDataTable([
+        var dailyData = google.visualization.arrayToDataTable([
         <?php include("dm_data.php");?>
-
         ]);
-        var options = {
+        var dailyOptions = {
             title: '<?php echo(_EW_DOWNLOADS_TOTAL);?>'
         };
-        var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
-        chart.draw(data, options);
+        var dailyChart = new google.visualization.LineChart(document.getElementById('chart_div'));
+        dailyChart.draw(dailyData, dailyOptions);
+
+
+
+        var dailyData2 = google.visualization.arrayToDataTable([
+        <?php include("dm_data_weekly.php");?>
+        ]);
+        var dailyOptions2 = {
+            title: '<?php echo(_EW_DOWNLOADS_TOTAL);?>'
+        };
+        var dailyChart2 = new google.visualization.LineChart(document.getElementById('chart_div_weekly'));
+        dailyChart2.draw(dailyData2, dailyOptions2);
     }
 
-    $(document).ready(function()
-            {
-                $("#myTable").tablesorter();
-            }
-    );
 
     function check_add()
     {
@@ -188,10 +191,12 @@ $filepathar = $extraWatch->downloads->getAllFilePaths();
         <h2><?php echo(_EW_DOWNLOADS_DOWNLOAD_MONITOR);?></h2>
 
 
-        <div id="chart_div" style="width: 900px; height: 400px;border:1px solid black"></div>
+        <div id="chart_div" style="width: 100%; height: 400px;border:1px solid #ddddd"></div>
+
+        <div id="chart_div_weekly" style="width: 100%; height: 400px;border:1px solid #ddddd"></div>
 
         <br/><br/>
-        <table width="90%" border="0" align="center" class="table-border">
+        <table width="100%" border="0" align="center" class="table-border">
         <tr>
         <td align="center">
         <?php include("dm_table_statistics.php");?>
@@ -201,20 +206,16 @@ $filepathar = $extraWatch->downloads->getAllFilePaths();
 <br />
 <br />
 
-<table width="90%" border="0" align="center" class="table-border">
+<table width="100%" border="0" align="center">
     <tr>
-        <td align="center">
-            <table width="95%" border="0" align="center" cellpadding="3" cellspacing="0">
+        <td align="left">
+            <table width="100%" border="0" align="center" cellpadding="3" cellspacing="0">
                 <tr>
-                    <td height="23" align="left"><b><?php echo(_EW_DOWNLOADS_EXTENSIONS_BEING_MONITORED);?></b></td>
+                    <td height="23" align="left"><h4><?php echo(_EW_DOWNLOADS_EXTENSIONS_BEING_MONITORED);?></h4></td>
                 </tr>
                 <tr>
-                    <td class="" height="23" width="73%" align="left"><div align="right"><a href="<?php echo $extraWatch->config->renderLink("downloads","addExtension");?>"><?php echo(_EW_DOWNLOADS_ADD_EXTENSION);?></a> </div></td>
+                    <td class="" height="23" width="100%" align="left"><div align="right"><a href="<?php echo $extraWatch->config->renderLink("downloads","addExtension");?>"><?php echo(_EW_DOWNLOADS_ADD_EXTENSION);?></a> </div></td>
                 </tr>
-                <tr>
-                    <td class="" height="23" width="73%" align="left">&nbsp;</td>
-                </tr>
-
             </table>
             <?php include("dm_table_extensions.php");?>
             <br><br>
@@ -222,17 +223,13 @@ $filepathar = $extraWatch->downloads->getAllFilePaths();
 			<?php include("dm_download_log.php");?>
 			
 			<br/>
-			            <table width="95%" border="0" align="center" cellpadding="3" cellspacing="0">
+			            <table width="100%" border="0" align="center" cellpadding="3" cellspacing="0">
                 <tr>
-                    <td height="23" align="left"><b><?php echo(_EW_DOWNLOADS_FILES_PATHS_BEING_MONITORED);?></b></td>
+                    <td height="23" align="left"><h4><?php echo(_EW_DOWNLOADS_FILES_PATHS_BEING_MONITORED);?></h4></td>
                 </tr>
                 <tr>
-                    <td class="" height="23" width="73%" align="left"><div align="right"><a href="<?php echo $extraWatch->config->renderLink("downloads","addFile");?>"><?php echo(_EW_DOWNLOADS_ADD_FILE_PATH);?></a> </div></td>
+                    <td class="" height="23" width="100%" align="left"><div align="right"><a href="<?php echo $extraWatch->config->renderLink("downloads","addFile");?>"><?php echo(_EW_DOWNLOADS_ADD_FILE_PATH);?></a> </div></td>
                 </tr>
-                <tr>
-                    <td class="" height="23" width="73%" align="left">&nbsp;</td>
-                </tr>
-
             </table>
             <?php include("dm_table_filepath.php");?>
 

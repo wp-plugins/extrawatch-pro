@@ -1,0 +1,3 @@
+
+DEFINE('_EW_VISITS_GOAL_REACHED', " Goal '%s' was reached");
+

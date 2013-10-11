@@ -4,8 +4,8 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.0
- * @revision 932
+ * @version 2.2
+ * @revision 1204
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -21,7 +21,7 @@ defined('_JEXEC') or die('Restricted access'); ?>
           <h2><?php echo(@$action);?><?php echo $extraWatchHTML->renderOnlineHelp("goals-form"); ?></h2>
 
           <div align='center'
-               style='border:1px solid black; width:600px; text-align: justify; text-justify: distribute; padding: 5px;'>
+               style='border:1px solid #dddddd; width:600px; text-align: justify; text-justify: distribute; padding: 5px;'>
             <?php echo _EW_DESC_GOALS_INSERT; ?>
           </div>
           <br/>
@@ -32,6 +32,7 @@ defined('_JEXEC') or die('Restricted access'); ?>
       ?>
       <tr>
       <tr><?php echo($extraWatchHTML->renderInputField("NAME", $values, $color, TRUE)); ?></tr>
+      <tr><?php echo($extraWatchHTML->renderInputCheckBox("SEND_EMAIL", $values, $color)); ?></tr>
       <tr><?php echo($extraWatchHTML->renderInputField("URI_CONDITION", $values, $color)); ?></tr>
       <tr><?php echo($extraWatchHTML->renderInputCheckBox("URI_INVERSED", $values, $color, $disabled)); ?></tr>
       <tr><?php echo($extraWatchHTML->renderInputField("TITLE_CONDITION", $values, $color)); ?></tr>
@@ -44,6 +45,10 @@ defined('_JEXEC') or die('Restricted access'); ?>
       <tr><?php echo($extraWatchHTML->renderInputCheckBox("CAME_FROM_INVERSED", $values, $color, $disabled)); ?></tr>
       <tr><?php echo($extraWatchHTML->renderInputField("COUNTRY_CONDITION", $values, $color)); ?></tr>
       <tr><?php echo($extraWatchHTML->renderInputCheckBox("COUNTRY_INVERSED", $values, $color, $disabled)); ?></tr>
+
+      <tr><?php echo($extraWatchHTML->renderInputField("CLICKED_ELEMENT_XPATH_CONDITION", $values, $color)); ?></tr>
+
+
       <tr>
         <td></td>
       </tr>

@@ -4,16 +4,14 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.0
- * @revision 932
+ * @version 2.2
+ * @revision 1204
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
  */
 
-/** ensure this file is being included by a parent file */
-if (!defined('_JEXEC') && !defined('_VALID_MOS'))
-  die('Restricted access');
+defined('_JEXEC') or die('Restricted access');
 
 class ExtraWatchFlowHTML
 {
@@ -42,16 +40,13 @@ class ExtraWatchFlowHTML
       $ratio = $rows->count / $sum;
     }
 
-    $hue = ExtraWatchHelper::hueFromRatio($ratio);
-    $rgb = ExtraWatchHelper::HSV_TO_RGB($hue, 1, 1);
-    if ($rgb) {
-      $color = sprintf("#%02x%02x%02x", $rgb['R'], $rgb['G'], $rgb['B']);
-    }
+    $color = ExtraWatchHelper::rgbColorFromRatio($ratio);
     $percent = $ratio * 100;
     return sprintf("graph.newEdge(node_%d, node_%d, {color: '%s'}, %.2f); // lightness: %d percent: %d count; $rows->count, sum: $sum\n", $rows->from, $rows->to, $color, $percent, $percent, $percent, $rows->count, $sum);
   }
 
-  /** presentation */
+
+    /** presentation */
   function renderEdgeTableRow($flowId, $tableRowStyle)
   {
     $offset = 1 / 4;
@@ -70,9 +65,9 @@ class ExtraWatchFlowHTML
       $color = sprintf("#%02x%02x%02x", $rgb['R'], $rgb['G'], $rgb['B']);
     }
     $fromUri = $this->visit->getTitleByUriId($rows->from);
-    $fromTitle = $this->visit->getUriNameByUriId($rows->from);
+    $fromTitle = $this->visit->getUriNameByUri2TitleId($rows->from);
     $toUri = $this->visit->getTitleByUriId($rows->to);
-    $toTitle = $this->visit->getUriNameByUriId($rows->to);
+    $toTitle = $this->visit->getUriNameByUri2TitleId($rows->to);
 
     $output .= sprintf("<tr>
         <td style='background-color: " . "%s" . "'></td>
@@ -116,7 +111,7 @@ class ExtraWatchFlowHTML
         } else {
           $selected = "";
         }
-        $uri = ExtraWatchHelper::truncate($this->visit->getUriNameByUriId($row->id), self::TRUNCATE_LEN); //TODO get config value should be not called statically
+        $uri = ExtraWatchHelper::truncate($this->visit->getUriNameByUri2TitleId($row->id), self::TRUNCATE_LEN); //TODO get config value should be not called statically
         $title = ExtraWatchHelper::truncate($this->visit->getTitleByUriId($row->id), self::TRUNCATE_LEN);
         if (@$uri) {
           $output .= "<option value='" . $row->id . "' $selected>" . $uri . " (" . $title . ") " . _EW_STATUS_DATABASE_TOTAL . ": " . $row->count . "</option>";
@@ -205,7 +200,7 @@ class ExtraWatchFlowHTML
     foreach ($nodeArray as $key => $value) {
       $nodesOutput .= sprintf("var node_%d = graph.newNode({label: '%s', sublabel: '%s'});\n", $value,
         addslashes(htmlspecialchars_decode(ExtraWatchHelper::truncate($this->visit->getTitleByUriId($value), self::TRUNCATE_LEN))),
-        addslashes(htmlspecialchars_decode(ExtraWatchHelper::truncate($this->visit->getUriNameByUriId($value), self::TRUNCATE_LEN))));
+        addslashes(htmlspecialchars_decode(ExtraWatchHelper::truncate($this->visit->getUriNameByUri2TitleId($value), self::TRUNCATE_LEN))));
     }
     foreach ($edgeArray as $key => $value) {
       $edgesOutput .= $this->renderEdgeJs($value);
@@ -221,13 +216,18 @@ class ExtraWatchFlowHTML
     $edgeArray = array();
     $this->flow->retrieveFlow($selectedUriId, $nodeArray, $edgeArray, $outgoingLinks, $nestingLevel);
 
-    $output = "<table border='0' width='100%'><tr>
-        <th class='tableRow0'>Color</th>
-        <th class='tableRow0'>Percentage</th>
-        <th class='tableRow0'>From</th>
-        <th class='tableRow0'>To</th>
-        <th class='tableRow0'>Count</th>
-        <th class='tableRow0'>Sum</th>
+    $output = "<table border='0' width='100%' class='tablesorter'>
+		<thead>
+		<tr>
+			<th class='tableRow0'>Color</th>
+			<th class='tableRow0'>Percentage</th>
+			<th class='tableRow0'>From</th>
+			<th class='tableRow0'>To</th>
+			<th class='tableRow0'>Count</th>
+			<th class='tableRow0'>Sum</th>
+		</tr>
+		</thead>
+		<tbody>
         ";
 
     $i = 1;
@@ -240,7 +240,7 @@ class ExtraWatchFlowHTML
       $output .= "<tr><td>" . ExtraWatchHelper::renderNoData() . "</td></tr>";
     }
 
-    $output .= "</table>";
+    $output .= "</tbody></table>";
 
 
     return $output;

@@ -1,61 +1,68 @@
 <?php
+/**
+ * @file
+ * ExtraWatch - A real-time ajax monitor and live stats
+ * @package ExtraWatch
+ * @version 2.2
+ * @revision 1204
+ * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
+ * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
+ * @website http://www.codegravity.com
+ */
 
 session_start();
 
+define('_JEXEC',1);
+
 define("DS","/");
-define("_JEXEC",1);
 define("ENV",1);
+define("_EW_CLOUD_MODE",TRUE);
 define("JPATH_BASE2",dirname(__FILE__).DS."extrawatch");
 
 $action = @$_REQUEST['action'];
-$usernameFromSession = @$_SESSION['username'];
-$passwordFromSession = @$_SESSION['password'];
+$username = @$_SESSION['email'] ? @$_SESSION['email'] : @$_REQUEST['email'];
+$password = @$_SESSION['password'] ? @$_SESSION['password'] : @$_REQUEST['password'];
+$trialContinueFromSession = @$_SESSION['trialContinue'];
 
-function extrawatch_is_initialized($modulePath) {
 
-    $env = ExtraWatchEnvFactory::getEnvironment();
-    $database = $env->getDatabase();
+require_once ("connection.php");
+require_once ("extrawatch".DS."components".DS."com_extrawatch".DS."config.php");
+require_once ("extrawatch".DS."components".DS."com_extrawatch".DS."src".DS."inc.extrawatch.env.php");
+require_once ("extrawatch".DS."components".DS."com_extrawatch".DS."includes.php");
+require_once ("extrawatch".DS."components".DS."com_extrawatch".DS."config.php");
+require_once ("extrawatch".DS."components".DS."com_extrawatch".DS."src".DS."inc.extrawatch.env.php");
+require_once ("extrawatch".DS."administrator".DS."components".DS."com_extrawatch".DS."admin.extrawatch.php");
 
-    $result = $database->resultQuery("select `value` from #__extrawatch_config where `name` = 'rand'");
-  if ($result) { // already initialized
-	return TRUE;
-  }
- return FALSE;
+require_once ("src".DS."class.extrawatch.project.php");
+
+
+$env = ExtraWatchEnvFactory::getEnvironment();
+
+$userId = ExtraWatchHelper::getUserId($env->getDatabase(""), $username, $password);
+$projectId = ExtraWatchHelper::getFirstUsersProject($env->getDatabase(""), $userId);
+
+if (!defined('_EW_PROJECT_ID')) {
+    define("_EW_PROJECT_ID", $projectId);
+}
+include("view/header.php");
+
+
+$database = $env->getDatabase($projectId);
+
+function notifyOnLogin($username, $password) {
+	if ($username != "demo" && $password != "demo") {
+		$message = "user $username has logged in";
+		@mail("kovalm@gmail.com",$message,$message);
+	}
+
 }
 
-function extrawatch_initialize_db($modulePath)
-{
-  require_once($modulePath. DS. "components" . DS . "com_extrawatch" . DS . "includes.php");
-  require_once($modulePath. DS. "administrator" . DS . "components" . DS . "com_extrawatch" . DS . "install.extrawatch.php");
 
-  $env = ExtraWatchEnvFactory::getEnvironment();
-  $database = $env->getDatabase();
+function verify($database, $user, $password) {
 
-  if (extrawatch_is_initialized($modulePath)) {
-	return;
-  }
-
-  $lines = file($modulePath . DS . "administrator" . DS . "components" . DS . "com_extrawatch" . DS . "sql" . DS . "install.mysql.utf8.sql");
-
-  $query = "";
-  foreach ($lines as $line_num => $line) {
-
-    $query .= trim($line);
-
-    if (strstr($line, ");")) {
-      $query = trim($query);
-      $query = str_replace("#__", $env->getDbPrefix(), $query);
-      $env->getDatabase()->executeQuery($query);
-      $query = "";
-    }
-
-  }
-
-  extrawatch_initialize_ip2country($modulePath, $env->getDatabase());
-} 
-
-function verify($login, $password) {
-    if ($login == "admin" && $password == "test") {
+	$result = ExtraWatchHelper::getUserId($database, $user, $password);
+	if ($result) {
+		notifyOnLogin($user, $password);
         return true;
     }
     return false;
@@ -65,30 +72,63 @@ function verify($login, $password) {
 if (@$action == "logout") {
     session_destroy();
 }
-else if ($usernameFromSession && $passwordFromSession) {
-    $authenticated = verify($usernameFromSession, $passwordFromSession);
+else if (@$_SESSION['email'] && @$_SESSION['password']) {
+    $authenticated = verify($database, @$_SESSION['email'], @$_SESSION['password']);
 } else if (@$action == "login") {
-    $authenticated = verify(@$_POST['username'], @$_POST['password']);
+    $authenticated = verify($database, @$_REQUEST['email'], @$_REQUEST['password']);
     if (!$authenticated) {
         echo("wrong username / password");
     } else {
-        $_SESSION['username'] = @$_POST['username'];
+        $_SESSION['email'] = @$_POST['email'];
         $_SESSION['password'] = @$_POST['password'];
+		ExtraWatchHelper::updateLastLoginTime($env->getDatabase(""), $projectId);
     }
 }
 
 if (@$authenticated) {
-    echo("<div style='text-align: right; width:100%; font-size: 12px; '><a href='?action=logout' style='color: red;'>Logout</a></div>");
-    require_once ("extrawatch".DS."components".DS."com_extrawatch".DS."config.php");
-    require_once ("extrawatch".DS."components".DS."com_extrawatch".DS."src".DS."inc.extrawatch.env.php");
-    require_once ("extrawatch".DS."administrator".DS."components".DS."com_extrawatch".DS."admin.extrawatch.php");
+
+    if (@$action == "trialContinue") {
+        $trialContinueFromSession = 1;
+        @$_SESSION['trialContinue'] = $trialContinueFromSession;
+    }
 
     $path = realpath(".").DS."extrawatch";
-	echo extrawatch_initialize_db($path);
-    echo extrawatch_mainController();
+
+	$extraWatch = new ExtraWatchMain();
+    $extraWatchProject = new ExtraWatchProject($database);
+
+    $ewInitialized = !$extraWatch->setup->isEwInitialized();
+	echo $extraWatch->setup->initializeDb();
+
+    if ($ewInitialized) {
+        $extraWatchProject->setTimeOfProjectCreation($projectId);
+        mail("foo@codegravity.com", "project $projectId initialized", "project $projectId initialized");
+        $extraWatch->config->saveConfigValue("EXTRAWATCH_EMAIL_REPORTS_ENABLED", "On");
+        $extraWatch->config->saveConfigValue("EXTRAWATCH_EMAIL_REPORTS_ADDRESS", $username);
+        $extraWatch->config->saveConfigValue("EXTRAWATCH_SPAMWORD_BANS_ENABLED", "On");
+        $extraWatch->config->saveConfigValue("EXTRAWATCH_SPAMWORD_BANS_ENABLED", _EW_EXTRAWATCH_IPINFODB_KEY);
+
+    }
+
+    $alwaysActive = $extraWatchProject->isProjectAlwaysActive($projectId);
+    $paymentActive = $extraWatchProject->isPaymentActive($projectId);
+    $daysToTrialEnd = $extraWatchProject->getDaysToTrialEnd();
+
+    if (!$paymentActive && !$alwaysActive && $daysToTrialEnd < 0) {
+        include("view/expired.php");
+        session_destroy();
+        die();
+    }
+
+    if (!$paymentActive && !$trialContinueFromSession && !$alwaysActive && $daysToTrialEnd > 0 && $daysToTrialEnd < 4) {
+        include("view/subscribe.php");
+        session_destroy();
+    } else {
+        echo extrawatch_mainController($database);
+    }
 } else {
     ?>
 <?php
-    include("login.html");
+    include("login.php");
 }
 ?>

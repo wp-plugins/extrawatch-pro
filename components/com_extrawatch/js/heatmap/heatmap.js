@@ -85,8 +85,14 @@
                 //obj.data.clear();
                 while (dlen--) {
                     var point = d[dlen];
+					var element;
+					try {
                     var elementFound = document.evaluate(point.xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null);
-                    var element = elementFound.singleNodeValue;
+					element = elementFound.singleNodeValue;
+					} catch (e) {
+					// suppress
+                        alert('element not found' + e);
+					}
                     if (element != null) {
                         var position = findPos(element);
                         point.x = position[0] + point.x;
@@ -100,6 +106,7 @@
                         }
                         data[point.x][point.y] += point.count;
                     }
+					
                 }
                 heatmap.displayDialog();
             },
@@ -212,10 +219,22 @@
                         element = this.get("element");
                     this.set("canvas", canvas);
                     this.set("acanvas", acanvas);
+					
+
+					//fix by matto: get total document hight
+					var B = document.body,
+					H = document.documentElement, height
+
+					if(document.height !== undefined) {
+						height = document.height // For webkit browsers
+					} else {
+						height = Math.max( B.scrollHeight, B.offsetHeight,H.clientHeight, H.scrollHeight, H.offsetHeight );
+					}
+					
                     canvas.width = acanvas.width = element.style.width.replace(/px/, "") || this.getWidth(element);
                     this.set("width", canvas.width);
-                    canvas.height = acanvas.height = element.style.height.replace(/px/, "") || this.getHeight(element);
-                    this.set("height", canvas.height);
+                    canvas.height = acanvas.height = element.style.height.replace(/px/, "") || height;
+                    this.set("height", height);
                     canvas.style.position = acanvas.style.position = "absolute";
                     canvas.style.top = acanvas.style.top = "0";
                     canvas.style.left = acanvas.style.left = "0";

@@ -4,16 +4,14 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.0
- * @revision 932
+ * @version 2.2
+ * @revision 1204
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
  */
 
-/** ensure this file is being included by a parent file */
-if (!defined('_JEXEC') && !defined('_VALID_MOS'))
-  die('Restricted access');
+defined('_JEXEC') or die('Restricted access');
 
 class ExtraWatchBlock
 {
@@ -199,7 +197,7 @@ class ExtraWatchBlock
   function dieWithBlockingMessage($ip)
   {
     $this->increaseHitsForBlockedIp($ip);
-    die($this->config->getConfigValue('EXTRAWATCH_BLOCKING_MESSAGE'));
+    throw new ExtraWatchIPBlockedException($this->config->getConfigValue('EXTRAWATCH_BLOCKING_MESSAGE'));
   }
 
 
@@ -275,7 +273,7 @@ class ExtraWatchBlock
   {
     $value = trim($value);
     if (@ $spamWord && @$value && ExtraWatchHelper :: wildcardSearch("*" . $spamWord . "*", $value)) {
-      $this->blockIp($ip, htmlspecialchars($value), $today, $spamWord);
+      $this->blockIp($ip, ExtraWatchHelper::htmlspecialchars($value), $today, $spamWord);
       $this->dieWithBlockingMessage($ip);
     }
 
@@ -336,35 +334,46 @@ class ExtraWatchBlock
   }    /**     * block     */
 
   function saveImportAntiSpamIp($post) {
-    if ((($_FILES["file"]["type"] == "text/comma-separated-values")))
+    if ((($_FILES["file"]["type"] == "application/octet-stream")))
     {
       if ($_FILES["file"]["error"] > 0){
         echo "Return Code: " . $_FILES["file"]["error"] . "<br />";            }
       else
       {
-        if (file_exists(JPATH_BASE."/" . $_FILES["file"]["name"]))                {
-          echo $_FILES["file"]["name"] . " already exists. ";
-        }else{
+          if ($_FILES["file"]["size"] > 1 * 1024 * 1024) {
+              echo("Error: ExtraWatch supports maximum .csv file size 1 MB");
+
+              return;
+          }
+
           move_uploaded_file($_FILES["file"]["tmp_name"],JPATH_BASE."/" . $_FILES["file"]["name"]);
+
+          $reason = "imported from ".$_FILES["file"]["name"];
           $row = 1;
           $handle = fopen($_FILES["file"]["name"], "r");
           while (($data = fgetcsv($handle, '', ",")) !== FALSE) {
             $num = count($data);
             $row++;
             if($data[1] != 'ip'){
-              $date = strtotime(date("d-m-Y H:i:s")).'<br/>';                        //check if ip is exist or not
-              $query = sprintf("select * from #__joomlawatch_blocked where ip = '$data[1]'");
+              $date = ExtraWatchDate::jwDateToday();
+              $query = sprintf("select * from #__extrawatch_blocked where ip = '%s'", $this->database->getEscaped($data[1]));
               $rows = @ $this->database->assocListQuery($query);
               if(empty($rows)){
+
+                 $ip = $data[1];
+                 if (!ExtraWatchHelper::isValidIPv4($ip)) {
+                     continue;
+                 }
+
                 //insert into database
-                $query = sprintf("INSERT into #__joomlawatch_blocked values ('','$data[1]','','$date', '')");
+                $query = sprintf("INSERT into #__extrawatch_blocked (id, ip, reason, country, `date`) values ('','%s','%s', '%s', '%d')", $this->database->getEscaped($ip), $this->database->getEscaped($reason), EXTRAWATCH_UNKNOWN_COUNTRY, (int) $date);
                 $this->database->executeQuery($query);
               }
             }
           }
           fclose($handle);
           unlink($_FILES["file"]["name"]);
-        }
+
       }
     }      else        {
       echo "Invalid file";

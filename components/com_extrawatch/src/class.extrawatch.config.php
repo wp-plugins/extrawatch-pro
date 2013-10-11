@@ -4,16 +4,14 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.0
- * @revision 932
+ * @version 2.2
+ * @revision 1204
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
  */
 
-/** ensure this file is being included by a parent file */
-if (!defined('_JEXEC') && !defined('_VALID_MOS'))
-  die('Restricted access');
+defined('_JEXEC') or die('Restricted access');
 
 class ExtraWatchConfig
 {
@@ -51,10 +49,10 @@ class ExtraWatchConfig
 
   function isPermitted()
   {
-    $rand = $this->getRand();
+/*    $rand = $this->getRand();
     if (!$rand || $rand != addslashes(strip_tags(@ ExtraWatchHelper::requestGet('rand')))) {
       return FALSE;
-    }
+    }*/
     return TRUE;
   }
 
@@ -115,7 +113,7 @@ class ExtraWatchConfig
   function reloadConfigValues() {
       $query = sprintf("select name, value from #__extrawatch_config ");
       $values = $this->database->objectListQuery($query);
-	  if (@$values)
+      if ($values)
       foreach($values as $keyAssoc => $valueAssoc) {
           ExtraWatchConfig::$configValuesCached[$valueAssoc->name] = $valueAssoc->value;
       }
@@ -255,13 +253,22 @@ class ExtraWatchConfig
   function getCheckboxValue($key)
   {
     $setting = $this->getConfigValue($key);
-    if ($setting == '1' || strtolower($setting) == 'on') {
-      return TRUE;
-    }
-    return FALSE;
+    return $this->getCheckboxBooleanValue($setting);
   }
 
-  /**
+    /**
+     * config
+     */
+    function getCheckboxBooleanValue($value)
+    {
+        if ($value == '1' || strtolower($value) == 'on') {
+            return TRUE;
+        }
+        return FALSE;
+    }
+
+
+    /**
    * If on HTTPS site, use the https links
    * @param  $originalLink
    * @return mixed
@@ -323,7 +330,7 @@ class ExtraWatchConfig
    * @param  $string
    * @return bool
    */
-  function isIPAddress($string)
+  static function isIPAddress($string)
   {
     $regexp = '/^((1?\d{1,2}|2[0-4]\d|25[0-5])\.){3}(1?\d{1,2}|2[0-4]\d|25[0-5])$/';
     if (preg_match($regexp, $string)) {
@@ -332,13 +339,42 @@ class ExtraWatchConfig
     return FALSE;
   }
 
-  function getDomainFromLiveSite()
-  {
-    // $parsedUrl = @ parse_url(@$this->getLiveSite());  - live site could not longer be used, because it's relative path now, using SERVER_NAME
-    $parsedUrl = @ parse_url("http://".@$_SERVER['SERVER_NAME']);
-    $domainWithSubdomain = trim($this->cleanUrl(@$parsedUrl[host]));
+  function getProjectUrlByUsername($user) {
+      if (_EW_CLOUD_MODE) {
+        return "http://".$this->getDomainFromLiveSiteByUsername($user);
+      } else {
+         return "";
+      }
+  }
 
-    /* if it's an IP address */
+
+    function getDomainFromLiveSiteByUsername($user)
+    {
+       $query = sprintf("select `url`  from global_extrawatch_project where `id` = '%s' limit 1", $this->database->getEscaped($user));
+       $url = $this->database->resultQuery($query);
+
+        $parsedUrl = @ parse_url($url);
+        return @$parsedUrl['host'];
+
+    }
+
+  function getDomainFromLiveSite($user)
+  {
+
+      if (_EW_CLOUD_MODE) {
+          $domainWithSubdomain = $this->getDomainFromLiveSiteByUsername($user);
+
+      } else  {
+          $parsedUrl = @ parse_url(@$_SERVER['HTTP_HOST']);
+   		  $domainWithSubdomain = trim($this->cleanUrl(@$parsedUrl[path]));
+      }
+  
+
+      if (!$domainWithSubdomain) {
+          return "localhost";
+      }
+
+      /* if it's an IP address */
     if ($this->isIPAddress($domainWithSubdomain)) {
       return $domainWithSubdomain;
     }
@@ -369,14 +405,28 @@ class ExtraWatchConfig
   /**
    * config
    */
-  function isAdFree()
-  {
-   $key = md5(strrev($this->getDomainFromLiveSite()));
-   if ($key == $this->getConfigValue("EXTRAWATCH_ADFREE")) {
-        return TRUE;
-   }
-   return FALSE;
-  }
+    function isAdFree()
+    {
+        $key = md5(strrev($this->getDomainFromLiveSite(_EW_PROJECT_ID)));
+        if ($key == $this->getConfigValue("EXTRAWATCH_ADFREE")) {
+            return TRUE;
+        }
+        return FALSE;
+        /*require_once(JPATH_BASE2.DS."components".DS."com_extrawatch".DS."lib".DS."phpseclib".DS."Crypt".DS."RSA.php");
+        require_once(JPATH_BASE2.DS."components".DS."com_extrawatch".DS."lib".DS."phpseclib".DS."Math".DS."BigInteger.php");
+
+        $rsa = new Crypt_RSA();
+        $rsa->setEncryptionMode(CRYPT_RSA_ENCRYPTION_PKCS1);
+
+        $pk = file_get_contents(JPATH_BASE2.DS."components".DS."com_extrawatch".DS."lib".DS."phpseclib".DS."index.php");
+        $rsa = new Crypt_RSA();
+        $rsa->loadKey($pk);
+        $rsa->setEncryptionMode(CRYPT_RSA_ENCRYPTION_PKCS1);
+
+        return md5($this->getDomainFromLiveSite(_EW_PROJECT_ID)) == $rsa->decrypt(base64_decode($this->getConfigValue("EXTRAWATCH_ADFREE")));
+
+        */
+    }
 
   /**
    * config
@@ -447,7 +497,11 @@ class ExtraWatchConfig
 
   function getLiveSiteWithSuffix()
   {
-    return $this->getLiveSite() . $this->env->getEnvironmentSuffix();
+    if (_EW_CLOUD_MODE) {
+      return _EW_SCRIPT_HOST_DIR . $this->env->getEnvironmentSuffix();
+    } else {
+        return $this->getLiveSite() . $this->env->getEnvironmentSuffix();
+    }
   }
 
   function renderLink($task = "", $otherParams = "")
@@ -502,6 +556,13 @@ class ExtraWatchConfig
     ExtraWatchCache::clearCache($this->database);
     $this->reloadConfigValues();
   }
+
+    function initializeTranslations() {
+        if (!defined("_EW_MENU_STATS")) {
+            $modulePath = realpath(dirname(__FILE__).DIRECTORY_SEPARATOR."..");
+            require $modulePath . DS . "lang" . DS . $this->getLanguage() . ".php";
+        }
+    }
 
 }
 

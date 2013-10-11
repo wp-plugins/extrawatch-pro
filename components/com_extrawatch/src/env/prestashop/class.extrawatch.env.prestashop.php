@@ -4,17 +4,14 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.0
- * @revision 932
+ * @version 2.2
+ * @revision 1204
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
  */
 
-/** ensure this file is being included by a parent file */
-if (!defined('_JEXEC') && !defined('_VALID_MOS'))  {
-  die('Restricted access');
-}
+defined('_JEXEC') or die('Restricted access');
 
 class ExtraWatchPrestaShopEnv implements ExtraWatchEnv
 {
@@ -23,7 +20,7 @@ class ExtraWatchPrestaShopEnv implements ExtraWatchEnv
   function __construct() {
   }
 
-  function getDatabase()
+  function getDatabase($user = "")
   {
     return new ExtraWatchDBWrapPrestaShop();
   }
@@ -127,8 +124,13 @@ class ExtraWatchPrestaShopEnv implements ExtraWatchEnv
 
   function getTimezoneOffset()
   {
-    return 0; //TODO must implement
-  }
+	$userTimezoneName = Configuration::get('PS_TIMEZONE');
+    if (@$userTimezoneName) {
+	    $timezoneOffset = ExtraWatchHelper::getTimezoneOffsetByTimezoneName($userTimezoneName);
+        return $timezoneOffset;
+        }
+      return 0;
+	}
 
   function getAllowedDirsToCheckForSize()
   {
@@ -182,6 +184,29 @@ class ExtraWatchPrestaShopEnv implements ExtraWatchEnv
         $lastDir = $adminDirSplitted[sizeof($adminDirSplitted)-1];
         return $lastDir;
     }
+
+    public function getRootPath() {
+        return ;
+    }
+
+    public function getTempDirectory() {
+        return ini_get('upload_tmp_dir');
+    }
+
+    function getUserId()
+    {
+        //TODO implement
+    }
+
+    public function getUsernameById($userId) {
+        //TODO implement
+    }
+
+    public function renderAjaxLink($task, $action) {
+        $routerFile = "components/com_extrawatch/extrawatch.php?action=".$action."&task=".$task;
+        return $routerFile;
+    }
+
 
 }
 

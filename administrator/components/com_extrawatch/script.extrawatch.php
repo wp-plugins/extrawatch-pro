@@ -4,17 +4,14 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.0
- * @revision 932
+ * @version 2.2
+ * @revision 1204
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
  */
 
-/** ensure this file is being included by a parent file */
-if (!defined('_JEXEC')) {
-    die('Restricted access');
-}
+defined('_JEXEC') or die('Restricted access');
 
 jimport('joomla.filesystem.folder');
 jimport('joomla.filesystem.file');
@@ -25,11 +22,21 @@ class com_extrawatchInstallerScript {
 
     function postflight($action, $installer)
     {
+
+
         switch ($action)
         {
             case "install":
                 $extraWatchAdminDir = JPATH_ADMINISTRATOR.DIRECTORY_SEPARATOR."components".DIRECTORY_SEPARATOR."com_extrawatch";
                 require_once($extraWatchAdminDir.DIRECTORY_SEPARATOR."install.extrawatch.php");
+				
+				
+				$currentDir = dirname(__FILE__);
+				$extraWatchAdminControllerFile = $currentDir.DIRECTORY_SEPARATOR."admin".DIRECTORY_SEPARATOR."extrawatch.php";
+				echo("copying: $extraWatchAdminControllerFile to $extraWatchAdminDir");
+				copy($extraWatchAdminControllerFile, $extraWatchAdminDir.DIRECTORY_SEPARATOR."extrawatch.php"); 
+
+				
                 $database = & JFactory :: getDBO();
                 extrawatch_initialize_ip2country(JPATH_SITE, $database);
                 $this->publishExtraWatchModules($database);
@@ -38,6 +45,9 @@ class com_extrawatchInstallerScript {
                 } catch (Exception $e) {
                     echo("Could not fix file permissions: ".$e);
                 }
+				
+				//die("script install file $action, $installer");
+				
 
                 break;
         }

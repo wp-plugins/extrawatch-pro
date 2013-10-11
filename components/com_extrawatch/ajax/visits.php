@@ -4,26 +4,28 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.0
- * @revision 932
+ * @version 2.2
+ * @revision 1204
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
  */
 
-define('_JEXEC', 1);
-define('DS', DIRECTORY_SEPARATOR);
-$jBasePath = realpath(dirname(__FILE__) . DS . ".." . DS . ".." . DS . "..". DS);
-define('JPATH_BASE2', $jBasePath);
+defined('_JEXEC') or die('Restricted access');
 
-include JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS. "includes.php";
+/*$jBasePath = realpath(dirname(__FILE__) . DS . ".." . DS . ".." . DS . "..". DS);
+define('JPATH_BASE2', $jBasePath);*/
+
+require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS. "includes.php";
 
 $extraWatch = new ExtraWatchMain();
-require (JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS. "lang" . DS . $extraWatch->config->getLanguage() . ".php");
+$extraWatch->config->initializeTranslations();
 
 $extraWatchHTML = new ExtraWatchHTML();
 $extraWatchVisitHTML = new ExtraWatchVisitHTML($extraWatch);
 $extraWatchBlockHTML = new ExtraWatchBlockHTML($extraWatch);
+$extraWatchHeatmapHTML = new ExtraWatchHeatmapHTML($extraWatch->database);
+
 
 $extraWatch->block->checkPermissions();
 
@@ -33,16 +35,14 @@ $last = $extraWatch->visit->getLastVisitId();
 
 echo ("$last\n\n");
 
-if (EXTRAWATCH_DEBUG) {
-  $day = $extraWatch->date->jwDateToday();
-  echo "<br/>date today: " . $day;
-  echo "<br/>actual dateTime: " . ExtraWatchDate::getActualDateTime();
-  echo "<br/>server time: " . ExtraWatchDate::getUTCTimestamp();
-  echo "<br/>date today: " . $extraWatch->date->getDateByDay($day, "d.m.Y H:i:s");
-  echo("<br/>");
-}
+$day = $extraWatch->date->jwDateToday();
+ExtraWatchLog::debug( "<br/>date today: " . $day);
+ExtraWatchLog::debug( "<br/>actual dateTime: " . ExtraWatchDate::getActualDateTime());
+ExtraWatchLog::debug( "<br/>server time: " . ExtraWatchDate::getUTCTimestamp());
+ExtraWatchLog::debug( "<br/>date today: " . $extraWatch->date->getDateByDay($day, "d.m.Y H:i:s"));
+ExtraWatchLog::debug(("<br/>"));
 require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "visits.php"; ?>
 <br/><br/>
 <span style='color: #ddd'><?php echo _EW_RENDERED_IN; ?> <?php echo sprintf("%.2f", ((time() + microtime()) - $t1)); ?>
-  s</span>
+    s</span>
 

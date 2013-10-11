@@ -4,16 +4,14 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.0
- * @revision 932
+ * @version 2.2
+ * @revision 1204
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
  */
 
-/** ensure this file is being included by a parent file */
-if (!defined('_JEXEC') && !defined('_VALID_MOS'))
-  die('Restricted access');
+defined('_JEXEC') or die('Restricted access');
 
 class ExtraWatchBlockHTML
 {
@@ -27,17 +25,22 @@ class ExtraWatchBlockHTML
     $this->extraWatchStatHTML = new ExtraWatchStatHTML($extraWatch);
   }
 
-  function renderBlockedInfo($renderUpdatesTraffic = FALSE)
+  function renderInfoPanel($renderUpdatesTraffic = FALSE)
   {
 
     $countToday = $this->extraWatch->block->getBlockedCountByDate($this->extraWatch->date->jwDateToday());
+	
+    $clickCountToday = $this->extraWatch->heatmap->getHeatmapClickCountByDate($this->extraWatch->date->jwDateToday());
+
     $output = "";
     if (TRUE) {
-      $output = sprintf("<br/><div style='border: 1px solid #ffff00; background-color: #ffffdd; width: 70%%;'>" . _EW_ANTISPAM_BLOCKED, ((int) $countToday), ((int) $this->extraWatch->block->getBlockedCountTotal()));
+      $output = sprintf("<br/><div style='border: 1px solid #ffff00; background-color: #ffffdd; width: 90%%;'>" . _EW_ANTISPAM_BLOCKED, ((int) $countToday), ((int) $this->extraWatch->block->getBlockedCountTotal()));
       if ($renderUpdatesTraffic) {
         $output .= ". ";
         $output .= _EW_TRAFFIC_AJAX . sprintf(": %.3f", ExtraWatchHelper::requestGet('traffic') / 1024 / 1024) . " MB";
       }
+      $output .= sprintf(" &nbsp;"._EW_VISITS_HEATMAP_CLICK_COUNT, ((int) $clickCountToday));
+
       $output .= "</div>";
     }
 
@@ -103,7 +106,7 @@ class ExtraWatchBlockHTML
           $icon = "<img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/flags/" . @ strtolower($country) . ".png' title='$countryName' alt='$countryName'/>";
         }
 
-        $mapsIcon = "<img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/map_icon.gif' border='0'  " . $this->extraWatch->helper->getTooltipOnEvent() . "=\"ajax_showTooltip('" . $this->extraWatch->config->getLiveSite() . $this->extraWatch->env->getEnvironmentSuffix() . "components/com_extrawatch/ajax/tooltip.php?rand=" . $this->extraWatch->config->getRand() . "&ip=" . @ $row->ip . "&env=" . $this->extraWatch->config->getEnvironment() . "',this);return FALSE\"/>";
+        $mapsIcon = "<img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/map_icon.gif' border='0'  " . $this->extraWatch->helper->getTooltipOnEvent() . "=\"ajax_showTooltip('" . $this->extraWatch->config->getLiveSite() . $this->extraWatch->env->getEnvironmentSuffix() . $this->extraWatch->env->renderAjaxLink('ajax','tooltip')."&rand=" . $this->extraWatch->config->getRand() . "&ip=" . @ $row->ip . "&env=" . $this->extraWatch->config->getEnvironment() . "&projectId="._EW_PROJECT_ID."',this);return FALSE\"/>";
 
         if (!$displayedInStats && $lastDate != $row->date) {
           $output .= "<tr><td colspan='4'><u>" . ExtraWatchDate::getDateByDay($row->date) . "</u></td></tr>";
@@ -121,7 +124,7 @@ class ExtraWatchBlockHTML
             }
           }
           $output .= "<td align='center' title='" . $row->badWord . "'>" . ExtraWatchHelper::truncate($row->badWord, 10) . "</td>";
-          $output .= "<td title=\"" . htmlspecialchars($row->reason) . "\">" . $this->highlightSpamWord($row->badWord, $row->reason) . "</td>";
+          $output .= "<td title=\"" . ExtraWatchHelper::htmlspecialchars($row->reason) . "\">" . $this->highlightSpamWord($row->badWord, $row->reason) . "</td>";
         }
 
         $output .= "<td>";
@@ -141,6 +144,7 @@ class ExtraWatchBlockHTML
     return $output;
 
   }
+  
 
   function renderAntispamHowTo()
   {
