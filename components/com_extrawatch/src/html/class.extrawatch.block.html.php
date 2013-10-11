@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1206
+ * @revision 1209
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -30,7 +30,6 @@ class ExtraWatchBlockHTML
 
     $countToday = $this->extraWatch->block->getBlockedCountByDate($this->extraWatch->date->jwDateToday());
 	
-    $clickCountToday = $this->extraWatch->heatmap->getHeatmapClickCountByDate($this->extraWatch->date->jwDateToday());
 
     $output = "";
     if (TRUE) {
@@ -39,7 +38,10 @@ class ExtraWatchBlockHTML
         $output .= ". ";
         $output .= _EW_TRAFFIC_AJAX . sprintf(": %.3f", ExtraWatchHelper::requestGet('traffic') / 1024 / 1024) . " MB";
       }
+	  
+	  $clickCountToday = $this->extraWatch->heatmap->getHeatmapClickCountByDate($this->extraWatch->date->jwDateToday());
       $output .= sprintf(" &nbsp;"._EW_VISITS_HEATMAP_CLICK_COUNT, ((int) $clickCountToday));
+	  
 
       $output .= "</div>";
     }
