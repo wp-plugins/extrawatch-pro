@@ -1,12 +1,12 @@
-=== ExtraWatch Live Stats and Visitor Counter PRO ===
+=== ExtraWatch PRO (Live Stats, Heatmap, Click tracking, Download Monitor and more)  ===
 Contributors: matto3c
 Donate link: http://www.extrawatch.com/
-Tags: admin, widget, plugin, counter, anti-spam, stats, visitors, click map, countries, tracking, maps, location, geolocation, statistics, spam, flags, goals
+Tags: heatmap, clicks, conversion tracking, counter, anti-spam, stats, visitors, downloads, download monitor, click map, countries, tracking, maps, location, geolocation, statistics, spam, flags, goals
 Requires at least: 3.2.
 Tested up to: 3.5.1.
-Stable tag: 2.2.1211
+Stable tag: 2.2.1212
 
-Popular visitor live tracking component ported from Joomla. Features: live stats,graphs,goals,history,anti-spam,blocking,nightly reports and more..
+Visitor Live Stats, Heatmap, Conversion Tracking, Download monitor, Front-end Counters, Anti-spam, Nightly Email Reports, History, Graphs, translated in 42 world languages
 
 == Description ==
 Popular visitor live tracking component ported from Joomla. ExtraWatch allows you to watch your visitors live stats and bots in real-time from the administration back-end.
