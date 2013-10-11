@@ -4,7 +4,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1204
+ * @revision 1206
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -17,7 +17,7 @@ Plugin URI: http://www.extrawatch.com
 
 Description: Features: <strong>Visitor Live Stats</strong>, <strong>Monitor File Downloads</strong>, <strong>Monitor clicks, Heatmap</strong>, <strong>SEO Report</strong>, <strong>Traffic Flow</strong>, <strong>Front-end Counters</strong>, <strong>Anti-spam</strong>, <strong>Nightly Email Reports</strong>, <strong>History</strong>, <strong>Graphs</strong>, <strong>Directory sizes</strong>, translated in <strong>42 world languages</strong>
 
-Version: 2.2.1204 PRO
+Version: 2.2.1206 PRO
 Author: CodeGravity.com
 Author URI: http://www.extrawatch.com
 */
@@ -37,6 +37,9 @@ if (!defined('JPATH_BASE')) define("JPATH_BASE", dirname(__FILE__));
 if ( ! defined( 'WP_PLUGIN_DIR' ) )
   define( 'WP_PLUGIN_DIR', WP_CONTENT_DIR.'/plugins' );
 
+if ( ! defined( '_EW_PROJECT_ID' ) ) 
+	define("_EW_PROJECT_ID", FALSE);
+
 /* this fixes double require by wordpress*/
 if (@function_exists("extrawatch_admin_menu")) {
   return;
@@ -45,6 +48,7 @@ if (@function_exists("extrawatch_admin_menu")) {
   add_action('admin_menu', 'extrawatch_admin_menu');
   add_action('wp_meta', 'extrawatch_frontend');
 
+  require_once(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "src" . DS. "class.extrawatch.log.php");
   require_once(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "src" . DS. "inc.extrawatch.env.php");
 
   require_once(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "src" . DS. "env". DS. "wordpress" . DS . "widget" . DS . "class.extrawatch.agent.widget.php");
