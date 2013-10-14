@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1215
+ * @revision 1217
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -49,9 +49,10 @@ class ExtraWatchProject
     }
 
 
-    function getDaysToTrialEnd() {
-        $query = sprintf("select timeOfCreation from global_extrawatch_project where `lastPayment` is NULL ");
+    function getDaysToTrialEnd($projectId) {
+        $query = sprintf("select timeOfCreation from global_extrawatch_project where `lastPayment` is NULL and id = '%d'", (int) $projectId);
         $timeOfCreation = $this->database->resultQuery($query);
+		echo("<!-- creation: ".date("d.m.Y", $timeOfCreation) . " -->");
         $actualTime = ExtraWatchDate::getUTCTimestamp();
         $daysSinceCreation = ($actualTime - $timeOfCreation) / 3600 / 24;
         $daysTillTrialEnd = ceil(self::TRIAL_DAYS - $daysSinceCreation);

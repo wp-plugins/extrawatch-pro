@@ -4,7 +4,7 @@ Donate link: http://www.extrawatch.com/
 Tags: analytics, statistics, stats, tracking, widget, heatmap, clicks, conversion tracking, counter, anti-spam, stats, visitors, downloads, download monitor, click map, tracking, maps, location, geolocation, statistics, spam, flags, goals, analytics, click, heat map, mouse click, tap, touch, tracker, tracking, usability
 Requires at least: 3.2.
 Tested up to: 3.5.1.
-Stable tag: 2.2.1215
+Stable tag: 2.2.1217
 License: GNU/GPLv2
 
 Optimize website and increase sales. Watch your visitors in real time, Click Heatmap, Conversion Tracking, Download monitor, Anti-spam, Email Reports
@@ -15,6 +15,10 @@ Analyze your visitor behaviour, optimize website and then increase conversions a
 
 
 =  PRO version features: =
+
+
+[youtube http://www.youtube.com/watch?v=OELeZHt8kbE&enablejsapi=1&autoplay=1&rel=0&modestbranding=1&showinfo=0&showsearch=0&vq=hd1080]
+
 
 ➨ Android mobile app
 - access your stats with one-click from your mobile screen
