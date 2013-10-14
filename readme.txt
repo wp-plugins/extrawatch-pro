@@ -17,7 +17,7 @@ Analyze your visitor behaviour, optimize website and then increase conversions a
 =  PRO version features: =
 
 
-[youtube http://www.youtube.com/watch?v=OELeZHt8kbE&enablejsapi=1&autoplay=1&rel=0&modestbranding=1&showinfo=0&showsearch=0&vq=hd1080]
+[youtube http://www.youtube.com/watch?v=OELeZHt8kbE]
 
 
 ➨ Android mobile app
