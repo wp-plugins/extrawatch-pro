@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1217
+ * @revision 1222
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -247,8 +247,7 @@ class ExtraWatchHelper
     function removeRepetitiveTitle($title)
     {
         if ($this->config->getCheckboxValue("EXTRAWATCH_HIDE_REPETITIVE_TITLE")) {
-            $config = new JConfig();
-            $title = str_replace($config->sitename, "", $title);
+            $title = str_replace($this->env->getTitle(), "", $title);
         }
         return $title;
     }

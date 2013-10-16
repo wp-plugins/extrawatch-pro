@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1217
+ * @revision 1222
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -519,7 +519,9 @@ class ExtraWatchStatHTML
       $extraWatchSEOHTML = new ExtraWatchSEOHTML($this->extraWatch);
       $day = $this->extraWatch->date->jwDateToday();
       $outputSEOReport = $extraWatchSEOHTML->renderSEOReport($day - 1, TRUE);
-      ExtraWatchHelper::sendEmail($this->extraWatch->env, "$email", _EW_EMAIL_SENDER, "ExtraWatch SEO report - ".$projectName." - $date", $outputSEOReport);
+	  if (@$outputSEOReport) {
+		ExtraWatchHelper::sendEmail($this->extraWatch->env, "$email", _EW_EMAIL_SENDER, "ExtraWatch SEO report - ".$projectName." - $date", $outputSEOReport);
+	  }
     }
 
     return $output;
@@ -1064,13 +1066,14 @@ class ExtraWatchStatHTML
   {
 
     $rows = $this->extraWatch->seo->retrieveTopUrisReferedByKeyphrase($day);
+	
+	if (!@$rows) {
+		return;
+	}
 
     $output = "<table width='700px' border=\"0\">";
     $output .= "<tr><td colspan=\"5\"></td></tr>";
 
-    if (!$rows) {
-      $output .= ("<br/><br/><i>" . ExtraWatchHelper::renderNoData() . "</i>");
-    } else {
       $output .= "<tr><th align=\"left\">" . _EW_STATS_KEYPHRASE . "</th><th>" . _EW_EMAIL_REPORTS_VALUE . "</th><th>perc.</th><th>" . _EW_EMAIL_REPORTS_1DAY_CHANGE . "</th><th>" . _EW_EMAIL_REPORTS_7DAY_CHANGE . "</th><th>" . _EW_EMAIL_REPORTS_28DAY_CHANGE . "</th></tr>";
       foreach ($rows as $row) {
         $totalIntValuesForDay = $this->extraWatch->stat->getCountByKeyAndDate(EW_DB_KEY_UNIQUE, $day);
@@ -1114,7 +1117,7 @@ class ExtraWatchStatHTML
           $output .= "</tr>";
         }
       }
-    }
+    
     $output .= "<tr><td>&nbsp;</td></tr><tr><td colspan=\"5\">";
     $output .= "</td></tr></table>";
     return $output;

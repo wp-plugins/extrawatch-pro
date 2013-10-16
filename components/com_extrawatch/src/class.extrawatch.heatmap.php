@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1217
+ * @revision 1222
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -214,18 +214,37 @@ class ExtraWatchHeatmap
     return $this->database->resultQuery($query);
   }
 
-  function getMostClickedHTMLElements($day = 0, $limit = 20) {
+  function getMostClickedHTMLElementsOnPages($day = 0, $limit = 100) {
 
       $dayFilter = "";
       if ($day) {
-          $dayFilter = sprintf(" WHERE day = '%d' ", (int) $day);
-      }
+          $dayFilter = sprintf(" and day = '%d' ", (int) $day);
+      } 
 
     $query = sprintf("select *,count(*) as `clickCount` from #__extrawatch_heatmap
     JOIN #__extrawatch_uri2title ON #__extrawatch_uri2title.id = #__extrawatch_heatmap.uri2titleId
 	LEFT JOIN #__extrawatch_goals ON #__extrawatch_heatmap.xpath = #__extrawatch_goals.clicked_element_xpath_condition
-    %s
+    WHERE 1=1  %s
+	and clicked_element_xpath_condition is not null
     GROUP BY xpath, uri2titleId
+    order by `clickCount` desc
+    limit %d
+    ", $dayFilter, (int) $limit);
+    return $this->database->objectListQuery($query);
+  }
+
+    function getMostClickedHTMLElements($day = 0, $limit = 100) {
+
+      $dayFilter = "";
+      if ($day) {
+          $dayFilter = sprintf(" and day = '%d' ", (int) $day);
+      } 
+
+    $query = sprintf("select *,count(*) as `clickCount`, null as uri, null as title from #__extrawatch_heatmap
+	LEFT JOIN #__extrawatch_goals ON #__extrawatch_heatmap.xpath = #__extrawatch_goals.clicked_element_xpath_condition
+    WHERE 1=1  %s
+	and clicked_element_xpath_condition is not null
+    GROUP BY xpath
     order by `clickCount` desc
     limit %d
     ", $dayFilter, (int) $limit);
@@ -256,6 +275,7 @@ LIMIT 1
         return $this->database->resultQuery($query);
     }
 
+	
 
 
     function getLatestHeatmapUris($limit = 0)
