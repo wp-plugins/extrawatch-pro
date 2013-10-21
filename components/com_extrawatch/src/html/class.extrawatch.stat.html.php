@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1222
+ * @revision 1225
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -853,11 +853,8 @@ class ExtraWatchStatHTML
   {
 
     $cssURL = $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/css/extrawatch.css";
-    $output = "<STYLE TYPE=\"text/css\" MEDIA=\"screen, projection\">
-        <!--
-        @import url(" . $cssURL . ");
-        -->
-        </STYLE>";
+
+	$output = $this->extraWatch->env->addStyleSheet($cssURL);
 
     $outputFirst = "";
     $outputSecond = "";
