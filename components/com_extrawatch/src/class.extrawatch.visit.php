@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1254
+ * @revision 1255
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -1094,7 +1094,13 @@ function insertSearchResultPage($uri, $phrase, $referer, $title)
     return $rows;
   }
 
-  /**
+
+    function getActiveUsersCount() {
+        $query = sprintf("SELECT count(id) as `count` from  #__extrawatch where inactive = 0");
+        return $this->database->resultQuery($query);
+    }
+
+    /**
    * visitor
    */
   function getJoinedURIRowById($id)
