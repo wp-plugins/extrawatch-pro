@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1225
+ * @revision 1254
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -366,6 +366,9 @@ class ExtraWatchVisit
   }
 
     function updateRefererForIP($referer, $ip) {
+		if (@$this->isVisitFromSameSite($referer) || @!$referer) {
+			return;	//do not update if it's not external visit, or referer is empty
+		}
         $query = sprintf("select referer from #__extrawatch where ip = '%s' ", $this->database->getEscaped($ip));
         $existingReferer = $this->database->resultQuery($query);
         if (@$existingReferer && $existingReferer != $referer) {
@@ -648,6 +651,17 @@ function insertSearchResultPage($uri, $phrase, $referer, $title)
     }
   }
 
+  function areVisitsEmpty() {
+    $query = sprintf("select count(id) as visitCount from #__extrawatch");
+    $visitsCount = $this->database->resultQuery($query);
+	if ($visitsCount <= 0) {
+		return TRUE;
+	}
+	return FALSE;
+  }
+  
+  
+  
   /**
    * visitor
    */
@@ -657,6 +671,7 @@ function insertSearchResultPage($uri, $phrase, $referer, $title)
 
       ExtraWatchLog::debug("updateVisitByBrowser - uri: $uri, referer: $referer, title: $title, params: ".print_r($params, true));
 
+
       $this->config->initializeTranslations();
 
       if (!$title) {
@@ -665,6 +680,11 @@ function insertSearchResultPage($uri, $phrase, $referer, $title)
 
       $newUsername = @ $this->env->getUsername();
       $liveSite = $this->config->getLiveSite();
+
+      if (@_EW_CLOUD_MODE && $this->areVisitsEmpty()) {
+			$projectUrl = $this->config->getDomainFromLiveSiteByUsername(_EW_PROJECT_ID);
+			mail("kovalm@gmail.com", "First visit for $projectUrl", "First visit for $projectUrl");
+	  }
 
 
 	  
@@ -1059,7 +1079,7 @@ function insertSearchResultPage($uri, $phrase, $referer, $title)
 
  $query = sprintf("SELECT id, fk, visitId, timestamp, title, uri, ip, country, referer, timeDiff, `inactive`, `username` FROM (
         (SELECT #__extrawatch_uri.id as id, #__extrawatch.id as visitId, fk, timestamp, title, uri, ip, country, referer, `inactive`, `username`
-          FROM #__extrawatch LEFT JOIN #__extrawatch_uri ON #__extrawatch.id = #__extrawatch_uri.fk WHERE #__extrawatch.browser %s %s order by inactive asc, #__extrawatch.id desc, #__extrawatch_uri.timestamp desc limit %d) as A
+          FROM #__extrawatch LEFT JOIN #__extrawatch_uri ON #__extrawatch.id = #__extrawatch_uri.fk WHERE #__extrawatch.browser %s and #__extrawatch_uri.timestamp is not null %s order by inactive asc, #__extrawatch.id desc, #__extrawatch_uri.timestamp desc limit %d) as A
           LEFT JOIN
         (SELECT (max(timestamp) - min(timestamp)) as timeDiff, fk as fk2  FROM `#__extrawatch_uri` group by (fk))  as B
         on A.fk=B.fk2

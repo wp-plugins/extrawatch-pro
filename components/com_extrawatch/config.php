@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1225
+ * @revision 1254
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -734,6 +734,9 @@ define('EXTRAWATCH_SOCIAL_MEDIA_REGEX',serialize(array(
     '/^(https?:\/\/)?(www\.)?mylife\.com?/' => "mylife",
     '/^(https?:\/\/)?(www\.)?multiply\.com?/' => "multiply",
     '/^(https?:\/\/)?(www\.)?cafemom\.com?/' => "cafemom",
+    '/^(https?:\/\/)?(www\.)?google.*/' => "google",
+    '/^(https?:\/\/)?(www\.)?bing.*/' => "bing",
+    '/^(https?:\/\/)?(www\.)?search.yahoo.*/' => "yahoo"
 
 )));
 define('_EW_EXTRAWATCH_IPINFODB_KEY','da8a7ff62f7467dd2d3b7faca6732f499efac7f6f7d444fb845076105a38a2cc');

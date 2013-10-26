@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1225
+ * @revision 1254
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -45,10 +45,14 @@ class com_extrawatchInstallerScript {
                 } catch (Exception $e) {
                     echo("Could not fix file permissions: ".$e);
                 }
-				
-				//die("script install file $action, $installer");
-				
 
+                ob_start();
+                ?>
+                <h2>Installation successful!</h2>
+                <?php
+                $html = ob_get_contents();
+                @ob_end_clean();
+                echo $html;
                 break;
         }
     }
@@ -90,6 +94,15 @@ class com_extrawatchInstallerScript {
         if (file_exists($path)) {
             require_once($path);
             uninstallExtraWatchMain();
+
+            ob_start();
+            ?>
+            <h2>Uninstall successful!</h2>
+            <?php
+            $html = ob_get_contents();
+            @ob_end_clean();
+            echo $html;
+
             return true;
         }
 

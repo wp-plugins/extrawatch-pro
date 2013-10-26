@@ -4,7 +4,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1225
+ * @revision 1254
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -21,8 +21,6 @@
     <script type='text/javascript'> var jax = jQuery.noConflict();
     jax(document).ready( function()	{jax('#ftestimonial').innerfade({ animationtype: 'fade', speed: 2000, timeout: 5000, type: 'sequence',containerheight:'200px' });} );
     </script>
-
-
     <!--[if lte IE 6]>
     <link href="http://www.extrawatch.com/templates/extra_watch/css/ieonly.css" rel="stylesheet" type="text/css" />
     <![endif]-->
@@ -44,7 +42,7 @@
 .header_lft strong sup{font-family: 'MyriadPro-Semibold'; font-size:20px; color:#252525;}
 .header_lft span{ font-family: 'Helvetica'; font-weight:normal; font-size:22px; color:#202020; float:left; margin-top:5px;}
 
-HTML {padding: 20px;}
+HTML {padding-left: 20px; padding-right: 20px;}
 
 table {
 border-collapse: separate;
@@ -56,6 +54,15 @@ border-color: gray;
 </head>
 
 <body>
+<?php 
+
+if (@$_GET['hideHeader']) {
+	@$_SESSION['hideHeader'] = 1;
+}
+$hideHeader = @$_SESSION['hideHeader'];
+
+if (!$hideHeader) { ?>
+
 <table width='100%'>
 <tr>
 <td>
@@ -107,6 +114,7 @@ Special start-up promo: Only 1,99&nbsp;&euro;/month</h4>
 </td>
 </tr>
 </table>
+<?php } ?>
 
 <!--
 <br/><br/>
@@ -117,3 +125,17 @@ Notice: Due to a maintenance, visits from 09.09.2013 and 10.09.2013 were not pro
 </div>
 -->          
 <br/>
+<!-- Begin Inspectlet Embed Code -->
+<script type="text/javascript" id="inspectletjs">
+	window.__insp = window.__insp || [];
+	__insp.push(['wid', 503133643]);
+	(function() {
+		function __ldinsp(){var insp = document.createElement('script'); insp.type = 'text/javascript'; insp.async = true; insp.id = "inspsync"; insp.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://www.inspectlet.com/inspectlet.js'; var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(insp, x); }
+		if (window.attachEvent){
+			window.attachEvent('onload', __ldinsp);
+		}else{
+			window.addEventListener('load', __ldinsp, false);
+		}
+	})();
+</script>
+<!-- End Inspectlet Embed Code -->

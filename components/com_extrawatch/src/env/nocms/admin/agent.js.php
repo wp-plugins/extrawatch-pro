@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1225
+ * @revision 1254
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -39,7 +39,7 @@ $referringQuery = @$referringURLParsed['query'];
 
 $output = ("var extrawatch_projectId='".$projectId."';\n");
 $output .= ("document.write(\"");
-$output .= ("<img src='"._EW_SCRIPT_HOST._EW_SCRIPT_HOST_DIR._EW_EXTRAWATCH_DIR.$env->renderAjaxLink('ajax','img')."&rand=" . (rand() % 100000) . "&amp;env=ExtraWatchNoCMSEnv&amp;ref=\"+encodeURIComponent(document.referrer)+\"&amp;title=\"+encodeURIComponent(document.title)+\"&amp;uri=\"+encodeURIComponent(window.location.pathname)+\"&amp;params=\"+encodeURIComponent(location.search)+\"&amp;projectId=\"+extrawatch_projectId+\"' border='0' alt='$title' title='$title' style='width:0px;height:0px'/>");
+$output .= ("<img src='"._EW_SCRIPT_HOST._EW_SCRIPT_HOST_DIR._EW_EXTRAWATCH_DIR.$env->renderAjaxLink('ajax','img')."&rand=" . (rand() % 100000) . "&amp;env=ExtraWatchNoCMSEnv&amp;ref=\"+encodeURIComponent(document.referrer)+\"&amp;title=\"+encodeURIComponent(document.title)+\"&amp;uri=\"+encodeURIComponent(window.location.pathname)+\"&amp;params=\"+encodeURIComponent(location.search)+\"&amp;projectId=\"+extrawatch_projectId+\"' border='0' alt='' style='width:0px;height:0px'/>");
 $output .= ("\");\n");
 
 $output .= ("document.write(\"");

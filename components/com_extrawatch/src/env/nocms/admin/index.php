@@ -4,7 +4,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1225
+ * @revision 1254
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -102,7 +102,7 @@ if (@$authenticated) {
 
     if (!$ewInitialized) {
         $extraWatchProject->setTimeOfProjectCreation($projectId);
-        mail("foo@codegravity.com", "project $projectId initialized", "project $projectId initialized");
+        mail("kovalm@gmail.com", "project $projectId initialized", "project $projectId initialized");
         $extraWatch->config->saveConfigValue("EXTRAWATCH_EMAIL_REPORTS_ENABLED", "On");
         $extraWatch->config->saveConfigValue("EXTRAWATCH_EMAIL_REPORTS_ADDRESS", $username);
         $extraWatch->config->saveConfigValue("EXTRAWATCH_EMAIL_SEO_REPORTS_ENABLED", "On");

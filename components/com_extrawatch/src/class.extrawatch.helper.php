@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1225
+ * @revision 1254
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -498,22 +498,18 @@ function renderHTMLCodeSnippet($projectId) {
     if (_EW_CLOUD_MODE) {
         $output = "";
         $output .= ("<script type=\"text/javascript\">\n");
-        $output .= ("<!--\n");
         $output .= ("var extrawatch_projectId='".$projectId."';\n");
         $output .= ("document.write(\"");
-        $output .= ("<script src='"._EW_SCRIPT_HOST._EW_SCRIPT_HOST_DIR."agent.js.php?projectId=\"+extrawatch_projectId+\"&env=ExtraWatchNoCMSEnv' type='text/javascript'><\/script>\");\n");
+        $output .= ("<script src='"._EW_SCRIPT_HOST._EW_SCRIPT_HOST_DIR."agent.js.php\"+\n\"?projectId=\"+extrawatch_projectId+\"&env=ExtraWatchNoCMSEnv' type='text/javascript'><\/script>\");\n");
         $output .= ("");
-        $output .= ("-->\n");
         $output .= ("</script>\n");
     } else {
         $liveSite = $this->config->getLiveSiteWithSuffix();
         $output = "";
         $output .= ("<script type=\"text/javascript\">\n");
-        $output .= ("<!--\n");
         $output .= ("document.write(\"");
         $output .= ("<script src='".$liveSite.$this->env->renderAjaxLink('js','agent.js')."&env=".get_class($this->env)."' type='text/javascript'><\/script>\");\n");
         $output .= ("");
-        $output .= ("-->\n");
         $output .= ("</script>\n");
 
     }

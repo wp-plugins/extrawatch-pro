@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1225
+ * @revision 1254
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -57,7 +57,7 @@ class ExtraWatchVisitHistory extends ExtraWatchVisit
     $actualPage = (int)ExtraWatchHelper::requestGet('pageNum');
     $actualRecord = $actualPage * $count;
     $limit = $actualRecord . "," . $count;
-    $query = sprintf("SELECT * FROM #__extrawatch_history LEFT JOIN #__extrawatch_uri_history ON #__extrawatch_history.id = #__extrawatch_uri_history.fk WHERE #__extrawatch_history.browser %s order by #__extrawatch_history.id desc, #__extrawatch_uri_history.timestamp desc limit %s", $this->database->getEscaped($browserCondition), $this->database->getEscaped($limit));
+    $query = sprintf("SELECT *, #__extrawatch_history.id as visitId FROM #__extrawatch_history LEFT JOIN #__extrawatch_uri_history ON #__extrawatch_history.id = #__extrawatch_uri_history.fk WHERE #__extrawatch_history.browser %s order by #__extrawatch_history.id desc, #__extrawatch_uri_history.timestamp desc limit %s", $this->database->getEscaped($browserCondition), $this->database->getEscaped($limit));
     $rows = $this->database->objectListQuery($query);
     return $rows;
   }
