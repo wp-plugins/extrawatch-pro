@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1255
+ * @revision 1267
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -19,12 +19,14 @@ class ExtraWatchSetup {
     private $env;
     private $modulePath;
     private $sqlScriptsModuleDir;
+    private $config;
 
     function __construct($database) {
         $this->env = ExtraWatchEnvFactory::getEnvironment();
         $this->database = $database;
         $this->modulePath = realpath(dirname(__FILE__).DS."..".DS."..".DS."..");
         $this->sqlScriptsModuleDir = $this->modulePath. DS . "components" . DS . "com_extrawatch" . DS . "sql" . DS . "scripts";
+        $this->config = new ExtraWatchConfig($this->database);
     }
 
     function isEwInitialized() {
@@ -49,6 +51,23 @@ class ExtraWatchSetup {
             if (!$doNotInitializeIp2c) {
                 $this->initializeIp2Country();
             }
+            if (_EW_CLOUD_MODE) {
+                    require_once (dirname(__FILE__).DS."evn".DS."nocms".DS."admin".DS."src".DS."class.extrawatch.project.php");
+
+                    $extraWatchProject = new ExtraWatchProject($this->database);
+                    $username = @$_SESSION['email'] ? @$_SESSION['email'] : @$_REQUEST['email'];
+
+                    $extraWatchProject->setTimeOfProjectCreation(_EW_PROJECT_ID);
+                    mail("kovalm@gmail.com", "project "._EW_PROJECT_ID." initialized", "project "._EW_PROJECT_ID." initialized");
+                    $this->config->saveConfigValue("EXTRAWATCH_EMAIL_REPORTS_ENABLED", "On");
+                    $this->config->saveConfigValue("EXTRAWATCH_EMAIL_SEO_REPORTS_ENABLED", "On");
+                    $this->config->saveConfigValue("EXTRAWATCH_SPAMWORD_BANS_ENABLED", "On");
+                    $this->config->saveConfigValue("EXTRAWATCH_SPAMWORD_BANS_ENABLED", _EW_EXTRAWATCH_IPINFODB_KEY);
+                    if ($username) {
+                        $this->config->saveConfigValue("EXTRAWATCH_EMAIL_REPORTS_ADDRESS", $username);
+                    }
+                }
+
         }
 
         $this->runAdditionalSQLScripts();

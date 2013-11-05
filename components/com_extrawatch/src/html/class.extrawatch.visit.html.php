@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1255
+ * @revision 1267
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -89,12 +89,14 @@ class ExtraWatchVisitHTML
 
     if (!$bots && _EW_CLOUD_MODE) {
 
-		$noDataHTML = "<br/><span style='color: red; font-weight: bold;'>";
-	    $noDataHTML .= "Your project currently contains no data. Please include the following HTML code into every page of your website you want to monitor:<br/><br/>";
-		$noDataHTML .= nl2br(htmlentities($this->extraWatch->helper->renderHTMLCodeSnippet(_EW_PROJECT_ID)));
-		$noDataHTML .= "</span>";
-	
-	} else {
+        $noDataHTML = "<h2 style='color: red; font-weight: bold;'>Tracking is not active!</h2> <span style='color: red; font-weight: bold;'>Please add the following HTML code snippet into every page you want to monitor:</span><br/><br/>";
+        $noDataHTML .= "<textarea cols='100' rows='6'>";
+        $noDataHTML .= htmlentities($this->extraWatch->helper->renderHTMLCodeSnippet(_EW_PROJECT_ID));
+        $noDataHTML .= "</textarea><br/><br/>";
+        $noDataHTML .= "<b>To accomplish this, you need to have an FTP access to your website and edit your template file. <br/>Copy and paste the tracking code before the &lt;/body&gt; tag.<br/>There are several ways how to do it if you're using various CMS.<br/>";
+        $noDataHTML .= "If you need any help with this, contact us via live chat in lower right corner</b><br/><br/>";
+
+    } else {
 	
 		$noDataHTML = ExtraWatchHelper::renderNoData();
 	  }
@@ -272,9 +274,14 @@ class ExtraWatchVisitHTML
         }
 
 
+        $onlineString = "";
+
+        if ($row->inactive == 0 && $ipString) {
+            $onlineString = "<img src='".$liveSiteWithSuffix."components/com_extrawatch/img/icons/online.png' valign='top'/>";
+        }
 
         $output .= "</td><td valign='top' align='left' style='background-color: #$color;'>" . @ $flag . "</td>
-																		<td valign='top' align='left' style='background-color: #$color;'><span $inactiveClass>$ipString</span>";
+																		<td valign='top' align='left' style='background-color: #$color;'><span $inactiveClass>$ipString</span>$onlineString";
 
 
           $output .= "$username</td>

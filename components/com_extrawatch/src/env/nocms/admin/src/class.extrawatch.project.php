@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1255
+ * @revision 1267
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -44,7 +44,7 @@ class ExtraWatchProject
     }
 
     function setTimeOfProjectCreation($projectId) {
-        $query = sprintf("update global_extrawatch_project set timeOfCreation = '%d' where id = '%d'", time(), $projectId);
+        $query = sprintf("update global_extrawatch_project set timeOfCreation = '%d' where timeOfCreation is null and id = '%d' ", time(), $projectId);
         $this->database->executeQuery($query);
     }
 

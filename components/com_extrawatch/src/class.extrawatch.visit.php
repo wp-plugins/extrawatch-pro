@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1255
+ * @revision 1267
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -270,10 +270,14 @@ class ExtraWatchVisit
    */
   public function deleteObsoleteVisitRows()
   {
+    $query = sprintf("delete from #__extrawatch_uri where fk is NULL");
+    @ $this->database->resultQuery($query);
+
     $numvisitors = $this->config->getConfigValue('EXTRAWATCH_LIMIT_VISITORS');
     $numbots = $this->config->getConfigValue('EXTRAWATCH_LIMIT_BOTS');
 
-    $query = sprintf("select count(id) as `count`  from #__extrawatch where browser IS NOT NULL");
+
+      $query = sprintf("select count(id) as `count`  from #__extrawatch where browser IS NOT NULL");
     $count = @ $this->database->resultQuery($query);
 
     if ($count < $numvisitors) {

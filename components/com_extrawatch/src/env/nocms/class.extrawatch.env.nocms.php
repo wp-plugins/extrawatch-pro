@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1255
+ * @revision 1267
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -105,7 +105,10 @@ class ExtraWatchNoCMSEnv implements ExtraWatchEnv
 
   function getTimezoneOffset()
   {
-    return ExtraWatchHelper::getTimezoneOffsetByTimezoneName(@date_default_timezone_get());
+    $database = $this->getDatabase(_EW_PROJECT_ID);
+    $query = sprintf("select timezone from global_extrawatch_project where id = '%d'", (int) _EW_PROJECT_ID);
+    $timezoneOffset = $database->resultQuery($query);
+    return (int) $timezoneOffset;
   }
 
   function getAllowedDirsToCheckForSize()
