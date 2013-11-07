@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1267
+ * @revision 1270
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -238,8 +238,8 @@ if (_EW_CLOUD_MODE) {
                 if (list[i].onclick != null) {
 			    var extraWatch_originalOnClickFunction = list[i].onclick;
 			    list[i].onclick = function(evt) {
-					extraWatch_originalOnClickFunction();
 	    			extraWatch_click(evt);
+                    extraWatch_originalOnClickFunction();
 		    	}
 			}
             } catch (e) {

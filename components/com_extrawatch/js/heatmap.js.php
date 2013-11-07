@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1267
+ * @revision 1270
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -13,7 +13,7 @@
 defined('_JEXEC') or die('Restricted access');
 
 if (_EW_CLOUD_MODE) {
-    $liveSite = _EW_SCRIPT_HOST._EW_SCRIPT_HOST_DIR._EW_EXTRAWATCH_DIR;
+    $liveSite = _EW_SCRIPT_HOST._EW_SCRIPT_HOST_DIR;
 } else {
     $liveSite = $extraWatch->config->getLiveSite();
 }
