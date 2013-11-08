@@ -4,7 +4,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1270
+ * @revision 1290
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -12,30 +12,43 @@
 defined('_JEXEC') or die('Restricted access');
 
 
-$currdate = date("Y-m-d");
-$preday = date("Y-m-d", (strtotime($currdate)-(6*60*60*24)));
+const EW_DAYS_IN_WEEK = 7;
+define('EW_GRAPH_ITEMS_NUM', EW_DAYS_IN_WEEK *4);
+
+$currentWeekStartDate = date("Y-m-d", strtotime("next sunday"));
+$graphDateStart = date("Y-m-d", (strtotime($currentWeekStartDate)-(6* EW_DAYS_IN_WEEK *60*60*24*4)));
 
 $chartquery = sprintf("select * from #__extrawatch_dm_paths");
 $chartar = $extraWatch->database->objectListQuery($chartquery);
 
 $fname="";
 if (@$chartar)
-    foreach($chartar as $cht)
-    {
+    foreach($chartar as $cht) {
         $fname = $fname."'".$cht->dname."',";
-
     }
+
 $dailydata="";
-for($da=0;$da<7;$da++)
-{
-    $pday = date("Y-m-d", (strtotime($preday)+($da*60*60*24)));
-    $dpday = date("j M Y", strtotime($pday));
-    $dailydata.='["'.$dpday.'",';
+for($i=0;$i<EW_GRAPH_ITEMS_NUM;$i++) {
+    $graphDayStartISOFormat = date("Y-m-d", (strtotime($graphDateStart)+(($i-1)* EW_DAYS_IN_WEEK *60*60*24)));
+    $graphDayStartHuman = date("j M Y", strtotime($graphDayStartISOFormat));
+
+        $graphDateEnd = strtotime($graphDateStart)+(($i)* EW_DAYS_IN_WEEK *60*60*24);
+
+        if ($graphDateEnd > time()) {
+            $graphDateEnd = time();
+            $i = EW_GRAPH_ITEMS_NUM;
+        }
+
+    $graphDayEndISOFormat = date("Y-m-d", ($graphDateEnd));
+    $graphDayEndHuman = date("j M Y", strtotime($graphDayEndISOFormat));
+
+    $dailydata.='["'.$graphDayEndHuman.'",';
+
     if (@$chartar)
         foreach($chartar as $cht1)
         {
             $fid = $cht1->did;
-            $filepathquery_tot = sprintf("SELECT COUNT(*) FROM #__extrawatch_dm_counter where did='%d' and ddate='%s'", (int) $fid, mysql_escape_string($pday));
+            $filepathquery_tot = sprintf("SELECT COUNT(*) FROM #__extrawatch_dm_counter where did='%d' and ddate > '%s' and ddate <= '%s'", (int) $fid, mysql_escape_string($graphDayStartISOFormat), mysql_escape_string($graphDayEndISOFormat));
             $count_tot_dt  = $extraWatch->database->resultQuery($filepathquery_tot);
 
             $dailydata = $dailydata.$count_tot_dt.",";

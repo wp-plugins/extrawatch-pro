@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1270
+ * @revision 1290
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -258,6 +258,7 @@ function needVisitsRefresh() {
                 if (last != parsedNumber) {
                     last = parsedNumber;
                     fade("id" + last);
+                    ewPlayAudio();
                 }
             }
             /*       visitsTimeoutId = window.setTimeout("extrawatch_sendVisitsReq()",<?php echo($extraWatch->config->getConfigValue('EXTRAWATCH_UPDATE_TIME_VISITS')); ?>); */
@@ -608,6 +609,7 @@ function needClickRefresh() {
                 document.getElementById("heatmapClick").innerHTML = http6.responseText;
 
                 fade("heatmapTableRowId_" + lastClickId);
+                ewPlayAudio();
             }
             traffic += http6.responseText.length;
 
@@ -692,6 +694,7 @@ function needElementClickRefresh() {
                 document.getElementById("heatmapElementClick").innerHTML = http8.responseText;
 
                 fade("heatmapTableRowId_" + lastElementClickId);
+                ewPlayAudio();
             }
             traffic += http8.responseText.length;
 
@@ -700,4 +703,10 @@ function needElementClickRefresh() {
     } catch (err) {
         alert(err);
     }
+}
+
+function ewPlayAudio() {
+    var audioElement = document.getElementById('ewVisitSound');
+    audioElement.muted = false;
+    audioElement.play();
 }

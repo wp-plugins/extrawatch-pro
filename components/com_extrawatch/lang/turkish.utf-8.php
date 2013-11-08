@@ -604,3 +604,5 @@ DEFINE('_EW_DESC_GOALS_SEND_EMAIL','You will get an email everytime the goal has
 DEFINE('_EW_GOAL_EMAIL_SUBJECT', "Goal '%s' was achieved, count: %d");
 DEFINE('_EW_VISITS_GOAL_REACHED', " Goal '%s' was reached");
 
+DEFINE('_EW_DOWNLOADS_TOTAL_WEEKLY', "Total weekly");
+DEFINE('_EW_ACTIVE', "active");

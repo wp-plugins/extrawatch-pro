@@ -1,3 +1,1 @@
-
-DEFINE('_EW_VISITS_GOAL_REACHED', " Goal '%s' was reached");
-
+DEFINE('_EW_ACTIVE', "active");

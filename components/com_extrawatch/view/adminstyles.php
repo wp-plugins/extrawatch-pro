@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1270
+ * @revision 1290
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -151,8 +151,15 @@ table.tablesorter tbody td {
 	vertical-align: top;
 }
 
-table.tablesorter  tr:nth-child(even) {background: #f3f3f3}
-table.tablesorter  tr:nth-child(odd) {background: #FFF}
+table.tablesorter  tr:nth-child(even) {
+    background: #f3f3f3
+}
+table.tablesorter  tr:nth-child(odd) {
+    background: #FFF
+}
+table.tablesorter  tr:hover {
+      background: #FFFBDF !important;
+}
 
 table.tablesorter tbody tr.odd td {
 	background-color:#F0F0F6;
@@ -186,9 +193,4 @@ A .extraWatchInactiveVisit, .extraWatchInactiveVisit {
 	font-weight: normal;
 }
 
-table.tablesorter tbody tr:hover { 
-    background-color: #FFFFAF0 !important;
-    color: #000 !important; 
-} 
- 
 </style>

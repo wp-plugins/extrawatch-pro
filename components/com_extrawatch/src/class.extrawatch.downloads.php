@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1270
+ * @revision 1290
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -525,7 +525,7 @@ class ExtraWatchDownloads
     }
 
     function getAllFilePaths() {
-        $filepathquery = sprintf("SELECT * FROM #__extrawatch_dm_paths");
+        $filepathquery = sprintf("SELECT * FROM #__extrawatch_dm_paths where dname is not NULL and dname != ''");
         return $this->database->objectListQuery($filepathquery);
     }
 

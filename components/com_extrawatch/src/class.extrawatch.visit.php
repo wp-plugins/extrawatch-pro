@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1270
+ * @revision 1290
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -152,17 +152,14 @@ class ExtraWatchVisit
   function deleteOldVisits()
   {
 
+    $this->deleteObsoleteVisitRows();
     $this->deleteOldHeatmapEntries();
     $this->deleteOldVisitsAndKeepMax();
-    //$this->deleteOldStats();
 
+    //$this->deleteOldStats();
 
     $maxRows = $this->config->getConfigValue('EXTRAWATCH_STATS_MAX_ROWS');
     $today = $this->date->jwDateToday();
-
-
-
-
 
     for ($i = 0; $i < 20; $i++) {
       /** delete records from previous day, which are not in top 20 (or value in maxRows */
@@ -261,7 +258,6 @@ class ExtraWatchVisit
     $this->database->executeQuery($query);
 
 
-    $this->deleteObsoleteVisitRows();
 
   }
 
@@ -270,6 +266,7 @@ class ExtraWatchVisit
    */
   public function deleteObsoleteVisitRows()
   {
+	ExtraWatchLog::debug("Deleting obsolete");
     $query = sprintf("delete from #__extrawatch_uri where fk is NULL");
     @ $this->database->resultQuery($query);
 
@@ -281,19 +278,23 @@ class ExtraWatchVisit
     $count = @ $this->database->resultQuery($query);
 
     if ($count < $numvisitors) {
+      ExtraWatchLog::debug("Deleting visits: not deleting anything");
       return;
     }
 
-      /*
       $query = sprintf("select max(id) as maxId from #__extrawatch");
       $maxId = @ $this->database->resultQuery($query);
 
-      $query = sprintf("delete from #__extrawatch where id < %d ", ($maxId - ($numvisitors + $numbots)));
+      $maxIdRows = ($maxId - ($numvisitors + $numbots));
+      ExtraWatchLog::debug("Deleting all rows here id < $maxIdRows");
+
+
+      $query = sprintf("delete from #__extrawatch_uri where fk < %d ", $maxIdRows);
       $this->database->executeQuery($query);
 
-      $query = sprintf("delete from #__extrawatch_uri where fk < %d ", ($maxId - ($numvisitors + $numbots)));
+      $query = sprintf("delete from #__extrawatch where id < %d ", $maxIdRows);
       $this->database->executeQuery($query);
-      */
+
   }
 
   function sendNightlyEmails()
@@ -782,9 +783,7 @@ function insertSearchResultPage($uri, $phrase, $referer, $title)
 
       if ($this->date->getUTCTimestamp() % 10 == 0) {
           $this->deleteOldVisits();
-          
           $this->seo->cleanUnimportantKeyphrases();
-          
       }
 
       $time = $this->date->getUTCTimestamp();

@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1270
+ * @revision 1290
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -47,7 +47,7 @@ class ExtraWatchFlowHTML
 
 
     /** presentation */
-  function renderEdgeTableRow($flowId, $tableRowStyle)
+  function renderEdgeTableRow($flowId)
   {
     $offset = 1 / 4;
     $rows = $this->flow->getFlowById($flowId);
@@ -71,23 +71,19 @@ class ExtraWatchFlowHTML
 
     $output .= sprintf("<tr>
         <td style='background-color: " . "%s" . "'></td>
-        <th class='%s'>%.2f%%</th>
-        <td class='%s' title='%s'>%s</td>
-        <td class='%s' title='%s'>%s</td>
-        <th class='%s'>%d</th>
-        <th class='%s'>%d</th>
+        <th>%.2f%%</th>
+        <td title='%s'>%s</td>
+        <td title='%s'>%s</td>
+        <th>%d</th>
+        <th>%d</th>
     </tr>", $color,
-      $tableRowStyle,
       (($ratio) * 100),
-      $tableRowStyle,
       ExtraWatchHelper::truncate($fromUri, self::TRUNCATE_LEN),
       ExtraWatchHelper::truncate($fromTitle, self::TRUNCATE_LEN),
-      $tableRowStyle,
       ExtraWatchHelper::truncate($toUri, self::TRUNCATE_LEN),
       ExtraWatchHelper::truncate($toTitle, self::TRUNCATE_LEN),
-      $tableRowStyle,
       $rows->count,
-      $tableRowStyle, $sum);
+      $sum);
 
     return $output;
   }
@@ -219,12 +215,12 @@ class ExtraWatchFlowHTML
     $output = "<table border='0' width='100%' class='tablesorter'>
 		<thead>
 		<tr>
-			<th class='tableRow0'>Color</th>
-			<th class='tableRow0'>Percentage</th>
-			<th class='tableRow0'>From</th>
-			<th class='tableRow0'>To</th>
-			<th class='tableRow0'>Count</th>
-			<th class='tableRow0'>Sum</th>
+			<th>Color</th>
+			<th>Percentage</th>
+			<th>From</th>
+			<th>To</th>
+			<th>Count</th>
+			<th>Sum</th>
 		</tr>
 		</thead>
 		<tbody>
@@ -232,8 +228,7 @@ class ExtraWatchFlowHTML
 
     $i = 1;
     foreach ($edgeArray as $key => $value) {
-      $tableRowStyle = "tableRow" . (int)($i % 2);
-      $output .= $this->renderEdgeTableRow($value, $tableRowStyle);
+      $output .= $this->renderEdgeTableRow($value);
       $i++;
     }
     if (!$edgeArray) {

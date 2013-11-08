@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1270
+ * @revision 1290
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -65,15 +65,10 @@ defined('_JEXEC') or die('Restricted access'); ?>
     $rows = $extraWatch->goal->getGoals();        //TODO change to style
 
     $i = 0;
+    $style="";
     if ($rows)
-        foreach ($rows as $row) {
-            $i++;
-            if ($i % 2)
-                $color = "#f5f5f5";
-            else
-                $color = "#f0f0f0";
-            $style = "background-color: $color;";
-            ?>
+        foreach ($rows as $row) {?>
+
         <tr>
             <?php echo $extraWatchGoalHTML->renderCell($style, @$row->id);?>
             <?php echo $extraWatchGoalHTML->renderCell($style, @$row->name, 1);?>

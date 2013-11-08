@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1270
+ * @revision 1290
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -166,7 +166,7 @@ function initializeJoomla()
         if (version_compare(JVERSION,"1.6","<")) {
             require_once (JPATH_BASE2 . DS . 'libraries' . DS . 'joomla' . DS . 'application' . DS . 'module' . DS . 'helper.php');
         }
-        $mainframe = & JFactory :: getApplication('site');
+        $mainframe = JFactory :: getApplication('site');
 
         if (version_compare(JVERSION,"2.5","<")) { //if it's not Joomla 2.5
             $mainframe->initialise();
