@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1290
+ * @revision 1292
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -1063,7 +1063,7 @@ function insertSearchResultPage($uri, $phrase, $referer, $title)
   /**
    * visitor
    */
-  function getJoinedURIRows($bots, $ipFilter = FALSE)
+  function getJoinedURIRows($bots, $inactive, $ipFilter = FALSE)
   {
 
     if ($bots) {
@@ -1080,14 +1080,14 @@ function insertSearchResultPage($uri, $phrase, $referer, $title)
           $filterOnlyIPCondition = sprintf(" and #__extrawatch.`ip` = '%s'", $this->database->getEscaped($ipFilter));
       }
 
- $query = sprintf("SELECT id, fk, visitId, timestamp, title, uri, ip, country, referer, timeDiff, `inactive`, `username` FROM (
+    $query = sprintf("SELECT id, fk, visitId, timestamp, title, uri, ip, country, referer, timeDiff, `inactive`, `username` FROM (
         (SELECT #__extrawatch_uri.id as id, #__extrawatch.id as visitId, fk, timestamp, title, uri, ip, country, referer, `inactive`, `username`
-          FROM #__extrawatch LEFT JOIN #__extrawatch_uri ON #__extrawatch.id = #__extrawatch_uri.fk WHERE #__extrawatch.browser %s and #__extrawatch_uri.timestamp is not null %s order by inactive asc, #__extrawatch.id desc, #__extrawatch_uri.timestamp desc limit %d) as A
+          FROM #__extrawatch LEFT JOIN #__extrawatch_uri ON #__extrawatch.id = #__extrawatch_uri.fk WHERE #__extrawatch.inactive = %d and #__extrawatch.browser %s and #__extrawatch_uri.timestamp is not null %s order by inactive asc, #__extrawatch.id desc, #__extrawatch_uri.timestamp desc limit %d) as A
           LEFT JOIN
         (SELECT (max(timestamp) - min(timestamp)) as timeDiff, fk as fk2  FROM `#__extrawatch_uri` group by (fk))  as B
         on A.fk=B.fk2
         )
-    ", $this->database->getEscaped($browserCondition), $filterOnlyIPCondition, (int) $limit);
+    ", (int) $inactive, $this->database->getEscaped($browserCondition), $filterOnlyIPCondition, (int) $limit);
 
 /*    $query = sprintf("SELECT * FROM #__extrawatch
     JOIN #__extrawatch_uri ON #__extrawatch.id = #__extrawatch_uri.fk
@@ -1096,6 +1096,8 @@ function insertSearchResultPage($uri, $phrase, $referer, $title)
     $rows = $this->database->objectListQuery($query);
     return $rows;
   }
+
+
 
 
     function getActiveUsersCount() {
@@ -1432,6 +1434,18 @@ function insertSearchResultPage($uri, $phrase, $referer, $title)
         $row = @ $rows[0];
         $id = @ $row->id;
         return $id;
+    }
+
+
+    function getTotalUriCount($inactive) {
+        $query = sprintf("
+        SELECT count(#__extrawatch_uri.fk) as uriCount
+        FROM #__extrawatch
+        LEFT JOIN #__extrawatch_uri ON #__extrawatch.id = #__extrawatch_uri.fk
+        WHERE #__extrawatch.inactive = %d and #__extrawatch_uri.timestamp is not null order by inactive asc, #__extrawatch.id desc, #__extrawatch_uri.timestamp desc
+    ", (int) $inactive);
+        return $this->database->resultQuery($query);
+
     }
 
 }

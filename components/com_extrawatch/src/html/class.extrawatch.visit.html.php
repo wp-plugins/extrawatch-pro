@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1290
+ * @revision 1292
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -27,9 +27,9 @@ class ExtraWatchVisitHTML
     $this->heatmapHTML = new ExtraWatchHeatmapHtml($this->extraWatch->database);
   }
 
-  function getJoinedURIRows($bots, $ipFilter)
+  function getJoinedURIRows($bots, $inactive, $ipFilter)
   {
-    return $this->extraWatch->visit->getJoinedURIRows($bots, $ipFilter);
+    return $this->extraWatch->visit->getJoinedURIRows($bots, $inactive, $ipFilter);
   }
 
   function renderGetVars($id)
@@ -76,10 +76,10 @@ class ExtraWatchVisitHTML
   }
 
   /* visits */
-  function renderTable($bots = FALSE, $ipFilter = FALSE, $renderAsEmail = FALSE)
+  function renderTable($bots = FALSE, $inactive, $ipFilter = FALSE, $renderAsEmail = FALSE)
   {
     $output = "";
-    $rows = $this->getJoinedURIRows($bots, $ipFilter);
+    $rows = $this->getJoinedURIRows($bots, $inactive, $ipFilter);
     $agentNotPublishedMessage = $this->extraWatch->env->getAgentNotPublishedMsg($this->extraWatch->database);
 
     if ($bots == FALSE && ($agentNotPublishedMessage != FALSE) && sizeof($rows) == 0) {
@@ -443,13 +443,35 @@ class ExtraWatchVisitHTML
 
   }
 
+
+  function getVisitorsCached($inactive) {
+
+      $activeString = "ACTIVE";
+      if ($inactive) {
+          $activeString = "INACTIVE";
+      }
+
+      $uriCount = $this->extraWatch->visit->getTotalUriCount($inactive);
+      $countCached = $this->extraWatch->cache->getCachedItem("URI_COUNT_$activeString", FALSE);
+      if ($countCached != $uriCount) {
+          $visitorsOutput = $this->renderTable(FALSE, $inactive);
+          $this->extraWatch->cache->storeCachedItem("VISITORS_CONTENT_$activeString", $visitorsOutput);
+          $this->extraWatch->cache->storeCachedItem("URI_COUNT_$activeString", $uriCount);
+      } else {
+          $visitorsOutput = stripslashes($this->extraWatch->cache->getCachedItem("VISITORS_CONTENT_$activeString", FALSE));
+      }
+    return $visitorsOutput;
+  }
+
   /* visits */
   function renderVisitors()
   {
-    //$rows = $this->extraWatch->visit->getVisitors();
     $this->lastDate = "";
-    $output = $this->renderTable(FALSE);
-    return $output;
+
+    $activeVisitorsOutput = $this->getVisitorsCached(FALSE);
+    $inactiveVisitorsOutput = $this->getVisitorsCached(TRUE);
+
+    return $activeVisitorsOutput.$inactiveVisitorsOutput;
   }
 
   /* visits */
@@ -458,7 +480,7 @@ class ExtraWatchVisitHTML
 
     //$rows = $this->extraWatch->visit->getBots();
     $this->lastDate = "";
-    $output = $this->renderTable(TRUE);
+    $output = $this->renderTable(TRUE, 0);
 
     return $output;
   }
