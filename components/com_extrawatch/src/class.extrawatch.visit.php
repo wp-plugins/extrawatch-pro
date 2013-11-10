@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1292
+ * @revision 1310
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -688,7 +688,7 @@ function insertSearchResultPage($uri, $phrase, $referer, $title)
 
       if (@_EW_CLOUD_MODE && $this->areVisitsEmpty()) {
 			$projectUrl = $this->config->getDomainFromLiveSiteByUsername(_EW_PROJECT_ID);
-			mail("kovalm@gmail.com", "First visit for $projectUrl", "First visit for $projectUrl");
+			mail(_EW_CLOUD_NOTIFY_EMAIL, "First visit for $projectUrl", "First visit for $projectUrl");
 	  }
 
 
@@ -1422,6 +1422,7 @@ function insertSearchResultPage($uri, $phrase, $referer, $title)
      */
     function makeVisitorActive($ip)
     {
+		ExtraWatchLog::debug("Make visitor active: $ip");
         $query = sprintf("update #__extrawatch set inactive = 0 where ip = '%s'", $this->database->getEscaped($ip));
         $this->database->executeQuery($query);
     }

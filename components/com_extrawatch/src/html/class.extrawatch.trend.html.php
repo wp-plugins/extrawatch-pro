@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1292
+ * @revision 1310
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -239,7 +239,7 @@ class ExtraWatchTrendHTML
 
     $keysArray = unserialize(EXTRAWATCH_GRAPH_STATS_ITEMS);
 
-    $output = "<br/><br/><div align='center'>
+    $output = "<br/><br/><div align='center' width='80%'>
         <form action='".$this->extraWatch->env->renderLink("graphs","")."' method='POST'>
         <select name='group' onchange='this.form.submit()'>";
     foreach ($keysArray as $key => $value) {
@@ -265,7 +265,7 @@ class ExtraWatchTrendHTML
   function renderGraphsForGroup($group = 0)
   {
 
-    $output = "<table border='0'><tr><td>";
+    $output = "<table border='0' width='80%'><tr><td>";
 
     if (!$group) {
       $group = 10; //referers as first value in graphs

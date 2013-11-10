@@ -4,13 +4,13 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1292
+ * @revision 1310
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
  */
 defined('_JEXEC') or die('Restricted access'); ?>
-<a href='http://www.extrawatch.com/faq/' target='_blank'><?php echo _EW_MENU_FAQ;?> <img
+<a href='http://www.extrawatch.com/support/faq/view-knowledgebase/1-questions-and-answers' target='_blank'><?php echo _EW_MENU_FAQ;?> <img
     src='<?php echo($extraWatch->config->getLiveSiteWithSuffix());?>components/com_extrawatch/img/icons/external.gif'
     border='0'/></a> 
 <a href='http://www.extrawatch.com/support/' target='_blank'
@@ -39,4 +39,5 @@ defined('_JEXEC') or die('Restricted access'); ?>
     src='<?php echo($extraWatch->config->getLiveSiteWithSuffix());?>components/com_extrawatch/img/icons/external.gif'
     border='0'/> </a>
 <?php } ?>
+
 

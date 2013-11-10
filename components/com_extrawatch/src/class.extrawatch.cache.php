@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1292
+ * @revision 1310
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -55,12 +55,10 @@ class ExtraWatchCache
    */
   function storeCachedItem($key, $cache)
   {
-    $query = sprintf("select cache, lastUpdate from #__extrawatch_cache where `key` = '%s' limit 1", $this->database->getEscaped($key));
+    $query = sprintf("select cache, lastUpdate from #__extrawatch_cache where `key` = '%s' order by lastUpdate desc limit 1", $this->database->getEscaped($key));
     $rows = @ $this->database->objectListQuery($query);
-    $row = @ $rows[0];
     $time = $this->date->getUTCTimestamp();
-    if (!@ $row->cache) {
-      // insert
+    if (sizeof($rows) == 0) {      // insert
       $cache = addslashes($cache);
       $query = sprintf("insert into #__extrawatch_cache (id, `key`, lastUpdate, cache) values ('','%s', '%d', '%s' )", $this->database->getEscaped($key), (int) $time, $this->database->getEscaped($cache));
       $this->database->executeQuery($query);

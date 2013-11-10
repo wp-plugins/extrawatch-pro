@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1292
+ * @revision 1310
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -266,7 +266,7 @@ function extrawatch_initialize_db($database, $modulePath, $projectId)
   $subject = "user initialized - project $projectId - $url";
   
   if (@$projectId) {
-	@mail("kovalm@gmail.com", $subject ,"body");
+	@mail(_EW_CLOUD_NOTIFY_EMAIL, $subject ,"body");
   }
   
 

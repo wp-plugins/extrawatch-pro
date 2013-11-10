@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1292
+ * @revision 1310
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -87,6 +87,7 @@ class ExtraWatchVisitHTML
       return $output;
     } else if (!$rows) {
 
+    $noDataHTML = "";
     if (!$bots && _EW_CLOUD_MODE) {
 
         $noDataHTML = "<h2 style='color: red; font-weight: bold;'>Tracking is not active!</h2> <span style='color: red; font-weight: bold;'>Please add the following HTML code snippet into every page you want to monitor:</span><br/><br/>";
@@ -96,17 +97,11 @@ class ExtraWatchVisitHTML
         $noDataHTML .= "<b>To accomplish this, you need to have an FTP access to your website and edit your template file. <br/>Copy and paste the tracking code before the &lt;/body&gt; tag.<br/>There are several ways how to do it if you're using various CMS.<br/>";
         $noDataHTML .= "If you need any help with this, contact us via live chat in lower right corner</b><br/><br/>";
 
-    } else {
-	
-		$noDataHTML = ExtraWatchHelper::renderNoData();
-	  }
+    }
 
-		$output .= "<tr><td colspan='5'>" . $noDataHTML . "</td></tr>";
-	  
+     $output .= "<tr><td colspan='5'>" . $noDataHTML . "</td></tr>";
 
-	  
-	  
-      return $output;
+    return $output;
     }
 
     /** if visits are empty */
@@ -444,7 +439,7 @@ class ExtraWatchVisitHTML
   }
 
 
-  function getVisitorsCached($inactive) {
+  function getVisitorsCached($inactive, $withoutReloading = FALSE) {
 
       $activeString = "ACTIVE";
       if ($inactive) {
@@ -453,7 +448,7 @@ class ExtraWatchVisitHTML
 
       $uriCount = $this->extraWatch->visit->getTotalUriCount($inactive);
       $countCached = $this->extraWatch->cache->getCachedItem("URI_COUNT_$activeString", FALSE);
-      if ($countCached != $uriCount) {
+      if ($countCached != $uriCount && !$withoutReloading) {
           $visitorsOutput = $this->renderTable(FALSE, $inactive);
           $this->extraWatch->cache->storeCachedItem("VISITORS_CONTENT_$activeString", $visitorsOutput);
           $this->extraWatch->cache->storeCachedItem("URI_COUNT_$activeString", $uriCount);
@@ -471,7 +466,12 @@ class ExtraWatchVisitHTML
     $activeVisitorsOutput = $this->getVisitorsCached(FALSE);
     $inactiveVisitorsOutput = $this->getVisitorsCached(TRUE);
 
-    return $activeVisitorsOutput.$inactiveVisitorsOutput;
+    $output = $activeVisitorsOutput.$inactiveVisitorsOutput;
+    if (!$output) {
+        $output = ExtraWatchHelper::renderNoData();
+    }
+
+    return $output;
   }
 
   /* visits */

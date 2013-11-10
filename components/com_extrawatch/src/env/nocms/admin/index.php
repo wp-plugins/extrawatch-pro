@@ -4,7 +4,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1292
+ * @revision 1310
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -52,7 +52,7 @@ $database = $env->getDatabase($projectId);
 function notifyOnLogin($username, $password) {
 	if ($username != "demo" && $password != "demo") {
 		$message = "user $username has logged in";
-		@mail("kovalm@gmail.com",$message,$message);
+		@mail(_EW_CLOUD_NOTIFY_EMAIL,$message,$message);
 	}
 
 }
@@ -102,7 +102,7 @@ if (@$authenticated) {
 
     $extraWatchProject->setTimeOfProjectCreation($projectId);
     if (!$ewInitialized) {
-        mail("kovalm@gmail.com", "project $projectId initialized", "project $projectId initialized");
+        mail(_EW_CLOUD_NOTIFY_EMAIL, "project $projectId initialized", "project $projectId initialized");
         $extraWatch->config->saveConfigValue("EXTRAWATCH_EMAIL_REPORTS_ENABLED", "On");
         $extraWatch->config->saveConfigValue("EXTRAWATCH_EMAIL_REPORTS_ADDRESS", $username);
         $extraWatch->config->saveConfigValue("EXTRAWATCH_EMAIL_SEO_REPORTS_ENABLED", "On");

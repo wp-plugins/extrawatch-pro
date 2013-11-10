@@ -4,13 +4,13 @@ Donate link: http://www.extrawatch.com/
 Tags: analytics, statistics, stats, tracking, widget, heatmap, clicks, conversion tracking, counter, anti-spam, stats, visitors, downloads, download monitor, click map, tracking, maps, location, geolocation, statistics, spam, flags, goals, analytics, click, heat map, mouse click, tap, touch, tracker, tracking, usability
 Requires at least: 3.2.
 Tested up to: 3.5.1.
-Stable tag: 2.2.1292
+Stable tag: 2.2.1310
 License: GNU/GPLv2
 
 Optimize website and increase sales. Watch your visitors in real time, Click Heatmap, Conversion Tracking, Download monitor, Anti-spam, Email Reports
 
 == Description ==
-Analyze your visitor behaviour, optimize website and then increase conversions and sales. Once called the "Swiss Army Knife" for every Wordpress website. See map of clicks on Heatmap, Facebook, Twitter and other Social media
+Analyze your visitor behaviour, optimize website and then increase conversions and sales. Once called the "Swiss Army Knife" for every Wordpress website. See map of clicks on Heatmap, Facebook, Twitter and other Media
 
 
 
@@ -37,7 +37,7 @@ Analyze your visitor behaviour, optimize website and then increase conversions a
 - detect last user activity
 - report and send alert emails when users share same login from different IP
 
-➨ Facebook, Twitter and other Social media
+➨ Facebook, Twitter and other Media
 - detection from where your users came from such as: facebook, twitter, RSS, etc.
 
 ➨ Mobile devices detection

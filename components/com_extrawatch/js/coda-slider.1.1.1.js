@@ -121,7 +121,7 @@ jQuery.fn.codaSlider = function (settings) {
             });
 
             // Set the width of the nav using the navWidth figure we calculated earlier. This is so the nav can be centred above the slider
-            jQuery("div#stripNav" + j).css("width", navWidth);
+            jQuery("div#stripNav" + j).css("width", navWidth + 30);
 
             // Specify which tab is initially set to "current". Depends on if the loaded URL had a hash or not (cross-linking).
             if (location.hash && parseInt(location.hash.slice(1)) <= panelCount) {

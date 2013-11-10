@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1292
+ * @revision 1310
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -41,15 +41,19 @@ if (!$extraWatch->config->checkLiveSite()) {
 
 <center>
   <table border='0' cellpadding='2' width='100%' <?php echo $extraWatch->helper->getTooltipOnEventHide(); ?> >
-    <tr>
+      <tr>
       <td rowspan="2" id="visits" valign='top' align='left' width='80%'>
-        <?php echo _EW_VISITS_PANE_LOADING; ?>
-        <br/><br/>
+          <table cellpadding='2' cellspacing='0' width='100%' border='0'>
+              <span style='color: black;'>&nbsp;<?php echo (ExtraWatchDate::getActualDateTime()); ?></span>
+              <br/>
+              <?php echo($extraWatchBlockHTML->renderInfoPanel(TRUE)); ?>
+              <br/><br/>
+          <?php
+            echo $extraWatchVisitHTML->getVisitorsCached(FALSE);
+            echo $extraWatchVisitHTML->getVisitorsCached(TRUE);
+          ?>
+        </table>
 
-        <div id='loading'
-             style='width: 200px; border: 1px solid #dddddd; background-color: yellow; padding:5px; display:none;'>
-          <?php echo "" . _EW_VIEW_ADMINBODY_LONG_MESSAGE . "" ?>
-        </div>
       </td>
       <td valign="top">
         <?php require_once "lastvisitmap.php";?>

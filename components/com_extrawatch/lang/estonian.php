@@ -808,10 +808,9 @@ DEFINE('_EW_DOWNLOADS_THIS_WEEK', "This Week");
 DEFINE('_EW_DOWNLOADS_LAST_WEEK', "Last Week");
 DEFINE('_EW_DOWNLOADS_THIS_MONTH', "This Month");
 DEFINE('_EW_DOWNLOADS_LAST_MONTH', "Last Month");
-DEFINE('_EW_DOWNLOADS_TOTAL', "Total");
 DEFINE('_EW_DOWNLOADS_INCOMPLETE', "The required Information is incomplete");
 
-DEFINE('_EW_STATS_SOCIAL_MEDIA', "Social Media");
+DEFINE('_EW_STATS_SOCIAL_MEDIA', "Media");
 DEFINE('_EW_MENU_AVAILABLE_IN_PRO',"Available in PRO version");
 DEFINE('_EW_DOWNLOADS_TOTAL',"Total Downloads");
 
@@ -863,3 +862,5 @@ DEFINE('_EW_VISITS_GOAL_REACHED', " Goal '%s' was reached");
 
 DEFINE('_EW_DOWNLOADS_TOTAL_WEEKLY', "Total weekly");
 DEFINE('_EW_ACTIVE', "active");
+DEFINE('_EW_DOWNLOAD_PRO', "Download PRO version");
+DEFINE('_EW_VISITS_HEATMAP_CLICK_COUNT', "Total clicks today: %d");

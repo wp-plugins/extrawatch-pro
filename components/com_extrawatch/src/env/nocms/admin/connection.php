@@ -6,7 +6,7 @@ defined('_JEXEC') or die('Restricted access');
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1292
+ * @revision 1310
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -29,6 +29,8 @@ define('_EW_EXTRAWATCH_DIR',"extrawatch/");
 if (!defined('_EW_CLOUD_MODE')) {
 	define('_EW_CLOUD_MODE',1);
 }
+
+define('_EW_CLOUD_NOTIFY_EMAIL', 'foo@codegravity.com');
 
 
 

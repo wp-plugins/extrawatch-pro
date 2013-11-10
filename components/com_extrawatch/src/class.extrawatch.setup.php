@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1292
+ * @revision 1310
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -58,7 +58,7 @@ class ExtraWatchSetup {
                     $username = @$_SESSION['email'] ? @$_SESSION['email'] : @$_REQUEST['email'];
 
                     $extraWatchProject->setTimeOfProjectCreation(_EW_PROJECT_ID);
-                    mail("kovalm@gmail.com", "project "._EW_PROJECT_ID." initialized", "project "._EW_PROJECT_ID." initialized");
+                    mail(_EW_CLOUD_NOTIFY_EMAIL, "project "._EW_PROJECT_ID." initialized", "project "._EW_PROJECT_ID." initialized");
                     $this->config->saveConfigValue("EXTRAWATCH_EMAIL_REPORTS_ENABLED", "On");
                     $this->config->saveConfigValue("EXTRAWATCH_EMAIL_SEO_REPORTS_ENABLED", "On");
                     $this->config->saveConfigValue("EXTRAWATCH_SPAMWORD_BANS_ENABLED", "On");
@@ -207,6 +207,9 @@ class ExtraWatchSetup {
 
     function dropTables()
     {
+        $query = sprintf("DROP TABLE #__extrawatch_uri");
+        $this->database->executeQuery($query);
+
         foreach ($this->getExtraWatchTables() as $table => $value) {
             $query = sprintf("DROP TABLE `%s`", $value->Name);
             $this->database->executeQuery($query);

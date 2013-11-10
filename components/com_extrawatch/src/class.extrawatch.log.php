@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1292
+ * @revision 1310
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -41,20 +41,20 @@ class ExtraWatchLog
   }
 
 
-  function error($message)
+  static function error($message)
   {
     ExtraWatchLog::writeEntry("ERROR", $message);
 
   }
 
-  function info($message)
+  static function info($message)
   {
 
     ExtraWatchLog::writeEntry("INFO", $message);
 
   }
 
-  function warn($message)
+  static function warn($message)
   {
     ExtraWatchLog::writeEntry("WARN", $message);
 
