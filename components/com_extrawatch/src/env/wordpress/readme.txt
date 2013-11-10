@@ -4,7 +4,7 @@ Donate link: http://www.extrawatch.com/
 Tags: analytics, statistics, stats, tracking, widget, heatmap, clicks, conversion tracking, counter, anti-spam, stats, visitors, downloads, download monitor, click map, tracking, maps, location, geolocation, statistics, spam, flags, goals, analytics, click, heat map, mouse click, tap, touch, tracker, tracking, usability
 Requires at least: 3.2.
 Tested up to: 3.5.1.
-Stable tag: 2.2.1310
+Stable tag: 2.2.1311
 License: GNU/GPLv2
 
 Optimize website and increase sales. Watch your visitors in real time, Click Heatmap, Conversion Tracking, Download monitor, Anti-spam, Email Reports
@@ -130,6 +130,42 @@ Enjoy!
 == Frequently Asked Questions ==
 
 Please read http://www.extrawatch.com/faq/
+
+ExtraWatch will help you to solve these common user problems:
+
+I'm getting lots of spam and spam bots are using my forms more often than real users
+ExtraWatch Anti-spam feature
+
+I've established a web, but don't know how my users use it
+ExtraWatch Live Stats
+
+I'd like to see, who's on my website from my mobile phone
+An Android app
+
+What are the most clicked areas of my website
+ExtraWatch Click Heatmap
+
+I want to sell more and see people click "buy now" buttons more often
+Clicked Elements Report
+
+I don't know which keywords do people use to find my website
+ExtraWatch SEO report
+
+Which are the most downloaded files and how does it change in time
+Download monitor
+
+Which users are the most active and which share same login?
+Our User monitor
+
+What's the flow of traffic between pages
+Traffic flow
+
+What steps did the user follow to reach the goal?
+Goals, send email once the goal has been reached
+
+I want to see summary of how every of my site performs in time
+Nightly email reports
+
 
 == Changelog ==
 

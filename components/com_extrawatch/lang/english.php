@@ -599,7 +599,6 @@ DEFINE('_EW_NO_TITLE','No Title');
 DEFINE('_EW_CLICK_HEATMAP_FOR','Click Heatmap for ');
 DEFINE('_EW_CLICK_AREAS_FOR','Clicks Areas for ');
 DEFINE('_EW_HEATMAP_LOADING','Loading Heatmap table ...');
-DEFINE('_EW_VISITS_HEATMAP_CLICK_COUNT', "Total clicks today: %d");
 
 DEFINE('_EW_GOALS_SEND_EMAIL','Send an email');
 DEFINE('_EW_DESC_GOALS_SEND_EMAIL','You will get an email everytime the goal has been reached. Email address is taken from "Emails" section.');
