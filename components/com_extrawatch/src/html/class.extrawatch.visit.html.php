@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1311
+ * @revision 1312
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -82,8 +82,8 @@ class ExtraWatchVisitHTML
     $rows = $this->getJoinedURIRows($bots, $inactive, $ipFilter);
     $agentNotPublishedMessage = $this->extraWatch->env->getAgentNotPublishedMsg($this->extraWatch->database);
 
-    if ($bots == FALSE && ($agentNotPublishedMessage != FALSE) && sizeof($rows) == 0) {
-      $output .= "<tr><td colspan='10'><span style='color:red; font-weight: bold;'>".$agentNotPublishedMessage."</span></td></tr> ";
+    if ($bots == FALSE && ($agentNotPublishedMessage != FALSE) && sizeof($rows) == 0 && $inactive == 0) {
+      $output .= "<tr><td colspan='10'><span style='color:red; font-weight: bold;'>inactive: ".(int) $inactive.$agentNotPublishedMessage."</span></td></tr> ";
       return $output;
     } else if (!$rows) {
 

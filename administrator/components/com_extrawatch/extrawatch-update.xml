@@ -5,7 +5,7 @@
       <description>ExtraWatch</description>
       <element>com_extrawatch</element>
       <type>component</type>
-      <version>2.2.1311 PRO</version>
+      <version>2.2.1312 PRO</version>
        <infourl title="ExtraWatch URL">http://www.extrawatch.com</infourl>
       <downloads>
          <downloadurl type="full" format="gz">http://www.extrawatch.com/update/extrawatch/2.2/PRO/com_extrawatch.zip</downloadurl>
@@ -19,7 +19,7 @@
       <description>ExtraWatch</description>
       <element>com_extrawatch</element>
       <type>component</type>
-      <version>2.2.1311 PRO</version>
+      <version>2.2.1312 PRO</version>
        <infourl title="ExtraWatch URL">http://www.extrawatch.com</infourl>
       <downloads>
          <downloadurl type="full" format="gz">http://www.extrawatch.com/update/extrawatch/2.2/PRO/com_extrawatch.zip</downloadurl>
@@ -33,7 +33,7 @@
       <description>ExtraWatch</description>
       <element>com_extrawatch</element>
       <type>component</type>
-      <version>2.2.1311 PRO</version>
+      <version>2.2.1312 PRO</version>
        <infourl title="ExtraWatch URL">http://www.extrawatch.com</infourl>
       <downloads>
          <downloadurl type="full" format="gz">http://www.extrawatch.com/update/extrawatch/2.2/PRO/com_extrawatch.zip</downloadurl>
@@ -47,7 +47,7 @@
       <description>ExtraWatch</description>
       <element>com_extrawatch</element>
       <type>component</type>
-      <version>2.2.1311 PRO</version>
+      <version>2.2.1312 PRO</version>
        <infourl title="ExtraWatch URL">http://www.extrawatch.com</infourl>
       <downloads>
          <downloadurl type="full" format="gz">http://www.extrawatch.com/update/extrawatch/2.2/PRO/com_extrawatch.zip</downloadurl>
@@ -63,7 +63,7 @@
         <description>ExtraWatch</description>
         <element>com_extrawatch</element>
         <type>module</type>
-        <version>2.2.1311 PRO</version>
+        <version>2.2.1312 PRO</version>
         <infourl title="ExtraWatch URL">http://www.extrawatch.com</infourl>
         <downloads>
             <downloadurl type="full" format="gz">http://www.extrawatch.com/update/extrawatch/2.2/PRO/mod_extrawatch_agent.zip</downloadurl>
@@ -77,7 +77,7 @@
         <description>ExtraWatch</description>
         <element>com_extrawatch</element>
         <type>module</type>
-        <version>2.2.1311 PRO</version>
+        <version>2.2.1312 PRO</version>
         <infourl title="ExtraWatch URL">http://www.extrawatch.com</infourl>
         <downloads>
             <downloadurl type="full" format="gz">http://www.extrawatch.com/update/extrawatch/2.2/PRO/mod_extrawatch_agent.zip</downloadurl>
@@ -91,7 +91,7 @@
         <description>ExtraWatch</description>
         <element>com_extrawatch</element>
         <type>module</type>
-        <version>2.2.1311 PRO</version>
+        <version>2.2.1312 PRO</version>
         <infourl title="ExtraWatch URL">http://www.extrawatch.com</infourl>
         <downloads>
             <downloadurl type="full" format="gz">http://www.extrawatch.com/update/extrawatch/2.2/PRO/mod_extrawatch_agent.zip</downloadurl>
@@ -105,7 +105,7 @@
         <description>ExtraWatch</description>
         <element>com_extrawatch</element>
         <type>module</type>
-        <version>2.2.1311 PRO</version>
+        <version>2.2.1312 PRO</version>
         <infourl title="ExtraWatch URL">http://www.extrawatch.com</infourl>
         <downloads>
             <downloadurl type="full" format="gz">http://www.extrawatch.com/update/extrawatch/2.2/PRO/mod_extrawatch_agent.zip</downloadurl>
@@ -122,7 +122,7 @@
         <description>ExtraWatch</description>
         <element>com_extrawatch</element>
         <type>module</type>
-        <version>2.2.1311 PRO</version>
+        <version>2.2.1312 PRO</version>
         <infourl title="ExtraWatch URL">http://www.extrawatch.com</infourl>
         <downloads>
             <downloadurl type="full" format="gz">http://www.extrawatch.com/update/extrawatch/2.2/PRO/mod_extrawatch_users.zip</downloadurl>
@@ -136,7 +136,7 @@
         <description>ExtraWatch</description>
         <element>com_extrawatch</element>
         <type>module</type>
-        <version>2.2.1311 PRO</version>
+        <version>2.2.1312 PRO</version>
         <infourl title="ExtraWatch URL">http://www.extrawatch.com</infourl>
         <downloads>
             <downloadurl type="full" format="gz">http://www.extrawatch.com/update/extrawatch/2.2/PRO/mod_extrawatch_users.zip</downloadurl>
@@ -150,7 +150,7 @@
         <description>ExtraWatch</description>
         <element>com_extrawatch</element>
         <type>module</type>
-        <version>2.2.1311 PRO</version>
+        <version>2.2.1312 PRO</version>
         <infourl title="ExtraWatch URL">http://www.extrawatch.com</infourl>
         <downloads>
             <downloadurl type="full" format="gz">http://www.extrawatch.com/update/extrawatch/2.2/PRO/mod_extrawatch_users.zip</downloadurl>
@@ -164,7 +164,7 @@
         <description>ExtraWatch</description>
         <element>com_extrawatch</element>
         <type>module</type>
-        <version>2.2.1311 PRO</version>
+        <version>2.2.1312 PRO</version>
         <infourl title="ExtraWatch URL">http://www.extrawatch.com</infourl>
         <downloads>
             <downloadurl type="full" format="gz">http://www.extrawatch.com/update/extrawatch/2.2/PRO/mod_extrawatch_users.zip</downloadurl>
@@ -181,7 +181,7 @@
         <description>ExtraWatch</description>
         <element>com_extrawatch</element>
         <type>module</type>
-        <version>2.2.1311 PRO</version>
+        <version>2.2.1312 PRO</version>
         <infourl title="ExtraWatch URL">http://www.extrawatch.com</infourl>
         <downloads>
             <downloadurl type="full" format="gz">http://www.extrawatch.com/update/extrawatch/2.2/PRO/mod_extrawatch_visitors.zip</downloadurl>
@@ -195,7 +195,7 @@
         <description>ExtraWatch</description>
         <element>com_extrawatch</element>
         <type>module</type>
-        <version>2.2.1311 PRO</version>
+        <version>2.2.1312 PRO</version>
         <infourl title="ExtraWatch URL">http://www.extrawatch.com</infourl>
         <downloads>
             <downloadurl type="full" format="gz">http://www.extrawatch.com/update/extrawatch/2.2/PRO/mod_extrawatch_visitors.zip</downloadurl>
@@ -209,7 +209,7 @@
         <description>ExtraWatch</description>
         <element>com_extrawatch</element>
         <type>module</type>
-        <version>2.2.1311 PRO</version>
+        <version>2.2.1312 PRO</version>
         <infourl title="ExtraWatch URL">http://www.extrawatch.com</infourl>
         <downloads>
             <downloadurl type="full" format="gz">http://www.extrawatch.com/update/extrawatch/2.2/PRO/mod_extrawatch_visitors.zip</downloadurl>
@@ -223,7 +223,7 @@
         <description>ExtraWatch</description>
         <element>com_extrawatch</element>
         <type>module</type>
-        <version>2.2.1311 PRO</version>
+        <version>2.2.1312 PRO</version>
         <infourl title="ExtraWatch URL">http://www.extrawatch.com</infourl>
         <downloads>
             <downloadurl type="full" format="gz">http://www.extrawatch.com/update/extrawatch/2.2/PRO/mod_extrawatch_visitors.zip</downloadurl>
