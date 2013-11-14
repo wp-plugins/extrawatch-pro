@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1312
+ * @revision 1319
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -22,7 +22,9 @@ class ExtraWatchBlock
   public $date;
   public $BLOCKING_REASON = "The IP: %s is blocked due to attempt to access back-end without security code";
 
-  function __construct($database)
+  const IP_BULK_IMPORT_SIZE = 10000;
+
+    function __construct($database)
   {
     $this->database = $database;
     $this->config = new ExtraWatchConfig($this->database);
@@ -207,7 +209,7 @@ class ExtraWatchBlock
   function getBlockedCountByDate($date = 0)
   {
     if (@$date != 0) {
-      $query = sprintf("select sum(hits) as count from #__extrawatch_blocked where `date` = '%d'", (int) $date);
+      $query = sprintf("select sum(hits) as count from #__extrawatch_blocked where `date` = '%d' limit 100", (int) $date);
       return $this->database->resultQuery($query);
     }
   }
@@ -333,53 +335,67 @@ class ExtraWatchBlock
     return $data;
   }    /**     * block     */
 
-  function saveImportAntiSpamIp($post) {
-    if ((($_FILES["file"]["type"] == "application/octet-stream")))
-    {
-      if ($_FILES["file"]["error"] > 0){
-        echo "Return Code: " . $_FILES["file"]["error"] . "<br />";            }
-      else
-      {
-          if ($_FILES["file"]["size"] > 1 * 1024 * 1024) {
-              echo("Error: ExtraWatch supports maximum .csv file size 1 MB");
-
-              return;
-          }
-
-          move_uploaded_file($_FILES["file"]["tmp_name"],JPATH_BASE."/" . $_FILES["file"]["name"]);
-
-          $reason = "imported from ".$_FILES["file"]["name"];
-          $row = 1;
-          $handle = fopen($_FILES["file"]["name"], "r");
-          while (($data = fgetcsv($handle, '', ",")) !== FALSE) {
-            $num = count($data);
-            $row++;
-            if($data[1] != 'ip'){
-              $date = ExtraWatchDate::jwDateToday();
-              $query = sprintf("select * from #__extrawatch_blocked where ip = '%s'", $this->database->getEscaped($data[1]));
-              $rows = @ $this->database->assocListQuery($query);
-              if(empty($rows)){
-
-                 $ip = $data[1];
-                 if (!ExtraWatchHelper::isValidIPv4($ip)) {
-                     continue;
-                 }
-
-                //insert into database
-                $query = sprintf("INSERT into #__extrawatch_blocked (id, ip, reason, country, `date`) values ('','%s','%s', '%s', '%d')", $this->database->getEscaped($ip), $this->database->getEscaped($reason), EXTRAWATCH_UNKNOWN_COUNTRY, (int) $date);
-                $this->database->executeQuery($query);
-              }
+    function saveImportAntiSpamIp($post) {
+        if ((($_FILES["file"]["type"] == "application/octet-stream"))) {
+            if ($_FILES["file"]["error"] > 0) {
+                echo "Return Code: " . $_FILES["file"]["error"] . "<br />";
+                return;
             }
-          }
-          fclose($handle);
-          unlink($_FILES["file"]["name"]);
+        }
+        /*          if ($_FILES["file"]["size"] > 1 * 1024 * 1024) {
+                      echo("Error: ExtraWatch supports maximum .csv file size 1 MB");
 
-      }
-    }      else        {
-      echo "Invalid file";
+                      return;
+                  }*/
+
+        move_uploaded_file($_FILES["file"]["tmp_name"],JPATH_BASE."/" . $_FILES["file"]["name"]);
+
+        $reason = $_FILES["file"]["name"];
+        $row = 1;
+        $date = ExtraWatchDate::jwDateToday();
+
+        $handle = fopen($_FILES["file"]["name"], "r");
+        while (($data = fgetcsv($handle, '', ",")) !== FALSE) {
+            $row++;
+            $ip = $data[1];
+            if($ip != 'ip'){
+                if (!ExtraWatchHelper::isValidIPv4($ip)) {
+                    continue;
+                }
+                $ipArray[] = $ip;
+            }
+        }
+        $valuesOutput = "";
+        $i=0;
+        foreach ($ipArray as $ip) {
+            $valuesOutput .= sprintf(" ('','%s','%s', '%s', '%d')", $this->database->getEscaped($ip), $this->database->getEscaped($reason), EXTRAWATCH_UNKNOWN_COUNTRY, (int) $date);
+            if ($i<sizeof($ipArray)) {
+                if ($i!=0 && $i% self::IP_BULK_IMPORT_SIZE ==0) {
+                    $valuesOutput .= ";";
+                    $this->insertIpBulk($valuesOutput);
+                    $valuesOutput = "";
+                }
+                if ($i != sizeof($ipArray) -1 && $i% self::IP_BULK_IMPORT_SIZE !=0) {
+                    $valuesOutput .= ",";
+                }
+                $i++;
+            }
+        }
+        $this->insertIpBulk($valuesOutput); // remaining IP addresses
+
+        fclose($handle);
+        unlink($_FILES["file"]["name"]);
     }
-  }
 
+    /**
+     * @param $valuesOutput
+     * @return string
+     */
+    public function insertIpBulk($valuesOutput)
+    {
+        $query = sprintf("INSERT IGNORE into #__extrawatch_blocked (id, ip, reason, country, `date`) values %s", $valuesOutput);
+        $this->database->executeQuery($query);
+    }
 
 
 }

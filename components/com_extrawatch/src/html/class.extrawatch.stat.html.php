@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1312
+ * @revision 1319
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -67,7 +67,11 @@ class ExtraWatchStatHTML
 
     if ($row->name) {
       $data=json_decode($row->name);
-      $icon = "<img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/" . strtolower($data->icon) . "' />";
+      $dataDecoded = $data->icon;
+      if (!$dataDecoded) {
+          $dataDecoded = $row->name;
+      }
+      $icon = "<img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/" . strtolower($dataDecoded) . "' />";
     }
     return @$icon;
   }
@@ -84,7 +88,11 @@ class ExtraWatchStatHTML
     {
         if ($row->name) {
            $data=json_decode($row->name);
-            $icon = "<img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/" . strtolower($data->icon) . "' />";
+           $dataDecoded = $data->icon;
+           if (!$dataDecoded) {
+               $dataDecoded = $row->name;
+           }
+           $icon = "<img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/" . strtolower($dataDecoded) . "' />";
         }
         return @$icon;
     }

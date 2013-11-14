@@ -292,7 +292,7 @@ DEFINE('_EW_EMAIL_REPORTS_1DAY_CHANGE', "1-day change");
 DEFINE('_EW_EMAIL_REPORTS_7DAY_CHANGE', "7-day change");
 DEFINE('_EW_EMAIL_REPORTS_28DAY_CHANGE', "28-day change");
 DEFINE('_EW_ANTISPAM_BLOCKED', "ExtraWatch has blocked %d spammer hits today, total: %d");
-DEFINE('_EW_ANTISPAM_ADDRESSES', "Blocked IP Adresses");
+DEFINE('_EW_ANTISPAM_ADDRESSES', "Blocked IP Adresses (maximum 100)");
 DEFINE('_EW_ANTISPAM_SETTINGS', "Anti-Spam Settings");
 DEFINE('_EW_TRAFFIC_AJAX', "AJAX updates traffic (except maps)");
 
@@ -607,6 +607,7 @@ DEFINE('_EW_GOAL_EMAIL_SUBJECT', "Goal '%s' was achieved, count: %d");
 
 DEFINE('_EW_VISITS_GOAL_REACHED', " Goal '%s' was reached");
 
+DEFINE('_EW_DOWNLOADS_TOTAL',"Total Downloads");
 DEFINE('_EW_DOWNLOADS_TOTAL_WEEKLY', "Total weekly");
 DEFINE('_EW_ACTIVE', "active");
 DEFINE('_EW_DOWNLOAD_PRO', "Download PRO version");

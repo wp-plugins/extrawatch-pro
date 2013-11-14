@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1312
+ * @revision 1319
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -84,7 +84,7 @@ class ExtraWatchBlockHTML
       $output = "<tr><td colspan='4'>" . $this->extraWatchStatHTML->renderExpand('ip_blocking_title', $total) . "</td></tr>";
     }
     if (@ $expanded) {
-      $rows = $this->extraWatch->block->getBlockedIPs($date);
+      $rows = $this->extraWatch->block->getBlockedIPs($date, 100); // this cannot be unlimited, because otherwise the page would not open
     } else {
       $rows = $this->extraWatch->block->getBlockedIPs($date, $limit);
     }
