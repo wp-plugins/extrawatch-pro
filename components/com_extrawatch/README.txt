@@ -1,5 +1,5 @@
-ExtraWatch - A real-time joomla monitor and live stats
-=======================================================
+ExtraWatch PRO 2.2 - Real-time joomla monitor and live stats
+========================================================================
 by CodeGravity.com http://www.codegravity.com
 
 Released under the GNU General Public License v3

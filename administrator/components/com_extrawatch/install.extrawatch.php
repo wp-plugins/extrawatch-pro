@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1352
+ * @revision 1357
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -166,16 +166,16 @@ function com_install()
 
   @ set_time_limit(0);
 
-  $mainframe = & JFactory :: getApplication('site');
+  $mainframe = JFactory :: getApplication('site');
   $mainframe->initialise();
-  $database = & JFactory :: getDBO();
+  $database = JFactory :: getDBO();
 
 
   $extraWatchAdminDirFile = JPATH_ADMINISTRATOR.DIRECTORY_SEPARATOR."components".DIRECTORY_SEPARATOR."com_extrawatch".DIRECTORY_SEPARATOR."extrawatch.php";  
   $currentDir = dirname(__FILE__);
 				$extraWatchAdminControllerFile = $currentDir.DIRECTORY_SEPARATOR."admin".DIRECTORY_SEPARATOR."extrawatch.php";
 				//echo("copying: $extraWatchAdminControllerFile to $extraWatchAdminDirFile");
-				copy($extraWatchAdminControllerFile, $extraWatchAdminControllerFile); 
+				@copy($extraWatchAdminControllerFile, $extraWatchAdminControllerFile); 
 
 
   if ("1.6" == "1.5" && !version_compare(JVERSION, '1.6.0', '<')) {

@@ -771,7 +771,7 @@ DEFINE('_EW_DOWNLOADS_ALLOWED_REFERRER', "Allowed Referrer");
 DEFINE('_EW_DOWNLOADS_NOT_ALLOWED',"File download restricted by ExtraWatch rule. Please contact: %s");
 
 DEFINE('_EW_DOWNLOADS_EMAIL_RESTRICTED_SUBJECT',"Download restricted for IP: %s");
-DEFINE('_EW_DOWNLOADS_EMAIL_RESTRICTED_BODY',"Attempted to download file: %s referred from %s, but it's restricted to be downloaded only from %s");
+DEFINE('_EW_DOWNLOADS_EMAIL_RESTRICTED_BODY',"Someone from IP: %s attempted to download file: %s referred from %s, but it's restricted by ExtraWatch download referrer check");
 
 DEFINE('_EW_ADMINHEADER_CLICK_AREAS', "Click Areas");
 DEFINE('_EW_NO_TITLE','No Title');
