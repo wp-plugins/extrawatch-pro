@@ -598,7 +598,6 @@ DEFINE('_EW_ADMINHEADER_CLICK_AREAS', "Click Areas");
 DEFINE('_EW_NO_TITLE','No Title');
 DEFINE('_EW_CLICK_HEATMAP_FOR','Click Heatmap for ');
 DEFINE('_EW_CLICK_AREAS_FOR','Clicks Areas for ');
-DEFINE('_EW_HEATMAP_LOADING','Loading Heatmap table ...');
 
 DEFINE('_EW_GOALS_SEND_EMAIL','Send an email');
 DEFINE('_EW_DESC_GOALS_SEND_EMAIL','You will get an email everytime the goal has been reached. Email address is taken from "Emails" section.');
@@ -607,8 +606,9 @@ DEFINE('_EW_GOAL_EMAIL_SUBJECT', "Goal '%s' was achieved, count: %d");
 
 DEFINE('_EW_VISITS_GOAL_REACHED', " Goal '%s' was reached");
 
-DEFINE('_EW_DOWNLOADS_TOTAL',"Total Downloads");
 DEFINE('_EW_DOWNLOADS_TOTAL_WEEKLY', "Total weekly");
 DEFINE('_EW_ACTIVE', "active");
 DEFINE('_EW_DOWNLOAD_PRO', "Download PRO version");
 DEFINE('_EW_VISITS_HEATMAP_CLICK_COUNT', "Total clicks today: %d");
+DEFINE('_EW_HEATMAP_LOADING','Loading Heatmap table ...'); 
+DEFINE('_EW_DOWNLOADS_TOTAL', "Total downloads"); 

@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1319
+ * @revision 1352
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -761,4 +761,3 @@ if (!defined('_EW_HOST') && !defined('_EW_CLOUD_MODE')) {
 
 define('EXTRAWATCH_KEEP_MAX_VISITS', 1000);
 define('TYPE_EXTRAWATCH_KEEP_MAX_VISITS', "number");
-

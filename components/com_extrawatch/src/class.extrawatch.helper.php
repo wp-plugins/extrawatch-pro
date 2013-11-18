@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1319
+ * @revision 1352
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -507,7 +507,11 @@ function renderHTMLCodeSnippet($projectId) {
         $output .= ("</script>\n");
     } else {
         $liveSite = $this->config->getLiveSiteWithSuffix();
-        $output = "";
+		$output = "";
+		$title = "Live visitor conversion tracking, Counter, Anti-spam, Heat map, SEO";
+		if (!$this->config->isAdFree()) {
+			$output .= "<a href='http://www.extrawach.com'><img src='".$liveSite."components/com_extrawatch/img/icons/extrawatch-logo-16x16.gif' alt='$title' title='$title' border='0' target='_blank'/></a>";
+		}
         $output .= ("<script type=\"text/javascript\">\n");
         $output .= ("<!--\n");
         $output .= ("document.write(\"");

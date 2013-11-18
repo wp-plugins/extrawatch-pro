@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1319
+ * @revision 1352
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -24,7 +24,7 @@ class ExtraWatchHTML
         $this->extraWatch = new ExtraWatchMain();
     }
 
-    function renderInputElement($key, & $color, $addToDescription = "")
+    function renderInputElement($key, & $color, $addToDescription = "", $textAreaRows = 20)
     {
 
         if (!@ $color) {
@@ -101,7 +101,7 @@ class ExtraWatchHTML
                 }
             case "largetext":
                 {
-                $output .= "<textarea id='$key' cols='40' rows='20' name='$key' style='text-align:center;'>" . htmlentities(stripslashes($value)) . "</textarea>";
+                $output .= "<textarea id='$key' cols='40' rows='$textAreaRows' name='$key' style='text-align:center;'>" . htmlentities(stripslashes($value)) . "</textarea>";
                 break;
                 }
             default:

@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1319
+ * @revision 1352
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -75,11 +75,13 @@ class ExtraWatchWordpressEnv implements ExtraWatchEnv
   function getEnvironmentSuffix()
   {
     // as install dir
-    
+    /*FREE_START*/
+    $moduleName = "extrawatch";
+    /*FREE_END*/
 
-    
+    /*PRO_START*/
     $moduleName = "extrawatch-pro";
-    
+    /*PRO_END*/
 
     return "wp-content/plugins/".$moduleName."/";
   }
@@ -161,20 +163,24 @@ class ExtraWatchWordpressEnv implements ExtraWatchEnv
 
     public function getReviewLink()
     {
-        
+        /*PRO_START*/
         return "http://www.wordpress.org/support/view/plugin-reviews/extrawatch-pro";
-       
+       /*PRO_END*/
 
-        
+        /*FREE_START*/
+        return "http://www.wordpress.org/support/view/plugin-reviews/extrawatch";
+       /*FREE_END*/
     }
 
     public function getVoteLink()
     {
-        
+        /*PRO_START*/
         return "http://www.wordpress.org/support/view/plugin-reviews/extrawatch-pro";
-       
+       /*PRO_END*/
 
-        
+        /*FREE_START*/
+        return "http://www.wordpress.org/support/view/plugin-reviews/extrawatch";
+       /*FREE_END*/
     }
 
     public function getEnvironmentName()

@@ -4,7 +4,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1319
+ * @revision 123
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -22,22 +22,28 @@ class extrawatch extends Module
     {
         $this->name = 'extrawatch';
         $this->tab = 'Stats'; // back-end name
-        $this->version = '2.2.1319';
+        $this->version = '2.2.123';
         $this->displayName = 'ExtraWatch PRO';
-		$this->tab = 'analytics_stats'; 
-		$this->module_key='868a02da3cb4442e41507b564b9da2f9';
+		$this->tab = 'analytics_stats';
+		
+        $this->module_key='868a02da3cb4442e41507b564b9da2f9';
+        
+        
 
         parent::__construct();
 
-        $this->displayName = $this->l('ExtraWatch Live Stats and Visitor Counter');
+        $this->displayName = $this->l('ExtraWatch Live visitor conversion tracking, Counter, Anti-spam, Heat map, SEO');
 		
 		
 		
 		
-        $this->description = $this->l('Real-time Live Stats, Traffic Flow, SEO, Click Heatmap, Graphs, Goals, Nightly emails, DB Status, Dir Sizes. ExtraWatch allows you to watch your visitors and bots in real-time from the administration back-end. Especially their IP addresses, countries they come from, which pages they are viewing, their browser and operating system, it creates daily and all-time stats from these information plus unique, pageload and total hits statistics. Furthermore, you can block harmful IP addresses and see blocked attempts stats.');
+        $this->description = $this->l('Real-time Live Stats, Traffic Flow, SEO, Click Heat map, Graphs, Goals, Nightly emails, DB Status, Dir Sizes. ExtraWatch allows you to watch your visitors and bots in real-time from the administration back-end. Especially their IP addresses, countries they come from, which pages they are viewing, their browser and operating system, it creates daily and all-time stats from these information plus unique, pageload and total hits statistics. Furthermore, you can block harmful IP addresses and see blocked attempts stats.');
 		
 		
         $this->confirmUninstall = $this->l('Are you sure you want to uninstall this module ?');
+
+        define("ENV", 1);
+        define("_JEXEC",1);
     }
 
 
@@ -45,14 +51,16 @@ class extrawatch extends Module
     {
         $parentTabId = (int)Tab::getIdFromClassName('AdminStats');
 
+        $rootDir = realpath(realpath(dirname(__FILE__)).DS."..".DS."..");
+        $dir = realpath($rootDir.DS."modules".DS."extrawatch".DS."extrawatch");
+        require_once($dir.DS."components".DS."com_extrawatch".DS."src".DS."class.extrawatch.log.php");
+
         if(!parent::install()
             || !$this->registerHook('leftColumn')
             || !Configuration::updateValue('MOD_EXTRAWATCH_IMG', 'http://extrawatch.com/logo.jpg')
             || !$this->installModuleTab('ExtraWatchAdmin', 'ExtraWatch Stats', $parentTabId))
             return false;
 
-        define("ENV", 1);
-        define("_JEXEC",1);
         $dirname = dirname(__FILE__);
 
         $rootDir = realpath(realpath(dirname(__FILE__)).DS."..".DS."..");
@@ -80,6 +88,24 @@ class extrawatch extends Module
 
     public function uninstall()
     {
+        $rootDir = realpath(realpath(dirname(__FILE__)).DS."..".DS."..");
+        $dir = realpath($rootDir.DS."modules".DS."extrawatch".DS."extrawatch");
+        require_once($dir.DS."components".DS."com_extrawatch".DS."src".DS."class.extrawatch.log.php");
+
+        $rootDir = realpath(realpath(dirname(__FILE__)).DS."..".DS."..");
+        $extensionDir = realpath($rootDir.DS."modules".DS."extrawatch".DS."extrawatch");
+
+        define("JPATH_BASE", $extensionDir);
+        define("JPATH_BASE2", $extensionDir);
+        define("JPATH_SITE", $extensionDir);
+
+        require_once($extensionDir.DS."components".DS."com_extrawatch".DS."includes.php");
+
+        $env = ExtraWatchEnvFactory::getEnvironment();
+        $database = $env->getDatabase();
+        $extraWatchSetup = new ExtraWatchSetup($database);
+        $extraWatchSetup->dropTables();
+
         if(!parent::uninstall()
             || !Configuration::deleteByName('MOD_EXTRAWATCH_IMG')
             || !$this->uninstallModuleTab('ExtraWatchAdmin'))

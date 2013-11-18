@@ -1,1 +1,1 @@
-DEFINE('_EW_VISITS_HEATMAP_CLICK_COUNT', "Total clicks today: %d");
+DEFINE('_EW_DOWNLOADS_TOTAL', "Total downloads"); 

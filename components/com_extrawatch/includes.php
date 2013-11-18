@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1319
+ * @revision 1352
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -46,8 +46,8 @@ switch ($env) {
     case "ExtraWatchPrestaShopEnv":
     {
         if (!defined('ENV')) define('ENV', 1);
-        require_once(realpath(dirname(__FILE__)).''.DS.'..'.DS.'..'.DS.'..'.DS.'..'.DS.'..'.DS.'config'.DS.'config.inc.php');
-
+        require_once(realpath(realpath(dirname(__FILE__)).''.DS.'..'.DS.'..'.DS.'..'.DS.'..'.DS.'..'.DS.'config'.DS.'settings.inc.php'));
+        require_once(realpath(realpath(dirname(__FILE__)).''.DS.'..'.DS.'..'.DS.'..'.DS.'..'.DS.'..'.DS.'config'.DS.'autoload.php'));
         break;
     }
 

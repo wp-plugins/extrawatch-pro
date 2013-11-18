@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1319
+ * @revision 1352
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -36,9 +36,9 @@ class ExtraWatchVisitHistoryHTML extends ExtraWatchVisitHTML
     return $output;
   }
 
-  function getJoinedURIRows($ip, $ipFilter = "")
+  function getJoinedURIRows($bots, $inactive, $ipFilter)
   {
-    return $this->visitHistory->getJoinedURIRows($ip);
+    return $this->visitHistory->getJoinedURIRows(null, null, $ipFilter);
   }
 
   function renderPageLink($pageNum, $name, $actualpageNum, $disabled = FALSE)
