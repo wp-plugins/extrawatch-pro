@@ -557,6 +557,7 @@ DEFINE('_EW_DOWNLOADS_INCOMPLETE', "The required Information is incomplete");
 
 DEFINE('_EW_STATS_SOCIAL_MEDIA', "Media");
 DEFINE('_EW_MENU_AVAILABLE_IN_PRO',"Available in PRO version");
+DEFINE('_EW_DOWNLOADS_TOTAL',"Total Downloads");
 
 /** 3.0 - hosted version */
 DEFINE('_EW_GOALS_CLICKED_ELEMENT_XPATH_CONDITION', "xpath of clicked element condition");
@@ -610,5 +611,4 @@ DEFINE('_EW_DOWNLOADS_TOTAL_WEEKLY', "Total weekly");
 DEFINE('_EW_ACTIVE', "active");
 DEFINE('_EW_DOWNLOAD_PRO', "Download PRO version");
 DEFINE('_EW_VISITS_HEATMAP_CLICK_COUNT', "Total clicks today: %d");
-DEFINE('_EW_HEATMAP_LOADING','Loading Heatmap table ...'); 
-DEFINE('_EW_DOWNLOADS_TOTAL', "Total downloads"); 
+DEFINE('_EW_HEATMAP_LOADING','Loading Heatmap table ...');

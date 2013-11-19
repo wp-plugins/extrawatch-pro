@@ -608,5 +608,4 @@ DEFINE('_EW_DOWNLOADS_TOTAL_WEEKLY', "Total weekly");
 DEFINE('_EW_ACTIVE', "active");
 DEFINE('_EW_DOWNLOAD_PRO', "Download PRO version");
 DEFINE('_EW_VISITS_HEATMAP_CLICK_COUNT', "Total clicks today: %d");
-DEFINE('_EW_HEATMAP_LOADING','Loading Heatmap table ...'); 
-DEFINE('_EW_DOWNLOADS_TOTAL', "Total downloads"); 
+DEFINE('_EW_HEATMAP_LOADING','Loading Heatmap table ...');

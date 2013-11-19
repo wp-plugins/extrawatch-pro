@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1358
+ * @revision 1365
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -20,14 +20,14 @@ class ExtraWatchLog
 
   static function writeEntry($severity, $sql)
   {
-    if (EXTRAWATCH_DEBUG || _EW_CLOUD_MODE) {
+    if (@EXTRAWATCH_DEBUG || @_EW_CLOUD_MODE) {
 
       $logFileName = date("Y-m-d").".log.php";
       $logFilePath = realpath(dirname(__FILE__).DS."..".DS).DS."log".DS.$logFileName;
 
       //$backTrace = ExtraWatchLog::getDebugBacktrace();
       $message = date("H:i:s");
-      if (_EW_CLOUD_MODE && defined('_EW_PROJECT_ID')) {
+      if (@_EW_CLOUD_MODE && defined('_EW_PROJECT_ID')) {
         $message .= " P:" . sprintf("%4d",_EW_PROJECT_ID) . " ";
       }
       $message .= $sql . "\n";
