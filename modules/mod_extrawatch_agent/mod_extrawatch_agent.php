@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1367
+ * @revision 1390
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -51,7 +51,6 @@ function renderExtraWatchAgent()
         $output .= ("<span style='color: #ff3333'>" . _EW_DESC_DEBUG . "</span><br/>");
     }
 
-    $extraWatchHTML = new ExtraWatchHTML();
     $extraWatch->block->checkPostRequestForSpam(ExtraWatchHelper::requestGet());
     $extraWatch->block->checkPostRequestForSpam(ExtraWatchHelper::requestPost());
     try {
@@ -59,11 +58,6 @@ function renderExtraWatchAgent()
     } catch (ExtraWatchIPBlockedException $e) {
         die($this->config->getConfigValue('EXTRAWATCH_BLOCKING_MESSAGE'));
     }
-
-    
-    //$output .= $extraWatchHTML->renderHeatMapJS();
-
-
 
     /*
      * The following piece of code identifies the userAgent and inserts the backlink to extrawatch.com
@@ -73,14 +67,12 @@ function renderExtraWatchAgent()
      *
      * CodeGravity.com
     */
-
-
     $output = ""; // reset output;
 
-    
-
-    $host = $extraWatch->config->getLiveSiteWithSuffix();
-
+	$title = "";
+	if (!_EW_CLOUD_MODE) {
+        $title = "Heatmap, Real-time analytics, Conversion tracking and anti-spam for Joomla, Wordpress, Drupal, Magento and Prestashop";
+	}
 	$output .= $extraWatch->helper->renderHTMLCodeSnippet(_EW_PROJECT_ID);
 
     return $output;

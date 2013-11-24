@@ -344,7 +344,7 @@ DEFINE('_EW_VIEW_ADMINBODY_LONG_MESSAGE', "إذا كنت ترى الرسالة �
 DEFINE('_EW_ADMINBODY_LIVE_SITE', "تحذير: الموقع الموجود في متصفحك وموقعك الحالي لا يتطابقان");
 DEFINE('_EW_ADMINBODY_SET_LIVE_SITE', "اضبط الموقع الفوري على... ثم استمر إلى...");
 
-DEFINE('_EW_ADMINHEADER_JW', "ExtraWatch ");
+DEFINE('_EW_ADMINHEADER_JW', "ExtraWatch");
 DEFINE('_EW_ADMINHEADER_REMOVE_BACKLINK', "إزالة رابط العودة");
 DEFINE('_EW_ADMINHEADER_KNOWLEDGE_BASE', "قاعدة معلوماتية");
 DEFINE('_EW_ADMINHEADER_FLOW', "تدفق");
@@ -613,3 +613,4 @@ DEFINE('_EW_ACTIVE', "active");
 DEFINE('_EW_DOWNLOAD_PRO', "Download PRO version");
 DEFINE('_EW_VISITS_HEATMAP_CLICK_COUNT', "Total clicks today: %d");
 DEFINE('_EW_HEATMAP_LOADING','Loading Heatmap table ...');
+DEFINE('_EW_ANTISPAM_INVALID_EXTENSION', "Invalid extension type, .csv expected"); 

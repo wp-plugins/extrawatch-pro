@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1367
+ * @revision 1390
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -46,6 +46,7 @@ $env = ExtraWatchEnvFactory::getEnvironment();
 
 
 
+
 function extrawatch_mainController($task = "") {
 
     $current_error_reporting = error_reporting();
@@ -59,6 +60,12 @@ function extrawatch_mainController($task = "") {
 
 	$queryParams = ExtraWatchHelper::getUrlQueryParams();
 	$action = @$queryParams['action'];
+
+    if (!$task) {
+        $task = @$queryParams['task'];
+    }
+
+    ExtraWatchHelper::checkIfRequestPathAllowed($extraWatch, $env, $task);
 
     $taskFromNavigation = @ ExtraWatchHelper::request('task');
 
@@ -80,13 +87,13 @@ function extrawatch_mainController($task = "") {
 
                 case "ajax" :
                 {
-                    //todo - check if from same directory, etc. security
-                    $ajaxPath = JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "ajax" . DS. $action .".php";
+                    $includePath = JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "ajax";
+                    ExtraWatchHelper::checkIfFileExistsInDir($includePath, $action.".php");
                     if ($action == "download") {
-                        include_once($ajaxPath);
+                        include_once($includePath. DS. $action .".php");
                         die();
                     } else {
-                        $output = ExtraWatchHelper::get_include_contents($ajaxPath, array("params" => $params));
+                        $output = ExtraWatchHelper::get_include_contents($includePath.DS. $action .".php", array("params" => $params));
                         die($output);
                     }
                     break;
@@ -94,25 +101,13 @@ function extrawatch_mainController($task = "") {
 
                 case "js" :
                 {
-                    //todo - check if from same directory, etc. security
-                    $ajaxPath = JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "js" . DS. $action .".php";
-                    $output = ExtraWatchHelper::get_include_contents($ajaxPath, array());
+                    $includePath = JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "js";
+                    ExtraWatchHelper::checkIfFileExistsInDir($includePath, $action.".php");
+                    $output = ExtraWatchHelper::get_include_contents($includePath . DS. $action .".php", array());
                     die($output);
                     break;
                 }
 
-                /*
-                 * disabled trial
-                 *
-                 *     case "useTrial" :
-                        {
-                            $output .= $extraWatchHTML->renderAdminStyles($extraWatch);
-                            $extraWatch->config->useTrial();
-                            $extraWatch->config->saveVersionIntoDatabase();
-                            $extraWatch->config->setLiveSite($env->getRootSite());
-                            break;
-                        }
-                */
                 case "useFreeVersion" :
                     {
                     $output .= $extraWatchHTML->renderAdminStyles($extraWatch);
@@ -648,20 +643,12 @@ function extrawatch_mainController($task = "") {
                 return $output;
                 break;
         }
-        /*
-            } else {
-                $output .= $extraWatchHTML->renderAdminStyles($extraWatch);
-                $output .= $extraWatchHTML->renderHeader($extraWatch);
-                $output .= $extraWatchHTML->renderTrialVersionInfo();
-            }
-        */
     }
     error_reporting($current_error_reporting);
 
     return $output;
 }
 
-//if (get_class($env) == "ExtraWatchJoomlaEnv") {
 if ((!_EW_CLOUD_MODE &&
     (get_class($env) == "ExtraWatchWordpressEnv" && ( @ ExtraWatchHelper::request('task') == "js" || @ ExtraWatchHelper::request('task') == "ajax")))
 	|| (get_class($env) != "ExtraWatchWordpressEnv"))	//just a temporary fix, should be removed or refactored

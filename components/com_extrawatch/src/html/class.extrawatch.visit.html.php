@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1367
+ * @revision 1390
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -85,25 +85,26 @@ class ExtraWatchVisitHTML
     if ($bots == FALSE && ($agentNotPublishedMessage != FALSE) && sizeof($rows) == 0 && $inactive == 0) {
       $output .= "<tr><td colspan='10'><span style='color:red; font-weight: bold;'>inactive: ".(int) $inactive.$agentNotPublishedMessage."</span></td></tr> ";
       return $output;
-    } else if (!$rows) {
-
-    $noDataHTML = "";
-    if (!$bots && _EW_CLOUD_MODE) {
-
-        $noDataHTML = "<h2 style='color: red; font-weight: bold;'>Tracking is not active!</h2> <span style='color: red; font-weight: bold;'>Please add the following HTML code snippet into every page you want to monitor:</span><br/><br/>";
-        $noDataHTML .= "<textarea cols='100' rows='6'>";
-        $noDataHTML .= htmlentities($this->extraWatch->helper->renderHTMLCodeSnippet(_EW_PROJECT_ID));
-        $noDataHTML .= "</textarea><br/><br/>";
-        $noDataHTML .= "<b>To accomplish this, you need to have an FTP access to your website and edit your template file. <br/>Copy and paste the tracking code before the &lt;/body&gt; tag.<br/>There are several ways how to do it if you're using various CMS.<br/>";
-        $noDataHTML .= "If you need any help with this, contact us via live chat in lower right corner</b><br/><br/>";
-
+    } else {
     }
+        if (!$rows) {
 
-     $output .= "<tr><td colspan='5'>" . $noDataHTML . "</td></tr>";
+            $noDataHTML = "";
+            if (!$bots && _EW_CLOUD_MODE) {
 
-    return $output;
-    }
+                $noDataHTML = "<h2 style='color: red; font-weight: bold;'>Tracking is not active!</h2> <span style='color: red; font-weight: bold;'>Please add the following HTML code snippet into every page you want to monitor:</span><br/><br/>";
+                $noDataHTML .= "<textarea cols='100' rows='6'>";
+                $noDataHTML .= htmlentities($this->extraWatch->helper->renderHTMLCodeSnippet(_EW_PROJECT_ID));
+                $noDataHTML .= "</textarea><br/><br/>";
+                $noDataHTML .= "<b>To accomplish this, you need to have an FTP access to your website and edit your template file. <br/>Copy and paste the tracking code before the &lt;/body&gt; tag.<br/>There are several ways how to do it if you're using various CMS.<br/>";
+                $noDataHTML .= "If you need any help with this, contact us via live chat in lower right corner</b><br/><br/>";
 
+            }
+
+            $output .= "<tr><td colspan='5'>" . $noDataHTML . "</td></tr>";
+
+            return $output;
+        }
     /** if visits are empty */
 
 
@@ -150,10 +151,10 @@ class ExtraWatchVisitHTML
 
 
         $flag = "<img src='" . $liveSiteWithSuffix . "components/com_extrawatch/img/flags/$country.png' title='$countryName' alt='$countryName' $inactiveImageClass/>";
-        if ($this->extraWatch->block->getBlockedIp($row->ip))
+        if ($this->extraWatch->block->getBlockedIp($row->ip)) //TODO optimize whole block
           $ipString = "<s>" . ExtraWatchHelper::htmlspecialchars($row->ip) . "</s>";
         else
-          $ipString = ExtraWatchHelper::htmlspecialchars($row->ip);
+          $ipString = ExtraWatchHelper::htmlspecialchars($row->ip);//TODO optimize whole block
 
         if ($i < 0xCC || $i <= 0x00) {
           $decrement = $decrement * -1;
@@ -168,15 +169,15 @@ class ExtraWatchVisitHTML
         $country = $row->country;
 
         if (!$country) {
-          $country = $this->extraWatch->helper->countryByIp($row->ip);
+          $country = $this->extraWatch->helper->countryByIp($row->ip);    //TODO optimize
         }
         if (@ $country) {
-          $countryName = $this->extraWatch->helper->countryCodeToCountryName($country);
+          $countryName = $this->extraWatch->helper->countryCodeToCountryName($country);//TODO optimize
           $flag = "<img src='" . $liveSiteWithSuffix . "components/com_extrawatch/img/flags/$country.png' title='$countryName' alt='$countryName' $inactiveImageClass/>";
           $countryUpper = strtoupper($country);
         }
 
-        $userAgent = ExtraWatchHelper::htmlspecialchars($this->extraWatch->visit->getBrowserByIp($row->ip));
+        $userAgent = ExtraWatchHelper::htmlspecialchars($this->extraWatch->visit->getBrowserByIp($row->ip)); //TODO optimize
 
         $browser = "";
         $os = "";
@@ -286,7 +287,7 @@ class ExtraWatchVisitHTML
 
         $day = $this->extraWatch->date->jwDateFromTimestamp($row->timestamp);
 
-        $downloadsForIp = $this->extraWatch->downloads->getDownloadLogForIPBetweenTimestamps($row->ip, $lastTimestamp, $row->timestamp);
+        $downloadsForIp = $this->extraWatch->downloads->getDownloadLogForIPBetweenTimestamps($row->ip, $lastTimestamp, $row->timestamp);//TODO optimize
         $timestampHumanReadable = ExtraWatchDate::date("H:i:s", $row->timestamp);
 
         $downloadIcon = "<img src='".$liveSiteWithSuffix."components/com_extrawatch/img/icons/downloads.png' $inactiveImageClass />";
@@ -297,7 +298,7 @@ class ExtraWatchVisitHTML
 			}
 		}
 
-          $goalsForIp = $this->extraWatch->goal->getGoalsForVisitIdBetweenTimestamps($row->visitId, $lastTimestamp, $row->timestamp);
+          $goalsForIp = $this->extraWatch->goal->getGoalsForVisitIdBetweenTimestamps($row->visitId, $lastTimestamp, $row->timestamp);//TODO optimize
           if (@$goalsForIp) {
               foreach($goalsForIp as $goalForIp) {
                   $goalTimestampHumanReadable = ExtraWatchDate::date("H:i:s", $goalForIp->timestamp);
@@ -316,7 +317,7 @@ class ExtraWatchVisitHTML
         $row->title = $this->extraWatch->helper->truncate($row->title, $trucateCharLimit);
         $row->title = $this->extraWatch->helper->removeRepetitiveTitle($row->title);
 
-        $uri2titleId = $this->extraWatch->visit->getUri2TitleId($row->uri, $titleOriginal);
+        $uri2titleId = $this->extraWatch->visit->getUri2TitleId($row->uri, $titleOriginal);//TODO optimize
         $output .= ("<div id='id$row->id' style='text-decoration: none;' $inactiveClass onmouseout=\"toggleElementVisibility('goal_" . $row->id . "',0);\"  onmouseover=\"toggleDiv('".$row->id."','".$row->ip."',1, $uri2titleId, $day);\" style='background-color: #$color'>");
 
 		$projectSite = "";
@@ -326,8 +327,8 @@ class ExtraWatchVisitHTML
         $output .= ("$timestampHumanReadable <a href='".$projectSite.$row->uri."' target='_blank' $inactiveClass>$row->title</a> $uriTruncated");
 
          
-        $userHeatmapClicks = $this->heatmap->getHeatmapClickNums($row->ip, $row->uri, ExtraWatchDate::jwDateFromTimestamp($timestampHumanReadable));
-        if ($userHeatmapClicks > 0) {
+        $userHeatmapClicks = $this->heatmap->getHeatmapClickNums($row->ip, $row->uri, ExtraWatchDate::jwDateFromTimestamp($timestampHumanReadable));//TODO optimize
+        if (@$userHeatmapClicks > 0) {
           if (@$maxClicksOfDay) {
                 $ratio = $userHeatmapClicks / $maxClicksOfDay;
           } else {
@@ -351,7 +352,7 @@ class ExtraWatchVisitHTML
         }
         
 
-        $paramData = $this->extraWatch->visit->areParamDataForUri($row->id);
+        $paramData = $this->extraWatch->visit->areParamDataForUri($row->id);//TODO optimize
 
         if ($paramData) {
           $output .= "<img src='" . $liveSiteWithSuffix . "components/com_extrawatch/img/icons/submit.png' />";
@@ -390,14 +391,12 @@ class ExtraWatchVisitHTML
         $output .= ("</td>");
         $output .= ("</tr>");
 
-      }        
+      }
 
    
     $output .= @$this->renderRefererRow($lastReferer, $lastColor);
 
     unset($uri2HeatmapClicksAssoc);
- 
-    return $output;
   }
 
   function renderRefererRow($referer, $color)
@@ -448,7 +447,7 @@ class ExtraWatchVisitHTML
 
       $uriCount = $this->extraWatch->visit->getTotalUriCount($inactive);
       $countCached = $this->extraWatch->cache->getCachedItem("URI_COUNT_$activeString", FALSE);
-      if ($countCached != $uriCount && !$withoutReloading) {
+      if ($countCached != $uriCount && !$withoutReloading) { //TODO optimize add 1 || to render it all the time
           $visitorsOutput = $this->renderTable(FALSE, $inactive);
           $this->extraWatch->cache->storeCachedItem("VISITORS_CONTENT_$activeString", $visitorsOutput);
           $this->extraWatch->cache->storeCachedItem("URI_COUNT_$activeString", $uriCount);
@@ -478,9 +477,9 @@ class ExtraWatchVisitHTML
   function renderBots()
   {
 
-    //$rows = $this->extraWatch->visit->getBots();
     $this->lastDate = "";
     $output = $this->renderTable(TRUE, 0);
+    $output .= $this->renderTable(TRUE, 1);
 
     return $output;
   }

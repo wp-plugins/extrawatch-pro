@@ -345,7 +345,7 @@ DEFINE('_EW_VIEW_ADMINBODY_LONG_MESSAGE', "Jika anda melihat pesan diatas terlal
 DEFINE('_EW_ADMINBODY_LIVE_SITE', "Peringatan: situs pada browser dan situs di konfigurasi: %s and %s tidak cocok.");
 DEFINE('_EW_ADMINBODY_SET_LIVE_SITE', "Atur situs pada: %s dan lanjutkan...");
 
-DEFINE('_EW_ADMINHEADER_JW', "ExtraWatch ");
+DEFINE('_EW_ADMINHEADER_JW', "ExtraWatch");
 DEFINE('_EW_ADMINHEADER_REMOVE_BACKLINK', "Hapus Backlink");
 DEFINE('_EW_ADMINHEADER_KNOWLEDGE_BASE', "Dasar Pengetahuan");
 DEFINE('_EW_ADMINHEADER_FLOW', "Aliran");
@@ -611,3 +611,4 @@ DEFINE('_EW_ACTIVE', "active");
 DEFINE('_EW_DOWNLOAD_PRO', "Download PRO version");
 DEFINE('_EW_VISITS_HEATMAP_CLICK_COUNT', "Total clicks today: %d");
 DEFINE('_EW_HEATMAP_LOADING','Loading Heatmap table ...');
+DEFINE('_EW_ANTISPAM_INVALID_EXTENSION', "Invalid extension type, .csv expected"); 

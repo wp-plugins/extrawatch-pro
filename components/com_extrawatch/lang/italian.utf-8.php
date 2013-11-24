@@ -342,7 +342,7 @@ DEFINE('_EW_VIEW_ADMINBODY_LONG_MESSAGE', "Se visualizzate il messaggio riportat
 DEFINE('_EW_ADMINBODY_LIVE_SITE', "Attenzione: il sito del vostro browser e il sito nella configurazione: %s e %s non combaciano.");
 DEFINE('_EW_ADMINBODY_SET_LIVE_SITE', "Impostare il sito a: %s e continuare...");
 
-DEFINE('_EW_ADMINHEADER_JW', "ExtraWatch ");
+DEFINE('_EW_ADMINHEADER_JW', "ExtraWatch");
 DEFINE('_EW_ADMINHEADER_REMOVE_BACKLINK', "Rimuovere il Backlink");
 DEFINE('_EW_ADMINHEADER_KNOWLEDGE_BASE', "Knowledge Base");
 DEFINE('_EW_ADMINHEADER_FLOW', "Flusso");
@@ -605,3 +605,4 @@ DEFINE('_EW_ACTIVE', "active");
 DEFINE('_EW_DOWNLOAD_PRO', "Download PRO version");
 DEFINE('_EW_VISITS_HEATMAP_CLICK_COUNT', "Total clicks today: %d");
 DEFINE('_EW_HEATMAP_LOADING','Loading Heatmap table ...');
+DEFINE('_EW_ANTISPAM_INVALID_EXTENSION', "Invalid extension type, .csv expected"); 

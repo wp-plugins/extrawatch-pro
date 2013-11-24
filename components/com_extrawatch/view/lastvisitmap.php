@@ -4,7 +4,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1367
+ * @revision 1390
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 byCodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -14,6 +14,7 @@ defined('_JEXEC') or die('Restricted access'); ?>
 <h3><?php echo _EW_STATS_MAP; ?></h3>
 <?php if ($extraWatch->config->getConfigValue("EXTRAWATCH_IPINFODB_KEY")) { ?>
 <?php if ($extraWatch->config->getConfigValue("EXTRAWATCH_MAP_OPENMAP")) { ?>
+  <span id="extrawatch_map_city"></span>&nbsp;<span id="extrawatch_map_country"></span> <br/><br/>
   <div id="openmap" style="width: 250px; height: 250px"></div>
   <?php } ?>
 <?php if ($extraWatch->config->getConfigValue("EXTRAWATCH_MAP_GOOGLEMAP")) { ?>

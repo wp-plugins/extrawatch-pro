@@ -347,7 +347,7 @@ DEFINE('_EW_VIEW_ADMINBODY_LONG_MESSAGE', "אם אתה רואה את ההודע�
 DEFINE('_EW_ADMINBODY_LIVE_SITE', "אַזהָרָה: האתר בדפדפן אתר לחיות בתצורת: %s and %s אין התאמה.");
 DEFINE('_EW_ADMINBODY_SET_LIVE_SITE', "הגדר אתר לחיות: %s ולהמשיך...");
 
-DEFINE('_EW_ADMINHEADER_JW', "ExtraWatch ");
+DEFINE('_EW_ADMINHEADER_JW', "ExtraWatch");
 DEFINE('_EW_ADMINHEADER_REMOVE_BACKLINK', "הסר קישור נכנס");
 DEFINE('_EW_ADMINHEADER_KNOWLEDGE_BASE', "Knowledge Base");
 DEFINE('_EW_ADMINHEADER_FLOW', "שֶׁטֶף");
@@ -613,3 +613,4 @@ DEFINE('_EW_ACTIVE', "active");
 DEFINE('_EW_DOWNLOAD_PRO', "Download PRO version");
 DEFINE('_EW_VISITS_HEATMAP_CLICK_COUNT', "Total clicks today: %d");
 DEFINE('_EW_HEATMAP_LOADING','Loading Heatmap table ...');
+DEFINE('_EW_ANTISPAM_INVALID_EXTENSION', "Invalid extension type, .csv expected"); 

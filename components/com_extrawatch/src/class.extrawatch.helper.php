@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1367
+ * @revision 1390
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -608,8 +608,8 @@ static function getTimezoneOffsetByTimezoneName($userTimezoneName){
             '(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b/', $ip) !== 0;
     }
 
-    static public function rgbColorFromRatio($ratio)
-    {
+    static public function rgbColorFromRatio($ratio) {
+        $color = "";
         $hue = ExtraWatchHelper::hueFromRatio($ratio);
         $rgb = ExtraWatchHelper::HSV_TO_RGB($hue, 1, 1);
         if ($rgb) {
@@ -630,6 +630,31 @@ static function getTimezoneOffsetByTimezoneName($userTimezoneName){
 	static function updateLastLoginTime($database, $projectId) {
     $database->executeQuery(sprintf("update global_extrawatch_project set timeOfLastLogin = '%d' where `id` = '%d'", (int) time(), (int) $projectId));
 	}
+
+    static function startsWith($haystack, $needle) {
+        return $needle === "" || strpos($haystack, $needle) === 0;
+    }
+
+    static function endsWith($haystack, $needle) {
+        return $needle === "" || substr($haystack, -strlen($needle)) === $needle;
+    }
+
+    static function checkIfRequestPathAllowed($extraWatch, $env, $task) {
+        if ($task != "js" && $task != "ajax") {
+            if ($extraWatch->config->getLiveSite() && !ExtraWatchHelper::startsWith(@$_SERVER['REQUEST_URI'], $extraWatch->config->getLiveSite().$env->getAdminDir())) {
+                die("Restricted access");
+            }
+        }
+    }
+
+    static function checkIfFileExistsInDir($path, $file) {
+        $listOfFiles = scandir($path);
+        $result = in_array($file, $listOfFiles);
+        if (!$result || $file == "." || $file == "..") {
+            die("Restricted access");
+        }
+    }
+
 
 
 

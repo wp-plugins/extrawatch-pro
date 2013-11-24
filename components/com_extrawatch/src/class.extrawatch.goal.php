@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1367
+ * @revision 1390
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -368,7 +368,11 @@ class ExtraWatchGoal
                     if (@ $row->block) {
                         $blockReason = sprintf(_EW_BLOCKED_BASED_ON_GOAL, $row->id);
                         $this->block->blockIp($ip, $blockReason);
-                        $this->block->dieWithBlockingMessage($ip);
+                        try {
+                            $this->block->dieWithBlockingMessage($ip);
+                        } catch (ExtraWatchIPBlockedException $exception) {
+                            die($exception->getBlockingMessage());
+                        }
                     }
                 }
 

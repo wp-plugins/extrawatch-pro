@@ -344,7 +344,7 @@ DEFINE('_EW_VIEW_ADMINBODY_LONG_MESSAGE', "Ako poruku iznad vidite duže vreme v
 DEFINE('_EW_ADMINBODY_LIVE_SITE', "Upozorenje: sajt u vašem pretraživaču i aktivna lokacija u konfiguraciji: %s i %s se ne podudaraju.");
 DEFINE('_EW_ADMINBODY_SET_LIVE_SITE', "Postavite aktivnu lokaciju: %s i nastavite...");
 
-DEFINE('_EW_ADMINHEADER_JW', "ExtraWatch ");
+DEFINE('_EW_ADMINHEADER_JW', "ExtraWatch");
 DEFINE('_EW_ADMINHEADER_REMOVE_BACKLINK', "Ukloni link");
 DEFINE('_EW_ADMINHEADER_KNOWLEDGE_BASE', "Baza znanja");
 DEFINE('_EW_ADMINHEADER_FLOW', "Tok");
@@ -609,3 +609,4 @@ DEFINE('_EW_ACTIVE', "active");
 DEFINE('_EW_DOWNLOAD_PRO', "Download PRO version");
 DEFINE('_EW_VISITS_HEATMAP_CLICK_COUNT', "Total clicks today: %d");
 DEFINE('_EW_HEATMAP_LOADING','Loading Heatmap table ...');
+DEFINE('_EW_ANTISPAM_INVALID_EXTENSION', "Invalid extension type, .csv expected"); 

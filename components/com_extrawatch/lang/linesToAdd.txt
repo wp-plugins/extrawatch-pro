@@ -1,1 +1,1 @@
-DEFINE('_EW_DOWNLOADS_TOTAL', "Total downloads"); 
+DEFINE('_EW_ANTISPAM_INVALID_EXTENSION', "Invalid extension type, .csv expected"); 

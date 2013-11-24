@@ -343,7 +343,7 @@ DEFINE('_EW_VIEW_ADMINBODY_LONG_MESSAGE', "Якщо ви бачите повід
 DEFINE('_EW_ADMINBODY_LIVE_SITE', "Попередження :сайта у вашому браузері і живий сайт в конфігурації: %s and %s не збігаються.");
 DEFINE('_EW_ADMINBODY_SET_LIVE_SITE', "Встановити жити сайту: %s і продовжити...");
 
-DEFINE('_EW_ADMINHEADER_JW', "ExtraWatch ");
+DEFINE('_EW_ADMINHEADER_JW', "ExtraWatch");
 DEFINE('_EW_ADMINHEADER_REMOVE_BACKLINK', "Видалити зворотних");
 DEFINE('_EW_ADMINHEADER_KNOWLEDGE_BASE', "База знань");
 DEFINE('_EW_ADMINHEADER_FLOW', "Потік");
@@ -605,3 +605,4 @@ DEFINE('_EW_ACTIVE', "active");
 DEFINE('_EW_DOWNLOAD_PRO', "Download PRO version");
 DEFINE('_EW_VISITS_HEATMAP_CLICK_COUNT', "Total clicks today: %d");
 DEFINE('_EW_HEATMAP_LOADING','Loading Heatmap table ...');
+DEFINE('_EW_ANTISPAM_INVALID_EXTENSION', "Invalid extension type, .csv expected"); 

@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1367
+ * @revision 1390
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -31,7 +31,13 @@ class ExtraWatchVisit
   public $referer;
   public $user;
 
-  function __construct()
+    const LATITUDE = "Latitude";
+    const LONGITUDE = "Longitude";
+    const CITY = "City";
+    const COUNTRY_NAME = "CountryName";
+    const COUNTRY_CODE = "CountryCode";
+
+    function __construct()
   {
     $this->env = ExtraWatchEnvFactory::getEnvironment();
     $this->database = $this->env->getDatabase(_EW_PROJECT_ID);
@@ -71,11 +77,6 @@ class ExtraWatchVisit
 
   function ip2Location($ip)
   {
-    $referer = "";
-   /* obsolete
-   if (isset($_SERVER['HTTP_REFERER'])) {
-      $referer = $this->getReferer();
-    }*/
 
     $ipinfodb = new ipinfodb;
     $ipinfodb->setKey($this->config->getConfigValue("EXTRAWATCH_IPINFODB_KEY"));
@@ -86,11 +87,11 @@ class ExtraWatchVisit
     if (!empty($locations) && is_array($locations)) {
       foreach ($locations as $field => $val)
       {
-        if ($field == "Latitude") $latitude = $val;
-        if ($field == "Longitude") $longitude = $val;
-        if ($field == "City") $city = $val;
-        if ($field == "CountryName") $country = $val;
-        if ($field == "CountryCode") $countryCode = $val;
+        if ($field == self::LATITUDE) $latitude = $val;
+        if ($field == self::LONGITUDE) $longitude = $val;
+        if ($field == self::CITY) $city = $val;
+        if ($field == self::COUNTRY_NAME) $country = $val;
+        if ($field == self::COUNTRY_CODE) $countryCode = $val;
       }
     }
     $geolocation = array(
@@ -410,10 +411,15 @@ class ExtraWatchVisit
 	  
       $count = $this->block->getBlockedIp($ip);
       if (@ $count) {
-          $this->block->dieWithBlockingMessage($ip);
+          try {
+            $this->block->dieWithBlockingMessage($ip);
+          } catch (ExtraWatchIPBlockedException $exception) {
+              die($exception->getBlockingMessage());
+          }
       }
       $this->user->updateUserLog($userId, $ip);
 
+      $this->insertBotVisit($this->helper->getURI(), $referrer, "", $ip);
 	  ExtraWatchLog::debug("Visit inserted: IP: $ip, ref: $referrer, live site: $liveSite");
 
       $this->goal->checkGoals("", $username, $ip, $referrer, $liveSite);
@@ -672,8 +678,6 @@ function insertSearchResultPage($uri, $phrase, $referer, $title)
    */
   function updateVisitByBrowser($uri, $referer, $title = null, $params = null)
   {
-      //$userObject = $this->getUser();
-
       ExtraWatchLog::debug("updateVisitByBrowser - uri: $uri, referer: $referer, title: $title, params: ".print_r($params, true));
 
 
@@ -788,26 +792,10 @@ function insertSearchResultPage($uri, $phrase, $referer, $title)
 
       $time = $this->date->getUTCTimestamp();
 
-      $query = sprintf("select id, username from #__extrawatch where ip = '%s' limit 1", $this->database->getEscaped($ip));
-      $rows = @ $this->database->objectListQuery($query);
-      $row = @ $rows[0];
-      $id = @ $row->id;
-      $username = @ $row->username;
+      $id = $this->checkIfVisitAlreadyInserted($ip);
 
       if (!@ $id) {
-
-          $referer = strip_tags($referer);
-          $ip = strip_tags($ip);
-          $query = sprintf("insert into #__extrawatch (id, ip, country, browser, referer, inactive) values ('', '%s',  NULL, NULL, '%s', %d) ", $this->database->getEscaped($ip), $this->database->getEscaped($referer), 0);
-          $this->database->executeQuery($query);
-
-          $query = sprintf("select id from #__extrawatch where ip = '%s' limit 1", $this->database->getEscaped($ip));
-          $rows = @ $this->database->objectListQuery($query);
-          $row = @ $rows[0];
-          $id = @ $row->id;
-
-          $query = sprintf("insert into #__extrawatch_uri (id, fk, timestamp, uri, title) values ('', '%d', '%d', '%s', '%s') ", (int) $id, (int) $time, $this->database->getEscaped($uri), $this->database->getEscaped($title));
-          $this->database->executeQuery($query);
+          $this->insertBotVisit($uri, $referer, $title, $ip);
       } else {
           $query = sprintf("insert into #__extrawatch_uri (id, fk, timestamp, uri, title) values ('', '%d', '%d', '%s', '%s') ", (int) $id, (int) $time, $this->database->getEscaped($uri), $this->database->getEscaped($title));
           $this->database->executeQuery($query);
@@ -843,6 +831,8 @@ function insertSearchResultPage($uri, $phrase, $referer, $title)
 		  }
       }
       //END POST CODE MOD
+
+      $username = $this->getUsernameForIp($ip);
 
       if (($username != $newUsername) && ($newUsername)) {
           $query = sprintf("update #__extrawatch set username = '%s' where ip = '%s'", $this->database->getEscaped($newUsername), $this->database->getEscaped($ip));
@@ -1089,10 +1079,6 @@ function insertSearchResultPage($uri, $phrase, $referer, $title)
         )
     ", (int) $inactive, $this->database->getEscaped($browserCondition), $filterOnlyIPCondition, (int) $limit);
 
-/*    $query = sprintf("SELECT * FROM #__extrawatch
-    JOIN #__extrawatch_uri ON #__extrawatch.id = #__extrawatch_uri.fk
-    WHERE #__extrawatch.browser %s order by #__extrawatch.inactive asc, #__extrawatch_uri.timestamp desc limit %d",
-        $this->database->getEscaped($browserCondition), (int) $limit);*/
     $rows = $this->database->objectListQuery($query);
     return $rows;
   }
@@ -1447,6 +1433,56 @@ function insertSearchResultPage($uri, $phrase, $referer, $title)
     ", (int) $inactive);
         return $this->database->resultQuery($query);
 
+    }
+
+    /**
+     * @param $uri
+     * @param $referer
+     * @param $title
+     * @param $ip
+     * @param $time
+     * @return array
+     */
+    public function insertBotVisit($uri, $referer, $title, $ip)
+    {
+
+        if ($this->checkIfVisitAlreadyInserted($ip)) {
+            return;
+        }
+
+        $time = $this->date->getUTCTimestamp();
+        $referer = strip_tags($referer);
+        $ip = strip_tags($ip);
+        $query = sprintf("insert into #__extrawatch (id, ip, country, browser, referer, inactive) values ('', '%s',  NULL, NULL, '%s', %d) ", $this->database->getEscaped($ip), $this->database->getEscaped($referer), 1);
+        $this->database->executeQuery($query);
+
+        $query = sprintf("select id from #__extrawatch where ip = '%s' limit 1", $this->database->getEscaped($ip));
+        $rows = @ $this->database->objectListQuery($query);
+        $row = @ $rows[0];
+        $id = @ $row->id;
+
+        $query = sprintf("insert into #__extrawatch_uri (id, fk, timestamp, uri, title) values ('', '%d', '%d', '%s', '%s') ", (int)$id, (int)$time, $this->database->getEscaped($uri), $this->database->getEscaped($title));
+        $this->database->executeQuery($query);
+    }
+
+    /**
+     * @param $ip
+     * @return array
+     */
+    public function checkIfVisitAlreadyInserted($ip)
+    {
+        $query = sprintf("select id from #__extrawatch where ip = '%s' limit 1", $this->database->getEscaped($ip));
+        return @ $this->database->resultQuery($query);
+    }
+
+    /**
+     * @param $ip
+     * @return array
+     */
+    public function getUsernameForIp($ip)
+    {
+        $query = sprintf("select username from #__extrawatch where ip = '%s' limit 1", $this->database->getEscaped($ip));
+        return @$this->database->resultQuery($query);
     }
 
 }

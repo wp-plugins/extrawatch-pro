@@ -342,7 +342,7 @@ DEFINE('_EW_VIEW_ADMINBODY_LONG_MESSAGE', "Si lleva viendo el mensaje de arriba 
 DEFINE('_EW_ADMINBODY_LIVE_SITE', "Advertencia: el sitio en su navegador y el sitio en vivo en la configuracion: %s y %s no se corresponden.");
 DEFINE('_EW_ADMINBODY_SET_LIVE_SITE', "Cambia el sitio en vivo a: %s y continúa...");
 
-DEFINE('_EW_ADMINHEADER_JW', "ExtraWatch ");
+DEFINE('_EW_ADMINHEADER_JW', "ExtraWatch");
 DEFINE('_EW_ADMINHEADER_REMOVE_BACKLINK', "Remover Link de Retorno");
 DEFINE('_EW_ADMINHEADER_KNOWLEDGE_BASE', "Base de Conocimiento");
 DEFINE('_EW_ADMINHEADER_FLOW', "Flujo");
@@ -604,3 +604,4 @@ DEFINE('_EW_ACTIVE', "active");
 DEFINE('_EW_DOWNLOAD_PRO', "Download PRO version");
 DEFINE('_EW_VISITS_HEATMAP_CLICK_COUNT', "Total clicks today: %d");
 DEFINE('_EW_HEATMAP_LOADING','Loading Heatmap table ...');
+DEFINE('_EW_ANTISPAM_INVALID_EXTENSION', "Invalid extension type, .csv expected"); 

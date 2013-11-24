@@ -344,7 +344,7 @@ DEFINE('_EW_VIEW_ADMINBODY_LONG_MESSAGE', "Kui sa näed eespool olevat sõnumit 
 DEFINE('_EW_ADMINBODY_LIVE_SITE', "Hoiatus: Sinu brauseris olev sait ja live sait konfiguratsioonis: %s ja %s ei sobi.");
 DEFINE('_EW_ADMINBODY_SET_LIVE_SITE', "Määra live sait: %s ja jätka...");
 
-DEFINE('_EW_ADMINHEADER_JW', "ExtraWatch ");
+DEFINE('_EW_ADMINHEADER_JW', "ExtraWatch");
 DEFINE('_EW_ADMINHEADER_REMOVE_BACKLINK', "Eemalda tagalink");
 DEFINE('_EW_ADMINHEADER_KNOWLEDGE_BASE', "Teadmistebaas");
 DEFINE('_EW_ADMINHEADER_FLOW', "Voog");
@@ -608,3 +608,4 @@ DEFINE('_EW_ACTIVE', "active");
 DEFINE('_EW_DOWNLOAD_PRO', "Download PRO version");
 DEFINE('_EW_VISITS_HEATMAP_CLICK_COUNT', "Total clicks today: %d");
 DEFINE('_EW_HEATMAP_LOADING','Loading Heatmap table ...');
+DEFINE('_EW_ANTISPAM_INVALID_EXTENSION', "Invalid extension type, .csv expected"); 

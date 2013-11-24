@@ -341,7 +341,7 @@ DEFINE('_EW_VIEW_ADMINBODY_LONG_MESSAGE', "Om du ser meddelandet ovan för läng
 DEFINE('_EW_ADMINBODY_LIVE_SITE', "Varning: site i din webbläsare och live site i konfiguration: %s och %s matchar inte.");
 DEFINE('_EW_ADMINBODY_SET_LIVE_SITE', "Sätt live site till: %s och fortsätt...");
 
-DEFINE('_EW_ADMINHEADER_JW', "ExtraWatch ");
+DEFINE('_EW_ADMINHEADER_JW', "ExtraWatch");
 DEFINE('_EW_ADMINHEADER_REMOVE_BACKLINK', "Ta bort tillbaka länk");
 DEFINE('_EW_ADMINHEADER_KNOWLEDGE_BASE', "Kunskapsbas");
 DEFINE('_EW_ADMINHEADER_FLOW', "Flöde");
@@ -603,3 +603,4 @@ DEFINE('_EW_ACTIVE', "active");
 DEFINE('_EW_DOWNLOAD_PRO', "Download PRO version");
 DEFINE('_EW_VISITS_HEATMAP_CLICK_COUNT', "Total clicks today: %d");
 DEFINE('_EW_HEATMAP_LOADING','Loading Heatmap table ...');
+DEFINE('_EW_ANTISPAM_INVALID_EXTENSION', "Invalid extension type, .csv expected"); 

@@ -4,7 +4,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1367
+ * @revision 1390
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -98,7 +98,7 @@ class ExtraWatchReferer
     }
 
     function identifyOSAsJSON($stringua){
-        $uaParser = $this->getUAParser();
+        $uaParser = $this->getUAParser();//TODO optimize
         $ret = $uaParser->Parse($stringua);
         $arr = array('name' => trim($ret['os_name']), 'icon' => trim($ret['os_icon']));
         $arr=json_encode($arr);

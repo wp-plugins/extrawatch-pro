@@ -342,7 +342,7 @@ DEFINE('_EW_VIEW_ADMINBODY_LONG_MESSAGE', "Ak vidíte túto správu príliš dlh
 DEFINE('_EW_ADMINBODY_LIVE_SITE', "Upozornenie: stránka vo vašom browseri %s a v konfigurácii %s sa nezohodujú.");
 DEFINE('_EW_ADMINBODY_SET_LIVE_SITE', "Nastavte doménu na: %s a pokračujte...");
 
-DEFINE('_EW_ADMINHEADER_JW', "ExtraWatch ");
+DEFINE('_EW_ADMINHEADER_JW', "ExtraWatch");
 DEFINE('_EW_ADMINHEADER_REMOVE_BACKLINK', "Odstrániť spätný odkaz");
 DEFINE('_EW_ADMINHEADER_KNOWLEDGE_BASE', "Báza znalostí");
 DEFINE('_EW_ADMINHEADER_FLOW', "Tok návštev");
@@ -602,3 +602,4 @@ DEFINE('_EW_ACTIVE', "active");
 DEFINE('_EW_DOWNLOAD_PRO', "Download PRO version");
 DEFINE('_EW_VISITS_HEATMAP_CLICK_COUNT', "Total clicks today: %d");
 DEFINE('_EW_HEATMAP_LOADING','Loading Heatmap table ...');
+DEFINE('_EW_ANTISPAM_INVALID_EXTENSION', "Invalid extension type, .csv expected"); 

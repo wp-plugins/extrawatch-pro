@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1367
+ * @revision 1390
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -13,12 +13,6 @@
 
 defined('_JEXEC') or die('Restricted access');
 
-
-/*define('_JEXEC', 1);
-define('DS', DIRECTORY_SEPARATOR);
-$jBasePath = realpath(dirname(__FILE__) . DS . ".." . DS . ".." . DS . ".." . DS);
-define('JPATH_BASE', $jBasePath);
-define('JPATH_BASE2', $jBasePath);*/
 
 $env = @$_REQUEST['env'];
 $frontend = @$_REQUEST['frontend'];
@@ -30,41 +24,6 @@ if (defined('JVERSION') && version_compare( JVERSION, '2.5.0', '<' )) {
 }
 
 require_once JPATH_BASE . DS."components" . DS . "com_extrawatch" . DS . "includes.php";
-
-/*switch (@$env) {
-  case "ExtraWatchDrupalEnv":
-    {
-    define('DRUPAL_ROOT', dirname('../../../../../../../../'));
-    require_once DRUPAL_ROOT . '/includes/bootstrap.inc';
-    drupal_bootstrap(DRUPAL_BOOTSTRAP_DATABASE);
-    if (!defined('ENV')) define('ENV', 1);
-    break;
-    }
-  case "ExtraWatchJoomlaEnv":
-    {
-    $mainframe = initializeJoomla();
-    break;
-    }
-
-  case "ExtraWatchWordpressEnv":
-    {
-    require_once dirname(__FILE__) . '/../../../../../../wp-load.php';
-    break;
-    }
-  case "ExtraWatchNoCMSEnv":
-    {
-    if (!defined('ENV')) define('ENV', 1);
-    break;
-    }
-
-  default:
-    {
-    initializeJoomla();
-    break;
-    }
-
-}*/
-
 
 $extraWatch = new ExtraWatchMain();
 $extraWatch->config->initializeTranslations();
@@ -197,6 +156,8 @@ zoom = 13;
 for (var i = 0; i < markers.length; i++) {
 var name = markers[i].getAttribute("name");
 var address = markers[i].getAttribute("address");
+var city = markers[i].getAttribute("city");
+var country = markers[i].getAttribute("country");
 
 var position = new OpenLayers.LonLat(parseFloat(markers[i].getAttribute("lng")), parseFloat(markers[i].getAttribute("lat"))).transform(
 new OpenLayers.Projection("EPSG:4326"),
@@ -205,6 +166,8 @@ openmap.getProjectionObject()
 openmap.setCenter(position, parseInt(zoom));
 openmapmarkers.addMarker(new OpenLayers.Marker(position));
 }
+window.document.getElementById('extrawatch_map_city').innerHTML = city + ",";
+window.document.getElementById('extrawatch_map_country').innerHTML = country;
 });
 }
 

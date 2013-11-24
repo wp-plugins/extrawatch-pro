@@ -344,7 +344,7 @@ DEFINE('_EW_VIEW_ADMINBODY_LONG_MESSAGE', "如果您一直看到上面消息,您
 DEFINE('_EW_ADMINBODY_LIVE_SITE', "警告: 在您的瀏覽器中的網站的配置中的實際網站: %s and %s 不匹配.");
 DEFINE('_EW_ADMINBODY_SET_LIVE_SITE', "到設置實際網站: %s 並繼續...");
 
-DEFINE('_EW_ADMINHEADER_JW', "ExtraWatch ");
+DEFINE('_EW_ADMINHEADER_JW', "ExtraWatch");
 DEFINE('_EW_ADMINHEADER_REMOVE_BACKLINK', "刪除鏈接");
 DEFINE('_EW_ADMINHEADER_KNOWLEDGE_BASE', "知識庫");
 DEFINE('_EW_ADMINHEADER_FLOW', "流量");
@@ -609,3 +609,4 @@ DEFINE('_EW_ACTIVE', "active");
 DEFINE('_EW_DOWNLOAD_PRO', "Download PRO version");
 DEFINE('_EW_VISITS_HEATMAP_CLICK_COUNT', "Total clicks today: %d");
 DEFINE('_EW_HEATMAP_LOADING','Loading Heatmap table ...');
+DEFINE('_EW_ANTISPAM_INVALID_EXTENSION', "Invalid extension type, .csv expected"); 

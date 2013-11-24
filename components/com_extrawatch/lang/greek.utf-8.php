@@ -360,7 +360,7 @@ DEFINE('_EW_VIEW_ADMINBODY_LONG_MESSAGE', "Εάν βλέπετε το παραπ
 DEFINE('_EW_ADMINBODY_LIVE_SITE', "Προσοχή: Η Ιστοσελίδα στον πλοηγό σας και στις ρυθμίσεις: %s και %s δεν ταιριάζουν.");
 DEFINE('_EW_ADMINBODY_SET_LIVE_SITE', "Ορίστε ιστοσελίδα σε: %s και συνεχίστε...");
 
-DEFINE('_EW_ADMINHEADER_JW', "ExtraWatch ");
+DEFINE('_EW_ADMINHEADER_JW', "ExtraWatch");
 DEFINE('_EW_ADMINHEADER_REMOVE_BACKLINK', "Αφαίρεση Δεσμού επιστροφής");
 DEFINE('_EW_ADMINHEADER_KNOWLEDGE_BASE', "Βάση Γνώσεων");
 DEFINE('_EW_ADMINHEADER_FLOW', "Ροή");
@@ -624,3 +624,4 @@ DEFINE('_EW_ACTIVE', "active");
 DEFINE('_EW_DOWNLOAD_PRO', "Download PRO version");
 DEFINE('_EW_VISITS_HEATMAP_CLICK_COUNT', "Total clicks today: %d");
 DEFINE('_EW_HEATMAP_LOADING','Loading Heatmap table ...');
+DEFINE('_EW_ANTISPAM_INVALID_EXTENSION', "Invalid extension type, .csv expected"); 

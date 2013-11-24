@@ -342,7 +342,7 @@ DEFINE('_EW_VIEW_ADMINBODY_LONG_MESSAGE', "Si vous voyez ce message s'afficher, 
 DEFINE('_EW_ADMINBODY_LIVE_SITE', "Attention ! Le nom de domaine dans votre navigateur (%s) et celui affiché dans ExtraWatch (%s) ne correspondent pas.");
 DEFINE('_EW_ADMINBODY_SET_LIVE_SITE', "Saisir le nom de domaine dans ExtraWatch : %s puis continuer...");
 
-DEFINE('_EW_ADMINHEADER_JW', "ExtraWatch ");
+DEFINE('_EW_ADMINHEADER_JW', "ExtraWatch");
 DEFINE('_EW_ADMINHEADER_REMOVE_BACKLINK', "Masquer le lien retour");
 DEFINE('_EW_ADMINHEADER_KNOWLEDGE_BASE', "Base de connaissances");
 DEFINE('_EW_ADMINHEADER_FLOW', "Flux du trafic");
@@ -599,3 +599,4 @@ DEFINE('_EW_ACTIVE', "active");
 DEFINE('_EW_DOWNLOAD_PRO', "Download PRO version");
 DEFINE('_EW_VISITS_HEATMAP_CLICK_COUNT', "Total clicks today: %d");
 DEFINE('_EW_HEATMAP_LOADING','Loading Heatmap table ...');
+DEFINE('_EW_ANTISPAM_INVALID_EXTENSION', "Invalid extension type, .csv expected"); 

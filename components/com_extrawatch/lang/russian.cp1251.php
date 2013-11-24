@@ -347,7 +347,7 @@ DEFINE('_EW_VIEW_ADMINBODY_LONG_MESSAGE', "��� ���������
 DEFINE('_EW_ADMINBODY_LIVE_SITE', "��������: ���� � ����� �������� � ��� ������� ���� � ������������: %s � %s �� ���������.");
 DEFINE('_EW_ADMINBODY_SET_LIVE_SITE', "Set live site to: %s and continue...");
 
-DEFINE('_EW_ADMINHEADER_JW', "ExtraWatch ");
+DEFINE('_EW_ADMINHEADER_JW', "ExtraWatch");
 DEFINE('_EW_ADMINHEADER_REMOVE_BACKLINK', "������� �������� ������");
 DEFINE('_EW_ADMINHEADER_KNOWLEDGE_BASE', "���� ������");
 DEFINE('_EW_ADMINHEADER_FLOW', "�����");
@@ -609,3 +609,4 @@ DEFINE('_EW_ACTIVE', "active");
 DEFINE('_EW_DOWNLOAD_PRO', "Download PRO version");
 DEFINE('_EW_VISITS_HEATMAP_CLICK_COUNT', "Total clicks today: %d");
 DEFINE('_EW_HEATMAP_LOADING','Loading Heatmap table ...');
+DEFINE('_EW_ANTISPAM_INVALID_EXTENSION', "Invalid extension type, .csv expected"); 

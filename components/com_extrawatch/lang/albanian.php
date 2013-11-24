@@ -345,7 +345,7 @@ DEFINE('_EW_VIEW_ADMINBODY_LONG_MESSAGE', "Nëse ju jeni duke parë mesazhin e m
 DEFINE('_EW_ADMINBODY_LIVE_SITE', "Kujdes: faqja në shfletuesin tuaj dhe faqja e konfigurimit: %s dhe %s nuk perputhen.");
 DEFINE('_EW_ADMINBODY_SET_LIVE_SITE', "Vendosni faqen live : %s dhe vazhdoni...");
 
-DEFINE('_EW_ADMINHEADER_JW', "ExtraWatch ");
+DEFINE('_EW_ADMINHEADER_JW', "ExtraWatch");
 DEFINE('_EW_ADMINHEADER_REMOVE_BACKLINK', "Hiq Backlink");
 DEFINE('_EW_ADMINHEADER_KNOWLEDGE_BASE', "Baza e Dijeve");
 DEFINE('_EW_ADMINHEADER_FLOW', "lëvizje");
@@ -610,3 +610,4 @@ DEFINE('_EW_ACTIVE', "active");
 DEFINE('_EW_DOWNLOAD_PRO', "Download PRO version");
 DEFINE('_EW_VISITS_HEATMAP_CLICK_COUNT', "Total clicks today: %d");
 DEFINE('_EW_HEATMAP_LOADING','Loading Heatmap table ...');
+DEFINE('_EW_ANTISPAM_INVALID_EXTENSION', "Invalid extension type, .csv expected"); 

@@ -4,7 +4,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1367
+ * @revision 1390
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -21,7 +21,7 @@ defined('_JEXEC') or die('Restricted access'); ?>
             <td width="31%">
                 <div align="right"><?php echo(_EW_DOWNLOADS_EXTENSION_NAME);?><font color="#FF0000"> *</font>                    </div>                  </td>
             <td width="39%" align="left">
-                <input name="extname" type="text" size="50" value="<?php echo $editextname?>">                  </td>
+                <input name="extname" type="text" size="50" value="<?php echo @$editextname?>">                  </td>
             <td height="20" colspan="2" align="left">
                 <div align="left">
                     <input name="task" type="hidden"  value="downloads">

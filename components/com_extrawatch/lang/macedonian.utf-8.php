@@ -345,7 +345,7 @@ DEFINE('_EW_VIEW_ADMINBODY_LONG_MESSAGE', "Ако ја гледате горна
 DEFINE('_EW_ADMINBODY_LIVE_SITE', "Внимание: страната во вашиот прелистувач и страната во живо во конфигурација: %s и %s не се совпаѓаат.");
 DEFINE('_EW_ADMINBODY_SET_LIVE_SITE', "Намести ја живата страна во: %s и продолжи...");
 
-DEFINE('_EW_ADMINHEADER_JW', "ExtraWatch ");
+DEFINE('_EW_ADMINHEADER_JW', "ExtraWatch");
 DEFINE('_EW_ADMINHEADER_REMOVE_BACKLINK', "Отстрани заднински линк");
 DEFINE('_EW_ADMINHEADER_KNOWLEDGE_BASE', "База на знаење");
 DEFINE('_EW_ADMINHEADER_FLOW', "Проток");
@@ -610,3 +610,4 @@ DEFINE('_EW_ACTIVE', "active");
 DEFINE('_EW_DOWNLOAD_PRO', "Download PRO version");
 DEFINE('_EW_VISITS_HEATMAP_CLICK_COUNT', "Total clicks today: %d");
 DEFINE('_EW_HEATMAP_LOADING','Loading Heatmap table ...');
+DEFINE('_EW_ANTISPAM_INVALID_EXTENSION', "Invalid extension type, .csv expected"); 

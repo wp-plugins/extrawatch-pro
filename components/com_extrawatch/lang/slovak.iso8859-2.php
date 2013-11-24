@@ -342,7 +342,7 @@ DEFINE('_EW_VIEW_ADMINBODY_LONG_MESSAGE', "Ak vidï¿½te tï¿½to sprï¿½vu prï¿½liï¿
 DEFINE('_EW_ADMINBODY_LIVE_SITE', "Upozornenie: strï¿½nka vo vaï¿½om browseri %s a v konfigurï¿½cii %s sa nezohodujï¿½.");
 DEFINE('_EW_ADMINBODY_SET_LIVE_SITE', "Nastavte domï¿½nu na: %s a pokraï¿½ujte...");
 
-DEFINE('_EW_ADMINHEADER_JW', "ExtraWatch ");
+DEFINE('_EW_ADMINHEADER_JW', "ExtraWatch");
 DEFINE('_EW_ADMINHEADER_REMOVE_BACKLINK', "Odstrï¿½niï¿½ spï¿½tnï¿½ odkaz");
 DEFINE('_EW_ADMINHEADER_KNOWLEDGE_BASE', "Bï¿½za znalostï¿½");
 DEFINE('_EW_ADMINHEADER_FLOW', "Tok nï¿½vï¿½tev");
@@ -602,3 +602,4 @@ DEFINE('_EW_ACTIVE', "active");
 DEFINE('_EW_DOWNLOAD_PRO', "Download PRO version");
 DEFINE('_EW_VISITS_HEATMAP_CLICK_COUNT', "Total clicks today: %d");
 DEFINE('_EW_HEATMAP_LOADING','Loading Heatmap table ...');
+DEFINE('_EW_ANTISPAM_INVALID_EXTENSION', "Invalid extension type, .csv expected"); 

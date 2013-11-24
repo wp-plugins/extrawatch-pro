@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1367
+ * @revision 1390
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -234,7 +234,11 @@ class ExtraWatchBlock
     $ip = ExtraWatchVisit::getRemoteIPAddress();
 
     if (@$this->searchBlockedIp($ip)) {
-      $this->dieWithBlockingMessage($ip);
+      try {
+        $this->dieWithBlockingMessage($ip);
+      } catch (ExtraWatchIPBlockedException $exception) {
+          die($exception->getBlockingMessage());
+      }
     }
     $today = $this->date->jwDateToday();
 
@@ -276,9 +280,12 @@ class ExtraWatchBlock
     $value = trim($value);
     if (@ $spamWord && @$value && ExtraWatchHelper :: wildcardSearch("*" . $spamWord . "*", $value)) {
       $this->blockIp($ip, ExtraWatchHelper::htmlspecialchars($value), $today, $spamWord);
-      $this->dieWithBlockingMessage($ip);
+        try {
+            $this->dieWithBlockingMessage($ip);
+        } catch (ExtraWatchIPBlockedException $exception) {
+            die($exception->getBlockingMessage());
+        }
     }
-
   }
 
   function checkBlocked($ip)
@@ -342,17 +349,19 @@ class ExtraWatchBlock
                 return;
             }
         }
-        /*          if ($_FILES["file"]["size"] > 1 * 1024 * 1024) {
-                      echo("Error: ExtraWatch supports maximum .csv file size 1 MB");
 
-                      return;
-                  }*/
+        if (!ExtraWatchHelper::endsWith($_FILES["file"]["name"],".csv")) {
+            echo _EW_ANTISPAM_INVALID_EXTENSION;
+            return;
+        }
 
         move_uploaded_file($_FILES["file"]["tmp_name"],JPATH_BASE."/" . $_FILES["file"]["name"]);
 
         $reason = $_FILES["file"]["name"];
         $row = 1;
         $date = ExtraWatchDate::jwDateToday();
+
+        set_time_limit(0);
 
         $handle = fopen($_FILES["file"]["name"], "r");
         while (($data = fgetcsv($handle, '', ",")) !== FALSE) {

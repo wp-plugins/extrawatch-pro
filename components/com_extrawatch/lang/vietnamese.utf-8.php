@@ -352,7 +352,7 @@ DEFINE('_EW_VIEW_ADMINBODY_LONG_MESSAGE', "Nếu bạn đang nhìn thấy tin nh
 DEFINE('_EW_ADMINBODY_LIVE_SITE', "Cảnh báo: trang web trong trình duyệt của bạn và trang web trực tiếp trong cấu hình:% s và% s không phù hợp.");
 DEFINE('_EW_ADMINBODY_SET_LIVE_SITE', "Đặt sống trang web:% s và tiếp tục ...");
 
-DEFINE('_EW_ADMINHEADER_JW', "ExtraWatch ");
+DEFINE('_EW_ADMINHEADER_JW', "ExtraWatch");
 DEFINE('_EW_ADMINHEADER_REMOVE_BACKLINK', "Hủy bỏ Backlink");
 DEFINE('_EW_ADMINHEADER_KNOWLEDGE_BASE', "kiến thức cơ sở");
 DEFINE('_EW_ADMINHEADER_FLOW', "dòng chảy");
@@ -628,3 +628,4 @@ DEFINE('_EW_ACTIVE', "active");
 DEFINE('_EW_DOWNLOAD_PRO', "Download PRO version");
 DEFINE('_EW_VISITS_HEATMAP_CLICK_COUNT', "Total clicks today: %d");
 DEFINE('_EW_HEATMAP_LOADING','Loading Heatmap table ...');
+DEFINE('_EW_ANTISPAM_INVALID_EXTENSION', "Invalid extension type, .csv expected"); 

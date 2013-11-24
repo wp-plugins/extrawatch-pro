@@ -342,7 +342,7 @@ define('EXTRAWATCH_LIVE_SITE', 'http://www.codegravity.com');");
 DEFINE('_EW_ADMINBODY_LIVE_SITE', "Figyelem: cím a böngész&#337;ben és az él&#337; cím a konfigurációban: %s és %s nem egyezik.");
 DEFINE('_EW_ADMINBODY_SET_LIVE_SITE', "Állítsa be az él&#337; címet: %s és folytassa...");
 
-DEFINE('_EW_ADMINHEADER_JW', "ExtraWatch ");
+DEFINE('_EW_ADMINHEADER_JW', "ExtraWatch");
 DEFINE('_EW_ADMINHEADER_REMOVE_BACKLINK', "Hátsólink eltávolítás");
 DEFINE('_EW_ADMINHEADER_KNOWLEDGE_BASE', "Tudás-bázis");
 DEFINE('_EW_ADMINHEADER_FLOW', "Folyamat");
@@ -608,3 +608,4 @@ DEFINE('_EW_ACTIVE', "active");
 DEFINE('_EW_DOWNLOAD_PRO', "Download PRO version");
 DEFINE('_EW_VISITS_HEATMAP_CLICK_COUNT', "Total clicks today: %d");
 DEFINE('_EW_HEATMAP_LOADING','Loading Heatmap table ...');
+DEFINE('_EW_ANTISPAM_INVALID_EXTENSION', "Invalid extension type, .csv expected"); 

@@ -51,7 +51,7 @@ function extrawatch_renderLicenseFree($extraWatch)
         font-weight: normal;
     }
 </style>
-<h1>ExtraWatch 2.2.1367 PRO</h1>
+<h1>ExtraWatch 2.2.1390 PRO</h1>
 
 <script type='text/javascript'>
     function toggleNoKeyForm() {
@@ -92,7 +92,7 @@ function extrawatch_renderLicenseFree($extraWatch)
 
             <div  id='nokey' style='border: 1px solid  rgb(255, 171, 41); width: 400px; padding: 10px; display:none;'>
                 <h3>Request the correct activation key</h3>
-                <form action='https://www.extrawatch.com/success/' method='POST'>
+                <form action='http://www.extrawatch.com/success/' method='GET'>
                     <table>
                         <tr><td>
                             domain

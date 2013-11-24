@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1367
+ * @revision 1390
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -66,15 +66,14 @@ defined('_JEXEC') or die('Restricted access'); ?>
             <td valign='top'>
                 <table width="105%" border='0'>
                     <tr>
-                        <td>
-                            <a href='http://www.codegravity.com' target='_blank'><img
+                        <td width="50px">
+                            <a href='http://www.extrawatch.com' target='_blank'><img
                                     src='<?php echo($extraWatch->config->getLiveSiteWithSuffix());?>components/com_extrawatch/img/icons/extrawatch-logo-48x48.png'
                                     align='center' border='0'/></a>
                         </td>
-                        <td>
-                            <a href='http://www.codegravity.com' target='_blank'
-                               style='font-family: verdana; font-size: 14px; align:top; font-weight: bold; color: black;'> <?php echo _EW_ADMINHEADER_JW;?><?php echo("2.2");?>.<?php echo("1367");?>
-                                PRO</a><br/><?php echo _EW_TITLE;?>
+                        <td width="250px">
+                            <a href='http://www.extrawatch.com' target='_blank'
+                               style='font-family: verdana; font-size: 14px; align:top; font-weight: bold; color: black;'><?php echo _EW_ADMINHEADER_JW;?>&nbsp;<?php echo("2.2.1390");?>&nbsp;<?php echo("PRO");?></a><br/><?php echo _EW_TITLE;?>
                         </td>
                         <td>
                             <?php require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "menu.php"; ?>

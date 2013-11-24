@@ -343,7 +343,7 @@ DEFINE('_EW_VIEW_ADMINBODY_LONG_MESSAGE', "Jeżeli widzisz powyższy komunikat z
 DEFINE('_EW_ADMINBODY_LIVE_SITE', "Uwaga: używana domena i domena podana jako live_site (%s oraz %s) są różne.");
 DEFINE('_EW_ADMINBODY_SET_LIVE_SITE', "Ustal live_site na: %s i kontynuuj...");
 
-DEFINE('_EW_ADMINHEADER_JW', "ExtraWatch ");
+DEFINE('_EW_ADMINHEADER_JW', "ExtraWatch");
 DEFINE('_EW_ADMINHEADER_REMOVE_BACKLINK', "Usuń odnośnik");
 DEFINE('_EW_ADMINHEADER_KNOWLEDGE_BASE', "Baza wiedzy");
 DEFINE('_EW_ADMINHEADER_FLOW', "Ruch");
@@ -633,3 +633,4 @@ DEFINE('_EW_ACTIVE', "active");
 DEFINE('_EW_DOWNLOAD_PRO', "Download PRO version");
 DEFINE('_EW_VISITS_HEATMAP_CLICK_COUNT', "Total clicks today: %d");
 DEFINE('_EW_HEATMAP_LOADING','Loading Heatmap table ...'); 
+DEFINE('_EW_ANTISPAM_INVALID_EXTENSION', "Invalid extension type, .csv expected"); 

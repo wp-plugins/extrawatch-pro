@@ -342,7 +342,7 @@ DEFINE('_EW_VIEW_ADMINBODY_LONG_MESSAGE', "Ja Jūs redziet šo paziņojumu pār�
 DEFINE('_EW_ADMINBODY_LIVE_SITE', "UZMANĪBU: mājaslapa Jūsu pārlūkā un lapa konfigurācijā: %s un %s nesakrīt.");
 DEFINE('_EW_ADMINBODY_SET_LIVE_SITE', "Uzstādiet reālo majaslapas adresi kā: %s un turpiniet...");
 
-DEFINE('_EW_ADMINHEADER_JW', "ExtraWatch ");
+DEFINE('_EW_ADMINHEADER_JW', "ExtraWatch");
 DEFINE('_EW_ADMINHEADER_REMOVE_BACKLINK', "Noņemt zemadresi");
 DEFINE('_EW_ADMINHEADER_KNOWLEDGE_BASE', "Informačijas sadaļa");
 DEFINE('_EW_ADMINHEADER_FLOW', "Plūsma");
@@ -605,3 +605,4 @@ DEFINE('_EW_ACTIVE', "active");
 DEFINE('_EW_DOWNLOAD_PRO', "Download PRO version");
 DEFINE('_EW_VISITS_HEATMAP_CLICK_COUNT', "Total clicks today: %d");
 DEFINE('_EW_HEATMAP_LOADING','Loading Heatmap table ...');
+DEFINE('_EW_ANTISPAM_INVALID_EXTENSION', "Invalid extension type, .csv expected"); 
