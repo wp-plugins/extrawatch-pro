@@ -5,12 +5,13 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1395
+ * @revision 1399
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
  */
 // disabled for now defined('_JEXEC') or die('Restricted access');
+
 
 
 
@@ -65,7 +66,9 @@ if (_EW_CLOUD_MODE) {
   var w = screen.width;
   var h = screen.height;
   var xx;
-
+  var extraWatchLinkElementsList;
+  var extraWatchLinkElementsListOriginalFunctions = new Array();
+  
   <?php
   $request = $extraWatch->env->getRequest();
 
@@ -230,15 +233,14 @@ if (_EW_CLOUD_MODE) {
             }
 
 
-
 	function extraWatch_decorateLinksWithCustomHandler() {
-		var list = document.getElementsByTagName("A");
-		for(i=0;i<list.length;i++) {
+		for(i=0;i<extraWatchLinkElementsList.length;i++) {
             try {
-                if (list[i].onclick != null) {
-			    var extraWatch_originalOnClickFunction = list[i].onclick;
-			    list[i].onclick = function(evt) {
+                if (extraWatchLinkElementsList[i].onclick != null) {
+				    extraWatchLinkElementsListOriginal[extraWatchLinkElementsList[i].innerText] = extraWatchLinkElementsList[i].onclick;	//storing original onclick function by key which is innerText
+					extraWatchLinkElementsList[i].onclick = function(evt) {
 	    			extraWatch_click(evt);
+					extraWatch_originalOnClickFunction = extraWatchLinkElementsListOriginal[evt.srcElement.innerText];	//retrieving original onclick function by key which is innerText
                     extraWatch_originalOnClickFunction();
 		    	}
 			}
@@ -248,6 +250,7 @@ if (_EW_CLOUD_MODE) {
 	}
 
     document.addEventListener('DOMContentLoaded',function(){
+		extraWatchLinkElementsList = document.getElementsByTagName("A");
 		extraWatch_decorateLinksWithCustomHandler();  
 		  });
 
