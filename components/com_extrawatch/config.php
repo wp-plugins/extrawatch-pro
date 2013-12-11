@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1418
+ * @revision 1420
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -746,7 +746,7 @@ define('EXTRAWATCH_FILE_PERMISSIONS_TO_FIX', serialize(array()));   //todo .. ad
 
 
 if (!defined('_EW_HOST') && !defined('_EW_CLOUD_MODE')) {
-	$cloudModeConfigFile = realpath(dirname(__FILE__).DS."..".DS."..".DS."..").DS."connection.php";
+	$cloudModeConfigFile = @realpath(dirname(__FILE__).DS."..".DS."..".DS."..").DS."connection.php";
 	if (file_exists($cloudModeConfigFile)) {
 			if (!defined('_EW_CLOUD_MODE')) {
 				define('_EW_CLOUD_MODE',TRUE);
