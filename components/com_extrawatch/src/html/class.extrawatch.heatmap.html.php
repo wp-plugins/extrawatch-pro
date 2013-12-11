@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1399
+ * @revision 1415
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -139,6 +139,7 @@ class ExtraWatchHeatmapHTML
 
     function renderMostClickedHTMLElementsTable($day = 0) {
         $rows = $this->extraWatchHeatmap->getMostClickedHTMLElements($day);
+		$liveSite = $this->extraWatch->config->getLiveSiteWithSuffix();
 
         if (!@$rows) {
             return ExtraWatchHelper::renderNoData();
@@ -156,17 +157,17 @@ class ExtraWatchHeatmapHTML
         if (@$rows) {
             $maxClicksForDay = $this->extraWatchHeatmap->getMaxClicksForDay($day);
             foreach($rows as $row) {
-                $trendsCells = $this->extraWatchStatHTML->renderDiffTableCellsAndIcon(EW_DB_KEY_HTML_ELEMENT, addslashes($row->xpath), $day);
+                $trendsCells = $this->extraWatchStatHTML->renderDiffTableCellsAndIcon(EW_DB_KEY_HTML_ELEMENT, $liveSite.addslashes($row->xpath), $day);
 
                 $ratio = $row->clickCount / $maxClicksForDay;
                 $color = ExtraWatchHelper::rgbFromRatio($ratio);
 
-                $highlightElementLink = $this->renderHighlightElementLink($this->projectSite.$row->uri, $row->xpath);
+                $highlightElementLink = $this->renderHighlightElementLink($liveSite.$row->uri, $row->xpath);
 
                 if ($day) {
                     $link = "<td title='".ExtraWatchHelper::htmlspecialchars($row->xpath)."'>". $highlightElementLink. "</td>";
                 } else {
-                    $link = "<td>".$this->renderHighlightElementLink($row->uri, "all", ExtraWatchHelper::htmlspecialchars(ExtraWatchHelper::truncate($row->xpath)))."</td>";
+                    $link = "<td>".$this->renderHighlightElementLink($liveSite.$row->uri, "all", ExtraWatchHelper::htmlspecialchars(ExtraWatchHelper::truncate($row->xpath)))."</td>";
                 }
 
 
@@ -181,7 +182,7 @@ class ExtraWatchHeatmapHTML
                 }
 
                 $output .= "</td>".$link.
-                    "<td><a href='".$this->projectSite.$row->uri."' title='".ExtraWatchHelper::htmlspecialchars($row->title)."' target='_blank'>".ExtraWatchHelper::truncate($row->title)."</a></td>".
+                    "<td><a href='".$liveSite.$row->uri."' title='".ExtraWatchHelper::htmlspecialchars($row->title)."' target='_blank'>".ExtraWatchHelper::truncate($row->title)."</a></td>".
                     $trendsCells.
                     "</tr>";
                 $i++;

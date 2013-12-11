@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1399
+ * @revision 1415
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -374,26 +374,26 @@ class ExtraWatchBlock
                 $ipArray[] = $ip;
             }
         }
-        $valuesOutput = "";
+        $valuesOutputArray = array();
         $i=0;
         foreach ($ipArray as $ip) {
-            $valuesOutput .= sprintf(" ('','%s','%s', '%s', '%d')", $this->database->getEscaped($ip), $this->database->getEscaped($reason), EXTRAWATCH_UNKNOWN_COUNTRY, (int) $date);
+            $valuesOutputArray[] = sprintf(" ('','%s','%s', '%s', '%d')", $this->database->getEscaped($ip), "", EXTRAWATCH_UNKNOWN_COUNTRY, (int) $date);   //adding reason as empty, to save db space
             if ($i<sizeof($ipArray)) {
                 if ($i!=0 && $i% self::IP_BULK_IMPORT_SIZE ==0) {
-                    $valuesOutput .= ";";
+                    $valuesOutput = implode(",", $valuesOutputArray).";";
                     $this->insertIpBulk($valuesOutput);
-                    $valuesOutput = "";
-                }
-                if ($i != sizeof($ipArray) -1 && $i% self::IP_BULK_IMPORT_SIZE !=0) {
-                    $valuesOutput .= ",";
+                    $valuesOutputArray = array();
                 }
                 $i++;
             }
         }
+        $valuesOutput = implode(",", $valuesOutputArray).";";
         $this->insertIpBulk($valuesOutput); // remaining IP addresses
 
         fclose($handle);
         unlink($_FILES["file"]["name"]);
+
+        return sizeof($ipArray);
     }
 
     /**

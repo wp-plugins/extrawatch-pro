@@ -4,7 +4,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1399
+ * @revision 1415
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -44,6 +44,30 @@ final class ipinfodb
     return implode("\n", $this->errors);
   }
 
+
+    function str_getcsv_manual($input, $delimiter = ',', $enclosure = '"') {    /* from http://stackoverflow.com/ */
+
+        if( ! preg_match("/[$enclosure]/", $input) ) {
+            return (array)preg_replace(array("/^\\s*/", "/\\s*$/"), '', explode($delimiter, $input));
+        }
+
+        $token = "##"; $token2 = "::";
+        //alternate tokens "\034\034", "\035\035", "%%";
+        $t1 = preg_replace(array("/\\\[$enclosure]/", "/$enclosure{2}/",
+                "/[$enclosure]\\s*[$delimiter]\\s*[$enclosure]\\s*/", "/\\s*[$enclosure]\\s*/"),
+            array(@$token2, $token2, $token, $token), trim(trim(trim($input), $enclosure)));
+
+        $a = explode($token, $t1);
+        foreach($a as $k=>$v) {
+            if ( preg_match("/^{$delimiter}/", $v) || preg_match("/{$delimiter}$/", $v) ) {
+                $a[$k] = trim($v, $delimiter); $a[$k] = preg_replace("/$delimiter/", "$token", $a[$k]); }
+        }
+        $a = explode($token, implode($token, $a));
+        return (array)preg_replace(array("/^\\s/", "/\\s$/", "/$token2/"), array('', '', $enclosure), $a);
+
+    }
+
+
     public function getGeoLocation($ip) {
         if (!ExtraWatchConfig::isIPAddress($ip)) {
             $ip = @gethostbyname($ip);
@@ -53,7 +77,12 @@ final class ipinfodb
             $result = array();
             try {
                 $csv = $this->retrieveCSV($ip);
-                $csvParsed = str_getcsv($csv, ";");
+
+                if(@function_exists('str_getcsv')) {
+                    $csvParsed = str_getcsv($csv, ";");
+                } else {
+                    $csvParsed = $this->str_getcsv_manual($csv, ";");
+                }
 
                 $result[ExtraWatchVisit::COUNTRY_CODE] = $csvParsed[3];
                 $result[ExtraWatchVisit::COUNTRY_NAME] = ucwords(strtolower($csvParsed[4])); //camel case

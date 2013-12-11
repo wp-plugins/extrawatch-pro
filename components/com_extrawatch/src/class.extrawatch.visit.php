@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1399
+ * @revision 1415
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -692,7 +692,7 @@ function insertSearchResultPage($uri, $phrase, $referer, $title)
 
       if (@_EW_CLOUD_MODE && $this->areVisitsEmpty()) {
 			$projectUrl = $this->config->getDomainFromLiveSiteByUsername(_EW_PROJECT_ID);
-			mail(_EW_CLOUD_NOTIFY_EMAIL, "First visit for $projectUrl", "First visit for $projectUrl");
+			@mail(_EW_CLOUD_NOTIFY_EMAIL, "First visit for $projectUrl", "First visit for $projectUrl");
 	  }
 
 
@@ -1070,8 +1070,8 @@ function insertSearchResultPage($uri, $phrase, $referer, $title)
           $filterOnlyIPCondition = sprintf(" and #__extrawatch.`ip` = '%s'", $this->database->getEscaped($ipFilter));
       }
 
-    $query = sprintf("SELECT id, fk, visitId, timestamp, title, uri, ip, country, referer, timeDiff, `inactive`, `username` FROM (
-        (SELECT #__extrawatch_uri.id as id, #__extrawatch.id as visitId, fk, timestamp, title, uri, ip, country, referer, `inactive`, `username`
+    $query = sprintf("SELECT id, fk, visitId, timestamp, title, uri, ip, country, referer, timeDiff, `inactive`, `username`, browser FROM (
+        (SELECT #__extrawatch_uri.id as id, #__extrawatch.id as visitId, fk, timestamp, title, uri, ip, country, referer, `inactive`, `username`, browser
           FROM #__extrawatch LEFT JOIN #__extrawatch_uri ON #__extrawatch.id = #__extrawatch_uri.fk WHERE #__extrawatch.inactive = %d and #__extrawatch.browser %s and #__extrawatch_uri.timestamp is not null %s order by inactive asc, #__extrawatch.id desc, #__extrawatch_uri.timestamp desc limit %d) as A
           LEFT JOIN
         (SELECT (max(timestamp) - min(timestamp)) as timeDiff, fk as fk2  FROM `#__extrawatch_uri` group by (fk))  as B
@@ -1483,6 +1483,11 @@ function insertSearchResultPage($uri, $phrase, $referer, $title)
     {
         $query = sprintf("select username from #__extrawatch where ip = '%s' limit 1", $this->database->getEscaped($ip));
         return @$this->database->resultQuery($query);
+    }
+
+    function updateCountryForIP($country, $ip) {
+        $query = sprintf("update #__extrawatch set country = '%s' where ip = '%s' ", $this->database->getEscaped($country), $this->database->getEscaped($ip));
+        $this->database->executeQuery($query);
     }
 
 }

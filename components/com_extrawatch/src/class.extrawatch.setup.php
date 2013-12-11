@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1399
+ * @revision 1415
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -52,13 +52,14 @@ class ExtraWatchSetup {
                 $this->initializeIp2Country();
             }
             if (_EW_CLOUD_MODE) {
-                    require_once (dirname(__FILE__).DS."evn".DS."nocms".DS."admin".DS."src".DS."class.extrawatch.project.php");
+
+                    require_once (realpath(dirname(__FILE__)).DS."env".DS."nocms".DS."admin".DS."src".DS."class.extrawatch.project.php");
 
                     $extraWatchProject = new ExtraWatchProject($this->database);
                     $username = @$_SESSION['email'] ? @$_SESSION['email'] : @$_REQUEST['email'];
 
                     $extraWatchProject->setTimeOfProjectCreation(_EW_PROJECT_ID);
-                    mail(_EW_CLOUD_NOTIFY_EMAIL, "project "._EW_PROJECT_ID." initialized", "project "._EW_PROJECT_ID." initialized");
+                    @mail(_EW_CLOUD_NOTIFY_EMAIL, "project "._EW_PROJECT_ID." initialized", "project "._EW_PROJECT_ID." initialized");
                     $this->config->saveConfigValue("EXTRAWATCH_EMAIL_REPORTS_ENABLED", "On");
                     $this->config->saveConfigValue("EXTRAWATCH_EMAIL_SEO_REPORTS_ENABLED", "On");
                     $this->config->saveConfigValue("EXTRAWATCH_SPAMWORD_BANS_ENABLED", "On");

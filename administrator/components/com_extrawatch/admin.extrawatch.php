@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1399
+ * @revision 1415
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -21,6 +21,7 @@ if (!defined('DS')) {
     define('DS', DIRECTORY_SEPARATOR);
 }
 
+ini_set('display_errors', TRUE); error_reporting(E_ALL);
 
 $scriptFilename = $_SERVER['SCRIPT_FILENAME'];
 $scriptFilename = str_replace("/",DS, $scriptFilename);
@@ -393,9 +394,10 @@ function extrawatch_mainController($task = "") {
 
                     case "save" :
                         {
-                        $result = $extraWatch->helper->saveAntiSpamSettings(ExtraWatchHelper::requestPost());
+                        $numRecordsImported = $extraWatch->block->saveImportAntiSpamIp(ExtraWatchHelper::requestPost());
                         $output .= $extraWatchHTML->renderAdminStyles($extraWatch);
                         $output .= $extraWatchHTML->renderHeader($extraWatch);
+                        $output .= sprintf(_EW_ANTISPAM_NUM_IP_FROM_CSV_IMPORTED, (int) $numRecordsImported);
                         $output .= $extraWatchHTML->renderAntiSpam();
                         break;
                         }

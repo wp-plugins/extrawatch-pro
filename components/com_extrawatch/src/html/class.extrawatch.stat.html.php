@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1399
+ * @revision 1415
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -66,10 +66,10 @@ class ExtraWatchStatHTML
   {
 
     if ($row->name) {
-      $data=json_decode($row->name);
-      $dataDecoded = $data->icon;
+      $data=@json_decode($row->name);
+      $dataDecoded = @$data->icon;
       if (!$dataDecoded) {
-          $dataDecoded = $row->name;
+          $dataDecoded = $row->name.".gif";
       }
       $icon = "<img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/" . strtolower($dataDecoded) . "' />";
     }

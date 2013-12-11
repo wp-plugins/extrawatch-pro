@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1399
+ * @revision 1415
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -81,6 +81,7 @@ class ExtraWatchVisitHTML
     $output = "";
     $rows = $this->getJoinedURIRows($bots, $inactive, $ipFilter);
     $agentNotPublishedMessage = $this->extraWatch->env->getAgentNotPublishedMsg($this->extraWatch->database);
+	$downloadLog = $this->extraWatch->downloads->getDownloadLogIpTimestampPath();
 
     if ($bots == FALSE && ($agentNotPublishedMessage != FALSE) && sizeof($rows) == 0 && $inactive == 0) {
       $output .= "<tr><td colspan='10'><span style='color:red; font-weight: bold;'>inactive: ".(int) $inactive.$agentNotPublishedMessage."</span></td></tr> ";
@@ -169,7 +170,8 @@ class ExtraWatchVisitHTML
         $country = $row->country;
 
         if (!$country) {
-          $country = $this->extraWatch->helper->countryByIp($row->ip);    //TODO optimize
+          $country = $this->extraWatch->helper->countryByIp($row->ip);    
+          $this->extraWatch->visit->updateCountryForIP($country, $row->ip);
         }
         if (@ $country) {
           $countryName = $this->extraWatch->helper->countryCodeToCountryName($country);//TODO optimize
@@ -177,7 +179,7 @@ class ExtraWatchVisitHTML
           $countryUpper = strtoupper($country);
         }
 
-        $userAgent = ExtraWatchHelper::htmlspecialchars($this->extraWatch->visit->getBrowserByIp($row->ip)); //TODO optimize
+        $userAgent = ExtraWatchHelper::htmlspecialchars($row->browser);
 
         $browser = "";
         $os = "";
@@ -287,14 +289,16 @@ class ExtraWatchVisitHTML
 
         $day = $this->extraWatch->date->jwDateFromTimestamp($row->timestamp);
 
-        $downloadsForIp = $this->extraWatch->downloads->getDownloadLogForIPBetweenTimestamps($row->ip, $lastTimestamp, $row->timestamp);//TODO optimize
+        $downloadsForIp = $this->extraWatch->downloads->getDownloadLogForIPBetweenTimestampsFromRef($downloadLog, $rowNumber, $row->ip, $lastTimestamp, $row->timestamp);//TODO optimize
+		
+		
         $timestampHumanReadable = ExtraWatchDate::date("H:i:s", $row->timestamp);
 
         $downloadIcon = "<img src='".$liveSiteWithSuffix."components/com_extrawatch/img/icons/downloads.png' $inactiveImageClass />";
 		if (@$downloadsForIp) {
 			foreach($downloadsForIp as $download) {
-				$downloadTimestampHumanReadable = ExtraWatchDate::date("H:i:s", $download->timestamp);
-				$output .= "<span $inactiveClass>".$downloadTimestampHumanReadable." $downloadIcon ".$download->dname."</span><br/>";
+				$downloadTimestampHumanReadable = ExtraWatchDate::date("H:i:s", $download['timestamp']);
+				$output .= "<span $inactiveClass>".$downloadTimestampHumanReadable." $downloadIcon ".$download['dname']."</span><br/>";
 			}
 		}
 
@@ -397,6 +401,7 @@ class ExtraWatchVisitHTML
     $output .= @$this->renderRefererRow($lastReferer, $lastColor);
 
     unset($uri2HeatmapClicksAssoc);
+	unset($downloadLog);
 
     return $output;
   }

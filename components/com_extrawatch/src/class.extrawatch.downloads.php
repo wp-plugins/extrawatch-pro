@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1399
+ * @revision 1415
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -44,6 +44,8 @@ class ExtraWatchDownloads
 
     function increaseFileDownload($file) {
 
+		set_time_limit(0);
+	
         $filepathquery = sprintf("SELECT did FROM #__extrawatch_dm_paths where dname='%s'", $this->database->getEscaped($file));
         $filepathid = $this->database->resultQuery($filepathquery);
 
@@ -557,10 +559,34 @@ class ExtraWatchDownloads
         return $this->database->resultQuery($query);
     }
 
-    function getDownloadLogForIPBetweenTimestamps($ip, $earlierTimestamp, $laterTimestamp) {
+	 function getDownloadLogForIPBetweenTimestamps($ip, $earlierTimestamp, $laterTimestamp) {
         $query = sprintf("SELECT * FROM  `#__extrawatch_dm_counter` JOIN #__extrawatch_dm_paths ON #__extrawatch_dm_paths.did = #__extrawatch_dm_counter.did where ip = '%s' and (%d > `timestamp`) and (`timestamp` > %d)  ORDER BY #__extrawatch_dm_counter.id DESC ", $this->database->getEscaped($ip), (int) $earlierTimestamp, (int) $laterTimestamp);
+		return $this->database->objectListQuery($query);
+	}
+
+    function getDownloadLogForIPBetweenTimestampsFromRef($downloadLog, $rowNumber, $ip, $earlierTimestamp, $laterTimestamp) {
+		$downloadsForIpBetweenTimestamps = array();
+        foreach($downloadLog as $log) {
+
+		if (
+            ($rowNumber == 1 && $log->ip == $ip && $log->timestamp >= $earlierTimestamp) || //this is is for first visit if the download was after the very first visit timestamp
+            ($log->ip == $ip && $earlierTimestamp >= $log->timestamp && $log->timestamp >= $laterTimestamp)
+         ) {
+					$download = array();
+					$download['timestamp'] = $log->timestamp;
+					$download['dname'] = $log->dname;
+					$downloadsForIpBetweenTimestamps[] = $download;
+			}
+		}
+		return $downloadsForIpBetweenTimestamps;
+    }
+	
+	
+    function getDownloadLogIpTimestampPath() {
+        $query = sprintf("SELECT dname, ip, timestamp FROM  `#__extrawatch_dm_counter` JOIN #__extrawatch_dm_paths ON #__extrawatch_dm_paths.did = #__extrawatch_dm_counter.did  ORDER BY #__extrawatch_dm_counter.id DESC limit 20");
         return $this->database->objectListQuery($query);
     }
+
 
 
 }
