@@ -32,66 +32,64 @@ class ExtraWatchDBWrapWordpress implements ExtraWatchDBWrap
     $database = $wpdb->dbname;
     $this->dbprefix = $wpdb->base_prefix;
     $select = TRUE;
+    $this->dbref = new PDO("$driver:host=$host;dbname=$database", $user, $password);
 
-	    if (
-			(!$this->dbref = @mysqli_connect($host, $user, $password, TRUE)) &&
-			(!($this->dbref = @mysql_connect($host, $user, $password, TRUE)))
-			)		{
-            die("cannot connect");
-			} 
-
-    if ($select) {
-      $this->select($database);
-    }
   }
 
   function __destruct()
   {
-    return @mysql_close($this->dbref);
+    //return mysql_close($this->dbref);
   }
 
   function getEscaped($sql)
   {
-    return mysql_real_escape_string($sql, $this->dbref);
+    return $sql;
   }
 
   function query()
   {
     $sql = $this->query;
-	ExtraWatchLog::debug("query: $sql"); 
-	$sql = str_replace("#__", $this->dbprefix, $sql);
-    $this->result = mysql_query($sql, $this->dbref);
-
-    if (!$this->result) {
-      $this->errNum = mysql_errno($this->dbref);
-      $this->errMsg = mysql_error($this->dbref) . " in query $sql";
-      return FALSE;
+    $sql = $this->replaceDbPrefix($sql);
+    $STH = $this->dbref->query($sql);
+    if (!$STH) {
+      return null;
     }
-    return $this->result;
+    $STH->setFetchMode(PDO::FETCH_ASSOC);
+    $result = $STH->fetch();
+    return $result;
   }
 
   function loadResult()
   {
-    if (!($result = $this->query())) {
+    $this->query = $this->replaceDbPrefix($this->query);
+    $STH = $this->dbref->query($this->query);
+    if (!$STH) {
       return null;
     }
+    $STH->setFetchMode(PDO::FETCH_ASSOC);
+
     $return = null;
-    if ($row = mysql_fetch_row($result)) {
-      $return = $row[0];
+    if ($row = $STH->fetch()) {
+      $return = @$row['value'];
+      if (!$return) {
+        $key = @key($row);
+        $return = @$row[$key];
+      }
     }
-    mysql_free_result($result);
     return $return;
   }
 
   function loadAssocList($key = '')
   {
-    $result = $this->query();
-    $array = array();
-    while ($row = mysql_fetch_assoc($result)) {
-      $array[] = $row;
+    $this->query = $this->replaceDbPrefix($this->query);
+    $STH = $this->dbref->query($this->query);
+    $STH->setFetchMode(PDO::FETCH_ASSOC);
+
+    $return = null;
+    if ($row = $STH->fetchAll()) {
+      $return = @$row['value'];
     }
-    mysql_free_result($result);
-    return $array;
+    return $return;
   }
 
   function select($database)
@@ -108,8 +106,7 @@ class ExtraWatchDBWrapWordpress implements ExtraWatchDBWrap
 
   function setQuery($query)
   {
-	ExtraWatchLog::debug("setQuery: $query"); 
-	$this->query = $query;
+    $this->query = $query;
   }
 
   function getErrorNum()
@@ -119,6 +116,7 @@ class ExtraWatchDBWrapWordpress implements ExtraWatchDBWrap
 
   function objectListQuery($query)
   {
+	ExtraWatchLog::debug("objectListQuery: $query");
     $this->query = $query;
     return $this->loadObjectList();
   }
@@ -130,45 +128,42 @@ class ExtraWatchDBWrapWordpress implements ExtraWatchDBWrap
 
   function resultQuery($query)
   {
+	ExtraWatchLog::debug("resultQuery: $query");
     $this->query = $query;
-    $this->setQuery($query);
     return $this->loadResult();
   }
 
   function executeQuery($query)
   {
+	ExtraWatchLog::debug("executeQuery: $query");
     $this->query = $query;
     return $this->query();
   }
 
   function assocListQuery($query)
   {
+	ExtraWatchLog::debug("assocListQuery: $query");
     $this->query = $query;
     return $this->loadAssocList();
   }
 
   function replaceDbPrefix($sql)
   {
-   	ExtraWatchLog::debug("$sql");  
-	return str_replace("#__", $this->dbprefix, $sql);
+    return str_replace("#__", $this->dbprefix, $sql);
   }
 
   private function loadObjectList($key = '')
   {
-    if (!($cur = $this->query())) {
+    $sql = $this->replaceDbPrefix($this->query);
+    $STH = $this->dbref->query($sql);
+    if (!$STH) {
       return null;
     }
-    $array = array();
-    while ($row = mysql_fetch_object($cur)) {
-      if ($key) {
-        $array[$row->$key] = $row;
-      } else {
-        $array[] = $row;
-      }
-    }
-    mysql_free_result($cur);
-    return $array;
+    $STH->setFetchMode(PDO::FETCH_OBJ);
+    $result = $STH->fetchAll();
+    return $result;
   }
+
 }
 
 
