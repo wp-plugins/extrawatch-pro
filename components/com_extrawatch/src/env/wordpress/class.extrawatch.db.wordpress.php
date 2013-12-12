@@ -32,6 +32,8 @@ class ExtraWatchDBWrapWordpress implements ExtraWatchDBWrap
     $database = $wpdb->dbname;
     $this->dbprefix = $wpdb->base_prefix;
     $select = TRUE;
+	$driver = "mysql";
+
     $this->dbref = new PDO("$driver:host=$host;dbname=$database", $user, $password);
 
   }
