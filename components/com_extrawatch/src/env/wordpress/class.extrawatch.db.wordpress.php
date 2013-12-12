@@ -42,10 +42,6 @@ class ExtraWatchDBWrapWordpress implements ExtraWatchDBWrap
 		echo $this->dbref->errorInfo();
 		die("ERROR: " . $e->getMessage());
 	}
-
-    if ($select) {
-      $this->select($database);
-    }
   }
 
   function __destruct()
