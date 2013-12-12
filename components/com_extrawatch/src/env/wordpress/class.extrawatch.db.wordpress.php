@@ -33,9 +33,15 @@ class ExtraWatchDBWrapWordpress implements ExtraWatchDBWrap
     $this->dbprefix = $wpdb->base_prefix;
     $select = TRUE;
 
-    if (!($this->dbref = @mysql_connect($host, $user, $password, TRUE))) {
-      die("cannot connect");
-    }
+	try {
+		$this->dbref = new PDO("$driver:host=$host;dbname=$database", $user, $password, array(PDO::ATTR_PERSISTENT => true));
+		$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+	} catch(PDOException $e) {
+		echo $conn->errorCode();
+		echo $conn->errorInfo();
+		die 'ERROR: ' . $e->getMessage();
+	}
+
     if ($select) {
       $this->select($database);
     }
