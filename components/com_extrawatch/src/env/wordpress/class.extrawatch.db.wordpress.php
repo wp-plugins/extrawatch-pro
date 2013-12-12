@@ -17,7 +17,7 @@ class ExtraWatchDBWrapWordpress implements ExtraWatchDBWrap
 {
 
   public $query;
-  public $dbref;
+  public static $dbref;
   public $result;
   public $dbprefix;
   public $errNum;
@@ -34,7 +34,9 @@ class ExtraWatchDBWrapWordpress implements ExtraWatchDBWrap
     $select = TRUE;
 	$driver = "mysql";
 
-    $this->dbref = new PDO("$driver:host=$host;dbname=$database", $user, $password);
+	if (!$this->dbref) {
+		$this->dbref = new PDO("$driver:host=$host;dbname=$database", $user, $password);
+	}
 
   }
 
