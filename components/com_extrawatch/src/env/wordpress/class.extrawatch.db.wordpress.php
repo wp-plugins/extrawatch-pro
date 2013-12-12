@@ -36,10 +36,10 @@ class ExtraWatchDBWrapWordpress implements ExtraWatchDBWrap
 
 	try {
 		$this->dbref = new PDO("$driver:host=$host;dbname=$database", $user, $password, array(PDO::ATTR_PERSISTENT => true));
-		$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		$this->dbref->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	} catch(PDOException $e) {
-		echo $conn->errorCode();
-		echo $conn->errorInfo();
+		echo $this->dbref->errorCode();
+		echo $this->dbref->errorInfo();
 		die("ERROR: " . $e->getMessage());
 	}
 
