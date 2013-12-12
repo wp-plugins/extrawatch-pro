@@ -39,7 +39,7 @@ class ExtraWatchDBWrapWordpress implements ExtraWatchDBWrap
 	} catch(PDOException $e) {
 		echo $conn->errorCode();
 		echo $conn->errorInfo();
-		die 'ERROR: ' . $e->getMessage();
+		die("ERROR: " . $e->getMessage());
 	}
 
     if ($select) {
