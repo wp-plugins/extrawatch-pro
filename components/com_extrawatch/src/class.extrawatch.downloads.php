@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1421
+ * @revision 1422
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -88,7 +88,7 @@ class ExtraWatchDownloads
             $filepath = $this->env->getRootPath().DS.trim($file);
             $file = basename($filepath);
 
-            $this->serveDownload($filepath);
+            $this->serveDownload($filepath, 1024);
 
         }
         else
@@ -623,7 +623,7 @@ class ExtraWatchDownloads
 
                 while ((feof($file) !== true) && (connection_status() === CONNECTION_NORMAL))
                 {
-                    echo fread($file, round($speed * 1024)); flush(); sleep(1);
+                    echo fread($file, round($speed * 1024)); flush();
                 }
 
                 fclose($file);
