@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1425
+ * @revision 1427
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -36,7 +36,7 @@ $env = $_REQUEST['env'];
 if (_EW_CLOUD_MODE) {
     $output = ("var extrawatch_projectId='".$projectId."';\n");
     $output .= ("document.write(\"");
-    $output .= ("<img src='"._EW_SCRIPT_HOST._EW_SCRIPT_HOST_DIR."extrawatch/".$extraWatch->env->renderAjaxLink('ajax','img')."&rand=" . (rand() % 100000) . "&amp;env=$env&amp;ref=\"+encodeURIComponent(document.referrer)+\"&amp;title=\"+encodeURIComponent(document.title)+\"&amp;uri=\"+encodeURIComponent(window.location.pathname)+\"&amp;params=\"+encodeURIComponent(location.search)+\"&amp;projectId=\"+extrawatch_projectId+\"' border='0' alt='$title' title='$title' style='width:0px;height:0px'/>");
+    $output .= ("<img src='"._EW_SCRIPT_HOST._EW_SCRIPT_HOST_DIR."extrawatch/".$extraWatch->env->renderAjaxLink('ajax','img')."&rand=" . (rand() % 100000) . "&amp;env=$env&amp;ref=\"+encodeURIComponent(document.referrer)+\"&amp;title=\"+escape(document.title)+\"&amp;uri=\"+encodeURIComponent(window.location.pathname)+\"&amp;params=\"+encodeURIComponent(location.search)+\"&amp;projectId=\"+extrawatch_projectId+\"' border='0' alt='$title' title='$title' style='width:0px;height:0px'/>");
     $output .= ("\");\n");
     $output .= ("document.write(\"");
     $uri = @$_SERVER['HTTP_REFERER'];
@@ -45,7 +45,7 @@ if (_EW_CLOUD_MODE) {
 } else {
     $liveSite = $extraWatch->config->getLiveSiteWithSuffix();
     $output = ("document.write(\"");
-    $output .= ("<img src='".$liveSite.$extraWatch->env->renderAjaxLink('ajax','img')."&rand=" . (rand() % 100000) . "&amp;env=$env&amp;ref=\"+encodeURIComponent(document.referrer)+\"&amp;title=\"+encodeURIComponent(document.title)+\"&amp;uri=\"+encodeURIComponent(window.location.pathname)+\"&amp;params=\"+encodeURIComponent(location.search)+\"' border='0' style='width:0px;height:0px'/>");
+    $output .= ("<img src='".$liveSite.$extraWatch->env->renderAjaxLink('ajax','img')."&rand=" . (rand() % 100000) . "&amp;env=$env&amp;ref=\"+encodeURIComponent(document.referrer)+\"&amp;title=\"+escape(document.title)+\"&amp;uri=\"+encodeURIComponent(window.location.pathname)+\"&amp;params=\"+encodeURIComponent(location.search)+\"' border='0' style='width:0px;height:0px'/>");
     $output .= ("\");\n");
     $output .= ("document.write(\"");
     $uri = @$_SERVER['HTTP_REFERER'];
