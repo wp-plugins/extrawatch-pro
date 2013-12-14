@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1424
+ * @revision 1425
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -91,7 +91,7 @@ defined('_JEXEC') or die('Restricted access'); ?>
         $.ajax({
             type:"POST",
             url:"<?php echo $extraWatch->config->getLiveSiteWithSuffix(); ?><?php echo $extraWatch->env->renderAjaxLink('ajax','sizequery');?>&rand=<?php echo $extraWatch->config->getRand(); ?>&env=<?php echo get_class($extraWatch->env); ?>",
-            data:"dir=" + dirs_components[index] + "&mod=" + <?php echo EW_DB_KEY_SIZE_COM; ?>,
+            data:"dir=" + encodeURIComponent(dirs_components[index]) + "&mod=" + <?php echo EW_DB_KEY_SIZE_COM; ?>,
             success:function (resp) {
                 document.getElementById(target).innerHTML = resp;
                 refreshComponentsTotal();
@@ -108,7 +108,7 @@ defined('_JEXEC') or die('Restricted access'); ?>
         $.ajax({
             type:"POST",
             url:"<?php echo $extraWatch->config->getLiveSiteWithSuffix(); ?><?php echo $extraWatch->env->renderAjaxLink('ajax','sizequery');?>&rand=<?php echo $extraWatch->config->getRand(); ?>&env=<?php echo get_class($extraWatch->env); ?>",
-            data:"dir=" + dirs_components[index] + "&mod=" + <?php echo EW_DB_KEY_SIZE_COM; ?>,
+            data:"dir=" + encodeURIComponent(dirs_components[index]) + "&mod=" + <?php echo EW_DB_KEY_SIZE_COM; ?>,
             success:function (resp) {
                 document.getElementById(target).innerHTML = resp;
 

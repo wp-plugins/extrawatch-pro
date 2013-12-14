@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1424
+ * @revision 1425
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -248,6 +248,7 @@ class ExtraWatchSizes
             if ($this->renderPageItems % 2 == 0) $color = "#f9f9f9"; else $color = "#eeeeee";
             $this->renderPageItems++;
 
+            $directory = str_replace("\\", "\\\\", $directory); //escaping \ character for use in JS
             $this->renderPageJavaArray = $this->renderPageJavaArray . ", \"" . $directory . "\"";
             $size = $this->getDirectorySize($directory, $group, FALSE, $this->findLatestCheckDayBySuffix($suffix));
 
@@ -273,6 +274,7 @@ class ExtraWatchSizes
             if ($this->renderPageItems % 2 == 0) $color = "#f9f9f9"; else $color = "#eeeeee";
             $this->renderPageItems++;
 
+            $directory = str_replace("\\", "\\\\", $directory); //escaping \ character for use in JS
             $this->renderPageJavaArray = $this->renderPageJavaArray . ", \"" . $directory . "\"";
 
             $size = $this->getDirectorySize($directory, $group, FALSE, $this->findLatestCheckDayBySuffix($suffix));
@@ -339,11 +341,12 @@ class ExtraWatchSizes
           break;
           }
           default: {
-          $realPathBase = realpath("../../../");
+          $realPathBase = realpath(dirname(__FILE__).DS."..".DS."..".DS."..".DS);
           break;
           }
     }
 
+    $dir = dirname(__FILE__).DS.$dir;//"..".DS."..".DS."..".DS."modules".DS);
     $realPath = realpath($dir);
     //echo("NEW: checking whether $realPathBase is in $realPath ";
     if (!strstr($realPath, $realPathBase)) {
@@ -352,7 +355,8 @@ class ExtraWatchSizes
     $allowedDirs = $this->env->getAllowedDirsToCheckForSize();
     foreach ($allowedDirs as $allowedDir) {
       //echo("NEW: checking whether $realPathBase is in $realPath ".realpath($allowedDir));
-      if (!strstr(realpath($allowedDir), $realPathBase)) {
+    $dirToCheck = realpath(dirname(__FILE__).DS.$allowedDir);
+      if (!strstr($dirToCheck, $realPathBase)) {
         return FALSE;
       }
     }
