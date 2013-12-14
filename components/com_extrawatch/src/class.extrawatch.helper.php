@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1427
+ * @revision 1428
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -243,6 +243,18 @@ class ExtraWatchHelper
         $countryName = $this->database->resultQuery($query);
         return $countryName;
     }
+
+
+    /**
+     * helper
+     */
+/*
+    function countryCodeToCountryNameList()
+    {
+        $query = sprintf("select cc, country from #__extrawatch_cc2c");
+        return $this->database->assocListQuery($query);
+    }
+*/
 
     function removeRepetitiveTitle($title)
     {
@@ -656,8 +668,21 @@ static function getTimezoneOffsetByTimezoneName($userTimezoneName){
     }
 
 
+    /**
+     * Returns url like: http://www.thisweburl.com/directory
+     * @return string
+     */
+    static function getAbsoluteWebURL() {
+        $hostname = "http://" . $_SERVER['HTTP_HOST'];
+        $scriptName = $_SERVER['SCRIPT_NAME'];
+        $subdir = str_replace("/index.php", "", $scriptName);
 
+        $env = ExtraWatchEnvFactory::getEnvironment();
+        $adminDirName = $env->getAdminDir();
+        $subdir = str_replace("/".$adminDirName, "", $subdir);
 
+        return $hostname . $subdir;
+    }
 
 
 }

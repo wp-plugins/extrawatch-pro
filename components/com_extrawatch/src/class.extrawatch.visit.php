@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1427
+ * @revision 1428
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -761,6 +761,7 @@ function insertSearchResultPage($uri, $phrase, $referer, $title)
                   $referer = "/" . $referer; // add / prefix, because live site contains already / and it's replaced
               }
               $from = $referer;
+              $from = str_replace(ExtraWatchHelper::getAbsoluteWebURL() ,"", $from);  //stripping liveSite
 
               $query = sprintf("select id from #__extrawatch_internal where (`from` = '%s' and `to` = '%s') ", $this->database->getEscaped($from), $this->database->getEscaped($uri));
               $id = $this->database->resultQuery($query);
