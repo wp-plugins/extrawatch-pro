@@ -4,15 +4,17 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.2
- * @revision 123
+ * @version 2.1
+ * @revision 917
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
  */
 
 /** ensure this file is being included by a parent file */
-defined('_JEXEC') or die('Restricted access');
+if (!defined('_JEXEC') && !defined('_VALID_MOS'))  {
+  die('Restricted access');
+}
 
 class ExtraWatchDrupalEnv implements ExtraWatchEnv
 {
@@ -21,7 +23,7 @@ class ExtraWatchDrupalEnv implements ExtraWatchEnv
   function __construct() {
   }
 
-  function getDatabase($user = "")
+  function getDatabase()
   {
     return new ExtraWatchDBWrapDrupal();
   }
@@ -122,7 +124,7 @@ class ExtraWatchDrupalEnv implements ExtraWatchEnv
 
   function getTimezoneOffset()
   {
-    return ExtraWatchHelper::getTimezoneOffsetByTimezoneName(@date_default_timezone_get());
+    return 0; //TODO must implement
   }
 
   function getAllowedDirsToCheckForSize()
@@ -170,15 +172,7 @@ class ExtraWatchDrupalEnv implements ExtraWatchEnv
     {
         return self::EW_ENV_NAME;
     }
-
-    public function getRootPath() {
-        return ;
-    }
-
-    public function getTempDirectory() {
-       return ini_get('upload_tmp_dir');
-    }
-
+	
     function getUserId()
     {
         //TODO implement
@@ -188,20 +182,6 @@ class ExtraWatchDrupalEnv implements ExtraWatchEnv
 
     }
 
-    public function renderAjaxLink($task, $action) {
-        return $action;
-    }
-
-
-    public function addStyleSheet($cssURL)
-    {
-        $output = "<style type=\"text/css\" media=\"screen, projection\">
-        <!--
-        @import url(" . $cssURL . ");
-        -->
-        </style>";
-        return $output;
-    }
 }
 
 

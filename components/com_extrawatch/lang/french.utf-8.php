@@ -7,7 +7,7 @@
  * @version @VERSION@
  * @revision @REVISION@
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
- * @copyright (C) @YEAR@ by CodeGravity.com - All rights reserved!
+ * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
  */
 
@@ -390,7 +390,7 @@ DEFINE('_EW_SIZES_MB', "Mo");
 DEFINE('_EW_SIZES_GB', "Go");
 DEFINE('_EW_SIZES_REFRESH', "Rafraîchir");
 
-DEFINE('_EW_STATS_FOOTER', "ExtraWatch &copy; 2006-@YEAR@ par CodeGravity.com");
+DEFINE('_EW_STATS_FOOTER', "ExtraWatch &copy; 2006-2013 par CodeGravity.com");
 
 DEFINE('_EW_STATUS_MB', "Mo");
 

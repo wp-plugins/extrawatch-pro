@@ -4,20 +4,22 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.2
- * @revision 123
+ * @version 2.1
+ * @revision 917
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
  */
 
-defined('_JEXEC') or die('Restricted access');
+/** ensure this file is being included by a parent file */
+if (!defined('_JEXEC') && !defined('_VALID_MOS'))
+    die('Restricted access');
 
 class ExtraWatchMagentoEnv implements ExtraWatchEnv
 {
     const EW_ENV_NAME = "magento";
 
-    function getDatabase($user = "")
+    function getDatabase()
     {
         return new ExtraWatchDBWrapMagento();
     }
@@ -139,7 +141,7 @@ class ExtraWatchMagentoEnv implements ExtraWatchEnv
 
     function getTimezoneOffset()
     {
-		return ExtraWatchHelper::getTimezoneOffsetByTimezoneName(@date_default_timezone_get());
+        return 0; //TODO must implement
     }
 
     function getAllowedDirsToCheckForSize()
@@ -192,15 +194,7 @@ class ExtraWatchMagentoEnv implements ExtraWatchEnv
     {
         return self::EW_ENV_NAME;
     }
-
-    public function getRootPath() {
-        return ;
-    }
-
-    public function getTempDirectory() {
-       return ini_get('upload_tmp_dir');
-    }
-
+	
     function getUserId()
     {
         //TODO implement
@@ -209,24 +203,7 @@ class ExtraWatchMagentoEnv implements ExtraWatchEnv
     public function getUsernameById($userId) {
         //TODO implement
     }
-
-    public function renderAjaxLink($task, $action) {
-        $routerFile = "components/com_extrawatch/extrawatch.php?action=".$action."&task=".$task;
-        return $routerFile; 
-	}
-
-    public function addStyleSheet($cssURL)
-    {
-        $output = "<style type=\"text/css\" media=\"screen, projection\">
-        <!--
-        @import url(" . $cssURL . ");
-        -->
-        </style>";
-        return $output;
-    }
-
-
-
+ 
 }
 
 

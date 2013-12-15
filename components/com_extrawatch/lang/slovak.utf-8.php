@@ -7,7 +7,7 @@
  * @version @VERSION@
  * @revision @REVISION@
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
- * @copyright (C) @YEAR@ by CodeGravity.com - All rights reserved!
+ * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
  */
 
@@ -19,7 +19,7 @@ defined('_JEXEC') or die('Restricted access');
 DEFINE('_EW_MENU_STATS', "Štatistika");
 DEFINE('_EW_MENU_GOALS', "Ciele");
 DEFINE('_EW_MENU_SETTINGS', "Nastavenia");
-DEFINE('_EW_MENU_CREDITS', "Poďakovanie");
+DEFINE('_EW_MENU_CREDITS', "Po�?akovanie");
 DEFINE('_EW_MENU_FAQ', "Časté otázky");
 DEFINE('_EW_MENU_DOCUMENTATION', "Dokumentácia");
 DEFINE('_EW_MENU_LICENSE', "Licencia");
@@ -30,15 +30,15 @@ DEFINE('_EW_MENU_SUPPORT', "Podporte ExtraWatch a reklamy sa Vám nebudú zobraz
 DEFINE('_EW_VISITS_VISITORS', "Poslední návštevníci");
 DEFINE('_EW_VISITS_BOTS', "Roboti");
 DEFINE('_EW_VISITS_CAME_FROM', "Prišiel z");
-DEFINE('_EW_VISITS_MODULE_NOT_PUBLISHED', "Váš JoomlaWach modul nie je publikovaný. Žiadne štatistiky sa preto nezaznamenávajú. Choďte do sekcie modulov a nastavte pre modul ExtraWatch - publikovať na všetkých stránkach");
-DEFINE('_EW_VISITS_PANE_LOADING', "Načítavam...");
+DEFINE('_EW_VISITS_MODULE_NOT_PUBLISHED', "Váš JoomlaWach modul nie je publikovaný. Žiadne štatistiky sa preto nezaznamenávajú. Cho�?te do sekcie modulov a nastavte pre modul ExtraWatch - publikovať na všetkých stránkach");
+DEFINE('_EW_VISITS_PANE_LOADING', "Na�?ítavam...");
 
 // Right stats window.
 DEFINE('_EW_STATS_TITLE', "Štatistiky návštev pre týždeň");
 DEFINE('_EW_STATS_WEEK', "Týždeň");
 DEFINE('_EW_STATS_THIS_WEEK', "tento týždeň");
-DEFINE('_EW_STATS_UNIQUE', "jedinečné");
-DEFINE('_EW_STATS_LOADS', "načítaní");
+DEFINE('_EW_STATS_UNIQUE', "jedine�?né");
+DEFINE('_EW_STATS_LOADS', "na�?ítaní");
 DEFINE('_EW_STATS_HITS', "hits");
 DEFINE('_EW_STATS_TODAY', "dnes");
 DEFINE('_EW_STATS_FOR', "pre");
@@ -50,21 +50,21 @@ DEFINE('_EW_STATS_COUNTRY', "Krajiny");
 DEFINE('_EW_STATS_USERS', "Používatelia");
 DEFINE('_EW_STATS_REFERERS', "Odkazovatelia");
 DEFINE('_EW_STATS_IP', "IP adresy");
-DEFINE('_EW_STATS_BROWSER', "Prehliadače");
+DEFINE('_EW_STATS_BROWSER', "Prehliada�?e");
 DEFINE('_EW_STATS_OS', "OS");
-DEFINE('_EW_STATS_KEYWORDS', "Kľúčové slová");
+DEFINE('_EW_STATS_KEYWORDS', "Kľú�?ové slová");
 DEFINE('_EW_STATS_GOALS', "Ciele");
 DEFINE('_EW_STATS_TOTAL', "Celkovo");
 DEFINE('_EW_STATS_DAILY', "Denne");
 DEFINE('_EW_STATS_DAILY_TITLE', "Denné štatistiky");
 DEFINE('_EW_STATS_ALL_TIME_TITLE', "Celkové štatistiky");
-DEFINE('_EW_STATS_LOADING', "načítavam...");
-DEFINE('_EW_STATS_LOADING_WAIT', "načítavam... prosím čakajte");
+DEFINE('_EW_STATS_LOADING', "na�?ítavam...");
+DEFINE('_EW_STATS_LOADING_WAIT', "na�?ítavam... prosím �?akajte");
 DEFINE('_EW_STATS_IP_BLOCKING_TITLE', "Blokovanie IP adries");
 DEFINE('_EW_STATS_IP_BLOCKING_ENTER', "Vložte manuálne IP");
-DEFINE('_EW_STATS_IP_BLOCKING_MANUALLY', "Vložte IP adresu, ktorú chcete zablokovať. (napr. 217.242.11.54 or 217.* alebo 217.242.* pre zablokovanie rozsahu hviezdičkou)");
-DEFINE('_EW_STATS_IP_BLOCKING_TOGGLE', "Skutočne prepnúť blokovanie IP");
-DEFINE('_EW_STATS_PANE_LOADING', "Načítavam štatistiky...");
+DEFINE('_EW_STATS_IP_BLOCKING_MANUALLY', "Vložte IP adresu, ktorú chcete zablokovať. (napr. 217.242.11.54 or 217.* alebo 217.242.* pre zablokovanie rozsahu hviezdi�?kou)");
+DEFINE('_EW_STATS_IP_BLOCKING_TOGGLE', "Skuto�?ne prepnúť blokovanie IP");
+DEFINE('_EW_STATS_PANE_LOADING', "Na�?ítavam štatistiky...");
 
 // Settings.
 DEFINE('_EW_SETTINGS_TITLE', "Nastavenia");
@@ -77,7 +77,7 @@ DEFINE('_EW_SETTINGS_ADVANCED', "Rozšírené");
 DEFINE('_EW_SETTINGS_IGNORE', "Ignorovanie");
 DEFINE('_EW_SETTINGS_BLOCKING', "Blokovanie");
 DEFINE('_EW_SETTINGS_EXPERT', "Expert");
-DEFINE('_EW_SETTINGS_RESET_CONFIRM', "Skutočne chcete vymazať všetky údaje?");
+DEFINE('_EW_SETTINGS_RESET_CONFIRM', "Skuto�?ne chcete vymazať všetky údaje?");
 DEFINE('_EW_SETTINGS_RESET_ALL', "Vymaž všetky údaje");
 DEFINE('_EW_SETTINGS_RESET_ALL_LINK', "Vymaž všetky štatistické a návštevnícke údaje");
 DEFINE('_EW_SETTINGS_LANGUAGE', "Jazyk");
@@ -90,16 +90,16 @@ DEFINE('_EW_TITLE', "AJAX monitor pre Joomla CMS");
 DEFINE('_EW_BACK', "Naspäť");
 DEFINE('_EW_ACCESS_DENIED', "Nemáte žiadne práva na tento obsah");
 DEFINE('_EW_LICENSE_AGREE', "Súhlasím s podmienkami");
-DEFINE('_EW_LICENSE_CONTINUE', "Pokračovať");
+DEFINE('_EW_LICENSE_CONTINUE', "Pokra�?ovať");
 DEFINE('_EW_SUCCESS', "Operácia prebehla úspešne");
 DEFINE('_EW_RESET_SUCCESS', "Všetky štatistické údaje a údaje o návštevníkoch boli vymazané");
-DEFINE('_EW_RESET_ERROR', "Údaje neboli vymazané, niečo nevyšlo");
-DEFINE('_EW_CREDITS_TITLE', "Poďakovanie");
+DEFINE('_EW_RESET_ERROR', "Údaje neboli vymazané, nie�?o nevyšlo");
+DEFINE('_EW_CREDITS_TITLE', "Po�?akovanie");
 DEFINE('_EW_TRENDS_DAILY_WEEKLY', "Denné a týždenné štatistiky pre údaj:");
 DEFINE('_EW_AJAX_PERMISSION_DENIED_1', "AJAX prístup odmietnutý: Prosím prezerajte tieto štatistiky z domény, ktorú ste špecifikovali v configuration.php systému joomla - ");
-DEFINE('_EW_AJAX_PERMISSION_DENIED_2', "Možno ste len zabudli zadať www. pred názvom vašej domény v prehliadači. Javascript skúša získať obsah ");
+DEFINE('_EW_AJAX_PERMISSION_DENIED_2', "Možno ste len zabudli zadať www. pred názvom vašej domény v prehliada�?i. Javascript skúša získať obsah ");
 DEFINE('_EW_AJAX_PERMISSION_DENIED_3', "z");
-DEFINE('_EW_AJAX_PERMISSION_DENIED_4', "čo ho núti myslieť si, že je to iná doména.");
+DEFINE('_EW_AJAX_PERMISSION_DENIED_4', "�?o ho núti myslieť si, že je to iná doména.");
 
 // Header.
 DEFINE('_EW_HEADER_DOWNLOAD', "Získajte najnovší kód tohto rozšírenia z");
@@ -109,14 +109,14 @@ DEFINE('_EW_HEADER_VOTE', "Hlas");
 // Tooltips.
 DEFINE('_EW_TOOLTIP_CLICK', "Kliknite pre otvorenie tooltip okna");
 DEFINE('_EW_TOOLTIP_MOUSE_OVER', "Prejdite myšou pre otvorenie tooltip okna");
-DEFINE('_EW_TOOLTIP_YESTERDAY_INCREASE', "včerajší prírastok");
+DEFINE('_EW_TOOLTIP_YESTERDAY_INCREASE', "v�?erajší prírastok");
 DEFINE('_EW_TOOLTIP_HELP', "Otvorí online externý help pre");
 DEFINE('_EW_TOOLTIP_WINDOW_CLOSE', "Zatvor toto okno");
-DEFINE('_EW_TOOLTIP_PRINT', "Tlač");
+DEFINE('_EW_TOOLTIP_PRINT', "Tla�?");
 
 // Goals.
 DEFINE('_EW_GOALS_INSERT', "Pridaj nový cieľ");
-DEFINE('_EW_GOALS_UPDATE', "Uprav cieľ číslo");
+DEFINE('_EW_GOALS_UPDATE', "Uprav cieľ �?íslo");
 DEFINE('_EW_GOALS_ACTION', "Akcia");
 DEFINE('_EW_GOALS_TITLE', "Nový cieľ");
 DEFINE('_EW_GOALS_NEW', "Nový cieľ");
@@ -139,13 +139,13 @@ DEFINE('_EW_GOALS_HITS', "Hits");
 DEFINE('_EW_GOALS_ENABLED', "Povolené");
 DEFINE('_EW_GOALS_EDIT', "Uprav");
 DEFINE('_EW_GOALS_DELETE', "Vymaž");
-DEFINE('_EW_GOALS_DELETE_CONFIRM', "Stratíte všetky doterajšie štatistické dáta pre tento cieľ. Chcete naozaj vymazať cieľ číslo ");
+DEFINE('_EW_GOALS_DELETE_CONFIRM', "Stratíte všetky doterajšie štatistické dáta pre tento cieľ. Chcete naozaj vymazať cieľ �?íslo ");
 
 // Frontend.
 DEFINE('_EW_FRONTEND_COUNTRIES', "Krajiny");
 DEFINE('_EW_FRONTEND_VISITORS', "Návštevníci");
 DEFINE('_EW_FRONTEND_TODAY', "Dnes");
-DEFINE('_EW_FRONTEND_YESTERDAY', "Včera");
+DEFINE('_EW_FRONTEND_YESTERDAY', "V�?era");
 DEFINE('_EW_FRONTEND_THIS_WEEK', "Tento týždeň");
 DEFINE('_EW_FRONTEND_LAST_WEEK', "Minulý týždeň");
 DEFINE('_EW_FRONTEND_THIS_MONTH', "Tento mesiac");
@@ -153,61 +153,61 @@ DEFINE('_EW_FRONTEND_LAST_MONTH', "Minulý mesiac");
 DEFINE('_EW_FRONTEND_TOTAL', "Celkovo");
 
 // Settings description - quite long.
-DEFINE('_EW_DESC_DEBUG', "ExtraWatch je v debug móde. Touto cestou viete zistiť príčiny chýb. Pre vypnutie, zmeňte prosím hodnotu EXTRAWATCH_DEBUG v /components/com_extrawatch/config.php z 1 na 0");
-DEFINE('_EW_DESC_STATS_MAX_ROWS', "Maximálny počet riadkov údajov po rozbalení v štatistike");
+DEFINE('_EW_DESC_DEBUG', "ExtraWatch je v debug móde. Touto cestou viete zistiť prí�?iny chýb. Pre vypnutie, zmeňte prosím hodnotu EXTRAWATCH_DEBUG v /components/com_extrawatch/config.php z 1 na 0");
+DEFINE('_EW_DESC_STATS_MAX_ROWS', "Maximálny po�?et riadkov údajov po rozbalení v štatistike");
 DEFINE('_EW_DESC_STATS_IP_HITS', "Všetky IP adresy, ktoré majú menej hitov predchádzajúci deň ako daná hodnota budú vymazané z histórie IP adries.");
 DEFINE('_EW_DESC_STATS_URL_HITS', "Všetky URL, ktoré majú menej hitov predchádzajúci deň ako daná hodnota budú vymazané z histórie URL.");
-DEFINE('_EW_DESC_IGNORE_IP', "Ignoruj dané IP adresy v štatistike. Oddeľte novým riadkom. Môžte použiť hviezdičky. <br/>Napríklad. 192.* bude ignorovať 192.168.51.31, 192.168.16.2, atď..");
-DEFINE('_EW_DESC_UPDATE_TIME_VISITS', "Doba obnovovania návštevníkov v ľavom paneli v milisekundách, štandardne 2000, buďte opatrní s týmto nastavením. Pre prejavenie účinku, znovu načítajte administračné rozhranie ExtraWatch-u.");
-DEFINE('_EW_DESC_UPDATE_TIME_STATS', "Doba obnovovania štatistík v pravom paneli v milisekundách, štandardne 2000, buďte opatrní s týmto nastavením. Pre prejavenie účinku, znovu načítajte administračné rozhranie ExtraWatch-u.");
+DEFINE('_EW_DESC_IGNORE_IP', "Ignoruj dané IP adresy v štatistike. Oddeľte novým riadkom. Môžte použiť hviezdi�?ky. <br/>Napríklad. 192.* bude ignorovať 192.168.51.31, 192.168.16.2, at�?..");
+DEFINE('_EW_DESC_UPDATE_TIME_VISITS', "Doba obnovovania návštevníkov v ľavom paneli v milisekundách, štandardne 2000, bu�?te opatrní s týmto nastavením. Pre prejavenie ú�?inku, znovu na�?ítajte administra�?né rozhranie ExtraWatch-u.");
+DEFINE('_EW_DESC_UPDATE_TIME_STATS', "Doba obnovovania štatistík v pravom paneli v milisekundách, štandardne 2000, bu�?te opatrní s týmto nastavením. Pre prejavenie ú�?inku, znovu na�?ítajte administra�?né rozhranie ExtraWatch-u.");
 DEFINE('_EW_DESC_MAXID_BOTS', "Koľko záznamov robotov uchovávať v databáze.");
 DEFINE('_EW_DESC_MAXID_VISITORS', "Koľko záznamov návštevníkov uchovávať v databáze.");
-DEFINE('_EW_DESC_LIMIT_BOTS', "Koľko záznamov robotov uvidíte v ľavom paneli v administračnom rozhraní.");
-DEFINE('_EW_DESC_LIMIT_VISITORS', "Koľko záznamov reálnych návštevníkov uvidíte v ľavom paneli v administračnom rozhraní.");
+DEFINE('_EW_DESC_LIMIT_BOTS', "Koľko záznamov robotov uvidíte v ľavom paneli v administra�?nom rozhraní.");
+DEFINE('_EW_DESC_LIMIT_VISITORS', "Koľko záznamov reálnych návštevníkov uvidíte v ľavom paneli v administra�?nom rozhraní.");
 DEFINE('_EW_DESC_TRUNCATE_VISITS', "Maximum znakov ktoré budú zobrazené pre dlhé titulky a URI adresy");
 DEFINE('_EW_DESC_TRUNCATE_STATS', "Maximum znakov ktoré budú zobrazené pre dlhé titulky v pravom štatistickom paneli");
-DEFINE('_EW_DESC_STATS_KEEP_DAYS', "Počet dní, za ktoré uchovávať celkovú históriu štatistík v databáze. 0 = nekonečno.");
-DEFINE('_EW_DESC_TIMEZONE_OFFSET', "Ak ste v inom časovom pásme ako váš server na ktorom hostujete stránky. (Zadajte kladné alebo záporné číslo ako rozdiel časového pásma)");
-DEFINE('_EW_DESC_WEEK_OFFSET', "Posun vrámci týždňa, timestamp/(3600*24*7) vracia číslo týždňa od 1.1.1970, tento posun je korekcia, aby týždeň začínal pondelkom. V normálnych prípadoch nie je potrebné meniť.");
-DEFINE('_EW_DESC_DAY_OFFSET', "Posun vrámci dňa, timestamp/(3600*24) vracia číslo dňa od 1.1.1970, tento posun je korekcia, aby deň začínal o 00:00. V normálnych prípadoch nie je potrebné meniť.");
+DEFINE('_EW_DESC_STATS_KEEP_DAYS', "Po�?et dní, za ktoré uchovávať celkovú históriu štatistík v databáze. 0 = nekone�?no.");
+DEFINE('_EW_DESC_TIMEZONE_OFFSET', "Ak ste v inom �?asovom pásme ako váš server na ktorom hostujete stránky. (Zadajte kladné alebo záporné �?íslo ako rozdiel �?asového pásma)");
+DEFINE('_EW_DESC_WEEK_OFFSET', "Posun vrámci týždňa, timestamp/(3600*24*7) vracia �?íslo týždňa od 1.1.1970, tento posun je korekcia, aby týždeň za�?ínal pondelkom. V normálnych prípadoch nie je potrebné meniť.");
+DEFINE('_EW_DESC_DAY_OFFSET', "Posun vrámci dňa, timestamp/(3600*24) vracia �?íslo dňa od 1.1.1970, tento posun je korekcia, aby deň za�?ínal o 00:00. V normálnych prípadoch nie je potrebné meniť.");
 DEFINE('_EW_DESC_FRONTEND_HIDE_LOGO', "Pre nahradenie loga ExtraWatch neviditeľným logom na stránkach");
 DEFINE('_EW_DESC_IP_STATS', "Používať aj IP adresy v štatistikách. V niektorých krajinách sa IP adresa považuje za osobný údaj. Používajte na vlastné riziko.");
 DEFINE('_EW_DESC_HIDE_ADS', "This setting hides the ads in the backend, if they really annoy you. By keeping them, you support the further development of this tool. Thank you");
 DEFINE('_EW_DESC_TOOLTIP_ONCLICK', "Nastavte na nezaškrtnuté, ak chcete zobrazovať okná grafov a máp po prejdení kurzorom nad danými ikonkami, namiesto kliknutia.");
 DEFINE('_EW_DESC_SERVER_URI_KEY', "Štandardne je toto nastavenie 'REDIRECT_URL', ak používate url rewriting, môžte nastaviť aj na 'SCRIPT_URL' ak sa vo vašich štatistikách zobrazuje len index.php");
-DEFINE('_EW_DESC_BLOCKING_MESSAGE', "Správa, ktorá je zobrazená zablokovaným používateľom, alebo ďalšie informácie z akého dôvodu ste daných používateľov zablokovali.");
+DEFINE('_EW_DESC_BLOCKING_MESSAGE', "Správa, ktorá je zobrazená zablokovaným používateľom, alebo �?alšie informácie z akého dôvodu ste daných používateľov zablokovali.");
 DEFINE('_EW_DESC_TOOLTIP_WIDTH', "Šírka tooltip okna");
 DEFINE('_EW_DESC_TOOLTIP_HEIGHT', "Výška tooltip okna");
 DEFINE('_EW_DESC_TOOLTIP_URL', "Možte tu dať ľubovoľnú adresu, pre vizualizáciu IP adresy návštevníka. {ip} bude nahradené aktuálnou IP adresou používateľa. Príklad: http://somewebsite.com/query?iplookup={ip}");
 DEFINE('_EW_DESC_IGNORE_URI', "You can type any URI you want to be ignored from stats. You can use wildcards (* and ?) here. Napr. : /freel?n* ");
 DEFINE('_EW_DESC_GOALS_NAME', "Špecifikujte meno cieľa. Toto meno následne uvidíte v štatistikách.");
-DEFINE('_EW_DESC_GOALS_URI_CONDITION', "To, čo sa nachádza hneď za adresou vašej domény. Pre http://www.codegravity.com/projects/ je URI: /projects/ (Príklad: <b>/projects*</b>)");
-DEFINE('_EW_DESC_GOALS_GET_VAR', "GET premenná je zvyčajne to, čo vidíte v URL zvyčajne za znakom ? alebo &amp; znakom. Napr: http://www.codegravity.com/index.php?<u>meno</u>=peter&amp;<u>priezvisko</u>=smith. Môžte tiež použiť <u>*</u> v tomto políčku pre prejdenie všetkých get premenných. (Príklad: <b>m*no</b>)");
-DEFINE('_EW_DESC_GOALS_GET_CONDITION', "Tu môžte špecifikovať čomu sa má rovnať premenná z predchádzajúceho poľa. (Príklad: <b>p?t*r</b>) ");
+DEFINE('_EW_DESC_GOALS_URI_CONDITION', "To, �?o sa nachádza hne�? za adresou vašej domény. Pre http://www.codegravity.com/projects/ je URI: /projects/ (Príklad: <b>/projects*</b>)");
+DEFINE('_EW_DESC_GOALS_GET_VAR', "GET premenná je zvy�?ajne to, �?o vidíte v URL zvy�?ajne za znakom ? alebo &amp; znakom. Napr: http://www.codegravity.com/index.php?<u>meno</u>=peter&amp;<u>priezvisko</u>=smith. Môžte tiež použiť <u>*</u> v tomto polí�?ku pre prejdenie všetkých get premenných. (Príklad: <b>m*no</b>)");
+DEFINE('_EW_DESC_GOALS_GET_CONDITION', "Tu môžte špecifikovať �?omu sa má rovnať premenná z predchádzajúceho poľa. (Príklad: <b>p?t*r</b>) ");
 DEFINE('_EW_DESC_GOALS_POST_VAR', "Celkom podobne, ale zisťujeme hodnoty zadané do formulárov. Teda, ak máte na stránke formulár, ktorý má vstupné pole &lt;input type='text' name='<u>skusenosti</u>' /&gt;. (Príklad: <b>sk*enosti</b>)");
-DEFINE('_EW_DESC_GOALS_POST_CONDITION', "Hodnota, ktorej sa má rovnať premenná z predch. POST poľa. Napr. Chceme zistiť, čí používateľ do formulára zadal v poli skusenosti hodnotu java. (Príklad: <b>*java*</b>)");
+DEFINE('_EW_DESC_GOALS_POST_CONDITION', "Hodnota, ktorej sa má rovnať premenná z predch. POST poľa. Napr. Chceme zistiť, �?í používateľ do formulára zadal v poli skusenosti hodnotu java. (Príklad: <b>*java*</b>)");
 DEFINE('_EW_DESC_GOALS_TITLE_CONDITION', "Titulok stránky ktorý sa má zhodovať. (Príklad: <b>*freelance programmers*</b>)");
 DEFINE('_EW_DESC_GOALS_USERNAME_CONDITION', "Meno prihláseného používateľa, na ktorého sa cieľ vzťahuje. (Príklad: <b>psmith*</b>)");
 DEFINE('_EW_DESC_GOALS_IP_CONDITION', "IP ktorá pochádza z adresy: (Príklad: <b>201.9?.*.*</b>)");
 DEFINE('_EW_DESC_GOALS_CAME_FROM_CONDITION', "URL adresa z ktorej prišiel daný návštevník. (Príklad: <b>*www.google.*</b>)");
 DEFINE('_EW_DESC_GOALS_REDIRECT', "Ak sú naplnené horeuvedené podmienky, môžete používateľa presmerovať danú vami zvolenú adresu. Má vyššiu prioritu ako 'blokovanie': (Príklad: <b>http://www.codegravity.com/chod-prec.html</b>)");
 DEFINE('_EW_DESC_TRUNCATE_GOALS', "Koľko znakov maximálne ukazovať v tabuľke cieľov pre dlhé názvy");
-DEFINE('_EW_DESC_FRONTEND_NO_BACKLINK', "Spätný odkaz na codegravity.com, môžete toto nastavenie zmeniť, no budeme vďační ak ho ponecháte.");
-DEFINE('_EW_DESC_FRONTEND_COUNTRIES', "Zobraz celkové štatistiky v module na stránka. Ak nastavenie zmeníte, musíte počkať čas uvedený v CACHE_FRONTEND_ aby sa zmeny prejavili");
+DEFINE('_EW_DESC_FRONTEND_NO_BACKLINK', "Spätný odkaz na codegravity.com, môžete toto nastavenie zmeniť, no budeme v�?a�?ní ak ho ponecháte.");
+DEFINE('_EW_DESC_FRONTEND_COUNTRIES', "Zobraz celkové štatistiky v module na stránka. Ak nastavenie zmeníte, musíte po�?kať �?as uvedený v CACHE_FRONTEND_ aby sa zmeny prejavili");
 DEFINE('_EW_DESC_FRONTEND_COUNTRIES_FIRST', "Ak chcete prehodiť poradie Návštevníci/Krajiny v module na stránke. Odškrtnite to, a štatistika Návštevníci sa bude zobrazovať ako prvá, za ňou Krajiny.");
-DEFINE('_EW_DESC_FRONTEND_COUNTRIES_NUM', "Počet krajín ktoré si prajete ukazovať v module na stránkach");
-DEFINE('_EW_DESC_FRONTEND_VISITORS', "Zobraz krajiny vmodule na stránkach. Ak nastavenie zmeníte, musíte počkať čas uvedený v CACHE_FRONTEND_ aby sa zmeny prejavili");
-DEFINE('_EW_DESC_CACHE_FRONTEND_COUNTRIES', "Čas v sekundách ako často sa majú obnovovať štatistiky krajín v module na stránkach");
-DEFINE('_EW_DESC_CACHE_FRONTEND_VISITORS', "Čas v sekundách ako často sa majú obnovovať štatistiky návštevníkov v module na stránkach");
-DEFINE('_EW_DESC_FRONTEND_VISITORS_TODAY', "Zobraz návštevníkov na stránke pre: dnes. Ak nastavenie zmeníte, musíte počkať čas uvedený v CACHE_FRONTEND_ aby sa zmeny prejavili");
-DEFINE('_EW_DESC_FRONTEND_VISITORS_YESTERDAY', "Zobraz návštevníkov na stránke pre: včera. Ak nastavenie zmeníte, musíte počkať čas uvedený v CACHE_FRONTEND_ aby sa zmeny prejavili");
-DEFINE('_EW_DESC_FRONTEND_VISITORS_THIS_WEEK', "Zobraz návštevníkov na stránke pre: tento výždeň. Ak nastavenie zmeníte, musíte počkať čas uvedený v CACHE_FRONTEND_ aby sa zmeny prejavili");
-DEFINE('_EW_DESC_FRONTEND_VISITORS_LAST_WEEK', "Zobraz návštevníkov na stránke pre: minulý týždeň. Ak nastavenie zmeníte, musíte počkať čas uvedený v CACHE_FRONTEND_ aby sa zmeny prejavili");
-DEFINE('_EW_DESC_FRONTEND_VISITORS_THIS_MONTH', "Zobraz návštevníkov na stránke pre: tento mesiac. Ak nastavenie zmeníte, musíte počkať čas uvedený v CACHE_FRONTEND_ aby sa zmeny prejavili");
-DEFINE('_EW_DESC_FRONTEND_VISITORS_LAST_MONTH', "Zobraz návštevníkov na stránke pre: minulý mesiac. Ak nastavenie zmeníte, musíte počkať čas uvedený v CACHE_FRONTEND_ aby sa zmeny prejavili");
-DEFINE('_EW_DESC_FRONTEND_VISITORS_TOTAL', "Zobraz návštevníkov celkovo od inštalácie ExtraWatch. Ak nastavenie zmeníte, musíte počkať čas uvedený v CACHE_FRONTEND_ aby sa zmeny prejavili");
-DEFINE('_EW_DESC_LANGUAGE', "Jazykový súbor ktorý sa použije. Jazykové súbory sú umiestnené v /components/com_extrawatch/lang/. Ak chcete pridať nový jazyk, najprv sa presvedčte či sa už nenachádza na stránkach tohto projektu. Ak tam nie je, skopírujte štandardný english.php napríklad na mojjazyk.php a umiestnite do daného adresára. Následne preložte všetky názvy vpravo. Najlešie keď použijete kódovanie UTF-8");
-DEFINE('_EW_DESC_GOALS', "Ciele vám umožňujú zadať špeciálne parametre. Ak tieto parametre súhlasia, počítadlo daného cieľa je zvýšené. Týmto spôsobom môžte monitorovač, či návštevník navštívil špecifickú URI, poslal špecifickú hodnotu vo formulári, má špecifické používateľské meno, alebo prišiel z niektorej adresy. Môžete takéhoto návštevníka zablokovať, alebo presmerovať na špeciálnu URL adresu.");
+DEFINE('_EW_DESC_FRONTEND_COUNTRIES_NUM', "Po�?et krajín ktoré si prajete ukazovať v module na stránkach");
+DEFINE('_EW_DESC_FRONTEND_VISITORS', "Zobraz krajiny vmodule na stránkach. Ak nastavenie zmeníte, musíte po�?kať �?as uvedený v CACHE_FRONTEND_ aby sa zmeny prejavili");
+DEFINE('_EW_DESC_CACHE_FRONTEND_COUNTRIES', "Čas v sekundách ako �?asto sa majú obnovovať štatistiky krajín v module na stránkach");
+DEFINE('_EW_DESC_CACHE_FRONTEND_VISITORS', "Čas v sekundách ako �?asto sa majú obnovovať štatistiky návštevníkov v module na stránkach");
+DEFINE('_EW_DESC_FRONTEND_VISITORS_TODAY', "Zobraz návštevníkov na stránke pre: dnes. Ak nastavenie zmeníte, musíte po�?kať �?as uvedený v CACHE_FRONTEND_ aby sa zmeny prejavili");
+DEFINE('_EW_DESC_FRONTEND_VISITORS_YESTERDAY', "Zobraz návštevníkov na stránke pre: v�?era. Ak nastavenie zmeníte, musíte po�?kať �?as uvedený v CACHE_FRONTEND_ aby sa zmeny prejavili");
+DEFINE('_EW_DESC_FRONTEND_VISITORS_THIS_WEEK', "Zobraz návštevníkov na stránke pre: tento výždeň. Ak nastavenie zmeníte, musíte po�?kať �?as uvedený v CACHE_FRONTEND_ aby sa zmeny prejavili");
+DEFINE('_EW_DESC_FRONTEND_VISITORS_LAST_WEEK', "Zobraz návštevníkov na stránke pre: minulý týždeň. Ak nastavenie zmeníte, musíte po�?kať �?as uvedený v CACHE_FRONTEND_ aby sa zmeny prejavili");
+DEFINE('_EW_DESC_FRONTEND_VISITORS_THIS_MONTH', "Zobraz návštevníkov na stránke pre: tento mesiac. Ak nastavenie zmeníte, musíte po�?kať �?as uvedený v CACHE_FRONTEND_ aby sa zmeny prejavili");
+DEFINE('_EW_DESC_FRONTEND_VISITORS_LAST_MONTH', "Zobraz návštevníkov na stránke pre: minulý mesiac. Ak nastavenie zmeníte, musíte po�?kať �?as uvedený v CACHE_FRONTEND_ aby sa zmeny prejavili");
+DEFINE('_EW_DESC_FRONTEND_VISITORS_TOTAL', "Zobraz návštevníkov celkovo od inštalácie ExtraWatch. Ak nastavenie zmeníte, musíte po�?kať �?as uvedený v CACHE_FRONTEND_ aby sa zmeny prejavili");
+DEFINE('_EW_DESC_LANGUAGE', "Jazykový súbor ktorý sa použije. Jazykové súbory sú umiestnené v /components/com_extrawatch/lang/. Ak chcete pridať nový jazyk, najprv sa presved�?te �?i sa už nenachádza na stránkach tohto projektu. Ak tam nie je, skopírujte štandardný english.php napríklad na mojjazyk.php a umiestnite do daného adresára. Následne preložte všetky názvy vpravo. Najlešie ke�? použijete kódovanie UTF-8");
+DEFINE('_EW_DESC_GOALS', "Ciele vám umožňujú zadať špeciálne parametre. Ak tieto parametre súhlasia, po�?ítadlo daného cieľa je zvýšené. Týmto spôsobom môžte monitorova�?, �?i návštevník navštívil špecifickú URI, poslal špecifickú hodnotu vo formulári, má špecifické používateľské meno, alebo prišiel z niektorej adresy. Môžete takéhoto návštevníka zablokovať, alebo presmerovať na špeciálnu URL adresu.");
 DEFINE('_EW_DESC_GOALS_INSERT', "Vo všetkých poliach okrem mena môžete používať znaky * a ?. Napríklad: ?ear (obsiahne: near, tear, ..),  p*r (obsiahne: pr, peer, pear ..) ");
 DEFINE('_EW_DESC_GOALS_BLOCK', "Nastavte na 1, ak si želáte aby bol návštevník ktorý vyhovuje kritériám blokovaný. Nebude vidieť zbytok obsahu stránok, iba správu o jeho blokovaní - bez presmerovania, a jeho IP adresa bude pridaná do zoznamu blokovaných adries v štatistike (Príklad: <b>1</b>)");
 
@@ -224,26 +224,26 @@ DEFINE('_EW_GOALS_COUNTRY', "Krajina");
 
 /* translations 1.2.8b_12 */
 DEFINE('_EW_DESC_FRONTEND_COUNTRIES_UPPERCASE', "Ak chcete, aby sa názvy krajín zobrazovali na stránkach s všetkými veľkými písmenami (Napr.: GERMANY, UNITED KINGDOM namiesto Germany, United Kingdom)");
-DEFINE('_EW_DESC_CACHE_FRONTEND_USERS', "Čas v sekundách ako často sa majú obnovovať štatistiky používateľov v module na stránkach");
-DEFINE('_EW_DESC_FRONTEND_VISITORS_TOTAL_INITIAL', "Počiatočná hodnota 'Celkovo:' na stránkach. Užitočné, keď ste migrovali z iného štatistického nástroja. (Napr.: 20000). Nastavte naspäť na 0 ak nechcete používať túto vlastnosť.");
+DEFINE('_EW_DESC_CACHE_FRONTEND_USERS', "Čas v sekundách ako �?asto sa majú obnovovať štatistiky používateľov v module na stránkach");
+DEFINE('_EW_DESC_FRONTEND_VISITORS_TOTAL_INITIAL', "Po�?iato�?ná hodnota 'Celkovo:' na stránkach. Užito�?né, ke�? ste migrovali z iného štatistického nástroja. (Napr.: 20000). Nastavte naspäť na 0 ak nechcete používať túto vlastnosť.");
 DEFINE('_EW_DESC_IGNORE_USER', "Ignoruj používateľov z tohto textbox-u. Používateľské meno na riadok. (Napr.: myself {nový riadok} mark_*) ");
-DEFINE('_EW_FRONTEND_USERS_MOST', "Najaktívnejší používatelia za dnes z celkového počtu");
+DEFINE('_EW_FRONTEND_USERS_MOST', "Najaktívnejší používatelia za dnes z celkového po�?tu");
 DEFINE('_EW_DESC_SPAMWORD_BANS_ENABLED', "Povoliť blokovanie na základe listu spam slov zobrazeného nižšie?");
-DEFINE('_EW_DESC_SPAMWORD_LIST', "Najpoužívatejšie spam slové používané spam robotmi. Môžte použiť * a ?. (Napr.: ph?rmac*). Ak nastavenie hore je povolené, ExtraWatch bude zisťovať, či útočník odoslal formulár (HTTP POST požiadavka) na vašej stránke s niektorým z týchto slov. (Vzťahuje sa len na Joomla stránky - fórum, komentáre, no je to celkom efektívny spôsob eliminovať spam robotov, ktorí skúšajú odoslať každý možný formulár)");
+DEFINE('_EW_DESC_SPAMWORD_LIST', "Najpoužívatejšie spam slové používané spam robotmi. Môžte použiť * a ?. (Napr.: ph?rmac*). Ak nastavenie hore je povolené, ExtraWatch bude zisťovať, �?i úto�?ník odoslal formulár (HTTP POST požiadavka) na vašej stránke s niektorým z týchto slov. (Vzťahuje sa len na Joomla stránky - fórum, komentáre, no je to celkom efektívny spôsob eliminovať spam robotov, ktorí skúšajú odoslať každý možný formulár)");
 DEFINE('_EW_SETTINGS_ANTI_SPAM', "Anti-Spam");
 DEFINE('_EW_DESC_FRONTEND_USER_LINK', "A link in the frontend Users module - allows you to specify an URL, which is open when the user clicks the user name. Must contain the string {user}, which will be replaced by the actual user name. (Eg. index.php?option=com_comprofiler&task=userProfile&user={user}) ");
 
 /* translations 1.2.11b */
-DEFINE('_EW_STATS_KEYPHRASE', "Kľúčové slová");
-DEFINE('_EW_DESC_HISTORY_MAX_VALUES', "Maximum počet návštev v histórii(Príklad: <i>100</i>)");
+DEFINE('_EW_STATS_KEYPHRASE', "Kľú�?ové slová");
+DEFINE('_EW_DESC_HISTORY_MAX_VALUES', "Maximum po�?et návštev v histórii(Príklad: <i>100</i>)");
 
 DEFINE('_EW_DESC_ONLY_LAST_URI', "V návštevách, ukáž vždy iba poslednú stránku, nie všetky");
 DEFINE('_EW_DESC_HIDE_REPETITIVE_TITLE', "V návštevách, skry opakujúci sa titulok stránky");
-DEFINE('_EW_DESC_HISTORY_MAX_DB_RECORDS', "Maximum počtu návštev, ktoré držať v databáze pre záložku História. Buďte opatrní s týmto nastavením, ak máte veľmi navštevovanú stránku.");
+DEFINE('_EW_DESC_HISTORY_MAX_DB_RECORDS', "Maximum po�?tu návštev, ktoré držať v databáze pre záložku História. Bu�?te opatrní s týmto nastavením, ak máte veľmi navštevovanú stránku.");
 DEFINE('_EW_DESC_UNINSTALL_KEEP_DATA', "Nechávať dáta v tabuľkách pri odinštalovaní. Zaškrtnite túto možnosť, ak robíte napríklad prechod na vyššiu verziu a nechcete prísť o svoje dáta.");
 
 /* email reports */
-DEFINE('_EW_DESC_EMAIL_REPORTS_ENABLED', "Dostanete nočné emailové reporty za predchádzajúci deň, ktoré si môžete prečítať ráno");
+DEFINE('_EW_DESC_EMAIL_REPORTS_ENABLED', "Dostanete no�?né emailové reporty za predchádzajúci deň, ktoré si môžete pre�?ítať ráno");
 DEFINE('_EW_DESC_EMAIL_REPORTS_ADDRESS', "Emailová adresa na ktorú zasielať tieto emailové reporty");
 DEFINE('_EW_DESC_EMAIL_PERCENT_HIGHER_THAN', "Do emailových reportov zahrnúť iba riadky, kde percentuálna hodnota je vyššia ako {vami zadaná hodnota}. Nastavte na 0, ak chcete zobrazovať všetky záznamy <i>(Príklad: 5)</i>");
 DEFINE('_EW_DESC_EMAIL_ONE_DAY_CHANGE_POSITIVE', "Do emailových reportov zahrnúť iba riadky, kde pozitívna percentuálna hodnota pre jednodňovú zmenu je vyššia ako {vami zadaná hodnota}. Nastavte na 0, ak chcete zobrazovať všetky záznamy <i>(Príklad: 5)</i>");
@@ -253,7 +253,7 @@ DEFINE('_EW_DESC_EMAIL_SEVEN_DAY_CHANGE_NEGATIVE', "Do emailových reportov zahr
 DEFINE('_EW_DESC_EMAIL_TWENTY_EIGHT_DAY_CHANGE_POSITIVE', "Do emailových reportov zahrnúť iba riadky, kde pozitívna percentuálna hodnota pre dvadsaťosemdňovú zmenu je vyššia ako {vami zadaná hodnota}. Nastavte na 0, ak chcete zobrazovať všetky záznamy <i>(Príklad: 5)</i>");
 DEFINE('_EW_DESC_EMAIL_TWENTY_EIGHT_DAY_CHANGE_NEGATIVE', "Do emailových reportov zahrnúť iba riadky, kde negatívna percentuálna hodnota pre dvadsaťosemdňovú zmenu je nižšia ako {vami zadaná hodnota}. Nastavte na 0, ak chcete zobrazovať všetky záznamy <i>(Príklad: -5)</i>");
 
-DEFINE('_EW_DESC_FRONTEND_NOFOLLOW', "<b>(funkčné v PRO verzii)</b> Povoľte, ak chcete vidieť logo ExtraWatch na vašich stránkach s atribútom rel='nofollow' ");
+DEFINE('_EW_DESC_FRONTEND_NOFOLLOW', "<b>(funk�?né v PRO verzii)</b> Povoľte, ak chcete vidieť logo ExtraWatch na vašich stránkach s atribútom rel='nofollow' ");
 DEFINE('_EW_DESC_EMAIL_NAME_TRUNCATE', "Maximum znakov riadku pre emailový report. Zmeňte toto nastavenie, ak okno vášho emailového klienta je príliš úzke");
 
 DEFINE('_EW_MENU_HISTORY', "História");
@@ -264,14 +264,14 @@ DEFINE('_EW_DESC_BLOCKED', "Tieto IP adresy boli blokované anti-spamom");
 
 DEFINE('_EW_HISTORY_VISITORS', "História návštev");
 DEFINE('_EW_HISTORY_SHOWING_ONLY', "Ukázať len %d záznamov.
-                Pre zmenenie tejto hodnoty, choďte do nastavení -&gt; História &amp; Výkonnosť -&gt; 'Maximum počtu návštev'. Toto nastavenie má vplyv na rýchlosť načítavania dát.");
+                Pre zmenenie tejto hodnoty, cho�?te do nastavení -&gt; História &amp; Výkonnosť -&gt; 'Maximum po�?tu návštev'. Toto nastavenie má vplyv na rýchlosť na�?ítavania dát.");
 DEFINE('_EW_MENU_BUG', "Vyreportujte chybu");
 DEFINE('_EW_MENU_FEATURE', "Navrhnite novú funkcionalitu");
 
-DEFINE('_EW_VISITS_CAME_FROM_KEYWORDS', "Kĺúčové slová");
+DEFINE('_EW_VISITS_CAME_FROM_KEYWORDS', "Kĺú�?ové slová");
 
 DEFINE('_EW_BLOCKING_UNBLOCK', "odblokuj");
-DEFINE('_EW_STATS_KEYPHRASE ', "Kĺúčové slová");
+DEFINE('_EW_STATS_KEYPHRASE ', "Kĺú�?ové slová");
 DEFINE('_EW_STATUS_DATABASE', "Status databázy");
 
 DEFINE('_EW_STATUS_DATABASE_TABLE_NAME', "názov tabuľky");
@@ -297,8 +297,8 @@ DEFINE('_EW_HISTORY_PREVIOUS', "predchádzajúce");
 DEFINE('_EW_HISTORY_NEXT', "nasledujúce");
 
 /** additional translation for 1.2.11 for countries in more rows */
-DEFINE('_EW_DESC_FRONTEND_COUNTRIES_MAX_COLUMNS', "Počet stĺpcov vlajok krajín na stránke");
-DEFINE('_EW_DESC_FRONTEND_COUNTRIES_MAX_ROWS', "Počet riadkov vlajok krajín na stránke");
+DEFINE('_EW_DESC_FRONTEND_COUNTRIES_MAX_COLUMNS', "Po�?et stĺpcov vlajok krajín na stránke");
+DEFINE('_EW_DESC_FRONTEND_COUNTRIES_MAX_ROWS', "Po�?et riadkov vlajok krajín na stránke");
 DEFINE('_EW_DESC_FRONTEND_COUNTRIES_NAMES', "Zobrazovať mená flajok krajín");
 DEFINE('_EW_DESC_FRONTEND_COUNTRIES_FLAGS_FIRST', "Zobraz vlajky krajín ako prvé, až tak percentá");
 
@@ -311,11 +311,11 @@ DEFINE('_EW_GOALS_USERNAME_INVERSED', "negácia podmienky Používateľské meno
 DEFINE('_EW_GOALS_CAME_FROM_INVERSED', "negácia podmienky Prišiel z ...");
 
 DEFINE('_EW_STATS_MAP', "Mapa poslednej návštevy");
-DEFINE('_EW_STATS_MAP_ENTER_KEY', "Prosím vložte <a href='http://www.ipinfodb.com/register.php' target='_blank'>ipinfodb.com</a> aktivačný kľúč pre zobrazenie mapy:");
+DEFINE('_EW_STATS_MAP_ENTER_KEY', "Prosím vložte <a href='http://www.ipinfodb.com/register.php' target='_blank'>ipinfodb.com</a> aktiva�?ný kľú�? pre zobrazenie mapy:");
 DEFINE('_EW_STATS_MAP_STORE_KEY', "ulož");
-DEFINE('_EW_STATS_MAP_INVALID_KEY', "Prosím zadajte platný ipinfodb kľúč, ktorý ste získali z: <a href='http://www.ipinfodb.com/register.php' target='_blank'>ipinfodb.com</a>");
+DEFINE('_EW_STATS_MAP_INVALID_KEY', "Prosím zadajte platný ipinfodb kľú�?, ktorý ste získali z: <a href='http://www.ipinfodb.com/register.php' target='_blank'>ipinfodb.com</a>");
 
-DEFINE('_EW_SIZEQUERY_BAD_REQUEST', "ZLÁ POŽIADAVKA: ");
+DEFINE('_EW_SIZEQUERY_BAD_REQUEST', "ZL�? POŽIADAVKA: ");
 
 DEFINE('_EW_VISIT_SUBMITED_FIELDS', "Dáta poslané z formulára:");
 DEFINE('_EW_VISIT_URL_PARAMETERS', "URL parametre:");
@@ -326,13 +326,13 @@ DEFINE('_EW_VISIT_URL_PARAMETER_GOAL', " Pridaj tento URL parameter ako cieľ");
 
 DEFINE('_EW_TREND_EMPTY', "Prázdne");
 
-DEFINE('_EW_NOT_NUMBER', " UPOZORNENIE: Hodnota ktorú ste zadali, nie je číslo. ExtraWatch nebude fungovať korektne!");
-DEFINE('_EW_EVALUATION_LEFT', "&nbsp; Toto je 15-dňová skúšobná verzia. Počet dní do konca: <b>%d</b>. Prosím objednajte si celoživotnú licenciu na <a href='http://www.codegravity.com/donate/extrawatch/' target='_blank'>ExtraWatch licencia pre vašu doménu</a> pre túto a nasledujúce verzie.");
+DEFINE('_EW_NOT_NUMBER', " UPOZORNENIE: Hodnota ktorú ste zadali, nie je �?íslo. ExtraWatch nebude fungovať korektne!");
+DEFINE('_EW_EVALUATION_LEFT', "&nbsp; Toto je 15-dňová skúšobná verzia. Po�?et dní do konca: <b>%d</b>. Prosím objednajte si celoživotnú licenciu na <a href='http://www.codegravity.com/donate/extrawatch/' target='_blank'>ExtraWatch licencia pre vašu doménu</a> pre túto a nasledujúce verzie.");
 DEFINE('_EW_TRIAL_VERSION_EXPIRED', " Vaša trial verzia expirovala. Prosím kúpte si licenciu");
 
 DEFINE('_EW_CONFIG_LICENSE_ACTIVATED', "Licencia aktivovaná úspešne. Ďakujeme");
-DEFINE('_EW_CONFIG_LICENCE_DONT_MATCH', "<b>Chyba: licenčné kľúč a vaša doména sa nezhodujú.</b><br/>
-Naozaj ste vložili správny názov domény do aktivačného dialógu? Prosím kontaktujte: support@codegravity.com");
+DEFINE('_EW_CONFIG_LICENCE_DONT_MATCH', "<b>Chyba: licen�?né kľú�? a vaša doména sa nezhodujú.</b><br/>
+Naozaj ste vložili správny názov domény do aktiva�?ného dialógu? Prosím kontaktujte: support@codegravity.com");
 
 DEFINE('_EW_VIEW_ADMINBODY_LONG_MESSAGE', "Ak vidíte túto správu príliš dlho, nastavenie vašej domény môže byť nesprávne.
                     Otvorte components/com_extrawatch/config.php
@@ -340,7 +340,7 @@ DEFINE('_EW_VIEW_ADMINBODY_LONG_MESSAGE', "Ak vidíte túto správu príliš dlh
                     define('EXTRAWATCH_LIVE_SITE', 'http://www.codegravity.com');");
 
 DEFINE('_EW_ADMINBODY_LIVE_SITE', "Upozornenie: stránka vo vašom browseri %s a v konfigurácii %s sa nezohodujú.");
-DEFINE('_EW_ADMINBODY_SET_LIVE_SITE', "Nastavte doménu na: %s a pokračujte...");
+DEFINE('_EW_ADMINBODY_SET_LIVE_SITE', "Nastavte doménu na: %s a pokra�?ujte...");
 
 DEFINE('_EW_ADMINHEADER_JW', "ExtraWatch");
 DEFINE('_EW_ADMINHEADER_REMOVE_BACKLINK', "Odstrániť spätný odkaz");
@@ -353,13 +353,13 @@ DEFINE('_EW_ADMINHEADER_WRITE', "Napíšte ");
 
 DEFINE('_EW_FLOW_TRAFFIC', "Tok návštev");
 DEFINE('_EW_FLOW_SELECT_PAGE', "Zvoľte stránku:");
-DEFINE('_EW_FLOW_OUTG_LINKS', "Max. počet liniek z každej stránky:");
+DEFINE('_EW_FLOW_OUTG_LINKS', "Max. po�?et liniek z každej stránky:");
 DEFINE('_EW_FLOW_NESTING', "Level vnorenia:");
 DEFINE('_EW_FLOW_SCALE', "Škála:");
 
 DEFINE('_EW_COMERCIAL_AD_FREE', "Verzia bez reklám");
 DEFINE('_EW_COMERCIAL_THANK_DONATION', "Ďakujeme vám za váš príspevok!");
-DEFINE('_EW_COMERCIAL_REGISTRATION_KEY', "Registračný kľúč pre vašu doménu %s je: ");
+DEFINE('_EW_COMERCIAL_REGISTRATION_KEY', "Registra�?ný kľú�? pre vašu doménu %s je: ");
 DEFINE('_EW_COMERCIAL_BACKLINKS_REMOVE', "Teraz môžte skryť ExtraWatch logo na stránke z nastavení");
 
 DEFINE('_EW_SIZES_LAST_CHECK', "Posledná kontrola bola vykonaná:");
@@ -390,31 +390,31 @@ DEFINE('_EW_SIZES_MB', "MB");
 DEFINE('_EW_SIZES_GB', "GB");
 DEFINE('_EW_SIZES_REFRESH', "Obnoviť");
 
-DEFINE('_EW_STATS_FOOTER', "ExtraWatch &copy;2006-@YEAR@ by CodeGravity.com");
+DEFINE('_EW_STATS_FOOTER', "ExtraWatch &copy;2006-2013 by CodeGravity.com");
 
 DEFINE('_EW_STATUS_MB', "MB");
 
-DEFINE('_EW_DESC_IPINFODB_KEY', "Aktivačný kľúč pre mapu poslednej návštevy z : <a href='http://www.ipinfodb.com/register.php' target='_blank'>ipinfodb.com</a>");
-DEFINE('_EW_SETTINGS_FORCE_TIMEZONE_OFFSET', "Nastav nasilu rozdiel časových pásiem");
+DEFINE('_EW_DESC_IPINFODB_KEY', "Aktiva�?ný kľú�? pre mapu poslednej návštevy z : <a href='http://www.ipinfodb.com/register.php' target='_blank'>ipinfodb.com</a>");
+DEFINE('_EW_SETTINGS_FORCE_TIMEZONE_OFFSET', "Nastav nasilu rozdiel �?asových pásiem");
 
 /* ExtraWatch 1.2.17 translations */
 DEFINE('_EW_MENU_UPDATE', "Aktualizuj");
 DEFINE('_EW_MENU_UPDATE_TITLE', "Zálohuj a obnov");
-DEFINE('_EW_ADMINHEADER_NA_IN_THIS_VERSION', "Nefunkčné vo free verzii, prosím pozrite si záložku licencií");
+DEFINE('_EW_ADMINHEADER_NA_IN_THIS_VERSION', "Nefunk�?né vo free verzii, prosím pozrite si záložku licencií");
 DEFINE('_EW_SPAMWORD_BANS_ENABLED', "Blokuj na základe nevhodných slov");
 DEFINE('_EW_SPAMWORD_LIST', "Zoznam nevhodných slov");
 DEFINE('_EW_HIDE_REPETITIVE_TITLE', "Skry opakujúce s titulky stránok");
 DEFINE('_EW_TRUNCATE_VISITS', "Skracuj slová náštev");
 DEFINE('_EW_TRUNCATE_STATS', "Skracuj slová štatistiky");
 DEFINE('_EW_TRUNCATE_GOALS', "Skracuj ciele");
-DEFINE('_EW_LIMIT_BOTS', "Max. počet robotov");
-DEFINE('_EW_LIMIT_VISITORS', "Max. počet návštev");
+DEFINE('_EW_LIMIT_BOTS', "Max. po�?et robotov");
+DEFINE('_EW_LIMIT_VISITORS', "Max. po�?et návštev");
 DEFINE('_EW_TOOLTIP_WIDTH', "Šírka vyskakujúceho okna");
 DEFINE('_EW_TOOLTIP_HEIGHT', "Výška vyskakujúceho okna");
 DEFINE('_EW_TOOLTIP_URL', "URL Adresa vyskakovacieho okna");
 DEFINE('_EW_TOOLTIP_ONCLICK', "Otvoriť vyskakovacie okno pri kliku");
 DEFINE('_EW_IP_STATS', "štatistiky IP adries");
-DEFINE('_EW_IPINFODB_KEY', "Kľúč z ipinfodb.com");
+DEFINE('_EW_IPINFODB_KEY', "Kľú�? z ipinfodb.com");
 DEFINE('_EW_ONLY_LAST_URI', "Iba posledné URI");
 
 DEFINE('_EW_FRONTEND_HIDE_LOGO', "Skry logo na stránkach ");
@@ -425,45 +425,45 @@ DEFINE('_EW_FRONTEND_COUNTRIES_FIRST', "vlajky krajín ako prvé");
 DEFINE('_EW_FRONTEND_COUNTRIES_NAMES', "zobrazovať mená vlajok krajín");
 DEFINE('_EW_FRONTEND_COUNTRIES_UPPERCASE', "mená vlajok krajín veľkými písmenami");
 DEFINE('_EW_FRONTEND_COUNTRIES_FLAGS_FIRST', "vlajky krajín ako prvé");
-DEFINE('_EW_FRONTEND_COUNTRIES_NUM', "počet vlajok krajín");
-DEFINE('_EW_FRONTEND_COUNTRIES_MAX_COLUMNS', "maximálny počet stĺpcov vlajok krajín");
-DEFINE('_EW_FRONTEND_COUNTRIES_MAX_ROWS', "maximálny počet riadkov vlajok krajín");
-DEFINE('_EW_FRONTEND_VISITORS_TODAY', "počet návštevníkov dnes ");
-DEFINE('_EW_FRONTEND_VISITORS_YESTERDAY', "počet návštevníkov včera ");
-DEFINE('_EW_FRONTEND_VISITORS_THIS_WEEK', "počet návštevníkov tento týždeň ");
-DEFINE('_EW_FRONTEND_VISITORS_LAST_WEEK', "počet návštevníkov minulý týždeň ");
-DEFINE('_EW_FRONTEND_VISITORS_THIS_MONTH', "počet návštevníkov tento mesiac");
-DEFINE('_EW_FRONTEND_VISITORS_LAST_MONTH', "počet návštevníkov minulý mesiac");
-DEFINE('_EW_FRONTEND_VISITORS_TOTAL', "počet návštevníkov celkovo");
-DEFINE('_EW_FRONTEND_VISITORS_TOTAL_INITIAL	', "počet návštevníkov - úvodné číslo");
+DEFINE('_EW_FRONTEND_COUNTRIES_NUM', "po�?et vlajok krajín");
+DEFINE('_EW_FRONTEND_COUNTRIES_MAX_COLUMNS', "maximálny po�?et stĺpcov vlajok krajín");
+DEFINE('_EW_FRONTEND_COUNTRIES_MAX_ROWS', "maximálny po�?et riadkov vlajok krajín");
+DEFINE('_EW_FRONTEND_VISITORS_TODAY', "po�?et návštevníkov dnes ");
+DEFINE('_EW_FRONTEND_VISITORS_YESTERDAY', "po�?et návštevníkov v�?era ");
+DEFINE('_EW_FRONTEND_VISITORS_THIS_WEEK', "po�?et návštevníkov tento týždeň ");
+DEFINE('_EW_FRONTEND_VISITORS_LAST_WEEK', "po�?et návštevníkov minulý týždeň ");
+DEFINE('_EW_FRONTEND_VISITORS_THIS_MONTH', "po�?et návštevníkov tento mesiac");
+DEFINE('_EW_FRONTEND_VISITORS_LAST_MONTH', "po�?et návštevníkov minulý mesiac");
+DEFINE('_EW_FRONTEND_VISITORS_TOTAL', "po�?et návštevníkov celkovo");
+DEFINE('_EW_FRONTEND_VISITORS_TOTAL_INITIAL	', "po�?et návštevníkov - úvodné �?íslo");
 DEFINE('_EW_HISTORY_MAX_VALUES', "Max. hodnoty v histórii");
-DEFINE('_EW_HISTORY_MAX_DB_RECORDS', "Max. počet záznamov v histórii");
-DEFINE('_EW_UPDATE_TIME_VISITS', "Počet sekúnd obnovovania návštev v reálnom čase");
-DEFINE('_EW_UPDATE_TIME_STATS', "Počet sekúnd obnovovania štatistík v reálnom čase");
-DEFINE('_EW_STATS_MAX_ROWS', "Max. počet riadkov v štatistike");
+DEFINE('_EW_HISTORY_MAX_DB_RECORDS', "Max. po�?et záznamov v histórii");
+DEFINE('_EW_UPDATE_TIME_VISITS', "Po�?et sekúnd obnovovania návštev v reálnom �?ase");
+DEFINE('_EW_UPDATE_TIME_STATS', "Po�?et sekúnd obnovovania štatistík v reálnom �?ase");
+DEFINE('_EW_STATS_MAX_ROWS', "Max. po�?et riadkov v štatistike");
 DEFINE('_EW_STATS_IP_HITS', "Zobrazovať IP adresy v štatistike");
-DEFINE('_EW_MAXID_BOTS', "Max. počet robotov");
-DEFINE('_EW_MAXID_VISITORS', "Max. počet návštevníkov");
-DEFINE('_EW_STATS_KEEP_DAYS', "Max. počet dní pre ktoré uchovávať štatistiky");
-DEFINE('_EW_CACHE_FRONTEND_COUNTRIES', "Počet sekúnd pre kešovanie vlajok krajín na stránkach");
-DEFINE('_EW_CACHE_FRONTEND_VISITORS', "Počet sekúnd pre kešovanie návštevníkov na stránkach");
+DEFINE('_EW_MAXID_BOTS', "Max. po�?et robotov");
+DEFINE('_EW_MAXID_VISITORS', "Max. po�?et návštevníkov");
+DEFINE('_EW_STATS_KEEP_DAYS', "Max. po�?et dní pre ktoré uchovávať štatistiky");
+DEFINE('_EW_CACHE_FRONTEND_COUNTRIES', "Po�?et sekúnd pre kešovanie vlajok krajín na stránkach");
+DEFINE('_EW_CACHE_FRONTEND_VISITORS', "Po�?et sekúnd pre kešovanie návštevníkov na stránkach");
 
 DEFINE('_EW_UNINSTALL_KEEP_DATA	', "Ponechať dáta po odinštalovaní");
 DEFINE('_EW_IGNORE_IP', "Ignoruj IP adresu");
 DEFINE('_EW_IGNORE_URI', "Ignoruj URI (stránku)");
 DEFINE('_EW_IGNORE_USER', "Ignoruj používateľa");
-DEFINE('_EW_BLOCKING_MESSAGE', "Správa zobrazená keď je používateľ zablokovaný");
+DEFINE('_EW_BLOCKING_MESSAGE', "Správa zobrazená ke�? je používateľ zablokovaný");
 DEFINE('_EW_SERVER_URI_KEY', "parameter PHP premennej SERVER odkiaľ sa berie adresa URI");
-DEFINE('_EW_FRONTEND_VISITORS_TOTAL_INITIAL', "počet návštevníkov - úvodné číslo");
+DEFINE('_EW_FRONTEND_VISITORS_TOTAL_INITIAL', "po�?et návštevníkov - úvodné �?íslo");
 DEFINE('_EW_SIZEDATABASE_RECORDS', "Záznamy");
 /***********EDITs*****************/
 DEFINE('_EW_ANTISPAM_BLOCKING_TEXT', " Aby blokovanie fungovalo, musíte ExtraWatch agent modul umiestniť do pozície pred vaším obsahom.
 Napríklad na ľavej strane vašej šablóny
                     <br/>
-                    Choďte do Module Manager -> ExtraWatch agent -> zvoľte pozíciu left");
+                    Cho�?te do Module Manager -> ExtraWatch agent -> zvoľte pozíciu left");
 DEFINE('_EW_EMAIL_SEO_REPORTS', "SEO Reporty");
-DEFINE('_EW_DESC_EMAIL_SEO_REPORTS_ENABLED', "SEO Nočné emaily povolené");
-DEFINE('_EW_WATCH_INSTALLATION_DEMO', "Pozrite si inštalačné demo");
+DEFINE('_EW_DESC_EMAIL_SEO_REPORTS_ENABLED', "SEO No�?né emaily povolené");
+DEFINE('_EW_WATCH_INSTALLATION_DEMO', "Pozrite si inštala�?né demo");
 
 /** JW 1.2.18 */
 DEFINE('_EW_ADMINHEADER_HEATMAP', "Heatmap");

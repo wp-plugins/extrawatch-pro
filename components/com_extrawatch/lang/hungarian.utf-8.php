@@ -7,7 +7,7 @@
  * @version @VERSION@
  * @revision @REVISION@
  * @license http://www.gnu.org/licenses/gpl-3.0.txt GNU General Public License v3
- * @copyright (C) @YEAR@ by CodeGravity.com - All rights reserved!
+ * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
  */
 
@@ -62,8 +62,8 @@ DEFINE('_EW_STATS_ALL_TIME_TITLE', "Összesített statisztikák");
 DEFINE('_EW_STATS_LOADING', "betöltés...");
 DEFINE('_EW_STATS_LOADING_WAIT', "betöltés... kérem várjon");
 DEFINE('_EW_STATS_IP_BLOCKING_TITLE', "IP cím blokkolás");
-DEFINE('_EW_STATS_IP_BLOCKING_ENTER', "Írja be az IP címet");
-DEFINE('_EW_STATS_IP_BLOCKING_MANUALLY', "Írja be az IP címet, amit blokkolni akar. (pl. 217.242.11.54 vagy 217.* vagy 217.242.* blokkolni az összes IP-t ami így kezd&#337;dik)");
+DEFINE('_EW_STATS_IP_BLOCKING_ENTER', "�?rja be az IP címet");
+DEFINE('_EW_STATS_IP_BLOCKING_MANUALLY', "�?rja be az IP címet, amit blokkolni akar. (pl. 217.242.11.54 vagy 217.* vagy 217.242.* blokkolni az összes IP-t ami így kezd&#337;dik)");
 DEFINE('_EW_STATS_IP_BLOCKING_TOGGLE', "A blokkoló tényleges bekapcsolása a ");
 DEFINE('_EW_STATS_PANE_LOADING', "Statisztikák betöltése...");
 
@@ -195,7 +195,7 @@ DEFINE('_EW_DESC_GOALS_IP_CONDITION', "A felhasználó IP címe: (Pl.: <b>201.9?
 DEFINE('_EW_DESC_GOALS_CAME_FROM_CONDITION', "Az URL (webcím) ahonnan a felhasználó érkezett. (Pl.: <b>*www.google.*</b>)");
 DEFINE('_EW_DESC_GOALS_REDIRECT', "A felhasználó át lett irányítva egy másik URL-re amit mi adunk meg. Ennek nagyobb a prioritása, mint a blokkolásnak: (Pl.: <b>http://www.codegravity.com/goaway.html</b>)");
 DEFINE('_EW_DESC_TRUNCATE_GOALS', "A levágandó karakterek száma a célok táblából");
-DEFINE('_EW_DESC_FRONTEND_NO_BACKLINK', "<b>(csak a PRO verzióban m&#369;ködik)</b> Átirányítás a codegravity.com címre, le lehet tiltani, de mi örülnénk ha így hagynák. Köszönjük.");
+DEFINE('_EW_DESC_FRONTEND_NO_BACKLINK', "<b>(csak a PRO verzióban m&#369;ködik)</b> �?tirányítás a codegravity.com címre, le lehet tiltani, de mi örülnénk ha így hagynák. Köszönjük.");
 DEFINE('_EW_DESC_FRONTEND_COUNTRIES', "Országok összes statisztikája a képerny&#337; modulban. Ha megváltozott, a változás csak akkor m&#369;ködik a képerny&#337;n, amikor az id&#337; be lett állítva a CACHE_FRONTEND_ ");
 DEFINE('_EW_DESC_FRONTEND_COUNTRIES_FIRST', "Ha meg akarja cserélni a Látogatók/Országok sorrendet a képerny&#337;n. Törölje ki és a Látogatók jelennek meg el&#337;ször.");
 DEFINE('_EW_DESC_FRONTEND_COUNTRIES_NUM', "Az országok számának megjelenítése a képerny&#337;n");
@@ -212,7 +212,7 @@ DEFINE('_EW_DESC_FRONTEND_VISITORS_TOTAL', "Az összes látogató megmutatása a
 DEFINE('_EW_DESC_LANGUAGE', "A használt nyelv. Ezek helye a /components/com_extrawatch/lang/ könyvtárban van. Ha egy teljesen új nyelvi állományt akar létrehozni, akkor nézze meg a program helyét, másolja át a english.php egy másik néven, Pl. german.php ugyanabba a könyvtárba. Ezután fordítsa le az összes szöveget - értelemszer&#369;en - a definiciók utáni helyeken, a sorok jobboldani részén.");
 DEFINE('_EW_DESC_GOALS', "Célokkal be lehet állítani speciális paramétereket. Amikor ezek a paraméterek megegyeznek, a cél számláló megnövekszik. Ezen az úton nyomon követheti, ha egy felhasználó meglátogatott valamely URL-t, Elküldött-e (POST) speciális értéket, szöveget, mi a felhasználó neve, vagy melyik URL-r&#337;l jött. Adott felhasználót, felhasználókat blokkolhat, vagy átirányíthatja egy másik URL-re.");
 DEFINE('_EW_DESC_GOALS_INSERT', "Minden mez&#337;ben, kivéve a nevet használhat jóker karaktereket (* és ?). Például: ?ear (egyezni fog: near, tear, ..), p*r (egyezni fog: pr, peer, pear ..) ");
-DEFINE('_EW_DESC_GOALS_BLOCK', "Állítsa be 1-re, ha a látogatót blokkolni akarja. Nem fogja látni a részleteket, csak egy üzenetet, hogy blokkolva van - árirányítás nélkül, és az IP címe bekerült a blokkoltak statisztikájába (Pl.: <b>1</b>)");
+DEFINE('_EW_DESC_GOALS_BLOCK', "�?llítsa be 1-re, ha a látogatót blokkolni akarja. Nem fogja látni a részleteket, csak egy üzenetet, hogy blokkolva van - árirányítás nélkül, és az IP címe bekerült a blokkoltak statisztikájába (Pl.: <b>1</b>)");
 
 /* new translations */
 DEFINE('_EW_GOALS_COUNTRY_CONDITION', "Ország feltétel");
@@ -230,7 +230,7 @@ DEFINE('_EW_GOALS_COUNTRY', "Ország");
 /* translations 1.2.8b_12 */
 DEFINE('_EW_DESC_FRONTEND_COUNTRIES_UPPERCASE', "Ha az országok nevét nagybet&#369;kkel akarja megjeleníteni (Pl: GERMANY, UNITED KINGDOM ahelyett hogy Germany, United Kingdom)");
 DEFINE('_EW_DESC_CACHE_FRONTEND_USERS', "Az id&#337; másodpercekben a felhasználók beolvasása a képerny&#337;re");
-DEFINE('_EW_DESC_FRONTEND_VISITORS_TOTAL_INITIAL', "Kezd&#337; érték az összesben megmutatni. Hasznos, ha egy másik statisztikai programból áthozható. (Pl.: 20000). Állítsa 0-re ha nem akarja használni ezt a lehet&#337;séget.");
+DEFINE('_EW_DESC_FRONTEND_VISITORS_TOTAL_INITIAL', "Kezd&#337; érték az összesben megmutatni. Hasznos, ha egy másik statisztikai programból áthozható. (Pl.: 20000). �?llítsa 0-re ha nem akarja használni ezt a lehet&#337;séget.");
 DEFINE('_EW_DESC_IGNORE_USER', "Ignorája azokat a felhasználókat, akik itt a listán szerepelnek. Egy név soronként. (Pl.: magam {line break} mark_*) ");
 DEFINE('_EW_FRONTEND_USERS_MOST', "A mai legaktívabb felhasználók összesen");
 DEFINE('_EW_DESC_SPAMWORD_BANS_ENABLED', "Letiltani az alul látható tiltott szavak listáján szerepl&#337; szavakat (SPAM)");
@@ -249,13 +249,13 @@ DEFINE('_EW_DESC_UNINSTALL_KEEP_DATA', "Tartsa az adatbázis táblákat uninstal
 /* email reports */
 DEFINE('_EW_DESC_EMAIL_REPORTS_ENABLED', "Napi E-maileket fog kapni az el&#337;z&#337; napról, amit reggel elolvashat");
 DEFINE('_EW_DESC_EMAIL_REPORTS_ADDRESS', "E-mail cím, amire az el&#337;z&#337; napi riportokat elküldik");
-DEFINE('_EW_DESC_EMAIL_PERCENT_HIGHER_THAN', "Csak azok a tételek legyenek az E-mail riportban ahol a százalék nagyobb mint az itt megadott érték {value}. Állítsa 0-ra ha nem akarja ezt a tulajdonságot használni <i>(Pl: 5)</i>");
-DEFINE('_EW_DESC_EMAIL_ONE_DAY_CHANGE_POSITIVE', "Alkalmazzon <b>pozitív egy nap</b> cserélje ki az értéket az E-mail riportban, ha az érték magasabb százalék {value}. Állítsa 0-ra ha nem akarja ezt a tulajdonságot használni <i>(Pl: 5)</i>");
-DEFINE('_EW_DESC_EMAIL_ONE_DAY_CHANGE_NEGATIVE', "Alkalmazzon <b>negatív egy nap</b> cserélje ki az értéket az E-mail riportban, ha az érték kisebb százalék  {value}. Állítsa 0-ra ha nem akarja ezt a tulajdonságot használni <i>(Pl: -10)</i>");
-DEFINE('_EW_DESC_EMAIL_SEVEN_DAY_CHANGE_POSITIVE', "Alkalmazzon <b>pozitív 7 nap</b> cserélje ki az értéket az E-mail riportban, ha az érték magasabb százalék {value}. Állítsa 0-ra ha nem akarja ezt a tulajdonságot használni <i>(Pl: 2)</i>");
-DEFINE('_EW_DESC_EMAIL_SEVEN_DAY_CHANGE_NEGATIVE', "Alkalmazzon <b>negatív 7 nap</b> cserélje ki az értéket az E-mail riportban, ha az érték kisebb {value}. Állítsa 0-ra ha nem akarja ezt a tulajdonságot használni <i>(Pl: -13)</i>");
-DEFINE('_EW_DESC_EMAIL_TWENTY_EIGHT_DAY_CHANGE_POSITIVE', "Alkalmazzon <b>pozitív 28 nap</b> cserélje ki az értéket az E-mail riportban, ha az érték magasabb százalék {value}. Állítsa 0-ra ha nem akarja ezt a tulajdonságot használni <i>(Pl: 2)</i>");
-DEFINE('_EW_DESC_EMAIL_TWENTY_EIGHT_DAY_CHANGE_NEGATIVE', "Alkalmazzon <b>negatív 28 nap</b> cserélje ki az értéket az E-mail riportban, ha az érték kisebb százalék {value}. Állítsa 0-ra ha nem akarja ezt a tulajdonságot használni <i>(Pl: -13)</i>");
+DEFINE('_EW_DESC_EMAIL_PERCENT_HIGHER_THAN', "Csak azok a tételek legyenek az E-mail riportban ahol a százalék nagyobb mint az itt megadott érték {value}. �?llítsa 0-ra ha nem akarja ezt a tulajdonságot használni <i>(Pl: 5)</i>");
+DEFINE('_EW_DESC_EMAIL_ONE_DAY_CHANGE_POSITIVE', "Alkalmazzon <b>pozitív egy nap</b> cserélje ki az értéket az E-mail riportban, ha az érték magasabb százalék {value}. �?llítsa 0-ra ha nem akarja ezt a tulajdonságot használni <i>(Pl: 5)</i>");
+DEFINE('_EW_DESC_EMAIL_ONE_DAY_CHANGE_NEGATIVE', "Alkalmazzon <b>negatív egy nap</b> cserélje ki az értéket az E-mail riportban, ha az érték kisebb százalék  {value}. �?llítsa 0-ra ha nem akarja ezt a tulajdonságot használni <i>(Pl: -10)</i>");
+DEFINE('_EW_DESC_EMAIL_SEVEN_DAY_CHANGE_POSITIVE', "Alkalmazzon <b>pozitív 7 nap</b> cserélje ki az értéket az E-mail riportban, ha az érték magasabb százalék {value}. �?llítsa 0-ra ha nem akarja ezt a tulajdonságot használni <i>(Pl: 2)</i>");
+DEFINE('_EW_DESC_EMAIL_SEVEN_DAY_CHANGE_NEGATIVE', "Alkalmazzon <b>negatív 7 nap</b> cserélje ki az értéket az E-mail riportban, ha az érték kisebb {value}. �?llítsa 0-ra ha nem akarja ezt a tulajdonságot használni <i>(Pl: -13)</i>");
+DEFINE('_EW_DESC_EMAIL_TWENTY_EIGHT_DAY_CHANGE_POSITIVE', "Alkalmazzon <b>pozitív 28 nap</b> cserélje ki az értéket az E-mail riportban, ha az érték magasabb százalék {value}. �?llítsa 0-ra ha nem akarja ezt a tulajdonságot használni <i>(Pl: 2)</i>");
+DEFINE('_EW_DESC_EMAIL_TWENTY_EIGHT_DAY_CHANGE_NEGATIVE', "Alkalmazzon <b>negatív 28 nap</b> cserélje ki az értéket az E-mail riportban, ha az érték kisebb százalék {value}. �?llítsa 0-ra ha nem akarja ezt a tulajdonságot használni <i>(Pl: -13)</i>");
 
 DEFINE('_EW_DESC_FRONTEND_NOFOLLOW', "<b>(csak a PRO verzióban m&#369;ködik)</b> Engedélyezze ezt a beállítást, ha logo-link-et a következ&#337; paraméterrel akarja ellátni rel='nofollow' ");
 DEFINE('_EW_DESC_EMAIL_NAME_TRUNCATE', "Maximum karakterek száma az E-mail sorok nevében. Akkor cserélje ki, ha az E-mail prgramjában túl kicsi az ablak");
@@ -314,11 +314,11 @@ DEFINE('_EW_GOALS_USERNAME_INVERSED', "Felhasználó fordított feltétel");
 DEFINE('_EW_GOALS_CAME_FROM_INVERSED', "Fordított feltételb&#337;l érkezett");
 
 DEFINE('_EW_STATS_MAP', "Utoljára látogatott térkép");
-DEFINE('_EW_STATS_MAP_ENTER_KEY', "Írja be <a href='http://www.ipinfodb.com/register.php' target='_blank'>ipinfodb.com</a> kulcs kiírni az utoljára látogatott térképet:");
+DEFINE('_EW_STATS_MAP_ENTER_KEY', "�?rja be <a href='http://www.ipinfodb.com/register.php' target='_blank'>ipinfodb.com</a> kulcs kiírni az utoljára látogatott térképet:");
 DEFINE('_EW_STATS_MAP_STORE_KEY', "eltárolás kulcs");
-DEFINE('_EW_STATS_MAP_INVALID_KEY', "Írjon be egy létez&#337; ipinfodb kulcsot, amit itt kapott: <a href='http://www.ipinfodb.com/register.php' target='_blank'>ipinfodb.com</a>");
+DEFINE('_EW_STATS_MAP_INVALID_KEY', "�?rjon be egy létez&#337; ipinfodb kulcsot, amit itt kapott: <a href='http://www.ipinfodb.com/register.php' target='_blank'>ipinfodb.com</a>");
 
-DEFINE('_EW_SIZEQUERY_BAD_REQUEST', "HIBÁS KÉRDÉS: ");
+DEFINE('_EW_SIZEQUERY_BAD_REQUEST', "HIB�?S KÉRDÉS: ");
 
 DEFINE('_EW_VISIT_SUBMITED_FIELDS', "Mez&#337;kr&#337;l érkez&#337; adat:");
 DEFINE('_EW_VISIT_URL_PARAMETERS', "URL paraméterek:");
@@ -340,7 +340,7 @@ DEFINE('_EW_VIEW_ADMINBODY_LONG_MESSAGE', "Ha az üzenet fent tól hosszú, vala
 define('EXTRAWATCH_LIVE_SITE', 'http://www.codegravity.com');");
 
 DEFINE('_EW_ADMINBODY_LIVE_SITE', "Figyelem: cím a böngész&#337;ben és az él&#337; cím a konfigurációban: %s és %s nem egyezik.");
-DEFINE('_EW_ADMINBODY_SET_LIVE_SITE', "Állítsa be az él&#337; címet: %s és folytassa...");
+DEFINE('_EW_ADMINBODY_SET_LIVE_SITE', "�?llítsa be az él&#337; címet: %s és folytassa...");
 
 DEFINE('_EW_ADMINHEADER_JW', "ExtraWatch");
 DEFINE('_EW_ADMINHEADER_REMOVE_BACKLINK', "Hátsólink eltávolítás");
@@ -349,7 +349,7 @@ DEFINE('_EW_ADMINHEADER_FLOW', "Folyamat");
 DEFINE('_EW_ADMINHEADER_GRAPHS', "Grafika");
 DEFINE('_EW_ADMINHEADER_COMPONENTS', "Komponensek");
 DEFINE('_EW_ADMINHEADER_REVIEW', "Nézet");
-DEFINE('_EW_ADMINHEADER_WRITE', "Írjon ");
+DEFINE('_EW_ADMINHEADER_WRITE', "�?rjon ");
 
 DEFINE('_EW_FLOW_TRAFFIC', "Forgalom Folyamat");
 DEFINE('_EW_FLOW_SELECT_PAGE', "Válassza ki az oldalt:");
@@ -384,14 +384,14 @@ DEFINE('_EW_SIZEMODULES_TOTAL', "Összesen:");
 DEFINE('_EW_SIZEMODULES_MODULE', "Modul");
 DEFINE('_EW_SIZEMODULES_SIZE', "Méret");
 
-DEFINE('_EW_SIZES_FILES', "Állományok és Könyvtárak");
+DEFINE('_EW_SIZES_FILES', "�?llományok és Könyvtárak");
 DEFINE('_EW_SIZES_BYTES', "byte-ok");
 DEFINE('_EW_SIZES_KB', "KB");
 DEFINE('_EW_SIZES_MB', "MB");
 DEFINE('_EW_SIZES_GB', "GB");
 DEFINE('_EW_SIZES_REFRESH', "Újraolvas");
 
-DEFINE('_EW_STATS_FOOTER', "ExtraWatch &copy;2006-@YEAR@ by CodeGravity.com");
+DEFINE('_EW_STATS_FOOTER', "ExtraWatch &copy;2006-2013 by CodeGravity.com");
 
 DEFINE('_EW_STATUS_MB', "MB");
 DEFINE('_EW_STATUS_DATABASE', "Adatbázis tábla méretek");

@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1428
+ * @revision 1439
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -66,24 +66,31 @@ class ExtraWatchHeatmapHTML
         return $output;
     }
 
-    function renderHeatmapTableRow($row, $day, $maxClickForDay, $i)
+    function renderHeatmapTableRow($row, $day, $maxClickForDay, $i, $highlightAreasLinks = FALSE)
     {
+		if (!$day) {
+			$day = ExtraWatchDate::jwDateToday();
+		}
+	
         $uri = $this->visit->getUriNameByUri2TitleId($row->uri2titleId);
         $title = ExtraWatchHelper::truncate($this->visit->getTitleByUriId($row->uri2titleId), self::TRUNCATE_LEN);
         ExtraWatchLog::debug("renderHeatmapTableRow - uri2titleId: ".$row->uri2titleId." uri found; ".$uri. "title: ".$title);
         $ratio = $row->count / $maxClickForDay;
         $color = ExtraWatchHelper::rgbFromRatio($ratio);
         $trendsCells = $this->extraWatchStatHTML->renderDiffTableCellsAndIcon(EW_DB_KEY_HEATMAP, $row->uri2titleId, $day);
+		$liveSite = $this->extraWatch->config->getLiveSiteWithSuffix();
 
-        $openAllClicksLink = "";
-        if (!$day) {
-            //$openAllClicksLink = $this->renderHeatmapLink($uri, $row->uri2titleId, "", "all", "", TRUE);
-        }
+        if ($highlightAreasLinks) {
+			$uriWithLiveSite = str_replace("//","/", $liveSite.$row->uri);
+            $link = $this->renderHighlightElementLink($uriWithLiveSite, "all", $title);
+        } else {
+			$link = $this->renderHeatmapLink($uri, $row->uri2titleId, $day, $title, "", TRUE);
+		}
 
         $output = sprintf("<tr class='tableRow" . ($i % 2) . "'><td align='center' style='color: %s' width='5%%'>%d</td><td>%s</td><td>%s</td>",
             $color,
             $row->count,
-            $this->renderHeatmapLink($uri, $row->uri2titleId, $day, $title, "", TRUE),
+            $link,
             ExtraWatchHelper::truncate($uri, 30)
             );
         if ($day) {
@@ -157,7 +164,7 @@ class ExtraWatchHeatmapHTML
         if (@$rows) {
             $maxClicksForDay = $this->extraWatchHeatmap->getMaxClicksForDay($day);
             foreach($rows as $row) {
-                $trendsCells = $this->extraWatchStatHTML->renderDiffTableCellsAndIcon(EW_DB_KEY_HTML_ELEMENT, $liveSite.addslashes($row->xpath), $day);
+                $trendsCells = $this->extraWatchStatHTML->renderDiffTableCellsAndIcon(EW_DB_KEY_HTML_ELEMENT, addslashes($row->xpath), $day);
 
                 $ratio = $row->clickCount / $maxClicksForDay;
                 $color = ExtraWatchHelper::rgbFromRatio($ratio);
@@ -317,6 +324,36 @@ class ExtraWatchHeatmapHTML
         );
     }
 
+    function renderPagesWithHighlightedHTMLElementsTable($day = 0, $limit = 20)
+    {
+        $rows = $this->extraWatchHeatmap->getTopHeatmapUris($day, 20);
+        if (!$rows) {
+            return ExtraWatchHelper::renderNoData();
+        }
+        $maxClicksForDay = $this->extraWatchHeatmap->getMaxClicksForDay($day);
+
+        $output = sprintf("<table style='border: 1px solid #dddddd; padding: 0px' class='tablesorter'>
+        <thead>
+        <tr><th>%s</th>
+        <th>%s</th>
+        <th>%s</th>",_EW_HEATMAP_CLICKS, _EW_HEATMAP_TITLE, _EW_URI);
+
+        $output .= sprintf("<th align='center'>%s</th><th>%s</th><th>%s</th><th></th></tr>", _EW_EMAIL_REPORTS_1DAY_CHANGE, _EW_EMAIL_REPORTS_7DAY_CHANGE, _EW_EMAIL_REPORTS_28DAY_CHANGE);
+
+        $output .= "</thead><tbody>";
+
+        $i = 0;
+        if ($rows)
+            foreach ($rows as $row) {
+                if (@$row->uri2titleId) {
+                    $output .= $this->renderHeatmapTableRow($row, $day, $maxClicksForDay, $i, TRUE);
+                    $i++;
+                }
+            }
+        $output .= "</tbody></table>";
+
+        return $output;
+    }
 
 
     

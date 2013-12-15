@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1428
+ * @revision 1439
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -1156,6 +1156,10 @@ class ExtraWatchStatHTML
 
   function renderDiffTableCellsAndIcon($group, $origName, $day, $noIcon = FALSE)
   {
+      if(@!$day) {
+          $day = ExtraWatchDate::jwDateToday();
+      }
+
     $oneDayDiff = $this->extraWatch->stat->getRelDiffOfTwoDays($day - 1, $day, $group, $origName);
     $sevenDayDiff = $this->extraWatch->stat->getRelDiffOfTwoDays($day - 7, $day, $group, $origName);
     $twentyEightDayDiff = $this->extraWatch->stat->getRelDiffOfTwoDays($day - 28, $day, $group, $origName);

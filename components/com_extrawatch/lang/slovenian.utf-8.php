@@ -7,7 +7,7 @@
  * @version @VERSION@
  * @revision @REVISION@
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
- * @copyright (C) @YEAR@ by CodeGravity.com - All rights reserved!
+ * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
  */
 
@@ -52,17 +52,17 @@ DEFINE('_EW_STATS_REFERERS', "preusmerjevalcev");
 DEFINE('_EW_STATS_IP', "IP");
 DEFINE('_EW_STATS_BROWSER', "brskalnikov");
 DEFINE('_EW_STATS_OS', "operacijskih sistemov");
-DEFINE('_EW_STATS_KEYWORDS', "ključnih besed");
+DEFINE('_EW_STATS_KEYWORDS', "klju�?nih besed");
 DEFINE('_EW_STATS_GOALS', "ciljev");
 DEFINE('_EW_STATS_TOTAL', "Skupaj");
 DEFINE('_EW_STATS_DAILY', "Dnevno");
 DEFINE('_EW_STATS_DAILY_TITLE', "Dnevna statistika");
 DEFINE('_EW_STATS_ALL_TIME_TITLE', "Skupna statistika");
 DEFINE('_EW_STATS_LOADING', "nalagam...");
-DEFINE('_EW_STATS_LOADING_WAIT', "nalagam... prosimo počakajte");
+DEFINE('_EW_STATS_LOADING_WAIT', "nalagam... prosimo po�?akajte");
 DEFINE('_EW_STATS_IP_BLOCKING_TITLE', "Blokiranje IP naslova");
-DEFINE('_EW_STATS_IP_BLOCKING_ENTER', "Ročno vnesi IP naslov");
-DEFINE('_EW_STATS_IP_BLOCKING_MANUALLY', "Vnesite IP naslov, ki ga želite blokirati. (če želite blokirati skupino IP naslovo uporabite ta zgled: 217.* ali 217.242.*)");
+DEFINE('_EW_STATS_IP_BLOCKING_ENTER', "Ro�?no vnesi IP naslov");
+DEFINE('_EW_STATS_IP_BLOCKING_MANUALLY', "Vnesite IP naslov, ki ga želite blokirati. (�?e želite blokirati skupino IP naslovo uporabite ta zgled: 217.* ali 217.242.*)");
 DEFINE('_EW_STATS_IP_BLOCKING_TOGGLE', "Ali res želite blokirati ");
 DEFINE('_EW_STATS_PANE_LOADING', "Nalagam statistiko...");
 
@@ -96,21 +96,21 @@ DEFINE('_EW_RESET_SUCCESS', "Statistika in podatki obiskovalcev uspešno izbrisa
 DEFINE('_EW_RESET_ERROR', "Podatki se NISO izbrisali.");
 DEFINE('_EW_CREDITS_TITLE', "Zasluge");
 DEFINE('_EW_TRENDS_DAILY_WEEKLY', "Dnevna in tedenska statistika");
-DEFINE('_EW_AJAX_PERMISSION_DENIED_1', "AJAX dostop zavrnjen: Prosimo prepričajte, da je vnešena prava domena v configuration.php - ");
-DEFINE('_EW_AJAX_PERMISSION_DENIED_2', "Mogoče ste pozabili www. pred vašo domeno. Javascript poskuša dostopati do ");
+DEFINE('_EW_AJAX_PERMISSION_DENIED_1', "AJAX dostop zavrnjen: Prosimo prepri�?ajte, da je vnešena prava domena v configuration.php - ");
+DEFINE('_EW_AJAX_PERMISSION_DENIED_2', "Mogo�?e ste pozabili www. pred vašo domeno. Javascript poskuša dostopati do ");
 DEFINE('_EW_AJAX_PERMISSION_DENIED_3', "iz");
 DEFINE('_EW_AJAX_PERMISSION_DENIED_4', "zato misli, da je to druga domena.");
 
 // Header.
-DEFINE('_EW_HEADER_DOWNLOAD', "Zadnjo različico dodatka lahko dobite na");
+DEFINE('_EW_HEADER_DOWNLOAD', "Zadnjo razli�?ico dodatka lahko dobite na");
 DEFINE('_EW_HEADER_CAST_YOUR', "Podaj svoj");
 DEFINE('_EW_HEADER_VOTE', "glas");
 
 // Tooltips.
-DEFINE('_EW_TOOLTIP_CLICK', "Kliknite za prikaz pomoči");
-DEFINE('_EW_TOOLTIP_MOUSE_OVER', "Zapeljite miško čez za prikaz pomoči");
+DEFINE('_EW_TOOLTIP_CLICK', "Kliknite za prikaz pomo�?i");
+DEFINE('_EW_TOOLTIP_MOUSE_OVER', "Zapeljite miško �?ez za prikaz pomo�?i");
 DEFINE('_EW_TOOLTIP_YESTERDAY_INCREASE', "yesterday&apos;s increase");
-DEFINE('_EW_TOOLTIP_HELP', "Odpre zunanjo pomoč za");
+DEFINE('_EW_TOOLTIP_HELP', "Odpre zunanjo pomo�? za");
 DEFINE('_EW_TOOLTIP_WINDOW_CLOSE', "Zapri to okno");
 DEFINE('_EW_TOOLTIP_PRINT', "Natisni");
 
@@ -132,11 +132,11 @@ DEFINE('_EW_GOALS_POST_CONDITION', "Pogoj POST");
 DEFINE('_EW_GOALS_TITLE_CONDITION', "Naslovni pogoj");
 DEFINE('_EW_GOALS_USERNAME_CONDITION', "Pogoj za upor. ime");
 DEFINE('_EW_GOALS_IP_CONDITION', "Pogoj za IP naslov");
-DEFINE('_EW_GOALS_CAME_FROM_CONDITION', "Pogoj za izhajališče");
+DEFINE('_EW_GOALS_CAME_FROM_CONDITION', "Pogoj za izhajališ�?e");
 DEFINE('_EW_GOALS_BLOCK', "Blokiraj");
 DEFINE('_EW_GOALS_REDIRECT', "Preusmeri na URL naslov");
 DEFINE('_EW_GOALS_HITS', "Zadetki");
-DEFINE('_EW_GOALS_ENABLED', "Omogočeno");
+DEFINE('_EW_GOALS_ENABLED', "Omogo�?eno");
 DEFINE('_EW_GOALS_EDIT', "Uredi");
 DEFINE('_EW_GOALS_DELETE', "Izbriši");
 DEFINE('_EW_GOALS_DELETE_CONFIRM', "Izgubili boste vse podatke tega cilja. Ali res želite izbrisati cilj številka ");
@@ -145,7 +145,7 @@ DEFINE('_EW_GOALS_DELETE_CONFIRM', "Izgubili boste vse podatke tega cilja. Ali r
 DEFINE('_EW_FRONTEND_COUNTRIES', "Države");
 DEFINE('_EW_FRONTEND_VISITORS', "Obiskovalci");
 DEFINE('_EW_FRONTEND_TODAY', "Danes");
-DEFINE('_EW_FRONTEND_YESTERDAY', "Včeraj");
+DEFINE('_EW_FRONTEND_YESTERDAY', "V�?eraj");
 DEFINE('_EW_FRONTEND_THIS_WEEK', "Ta teden");
 DEFINE('_EW_FRONTEND_LAST_WEEK', "Prejšnji teden");
 DEFINE('_EW_FRONTEND_THIS_MONTH', "Ta mesec");
@@ -153,63 +153,63 @@ DEFINE('_EW_FRONTEND_LAST_MONTH', "Prejšnji mesec");
 DEFINE('_EW_FRONTEND_TOTAL', "Skupaj");
 
 // Settings description - quite long.
-DEFINE('_EW_DESC_DEBUG', "ExtraWatch je nastavljena na razhroščevanje. Tako lahko odkrijete izvor napake. Za izklop spremenite vrednost EXTRAWATCH_DEBUG v /components/com_extrawatch/config.php iz 1 v 0.");
-DEFINE('_EW_DESC_STATS_MAX_ROWS', "Največje prikazano število vrstic, ko je statistika razširjena.");
+DEFINE('_EW_DESC_DEBUG', "ExtraWatch je nastavljena na razhroš�?evanje. Tako lahko odkrijete izvor napake. Za izklop spremenite vrednost EXTRAWATCH_DEBUG v /components/com_extrawatch/config.php iz 1 v 0.");
+DEFINE('_EW_DESC_STATS_MAX_ROWS', "Najve�?je prikazano število vrstic, ko je statistika razširjena.");
 DEFINE('_EW_DESC_STATS_IP_HITS', "Vsi IP naslovi, ki imajo manj zadetkov kot prejšnji dan bodo izbrisani.");
 DEFINE('_EW_DESC_STATS_URL_HITS', "Vsi URL naslovi, ki imajo manj zadetkov kot prejšnji dan bodo izbrisani.");
-DEFINE('_EW_DESC_IGNORE_IP', "Izključi določene IP naslove iz statistike. Ločite jih z novo vrstico. Uporabljate lahko ti. wildcarde (npr. 192.* bo blokiral vse naslove, ki se začnejo na 192.).");
+DEFINE('_EW_DESC_IGNORE_IP', "Izklju�?i dolo�?ene IP naslove iz statistike. Lo�?ite jih z novo vrstico. Uporabljate lahko ti. wildcarde (npr. 192.* bo blokiral vse naslove, ki se za�?nejo na 192.).");
 DEFINE('_EW_DESC_UPDATE_TIME_VISITS', "Osveževanje obiskovalcev v milisekundah, privzeto je 2000. Bodite pazljivi s to vrednostjo.");
 DEFINE('_EW_DESC_UPDATE_TIME_STATS', "Osveševanje statistike v milisekundah, privzeto je 4000. Bodite pazljivi s to vrednostjo.");
 DEFINE('_EW_DESC_MAXID_BOTS', "Koliko obiskov botov naj se hrani v bazo.");
 DEFINE('_EW_DESC_MAXID_VISITORS', "Koliko pravih obiskov naj se hrani v bazi.");
 DEFINE('_EW_DESC_LIMIT_BOTS', "Koliko botov boste videli v administraciji.");
 DEFINE('_EW_DESC_LIMIT_VISITORS', "Koliko pravih obiskov boste videli v administraciji.");
-DEFINE('_EW_DESC_TRUNCATE_VISITS', "Največje število vidnih znakov v dolgih naslovih.");
-DEFINE('_EW_DESC_TRUNCATE_STATS', "Največje število vidnih znakov v desnem menuju.");
-DEFINE('_EW_DESC_STATS_KEEP_DAYS', "Koliko dni naj se obdrži statistika v bazi, 0 = neskončno.");
-DEFINE('_EW_DESC_TIMEZONE_OFFSET', "Ko ste v drugem časovnem pasu kot strežnik na katerem gostujete (pozitivne ali negativne vrednosti v urah).");
-DEFINE('_EW_DESC_WEEK_OFFSET', "Tedenski odmik po formuli (3600*24*7) nam da število tedno od 1.1.1970. Ta odmik je popravek, da se teden začne s ponedeljkom.");
-DEFINE('_EW_DESC_DAY_OFFSET', "Dnevni odmik po formuli (3600*24) nam da število dni od 1.1.1970. Ta odmik je popravek, da se dan začne ob 00:00. ");
-DEFINE('_EW_DESC_FRONTEND_HIDE_LOGO', "Obkljukaj če želiš prikazati 1x1px veliko ikono v izgledu.");
-DEFINE('_EW_DESC_IP_STATS', "Obkljukaj, če želiš omogočiti statistiko IP naslovov. V nekaterih državah je shranjevanje teh podatkov prepovedano z zakonom. Uporabljate na lastno odgovornost.");
-DEFINE('_EW_DESC_HIDE_ADS', "Ta nastavitev skrije oglase v administraciji, če vas zelo nadlegujejo. Če jih obdržite pripomorete k nadaljnemu razvoju tega orodja. Hvala vam!");
-DEFINE('_EW_DESC_TOOLTIP_ONCLICK', "Odkljukajte, če želite prikazati pomoč na preletu z miško namesto s klikom.");
-DEFINE('_EW_DESC_SERVER_URI_KEY', "Privzeta vrednost je 'REDIRECT_URL', kateri je standarden, če uporabljate prepisovanje URLja. Lahko nastavite na 'SCRIPT_URL'. Tako se bo beležil samo index.php");
-DEFINE('_EW_DESC_BLOCKING_MESSAGE', "Sporočilo, ki je prikazano blokiranim uporabnikom in nadaljne informacije zakaj ste jih blokirali.");
-DEFINE('_EW_DESC_TOOLTIP_WIDTH', "Višina pomoči");
-DEFINE('_EW_DESC_TOOLTIP_HEIGHT', "Širina pomoči");
-DEFINE('_EW_DESC_TOOLTIP_URL', "Tukaj lahko vpišete URL, ki bo predočil obiskovalčev IP naslov. {ip} bo zamenjan z obiskovalčevim IP naslovom. Npr. http://www.example.com/query?iplookup={ip}");
+DEFINE('_EW_DESC_TRUNCATE_VISITS', "Najve�?je število vidnih znakov v dolgih naslovih.");
+DEFINE('_EW_DESC_TRUNCATE_STATS', "Najve�?je število vidnih znakov v desnem menuju.");
+DEFINE('_EW_DESC_STATS_KEEP_DAYS', "Koliko dni naj se obdrži statistika v bazi, 0 = neskon�?no.");
+DEFINE('_EW_DESC_TIMEZONE_OFFSET', "Ko ste v drugem �?asovnem pasu kot strežnik na katerem gostujete (pozitivne ali negativne vrednosti v urah).");
+DEFINE('_EW_DESC_WEEK_OFFSET', "Tedenski odmik po formuli (3600*24*7) nam da število tedno od 1.1.1970. Ta odmik je popravek, da se teden za�?ne s ponedeljkom.");
+DEFINE('_EW_DESC_DAY_OFFSET', "Dnevni odmik po formuli (3600*24) nam da število dni od 1.1.1970. Ta odmik je popravek, da se dan za�?ne ob 00:00. ");
+DEFINE('_EW_DESC_FRONTEND_HIDE_LOGO', "Obkljukaj �?e želiš prikazati 1x1px veliko ikono v izgledu.");
+DEFINE('_EW_DESC_IP_STATS', "Obkljukaj, �?e želiš omogo�?iti statistiko IP naslovov. V nekaterih državah je shranjevanje teh podatkov prepovedano z zakonom. Uporabljate na lastno odgovornost.");
+DEFINE('_EW_DESC_HIDE_ADS', "Ta nastavitev skrije oglase v administraciji, �?e vas zelo nadlegujejo. Če jih obdržite pripomorete k nadaljnemu razvoju tega orodja. Hvala vam!");
+DEFINE('_EW_DESC_TOOLTIP_ONCLICK', "Odkljukajte, �?e želite prikazati pomo�? na preletu z miško namesto s klikom.");
+DEFINE('_EW_DESC_SERVER_URI_KEY', "Privzeta vrednost je 'REDIRECT_URL', kateri je standarden, �?e uporabljate prepisovanje URLja. Lahko nastavite na 'SCRIPT_URL'. Tako se bo beležil samo index.php");
+DEFINE('_EW_DESC_BLOCKING_MESSAGE', "Sporo�?ilo, ki je prikazano blokiranim uporabnikom in nadaljne informacije zakaj ste jih blokirali.");
+DEFINE('_EW_DESC_TOOLTIP_WIDTH', "Višina pomo�?i");
+DEFINE('_EW_DESC_TOOLTIP_HEIGHT', "Širina pomo�?i");
+DEFINE('_EW_DESC_TOOLTIP_URL', "Tukaj lahko vpišete URL, ki bo predo�?il obiskoval�?ev IP naslov. {ip} bo zamenjan z obiskoval�?evim IP naslovom. Npr. http://www.example.com/query?iplookup={ip}");
 DEFINE('_EW_DESC_IGNORE_URI', "Tukaj lahko vpišete URI, kateri se ne bo beležil v statistiko. Wildcardi so dovoljeni.");
-DEFINE('_EW_DESC_GOALS_NAME', "Določi ime cilja. To ime bo vidno v statistiki.");
+DEFINE('_EW_DESC_GOALS_NAME', "Dolo�?i ime cilja. To ime bo vidno v statistiki.");
 DEFINE('_EW_DESC_GOALS_URI_CONDITION', "Vse kar je za domeno. Za http://www.example.com/projects/ je URI: /projects/ .");
 DEFINE('_EW_DESC_GOALS_GET_VAR', "Spremenljivka GET je tista spremenljivka, ki jo ponavadi lahko vidimo za znakom ? ali &amp;. Npr.  http://www.codegravity.com/index.php?<u>name</u>=peter&amp;<u>surname</u>=smith. V tem polju lahko uporabite tudi znak <u>*</u>. To bo preiskalo vse vrednosti.");
-DEFINE('_EW_DESC_GOALS_GET_CONDITION', "Tukaj morate določiti zadetek za vrednost iz prejšnjega polja. (Primer uporabe: <b>p?t*r</b>) ");
+DEFINE('_EW_DESC_GOALS_GET_CONDITION', "Tukaj morate dolo�?iti zadetek za vrednost iz prejšnjega polja. (Primer uporabe: <b>p?t*r</b>) ");
 DEFINE('_EW_DESC_GOALS_POST_VAR', "Precej podobno, ampak tukaj preverjamo vrednosti objavljene v formah. Ko imate formo na vaši spletni strani, ki ima polje &lt;input type='text' name='<u>experiences</u>' /&gt;. (Primer uporabe: <b>exper*ces</b>)");
 DEFINE('_EW_DESC_GOALS_POST_CONDITION', "Zadetek vrednosti iz spremenljivke POST. Npr. želimo preveriti ali ima uporabnik izkušnje z javo.(Primer uporabe: <b>*java*</b>)");
 DEFINE('_EW_DESC_GOALS_TITLE_CONDITION', "Ime strani, ki se mora ujemati. (Primer uporabe: <b>*freelance programmers*</b>)");
 DEFINE('_EW_DESC_GOALS_USERNAME_CONDITION', "Ime prijavljenega uporabnika. (Primer uporabe: <b>psmith*</b>)");
 DEFINE('_EW_DESC_GOALS_IP_CONDITION', "IP naslov s katerega prihaja uporabnik. (Primer uporabe: <b>201.9?.*.*</b>)");
-DEFINE('_EW_DESC_GOALS_REDIRECT', "Uporabnik je preusmerjen na URL, ki ga vi določite. Ima višjo prioriteto kot 'blokiranje'. (Primer uporabe:<b>http://www.codegravity.com/goaway.html</b>)");
+DEFINE('_EW_DESC_GOALS_REDIRECT', "Uporabnik je preusmerjen na URL, ki ga vi dolo�?ite. Ima višjo prioriteto kot 'blokiranje'. (Primer uporabe:<b>http://www.codegravity.com/goaway.html</b>)");
 DEFINE('_EW_DESC_GOALS_CAME_FROM_CONDITION', "URL naslov s katerega prihaja uporabnik. (Primer uporabe: <b>*www.google.*</b>)");
 DEFINE('_EW_DESC_TRUNCATE_GOALS', "Koliko znakov naj se odstrani v tabeli 'cilji'");
-DEFINE('_EW_DESC_FRONTEND_NO_BACKLINK', "Povezava do codegravity.com, ki jo lahko onemogočite, ampak hvaležni vam bomo, če jo boste obdržali. Hvala vam.");
-DEFINE('_EW_DESC_FRONTEND_COUNTRIES', "Prikaže skupno statistiko držav na prvi strani. Spremembe bodo vidne po času določenem v CACHE_FRONTEND_");
+DEFINE('_EW_DESC_FRONTEND_NO_BACKLINK', "Povezava do codegravity.com, ki jo lahko onemogo�?ite, ampak hvaležni vam bomo, �?e jo boste obdržali. Hvala vam.");
+DEFINE('_EW_DESC_FRONTEND_COUNTRIES', "Prikaže skupno statistiko držav na prvi strani. Spremembe bodo vidne po �?asu dolo�?enem v CACHE_FRONTEND_");
 DEFINE('_EW_DESC_FRONTEND_COUNTRIES_FIRST', "Če želiš zamenjati vrstni red Obiskovalcev/Držav na prvi strani, odkljukaj. Nato se bodo obiskovalci pojavili na prvem mestu.");
 DEFINE('_EW_DESC_FRONTEND_COUNTRIES_NUM', "Število prikazanih držav na prvi strani");
-DEFINE('_EW_DESC_FRONTEND_VISITORS', "Prikaz držav na prvi strani. Spremembe bodo vidne po času določenem v CACHE_FRONTEND_");
+DEFINE('_EW_DESC_FRONTEND_VISITORS', "Prikaz držav na prvi strani. Spremembe bodo vidne po �?asu dolo�?enem v CACHE_FRONTEND_");
 DEFINE('_EW_DESC_CACHE_FRONTEND_COUNTRIES', "Čas v sekundah za shranjevanje skupnega števila držav na prvi strani.");
 DEFINE('_EW_DESC_CACHE_FRONTEND_VISITORS', "Čas v sekundah za shranjevanje obiskovalcev na prvi strani.");
-DEFINE('_EW_DESC_FRONTEND_VISITORS_TODAY', "Prikaz današnjih obiskovalcev na prvi strani. Spremembe bodo vidne po času določenem v CACHE_FRONTEND_");
-DEFINE('_EW_DESC_FRONTEND_VISITORS_YESTERDAY', "Prikaz včerajšnjih obiskovalcev na prvi strani. Spremembe bodo vidne po času določenem v CACHE_FRONTEND_");
-DEFINE('_EW_DESC_FRONTEND_VISITORS_THIS_WEEK', "Prikaz obiskovalcev tekočega tedna na prvi strani. Spremembe bodo vidne po času določenem v CACHE_FRONTEND_");
-DEFINE('_EW_DESC_FRONTEND_VISITORS_LAST_WEEK', "Prikaz obiskovalcev prejšnjega tedna na prvi strani. Spremembe bodo vidne po času določenem v CACHE_FRONTEND_");
-DEFINE('_EW_DESC_FRONTEND_VISITORS_THIS_MONTH', "Prikaz obiskovalcev za tekoči mesec na prvi strani. Spremembe bodo vidne po času določenem v CACHE_FRONTEND_");
-DEFINE('_EW_DESC_FRONTEND_VISITORS_LAST_MONTH', "Prikaz obiskovalcev za prejšnji mesec na prvi strani. Spremembe bodo vidne po času določenem v CACHE_FRONTEND_");
-DEFINE('_EW_DESC_FRONTEND_VISITORS_TOTAL', "Prikaz skupnega števila obiskovalcev od namestitve ExtraWatch dalje. Spremembe bodo vidne po času določenem v CACHE_FRONTEND_");
-DEFINE('_EW_DESC_LANGUAGE', "Kateri jezik bo uporabljen. Jezikovne datoteke so nameščene v /components/com_extrawatch/lang/. Če želite ustvariti novo jezikovno datoteko, najprej preglejte domačo stran projekta in če jezika še ni tam, prekopirajte privzeto 'english.php' datoteko in jo preimenujte v npr. slovenian.php in jo prenesite v ta direktorij. Nato prevedite vse vrednosti na desni.");
-DEFINE('_EW_DESC_GOALS', "Cilji vam omogočajo določanje posebnik parametrov. Ko so ti parametri doseženi, se števel ciljev poveča. Tako lahko nadzorujete ali je določen uporabnik obiskal določen URL, objavil določeno vrednost, ima določeno uporabniško ime ali prihaja iz določenega naslova. Take uporabnike lahko tudi preusmerite na drug URL naslov.");
+DEFINE('_EW_DESC_FRONTEND_VISITORS_TODAY', "Prikaz današnjih obiskovalcev na prvi strani. Spremembe bodo vidne po �?asu dolo�?enem v CACHE_FRONTEND_");
+DEFINE('_EW_DESC_FRONTEND_VISITORS_YESTERDAY', "Prikaz v�?erajšnjih obiskovalcev na prvi strani. Spremembe bodo vidne po �?asu dolo�?enem v CACHE_FRONTEND_");
+DEFINE('_EW_DESC_FRONTEND_VISITORS_THIS_WEEK', "Prikaz obiskovalcev teko�?ega tedna na prvi strani. Spremembe bodo vidne po �?asu dolo�?enem v CACHE_FRONTEND_");
+DEFINE('_EW_DESC_FRONTEND_VISITORS_LAST_WEEK', "Prikaz obiskovalcev prejšnjega tedna na prvi strani. Spremembe bodo vidne po �?asu dolo�?enem v CACHE_FRONTEND_");
+DEFINE('_EW_DESC_FRONTEND_VISITORS_THIS_MONTH', "Prikaz obiskovalcev za teko�?i mesec na prvi strani. Spremembe bodo vidne po �?asu dolo�?enem v CACHE_FRONTEND_");
+DEFINE('_EW_DESC_FRONTEND_VISITORS_LAST_MONTH', "Prikaz obiskovalcev za prejšnji mesec na prvi strani. Spremembe bodo vidne po �?asu dolo�?enem v CACHE_FRONTEND_");
+DEFINE('_EW_DESC_FRONTEND_VISITORS_TOTAL', "Prikaz skupnega števila obiskovalcev od namestitve ExtraWatch dalje. Spremembe bodo vidne po �?asu dolo�?enem v CACHE_FRONTEND_");
+DEFINE('_EW_DESC_LANGUAGE', "Kateri jezik bo uporabljen. Jezikovne datoteke so nameš�?ene v /components/com_extrawatch/lang/. Če želite ustvariti novo jezikovno datoteko, najprej preglejte doma�?o stran projekta in �?e jezika še ni tam, prekopirajte privzeto 'english.php' datoteko in jo preimenujte v npr. slovenian.php in jo prenesite v ta direktorij. Nato prevedite vse vrednosti na desni.");
+DEFINE('_EW_DESC_GOALS', "Cilji vam omogo�?ajo dolo�?anje posebnik parametrov. Ko so ti parametri doseženi, se števel ciljev pove�?a. Tako lahko nadzorujete ali je dolo�?en uporabnik obiskal dolo�?en URL, objavil dolo�?eno vrednost, ima dolo�?eno uporabniško ime ali prihaja iz dolo�?enega naslova. Take uporabnike lahko tudi preusmerite na drug URL naslov.");
 DEFINE('_EW_DESC_GOALS_INSERT', "V vseh poljih razen v imenu, lahko uporabite * in ? kot ti. wildcard. Npr: ?ear (prikazalo bo near, tear ...),  p*r (bo prikazalo: pr, peer, pear ..) ");
-DEFINE('_EW_DESC_GOALS_BLOCK', "Nastavite to na 1, če želite, da bo obiskovalec blokiran. Blokirani ne bo videl ostale vsebine, samo sporočilo, da je bil blokiran - brez prenaslavlanja in njegov IP naslov bo dodan v statistiko pod 'blokirani'");
+DEFINE('_EW_DESC_GOALS_BLOCK', "Nastavite to na 1, �?e želite, da bo obiskovalec blokiran. Blokirani ne bo videl ostale vsebine, samo sporo�?ilo, da je bil blokiran - brez prenaslavlanja in njegov IP naslov bo dodan v statistiko pod 'blokirani'");
 
 /* new translations */
 DEFINE('_EW_GOALS_COUNTRY_CONDITION', "Country condition");
@@ -390,7 +390,7 @@ DEFINE('_EW_SIZES_MB', "MB");
 DEFINE('_EW_SIZES_GB', "GB");
 DEFINE('_EW_SIZES_REFRESH', "Refresh");
 
-DEFINE('_EW_STATS_FOOTER', "ExtraWatch &copy;2006-@YEAR@ by CodeGravity.com");
+DEFINE('_EW_STATS_FOOTER', "ExtraWatch &copy;2006-2013 by CodeGravity.com");
 
 DEFINE('_EW_STATUS_MB', "MB");
 

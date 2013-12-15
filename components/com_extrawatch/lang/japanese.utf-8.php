@@ -7,7 +7,7 @@
  * @version @VERSION@
  * @revision @REVISION@
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
- * @copyright (C) @YEAR@ by CodeGravity.com - All rights reserved!
+ * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
  */
 
@@ -20,26 +20,26 @@ DEFINE('_EW_MENU_STATS', "ライブ開始");
 DEFINE('_EW_MENU_GOALS', "目標");
 DEFINE('_EW_MENU_SETTINGS', "設定");
 DEFINE('_EW_MENU_CREDITS', "クレジット");
-DEFINE('_EW_MENU_FAQ', "良くある質問");
-DEFINE('_EW_MENU_DOCUMENTATION', "情報管理");
+DEFINE('_EW_MENU_FAQ', "良�??�?�る質�?");
+DEFINE('_EW_MENU_DOCUMENTATION', "情報管�?�");
 DEFINE('_EW_MENU_LICENSE', "ライセンス");
-DEFINE('_EW_MENU_DONATORS', "サポーター");
-DEFINE('_EW_MENU_SUPPORT', "ジュームラ・ウォッチをサポートしてください。そうすると広告表示なしでご利用いただけます。");
+DEFINE('_EW_MENU_DONATORS', "サ�?ーター");
+DEFINE('_EW_MENU_SUPPORT', "ジュームラ・ウォッ�?をサ�?ート�?��?��??�?��?��?�。�??�?��?�る�?�広告表示�?��?��?��?�利用�?��?��?��?��?��?�。");
 
 
 // Left visitors real-time window.
-DEFINE('_EW_VISITS_VISITORS', "最近の訪問者");
+DEFINE('_EW_VISITS_VISITORS', "最近�?�訪�?者");
 DEFINE('_EW_VISITS_BOTS', "ボット");
 DEFINE('_EW_VISITS_CAME_FROM', "出身");
-DEFINE('_EW_VISITS_MODULE_NOT_PUBLISHED', "ジュームラ・ウォッチモジュールが発行されていません！新規状態が記録されていません。 発行するには、モジュールセクションへアクセスし、そして全ページ上に発行してください。");
-DEFINE('_EW_VISITS_PANE_LOADING', "訪問者読込み...");
+DEFINE('_EW_VISITS_MODULE_NOT_PUBLISHED', "ジュームラ・ウォッ�?モジュール�?�発行�?�れ�?��?��?��?�ん�?新�?状態�?�記録�?�れ�?��?��?��?�ん。 発行�?�る�?��?��?モジュールセクション�?�アクセス�?��?�??�?��?�全ページ上�?�発行�?��?��??�?��?��?�。");
+DEFINE('_EW_VISITS_PANE_LOADING', "訪�?者読込�?�...");
 
 // Right stats window.
-DEFINE('_EW_STATS_TITLE', "週別訪問者状況");
+DEFINE('_EW_STATS_TITLE', "週別訪�?者状�?");
 DEFINE('_EW_STATS_WEEK', "週");
 DEFINE('_EW_STATS_THIS_WEEK', "今週");
 DEFINE('_EW_STATS_UNIQUE', "固有");
-DEFINE('_EW_STATS_LOADS', "読込み");
+DEFINE('_EW_STATS_LOADS', "読込�?�");
 DEFINE('_EW_STATS_HITS', "ヒット");
 DEFINE('_EW_STATS_TODAY', "今日");
 DEFINE('_EW_STATS_FOR', "目的");
@@ -49,420 +49,420 @@ DEFINE('_EW_STATS_COLLAPSE', "崩壊");
 DEFINE('_EW_STATS_URI', "ページ");
 DEFINE('_EW_STATS_COUNTRY', "国");
 DEFINE('_EW_STATS_USERS', "ユーザー");
-DEFINE('_EW_STATS_REFERERS', "参照");
+DEFINE('_EW_STATS_REFERERS', "�?�照");
 DEFINE('_EW_STATS_IP', "IP");
 DEFINE('_EW_STATS_BROWSER', "ブラウザ");
 DEFINE('_EW_STATS_OS', "OS");
 DEFINE('_EW_STATS_KEYWORDS', "キーワード");
 DEFINE('_EW_STATS_GOALS', "目標");
-DEFINE('_EW_STATS_TOTAL', "合計");
+DEFINE('_EW_STATS_TOTAL', "�?�計");
 DEFINE('_EW_STATS_DAILY', "毎日");
-DEFINE('_EW_STATS_DAILY_TITLE', "毎日の状況");
-DEFINE('_EW_STATS_ALL_TIME_TITLE', "最高の状況");
-DEFINE('_EW_STATS_LOADING', "読込み中...");
-DEFINE('_EW_STATS_LOADING_WAIT', "読込み中...しばらくお待ちください");
+DEFINE('_EW_STATS_DAILY_TITLE', "毎日�?�状�?");
+DEFINE('_EW_STATS_ALL_TIME_TITLE', "最高�?�状�?");
+DEFINE('_EW_STATS_LOADING', "読込�?�中...");
+DEFINE('_EW_STATS_LOADING_WAIT', "読込�?�中...�?��?�ら�??�?�待�?��??�?��?��?�");
 DEFINE('_EW_STATS_IP_BLOCKING_TITLE', "IPブロッキング");
 DEFINE('_EW_STATS_IP_BLOCKING_ENTER', "IPを手動入力");
-DEFINE('_EW_STATS_IP_BLOCKING_MANUALLY', "ブロックしたいIPアドレスを入力してください。(例 217.242.11.54 或いは 217.* 或いは 217.242.* ワイルドカードに一致するこれら全てのIPをブロックする)");
-DEFINE('_EW_STATS_IP_BLOCKING_TOGGLE', "実際にトグルブロッキング先 ");
-DEFINE('_EW_STATS_PANE_LOADING', "読込み状況...");
+DEFINE('_EW_STATS_IP_BLOCKING_MANUALLY', "ブロック�?��?��?�IPアドレスを入力�?��?��??�?��?��?�。(例 217.242.11.54 或�?��?� 217.* 或�?��?� 217.242.* ワイルドカード�?�一致�?�る�?�れら全�?��?�IPをブロック�?�る)");
+DEFINE('_EW_STATS_IP_BLOCKING_TOGGLE', "実際�?�トグルブロッキング先 ");
+DEFINE('_EW_STATS_PANE_LOADING', "読込�?�状�?...");
 
 // Settings.
 DEFINE('_EW_SETTINGS_TITLE', "設定");
-DEFINE('_EW_SETTINGS_DEFAULT', "初期設定");
-DEFINE('_EW_SETTINGS_SAVE', "保存");
+DEFINE('_EW_SETTINGS_DEFAULT', "�?期設定");
+DEFINE('_EW_SETTINGS_SAVE', "�?存");
 DEFINE('_EW_SETTINGS_APPEARANCE', "外見");
 DEFINE('_EW_SETTINGS_FRONTEND', "先頭");
-DEFINE('_EW_SETTINGS_HISTORY_PERFORMANCE', "履歴及びパフォーマンス");
+DEFINE('_EW_SETTINGS_HISTORY_PERFORMANCE', "履歴�?��?�パフォーマンス");
 DEFINE('_EW_SETTINGS_ADVANCED', "詳細");
 DEFINE('_EW_SETTINGS_IGNORE', "無視");
 DEFINE('_EW_SETTINGS_BLOCKING', "ブロッキング");
 DEFINE('_EW_SETTINGS_EXPERT', "エクスパート");
-DEFINE('_EW_SETTINGS_RESET_CONFIRM', "全統計と訪問者データを本当にリセットしますか？");
-DEFINE('_EW_SETTINGS_RESET_ALL', "全てをリセット");
-DEFINE('_EW_SETTINGS_RESET_ALL_LINK', "全統計及び訪問者データをリセット");
+DEFINE('_EW_SETTINGS_RESET_CONFIRM', "全統計�?�訪�?者データを本当�?�リセット�?��?��?��?�？");
+DEFINE('_EW_SETTINGS_RESET_ALL', "全�?�をリセット");
+DEFINE('_EW_SETTINGS_RESET_ALL_LINK', "全統計�?��?�訪�?者データをリセット");
 DEFINE('_EW_SETTINGS_LANGUAGE', "言語");
-DEFINE('_EW_SETTINGS_SAVED', "設定が保存されました。");
+DEFINE('_EW_SETTINGS_SAVED', "設定�?��?存�?�れ�?��?��?�。");
 DEFINE('_EW_SETTINGS_ADD_YOUR_IP', "IP追加");
-DEFINE('_EW_SETTINGS_TO_THE_LIST', "リストへ");
+DEFINE('_EW_SETTINGS_TO_THE_LIST', "リスト�?�");
 
 // Other / mostly general.
 DEFINE('_EW_TITLE', "リアルタイムAJAXジュームラ・モニター");
 DEFINE('_EW_BACK', "戻る");
-DEFINE('_EW_ACCESS_DENIED', "これを閲覧承認を得ていません！");
-DEFINE('_EW_LICENSE_AGREE', "上記の諸条件に同意します。");
-DEFINE('_EW_LICENSE_CONTINUE', "続ける");
-DEFINE('_EW_SUCCESS', "オペレーション成功");
-DEFINE('_EW_RESET_SUCCESS', "全統計及び訪問者データが無事に削除されました。");
-DEFINE('_EW_RESET_ERROR', "データが無事に削除されませんでした。問題が発生しました。");
+DEFINE('_EW_ACCESS_DENIED', "�?�れを閲覧承�?を得�?��?��?��?�ん�?");
+DEFINE('_EW_LICENSE_AGREE', "上記�?�諸�?�件�?��?��?�?��?��?�。");
+DEFINE('_EW_LICENSE_CONTINUE', "続�?�る");
+DEFINE('_EW_SUCCESS', "オペレーション�?功");
+DEFINE('_EW_RESET_SUCCESS', "全統計�?��?�訪�?者データ�?�無事�?�削除�?�れ�?��?��?�。");
+DEFINE('_EW_RESET_ERROR', "データ�?�無事�?�削除�?�れ�?��?�ん�?��?��?�。�?題�?�発生�?��?��?��?�。");
 DEFINE('_EW_CREDITS_TITLE', "クレジット");
-DEFINE('_EW_TRENDS_DAILY_WEEKLY', "毎日及び毎週の状況");
-DEFINE('_EW_AJAX_PERMISSION_DENIED_1', "AJAX承認拒否：ジュームラ - 構成.phpに記載したドメインからこの統計を閲覧してください");
-DEFINE('_EW_AJAX_PERMISSION_DENIED_2', "www.のドメイン名をお忘れですか。お持ちのジャバスクリプトがアクセスを試みています");
+DEFINE('_EW_TRENDS_DAILY_WEEKLY', "毎日�?��?�毎週�?�状�?");
+DEFINE('_EW_AJAX_PERMISSION_DENIED_1', "AJAX承�?拒�?�：ジュームラ - 構�?.php�?�記載�?��?�ドメイン�?�ら�?��?�統計を閲覧�?��?��??�?��?��?�");
+DEFINE('_EW_AJAX_PERMISSION_DENIED_2', "www.�?�ドメイン�??を�?�忘れ�?��?��?�。�?��?�?��?�ジャ�?スクリプト�?�アクセスを試�?��?��?��?��?�");
 DEFINE('_EW_AJAX_PERMISSION_DENIED_3', "アクセス元");
-DEFINE('_EW_AJAX_PERMISSION_DENIED_4', "異なるドメインであるとお考えになったのはなぜですか");
+DEFINE('_EW_AJAX_PERMISSION_DENIED_4', "異�?�るドメイン�?��?�る�?��?�考�?��?��?��?��?��?��?��?��?��?��?��?�");
 
 // Header.
-DEFINE('_EW_HEADER_DOWNLOAD', "最新の拡張コード取得先");
-DEFINE('_EW_HEADER_CAST_YOUR', "以下を変換してください");
+DEFINE('_EW_HEADER_DOWNLOAD', "最新�?�拡張コード�?�得先");
+DEFINE('_EW_HEADER_CAST_YOUR', "以下を変�?��?��?��??�?��?��?�");
 DEFINE('_EW_HEADER_VOTE', "投票");
 
 // Tooltips.
-DEFINE('_EW_TOOLTIP_CLICK', "ツールチップを表示するためにクリック");
-DEFINE('_EW_TOOLTIP_MOUSE_OVER', "ツールチップを表示するためにマウスを重ねる");
-DEFINE('_EW_TOOLTIP_YESTERDAY_INCREASE', "昨日の増加量");
-DEFINE('_EW_TOOLTIP_HELP', "次のオンライン外部ヘルプを開く");
-DEFINE('_EW_TOOLTIP_WINDOW_CLOSE', "このウィンドウを閉じる");
-DEFINE('_EW_TOOLTIP_PRINT', "印刷");
+DEFINE('_EW_TOOLTIP_CLICK', "ツール�?ップを表示�?�る�?��?�?�クリック");
+DEFINE('_EW_TOOLTIP_MOUSE_OVER', "ツール�?ップを表示�?�る�?��?�?�マウスを�?�?�る");
+DEFINE('_EW_TOOLTIP_YESTERDAY_INCREASE', "昨日�?�増加�?");
+DEFINE('_EW_TOOLTIP_HELP', "次�?�オンライン外部ヘルプを開�??");
+DEFINE('_EW_TOOLTIP_WINDOW_CLOSE', "�?��?�ウィンドウを閉�?�る");
+DEFINE('_EW_TOOLTIP_PRINT', "�?�刷");
 
 // Goals.
 DEFINE('_EW_GOALS_INSERT', "目標挿入");
-DEFINE('_EW_GOALS_UPDATE', "目標番号更新");
+DEFINE('_EW_GOALS_UPDATE', "目標番�?�更新");
 DEFINE('_EW_GOALS_ACTION', "アクション");
-DEFINE('_EW_GOALS_TITLE', "新規目標");
-DEFINE('_EW_GOALS_NEW', "新規目標");
-DEFINE('_EW_GOALS_RELOAD', "再読込み");
+DEFINE('_EW_GOALS_TITLE', "新�?目標");
+DEFINE('_EW_GOALS_NEW', "新�?目標");
+DEFINE('_EW_GOALS_RELOAD', "�?読込�?�");
 DEFINE('_EW_GOALS_ADVANCED', "詳細");
-DEFINE('_EW_GOALS_NAME', "氏名");
+DEFINE('_EW_GOALS_NAME', "�?�??");
 DEFINE('_EW_GOALS_ID', "ID");
 DEFINE('_EW_GOALS_URI_CONDITION', "URI状態");
-DEFINE('_EW_GOALS_URI_INVERSED', "URI反転状態");
-DEFINE('_EW_GOALS_GET_VAR', "取得バージョン");
-DEFINE('_EW_GOALS_GET_CONDITION', "取得状態");
-DEFINE('_EW_GOALS_POST_VAR', "ポストバージョン");
+DEFINE('_EW_GOALS_URI_INVERSED', "URI�??転状態");
+DEFINE('_EW_GOALS_GET_VAR', "�?�得�?ージョン");
+DEFINE('_EW_GOALS_GET_CONDITION', "�?�得状態");
+DEFINE('_EW_GOALS_POST_VAR', "�?スト�?ージョン");
 DEFINE('_EW_GOALS_POST_CONDITION', "POST状態");
 DEFINE('_EW_GOALS_TITLE_CONDITION', "タイトル状態");
-DEFINE('_EW_GOALS_USERNAME_CONDITION', "ユーザー名状態");
+DEFINE('_EW_GOALS_USERNAME_CONDITION', "ユーザー�??状態");
 DEFINE('_EW_GOALS_IP_CONDITION', "IP状態");
-DEFINE('_EW_GOALS_IP_INVERSED', "IP反転状態");
-DEFINE('_EW_GOALS_CAME_FROM_CONDITION', "状態に起因");
+DEFINE('_EW_GOALS_IP_INVERSED', "IP�??転状態");
+DEFINE('_EW_GOALS_CAME_FROM_CONDITION', "状態�?�起因");
 DEFINE('_EW_GOALS_BLOCK', "ブロック");
-DEFINE('_EW_GOALS_REDIRECT', "URLへリダイアル");
+DEFINE('_EW_GOALS_REDIRECT', "URL�?�リダイアル");
 DEFINE('_EW_GOALS_HITS', "ヒット");
 DEFINE('_EW_GOALS_ENABLED', "有効");
 DEFINE('_EW_GOALS_EDIT', "編集");
 DEFINE('_EW_GOALS_DELETE', "削除");
-DEFINE('_EW_GOALS_DELETE_CONFIRM', "この目標のために全ての最近の統計データを失います。目標番号を本当に削除しますか？");
+DEFINE('_EW_GOALS_DELETE_CONFIRM', "�?��?�目標�?��?��?�?�全�?��?�最近�?�統計データを失�?��?��?�。目標番�?�を本当�?�削除�?��?��?��?�？");
 
 // Frontend.
 DEFINE('_EW_FRONTEND_COUNTRIES', "国");
-DEFINE('_EW_FRONTEND_VISITORS', "訪問者");
+DEFINE('_EW_FRONTEND_VISITORS', "訪�?者");
 DEFINE('_EW_FRONTEND_TODAY', "今日");
 DEFINE('_EW_FRONTEND_YESTERDAY', "昨日");
 DEFINE('_EW_FRONTEND_THIS_WEEK', "今週");
 DEFINE('_EW_FRONTEND_LAST_WEEK', "先週");
 DEFINE('_EW_FRONTEND_THIS_MONTH', "今月");
 DEFINE('_EW_FRONTEND_LAST_MONTH', "先月");
-DEFINE('_EW_FRONTEND_TOTAL', "合計");
+DEFINE('_EW_FRONTEND_TOTAL', "�?�計");
 
 // Settings description - quite long.
-DEFINE('_EW_DESC_DEBUG', "ジュームラ・ウォッチが修正モードです。これによりエラー原因を修復できます。オフにするには、/components/com_extrawatch/config.phpのEXTRAWATCH_DEBUG値の1から0を変更してください");
-DEFINE('_EW_DESC_STATS_MAX_ROWS', "状態が拡張モードの際、最大行数が表示されます");
-DEFINE('_EW_DESC_STATS_IP_HITS', "数日間ヒットしなかった全IPアドレスです。この値がIP履歴から削除されます");
-DEFINE('_EW_DESC_STATS_URL_HITS', "数日間ヒットしなかった全URLです。この値がIP履歴から削除されます");
-DEFINE('_EW_DESC_IGNORE_IP', "統計から特定のIPを排除する。新規ラインと離す。ここでワイルドカードを使用できます。 <br/>例 192.* が192.168.51.31、192.168.16.2、などを無視します");
-DEFINE('_EW_DESC_UPDATE_TIME_VISITS', "訪問者が秒単位で時間をリフレッシュし、初期設定が2000の際はご注意ください。ジュームラ・ウォッチバックエンドを再び読み込んでください。");
-DEFINE('_EW_DESC_UPDATE_TIME_STATS', "統計が秒単位で時間をリフレッシュし、初期設定が4000の際はご注意ください。ジュームラ・ウォッチバックエンドを再び読み込んでください。");
-DEFINE('_EW_DESC_MAXID_BOTS', "データベースに保存するボット訪問者数");
-DEFINE('_EW_DESC_MAXID_VISITORS', " データベースに保存する実際の訪問者数");
-DEFINE('_EW_DESC_LIMIT_BOTS', "バックエンドに見られるボット数");
-DEFINE('_EW_DESC_LIMIT_VISITORS', "バックエンドに見られる実際の訪問者数");
-DEFINE('_EW_DESC_TRUNCATE_VISITS', "長いタイトルとURIに表示される最大文字数");
-DEFINE('_EW_DESC_TRUNCATE_STATS', "正しい統計パネルに表示される最大文字数");
-DEFINE('_EW_DESC_STATS_KEEP_DAYS', "統計をデータベース内に保存する日数 0 = 無限");
-DEFINE('_EW_DESC_TIMEZONE_OFFSET', "ホストサーバーと別のタイムゾーンにいる場合 (プラス或はマイナス時数)");
-DEFINE('_EW_DESC_WEEK_OFFSET', "ウィーク・オフセット、タイムスタンプ/(3600*24*7)で1.1.1970年1月1日からの週数を設定します。このオフセットにより、月曜日から開始する様に修正されます");
-DEFINE('_EW_DESC_DAY_OFFSET', "日付オフセット、タイムスタンプ/(3600*24)で1.1.1970年1月1日からの日数を設定します。このオフセットにより、00：00から開始する様に修正されます");
-DEFINE('_EW_DESC_FRONTEND_HIDE_LOGO', "<b>(プロバージョン内機能)</b>フロントエンドにブランクの1x1pxアイコンを使用します ");
-DEFINE('_EW_DESC_IP_STATS', "アドレス統計を有効にします。複数の国では長時間データベース内にIPを保存することは法律で禁じられています。リスクをご承知ください。");
-DEFINE('_EW_DESC_HIDE_ADS', "この設定では、本当に広告を見たくない場合、バックエンドに広告を隠します。広告を保存することで、本ツールの更なる開発をサポートすることになります。ありがとうございます。");
-DEFINE('_EW_DESC_TOOLTIP_ONCLICK', "マウスクリックの代わりにマウスオーバーでツールチップを表示するには、アンチェックにしてください。");
-DEFINE('_EW_DESC_SERVER_URI_KEY', "初期設定は'REDIRECT_URL'です。リライトするURLを使用する場合、これが基準です。またindex.phpのみ記録する場合、'SCRIPT_URL'に設定されます。");
-DEFINE('_EW_DESC_BLOCKING_MESSAGE', "ブロックされたユーザーに表示されるメッセージ或はこれらのユーザーにブロックされる理由についての詳細");
-DEFINE('_EW_DESC_TOOLTIP_WIDTH', "ツールチップ幅");
-DEFINE('_EW_DESC_TOOLTIP_HEIGHT', "ツールチップ高さ");
-DEFINE('_EW_DESC_TOOLTIP_URL', "訪問者のIPを視覚化するために、ここにURLを入力できます。訪問者のIPでその{ip}が置き換えられます。例 http://somewebsite.com/query?iplookup={ip}");
-DEFINE('_EW_DESC_IGNORE_URI', "統計から無視されたいURIを入力できます。ワイルドカード(* and ?)をここで使用できます。例: /freel?n* ");
-DEFINE('_EW_DESC_GOALS_NAME', "目標名をここに記入してください。この名前は統計内に表示されます。");
-DEFINE('_EW_DESC_GOALS_URI_CONDITION', "ドメイン名の後ろ全て。http://www.codegravity.com/projects/に関するURI: /projects/ (Example to use: <b>/projects*</b>)");
-DEFINE('_EW_DESC_GOALS_GET_VAR', "GET変数は、通常a ?や &amp;マークの後に、URL内で見られる変数です。 例 http://www.codegravity.com/index.php?<u>name</u>=peter&amp;<u>surname</u>=smith。このフィールド内で全てのGET値をスキャンするために <u>*</u>を使用することもできます。 (使用例: <b>n*me</b>)");
-DEFINE('_EW_DESC_GOALS_GET_CONDITION', "ここで前回のフィールドから数値の一致を指定する必要があります (使用例: <b>p?t*r</b>) ");
-DEFINE('_EW_DESC_GOALS_POST_VAR', "ほぼ似ていますが、フォームから送信された値を確認しています。お持ちのウェブサイト上にフォームをお持ちであれば、フィールド&lt;input type='text' name='<u>experiences</u>' /&gt;があります。 (使用例: <b>exper*ces</b>)");
-DEFINE('_EW_DESC_GOALS_POST_CONDITION', "このポストフィールドから一致した値。 例 ユーザーにジャバの使用経験があるかどうか確認したい。 (使用例: <b>*java*</b>)");
-DEFINE('_EW_DESC_GOALS_TITLE_CONDITION', "一致すべきページタイトル。 (使用例: <b>*freelance programmers*</b>)");
-DEFINE('_EW_DESC_GOALS_USERNAME_CONDITION', "ログインユーザー名 (使用例: <b>psmith*</b>)");
-DEFINE('_EW_DESC_GOALS_IP_CONDITION', "ユーザーのアクセス元IP (使用例: <b>201.9?.*.*</b>)");
-DEFINE('_EW_DESC_GOALS_CAME_FROM_CONDITION', "ユーザーのアクセス元URL (使用例: <b>*www.google.*</b>)");
-DEFINE('_EW_DESC_GOALS_REDIRECT', "あなたが特定したURLへユーザーがリダイレクトされました。'ブロッキング'より、高い優先度: (使用例: <b>http://www.codegravity.com/goaway.html</b>)");
-DEFINE('_EW_DESC_TRUNCATE_GOALS', "目標表の切り詰めチャート数");
-DEFINE('_EW_DESC_FRONTEND_NO_BACKLINK', "<b>(プロバージョンの機能)</b> codegravity.comへのバックリンクを無効にできますが、そのままご利用いただけると助かります。ご理解いただきありがとうございます。");
-DEFINE('_EW_DESC_FRONTEND_COUNTRIES', "フロントエンドモジュールでの国の総統計表示。変更した場合、CACHE_FRONTEND_ に時間設定後、フロントエンド内でこの設定が効果的です。");
-DEFINE('_EW_DESC_FRONTEND_COUNTRIES_FIRST', "フロントエンドの訪問者/国の順番を入れ替えたい場合、 未確認にしてください。そうすると、先ず訪問者が現れます。");
-DEFINE('_EW_DESC_FRONTEND_COUNTRIES_NUM', "フロントエンドに国の数が表示されます");
-DEFINE('_EW_DESC_FRONTEND_VISITORS', "フロントエンドモジュールに国の訪問者が表示されます。変更した場合、CACHE_FRONTEND_で時間設定後、フロントエンド内でこの設定が効果的です。");
-DEFINE('_EW_DESC_CACHE_FRONTEND_COUNTRIES', "フロントエンドで国の総数を保存するのに数秒かかります。");
-DEFINE('_EW_DESC_CACHE_FRONTEND_VISITORS', "フロントエンドで訪問者を保存するのに数秒かかります。");
-DEFINE('_EW_DESC_FRONTEND_VISITORS_TODAY', "本日の訪問者をフロントエンドに表示します。変更した場合、CACHE_FRONTEND_...で時間設定後、フロントエンド内でこの設定が効果的です。");
-DEFINE('_EW_DESC_FRONTEND_VISITORS_YESTERDAY', "昨日の訪問者をフロントエンドに表示します。変更した場合、CACHE_FRONTEND_...で時間設定後、フロントエンド内でこの設定が効果的です。");
-DEFINE('_EW_DESC_FRONTEND_VISITORS_THIS_WEEK', "今週の訪問者をフロントエンドに表示します。変更した場合、CACHE_FRONTEND_...で時間設定後、フロントエンド内でこの設定が効果的です。");
-DEFINE('_EW_DESC_FRONTEND_VISITORS_LAST_WEEK', "先週の訪問者をフロントエンドに表示します。変更した場合、CACHE_FRONTEND_...で時間設定後、フロントエンド内でこの設定が効果的です。");
-DEFINE('_EW_DESC_FRONTEND_VISITORS_THIS_MONTH', "今月の訪問者をフロントエンドに表示します。変更した場合、CACHE_FRONTEND_...で時間設定後、フロントエンド内でこの設定が効果的です。");
-DEFINE('_EW_DESC_FRONTEND_VISITORS_LAST_MONTH', "先月の訪問者をフロントエンドに表示します。変更した場合、CACHE_FRONTEND_...で時間設定後、フロントエンド内でこの設定が効果的です。");
-DEFINE('_EW_DESC_FRONTEND_VISITORS_TOTAL', "ジュームラ・ウォッチをインストール以降の訪問者数を表示します。変更した場合、CACHE_FRONTEND_..で時間設定後、フロントエンド内でこの設定が効果的です。");
-DEFINE('_EW_DESC_LANGUAGE', "使用する言語ファイル。 /components/com_extrawatch/lang/に保存されています。新規の言語ファイルを作成したい場合、先ず、プロジェクトのホームページを確認し、言語ファイルがない場合、初期設定english.phpを例えばgerman.phpにコピーしてください。そしてこのディレクトリに保存してください。そして正確に全ての主要な値を翻訳してください。");
-DEFINE('_EW_DESC_GOALS', "目標で特別のパラメータを指定できます。これらのパラメータが一致する際、目標カウンターが増加します。この方法で、ユーザーが特定のURLへアクセスしたか、特定の値を投函したか、特定のユーザー名を保有しているか或は特定のアドレスからアクセスしてきているかをモニタリングできます。このようなユーザーをブロック或は他のURLへリダイアルできます。");
-DEFINE('_EW_DESC_GOALS_INSERT', "名前を除く全てのフィールドで、ワイルドカードとして*や?を使用できます。例えば: ?ear (一致単語: near, tear, ..)、p*r (一致単語: pr, peer, pear ..) ");
-DEFINE('_EW_DESC_GOALS_BLOCK', "訪問者にブロックされたい場合、1を設定してください。コンテンツのリセット内容を見ません。リダイレクトやIPが'ブロックされた'統計へ追加されることなく、ブロックされたというメッセージが表示されます。 (使用例: <b>1</b>)");
+DEFINE('_EW_DESC_DEBUG', "ジュームラ・ウォッ�?�?�修正モード�?��?�。�?�れ�?�よりエラー原因を修復�?��??�?��?�。オフ�?��?�る�?��?��?/components/com_extrawatch/config.php�?�EXTRAWATCH_DEBUG値�?�1�?�ら0を変更�?��?��??�?��?��?�");
+DEFINE('_EW_DESC_STATS_MAX_ROWS', "状態�?�拡張モード�?�際�?最大行数�?�表示�?�れ�?��?�");
+DEFINE('_EW_DESC_STATS_IP_HITS', "数日間ヒット�?��?��?��?��?�全IPアドレス�?��?�。�?��?�値�?�IP履歴�?�ら削除�?�れ�?��?�");
+DEFINE('_EW_DESC_STATS_URL_HITS', "数日間ヒット�?��?��?��?��?�全URL�?��?�。�?��?�値�?�IP履歴�?�ら削除�?�れ�?��?�");
+DEFINE('_EW_DESC_IGNORE_IP', "統計�?�ら特定�?�IPを排除�?�る。新�?ライン�?�離�?�。�?��?��?�ワイルドカードを使用�?��??�?��?�。 <br/>例 192.* �?�192.168.51.31�?192.168.16.2�?�?��?�を無視�?��?��?�");
+DEFINE('_EW_DESC_UPDATE_TIME_VISITS', "訪�?者�?�秒�?��?�?�時間をリフレッシュ�?��?�?期設定�?�2000�?�際�?��?�注�?�??�?��?��?�。ジュームラ・ウォッ�?�?ックエンドを�?�?�読�?�込ん�?��??�?��?��?�。");
+DEFINE('_EW_DESC_UPDATE_TIME_STATS', "統計�?�秒�?��?�?�時間をリフレッシュ�?��?�?期設定�?�4000�?�際�?��?�注�?�??�?��?��?�。ジュームラ・ウォッ�?�?ックエンドを�?�?�読�?�込ん�?��??�?��?��?�。");
+DEFINE('_EW_DESC_MAXID_BOTS', "データベース�?��?存�?�るボット訪�?者数");
+DEFINE('_EW_DESC_MAXID_VISITORS', " データベース�?��?存�?�る実際�?�訪�?者数");
+DEFINE('_EW_DESC_LIMIT_BOTS', "�?ックエンド�?�見られるボット数");
+DEFINE('_EW_DESC_LIMIT_VISITORS', "�?ックエンド�?�見られる実際�?�訪�?者数");
+DEFINE('_EW_DESC_TRUNCATE_VISITS', "長�?�タイトル�?�URI�?�表示�?�れる最大文字数");
+DEFINE('_EW_DESC_TRUNCATE_STATS', "正�?��?�統計パ�?ル�?�表示�?�れる最大文字数");
+DEFINE('_EW_DESC_STATS_KEEP_DAYS', "統計をデータベース内�?��?存�?�る日数 0 = 無�?");
+DEFINE('_EW_DESC_TIMEZONE_OFFSET', "ホストサー�?ー�?�別�?�タイムゾーン�?��?�る場�?� (プラス或�?�マイナス時数)");
+DEFINE('_EW_DESC_WEEK_OFFSET', "ウィーク・オフセット�?タイムスタンプ/(3600*24*7)�?�1.1.1970年1月1日�?�ら�?�週数を設定�?��?��?�。�?��?�オフセット�?�より�?月曜日�?�ら開始�?�る様�?�修正�?�れ�?��?�");
+DEFINE('_EW_DESC_DAY_OFFSET', "日付オフセット�?タイムスタンプ/(3600*24)�?�1.1.1970年1月1日�?�ら�?�日数を設定�?��?��?�。�?��?�オフセット�?�より�?00：00�?�ら開始�?�る様�?�修正�?�れ�?��?�");
+DEFINE('_EW_DESC_FRONTEND_HIDE_LOGO', "<b>(プロ�?ージョン内機能)</b>フロントエンド�?�ブランク�?�1x1pxアイコンを使用�?��?��?� ");
+DEFINE('_EW_DESC_IP_STATS', "アドレス統計を有効�?��?��?��?�。複数�?�国�?��?�長時間データベース内�?�IPを�?存�?�る�?��?��?�法律�?��?�?�られ�?��?��?��?�。リスクを�?�承知�??�?��?��?�。");
+DEFINE('_EW_DESC_HIDE_ADS', "�?��?�設定�?��?��?本当�?�広告を見�?��??�?��?�場�?��?�?ックエンド�?�広告を隠�?��?��?�。広告を�?存�?�る�?��?��?��?本ツール�?�更�?�る開発をサ�?ート�?�る�?��?��?��?�り�?��?�。�?�り�?��?��?��?��?��?��?��?�。");
+DEFINE('_EW_DESC_TOOLTIP_ONCLICK', "マウスクリック�?�代�?り�?�マウスオー�?ー�?�ツール�?ップを表示�?�る�?��?��?アン�?ェック�?��?��?��??�?��?��?�。");
+DEFINE('_EW_DESC_SERVER_URI_KEY', "�?期設定�?�'REDIRECT_URL'�?��?�。リライト�?�るURLを使用�?�る場�?��?�?�れ�?�基準�?��?�。�?��?�index.php�?��?�記録�?�る場�?��?'SCRIPT_URL'�?�設定�?�れ�?��?�。");
+DEFINE('_EW_DESC_BLOCKING_MESSAGE', "ブロック�?�れ�?�ユーザー�?�表示�?�れるメッセージ或�?��?�れら�?�ユーザー�?�ブロック�?�れる�?�由�?��?��?��?��?�詳細");
+DEFINE('_EW_DESC_TOOLTIP_WIDTH', "ツール�?ップ幅");
+DEFINE('_EW_DESC_TOOLTIP_HEIGHT', "ツール�?ップ高�?�");
+DEFINE('_EW_DESC_TOOLTIP_URL', "訪�?者�?�IPを視覚化�?�る�?��?�?��?�?��?��?�URLを入力�?��??�?��?�。訪�?者�?�IP�?��??�?�{ip}�?�置�??�?��?�られ�?��?�。例 http://somewebsite.com/query?iplookup={ip}");
+DEFINE('_EW_DESC_IGNORE_URI', "統計�?�ら無視�?�れ�?��?�URIを入力�?��??�?��?�。ワイルドカード(* and ?)を�?��?��?�使用�?��??�?��?�。例: /freel?n* ");
+DEFINE('_EW_DESC_GOALS_NAME', "目標�??を�?��?��?�記入�?��?��??�?��?��?�。�?��?��??�?�?�統計内�?�表示�?�れ�?��?�。");
+DEFINE('_EW_DESC_GOALS_URI_CONDITION', "ドメイン�??�?�後�?全�?�。http://www.codegravity.com/projects/�?�関�?�るURI: /projects/ (Example to use: <b>/projects*</b>)");
+DEFINE('_EW_DESC_GOALS_GET_VAR', "GET変数�?��?通常a ?や &amp;マーク�?�後�?��?URL内�?�見られる変数�?��?�。 例 http://www.codegravity.com/index.php?<u>name</u>=peter&amp;<u>surname</u>=smith。�?��?�フィールド内�?�全�?��?�GET値をスキャン�?�る�?��?�?� <u>*</u>を使用�?�る�?��?�も�?��??�?��?�。 (使用例: <b>n*me</b>)");
+DEFINE('_EW_DESC_GOALS_GET_CONDITION', "�?��?��?��?回�?�フィールド�?�ら数値�?�一致を指定�?�る必�?�?��?�り�?��?� (使用例: <b>p?t*r</b>) ");
+DEFINE('_EW_DESC_GOALS_POST_VAR', "�?��?�似�?��?��?��?��?��?フォーム�?�ら�?信�?�れ�?�値を確�?�?��?��?��?��?�。�?��?�?��?�ウェブサイト上�?�フォームを�?��?�?��?��?�れ�?��?フィールド&lt;input type='text' name='<u>experiences</u>' /&gt;�?��?�り�?��?�。 (使用例: <b>exper*ces</b>)");
+DEFINE('_EW_DESC_GOALS_POST_CONDITION', "�?��?��?ストフィールド�?�ら一致�?��?�値。 例 ユーザー�?�ジャ�?�?�使用経験�?��?�る�?��?��?��?�確�?�?��?��?�。 (使用例: <b>*java*</b>)");
+DEFINE('_EW_DESC_GOALS_TITLE_CONDITION', "一致�?��?��??ページタイトル。 (使用例: <b>*freelance programmers*</b>)");
+DEFINE('_EW_DESC_GOALS_USERNAME_CONDITION', "ログインユーザー�?? (使用例: <b>psmith*</b>)");
+DEFINE('_EW_DESC_GOALS_IP_CONDITION', "ユーザー�?�アクセス元IP (使用例: <b>201.9?.*.*</b>)");
+DEFINE('_EW_DESC_GOALS_CAME_FROM_CONDITION', "ユーザー�?�アクセス元URL (使用例: <b>*www.google.*</b>)");
+DEFINE('_EW_DESC_GOALS_REDIRECT', "�?��?��?��?�特定�?��?�URL�?�ユーザー�?�リダイレクト�?�れ�?��?��?�。'ブロッキング'より�?高�?�優先度: (使用例: <b>http://www.codegravity.com/goaway.html</b>)");
+DEFINE('_EW_DESC_TRUNCATE_GOALS', "目標表�?�切り詰�?�?ャート数");
+DEFINE('_EW_DESC_FRONTEND_NO_BACKLINK', "<b>(プロ�?ージョン�?�機能)</b> codegravity.com�?��?��?ックリンクを無効�?��?��??�?��?��?��?�??�?��?��?��?�利用�?��?��?��?�る�?�助�?�り�?��?�。�?��?�解�?��?��?��??�?�り�?��?��?��?��?��?��?��?�。");
+DEFINE('_EW_DESC_FRONTEND_COUNTRIES', "フロントエンドモジュール�?��?�国�?��?統計表示。変更�?��?�場�?��?CACHE_FRONTEND_ �?�時間設定後�?フロントエンド内�?��?��?�設定�?�効果的�?��?�。");
+DEFINE('_EW_DESC_FRONTEND_COUNTRIES_FIRST', "フロントエンド�?�訪�?者/国�?�順番を入れ替�?��?��?�場�?��? 未確�?�?��?��?��??�?��?��?�。�??�?��?�る�?��?先�?�訪�?者�?��?�れ�?��?�。");
+DEFINE('_EW_DESC_FRONTEND_COUNTRIES_NUM', "フロントエンド�?�国�?�数�?�表示�?�れ�?��?�");
+DEFINE('_EW_DESC_FRONTEND_VISITORS', "フロントエンドモジュール�?�国�?�訪�?者�?�表示�?�れ�?��?�。変更�?��?�場�?��?CACHE_FRONTEND_�?�時間設定後�?フロントエンド内�?��?��?�設定�?�効果的�?��?�。");
+DEFINE('_EW_DESC_CACHE_FRONTEND_COUNTRIES', "フロントエンド�?�国�?��?数を�?存�?�る�?��?�数秒�?��?�り�?��?�。");
+DEFINE('_EW_DESC_CACHE_FRONTEND_VISITORS', "フロントエンド�?�訪�?者を�?存�?�る�?��?�数秒�?��?�り�?��?�。");
+DEFINE('_EW_DESC_FRONTEND_VISITORS_TODAY', "本日�?�訪�?者をフロントエンド�?�表示�?��?��?�。変更�?��?�場�?��?CACHE_FRONTEND_...�?�時間設定後�?フロントエンド内�?��?��?�設定�?�効果的�?��?�。");
+DEFINE('_EW_DESC_FRONTEND_VISITORS_YESTERDAY', "昨日�?�訪�?者をフロントエンド�?�表示�?��?��?�。変更�?��?�場�?��?CACHE_FRONTEND_...�?�時間設定後�?フロントエンド内�?��?��?�設定�?�効果的�?��?�。");
+DEFINE('_EW_DESC_FRONTEND_VISITORS_THIS_WEEK', "今週�?�訪�?者をフロントエンド�?�表示�?��?��?�。変更�?��?�場�?��?CACHE_FRONTEND_...�?�時間設定後�?フロントエンド内�?��?��?�設定�?�効果的�?��?�。");
+DEFINE('_EW_DESC_FRONTEND_VISITORS_LAST_WEEK', "先週�?�訪�?者をフロントエンド�?�表示�?��?��?�。変更�?��?�場�?��?CACHE_FRONTEND_...�?�時間設定後�?フロントエンド内�?��?��?�設定�?�効果的�?��?�。");
+DEFINE('_EW_DESC_FRONTEND_VISITORS_THIS_MONTH', "今月�?�訪�?者をフロントエンド�?�表示�?��?��?�。変更�?��?�場�?��?CACHE_FRONTEND_...�?�時間設定後�?フロントエンド内�?��?��?�設定�?�効果的�?��?�。");
+DEFINE('_EW_DESC_FRONTEND_VISITORS_LAST_MONTH', "先月�?�訪�?者をフロントエンド�?�表示�?��?��?�。変更�?��?�場�?��?CACHE_FRONTEND_...�?�時間設定後�?フロントエンド内�?��?��?�設定�?�効果的�?��?�。");
+DEFINE('_EW_DESC_FRONTEND_VISITORS_TOTAL', "ジュームラ・ウォッ�?をインストール以�?�?�訪�?者数を表示�?��?��?�。変更�?��?�場�?��?CACHE_FRONTEND_..�?�時間設定後�?フロントエンド内�?��?��?�設定�?�効果的�?��?�。");
+DEFINE('_EW_DESC_LANGUAGE', "使用�?�る言語ファイル。 /components/com_extrawatch/lang/�?��?存�?�れ�?��?��?��?�。新�?�?�言語ファイルを作�?�?��?��?�場�?��?先�?��?プロジェクト�?�ホームページを確�?�?��?言語ファイル�?��?��?�場�?��?�?期設定english.phpを例�?��?�german.php�?�コピー�?��?��??�?��?��?�。�??�?��?��?��?�ディレクトリ�?��?存�?��?��??�?��?��?�。�??�?��?�正確�?�全�?��?�主�?�?�値を翻訳�?��?��??�?��?��?�。");
+DEFINE('_EW_DESC_GOALS', "目標�?�特別�?�パラメータを指定�?��??�?��?�。�?�れら�?�パラメータ�?�一致�?�る際�?目標カウンター�?�増加�?��?��?�。�?��?�方法�?��?ユーザー�?�特定�?�URL�?�アクセス�?��?��?��?特定�?�値を投函�?��?��?��?特定�?�ユーザー�??を�?有�?��?��?�る�?�或�?�特定�?�アドレス�?�らアクセス�?��?��??�?��?�る�?�をモニタリング�?��??�?��?�。�?��?�よ�?��?�ユーザーをブロック或�?�他�?�URL�?�リダイアル�?��??�?��?�。");
+DEFINE('_EW_DESC_GOALS_INSERT', "�??�?を除�??全�?��?�フィールド�?��?ワイルドカード�?��?��?�*や?を使用�?��??�?��?�。例�?��?�: ?ear (一致�?�語: near, tear, ..)�?p*r (一致�?�語: pr, peer, pear ..) ");
+DEFINE('_EW_DESC_GOALS_BLOCK', "訪�?者�?�ブロック�?�れ�?��?�場�?��?1を設定�?��?��??�?��?��?�。コンテンツ�?�リセット内容を見�?��?�ん。リダイレクトやIP�?�'ブロック�?�れ�?�'統計�?�追加�?�れる�?��?��?��??�?ブロック�?�れ�?��?��?��?�メッセージ�?�表示�?�れ�?��?�。 (使用例: <b>1</b>)");
 
 /* new translations */
-DEFINE('_EW_GOALS_COUNTRY_CONDITION', "国条件");
-DEFINE('_EW_GOALS_COUNTRY_INVERSED', "国反転条件");
-DEFINE('_EW_DESC_GOALS_COUNTRY_CONDITION', "大文字での2文字表記の国コード(例: <b>TH</b>)");
+DEFINE('_EW_GOALS_COUNTRY_CONDITION', "国�?�件");
+DEFINE('_EW_GOALS_COUNTRY_INVERSED', "国�??転�?�件");
+DEFINE('_EW_DESC_GOALS_COUNTRY_CONDITION', "大文字�?��?�2文字表記�?�国コード(例: <b>TH</b>)");
 DEFINE('_EW_STATS_INTERNAL', "国内");
-DEFINE('_EW_STATS_FROM', "から");
+DEFINE('_EW_STATS_FROM', "�?�ら");
 DEFINE('_EW_STATS_TO', "宛");
-DEFINE('_EW_STATS_ADD_TO_GOALS', "目標へ追加");
-DEFINE('_EW_VISITS_ADD_GOAL_COUNTRY', "この国に目標追加");
-DEFINE('_EW_MENU_REPORT_BUG', "バグや機能を報告");
+DEFINE('_EW_STATS_ADD_TO_GOALS', "目標�?�追加");
+DEFINE('_EW_VISITS_ADD_GOAL_COUNTRY', "�?��?�国�?�目標追加");
+DEFINE('_EW_MENU_REPORT_BUG', "�?グや機能を報告");
 DEFINE('_EW_GOALS_COUNTRY', "国");
 
 
 /* translations 1.2.8b_12 */
-DEFINE('_EW_DESC_FRONTEND_COUNTRIES_UPPERCASE', "フロントエンドに大文字で国名を表記したい場合 (例: 小文字でドイツ、イギリスと表記する代わりに大文字でドイツ、イギリスと表記)");
-DEFINE('_EW_DESC_CACHE_FRONTEND_USERS', "フロントエンドユーザーを引きつけて保存するのに数秒かかります");
-DEFINE('_EW_DESC_FRONTEND_VISITORS_TOTAL_INITIAL', "フロントエンド合計内に表示された主要値。他のスタートツールから移動する際有用です。(例: 20000)この機能を使用したくない場合、0へ設定してください。");
-DEFINE('_EW_DESC_IGNORE_USER', "このテキストボックス内にリストされたユーザーを無視。ライン毎。 (例: myself {line break} mark_*) ");
-DEFINE('_EW_FRONTEND_USERS_MOST', "本日最もアクティブなフロントエンドユーザーの合計");
-DEFINE('_EW_DESC_SPAMWORD_BANS_ENABLED', "以下のスパムワードリストからの言葉に基づき禁止事項を有効にしますか？");
-DEFINE('_EW_DESC_SPAMWORD_LIST', "スパムボットが使用した最も共通のスパム言語。ここでワイルドカードを使用できます (例: ph?rmac*)。上記設定が有効である場合、ジュームラ・ウォッチが、これらのスパム言語でお持ちのウェブサイト上にフォーム( HTTP POST要求)をアタッカーが送信したか確認します。(フォームがジュームラベースのウェブサイトのフォーラム、コメントのみ読み込む場合に適用されますが、可能なフォームを送信しようとするスパムボットをブロックするのにとても効果的です。)");
-DEFINE('_EW_SETTINGS_ANTI_SPAM', "アンチスパム");
-DEFINE('_EW_DESC_FRONTEND_USER_LINK', "フロントエンドのユーザーモジュール内リンクでURLを特定でき、ユーザー名をユーザーがクリックした際開きます。ストリング{user}を含む必要があります。実際のユーザー名と置き換えられます。 (例 index.php?option=com_comprofiler&task=userProfile&user={user}) ");
+DEFINE('_EW_DESC_FRONTEND_COUNTRIES_UPPERCASE', "フロントエンド�?�大文字�?�国�??を表記�?��?��?�場�?� (例: �?文字�?�ドイツ�?イギリス�?�表記�?�る代�?り�?�大文字�?�ドイツ�?イギリス�?�表記)");
+DEFINE('_EW_DESC_CACHE_FRONTEND_USERS', "フロントエンドユーザーを引�??�?��?��?��?存�?�る�?��?�数秒�?��?�り�?��?�");
+DEFINE('_EW_DESC_FRONTEND_VISITORS_TOTAL_INITIAL', "フロントエンド�?�計内�?�表示�?�れ�?�主�?値。他�?�スタートツール�?�ら移動�?�る際有用�?��?�。(例: 20000)�?��?�機能を使用�?��?��??�?��?�場�?��?0�?�設定�?��?��??�?��?��?�。");
+DEFINE('_EW_DESC_IGNORE_USER', "�?��?�テキストボックス内�?�リスト�?�れ�?�ユーザーを無視。ライン毎。 (例: myself {line break} mark_*) ");
+DEFINE('_EW_FRONTEND_USERS_MOST', "本日最もアクティブ�?�フロントエンドユーザー�?��?�計");
+DEFINE('_EW_DESC_SPAMWORD_BANS_ENABLED', "以下�?�スパムワードリスト�?�ら�?�言葉�?�基�?��??�?止事項を有効�?��?��?��?��?�？");
+DEFINE('_EW_DESC_SPAMWORD_LIST', "スパムボット�?�使用�?��?�最も共通�?�スパム言語。�?��?��?�ワイルドカードを使用�?��??�?��?� (例: ph?rmac*)。上記設定�?�有効�?��?�る場�?��?ジュームラ・ウォッ�?�?��?�?�れら�?�スパム言語�?��?��?�?��?�ウェブサイト上�?�フォーム( HTTP POST�?求)をアタッカー�?��?信�?��?��?�確�?�?��?��?�。(フォーム�?�ジュームラベース�?�ウェブサイト�?�フォーラム�?コメント�?��?�読�?�込む場�?��?��?�用�?�れ�?��?��?��?�?�能�?�フォームを�?信�?�よ�?��?��?�るスパムボットをブロック�?�る�?��?��?��?�も効果的�?��?�。)");
+DEFINE('_EW_SETTINGS_ANTI_SPAM', "アン�?スパム");
+DEFINE('_EW_DESC_FRONTEND_USER_LINK', "フロントエンド�?�ユーザーモジュール内リンク�?�URLを特定�?��??�?ユーザー�??をユーザー�?�クリック�?��?�際開�??�?��?�。ストリング{user}を�?�む必�?�?��?�り�?��?�。実際�?�ユーザー�??�?�置�??�?��?�られ�?��?�。 (例 index.php?option=com_comprofiler&task=userProfile&user={user}) ");
 
 /* translations 1.2.11b */
 DEFINE('_EW_STATS_KEYPHRASE', "キーフレーズ");
-DEFINE('_EW_DESC_HISTORY_MAX_VALUES', "履歴タブ内の最大値 (例: <i>100</i>)");
+DEFINE('_EW_DESC_HISTORY_MAX_VALUES', "履歴タブ内�?�最大値 (例: <i>100</i>)");
 
-DEFINE('_EW_DESC_ONLY_LAST_URI', "訪問画面では全てではなく、最終訪問ページのみ表示されます");
-DEFINE('_EW_DESC_HIDE_REPETITIVE_TITLE', "訪問画面では、訪問ページタイトル内の代表サイト名を隠します");
-DEFINE('_EW_DESC_HISTORY_MAX_DB_RECORDS', "訪問履歴のデータベース内に保存するための訪問者最大数値。アクセス数が多い場合、直ぐに一杯になるためご注意ください。統計内の履歴表のデータ含み量を常にご確認ください");
-DEFINE('_EW_DESC_UNINSTALL_KEEP_DATA', "データベース表をアンインストールにする。更新中であるまたデータを保存したい場合、このオプションをアンインストールする前にご確認ください。データベース表をアンインストールにしてください。");
+DEFINE('_EW_DESC_ONLY_LAST_URI', "訪�?画�?��?��?�全�?��?��?��?��??�?最終訪�?ページ�?��?�表示�?�れ�?��?�");
+DEFINE('_EW_DESC_HIDE_REPETITIVE_TITLE', "訪�?画�?��?��?��?訪�?ページタイトル内�?�代表サイト�??を隠�?��?��?�");
+DEFINE('_EW_DESC_HISTORY_MAX_DB_RECORDS', "訪�?履歴�?�データベース内�?��?存�?�る�?��?�?�訪�?者最大数値。アクセス数�?�多�?�場�?��?直�??�?�一�?��?��?�る�?��?�?�注�?�??�?��?��?�。統計内�?�履歴表�?�データ�?��?��?を常�?��?�確�?�??�?��?��?�");
+DEFINE('_EW_DESC_UNINSTALL_KEEP_DATA', "データベース表をアンインストール�?��?�る。更新中�?��?�る�?��?�データを�?存�?��?��?�場�?��?�?��?�オプションをアンインストール�?�る�?�?��?�確�?�??�?��?��?�。データベース表をアンインストール�?��?��?��??�?��?��?�。");
 
 /* email reports */
-DEFINE('_EW_DESC_EMAIL_REPORTS_ENABLED', "毎晩、前日に関する報告書をメールで受け取ります。朝読むことができます。");
-DEFINE('_EW_DESC_EMAIL_REPORTS_ADDRESS', "これらの報告書を受け取りたいメールアドレス");
-DEFINE('_EW_DESC_EMAIL_PERCENT_HIGHER_THAN', "確率が{value}より高いメール報告書に行のみ含めてください。この機能を使用されたくない場合、0に設定してください<i>(例: 5)</i>");
-DEFINE('_EW_DESC_EMAIL_ONE_DAY_CHANGE_POSITIVE', "確率が{value}より高いメール報告書に行のみ<b>1日以降</b>変更値のみ含めてください。この機能を使用されたくない場合、0に設定してください<i>(例: 5)</i>");
-DEFINE('_EW_DESC_EMAIL_ONE_DAY_CHANGE_NEGATIVE', "確率が{value}より高いメール報告書に行のみ<b>1日以前</b>変更値のみ含めてください。この機能を使用されたくない場合、0に設定してください<i>(例: -10)</i>");
-DEFINE('_EW_DESC_EMAIL_SEVEN_DAY_CHANGE_POSITIVE', "確率が{value}より高いメール報告書に行のみ<b>7日以降</b>変更値のみ含めてください。この機能を使用されたくない場合、0に設定してください<i>(例: 2)</i>");
-DEFINE('_EW_DESC_EMAIL_SEVEN_DAY_CHANGE_NEGATIVE', "確率が{value}より高いメール報告書に行のみ<b>7日以前</b>変更値のみ含めてください。この機能を使用されたくない場合、0に設定してください<i>(例: -13)</i>");
-DEFINE('_EW_DESC_EMAIL_TWENTY_EIGHT_DAY_CHANGE_POSITIVE', "確率が{value}より高いメール報告書に行のみ<b>28日以降</b>変更値のみ含めてください。この機能を使用されたくない場合、0に設定してください<i>(例: 2)</i>");
-DEFINE('_EW_DESC_EMAIL_TWENTY_EIGHT_DAY_CHANGE_NEGATIVE', "確率が{value}より高いメール報告書に行のみ<b>28日以前</b>変更値のみ含めてください。この機能を使用されたくない場合、0に設定してください<i>(例: -13)</i>");
+DEFINE('_EW_DESC_EMAIL_REPORTS_ENABLED', "毎晩�?�?日�?�関�?�る報告書をメール�?��?��?��?�り�?��?�。�?読む�?��?��?��?��??�?��?�。");
+DEFINE('_EW_DESC_EMAIL_REPORTS_ADDRESS', "�?�れら�?�報告書を�?��?��?�り�?��?�メールアドレス");
+DEFINE('_EW_DESC_EMAIL_PERCENT_HIGHER_THAN', "確率�?�{value}より高�?�メール報告書�?�行�?��?��?��?�?��??�?��?��?�。�?��?�機能を使用�?�れ�?��??�?��?�場�?��?0�?�設定�?��?��??�?��?��?�<i>(例: 5)</i>");
+DEFINE('_EW_DESC_EMAIL_ONE_DAY_CHANGE_POSITIVE', "確率�?�{value}より高�?�メール報告書�?�行�?��?�<b>1日以�?</b>変更値�?��?��?��?�?��??�?��?��?�。�?��?�機能を使用�?�れ�?��??�?��?�場�?��?0�?�設定�?��?��??�?��?��?�<i>(例: 5)</i>");
+DEFINE('_EW_DESC_EMAIL_ONE_DAY_CHANGE_NEGATIVE', "確率�?�{value}より高�?�メール報告書�?�行�?��?�<b>1日以�?</b>変更値�?��?��?��?�?��??�?��?��?�。�?��?�機能を使用�?�れ�?��??�?��?�場�?��?0�?�設定�?��?��??�?��?��?�<i>(例: -10)</i>");
+DEFINE('_EW_DESC_EMAIL_SEVEN_DAY_CHANGE_POSITIVE', "確率�?�{value}より高�?�メール報告書�?�行�?��?�<b>7日以�?</b>変更値�?��?��?��?�?��??�?��?��?�。�?��?�機能を使用�?�れ�?��??�?��?�場�?��?0�?�設定�?��?��??�?��?��?�<i>(例: 2)</i>");
+DEFINE('_EW_DESC_EMAIL_SEVEN_DAY_CHANGE_NEGATIVE', "確率�?�{value}より高�?�メール報告書�?�行�?��?�<b>7日以�?</b>変更値�?��?��?��?�?��??�?��?��?�。�?��?�機能を使用�?�れ�?��??�?��?�場�?��?0�?�設定�?��?��??�?��?��?�<i>(例: -13)</i>");
+DEFINE('_EW_DESC_EMAIL_TWENTY_EIGHT_DAY_CHANGE_POSITIVE', "確率�?�{value}より高�?�メール報告書�?�行�?��?�<b>28日以�?</b>変更値�?��?��?��?�?��??�?��?��?�。�?��?�機能を使用�?�れ�?��??�?��?�場�?��?0�?�設定�?��?��??�?��?��?�<i>(例: 2)</i>");
+DEFINE('_EW_DESC_EMAIL_TWENTY_EIGHT_DAY_CHANGE_NEGATIVE', "確率�?�{value}より高�?�メール報告書�?�行�?��?�<b>28日以�?</b>変更値�?��?��?��?�?��??�?��?��?�。�?��?�機能を使用�?�れ�?��??�?��?�場�?��?0�?�設定�?��?��??�?��?��?�<i>(例: -13)</i>");
 
-DEFINE('_EW_DESC_FRONTEND_NOFOLLOW', "<b>(プロバージョンの機能)</b>  rel='nofollow'属性で変更されたロゴリンクを作成されたい場合、この設定を有効にしてください ");
-DEFINE('_EW_DESC_EMAIL_NAME_TRUNCATE', "メール行名最大文字数。メールクライアントメッセージ画面が小さすぎる場合、これを変更してください。");
+DEFINE('_EW_DESC_FRONTEND_NOFOLLOW', "<b>(プロ�?ージョン�?�機能)</b>  rel='nofollow'属性�?�変更�?�れ�?�ロゴリンクを作�?�?�れ�?��?�場�?��?�?��?�設定を有効�?��?��?��??�?��?��?� ");
+DEFINE('_EW_DESC_EMAIL_NAME_TRUNCATE', "メール行�??最大文字数。メールクライアントメッセージ画�?��?��?�?��?��?�る場�?��?�?�れを変更�?��?��??�?��?��?�。");
 
 DEFINE('_EW_MENU_HISTORY', "履歴");
 DEFINE('_EW_MENU_EMAILS', "Eメール");
-DEFINE('_EW_MENU_STATUS', "DB状況");
-DEFINE('_EW_DESC_BLOCKED', "アンチスパムによりこれらのIPはブロックされています。");
+DEFINE('_EW_MENU_STATUS', "DB状�?");
+DEFINE('_EW_DESC_BLOCKED', "アン�?スパム�?�より�?�れら�?�IP�?�ブロック�?�れ�?��?��?��?�。");
 
 
-DEFINE('_EW_HISTORY_VISITORS', "訪問者履歴");
-DEFINE('_EW_HISTORY_SHOWING_ONLY', "%d最終記録のみ表示
-                この値を変更するには、設定 -&gt; 履歴 &amp; パフォーマンス -&gt; HISTORY_MAX_DB_RECORDSへ進んでください。この設定は、以下のデータ読込み時間に影響を与えるためご注意ください。");
-DEFINE('_EW_MENU_BUG', "バグを報告");
-DEFINE('_EW_MENU_FEATURE', "機能要望");
+DEFINE('_EW_HISTORY_VISITORS', "訪�?者履歴");
+DEFINE('_EW_HISTORY_SHOWING_ONLY', "%d最終記録�?��?�表示
+                �?��?�値を変更�?�る�?��?��?設定 -&gt; 履歴 &amp; パフォーマンス -&gt; HISTORY_MAX_DB_RECORDS�?�進ん�?��??�?��?��?�。�?��?�設定�?��?以下�?�データ読込�?�時間�?�影響を与�?�る�?��?�?�注�?�??�?��?��?�。");
+DEFINE('_EW_MENU_BUG', "�?グを報告");
+DEFINE('_EW_MENU_FEATURE', "機能�?望");
 
 DEFINE('_EW_VISITS_CAME_FROM_KEYWORDS', "キーフワード");
 
-DEFINE('_EW_BLOCKING_UNBLOCK', "ブロックしない");
+DEFINE('_EW_BLOCKING_UNBLOCK', "ブロック�?��?��?�");
 DEFINE('_EW_STATS_KEYPHRASE ', "キーフレーズ");
 
-DEFINE('_EW_STATUS_DATABASE_TABLE_NAME', "テーブル名");
+DEFINE('_EW_STATUS_DATABASE_TABLE_NAME', "テーブル�??");
 DEFINE('_EW_STATUS_DATABASE_ROWS', "行数");
 DEFINE('_EW_STATUS_DATABASE_DATA', "データ");
-DEFINE('_EW_STATUS_DATABASE_TOTAL', "合計");
+DEFINE('_EW_STATUS_DATABASE_TOTAL', "�?�計");
 
 DEFINE('_EW_EMAIL_REPORTS', "Eメール報告書");
-DEFINE('_EW_EMAIL_REPORT_GENERATED', "昨日から発生したフィルターされたEメール報告書");
+DEFINE('_EW_EMAIL_REPORT_GENERATED', "昨日�?�ら発生�?��?�フィルター�?�れ�?�Eメール報告書");
 DEFINE('_EW_EMAIL_REPORTS_VALUE_FILTERS', "Eメール値フィルター");
 DEFINE('_EW_EMAIL_REPORTS_VALUE', "値");
 DEFINE('_EW_EMAIL_REPORTS_PERCENT', "確率");
 DEFINE('_EW_EMAIL_REPORTS_1DAY_CHANGE', "1日間変更");
 DEFINE('_EW_EMAIL_REPORTS_7DAY_CHANGE', "7日間変更");
 DEFINE('_EW_EMAIL_REPORTS_28DAY_CHANGE', "28日間変更");
-DEFINE('_EW_ANTISPAM_BLOCKED', "本日ジュームラ・ウォッチが%dスパマーヒットをブロックしました。合計: %d");
-DEFINE('_EW_ANTISPAM_ADDRESSES', "ブロックされたIPアドレス");
-DEFINE('_EW_ANTISPAM_SETTINGS', "アンチスパム設定");
-DEFINE('_EW_TRAFFIC_AJAX', "AJAXがトラフィックを更新します(マップを除く)");
+DEFINE('_EW_ANTISPAM_BLOCKED', "本日ジュームラ・ウォッ�?�?�%dスパマーヒットをブロック�?��?��?��?�。�?�計: %d");
+DEFINE('_EW_ANTISPAM_ADDRESSES', "ブロック�?�れ�?�IPアドレス");
+DEFINE('_EW_ANTISPAM_SETTINGS', "アン�?スパム設定");
+DEFINE('_EW_TRAFFIC_AJAX', "AJAX�?�トラフィックを更新�?��?��?�(マップを除�??)");
 
 
-DEFINE('_EW_HISTORY_PREVIOUS', "前");
+DEFINE('_EW_HISTORY_PREVIOUS', "�?");
 DEFINE('_EW_HISTORY_NEXT', "次");
 
 /** additional translation for 1.2.11 for countries in more rows */
-DEFINE('_EW_DESC_FRONTEND_COUNTRIES_MAX_COLUMNS', "国のコラム数");
-DEFINE('_EW_DESC_FRONTEND_COUNTRIES_MAX_ROWS', "国の行数");
-DEFINE('_EW_DESC_FRONTEND_COUNTRIES_NAMES', "国名を表示しますか");
-DEFINE('_EW_DESC_FRONTEND_COUNTRIES_FLAGS_FIRST', "先ず国旗を表示、そして確率");
+DEFINE('_EW_DESC_FRONTEND_COUNTRIES_MAX_COLUMNS', "国�?�コラム数");
+DEFINE('_EW_DESC_FRONTEND_COUNTRIES_MAX_ROWS', "国�?�行数");
+DEFINE('_EW_DESC_FRONTEND_COUNTRIES_NAMES', "国�??を表示�?��?��?��?�");
+DEFINE('_EW_DESC_FRONTEND_COUNTRIES_FLAGS_FIRST', "先�?�国旗を表示�?�??�?��?�確率");
 
 /* ExtraWatch 1.2.14 translations */
 
-DEFINE('_EW_GOALS_GET_INVERSED', "反転条件を取得");
-DEFINE('_EW_GOALS_POST_INVERSED', "反転条件をポスト");
-DEFINE('_EW_GOALS_TITLE_INVERSED', "反転条件のタイトル");
-DEFINE('_EW_GOALS_USERNAME_INVERSED', "反転条件のユーザー名");
-DEFINE('_EW_GOALS_CAME_FROM_INVERSED', "反転条件に起因");
+DEFINE('_EW_GOALS_GET_INVERSED', "�??転�?�件を�?�得");
+DEFINE('_EW_GOALS_POST_INVERSED', "�??転�?�件を�?スト");
+DEFINE('_EW_GOALS_TITLE_INVERSED', "�??転�?�件�?�タイトル");
+DEFINE('_EW_GOALS_USERNAME_INVERSED', "�??転�?�件�?�ユーザー�??");
+DEFINE('_EW_GOALS_CAME_FROM_INVERSED', "�??転�?�件�?�起因");
 
-DEFINE('_EW_STATS_MAP', "最終訪問マップ");
-DEFINE('_EW_STATS_MAP_ENTER_KEY', "最終訪問マップに表示させるために</a><a href='http://www.ipinfodb.com/register.php' target='_blank'>ipinfodb.comキーを入力してください：");
+DEFINE('_EW_STATS_MAP', "最終訪�?マップ");
+DEFINE('_EW_STATS_MAP_ENTER_KEY', "最終訪�?マップ�?�表示�?��?�る�?��?�?�</a><a href='http://www.ipinfodb.com/register.php' target='_blank'>ipinfodb.comキーを入力�?��?��??�?��?��?�：");
 DEFINE('_EW_STATS_MAP_STORE_KEY', "ストアキー");
-DEFINE('_EW_STATS_MAP_INVALID_KEY', "<a href='http://www.ipinfodb.com/register.php' target='_blank'>ipinfodb.comで取得した</a>有効なipinfodbキーを入力してくださいを入力してください");
+DEFINE('_EW_STATS_MAP_INVALID_KEY', "<a href='http://www.ipinfodb.com/register.php' target='_blank'>ipinfodb.com�?��?�得�?��?�</a>有効�?�ipinfodbキーを入力�?��?��??�?��?��?�を入力�?��?��??�?��?��?�");
 
-DEFINE('_EW_SIZEQUERY_BAD_REQUEST', "良くない要求: ");
+DEFINE('_EW_SIZEQUERY_BAD_REQUEST', "良�??�?��?��?求: ");
 
-DEFINE('_EW_VISIT_SUBMITED_FIELDS', "送信フォームフィールド:");
+DEFINE('_EW_VISIT_SUBMITED_FIELDS', "�?信フォームフィールド:");
 DEFINE('_EW_VISIT_URL_PARAMETERS', "URLパラメーター");
-DEFINE('_EW_VISIT_ADD_PAGE', " 目標としてページを追加");
-DEFINE('_EW_VISIT_BLOCK_IP', " このIPアドレスをブロック");
-DEFINE('_EW_VISIT_SUBMITED_FROM_VARIABLE', " 目標としてこの送信フォーム変値を追加");
-DEFINE('_EW_VISIT_URL_PARAMETER_GOAL', " 目標としてこのURLパラメータを追加");
+DEFINE('_EW_VISIT_ADD_PAGE', " 目標�?��?��?�ページを追加");
+DEFINE('_EW_VISIT_BLOCK_IP', " �?��?�IPアドレスをブロック");
+DEFINE('_EW_VISIT_SUBMITED_FROM_VARIABLE', " 目標�?��?��?��?��?��?信フォーム変値を追加");
+DEFINE('_EW_VISIT_URL_PARAMETER_GOAL', " 目標�?��?��?��?��?�URLパラメータを追加");
 
 DEFINE('_EW_TREND_EMPTY', "Empty");
 
-DEFINE('_EW_NOT_NUMBER', " 警告:入力値が数値ではありません。ジュームラ・ウォッチが適切に起動しません！");
-DEFINE('_EW_EVALUATION_LEFT', "&nbsp; これは15日間評価版です。残り日数: <b>%d</b> 永久版をご購入ください <a href='http://www.codegravity.com/donate/extrawatch/' target='_blank'>本ソフト及び今後のソフトにおけるあなたの</a>ジュームラ・ウォッチライセンスのドメイン");
-DEFINE('_EW_TRIAL_VERSION_EXPIRED', " トライアル版の期限がきれました。ジュームラ・ウォッチをご購入ください。");
+DEFINE('_EW_NOT_NUMBER', " 警告:入力値�?�数値�?��?��?�り�?��?�ん。ジュームラ・ウォッ�?�?��?�切�?�起動�?��?��?�ん�?");
+DEFINE('_EW_EVALUATION_LEFT', "&nbsp; �?�れ�?�15日間評価版�?��?�。残り日数: <b>%d</b> 永久版を�?�購入�??�?��?��?� <a href='http://www.codegravity.com/donate/extrawatch/' target='_blank'>本ソフト�?��?�今後�?�ソフト�?��?��?�る�?��?��?��?�</a>ジュームラ・ウォッ�?ライセンス�?�ドメイン");
+DEFINE('_EW_TRIAL_VERSION_EXPIRED', " トライアル版�?�期�?�?��??れ�?��?��?�。ジュームラ・ウォッ�?を�?�購入�??�?��?��?�。");
 
-DEFINE('_EW_CONFIG_LICENSE_ACTIVATED', "ライセンスが無事に起動しました。ありがとうございます");
-DEFINE('_EW_CONFIG_LICENCE_DONT_MATCH', "<b>エラー: ライセンスキーとドメインが一致しません</b><br/>以下に表示した寄付フォームと同じドメイン名をご入力されましたか？ <br/>クリック '<b>以下に正しい起動キーを要求してください</b>或はお問い合わせください: support@codegravity.com<br/>");
+DEFINE('_EW_CONFIG_LICENSE_ACTIVATED', "ライセンス�?�無事�?�起動�?��?��?��?�。�?�り�?��?��?��?��?��?��?��?�");
+DEFINE('_EW_CONFIG_LICENCE_DONT_MATCH', "<b>エラー: ライセンスキー�?�ドメイン�?�一致�?��?��?�ん</b><br/>以下�?�表示�?��?�寄付フォーム�?��?��?�ドメイン�??を�?�入力�?�れ�?��?��?��?�？ <br/>クリック '<b>以下�?�正�?��?�起動キーを�?求�?��?��??�?��?��?�</b>或�?��?��?�?��?��?�?��??�?��?��?�: support@codegravity.com<br/>");
 
-DEFINE('_EW_VIEW_ADMINBODY_LONG_MESSAGE', "長時間上記メッセージを見られているのであれば、ライブサイトが間違っている可能性があります。
-                    コンポーネント/com_extrawatch/config.php
-                    アンコメントを開いてください、そして実際のライブサイトを設定してください。例:
-                    いづれかを決定してください('EXTRAWATCH_LIVE_SITE'、'http://www.codegravity.com');");
+DEFINE('_EW_VIEW_ADMINBODY_LONG_MESSAGE', "長時間上記メッセージを見られ�?��?�る�?��?��?�れ�?��?ライブサイト�?�間�?��?��?��?�る�?�能性�?��?�り�?��?�。
+                    コン�?ー�?ント/com_extrawatch/config.php
+                    アンコメントを開�?��?��??�?��?��?��?�??�?��?�実際�?�ライブサイトを設定�?��?��??�?��?��?�。例:
+                    �?��?�れ�?�を決定�?��?��??�?��?��?�('EXTRAWATCH_LIVE_SITE'�?'http://www.codegravity.com');");
 
-DEFINE('_EW_ADMINBODY_LIVE_SITE', "警告: ブラウザ内のサイトと構成内のライブサイト: %s and %sが一致しません。");
-DEFINE('_EW_ADMINBODY_SET_LIVE_SITE', "%sへのライブサイトを設定して続ける...");
+DEFINE('_EW_ADMINBODY_LIVE_SITE', "警告: ブラウザ内�?�サイト�?�構�?内�?�ライブサイト: %s and %s�?�一致�?��?��?�ん。");
+DEFINE('_EW_ADMINBODY_SET_LIVE_SITE', "%s�?��?�ライブサイトを設定�?��?�続�?�る...");
 
-DEFINE('_EW_ADMINHEADER_JW', "ジュームラ・ウォッチ ");
-DEFINE('_EW_ADMINHEADER_REMOVE_BACKLINK', "バックリンクを削除");
+DEFINE('_EW_ADMINHEADER_JW', "ジュームラ・ウォッ�? ");
+DEFINE('_EW_ADMINHEADER_REMOVE_BACKLINK', "�?ックリンクを削除");
 DEFINE('_EW_ADMINHEADER_KNOWLEDGE_BASE', "知識ベース");
 DEFINE('_EW_ADMINHEADER_FLOW', "フロー");
 DEFINE('_EW_ADMINHEADER_GRAPHS', "グラフ");
-DEFINE('_EW_ADMINHEADER_COMPONENTS', "コンポーネント");
+DEFINE('_EW_ADMINHEADER_COMPONENTS', "コン�?ー�?ント");
 DEFINE('_EW_ADMINHEADER_REVIEW', "レビュー");
-DEFINE('_EW_ADMINHEADER_WRITE', "次を書く");
+DEFINE('_EW_ADMINHEADER_WRITE', "次を書�??");
 
 DEFINE('_EW_FLOW_TRAFFIC', "トラフィックフロー");
-DEFINE('_EW_FLOW_SELECT_PAGE', "ページ選択:");
+DEFINE('_EW_FLOW_SELECT_PAGE', "ページ�?�択:");
 DEFINE('_EW_FLOW_OUTG_LINKS', "ルート発信リンク数:");
-DEFINE('_EW_FLOW_NESTING', "ネスティングレベル:");
+DEFINE('_EW_FLOW_NESTING', "�?スティングレベル:");
 DEFINE('_EW_FLOW_SCALE', "スケール:");
 
-DEFINE('_EW_COMERCIAL_AD_FREE', "広告なし版");
-DEFINE('_EW_COMERCIAL_THANK_DONATION', "寄付をありがとうございます！");
+DEFINE('_EW_COMERCIAL_AD_FREE', "広告�?��?�版");
+DEFINE('_EW_COMERCIAL_THANK_DONATION', "寄付を�?�り�?��?��?��?��?��?��?��?��?");
 DEFINE('_EW_COMERCIAL_REGISTRATION_KEY', "ドメイン用登録キー: ");
-DEFINE('_EW_COMERCIAL_BACKLINKS_REMOVE', "バックリンクを削除或いは設定からフロントエンドのジュームラ・ウォッチのロゴを隠せます。");
+DEFINE('_EW_COMERCIAL_BACKLINKS_REMOVE', "�?ックリンクを削除或�?��?�設定�?�らフロントエンド�?�ジュームラ・ウォッ�?�?�ロゴを隠�?��?��?�。");
 
 
-DEFINE('_EW_SIZES_LAST_CHECK', "最終確認実行日：");
-DEFINE('_EW_SIZES_ADMINISTRATOR', "ブルー = コンポーネント/モジュール/管理者ディレクトリのサイズ");
+DEFINE('_EW_SIZES_LAST_CHECK', "最終確�?実行日：");
+DEFINE('_EW_SIZES_ADMINISTRATOR', "ブルー = コン�?ー�?ント/モジュール/管�?�者ディレクトリ�?�サイズ");
 
-DEFINE('_EW_SIZECOMPONENTS_COMPONENT', "コンポーネント");
-DEFINE('_EW_SIZECOMPONENTS_TOTAL', "合計:");
+DEFINE('_EW_SIZECOMPONENTS_COMPONENT', "コン�?ー�?ント");
+DEFINE('_EW_SIZECOMPONENTS_TOTAL', "�?�計:");
 DEFINE('_EW_SIZECOMPONENTS_SIZE', "サイズ");
-DEFINE('_EW_SIZECOMPONENTS_REFRESH_ALL', "全てをリフレッシュ");
+DEFINE('_EW_SIZECOMPONENTS_REFRESH_ALL', "全�?�をリフレッシュ");
 
 DEFINE('_EW_SIZEDATABASE_TABLE', "テーブル");
 DEFINE('_EW_SIZEDATABASE_SIZE', "サイズ");
 DEFINE('_EW_SIZEDATABASE_1DAY', "1日間変更");
 DEFINE('_EW_SIZEDATABASE_7DAY', "7日間変更");
 DEFINE('_EW_SIZEDATABASE_28DAY', "28日間変更");
-DEFINE('_EW_SIZEDATABASE_NO_DATA', "データなし");
-DEFINE('_EW_SIZEDATABASE_TOTAL', "合計:");
+DEFINE('_EW_SIZEDATABASE_NO_DATA', "データ�?��?�");
+DEFINE('_EW_SIZEDATABASE_TOTAL', "�?�計:");
 
-DEFINE('_EW_SIZEMODULES_REFRESH_ALL', "全てをリフレッシュ");
-DEFINE('_EW_SIZEMODULES_TOTAL', "合計:");
+DEFINE('_EW_SIZEMODULES_REFRESH_ALL', "全�?�をリフレッシュ");
+DEFINE('_EW_SIZEMODULES_TOTAL', "�?�計:");
 DEFINE('_EW_SIZEMODULES_MODULE', "モジュール");
 DEFINE('_EW_SIZEMODULES_SIZE', "サイズ");
 
 DEFINE('_EW_SIZES_FILES', "&ampファイル;ディレクトリ");
-DEFINE('_EW_SIZES_BYTES', "バイト");
+DEFINE('_EW_SIZES_BYTES', "�?イト");
 DEFINE('_EW_SIZES_KB', "KB");
 DEFINE('_EW_SIZES_MB', "MB");
 DEFINE('_EW_SIZES_GB', "GB");
 DEFINE('_EW_SIZES_REFRESH', "リフレッシュ");
 
-DEFINE('_EW_STATS_FOOTER', "ジューマル・ウォッチ &コピー;2006-@年@ マテイ・コバル社提供");
+DEFINE('_EW_STATS_FOOTER', "ジューマル・ウォッ�? &コピー;2006-@年@ マテイ・コ�?ル社�??供");
 
 DEFINE('_EW_STATUS_MB', "MB");
 DEFINE('_EW_STATUS_DATABASE', "データベース表サイズ");
 
 
-DEFINE('_EW_DESC_IPINFODB_KEY', "最終訪問マップ ipinfodb.comキー取得先: <a href='http://www.ipinfodb.com/register.php' target='_blank'>ipinfodb.com</a>");
-DEFINE('_EW_SETTINGS_FORCE_TIMEZONE_OFFSET', "強制的にタイムゾーンをオフセット");
+DEFINE('_EW_DESC_IPINFODB_KEY', "最終訪�?マップ ipinfodb.comキー�?�得先: <a href='http://www.ipinfodb.com/register.php' target='_blank'>ipinfodb.com</a>");
+DEFINE('_EW_SETTINGS_FORCE_TIMEZONE_OFFSET', "強制的�?�タイムゾーンをオフセット");
 
 
 /* ExtraWatch 1.2.17 translations */
 DEFINE('_EW_MENU_UPDATE', "更新");
-DEFINE('_EW_MENU_UPDATE_TITLE', "バックアップ&アップグレード");
-DEFINE('_EW_ADMINHEADER_NA_IN_THIS_VERSION', "無料版ではご利用いただけません。ライセンスタブを確認してください。");
-DEFINE('_EW_SPAMWORD_BANS_ENABLED', "スパム言語禁止有効");
+DEFINE('_EW_MENU_UPDATE_TITLE', "�?ックアップ&アップグレード");
+DEFINE('_EW_ADMINHEADER_NA_IN_THIS_VERSION', "無料版�?��?��?�利用�?��?��?��?��?��?�ん。ライセンスタブを確�?�?��?��??�?��?��?�。");
+DEFINE('_EW_SPAMWORD_BANS_ENABLED', "スパム言語�?止有効");
 DEFINE('_EW_SPAMWORD_LIST', "スパム言語リスト");
-DEFINE('_EW_HIDE_REPETITIVE_TITLE', "何度も表示されるタイトルを隠す");
-DEFINE('_EW_TRUNCATE_VISITS', "訪問者数を切り捨てる");
-DEFINE('_EW_TRUNCATE_STATS', "統計を切り捨てる");
-DEFINE('_EW_TRUNCATE_GOALS', "目標を切り捨てる");
-DEFINE('_EW_LIMIT_BOTS', "ボットを制限");
-DEFINE('_EW_LIMIT_VISITORS', "訪問者数を制限");
-DEFINE('_EW_TOOLTIP_WIDTH', "ツールチップ幅");
-DEFINE('_EW_TOOLTIP_HEIGHT', "ツールチップ高さ");
-DEFINE('_EW_TOOLTIP_URL', "ツールチップURL");
-DEFINE('_EW_TOOLTIP_ONCLICK', "ツールチップ・オンクリック");
-DEFINE('_EW_IP_STATS', "IP状況");
+DEFINE('_EW_HIDE_REPETITIVE_TITLE', "何度も表示�?�れるタイトルを隠�?�");
+DEFINE('_EW_TRUNCATE_VISITS', "訪�?者数を切り�?��?�る");
+DEFINE('_EW_TRUNCATE_STATS', "統計を切り�?��?�る");
+DEFINE('_EW_TRUNCATE_GOALS', "目標を切り�?��?�る");
+DEFINE('_EW_LIMIT_BOTS', "ボットを制�?");
+DEFINE('_EW_LIMIT_VISITORS', "訪�?者数を制�?");
+DEFINE('_EW_TOOLTIP_WIDTH', "ツール�?ップ幅");
+DEFINE('_EW_TOOLTIP_HEIGHT', "ツール�?ップ高�?�");
+DEFINE('_EW_TOOLTIP_URL', "ツール�?ップURL");
+DEFINE('_EW_TOOLTIP_ONCLICK', "ツール�?ップ・オンクリック");
+DEFINE('_EW_IP_STATS', "IP状�?");
 DEFINE('_EW_IPINFODB_KEY', "IP情報DBキー");
-DEFINE('_EW_ONLY_LAST_URI', "唯一の最終URI ");
+DEFINE('_EW_ONLY_LAST_URI', "唯一�?�最終URI ");
 
-DEFINE('_EW_FRONTEND_HIDE_LOGO', "フロントエンドのロゴを隠す ");
-DEFINE('_EW_FRONTEND_NOFOLLOW', "フロントエンドにフォローなし");
-DEFINE('_EW_FRONTEND_NO_BACKLINK', "フロントエンドに戻るリンクなし");
+DEFINE('_EW_FRONTEND_HIDE_LOGO', "フロントエンド�?�ロゴを隠�?� ");
+DEFINE('_EW_FRONTEND_NOFOLLOW', "フロントエンド�?�フォロー�?��?�");
+DEFINE('_EW_FRONTEND_NO_BACKLINK', "フロントエンド�?�戻るリンク�?��?�");
 DEFINE('_EW_FRONTEND_USER_LINK', "フロントエンドユーザーリンク");
-DEFINE('_EW_FRONTEND_COUNTRIES_FIRST', "フロントエンドの初めの国");
-DEFINE('_EW_FRONTEND_COUNTRIES_NAMES', "フロントエンド国名");
-DEFINE('_EW_FRONTEND_COUNTRIES_UPPERCASE', "フロントエンドの国大文字");
-DEFINE('_EW_FRONTEND_COUNTRIES_FLAGS_FIRST', "フロントエンドの初めの国旗 ");
-DEFINE('_EW_FRONTEND_COUNTRIES_NUM', "フロントエンドの国数");
-DEFINE('_EW_FRONTEND_COUNTRIES_MAX_COLUMNS', "フロントエンドの国最大コラム数");
-DEFINE('_EW_FRONTEND_COUNTRIES_MAX_ROWS', "フロントエンドの国最大行数");
-DEFINE('_EW_FRONTEND_VISITORS_TODAY', "本日のフロントエンド訪問者");
-DEFINE('_EW_FRONTEND_VISITORS_YESTERDAY', "昨日のフロントエンド訪問者");
-DEFINE('_EW_FRONTEND_VISITORS_THIS_WEEK', "今週のフロントエンド訪問者");
-DEFINE('_EW_FRONTEND_VISITORS_LAST_WEEK', "先週のフロントエンド訪問者");
+DEFINE('_EW_FRONTEND_COUNTRIES_FIRST', "フロントエンド�?��?�?�?�国");
+DEFINE('_EW_FRONTEND_COUNTRIES_NAMES', "フロントエンド国�??");
+DEFINE('_EW_FRONTEND_COUNTRIES_UPPERCASE', "フロントエンド�?�国大文字");
+DEFINE('_EW_FRONTEND_COUNTRIES_FLAGS_FIRST', "フロントエンド�?��?�?�?�国旗 ");
+DEFINE('_EW_FRONTEND_COUNTRIES_NUM', "フロントエンド�?�国数");
+DEFINE('_EW_FRONTEND_COUNTRIES_MAX_COLUMNS', "フロントエンド�?�国最大コラム数");
+DEFINE('_EW_FRONTEND_COUNTRIES_MAX_ROWS', "フロントエンド�?�国最大行数");
+DEFINE('_EW_FRONTEND_VISITORS_TODAY', "本日�?�フロントエンド訪�?者");
+DEFINE('_EW_FRONTEND_VISITORS_YESTERDAY', "昨日�?�フロントエンド訪�?者");
+DEFINE('_EW_FRONTEND_VISITORS_THIS_WEEK', "今週�?�フロントエンド訪�?者");
+DEFINE('_EW_FRONTEND_VISITORS_LAST_WEEK', "先週�?�フロントエンド訪�?者");
 
-DEFINE('_EW_FRONTEND_VISITORS_THIS_MONTH', "今月のフロントエンド訪問者");
-DEFINE('_EW_FRONTEND_VISITORS_LAST_MONTH', "先月のフロントエンド訪問者");
-DEFINE('_EW_FRONTEND_VISITORS_TOTAL', "フロントエンドの訪問者数を隠す");
-DEFINE('_EW_FRONTEND_VISITORS_TOTAL_INITIAL	', "フロントエンドの初期合計");
+DEFINE('_EW_FRONTEND_VISITORS_THIS_MONTH', "今月�?�フロントエンド訪�?者");
+DEFINE('_EW_FRONTEND_VISITORS_LAST_MONTH', "先月�?�フロントエンド訪�?者");
+DEFINE('_EW_FRONTEND_VISITORS_TOTAL', "フロントエンド�?�訪�?者数を隠�?�");
+DEFINE('_EW_FRONTEND_VISITORS_TOTAL_INITIAL	', "フロントエンド�?��?期�?�計");
 DEFINE('_EW_HISTORY_MAX_VALUES', "履歴最大値");
 DEFINE('_EW_HISTORY_MAX_DB_RECORDS', "履歴最大記録");
-DEFINE('_EW_UPDATE_TIME_VISITS', "時間別訪問者更新");
+DEFINE('_EW_UPDATE_TIME_VISITS', "時間別訪�?者更新");
 DEFINE('_EW_UPDATE_TIME_STATS', "時間別統計更新");
 DEFINE('_EW_STATS_MAX_ROWS', "最大統計行数");
 DEFINE('_EW_STATS_IP_HITS', "IPヒット統計");
 DEFINE('_EW_MAXID_BOTS', "最大IDボット");
-DEFINE('_EW_MAXID_VISITORS', "Maxid Visitors最大ID訪問者数");
-DEFINE('_EW_STATS_KEEP_DAYS', "統計を数日間保存 ");
-DEFINE('_EW_CACHE_FRONTEND_COUNTRIES', "フロントエンド国を隠す ");
-DEFINE('_EW_CACHE_FRONTEND_VISITORS', "フロントエンド訪問者を隠す ");
+DEFINE('_EW_MAXID_VISITORS', "Maxid Visitors最大ID訪�?者数");
+DEFINE('_EW_STATS_KEEP_DAYS', "統計を数日間�?存 ");
+DEFINE('_EW_CACHE_FRONTEND_COUNTRIES', "フロントエンド国を隠�?� ");
+DEFINE('_EW_CACHE_FRONTEND_VISITORS', "フロントエンド訪�?者を隠�?� ");
 
-DEFINE('_EW_UNINSTALL_KEEP_DATA	', "保管データアンインストール ");
+DEFINE('_EW_UNINSTALL_KEEP_DATA	', "�?管データアンインストール ");
 DEFINE('_EW_IGNORE_IP', "IP無視");
 DEFINE('_EW_IGNORE_URI', "URI無視");
 DEFINE('_EW_IGNORE_USER', "ユーザー無視");
 DEFINE('_EW_BLOCKING_MESSAGE', "メッセージブロック");
-DEFINE('_EW_SERVER_URI_KEY', "サーバーURIキー");
-DEFINE('_EW_FRONTEND_VISITORS_TOTAL_INITIAL', "フロントエンド訪問者合計初期化");
+DEFINE('_EW_SERVER_URI_KEY', "サー�?ーURIキー");
+DEFINE('_EW_FRONTEND_VISITORS_TOTAL_INITIAL', "フロントエンド訪�?者�?�計�?期化");
 DEFINE('_EW_SIZEDATABASE_RECORDS', "記録");
 /***********EDITs*****************/
 DEFINE('_EW_ANTISPAM_BLOCKING_TEXT', " To make the blocking effective, you need to publish ExtraWatch agent BEFORE any content or forms. Eg. on left side in your template.

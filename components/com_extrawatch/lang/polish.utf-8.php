@@ -7,7 +7,7 @@
  * @version @VERSION@
  * @revision @REVISION@
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
- * @copyright (C) @YEAR@ by CodeGravity.com - All rights reserved!
+ * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
  */
 
@@ -320,7 +320,7 @@ DEFINE('_EW_STATS_MAP_ENTER_KEY', "Wprowadź klucz <a href='http://www.ipinfodb.
 DEFINE('_EW_STATS_MAP_STORE_KEY', "Zapisz klucz");
 DEFINE('_EW_STATS_MAP_INVALID_KEY', "Wprowadź prawidłowy klucz ipinfodb pobrany ze strony <a href='http://www.ipinfodb.com/register.php' target='_blank'>ipinfodb.com</a>.");
 
-DEFINE('_EW_SIZEQUERY_BAD_REQUEST', "BŁĘDNE WYWOŁANIE: ");
+DEFINE('_EW_SIZEQUERY_BAD_REQUEST', "B�?ĘDNE WYWO�?ANIE: ");
 
 DEFINE('_EW_VISIT_SUBMITED_FIELDS', "Przesłano z pól:");
 DEFINE('_EW_VISIT_URL_PARAMETERS', "Parametry URL:");

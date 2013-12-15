@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1428
+ * @revision 1439
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -82,6 +82,7 @@ class ExtraWatchVisitHTML
     $rows = $this->getJoinedURIRows($bots, $inactive, $ipFilter);
     $agentNotPublishedMessage = $this->extraWatch->env->getAgentNotPublishedMsg($this->extraWatch->database);
 	$downloadLog = $this->extraWatch->downloads->getDownloadLogIpTimestampPath();
+//    $countryCodeToCountryNameArray =  $this->extraWatch->helper->countryCodeToCountryNameList();
 
     if ($bots == FALSE && ($agentNotPublishedMessage != FALSE) && sizeof($rows) == 0 && $inactive == 0) {
       $output .= "<tr><td colspan='10'><span style='color:red; font-weight: bold;'>inactive: ".(int) $inactive.$agentNotPublishedMessage."</span></td></tr> ";
@@ -174,7 +175,9 @@ class ExtraWatchVisitHTML
           $this->extraWatch->visit->updateCountryForIP($country, $row->ip);
         }
         if (@ $country) {
-          $countryName = $this->extraWatch->helper->countryCodeToCountryName($country);//TODO optimize
+		  //$countryName = @$countryCodeToCountryNameArray[$country];
+          //$countryName = "";//
+			$this->extraWatch->helper->countryCodeToCountryName($country);//TODO optimize
           $flag = "<img src='" . $liveSiteWithSuffix . "components/com_extrawatch/img/flags/$country.png' title='$countryName' alt='$countryName' $inactiveImageClass/>";
           $countryUpper = strtoupper($country);
         }
@@ -260,7 +263,7 @@ class ExtraWatchVisitHTML
         }
         $dateOfVisit = ExtraWatchDate::date("d.m.Y", $row->timestamp);
         if (isset($this->lastDate) && $this->lastDate != $dateOfVisit) {
-          $output .= "<tr><td style='background-color: #" . $color . ";'></td><td style='background-color: #" . $color . ";'></td><td style='background-color: #" . $color . ";'></td><td style='background-color: #" . $color . ";'><td style='background-color: #" . $color . ";'></td></td><td style='background-color: #" . $color . ";'></td><td style='background-color: #" . $color . ";'></td><td colspan='8' style='background-color: #" . $color . ";' colspan='3'>$dateOfVisit</td></tr>";
+          $output .= "<tr><td style='background-color: #" . $color . ";'></td><td style='background-color: #" . $color . ";'></td><td style='background-color: #" . $color . ";'></td><td style='background-color: #" . $color . ";'><td style='background-color: #" . $color . ";'></td></td><td style='background-color: #" . $color . ";'></td><td style='background-color: #" . $color . ";'></td><td colspan='8' style='background-color: #" . $color . ";' colspan='3'><h3>$dateOfVisit</h3></td></tr>";
           $this->lastDate = $dateOfVisit;
         }
         $output .= "<tr><td valign='top' align='left' style='background-color: #$color'></td>
@@ -402,6 +405,7 @@ class ExtraWatchVisitHTML
 
     unset($uri2HeatmapClicksAssoc);
 	unset($downloadLog);
+    //unset($countryCodeToCountryNameArray);
 
     return $output;
   }

@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1428
+ * @revision 1439
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -702,7 +702,7 @@ serialize(array(
 )));
 
 /* version 1.2.18 */
-define('EXTRAWATCH_HEATMAP_KEEP_DAYS', 7);
+define('EXTRAWATCH_HEATMAP_KEEP_DAYS', 28);
 
 define('EXTRAWATCH_GOALS_ALLOWED_FIELDS',
     serialize(

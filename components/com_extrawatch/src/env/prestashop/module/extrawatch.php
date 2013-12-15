@@ -3,8 +3,8 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.2
- * @revision 123
+ * @version 2.1
+ * @revision 917
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -22,38 +22,34 @@ class extrawatch extends Module
     {
         $this->name = 'extrawatch';
         $this->tab = 'Stats'; // back-end name
-        $this->version = '2.2.123';
+        $this->version = '2.1.917';
         $this->displayName = 'ExtraWatch PRO';
-		$this->tab = 'analytics_stats';
+		$this->tab = 'analytics_stats'; 
 		
-        $this->module_key='868a02da3cb4442e41507b564b9da2f9';
-        
-        
+		$this->module_key='868a02da3cb4442e41507b564b9da2f9';
+		
+		
+		
+		
 
         parent::__construct();
 
-        $this->displayName = $this->l('ExtraWatch Live visitor conversion tracking, Counter, Anti-spam, Heat map, SEO');
+        $this->displayName = $this->l('ExtraWatch Live Stats and Visitor Counter');
 		
 		
 		
 		
-        $this->description = $this->l('Real-time Live Stats, Traffic Flow, SEO, Click Heat map, Graphs, Goals, Nightly emails, DB Status, Dir Sizes. ExtraWatch allows you to watch your visitors and bots in real-time from the administration back-end. Especially their IP addresses, countries they come from, which pages they are viewing, their browser and operating system, it creates daily and all-time stats from these information plus unique, pageload and total hits statistics. Furthermore, you can block harmful IP addresses and see blocked attempts stats.');
+        $this->description = $this->l('Real-time Live Stats, Traffic Flow, SEO, Click Heatmap, Graphs, Goals, Nightly emails, DB Status, Dir Sizes. ExtraWatch allows you to watch your visitors and bots in real-time from the administration back-end. Especially their IP addresses, countries they come from, which pages they are viewing, their browser and operating system, it creates daily and all-time stats from these information plus unique, pageload and total hits statistics. Furthermore, you can block harmful IP addresses and see blocked attempts stats.');
 		
 		
         $this->confirmUninstall = $this->l('Are you sure you want to uninstall this module ?');
-
-        define("ENV", 1);
-        define("_JEXEC",1);
     }
 
 
     public function install()
     {
-        $parentTabId = (int)Tab::getIdFromClassName('AdminStats');
 
-        $rootDir = realpath(realpath(dirname(__FILE__)).DS."..".DS."..");
-        $dir = realpath($rootDir.DS."modules".DS."extrawatch".DS."extrawatch");
-        require_once($dir.DS."components".DS."com_extrawatch".DS."src".DS."class.extrawatch.log.php");
+        $parentTabId = (int)Tab::getIdFromClassName('AdminStats');
 
         if(!parent::install()
             || !$this->registerHook('leftColumn')
@@ -61,6 +57,8 @@ class extrawatch extends Module
             || !$this->installModuleTab('ExtraWatchAdmin', 'ExtraWatch Stats', $parentTabId))
             return false;
 
+        define("ENV", 1);
+        define("_JEXEC",1);
         $dirname = dirname(__FILE__);
 
         $rootDir = realpath(realpath(dirname(__FILE__)).DS."..".DS."..");
@@ -79,33 +77,15 @@ class extrawatch extends Module
         $env = ExtraWatchEnvFactory::getEnvironment();
         $database = $env->getDatabase();
         $this->extrawatch_initialize_db(JPATH_BASE, $env);
-        extrawatch_initialize_ip2country(JPATH_BASE2, $database);
-		
-		$this->extrawatch_fixFilePermissions();
- 
+        $output = extrawatch_initialize_ip2country(JPATH_BASE2, $database);
+
+        $this->extrawatch_fixFilePermissions();
+
         return true;
     }
 
     public function uninstall()
     {
-        $rootDir = realpath(realpath(dirname(__FILE__)).DS."..".DS."..");
-        $dir = realpath($rootDir.DS."modules".DS."extrawatch".DS."extrawatch");
-        require_once($dir.DS."components".DS."com_extrawatch".DS."src".DS."class.extrawatch.log.php");
-
-        $rootDir = realpath(realpath(dirname(__FILE__)).DS."..".DS."..");
-        $extensionDir = realpath($rootDir.DS."modules".DS."extrawatch".DS."extrawatch");
-
-        define("JPATH_BASE", $extensionDir);
-        define("JPATH_BASE2", $extensionDir);
-        define("JPATH_SITE", $extensionDir);
-
-        require_once($extensionDir.DS."components".DS."com_extrawatch".DS."includes.php");
-
-        $env = ExtraWatchEnvFactory::getEnvironment();
-        $database = $env->getDatabase();
-        $extraWatchSetup = new ExtraWatchSetup($database);
-        $extraWatchSetup->dropTables();
-
         if(!parent::uninstall()
             || !Configuration::deleteByName('MOD_EXTRAWATCH_IMG')
             || !$this->uninstallModuleTab('ExtraWatchAdmin'))
@@ -150,13 +130,10 @@ class extrawatch extends Module
     private function installModuleTab($tabClass, $tabName, $idTabParent) {
         @copy(_PS_MODULE_DIR_.$this->name.'/logo.gif', _PS_IMG_DIR_.'t/'.$tabClass.'.gif');
         $tab = new Tab();
-        
-		$tab->name = array();
-		foreach (Language::getLanguages(true) as $lang) {
-			$tab->name[$lang['id_lang']] = $tabName;
-		}
-
-		
+        $tab->name = array();
+        foreach (Language::getLanguages(true) as $lang) {
+            $tab->name[$lang['id_lang']] = $tabName;
+        }
         $tab->class_name = $tabClass;
         $tab->module = $this->name;
         $tab->id_parent = $idTabParent;
@@ -177,7 +154,7 @@ class extrawatch extends Module
     }
 
     function extrawatch_initialize_db($modulePath, $env) {
-        $lines = file($modulePath  . DS . "components" . DS . "com_extrawatch" . DS . "sql" . DS . "install.mysql.utf8.sql");
+        $lines = file($modulePath . DS . "administrator" . DS . "components" . DS . "com_extrawatch" . DS . "sql" . DS . "install.mysql.utf8.sql");
 
         $query = "";
         foreach ($lines as $line_num => $line) {
@@ -194,33 +171,32 @@ class extrawatch extends Module
         }
     }
 
-function extrawatch_fixFilePermissions() {
-  $filesArray = array(
-    "img.php",
-    "timezone.php",
-    "ajax" . DIRECTORY_SEPARATOR . "block.php",
-    "ajax" . DIRECTORY_SEPARATOR . "last.php",
-    "ajax" . DIRECTORY_SEPARATOR . "lastvisit.php",
-    "ajax" . DIRECTORY_SEPARATOR . "sizequery.php",
-    "ajax" . DIRECTORY_SEPARATOR . "sizequerytotal.php",
-    "ajax" . DIRECTORY_SEPARATOR . "stats.php",
-    "ajax" . DIRECTORY_SEPARATOR . "tooltip.php",
-    "ajax" . DIRECTORY_SEPARATOR . "trendtooltip.php",
-    "ajax" . DIRECTORY_SEPARATOR . "vars.php",
-    "ajax" . DIRECTORY_SEPARATOR . "visits.php",
-    "ajax" . DIRECTORY_SEPARATOR . "heatmap.php",
-    "ajax" . DIRECTORY_SEPARATOR . "img.php",
-    "js" . DIRECTORY_SEPARATOR . "extrawatch.js.php",
-    "js" . DIRECTORY_SEPARATOR . "maps.js.php");
 
-  foreach($filesArray as $file) {
-  $file = JPATH_SITE.DIRECTORY_SEPARATOR."components".DIRECTORY_SEPARATOR."com_extrawatch".DIRECTORY_SEPARATOR.$file;
-  //echo("changing permissions of file: $file");
-    @chmod($file, 0755);
-  }
-} 
+    function extrawatch_fixFilePermissions() {
+        $filesArray = array(
+            "img.php",
+            "timezone.php",
+            "ajax" . DIRECTORY_SEPARATOR . "block.php",
+            "ajax" . DIRECTORY_SEPARATOR . "last.php",
+            "ajax" . DIRECTORY_SEPARATOR . "lastvisit.php",
+            "ajax" . DIRECTORY_SEPARATOR . "sizequery.php",
+            "ajax" . DIRECTORY_SEPARATOR . "sizequerytotal.php",
+            "ajax" . DIRECTORY_SEPARATOR . "stats.php",
+            "ajax" . DIRECTORY_SEPARATOR . "tooltip.php",
+            "ajax" . DIRECTORY_SEPARATOR . "trendtooltip.php",
+            "ajax" . DIRECTORY_SEPARATOR . "vars.php",
+            "ajax" . DIRECTORY_SEPARATOR . "visits.php",
+            "ajax" . DIRECTORY_SEPARATOR . "heatmap.php",
+            "ajax" . DIRECTORY_SEPARATOR . "img.php",
+            "js" . DIRECTORY_SEPARATOR . "extrawatch.js.php",
+            "js" . DIRECTORY_SEPARATOR . "maps.js.php");
 
-
+        foreach($filesArray as $file) {
+            $file = JPATH_SITE.DIRECTORY_SEPARATOR."components".DIRECTORY_SEPARATOR."com_extrawatch".DIRECTORY_SEPARATOR.$file;
+            //echo("changing permissions of file: $file");
+            @chmod($file, 0755);
+        }
+    }
 
 
 }
