@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1440
+ * @revision 1442
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -304,7 +304,7 @@ class ExtraWatchHelper
         if (isset($key)) {
             return ExtraWatchEnvFactory::getEnvironment()->getRequest()->getVar($key);
         } else {
-            $postArray = @ExtraWatchEnvFactory::getEnvironment()->getRequest()->getPost('post');
+            $postArray = @ExtraWatchEnvFactory::getEnvironment()->getRequest()->get('post');
             if (@$postArray)
             foreach ($postArray as &$post) { /* traversing the array and stripping tags */
                 if (is_array($post)) {
