@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1439
+ * @revision 1440
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -262,7 +262,7 @@ class ExtraWatchVisitHTML
           $lastColor = $color;
         }
         $dateOfVisit = ExtraWatchDate::date("d.m.Y", $row->timestamp);
-        if (isset($this->lastDate) && $this->lastDate != $dateOfVisit) {
+        if (isset($this->lastDate) && $this->lastDate != $dateOfVisit && !(!$this->lastDate && $inactive)) {
           $output .= "<tr><td style='background-color: #" . $color . ";'></td><td style='background-color: #" . $color . ";'></td><td style='background-color: #" . $color . ";'></td><td style='background-color: #" . $color . ";'><td style='background-color: #" . $color . ";'></td></td><td style='background-color: #" . $color . ";'></td><td style='background-color: #" . $color . ";'></td><td colspan='8' style='background-color: #" . $color . ";' colspan='3'><h3>$dateOfVisit</h3></td></tr>";
           $this->lastDate = $dateOfVisit;
         }
