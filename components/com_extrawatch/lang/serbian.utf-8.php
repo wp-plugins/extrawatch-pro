@@ -7,7 +7,7 @@
  * @version @VERSION@
  * @revision @REVISION@
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
- * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
+ * @copyright (C) @YEAR@ by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
  */
 
@@ -32,14 +32,14 @@ DEFINE('_EW_VISITS_VISITORS', "Poslednji posetioci");
 DEFINE('_EW_VISITS_BOTS', "Botovi");
 DEFINE('_EW_VISITS_CAME_FROM', "Dolaze iz");
 DEFINE('_EW_VISITS_MODULE_NOT_PUBLISHED', "Vaš ExtraWatch modul nije objavljen. Nova statistika nije zabeležena. Kako bi ste modul objavili iditi u sekciju Moduli i objavite na svim stranama");
-DEFINE('_EW_VISITS_PANE_LOADING', "U�?itavanje poseta...");
+DEFINE('_EW_VISITS_PANE_LOADING', "Učitavanje poseta...");
 
 // Right stats window.
 DEFINE('_EW_STATS_TITLE', "Nedeljna statistika poseta");
 DEFINE('_EW_STATS_WEEK', "Nedelja");
 DEFINE('_EW_STATS_THIS_WEEK', "ove nedelje");
 DEFINE('_EW_STATS_UNIQUE', "jedinstven");
-DEFINE('_EW_STATS_LOADS', "u�?itavanja");
+DEFINE('_EW_STATS_LOADS', "učitavanja");
 DEFINE('_EW_STATS_HITS', "poseta");
 DEFINE('_EW_STATS_TODAY', "danas");
 DEFINE('_EW_STATS_FOR', "za");
@@ -51,26 +51,26 @@ DEFINE('_EW_STATS_COUNTRY', "Države");
 DEFINE('_EW_STATS_USERS', "Korisnici");
 DEFINE('_EW_STATS_REFERERS', "Referali");
 DEFINE('_EW_STATS_IP', "IP adrese");
-DEFINE('_EW_STATS_BROWSER', "Pretraživa�?i");
+DEFINE('_EW_STATS_BROWSER', "Pretraživači");
 DEFINE('_EW_STATS_OS', "OS");
-DEFINE('_EW_STATS_KEYWORDS', "Klju�?ne re�?i");
+DEFINE('_EW_STATS_KEYWORDS', "Ključne reči");
 DEFINE('_EW_STATS_GOALS', "Ciljevi");
 DEFINE('_EW_STATS_TOTAL', "Ukupno");
 DEFINE('_EW_STATS_DAILY', "Dnevno");
 DEFINE('_EW_STATS_DAILY_TITLE', "Dnevna statistika");
 DEFINE('_EW_STATS_ALL_TIME_TITLE', "Ukupna statistika");
-DEFINE('_EW_STATS_LOADING', "u�?itavanje...");
-DEFINE('_EW_STATS_LOADING_WAIT', "u�?itavanje... molimo vas, sa�?ekajte");
+DEFINE('_EW_STATS_LOADING', "učitavanje...");
+DEFINE('_EW_STATS_LOADING_WAIT', "učitavanje... molimo vas, sačekajte");
 DEFINE('_EW_STATS_IP_BLOCKING_TITLE', "IP blokiranje");
-DEFINE('_EW_STATS_IP_BLOCKING_ENTER', "Unesite IP ru�?no");
+DEFINE('_EW_STATS_IP_BLOCKING_ENTER', "Unesite IP ručno");
 DEFINE('_EW_STATS_IP_BLOCKING_MANUALLY', "Unesite IP adresu koju želite da blokirate. (npr. 217.242.11.54 or 217.* ili 217.242.* kako bi ste blokirali sve IP adrese iz opsega)");
 DEFINE('_EW_STATS_IP_BLOCKING_TOGGLE', "Preklapanje IP adresa ");
-DEFINE('_EW_STATS_PANE_LOADING', "U�?itavanje statistike...");
+DEFINE('_EW_STATS_PANE_LOADING', "Učitavanje statistike...");
 
 // Settings.
 DEFINE('_EW_SETTINGS_TITLE', "Podešavanja");
 DEFINE('_EW_SETTINGS_DEFAULT', "Podrazumevano");
-DEFINE('_EW_SETTINGS_SAVE', "Sa�?uvaj");
+DEFINE('_EW_SETTINGS_SAVE', "Sačuvaj");
 DEFINE('_EW_SETTINGS_APPEARANCE', "Izgled");
 DEFINE('_EW_SETTINGS_FRONTEND', "Čeona aplikacija");
 DEFINE('_EW_SETTINGS_HISTORY_PERFORMANCE', "Evidencija &amp; Performanse");
@@ -82,7 +82,7 @@ DEFINE('_EW_SETTINGS_RESET_CONFIRM', "Da li zaista želite da resetujete svu sta
 DEFINE('_EW_SETTINGS_RESET_ALL', "Resetujte sve");
 DEFINE('_EW_SETTINGS_RESET_ALL_LINK', "Resetujte &amp; podatke posetioca");
 DEFINE('_EW_SETTINGS_LANGUAGE', "Jezik");
-DEFINE('_EW_SETTINGS_SAVED', "Podešavanje sa�?uvano");
+DEFINE('_EW_SETTINGS_SAVED', "Podešavanje sačuvano");
 DEFINE('_EW_SETTINGS_ADD_YOUR_IP', "Dodajte vaš IP");
 DEFINE('_EW_SETTINGS_TO_THE_LIST', "na listu.");
 
@@ -98,9 +98,9 @@ DEFINE('_EW_RESET_ERROR', "Podaci NISU uspešno obrisani, došlo je do greške")
 DEFINE('_EW_CREDITS_TITLE', "Zasluge");
 DEFINE('_EW_TRENDS_DAILY_WEEKLY', "Dnevna i nedeljna statistika za ");
 DEFINE('_EW_AJAX_PERMISSION_DENIED_1', "AJAX dozvola odbijena: Molimo vas pogledajte statistiku sa vašeg domena koju ste specifirali u fajlu configuration.php Joomla-e - ");
-DEFINE('_EW_AJAX_PERMISSION_DENIED_2', "Moguće da ste zaboravili www. na po�?etku naziva vašeg domena. Vaš javascript pokušava da pristupi ");
+DEFINE('_EW_AJAX_PERMISSION_DENIED_2', "Moguće da ste zaboravili www. na početku naziva vašeg domena. Vaš javascript pokušava da pristupi ");
 DEFINE('_EW_AJAX_PERMISSION_DENIED_3', "sa");
-DEFINE('_EW_AJAX_PERMISSION_DENIED_4', "zbog �?ega misli da pristupa drugom domenu.");
+DEFINE('_EW_AJAX_PERMISSION_DENIED_4', "zbog čega misli da pristupa drugom domenu.");
 
 // Header.
 DEFINE('_EW_HEADER_DOWNLOAD', "Nabavite poslednji kod ekstenzije sa ");
@@ -110,7 +110,7 @@ DEFINE('_EW_HEADER_VOTE', "Glasajte");
 // Tooltips.
 DEFINE('_EW_TOOLTIP_CLICK', "Kliknite za opis alata");
 DEFINE('_EW_TOOLTIP_MOUSE_OVER', "Pređite mišem iznad kako bi ste videli opis alatke");
-DEFINE('_EW_TOOLTIP_YESTERDAY_INCREASE', "ju�?erašnje povećanje");
+DEFINE('_EW_TOOLTIP_YESTERDAY_INCREASE', "jučerašnje povećanje");
 DEFINE('_EW_TOOLTIP_HELP', "Otvara spoljašnju online pomoć ");
 DEFINE('_EW_TOOLTIP_WINDOW_CLOSE', "Zatvori ovaj prozor");
 DEFINE('_EW_TOOLTIP_PRINT', "Štampaj");
@@ -121,7 +121,7 @@ DEFINE('_EW_GOALS_UPDATE', "Ažurirajte cilj no.");
 DEFINE('_EW_GOALS_ACTION', "Akcija");
 DEFINE('_EW_GOALS_TITLE', "Novi cilj");
 DEFINE('_EW_GOALS_NEW', "Novi cilj");
-DEFINE('_EW_GOALS_RELOAD', "Ponovno u�?itavanje");
+DEFINE('_EW_GOALS_RELOAD', "Ponovno učitavanje");
 DEFINE('_EW_GOALS_ADVANCED', "Napredno");
 DEFINE('_EW_GOALS_NAME', "Ime");
 DEFINE('_EW_GOALS_ID', "id");
@@ -142,13 +142,13 @@ DEFINE('_EW_GOALS_HITS', "Poseta");
 DEFINE('_EW_GOALS_ENABLED', "Omogućeno");
 DEFINE('_EW_GOALS_EDIT', "Izmeni");
 DEFINE('_EW_GOALS_DELETE', "Obriši");
-DEFINE('_EW_GOALS_DELETE_CONFIRM', "Izgubićete sve statisti�?ke podakte za ovaj cilj. Da li zaista želite da obrišete cilj br. ");
+DEFINE('_EW_GOALS_DELETE_CONFIRM', "Izgubićete sve statističke podakte za ovaj cilj. Da li zaista želite da obrišete cilj br. ");
 
 // Frontend.
 DEFINE('_EW_FRONTEND_COUNTRIES', "Države");
 DEFINE('_EW_FRONTEND_VISITORS', "Posetioci");
 DEFINE('_EW_FRONTEND_TODAY', "Danas");
-DEFINE('_EW_FRONTEND_YESTERDAY', "Ju�?e");
+DEFINE('_EW_FRONTEND_YESTERDAY', "Juče");
 DEFINE('_EW_FRONTEND_THIS_WEEK', "Ove nedelje");
 DEFINE('_EW_FRONTEND_LAST_WEEK', "Prošle nedelje");
 DEFINE('_EW_FRONTEND_THIS_MONTH', "Ovog meseca");
@@ -156,27 +156,27 @@ DEFINE('_EW_FRONTEND_LAST_MONTH', "Prošlog meseca");
 DEFINE('_EW_FRONTEND_TOTAL', "Ukupno");
 
 // Settings description - quite long.
-DEFINE('_EW_DESC_DEBUG', "ExtraWatch je u režimu otklanjanja grešaka. Na ovaj na�?in moćićete da otkrijete uzroke grešaka. Da isklju�?ite ovaj režim promenite vrednosti iz EXTRAWATCH_DEBUG in /components/com_extrawatch/config.php iz 1 u 0");
+DEFINE('_EW_DESC_DEBUG', "ExtraWatch je u režimu otklanjanja grešaka. Na ovaj način moćićete da otkrijete uzroke grešaka. Da isključite ovaj režim promenite vrednosti iz EXTRAWATCH_DEBUG in /components/com_extrawatch/config.php iz 1 u 0");
 DEFINE('_EW_DESC_STATS_MAX_ROWS', "Maksimalan broj redova za prikaz kada je statistika u proširenom režimu.");
 DEFINE('_EW_DESC_STATS_IP_HITS', "Sve IP adrese koje imaju manje poseta u odnosu na današnji dan biće obrisane iz IP evidencije.");
 DEFINE('_EW_DESC_STATS_URL_HITS', "Svi URL-ovi koji imaju manje poseta u odnosu na današnji dan biće obrisani iz IP evidencije.");
 DEFINE('_EW_DESC_IGNORE_IP', "Izostavi određene IP adrese iz statistike. Odvoji novom linijom. Možete koristiti džokera ovde. <br/>Npr. 192.* će ignorisati 192.168.51.31, 192.168.16.2, itd..");
-DEFINE('_EW_DESC_UPDATE_TIME_VISITS', "Osvežavanje statistike posetioca u milisekundama. Podrazumevano je 2000, budite oprezni sa ovim. Nakon toga ponovo u�?itajte pozadinsku aplikaciju ExtraWatch.");
-DEFINE('_EW_DESC_UPDATE_TIME_STATS', "Vreme osvežavanja statistike u milisekundama je podrazumevano 4000, budite oprezni sa ovim. Nakon toga ponovo u�?itajte pozadinsku aplikaciju ExtraWatch.");
-DEFINE('_EW_DESC_MAXID_BOTS', "Koliko poseta botova �?uvati u bazi.");
-DEFINE('_EW_DESC_MAXID_VISITORS', "Koliko stvarnih poseta �?uvati u bazi.");
+DEFINE('_EW_DESC_UPDATE_TIME_VISITS', "Osvežavanje statistike posetioca u milisekundama. Podrazumevano je 2000, budite oprezni sa ovim. Nakon toga ponovo učitajte pozadinsku aplikaciju ExtraWatch.");
+DEFINE('_EW_DESC_UPDATE_TIME_STATS', "Vreme osvežavanja statistike u milisekundama je podrazumevano 4000, budite oprezni sa ovim. Nakon toga ponovo učitajte pozadinsku aplikaciju ExtraWatch.");
+DEFINE('_EW_DESC_MAXID_BOTS', "Koliko poseta botova čuvati u bazi.");
+DEFINE('_EW_DESC_MAXID_VISITORS', "Koliko stvarnih poseta čuvati u bazi.");
 DEFINE('_EW_DESC_LIMIT_BOTS', "Koliko botova ćete videti u pozadinskoj aplikaciji.");
 DEFINE('_EW_DESC_LIMIT_VISITORS', "Koliko stvarnih posetioca ćete videti u pozadinskoj aplikaciji.");
 DEFINE('_EW_DESC_TRUNCATE_VISITS', "Maksimalan broj znakova za prikaz u dugim naslovima i URI-ovima.");
 DEFINE('_EW_DESC_TRUNCATE_STATS', "Maksimalan broj za prikaz u panelu na desnoj strani.");
-DEFINE('_EW_DESC_STATS_KEEP_DAYS', "Koliko dana �?uvati statistiku u bazi, 0 = beskona�?no.");
+DEFINE('_EW_DESC_STATS_KEEP_DAYS', "Koliko dana čuvati statistiku u bazi, 0 = beskonačno.");
 DEFINE('_EW_DESC_TIMEZONE_OFFSET', "Kada ste u drugoj vremenskoj zoni od vašeg servera za hosting. (pozitivne ili negativne vrednosti u satima)");
-DEFINE('_EW_DESC_WEEK_OFFSET', "Pomak nedelje, vremenska oznaka/(3600*24*7) daje broj nedelja od 1.1.1970, ovaj pomak je korekcija kako bi nedelja po�?ela ponedeljkom.");
-DEFINE('_EW_DESC_DAY_OFFSET', "Pomak dana, vremenska oznaka/(3600*24) daje broj dana od 1.1.1970, ovaj pomak je korekcija kako bi dan po�?eo u 00:00.");
-DEFINE('_EW_DESC_FRONTEND_HIDE_LOGO', "<b>(funkcioniše u PRO verziji)</b> Za korišćenje prazne 1x1px ikone u �?eonoj aplikaciji");
+DEFINE('_EW_DESC_WEEK_OFFSET', "Pomak nedelje, vremenska oznaka/(3600*24*7) daje broj nedelja od 1.1.1970, ovaj pomak je korekcija kako bi nedelja počela ponedeljkom.");
+DEFINE('_EW_DESC_DAY_OFFSET', "Pomak dana, vremenska oznaka/(3600*24) daje broj dana od 1.1.1970, ovaj pomak je korekcija kako bi dan počeo u 00:00.");
+DEFINE('_EW_DESC_FRONTEND_HIDE_LOGO', "<b>(funkcioniše u PRO verziji)</b> Za korišćenje prazne 1x1px ikone u čeonoj aplikaciji");
 DEFINE('_EW_DESC_IP_STATS', "Omogućava statistiku IP adresa. U nekim zemljama držanje IP adresa u bazi duže vreme je zabranjeno zakonom. Koristite na sopstveni rizik.");
-DEFINE('_EW_DESC_HIDE_ADS', "Ovo podešavanje sakriva reklame iz pozadinske aplikacije u slu�?aju da vas zaista iritiraju. Držeći ih podržavate dalji razvoj ove alatke. Hvala.");
-DEFINE('_EW_DESC_TOOLTIP_ONCLICK', "Ot�?ekirajte ako želite da vam se opis alatke prikazuje na klik mišem a ne prelaskom preko.");
+DEFINE('_EW_DESC_HIDE_ADS', "Ovo podešavanje sakriva reklame iz pozadinske aplikacije u slučaju da vas zaista iritiraju. Držeći ih podržavate dalji razvoj ove alatke. Hvala.");
+DEFINE('_EW_DESC_TOOLTIP_ONCLICK', "Otčekirajte ako želite da vam se opis alatke prikazuje na klik mišem a ne prelaskom preko.");
 DEFINE('_EW_DESC_SERVER_URI_KEY', "Podrazumevan je 'REDIRECT_URL', koji je standard ukoliko koristite url rewriting, može se podesiti na 'SCRIPT_URL' ako evidentira samo index.php");
 DEFINE('_EW_DESC_BLOCKING_MESSAGE', "Poruka koja se prikazuje blokiranim korisnicima ili opširnija informacija zašto ih blokirate.");
 DEFINE('_EW_DESC_TOOLTIP_WIDTH', "Dužina opisa alatke");
@@ -185,7 +185,7 @@ DEFINE('_EW_DESC_TOOLTIP_URL', "Možete staviti bilo koji URL ovde kako bi ste v
 DEFINE('_EW_DESC_IGNORE_URI', "Možete uneti bilo koji URI koji želite da bude ignorisan u statistici. Možete koristiti džokere (* i ?) ovde. Npr.: /freel?n* ");
 DEFINE('_EW_DESC_GOALS_NAME', "Dajte naziv cilju. Taj naziv videćete u statistici.");
 DEFINE('_EW_DESC_GOALS_URI_CONDITION', "Sve što je iza naziva domena. Za http://www.codegravity.com/projects/ URI je: /projects/ (Primer za korišćenje: <b>/projects*</b>)");
-DEFINE('_EW_DESC_GOALS_GET_VAR', "GET varijabla je varijabla koju možete videti u URL-u obi�?no posle ? ili &amp; znaka. Npr. http://www.codegravity.com/index.php?<u>name</u>=peter&amp;<u>surname</u>=smith. Možete koristiti <u>*</u> u ovom polju kako bi ste skenirali sve get vrednosti. (Primer za korišćenje: <b>n*me</b>)");
+DEFINE('_EW_DESC_GOALS_GET_VAR', "GET varijabla je varijabla koju možete videti u URL-u obično posle ? ili &amp; znaka. Npr. http://www.codegravity.com/index.php?<u>name</u>=peter&amp;<u>surname</u>=smith. Možete koristiti <u>*</u> u ovom polju kako bi ste skenirali sve get vrednosti. (Primer za korišćenje: <b>n*me</b>)");
 DEFINE('_EW_DESC_GOALS_GET_CONDITION', "Ovde treba da odredite podudaranje za vrednost iz prethodnog polja. (Primer za korišćenje: <b>p?t*r</b>) ");
 DEFINE('_EW_DESC_GOALS_POST_VAR', "Ovde proveravamo vrednosti prosleđene iz obrazaca. Recimo kada imate obrazac na vašem sajtu koje ima polje&lt;input type='text' name='<u>experiences</u>' /&gt;. (Primer korišćenja: <b>exper*ces</b>)");
 DEFINE('_EW_DESC_GOALS_POST_CONDITION', "Podudaranje za vrednosti ovog POST polja. Npr. želimo da proverimo da li korisnik ima podršku za java. (Primer korišćenja: <b>*java*</b>)");
@@ -195,22 +195,22 @@ DEFINE('_EW_DESC_GOALS_IP_CONDITION', "IP odakle dolazi korisnik: (Primer koriš
 DEFINE('_EW_DESC_GOALS_CAME_FROM_CONDITION', "URL sa koga je korisnik došao. (Primer korišćenja: <b>*www.google.*</b>)");
 DEFINE('_EW_DESC_GOALS_REDIRECT', "Korisnik je preusmeren na URL koji ste vi odredili. Ima veći prioritet od 'blokiranja': (Primer korišćenja: <b>http://www.codegravity.com/goaway.html</b>)");
 DEFINE('_EW_DESC_TRUNCATE_GOALS', "Koliko karaktera skratiti u tabeli ciljeva.");
-DEFINE('_EW_DESC_FRONTEND_NO_BACKLINK', "<b>(funkcioniše u PRO verziji)</b> Link ka codegravity.com možete isklju�?iti, mada bi smo vam bili zahvalni ako bi ste ga ostavili. Hvala vam");
-DEFINE('_EW_DESC_FRONTEND_COUNTRIES', "Prikaži ukupnu statistiku država u �?eonom modulu. Ako se promeni, nove vrednosti važiće u �?eonom delu nakon vremena određenog u CACHE_FRONTEND_ ");
-DEFINE('_EW_DESC_FRONTEND_COUNTRIES_FIRST', "Ako želite da zamenite red Posetioci/Države u �?eonoj aplikaciji, odštiklirajte ovo i Posetioci će se prikazivati prvi.");
-DEFINE('_EW_DESC_FRONTEND_COUNTRIES_NUM', "Broj država koji se prikazuje u �?eonoj aplikaciji");
-DEFINE('_EW_DESC_FRONTEND_VISITORS', "Prikaži posetioce iz država u �?eonom modulu. Ako se promeni, podešavanja će biti važeća u �?eonoj aplikaciji nakon vremena određenog u CACHE_FRONTEND_");
-DEFINE('_EW_DESC_CACHE_FRONTEND_COUNTRIES', "Vreme u sekundama za keširanje vremena prenosa podataka za zemlje u �?eonoj aplikaciji.");
-DEFINE('_EW_DESC_CACHE_FRONTEND_VISITORS', "Vreme u sekundama za keširanje prenosa podataka posetioca u �?eonoj aplikaciji.");
-DEFINE('_EW_DESC_FRONTEND_VISITORS_TODAY', "Za prikaz posetioca u �?eonoj aplikaciji za: danas. Ako se promeni, nova podešavanja važiće u �?eonoj aplikaciji nakon vremena određenog u CACHE_FRONTEND_...");
-DEFINE('_EW_DESC_FRONTEND_VISITORS_YESTERDAY', "Za prikaz posetioca u �?eonoj aplikaciji za: ju�?e. Ako se promeni, nova podešavanja važiće u �?eonoj aplikaciji nakon vremena određenog u CACHE_FRONTEND_...");
-DEFINE('_EW_DESC_FRONTEND_VISITORS_THIS_WEEK', "Za prikaz posetioca u �?eonoj aplikaciji za: ova nedelja. Ako se promeni, nova podešavanja važiće u �?eonoj aplikaciji nakon vremena određenog u CACHE_FRONTEND_...");
-DEFINE('_EW_DESC_FRONTEND_VISITORS_LAST_WEEK', "Za prikaz posetioca u �?eonoj aplikaciji za: prošla nedelja. Ako se promeni, nova podešavanja važiće u �?eonoj aplikaciji nakon vremena određenog u CACHE_FRONTEND_...");
-DEFINE('_EW_DESC_FRONTEND_VISITORS_THIS_MONTH', "Za prikaz posetioca u �?eonoj aplikaciji za: ovaj mesec. Ako se promeni, nova podešavanja važiće u �?eonoj aplikaciji nakon vremena određenog u CACHE_FRONTEND_...");
-DEFINE('_EW_DESC_FRONTEND_VISITORS_LAST_MONTH', "Za prikaz posetioca u �?eonoj aplikaciji za: prošli mesec. Ako se promeni, nova podešavanja važiće u �?eonoj aplikaciji nakon vremena određenog u CACHE_FRONTEND_...");
-DEFINE('_EW_DESC_FRONTEND_VISITORS_TOTAL', "Za prikaz ukupnog broja posetioca od dana instalacije ExtraWatch. Ako se promeni, nova podešavanja važiće u �?eonoj aplikaciji nakon vremena određenog u CACHE_FRONTEND_...");
-DEFINE('_EW_DESC_LANGUAGE', "Korišćenje jezi�?kih fajlova. Oni se nalaze u direktorijumu /components/com_extrawatch/lang/. Ako želite da kreirate novi jezi�?ki fajl prvo proverite po�?etnu stranu projekta i ako jezi�?ki fajl još uvek ne postoji samo kopirajte podrazumevani english.php u npr. german.php i stavite u direktorijum. Zatim prevedite sve klju�?ne vrednosti sa desne strane.");
-DEFINE('_EW_DESC_GOALS', "Ciljevi omogućuju određivanje specifi�?nih parametara. Kada se parametri poklapaju broj ciljeva se povećava. Na taj na�?in možete posmatrati da li je korisnik posetio specifi�?ni URL, ostavio određenu vrednost, ima određeno korisni�?ko ime ili dolazi sa određene adrese. Možete blokirati ili preusmeriti takve korisnike ka nekom drugom URL-u.");
+DEFINE('_EW_DESC_FRONTEND_NO_BACKLINK', "<b>(funkcioniše u PRO verziji)</b> Link ka codegravity.com možete isključiti, mada bi smo vam bili zahvalni ako bi ste ga ostavili. Hvala vam");
+DEFINE('_EW_DESC_FRONTEND_COUNTRIES', "Prikaži ukupnu statistiku država u čeonom modulu. Ako se promeni, nove vrednosti važiće u čeonom delu nakon vremena određenog u CACHE_FRONTEND_ ");
+DEFINE('_EW_DESC_FRONTEND_COUNTRIES_FIRST', "Ako želite da zamenite red Posetioci/Države u čeonoj aplikaciji, odštiklirajte ovo i Posetioci će se prikazivati prvi.");
+DEFINE('_EW_DESC_FRONTEND_COUNTRIES_NUM', "Broj država koji se prikazuje u čeonoj aplikaciji");
+DEFINE('_EW_DESC_FRONTEND_VISITORS', "Prikaži posetioce iz država u čeonom modulu. Ako se promeni, podešavanja će biti važeća u čeonoj aplikaciji nakon vremena određenog u CACHE_FRONTEND_");
+DEFINE('_EW_DESC_CACHE_FRONTEND_COUNTRIES', "Vreme u sekundama za keširanje vremena prenosa podataka za zemlje u čeonoj aplikaciji.");
+DEFINE('_EW_DESC_CACHE_FRONTEND_VISITORS', "Vreme u sekundama za keširanje prenosa podataka posetioca u čeonoj aplikaciji.");
+DEFINE('_EW_DESC_FRONTEND_VISITORS_TODAY', "Za prikaz posetioca u čeonoj aplikaciji za: danas. Ako se promeni, nova podešavanja važiće u čeonoj aplikaciji nakon vremena određenog u CACHE_FRONTEND_...");
+DEFINE('_EW_DESC_FRONTEND_VISITORS_YESTERDAY', "Za prikaz posetioca u čeonoj aplikaciji za: juče. Ako se promeni, nova podešavanja važiće u čeonoj aplikaciji nakon vremena određenog u CACHE_FRONTEND_...");
+DEFINE('_EW_DESC_FRONTEND_VISITORS_THIS_WEEK', "Za prikaz posetioca u čeonoj aplikaciji za: ova nedelja. Ako se promeni, nova podešavanja važiće u čeonoj aplikaciji nakon vremena određenog u CACHE_FRONTEND_...");
+DEFINE('_EW_DESC_FRONTEND_VISITORS_LAST_WEEK', "Za prikaz posetioca u čeonoj aplikaciji za: prošla nedelja. Ako se promeni, nova podešavanja važiće u čeonoj aplikaciji nakon vremena određenog u CACHE_FRONTEND_...");
+DEFINE('_EW_DESC_FRONTEND_VISITORS_THIS_MONTH', "Za prikaz posetioca u čeonoj aplikaciji za: ovaj mesec. Ako se promeni, nova podešavanja važiće u čeonoj aplikaciji nakon vremena određenog u CACHE_FRONTEND_...");
+DEFINE('_EW_DESC_FRONTEND_VISITORS_LAST_MONTH', "Za prikaz posetioca u čeonoj aplikaciji za: prošli mesec. Ako se promeni, nova podešavanja važiće u čeonoj aplikaciji nakon vremena određenog u CACHE_FRONTEND_...");
+DEFINE('_EW_DESC_FRONTEND_VISITORS_TOTAL', "Za prikaz ukupnog broja posetioca od dana instalacije ExtraWatch. Ako se promeni, nova podešavanja važiće u čeonoj aplikaciji nakon vremena određenog u CACHE_FRONTEND_...");
+DEFINE('_EW_DESC_LANGUAGE', "Korišćenje jezičkih fajlova. Oni se nalaze u direktorijumu /components/com_extrawatch/lang/. Ako želite da kreirate novi jezički fajl prvo proverite početnu stranu projekta i ako jezički fajl još uvek ne postoji samo kopirajte podrazumevani english.php u npr. german.php i stavite u direktorijum. Zatim prevedite sve ključne vrednosti sa desne strane.");
+DEFINE('_EW_DESC_GOALS', "Ciljevi omogućuju određivanje specifičnih parametara. Kada se parametri poklapaju broj ciljeva se povećava. Na taj način možete posmatrati da li je korisnik posetio specifični URL, ostavio određenu vrednost, ima određeno korisničko ime ili dolazi sa određene adrese. Možete blokirati ili preusmeriti takve korisnike ka nekom drugom URL-u.");
 DEFINE('_EW_DESC_GOALS_INSERT', "U svim poljima osim imena možete koristiti * i ? džokere. Npr.: ?ear (podudaraće se sa: near, tear, ..),  p*r (podudaraće se sa: pr, peer, pear ..) ");
 DEFINE('_EW_DESC_GOALS_BLOCK', "Postavite na 1, ako želite da posetitelj bude blokiran. Posetitelj neće videti ostatak sadržaja, samo poruku da je blokiran-bez redirekcije i njegov IP biće dodat u statistiku blokiranih. (Primer korišćenja: <b>1</b>)");
 
@@ -228,37 +228,37 @@ DEFINE('_EW_GOALS_COUNTRY', "Država");
 
 
 /* translations 1.2.8b_12 */
-DEFINE('_EW_DESC_FRONTEND_COUNTRIES_UPPERCASE', "Ako želite da nazivi zemalja u �?eonoj aplikaciji budu ispisani velikim slovima. (Pr: NEMAČKA, VELIKA BRITANIJA umesto Nema�?ka, Velika Britanija)");
-DEFINE('_EW_DESC_CACHE_FRONTEND_USERS', "Vreme u sekundama potrebno da se keširaju podaci korisnika u �?eonoj aplikaciji.");
-DEFINE('_EW_DESC_FRONTEND_VISITORS_TOTAL_INITIAL', "Po�?etne vrednosti prikazane u Ukupno: u �?eonoj aplikaciji. Korisno u slu�?ajevima kada se prešlo sa druge statisti�?ke alatke. (Npr.: 20000). Podesite na 0 ako ne želite da koristite ovu opciju.");
+DEFINE('_EW_DESC_FRONTEND_COUNTRIES_UPPERCASE', "Ako želite da nazivi zemalja u čeonoj aplikaciji budu ispisani velikim slovima. (Pr: NEMAČKA, VELIKA BRITANIJA umesto Nemačka, Velika Britanija)");
+DEFINE('_EW_DESC_CACHE_FRONTEND_USERS', "Vreme u sekundama potrebno da se keširaju podaci korisnika u čeonoj aplikaciji.");
+DEFINE('_EW_DESC_FRONTEND_VISITORS_TOTAL_INITIAL', "Početne vrednosti prikazane u Ukupno: u čeonoj aplikaciji. Korisno u slučajevima kada se prešlo sa druge statističke alatke. (Npr.: 20000). Podesite na 0 ako ne želite da koristite ovu opciju.");
 DEFINE('_EW_DESC_IGNORE_USER', "Ignorišite korisnike izlistane u okviru za tekst. Jednog po jednog. (Npr.: myself {line break} mark_*) ");
 DEFINE('_EW_FRONTEND_USERS_MOST', "Najaktivniji korisnici danas u odnosu na ukupan broj");
-DEFINE('_EW_DESC_SPAMWORD_BANS_ENABLED', "Omogućite banovanja zasnovana na re�?ima sa liste spam re�?i ispod?");
-DEFINE('_EW_DESC_SPAMWORD_LIST', "Naj�?ešće korišćenje spam re�?i od strane spam botova. Možete koristiti džokere ovde, (Npr.: ph?rmac*). Ako je opcija iznad omogućena ExtraWatch će proveriti da li je napada�? poslao obrazac (HTTP POST request) na vaš sajt sa nekom od ovih spam re�?i. (Može se primeniti samo ako se obrazac u�?itava na Joomli baziranom websajtu-forum, komentari, ali je i efikasan prilikom blokiranja spam botova koji pokušavaju da pošalju bilo koji obrazac.");
-DEFINE('_EW_DESC_FRONTEND_USER_LINK', "Link u korisni�?kom modulu �?eone aplikacije omogućava vam da specifirate jedan URL koji se otvara kada korisnik klikne korisni�?ko ime. Mora da sadrži string {user} koji će biti zamenjen pravim korisni�?kim imenom. (Npr. index.php?option=com_comprofiler&task=userProfile&user={user}) ");
+DEFINE('_EW_DESC_SPAMWORD_BANS_ENABLED', "Omogućite banovanja zasnovana na rečima sa liste spam reči ispod?");
+DEFINE('_EW_DESC_SPAMWORD_LIST', "Najčešće korišćenje spam reči od strane spam botova. Možete koristiti džokere ovde, (Npr.: ph?rmac*). Ako je opcija iznad omogućena ExtraWatch će proveriti da li je napadač poslao obrazac (HTTP POST request) na vaš sajt sa nekom od ovih spam reči. (Može se primeniti samo ako se obrazac učitava na Joomli baziranom websajtu-forum, komentari, ali je i efikasan prilikom blokiranja spam botova koji pokušavaju da pošalju bilo koji obrazac.");
+DEFINE('_EW_DESC_FRONTEND_USER_LINK', "Link u korisničkom modulu čeone aplikacije omogućava vam da specifirate jedan URL koji se otvara kada korisnik klikne korisničko ime. Mora da sadrži string {user} koji će biti zamenjen pravim korisničkim imenom. (Npr. index.php?option=com_comprofiler&task=userProfile&user={user}) ");
 DEFINE('_EW_SETTINGS_ANTI_SPAM', "Anti-Spam");
 
 /* translations 1.2.11b */
-DEFINE('_EW_STATS_KEYPHRASE', "Klju�?ne fraze");
+DEFINE('_EW_STATS_KEYPHRASE', "Ključne fraze");
 DEFINE('_EW_DESC_HISTORY_MAX_VALUES', "Maksimalna vrednost u evidencionoj kartici (Primer: <i>100</i>)");
 
 DEFINE('_EW_DESC_ONLY_LAST_URI', "U posetama prikazati samo poslednje posećene strane, ne sve");
 DEFINE('_EW_DESC_HIDE_REPETITIVE_TITLE', "U posetama sakriti nazive sajtova koji se ponavljaju u nazivu posećenih strana.");
-DEFINE('_EW_DESC_HISTORY_MAX_DB_RECORDS', "Maksimalan broj posetioca koje se �?uvaju u bazi za Evidenciju poseta. Budite pažljivi sa ovim stringom. Ukoliko imate veliku posetu broj podataka može porasti vrlo brzo. Uvek proverite u Statusu koliko podataka sadrži tabela izveštaja.");
-DEFINE('_EW_DESC_UNINSTALL_KEEP_DATA', "Držite tabele baza na uninstall. Ozna�?ite ovu opciju pre deinstalacije ako vršite nadogradnju i želite da sa�?uvate podatke.");
+DEFINE('_EW_DESC_HISTORY_MAX_DB_RECORDS', "Maksimalan broj posetioca koje se čuvaju u bazi za Evidenciju poseta. Budite pažljivi sa ovim stringom. Ukoliko imate veliku posetu broj podataka može porasti vrlo brzo. Uvek proverite u Statusu koliko podataka sadrži tabela izveštaja.");
+DEFINE('_EW_DESC_UNINSTALL_KEEP_DATA', "Držite tabele baza na uninstall. Označite ovu opciju pre deinstalacije ako vršite nadogradnju i želite da sačuvate podatke.");
 
 /* email reports */
-DEFINE('_EW_DESC_EMAIL_REPORTS_ENABLED', "Primićete u toku noćo email sa izveštajem za prethodni dan koji ćete moći da pro�?itate ujutru.");
+DEFINE('_EW_DESC_EMAIL_REPORTS_ENABLED', "Primićete u toku noćo email sa izveštajem za prethodni dan koji ćete moći da pročitate ujutru.");
 DEFINE('_EW_DESC_EMAIL_REPORTS_ADDRESS', "Imejl adresa na koju će vam stići izveštaj");
-DEFINE('_EW_DESC_EMAIL_PERCENT_HIGHER_THAN', "Uklju�?iti samo redove u email izveštaju gde je procenat veći od {value}. Postavite na 0 ako ne želite da koristite ovu opciju <i>(primer: 5)</i>");
-DEFINE('_EW_DESC_EMAIL_ONE_DAY_CHANGE_POSITIVE', "Uklju�?iti samo <b>pozitivne jednodnevne</b> promene vrednosti u email izveštaju veće od {value} procenata. Postavite na 0 ako ne želite da koristite ovu opciju <i>(primer: 5)</i>");
-DEFINE('_EW_DESC_EMAIL_ONE_DAY_CHANGE_NEGATIVE', "Uklju�?iti samo <b>negativne jednodnevne</b> promene vrednosti u email izveštaju manje od {value} procenata.Postavite na 0 ako ne želite da koristite ovu opciju <i>(primer: -10)</i>");
-DEFINE('_EW_DESC_EMAIL_SEVEN_DAY_CHANGE_POSITIVE', "Uklju�?iti samo <b>pozitivne sedmodnevne</b> promene vrednosti u email izveštaju veće od {value} procenata. Postavite na 0 ako ne želite da koristite ovu opciju <i>(primer: 2)</i>");
-DEFINE('_EW_DESC_EMAIL_SEVEN_DAY_CHANGE_NEGATIVE', "Uklju�?iti samo <b>negativne sedmodnevne</b> promene vrednosti u email izveštaju manje od {value} procenata. Postavite na 0 ako ne želite da koristite ovu opciju <i>(primer: -13)</i>");
-DEFINE('_EW_DESC_EMAIL_TWENTY_EIGHT_DAY_CHANGE_POSITIVE', "Uklju�?iti samo <b>pozitivne 28-dnevne</b> promene vrednosti u email izveštaju veće od {value} procenata. Postavite na 0 ako ne želite da koristite ovu opciju <i>(primer: 2)</i>");
-DEFINE('_EW_DESC_EMAIL_TWENTY_EIGHT_DAY_CHANGE_NEGATIVE', "Uklju�?iti samo <b>negativne 28-dnevne</b> promene vredosti u email izveštaju manje od {value} procenata. Postavite na 0 ako ne želite da koristite ovu opciju <i>(primer: -13)</i>");
+DEFINE('_EW_DESC_EMAIL_PERCENT_HIGHER_THAN', "Uključiti samo redove u email izveštaju gde je procenat veći od {value}. Postavite na 0 ako ne želite da koristite ovu opciju <i>(primer: 5)</i>");
+DEFINE('_EW_DESC_EMAIL_ONE_DAY_CHANGE_POSITIVE', "Uključiti samo <b>pozitivne jednodnevne</b> promene vrednosti u email izveštaju veće od {value} procenata. Postavite na 0 ako ne želite da koristite ovu opciju <i>(primer: 5)</i>");
+DEFINE('_EW_DESC_EMAIL_ONE_DAY_CHANGE_NEGATIVE', "Uključiti samo <b>negativne jednodnevne</b> promene vrednosti u email izveštaju manje od {value} procenata.Postavite na 0 ako ne želite da koristite ovu opciju <i>(primer: -10)</i>");
+DEFINE('_EW_DESC_EMAIL_SEVEN_DAY_CHANGE_POSITIVE', "Uključiti samo <b>pozitivne sedmodnevne</b> promene vrednosti u email izveštaju veće od {value} procenata. Postavite na 0 ako ne želite da koristite ovu opciju <i>(primer: 2)</i>");
+DEFINE('_EW_DESC_EMAIL_SEVEN_DAY_CHANGE_NEGATIVE', "Uključiti samo <b>negativne sedmodnevne</b> promene vrednosti u email izveštaju manje od {value} procenata. Postavite na 0 ako ne želite da koristite ovu opciju <i>(primer: -13)</i>");
+DEFINE('_EW_DESC_EMAIL_TWENTY_EIGHT_DAY_CHANGE_POSITIVE', "Uključiti samo <b>pozitivne 28-dnevne</b> promene vrednosti u email izveštaju veće od {value} procenata. Postavite na 0 ako ne želite da koristite ovu opciju <i>(primer: 2)</i>");
+DEFINE('_EW_DESC_EMAIL_TWENTY_EIGHT_DAY_CHANGE_NEGATIVE', "Uključiti samo <b>negativne 28-dnevne</b> promene vredosti u email izveštaju manje od {value} procenata. Postavite na 0 ako ne želite da koristite ovu opciju <i>(primer: -13)</i>");
 
-DEFINE('_EW_DESC_FRONTEND_NOFOLLOW', "<b>(funkcioniše u PRO verziji)</b> Uklju�?ite ovu opciju ako želite da link logo-a bude renderovan atributom rel='nofollow' ");
+DEFINE('_EW_DESC_FRONTEND_NOFOLLOW', "<b>(funkcioniše u PRO verziji)</b> Uključite ovu opciju ako želite da link logo-a bude renderovan atributom rel='nofollow' ");
 DEFINE('_EW_DESC_EMAIL_NAME_TRUNCATE', "Maksimalno znakova u redu email naziva. Promenite ovo ako je prozor vašeg email klienta previše mali.");
 
 DEFINE('_EW_MENU_HISTORY', "Evidencija");
@@ -269,14 +269,14 @@ DEFINE('_EW_DESC_BLOCKED', "Ove IP-i adrese su blokirane od strane anti-spama");
 
 DEFINE('_EW_HISTORY_VISITORS', "Evidencija posetioca");
 DEFINE('_EW_HISTORY_SHOWING_ONLY', "Prikazuje samo %d poslednjih podataka.
-                Kako bi ste promenili ovu vrednost idite na Podešavanja -&gt; Evidencija &amp; Performanse -&gt; HISTORY_MAX_DB_RECORDS . Pažljivo, ovo podešavanje uti�?e na vreme u�?itavanja podataka ispod.  ");
+                Kako bi ste promenili ovu vrednost idite na Podešavanja -&gt; Evidencija &amp; Performanse -&gt; HISTORY_MAX_DB_RECORDS . Pažljivo, ovo podešavanje utiče na vreme učitavanja podataka ispod.  ");
 DEFINE('_EW_MENU_BUG', "Prijavi grešku");
 DEFINE('_EW_MENU_FEATURE', "Prijavi opciju");
 
-DEFINE('_EW_VISITS_CAME_FROM_KEYWORDS', "Klju�?ne re�?i");
+DEFINE('_EW_VISITS_CAME_FROM_KEYWORDS', "Ključne reči");
 
 DEFINE('_EW_BLOCKING_UNBLOCK', "odblokiraj");
-DEFINE('_EW_STATS_KEYPHRASE ', "Klju�?ne fraze");
+DEFINE('_EW_STATS_KEYPHRASE ', "Ključne fraze");
 
 DEFINE('_EW_STATUS_DATABASE_TABLE_NAME', "kolone");
 DEFINE('_EW_STATUS_DATABASE_ROWS', "redovi");
@@ -284,7 +284,7 @@ DEFINE('_EW_STATUS_DATABASE_DATA', "podaci");
 DEFINE('_EW_STATUS_DATABASE_TOTAL', "ukupno");
 
 DEFINE('_EW_EMAIL_REPORTS', "Email Izveštaji");
-DEFINE('_EW_EMAIL_REPORT_GENERATED', "Generisani filtrirani email izveštaj od ju�?e.");
+DEFINE('_EW_EMAIL_REPORT_GENERATED', "Generisani filtrirani email izveštaj od juče.");
 DEFINE('_EW_EMAIL_REPORTS_VALUE_FILTERS', "Vrednost Email filtera");
 DEFINE('_EW_EMAIL_REPORTS_VALUE', "vrednost");
 DEFINE('_EW_EMAIL_REPORTS_PERCENT', "procenti");
@@ -315,9 +315,9 @@ DEFINE('_EW_GOALS_USERNAME_INVERSED', "Username inverzni uslov");
 DEFINE('_EW_GOALS_CAME_FROM_INVERSED', "Came from inverzni uslov");
 
 DEFINE('_EW_STATS_MAP', "Mapa poslednjih poseta");
-DEFINE('_EW_STATS_MAP_ENTER_KEY', "Unesite <a href='http://www.ipinfodb.com/register.php' target='_blank'>ipinfodb.com</a> klju�? za prikaz mape poslednjih poseta.:");
-DEFINE('_EW_STATS_MAP_STORE_KEY', "klju�? za �?uvanje");
-DEFINE('_EW_STATS_MAP_INVALID_KEY', "Molimo vas unesite validan ipinfodb klju�? koji ste dobili sa: <a href='http://www.ipinfodb.com/register.php' target='_blank'>ipinfodb.com</a>");
+DEFINE('_EW_STATS_MAP_ENTER_KEY', "Unesite <a href='http://www.ipinfodb.com/register.php' target='_blank'>ipinfodb.com</a> ključ za prikaz mape poslednjih poseta.:");
+DEFINE('_EW_STATS_MAP_STORE_KEY', "ključ za čuvanje");
+DEFINE('_EW_STATS_MAP_INVALID_KEY', "Molimo vas unesite validan ipinfodb ključ koji ste dobili sa: <a href='http://www.ipinfodb.com/register.php' target='_blank'>ipinfodb.com</a>");
 
 DEFINE('_EW_SIZEQUERY_BAD_REQUEST', "NEISPRAVAN ZAHTEV: ");
 
@@ -335,13 +335,13 @@ DEFINE('_EW_EVALUATION_LEFT', "&nbsp; Ovo je 15-to dnevna probna verzija. Preost
 DEFINE('_EW_TRIAL_VERSION_EXPIRED', " Vaša probna verzija je istekla. Molimo vas kupite ExtraWatch");
 
 DEFINE('_EW_CONFIG_LICENSE_ACTIVATED', "Aktivacija licence uspešna. Zahvaljujemo vam.");
-DEFINE('_EW_CONFIG_LICENCE_DONT_MATCH', "<b>Greška: licencni klju�? i vaš domen se ne podudaraju.</b><br/>Da li ste uneli isti naziv domena u formularu za donacije kao što je ovaj koji vidite ispod? <br/> Kliknite ispod'<b>da zatražite ispravan aktivacioni klju�?</b>' ili kontaktirajte: support@codegravity.com<br/>");
+DEFINE('_EW_CONFIG_LICENCE_DONT_MATCH', "<b>Greška: licencni ključ i vaš domen se ne podudaraju.</b><br/>Da li ste uneli isti naziv domena u formularu za donacije kao što je ovaj koji vidite ispod? <br/> Kliknite ispod'<b>da zatražite ispravan aktivacioni ključ</b>' ili kontaktirajte: support@codegravity.com<br/>");
 DEFINE('_EW_VIEW_ADMINBODY_LONG_MESSAGE', "Ako poruku iznad vidite duže vreme vaša aktivna lokacija može biti pogrešna.
                     Otvorite components/com_extrawatch/config.php
                     otkomentirajte i postavite vašu pravu aktivnu lokaciju. Npr.:
                     define('EXTRAWATCH_LIVE_SITE', 'http://www.codegravity.com');");
 
-DEFINE('_EW_ADMINBODY_LIVE_SITE', "Upozorenje: sajt u vašem pretraživa�?u i aktivna lokacija u konfiguraciji: %s i %s se ne podudaraju.");
+DEFINE('_EW_ADMINBODY_LIVE_SITE', "Upozorenje: sajt u vašem pretraživaču i aktivna lokacija u konfiguraciji: %s i %s se ne podudaraju.");
 DEFINE('_EW_ADMINBODY_SET_LIVE_SITE', "Postavite aktivnu lokaciju: %s i nastavite...");
 
 DEFINE('_EW_ADMINHEADER_JW', "ExtraWatch");
@@ -354,7 +354,7 @@ DEFINE('_EW_ADMINHEADER_REVIEW', "Pregled");
 DEFINE('_EW_ADMINHEADER_WRITE', "Pišite ");
 
 DEFINE('_EW_FLOW_TRAFFIC', "Tok posete");
-DEFINE('_EW_FLOW_SELECT_PAGE', "Ozna�?i stranu:");
+DEFINE('_EW_FLOW_SELECT_PAGE', "Označi stranu:");
 DEFINE('_EW_FLOW_OUTG_LINKS', "Broj odlazećih linkova iz rut-a:");
 DEFINE('_EW_FLOW_NESTING', "Nivo ugnežđavanja:");
 DEFINE('_EW_FLOW_SCALE', "Razmera:");
@@ -362,19 +362,19 @@ DEFINE('_EW_FLOW_SCALE', "Razmera:");
 DEFINE('_EW_COMERCIAL_AD_FREE', "Verzija bez reklama");
 DEFINE('_EW_COMERCIAL_THANK_DONATION', "Zahvaljujemo vam se puno na donaciji!");
 DEFINE('_EW_COMERCIAL_REGISTRATION_KEY', "Registracioni kod za vaš domen %s je: ");
-DEFINE('_EW_COMERCIAL_BACKLINKS_REMOVE', "Sada možete da uklonite pozadinske linkove ili sakrijete ExtraWatch logo u �?eonoj aplikaciji iz Podešavanja");
+DEFINE('_EW_COMERCIAL_BACKLINKS_REMOVE', "Sada možete da uklonite pozadinske linkove ili sakrijete ExtraWatch logo u čeonoj aplikaciji iz Podešavanja");
 
 
 DEFINE('_EW_SIZES_LAST_CHECK', "Poslednja provera izvršena je:");
-DEFINE('_EW_SIZES_ADMINISTRATOR', "PLAVO = Veli�?ina komponente/modula u /administrativnom direktorijumu");
+DEFINE('_EW_SIZES_ADMINISTRATOR', "PLAVO = Veličina komponente/modula u /administrativnom direktorijumu");
 
 DEFINE('_EW_SIZECOMPONENTS_COMPONENT', "Komponenta");
 DEFINE('_EW_SIZECOMPONENTS_TOTAL', "Ukupno:");
-DEFINE('_EW_SIZECOMPONENTS_SIZE', "Veli�?ina");
+DEFINE('_EW_SIZECOMPONENTS_SIZE', "Veličina");
 DEFINE('_EW_SIZECOMPONENTS_REFRESH_ALL', "Osveži sve");
 
 DEFINE('_EW_SIZEDATABASE_TABLE', "Tabela");
-DEFINE('_EW_SIZEDATABASE_SIZE', "Veli�?ina");
+DEFINE('_EW_SIZEDATABASE_SIZE', "Veličina");
 DEFINE('_EW_SIZEDATABASE_1DAY', "1-dnevna promena");
 DEFINE('_EW_SIZEDATABASE_7DAY', "7-dnevna promena");
 DEFINE('_EW_SIZEDATABASE_28DAY', "28-dnevna promena");
@@ -384,7 +384,7 @@ DEFINE('_EW_SIZEDATABASE_TOTAL', "Ukupno:");
 DEFINE('_EW_SIZEMODULES_REFRESH_ALL', "Osveži sve");
 DEFINE('_EW_SIZEMODULES_TOTAL', "Ukupno:");
 DEFINE('_EW_SIZEMODULES_MODULE', "Modul");
-DEFINE('_EW_SIZEMODULES_SIZE', "Veli�?ina");
+DEFINE('_EW_SIZEMODULES_SIZE', "Veličina");
 
 DEFINE('_EW_SIZES_FILES', "Fajlovi &amp; direktorijumi");
 DEFINE('_EW_SIZES_BYTES', "bajtova");
@@ -396,10 +396,10 @@ DEFINE('_EW_SIZES_REFRESH', "Osveži");
 DEFINE('_EW_STATS_FOOTER', "ExtraWatch &copy;2006-@Godina@ autor CodeGravity.com");
 
 DEFINE('_EW_STATUS_MB', "MB");
-DEFINE('_EW_STATUS_DATABASE', "Veli�?ina tabela u bazi");
+DEFINE('_EW_STATUS_DATABASE', "Veličina tabela u bazi");
 
 
-DEFINE('_EW_DESC_IPINFODB_KEY', "Klju�? mape poslednjih poseta sa ipinfodb.com: <a href='http://www.ipinfodb.com/register.php' target='_blank'>ipinfodb.com</a>");
+DEFINE('_EW_DESC_IPINFODB_KEY', "Ključ mape poslednjih poseta sa ipinfodb.com: <a href='http://www.ipinfodb.com/register.php' target='_blank'>ipinfodb.com</a>");
 DEFINE('_EW_SETTINGS_FORCE_TIMEZONE_OFFSET', "Zahtevaj promenu vremenskih zona");
 
 
@@ -407,42 +407,42 @@ DEFINE('_EW_SETTINGS_FORCE_TIMEZONE_OFFSET', "Zahtevaj promenu vremenskih zona")
 DEFINE('_EW_MENU_UPDATE', "Ažuriranje");
 DEFINE('_EW_MENU_UPDATE_TITLE', "Rezervna kopija i nadogradnja");
 DEFINE('_EW_ADMINHEADER_NA_IN_THIS_VERSION', "Nije dostupno u besplatnoj verziji, proverite karticu sa dozvolama");
-DEFINE('_EW_SPAMWORD_BANS_ENABLED', "Uklju�?eno je banovanje spam re�?i");
-DEFINE('_EW_SPAMWORD_LIST', "Lista spam re�?i");
+DEFINE('_EW_SPAMWORD_BANS_ENABLED', "Uključeno je banovanje spam reči");
+DEFINE('_EW_SPAMWORD_LIST', "Lista spam reči");
 DEFINE('_EW_HIDE_REPETITIVE_TITLE', "Sakrijte nazive koji se ponavaljaju");
 DEFINE('_EW_TRUNCATE_VISITS', "Odsecite posetu");
 DEFINE('_EW_TRUNCATE_STATS', "Odsecite statistiku");
 DEFINE('_EW_TRUNCATE_GOALS', "Odsecite cilj");
-DEFINE('_EW_LIMIT_BOTS', "Ograni�?i botove");
-DEFINE('_EW_LIMIT_VISITORS', "Ograni�?i broj poseta");
+DEFINE('_EW_LIMIT_BOTS', "Ograniči botove");
+DEFINE('_EW_LIMIT_VISITORS', "Ograniči broj poseta");
 DEFINE('_EW_TOOLTIP_WIDTH', "Dužina opisa alatke");
 DEFINE('_EW_TOOLTIP_HEIGHT', "Visina opisa alatke");
 DEFINE('_EW_TOOLTIP_URL', "URL opisa alatke");
 DEFINE('_EW_TOOLTIP_ONCLICK', "Opis alata na klik");
 DEFINE('_EW_IP_STATS', "Statistika IP-a");
-DEFINE('_EW_IPINFODB_KEY', "IP Info DB klju�? ");
+DEFINE('_EW_IPINFODB_KEY', "IP Info DB ključ ");
 DEFINE('_EW_ONLY_LAST_URI', "Samo poslednji URI ");
 
-DEFINE('_EW_FRONTEND_HIDE_LOGO', "Sakrijte logo iz �?eone aplikacije");
-DEFINE('_EW_FRONTEND_NOFOLLOW', "No follow �?eone aplikacije");
-DEFINE('_EW_FRONTEND_NO_BACKLINK', "Bez veza u pozadini u �?eonoj aplikaciji");
-DEFINE('_EW_FRONTEND_USER_LINK', "Lista korisnika �?eone aplikacije");
-DEFINE('_EW_FRONTEND_COUNTRIES_FIRST', "Prvo nazivi država u �?eonoj aplikaciji");
-DEFINE('_EW_FRONTEND_COUNTRIES_NAMES', "Nazivi država �?eone aplikaije");
+DEFINE('_EW_FRONTEND_HIDE_LOGO', "Sakrijte logo iz čeone aplikacije");
+DEFINE('_EW_FRONTEND_NOFOLLOW', "No follow čeone aplikacije");
+DEFINE('_EW_FRONTEND_NO_BACKLINK', "Bez veza u pozadini u čeonoj aplikaciji");
+DEFINE('_EW_FRONTEND_USER_LINK', "Lista korisnika čeone aplikacije");
+DEFINE('_EW_FRONTEND_COUNTRIES_FIRST', "Prvo nazivi država u čeonoj aplikaciji");
+DEFINE('_EW_FRONTEND_COUNTRIES_NAMES', "Nazivi država čeone aplikaije");
 DEFINE('_EW_FRONTEND_COUNTRIES_UPPERCASE', "Nazivi država velikim slovima");
-DEFINE('_EW_FRONTEND_COUNTRIES_FLAGS_FIRST', "Zastave država u �?eonoj aplikaciji prvo");
+DEFINE('_EW_FRONTEND_COUNTRIES_FLAGS_FIRST', "Zastave država u čeonoj aplikaciji prvo");
 DEFINE('_EW_FRONTEND_COUNTRIES_NUM', "Broj zemalja");
 DEFINE('_EW_FRONTEND_COUNTRIES_MAX_COLUMNS', "Maksimalno kolona zemalja");
 DEFINE('_EW_FRONTEND_COUNTRIES_MAX_ROWS', "Maksimalno redova zemalja");
 DEFINE('_EW_FRONTEND_VISITORS_TODAY', "Broj posetioca danas ");
-DEFINE('_EW_FRONTEND_VISITORS_YESTERDAY', "Broj posetioca ju�?e ");
+DEFINE('_EW_FRONTEND_VISITORS_YESTERDAY', "Broj posetioca juče ");
 DEFINE('_EW_FRONTEND_VISITORS_THIS_WEEK', "Broj posetioca ove nedelje ");
 DEFINE('_EW_FRONTEND_VISITORS_LAST_WEEK', "Broj posetioca prošle nedelje ");
 
-DEFINE('_EW_FRONTEND_VISITORS_THIS_MONTH', "Broj posetioca �?eone aplikacije ovog meseca ");
-DEFINE('_EW_FRONTEND_VISITORS_LAST_MONTH', "Broj posetioca �?eone aplikacije prošlog meseca ");
+DEFINE('_EW_FRONTEND_VISITORS_THIS_MONTH', "Broj posetioca čeone aplikacije ovog meseca ");
+DEFINE('_EW_FRONTEND_VISITORS_LAST_MONTH', "Broj posetioca čeone aplikacije prošlog meseca ");
 DEFINE('_EW_FRONTEND_VISITORS_TOTAL', "Sakrij ukupan broj posetioca");
-DEFINE('_EW_FRONTEND_VISITORS_TOTAL_INITIAL	', "Po�?etna ukupna vrednost");
+DEFINE('_EW_FRONTEND_VISITORS_TOTAL_INITIAL	', "Početna ukupna vrednost");
 DEFINE('_EW_HISTORY_MAX_VALUES', "Maksimalne vrednosti evidencije");
 DEFINE('_EW_HISTORY_MAX_DB_RECORDS', "Maksimalno podatka u evidenciji");
 DEFINE('_EW_UPDATE_TIME_VISITS', "Ažuriranje vremena posete");
@@ -451,22 +451,22 @@ DEFINE('_EW_STATS_MAX_ROWS', "Statistika maksimalnih redova");
 DEFINE('_EW_STATS_IP_HITS', "Statistika IP poseta");
 DEFINE('_EW_MAXID_BOTS', "Maksimalno ID botova");
 DEFINE('_EW_MAXID_VISITORS', "Maxid posetioca");
-DEFINE('_EW_STATS_KEEP_DAYS', "Statistiku �?uvati dana ");
+DEFINE('_EW_STATS_KEEP_DAYS', "Statistiku čuvati dana ");
 DEFINE('_EW_CACHE_FRONTEND_COUNTRIES', "Keširaj države ");
 DEFINE('_EW_CACHE_FRONTEND_VISITORS', "Keširaj posetioce ");
 
-DEFINE('_EW_UNINSTALL_KEEP_DATA	', "Deinstaliraj sa�?uvaj podatke");
+DEFINE('_EW_UNINSTALL_KEEP_DATA	', "Deinstaliraj sačuvaj podatke");
 DEFINE('_EW_IGNORE_IP', "Ignoriši IP");
 DEFINE('_EW_IGNORE_URI', "Ignoriši URI");
 DEFINE('_EW_IGNORE_USER', "Ignoriši korisnika");
 DEFINE('_EW_BLOCKING_MESSAGE', "Blokiraj poruku");
-DEFINE('_EW_SERVER_URI_KEY', "Server URI klju�?");
-DEFINE('_EW_FRONTEND_VISITORS_TOTAL_INITIAL', "Ukupna po�?etna vrednost posetioca");
+DEFINE('_EW_SERVER_URI_KEY', "Server URI ključ");
+DEFINE('_EW_FRONTEND_VISITORS_TOTAL_INITIAL', "Ukupna početna vrednost posetioca");
 DEFINE('_EW_SIZEDATABASE_RECORDS', "Podaci");
 /***********EDITs*****************/
 DEFINE('_EW_ANTISPAM_BLOCKING_TEXT', " Da bi blokiranje bilo efektno morate da publikujete ExtraWatch agenta PRE bilo kakvog sadržaja ili obrasca. Npr. na levoj strani vašeg templejta.
                     <br/>
-                    Idite u Modul menadžer -> ExtraWatch agent -> ozna�?ite poziciju levo");
+                    Idite u Modul menadžer -> ExtraWatch agent -> označite poziciju levo");
 
 DEFINE('_EW_EMAIL_SEO_REPORTS', "SEO izveštaji");
 DEFINE('_EW_DESC_EMAIL_SEO_REPORTS_ENABLED', "SEO noćni email izveštaji su omogućeni");

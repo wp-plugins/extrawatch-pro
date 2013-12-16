@@ -7,7 +7,7 @@
  * @version @VERSION@
  * @revision @REVISION@
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
- * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
+ * @copyright (C) @YEAR@ by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
  */
 
@@ -62,7 +62,7 @@ DEFINE('_EW_STATS_LOADING', "kraunama...");
 DEFINE('_EW_STATS_LOADING_WAIT', "kraunama... palaukite");
 DEFINE('_EW_STATS_IP_BLOCKING_TITLE', "Blokavimas IP");
 DEFINE('_EW_STATS_IP_BLOCKING_ENTER', "Įveskite IP rankiniu būdu");
-DEFINE('_EW_STATS_IP_BLOCKING_MANUALLY', "Įveskite IP kurį norite užblokuoti. (pvz. 217.242.11.54 arba 217.* arba 217.242.* blokavimui visų įeinan�?ių)");
+DEFINE('_EW_STATS_IP_BLOCKING_MANUALLY', "Įveskite IP kurį norite užblokuoti. (pvz. 217.242.11.54 arba 217.* arba 217.242.* blokavimui visų įeinančių)");
 DEFINE('_EW_STATS_IP_BLOCKING_TOGGLE', "Iš tiesų blokuoti ");
 DEFINE('_EW_STATS_PANE_LOADING', "Krauname staistiką...");
 
@@ -95,11 +95,11 @@ DEFINE('_EW_SUCCESS', "Operacija sėkminga");
 DEFINE('_EW_RESET_SUCCESS', "Visa statistika sėkmingai sunaikinta");
 DEFINE('_EW_RESET_ERROR', "Duomenys nesunaikinti, kažkas ne taip");
 DEFINE('_EW_CREDITS_TITLE', "Padėkos");
-DEFINE('_EW_TRENDS_DAILY_WEEKLY', "Dienų ir savai�?ių statistika");
+DEFINE('_EW_TRENDS_DAILY_WEEKLY', "Dienų ir savaičių statistika");
 DEFINE('_EW_AJAX_PERMISSION_DENIED_1', "AJAX priėjimas draudžiamas: Prąšome žiūrėti statistiką iš domeno nurodyto faile configuration.php  joomla - ");
 DEFINE('_EW_AJAX_PERMISSION_DENIED_2', "Gal pamiršote www. savo domeno pradžioje. Jūsų javascript bando gauti priėjimą prie ");
 DEFINE('_EW_AJAX_PERMISSION_DENIED_3', "iš");
-DEFINE('_EW_AJAX_PERMISSION_DENIED_4', "šitai ver�?ia jį galvoti kad tai kitas domenas.");
+DEFINE('_EW_AJAX_PERMISSION_DENIED_4', "šitai verčia jį galvoti kad tai kitas domenas.");
 
 // Header.
 DEFINE('_EW_HEADER_DOWNLOAD', "gauti paskutinius atnaujinimus iš");
@@ -154,7 +154,7 @@ DEFINE('_EW_FRONTEND_TOTAL', "Viso");
 
 // Settings description - quite long.
 DEFINE('_EW_DESC_DEBUG', "ExtraWatch derinimo rėžime. Tokiu būdu lengviau surasti programos klaidas.Kad išjungti, pakeiskite kintamajį EXTRAWATCH_DEBUG kuris randasi /components/com_extrawatch/config.php iš 1 į 0");
-DEFINE('_EW_DESC_STATS_MAX_ROWS', "Maksimalus statistikos eilu�?ių kiekis в išskleistame rėžime.");
+DEFINE('_EW_DESC_STATS_MAX_ROWS', "Maksimalus statistikos eilučių kiekis в išskleistame rėžime.");
 DEFINE('_EW_DESC_STATS_IP_HITS', "Visi IP adresai, kurie turi mažiau lankytojų ankstesnėm dienom nei ši reikšmė, bus pašalinti iš IP istorijos.");
 DEFINE('_EW_DESC_STATS_URL_HITS', "Visi URL, kurie turi mažiau lankytojų ankstesnėm dienom nei ši reikšmė, bus pašalinti iš IP istorijos.");
 DEFINE('_EW_DESC_IGNORE_IP', "Galima pašąlinti pasirinktą IP iš statistikos. Kiekvienas adresas turi prasidėti iš naujos eilės. Šituose nustatymuose galite naudoti grupinius simbolius. Pavyzdžiui: 192.* ignoruokite 192.168.51.31, 192.168.16.2, ir t.t ");
@@ -170,15 +170,15 @@ DEFINE('_EW_DESC_STATS_KEEP_DAYS', "Dienų laikyti statistiką duomenų bazėje,
 DEFINE('_EW_DESC_TIMEZONE_OFFSET', "Kada jūs randatės skirtingose laiko juostose su savo xost-serveriu. (teigiama arba  neigiama reikšmė)");
 DEFINE('_EW_DESC_WEEK_OFFSET', "savaitės kompensacija, kintamojo šablonas/(3600*24*7) prasideda nuo savaitės 1.1.1970, šita kompensacija koreguoja kad pradėti nuo pirmadienio");
 DEFINE('_EW_DESC_DAY_OFFSET', "Dienos kompensacija, kintamojo šablonas/(3600*24*7) prasideda nuo dienos 1.1.1970, šita kompensacija koreguoja kad pradėti nuo 00:00");
-DEFINE('_EW_DESC_FRONTEND_HIDE_LOGO', "Naudoti tuš�?ią piktogramą 1x1px icon frontende vietoje ženklelio ExtraWatch");
+DEFINE('_EW_DESC_FRONTEND_HIDE_LOGO', "Naudoti tuščią piktogramą 1x1px icon frontende vietoje ženklelio ExtraWatch");
 DEFINE('_EW_DESC_IP_STATS', "Dėl IP adresų statistikos įjungimo. Kai kuriose valstybėse uždrausta laikyti IP adresus duomenų bazėse.Naudokite pagal savo atsakomybe.");
-DEFINE('_EW_DESC_HIDE_ADS', "Šitas nustatymas paslepia reklaminį bloką backende, išjunkite jeigu isai atsibodo. neišjungdami jūs palaikote produktą materialiai. Dideli a�?ių kad neišjungiate");
+DEFINE('_EW_DESC_HIDE_ADS', "Šitas nustatymas paslepia reklaminį bloką backende, išjunkite jeigu isai atsibodo. neišjungdami jūs palaikote produktą materialiai. Dideli ačių kad neišjungiate");
 DEFINE('_EW_DESC_TOOLTIP_ONCLICK', "nuimkite varnelę jeigu norite kad informacinis langas pelės užvedimu išsiskleistų, arba palikite varnelę kad paspaudus pele langas išsiskleistų.");
 DEFINE('_EW_DESC_SERVER_URI_KEY', "Pagal nutylėjimą tai 'REDIRECT_URL', tai normalu jeigu jūs naudojate perrašymą URL (sef), gali būti pakeista į 'SCRIPT_URL' jeigu naudoti loga tiktai dėl index.php");
 DEFINE('_EW_DESC_BLOCKING_MESSAGE', "Pranešimas kurį matys vartotojai kuriuos jūs užblokavote su ExtraWatch.");
 DEFINE('_EW_DESC_TOOLTIP_WIDTH', "Plotis popup lango su papild. info");
 DEFINE('_EW_DESC_TOOLTIP_HEIGHT', "Aukštis popup lango su papild. info");
-DEFINE('_EW_DESC_TOOLTIP_URL', "Jūs galite �?ia įvesti paieškos sistemos URL Whois, lankytojų IP vizualizacijai.{ip} pasikeis į lankytojo ip knopkės paspaudimu papild.info. Pavyzdžiui http://somewebsite.com/query?iplookup={ip} Pagal nutylėjimą tai http://www.netip.de/search?query={ip}");
+DEFINE('_EW_DESC_TOOLTIP_URL', "Jūs galite čia įvesti paieškos sistemos URL Whois, lankytojų IP vizualizacijai.{ip} pasikeis į lankytojo ip knopkės paspaudimu papild.info. Pavyzdžiui http://somewebsite.com/query?iplookup={ip} Pagal nutylėjimą tai http://www.netip.de/search?query={ip}");
 DEFINE('_EW_DESC_IGNORE_URI', "Jųs galite pasirinkti tipą URI kuris bus ignoruojamas statistikoje.  Jūs galite naudoti pakaitos simbolius (* и ?) . Pavyzdžiui.: /freel?n* arba /guestbook, arba /kokia nors svarbi direktorija_dir/do_not_log_this.html, arba netgi .php kad išskirti .php failus");
 DEFINE('_EW_DESC_GOALS_NAME', "Spec užduoties įvardinimas. Ji bus matoma statistikoje.");
 DEFINE('_EW_DESC_GOALS_URI_CONDITION', "Viskas kas po jūsų domeno vardo. Dėl http://www.codegravity.com/projects/  URI tai: /projects/ (Pavz: <b>/projects*</b>)");
@@ -191,8 +191,8 @@ DEFINE('_EW_DESC_GOALS_USERNAME_CONDITION', "Prisijungusio vartotojo vardas. (Pa
 DEFINE('_EW_DESC_GOALS_IP_CONDITION', "IP iš kurio perėjo vartotojas: (Pvz: <b>201.9?.*.*</b>)");
 DEFINE('_EW_DESC_GOALS_CAME_FROM_CONDITION', "URL iš kurio perėjo vartotojas. (Pvz: <b>*www.google.*</b>)");
 DEFINE('_EW_DESC_GOALS_REDIRECT', "Vartotojas persikels į jūsų nurodytą URL. turi žymiai didesnį prioritetą nei 'blokavimas': (pvz: <b>http://www.codegravity.com/goaway.html</b>)");
-DEFINE('_EW_DESC_TRUNCATE_GOALS', "Kiek ženklų sutrumpinti užduo�?ių lentelėje");
-DEFINE('_EW_DESC_FRONTEND_NO_BACKLINK', "Nuoroda į codegravity.com, galite išjungti , bet męs prąšome palikti. A�?iū");
+DEFINE('_EW_DESC_TRUNCATE_GOALS', "Kiek ženklų sutrumpinti užduočių lentelėje");
+DEFINE('_EW_DESC_FRONTEND_NO_BACKLINK', "Nuoroda į codegravity.com, galite išjungti , bet męs prąšome palikti. Ačiū");
 DEFINE('_EW_DESC_FRONTEND_COUNTRIES', "Vėliavų rodymas и Lankytojų šalių procentinis santykis frontende. Jeigu pakeista, reikšmės pasikeis tiktai praėjus laikui nurodytam CACHE_FRONTEND_ ");
 DEFINE('_EW_DESC_FRONTEND_COUNTRIES_FIRST', "Jeigu norite pakeisti eilių poziciją  Lankytojai/Šalys modulyje frontend. Nuimkite varnelę, ir vartotojai bus rodomi pirmi.");
 DEFINE('_EW_DESC_FRONTEND_COUNTRIES_NUM', "Šalių kiekis rodomas frontende");
@@ -207,7 +207,7 @@ DEFINE('_EW_DESC_FRONTEND_VISITORS_THIS_MONTH', "Lankytojų kiekio rodymas front
 DEFINE('_EW_DESC_FRONTEND_VISITORS_LAST_MONTH', "Lankytojų kiekio rodymas frontende dėl: Praėjusio mėnesio. Jeigu pakeista, reikšmės pasikeis tiktai praėjus laikui nurodytam CACHE_FRONTEND_...");
 DEFINE('_EW_DESC_FRONTEND_VISITORS_TOTAL', "Lankytojų kiekio rodymas frontende: Viso. Jeigu pakeista, reikšmės pasikeis tiktai praėjus laikui nurodytam CACHE_FRONTEND_...");
 DEFINE('_EW_DESC_LANGUAGE', "Naudojamas kalbos failas. Failas randasi /components/com_extrawatch/lang/ Galite pakeisti jį ir pervardinti į Albanų pvz.");
-DEFINE('_EW_DESC_GOALS', "Spec užduotys leidžia jums nustatyti specialius parametrus. Kada parametrai užduoti, spec užduo�?ių skaitliukas didės. tokiu būdu jūs galite kontroliuoti, ar apsilankė vartotojas nustatytame URL, išsiuntė nustatytą reikšmę, turi nustatytą vartotojo vardą ar perėjo iš nustatyto adreso. Jūs galite užblokuoti arba peradresuoti tokius vartotojus į betkurį kitą URL.");
+DEFINE('_EW_DESC_GOALS', "Spec užduotys leidžia jums nustatyti specialius parametrus. Kada parametrai užduoti, spec užduočių skaitliukas didės. tokiu būdu jūs galite kontroliuoti, ar apsilankė vartotojas nustatytame URL, išsiuntė nustatytą reikšmę, turi nustatytą vartotojo vardą ar perėjo iš nustatyto adreso. Jūs galite užblokuoti arba peradresuoti tokius vartotojus į betkurį kitą URL.");
 DEFINE('_EW_DESC_GOALS_INSERT', "Visuose srityse išskyrus pavadinimą Jūs galite naudoti * ir? kaip pakaitos simbolius. Pavyzdžiui:?ear (atitiks: near, tear, ..), p*r (atitiks: pr, peer, pear ..)");
 DEFINE('_EW_DESC_GOALS_BLOCK', "Nustatykite 1, jeigu jūs norite, kad lankytojas būtų užblokuotas.Jis nematys likusios turinio dalies, tiktai pranešimus, kad isai buvo užblokuotas - be jokios peradresacijos, ir jo IP pridėtas 'blokavimas' statistikoje (Pavyzdžiui:<b>1</b> )");
 
@@ -391,7 +391,7 @@ DEFINE('_EW_SIZES_MB', "MB");
 DEFINE('_EW_SIZES_GB', "GB");
 DEFINE('_EW_SIZES_REFRESH', "Refresh");
 
-DEFINE('_EW_STATS_FOOTER', "ExtraWatch &copy;2006-2013 by CodeGravity.com");
+DEFINE('_EW_STATS_FOOTER', "ExtraWatch &copy;2006-%s by CodeGravity.com");
 
 DEFINE('_EW_STATUS_MB', "MB");
 

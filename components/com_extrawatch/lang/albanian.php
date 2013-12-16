@@ -7,7 +7,7 @@
  * @version @VERSION@
  * @revision @REVISION@
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
- * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
+ * @copyright (C) @YEAR@ by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
  */
 
@@ -394,7 +394,7 @@ DEFINE('_EW_SIZES_MB', "MB");
 DEFINE('_EW_SIZES_GB', "GB");
 DEFINE('_EW_SIZES_REFRESH', "Ripërteri");
 
-DEFINE('_EW_STATS_FOOTER', "ExtraWatch &kopje;2006-2013 nga CodeGravity.com");
+DEFINE('_EW_STATS_FOOTER', "ExtraWatch &kopje;2006-%d nga CodeGravity.com");
 
 DEFINE('_EW_STATUS_MB', "MB");
 DEFINE('_EW_STATUS_DATABASE', "Madhësia e tabletave të datadazes");

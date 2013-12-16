@@ -7,7 +7,7 @@
  * @version @VERSION@
  * @revision @REVISION@
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
- * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
+ * @copyright (C) @YEAR@ by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
  */
 
@@ -18,27 +18,27 @@ defined('_JEXEC') or die('Piekļuve liegta');
 // Main Menu.
 DEFINE('_EW_MENU_STATS', "Statistika");
 DEFINE('_EW_MENU_GOALS', "Mērķi");
-DEFINE('_EW_MENU_SETTINGS', "Uzst�?dījumi");
-DEFINE('_EW_MENU_CREDITS', "Izstr�?d�?t�?ji");
+DEFINE('_EW_MENU_SETTINGS', "Uzstādījumi");
+DEFINE('_EW_MENU_CREDITS', "Izstrādātāji");
 DEFINE('_EW_MENU_FAQ', "BUJ");
-DEFINE('_EW_MENU_DOCUMENTATION', "Dokument�?cija");
-DEFINE('_EW_MENU_LICENSE', "No rekl�?m�?m brīva licence");
-DEFINE('_EW_MENU_DONATORS', "Ziedot�?ji");
-DEFINE('_EW_MENU_SUPPORT', "Atbalstiet ExtraWatch un rekl�?mas no administr�?cijas paneļa tiks noņemtas.");
+DEFINE('_EW_MENU_DOCUMENTATION', "Dokumentācija");
+DEFINE('_EW_MENU_LICENSE', "No reklāmām brīva licence");
+DEFINE('_EW_MENU_DONATORS', "Ziedotāji");
+DEFINE('_EW_MENU_SUPPORT', "Atbalstiet ExtraWatch un reklāmas no administrācijas paneļa tiks noņemtas.");
 
 // Left visitors real-time window.
-DEFINE('_EW_VISITS_VISITORS', "Jaun�?kie apmeklēt�?ji");
+DEFINE('_EW_VISITS_VISITORS', "Jaunākie apmeklētāji");
 DEFINE('_EW_VISITS_BOTS', "Boti");
-DEFINE('_EW_VISITS_CAME_FROM', "N�?ca no");
-DEFINE('_EW_VISITS_MODULE_NOT_PUBLISHED', "Jūsu ExtraWatch modulis nav publicēts! Jauna statistika netiek uzskaitīta. Lai to publicētu, ejiet uz Moduļu sekciju un publicējiet to vis�?m lap�?m");
-DEFINE('_EW_VISITS_PANE_LOADING', "Iel�?dē apmeklējumus...");
+DEFINE('_EW_VISITS_CAME_FROM', "Nāca no");
+DEFINE('_EW_VISITS_MODULE_NOT_PUBLISHED', "Jūsu ExtraWatch modulis nav publicēts! Jauna statistika netiek uzskaitīta. Lai to publicētu, ejiet uz Moduļu sekciju un publicējiet to visām lapām");
+DEFINE('_EW_VISITS_PANE_LOADING', "Ielādē apmeklējumus...");
 
 // Right stats window.
 DEFINE('_EW_STATS_TITLE', "Apmeklējumi par nedēļu");
 DEFINE('_EW_STATS_WEEK', "Nedēļa");
 DEFINE('_EW_STATS_THIS_WEEK', "šonedēļ");
-DEFINE('_EW_STATS_UNIQUE', "unik�?li");
-DEFINE('_EW_STATS_LOADS', "iel�?des");
+DEFINE('_EW_STATS_UNIQUE', "unikāli");
+DEFINE('_EW_STATS_LOADS', "ielādes");
 DEFINE('_EW_STATS_HITS', "hiti");
 DEFINE('_EW_STATS_TODAY', "šodien");
 DEFINE('_EW_STATS_FOR', "par");
@@ -47,70 +47,70 @@ DEFINE('_EW_STATS_EXPAND', "izvērst");
 DEFINE('_EW_STATS_COLLAPSE', "sakļaut");
 DEFINE('_EW_STATS_URI', "Lapas");
 DEFINE('_EW_STATS_COUNTRY', "Valstis");
-DEFINE('_EW_STATS_USERS', "Lietot�?ji");
-DEFINE('_EW_STATS_REFERERS', "Nor�?dīt�?ji");
+DEFINE('_EW_STATS_USERS', "Lietotāji");
+DEFINE('_EW_STATS_REFERERS', "Norādītāji");
 DEFINE('_EW_STATS_IP', "IP");
-DEFINE('_EW_STATS_BROWSER', "P�?rlūki");
+DEFINE('_EW_STATS_BROWSER', "Pārlūki");
 DEFINE('_EW_STATS_OS', "OS");
-DEFINE('_EW_STATS_KEYWORDS', "atslēgas v�?rdi");
+DEFINE('_EW_STATS_KEYWORDS', "atslēgas vārdi");
 DEFINE('_EW_STATS_GOALS', "Mērķi");
-DEFINE('_EW_STATS_TOTAL', "Kop�?");
+DEFINE('_EW_STATS_TOTAL', "Kopā");
 DEFINE('_EW_STATS_DAILY', "Ikdienas");
 DEFINE('_EW_STATS_DAILY_TITLE', "Ikdienas statistika");
 DEFINE('_EW_STATS_ALL_TIME_TITLE', "Visa laika statistika");
-DEFINE('_EW_STATS_LOADING', "iel�?dē...");
-DEFINE('_EW_STATS_LOADING_WAIT', "iel�?dē... lūdzu uzgaidiet");
+DEFINE('_EW_STATS_LOADING', "ielādē...");
+DEFINE('_EW_STATS_LOADING_WAIT', "ielādē... lūdzu uzgaidiet");
 DEFINE('_EW_STATS_IP_BLOCKING_TITLE', "IP Bloķēšana");
-DEFINE('_EW_STATS_IP_BLOCKING_ENTER', "Ievadīt IP manu�?li");
-DEFINE('_EW_STATS_IP_BLOCKING_MANUALLY', "Ievadīt IP adresi, kuru vēlaties bloķēt. (piemēram, 217.242.11.54 vai 217.* vai 217.242.* lai bloķētu visas IP, kuras atbilst adreses nor�?dītajai daļai)");
-DEFINE('_EW_STATS_IP_BLOCKING_TOGGLE', "Patieš�?m bloķēt ");
-DEFINE('_EW_STATS_PANE_LOADING', "Iel�?dē statistiku...");
+DEFINE('_EW_STATS_IP_BLOCKING_ENTER', "Ievadīt IP manuāli");
+DEFINE('_EW_STATS_IP_BLOCKING_MANUALLY', "Ievadīt IP adresi, kuru vēlaties bloķēt. (piemēram, 217.242.11.54 vai 217.* vai 217.242.* lai bloķētu visas IP, kuras atbilst adreses norādītajai daļai)");
+DEFINE('_EW_STATS_IP_BLOCKING_TOGGLE', "Patiešām bloķēt ");
+DEFINE('_EW_STATS_PANE_LOADING', "Ielādē statistiku...");
 
 // Settings.
-DEFINE('_EW_SETTINGS_TITLE', "Uzst�?dījumi");
+DEFINE('_EW_SETTINGS_TITLE', "Uzstādījumi");
 DEFINE('_EW_SETTINGS_DEFAULT', "Noklusējums");
-DEFINE('_EW_SETTINGS_SAVE', "Saglab�?t");
+DEFINE('_EW_SETTINGS_SAVE', "Saglabāt");
 DEFINE('_EW_SETTINGS_APPEARANCE', "Izskats");
 DEFINE('_EW_SETTINGS_FRONTEND', "Lapas priekšpuse");
 DEFINE('_EW_SETTINGS_HISTORY_PERFORMANCE', "Vēsture un attīstība");
-DEFINE('_EW_SETTINGS_ADVANCED', "Padziļin�?ti");
+DEFINE('_EW_SETTINGS_ADVANCED', "Padziļināti");
 DEFINE('_EW_SETTINGS_IGNORE', "Ignorēt");
 DEFINE('_EW_SETTINGS_BLOCKING', "Bloķēšana");
 DEFINE('_EW_SETTINGS_EXPERT', "Eksperts");
-DEFINE('_EW_SETTINGS_RESET_CONFIRM', "Vai Jūs patieš�?m vēlaties dzēst visu esošo statistiku un ats�?kt uzskaiti no nulles?");
+DEFINE('_EW_SETTINGS_RESET_CONFIRM', "Vai Jūs patiešām vēlaties dzēst visu esošo statistiku un atsākt uzskaiti no nulles?");
 DEFINE('_EW_SETTINGS_RESET_ALL', "Nullēt visu");
-DEFINE('_EW_SETTINGS_RESET_ALL_LINK', "Nullēt visu statistikas un un apmeklēt�?ju datus");
+DEFINE('_EW_SETTINGS_RESET_ALL_LINK', "Nullēt visu statistikas un un apmeklētāju datus");
 DEFINE('_EW_SETTINGS_LANGUAGE', "Valoda");
-DEFINE('_EW_SETTINGS_SAVED', "Uzst�?dījumi saglab�?ti");
+DEFINE('_EW_SETTINGS_SAVED', "Uzstādījumi saglabāti");
 DEFINE('_EW_SETTINGS_ADD_YOUR_IP', "Pievienot savu IP");
 DEFINE('_EW_SETTINGS_TO_THE_LIST', "sarakstam.");
 
 // Other / mostly general.
-DEFINE('_EW_TITLE', "Re�?l�? laika AJAX joomla uzraudzība");
+DEFINE('_EW_TITLE', "Reālā laika AJAX joomla uzraudzība");
 DEFINE('_EW_BACK', "Atpakaļ");
 DEFINE('_EW_ACCESS_DENIED', "Jums nav nepieciešamo atļauju, lai apskatītu šo !");
-DEFINE('_EW_LICENSE_AGREE', "Es piekrītu augst�?k redzamajiem nosacījumiem");
-DEFINE('_EW_LICENSE_CONTINUE', "Turpin�?t");
-DEFINE('_EW_SUCCESS', "Oper�?cija veiksmīga");
+DEFINE('_EW_LICENSE_AGREE', "Es piekrītu augstāk redzamajiem nosacījumiem");
+DEFINE('_EW_LICENSE_CONTINUE', "Turpināt");
+DEFINE('_EW_SUCCESS', "Operācija veiksmīga");
 DEFINE('_EW_RESET_SUCCESS', "Visi statistikas un apmeklējumu dati veiksmīgi dzēsti");
 DEFINE('_EW_RESET_ERROR', "Dati NETIKA veiksmīgi dzēsti, radusies kļūda");
-DEFINE('_EW_CREDITS_TITLE', "Izstr�?d�?t�?ji");
+DEFINE('_EW_CREDITS_TITLE', "Izstrādātāji");
 DEFINE('_EW_TRENDS_DAILY_WEEKLY', "Ikdienas un iknedēļas statistika par");
-DEFINE('_EW_AJAX_PERMISSION_DENIED_1', "AJAX atļaujas liegtas: Lūdzu apskatiet statistiku no domēna, kuru nor�?dīj�?t Joomla configuration.php fail�? - ");
-DEFINE('_EW_AJAX_PERMISSION_DENIED_2', "Iespējams Jūs esiet aizmirsis nor�?dīt www. Jūsu domēna priekš�?. Jūsu javascript cenšas piekļūt ");
+DEFINE('_EW_AJAX_PERMISSION_DENIED_1', "AJAX atļaujas liegtas: Lūdzu apskatiet statistiku no domēna, kuru norādījāt Joomla configuration.php failā - ");
+DEFINE('_EW_AJAX_PERMISSION_DENIED_2', "Iespējams Jūs esiet aizmirsis norādīt www. Jūsu domēna priekšā. Jūsu javascript cenšas piekļūt ");
 DEFINE('_EW_AJAX_PERMISSION_DENIED_3', "no");
-DEFINE('_EW_AJAX_PERMISSION_DENIED_4', "kas liek dom�?t, ka tas ir cits domēns.");
+DEFINE('_EW_AJAX_PERMISSION_DENIED_4', "kas liek domāt, ka tas ir cits domēns.");
 
 // Header.
-DEFINE('_EW_HEADER_DOWNLOAD', "Iegūstiet jaun�?ko atjaunin�?juma kodu no");
+DEFINE('_EW_HEADER_DOWNLOAD', "Iegūstiet jaunāko atjauninājuma kodu no");
 DEFINE('_EW_HEADER_CAST_YOUR', "Atdod savu");
 DEFINE('_EW_HEADER_VOTE', "Balsi");
 
 // Tooltips.
 DEFINE('_EW_TOOLTIP_CLICK', "Uzklikšķiniet, lai aplūkotu padomu");
-DEFINE('_EW_TOOLTIP_MOUSE_OVER', "Virziet p�?ri peles kursoru, lai redzētu padomu");
+DEFINE('_EW_TOOLTIP_MOUSE_OVER', "Virziet pāri peles kursoru, lai redzētu padomu");
 DEFINE('_EW_TOOLTIP_YESTERDAY_INCREASE', "vakardienas pieaugums");
-DEFINE('_EW_TOOLTIP_HELP', "Atver tiešsaistes �?rējo palīdzību priekš");
+DEFINE('_EW_TOOLTIP_HELP', "Atver tiešsaistes ārējo palīdzību priekš");
 DEFINE('_EW_TOOLTIP_WINDOW_CLOSE', "Aizvērt šo logu");
 DEFINE('_EW_TOOLTIP_PRINT', "Printēt");
 
@@ -120,8 +120,8 @@ DEFINE('_EW_GOALS_UPDATE', "Atjaunot mērķi nr.");
 DEFINE('_EW_GOALS_ACTION', "Darbība");
 DEFINE('_EW_GOALS_TITLE', "Jauns mērķis");
 DEFINE('_EW_GOALS_NEW', "Jauns mērķis");
-DEFINE('_EW_GOALS_RELOAD', "P�?rl�?dēt");
-DEFINE('_EW_GOALS_ADVANCED', "Padziļin�?ti");
+DEFINE('_EW_GOALS_RELOAD', "Pārlādēt");
+DEFINE('_EW_GOALS_ADVANCED', "Padziļināti");
 DEFINE('_EW_GOALS_NAME', "Nosaukums");
 DEFINE('_EW_GOALS_ID', "id");
 DEFINE('_EW_GOALS_URI_CONDITION', "URI nosacījums");
@@ -130,132 +130,132 @@ DEFINE('_EW_GOALS_GET_CONDITION', "GET nosacījums");
 DEFINE('_EW_GOALS_POST_VAR', "POST Mainīgais");
 DEFINE('_EW_GOALS_POST_CONDITION', "POST Nosacījums");
 DEFINE('_EW_GOALS_TITLE_CONDITION', "Virsraksta nosacījums");
-DEFINE('_EW_GOALS_USERNAME_CONDITION', "Lietot�?jv�?rda nosacījums");
+DEFINE('_EW_GOALS_USERNAME_CONDITION', "Lietotājvārda nosacījums");
 DEFINE('_EW_GOALS_IP_CONDITION', "IP Nosacījums");
-DEFINE('_EW_GOALS_CAME_FROM_CONDITION', "N�?ca no nosacījums");
+DEFINE('_EW_GOALS_CAME_FROM_CONDITION', "Nāca no nosacījums");
 DEFINE('_EW_GOALS_BLOCK', "Bloķēšana");
-DEFINE('_EW_GOALS_REDIRECT', "P�?rsūtīt uz URL");
+DEFINE('_EW_GOALS_REDIRECT', "Pārsūtīt uz URL");
 DEFINE('_EW_GOALS_HITS', "Hiti");
 DEFINE('_EW_GOALS_ENABLED', "Ieslēgts");
 DEFINE('_EW_GOALS_EDIT', "Labot");
 DEFINE('_EW_GOALS_DELETE', "Dzēst");
-DEFINE('_EW_GOALS_DELETE_CONFIRM', "Jūs zaudēsiet visu pēdējo statistiku, kas attiec�?s uz šo mērķi. Jūs tieš�?m vēlaties dzēst mērķi nr.");
+DEFINE('_EW_GOALS_DELETE_CONFIRM', "Jūs zaudēsiet visu pēdējo statistiku, kas attiecās uz šo mērķi. Jūs tiešām vēlaties dzēst mērķi nr.");
 
 // Frontend.
 DEFINE('_EW_FRONTEND_COUNTRIES', "Valstis");
-DEFINE('_EW_FRONTEND_VISITORS', "Apmeklēt�?ji");
+DEFINE('_EW_FRONTEND_VISITORS', "Apmeklētāji");
 DEFINE('_EW_FRONTEND_TODAY', "Šodien");
 DEFINE('_EW_FRONTEND_YESTERDAY', "Vakardien");
 DEFINE('_EW_FRONTEND_THIS_WEEK', "Šonedēļ");
-DEFINE('_EW_FRONTEND_LAST_WEEK', "Pag�?jušonedēļ");
+DEFINE('_EW_FRONTEND_LAST_WEEK', "Pagājušonedēļ");
 DEFINE('_EW_FRONTEND_THIS_MONTH', "Šomēnes");
-DEFINE('_EW_FRONTEND_LAST_MONTH', "Pag�?jušo mēnes");
-DEFINE('_EW_FRONTEND_TOTAL', "Kop�?");
+DEFINE('_EW_FRONTEND_LAST_MONTH', "Pagājušo mēnes");
+DEFINE('_EW_FRONTEND_TOTAL', "Kopā");
 
 // Settings description - quite long.
-DEFINE('_EW_DESC_DEBUG', "ExtraWatch ir atkļūdošanas režīm�?. š�?di Jūs variet atkl�?t kļūdu cēloņus. Lai atslēgtu šo režīmu nomainiet EXTRAWATCH_DEBUG vērtību /components/com_extrawatch/config.php fail�? no 1 uz 0");
-DEFINE('_EW_DESC_STATS_MAX_ROWS', "Maksim�?lais attēlojamo rindiņu skaits, kad statistika tiek r�?dīta izvērst�? režīm�?.");
-DEFINE('_EW_DESC_STATS_IP_HITS', "Visas IP adreses, kuras iepriekšēj�?s dien�?s ir apmeklējušas lapu maz�?k reižu nek�? nor�?dīt�? vērtība, tiks dzēstas no IP adrešu vēstures.");
-DEFINE('_EW_DESC_STATS_URL_HITS', "Visi URL, kuri iepriekšēj�?s dien�?s ir apmeklēti maz�?k reižu nek�? nor�?dīt�? vērtība, tiks dzēsti no IP adrešu vēstures.");
-DEFINE('_EW_DESC_IGNORE_IP', "Neiekļaut atsevišķas IP adreses statistik�?. Katru rakstiet jaun�? rindiņ�?. Jūs variet izmantot daļējas IP adreses (wildcards), lai nor�?dītu liel�?ku adrešu apgabalu. <br/>Piemēram, 192.* neiekļaus adreses 192.168.51.31, 192.168.16.2, utt..");
-DEFINE('_EW_DESC_UPDATE_TIME_VISITS', "Apmeklēt�?ju statistikas atjaunošanas interv�?ls milisekundēs, noklusējums ir 2000, esiet uzmanīgs ar šo vērtību. Tad p�?rl�?dējiet ExtraWatch komponenta lappusi.");
-DEFINE('_EW_DESC_UPDATE_TIME_STATS', "Statistikas atjaunošanas interv�?ls milisekundēs, noklusējums ir 4000, esiet uzmanīgs ar šo vērtību. Tad p�?rl�?dējiet ExtraWatch komponenta lappusi");
-DEFINE('_EW_DESC_MAXID_BOTS', "Cik botu apmeklējumus glab�?t datub�?zē.");
-DEFINE('_EW_DESC_MAXID_VISITORS', "Cik daudz re�?lo apmeklējumu glab�?t datub�?zē.");
-DEFINE('_EW_DESC_LIMIT_BOTS', "Cik daudz botu Jūs redzēsiet administr�?cijas panelī.");
-DEFINE('_EW_DESC_LIMIT_VISITORS', "Cik daudz re�?lu apmeklējumu Jūs redzēsiet administr�?cijas panelī.");
-DEFINE('_EW_DESC_TRUNCATE_VISITS', "Maksim�?lais simbolu skaits, kuru r�?dīt nosaukumos un adresēs.");
-DEFINE('_EW_DESC_TRUNCATE_STATS', "Maksim�?lais simbolu skaits, kuru r�?dīt labaj�? statistikas panelī.");
-DEFINE('_EW_DESC_STATS_KEEP_DAYS', "Cik dienas glab�?t statistiku datub�?zē, 0 = bezgalīgi ilgi.");
-DEFINE('_EW_DESC_TIMEZONE_OFFSET', "Kad Jūs atrodieties cit�? laika josl�? k�? Jūsu serveris. (pozitīva vai negatīva vērtība stund�?s)");
-DEFINE('_EW_DESC_WEEK_OFFSET', "Nedēļas kompens�?cija, laika šablons/(3600*24*7) s�?kas ar nedēļu 1.1.1970, šī kompens�?cija veic korekciju, lai nedēļa s�?ktos ar pirmdienu");
-DEFINE('_EW_DESC_DAY_OFFSET', "Dienas kompens�?cija, laika šablons/(3600*24) s�?kas ar dienu 1.1.1970, šī kompens�?cija veic korekciju, lai diena s�?ktos ar 00:00");
-DEFINE('_EW_DESC_FRONTEND_HIDE_LOGO', "Lai izmantotu tukšu 1x1px ikonu m�?jaslap�?");
-DEFINE('_EW_DESC_IP_STATS', "Lai ieslēgtu IP adrešu statistiku. Daž�?s valstīs ilgu laiku turēt IP adreses datub�?zēs ir aizliegts ar likumu. Izmantojiet uz savu atbildību.");
-DEFINE('_EW_DESC_HIDE_ADS', "Šis uzst�?dījums noslēpj administr�?cijas panelī redzam�?s rekl�?mas, ja t�?s krīt Jums uz nerviem. Atst�?jot t�?s, Jūs atbalstiet turpm�?ku šī rīka izstr�?di. Paldies Jums.");
-DEFINE('_EW_DESC_TOOLTIP_ONCLICK', "Izķeksējiet, ja Jūs padomus vēlaties apskatīt p�?rvietojot tiem p�?ri peles kursoru, nevis spiežot uz tiem.");
-DEFINE('_EW_DESC_SERVER_URI_KEY', "Noklusējums ir 'REDIRECT_URL', kurš ir standarts, ja Jūs izmantojiet url p�?rrakstīšanu, to var uzst�?dīt arī k�? 'SCRIPT_URL', ja tas veido statistiku tikai par index.php lapas apmeklējumiem");
-DEFINE('_EW_DESC_BLOCKING_MESSAGE', "Ziņa, kura tiek r�?dīta bloķētajiem lietot�?jiem, k�? arī iemesls, k�?pēc šis konkrētais lietot�?js ir ticis bloķēts.");
+DEFINE('_EW_DESC_DEBUG', "ExtraWatch ir atkļūdošanas režīmā. šādi Jūs variet atklāt kļūdu cēloņus. Lai atslēgtu šo režīmu nomainiet EXTRAWATCH_DEBUG vērtību /components/com_extrawatch/config.php failā no 1 uz 0");
+DEFINE('_EW_DESC_STATS_MAX_ROWS', "Maksimālais attēlojamo rindiņu skaits, kad statistika tiek rādīta izvērstā režīmā.");
+DEFINE('_EW_DESC_STATS_IP_HITS', "Visas IP adreses, kuras iepriekšējās dienās ir apmeklējušas lapu mazāk reižu nekā norādītā vērtība, tiks dzēstas no IP adrešu vēstures.");
+DEFINE('_EW_DESC_STATS_URL_HITS', "Visi URL, kuri iepriekšējās dienās ir apmeklēti mazāk reižu nekā norādītā vērtība, tiks dzēsti no IP adrešu vēstures.");
+DEFINE('_EW_DESC_IGNORE_IP', "Neiekļaut atsevišķas IP adreses statistikā. Katru rakstiet jaunā rindiņā. Jūs variet izmantot daļējas IP adreses (wildcards), lai norādītu lielāku adrešu apgabalu. <br/>Piemēram, 192.* neiekļaus adreses 192.168.51.31, 192.168.16.2, utt..");
+DEFINE('_EW_DESC_UPDATE_TIME_VISITS', "Apmeklētāju statistikas atjaunošanas intervāls milisekundēs, noklusējums ir 2000, esiet uzmanīgs ar šo vērtību. Tad pārlādējiet ExtraWatch komponenta lappusi.");
+DEFINE('_EW_DESC_UPDATE_TIME_STATS', "Statistikas atjaunošanas intervāls milisekundēs, noklusējums ir 4000, esiet uzmanīgs ar šo vērtību. Tad pārlādējiet ExtraWatch komponenta lappusi");
+DEFINE('_EW_DESC_MAXID_BOTS', "Cik botu apmeklējumus glabāt datubāzē.");
+DEFINE('_EW_DESC_MAXID_VISITORS', "Cik daudz reālo apmeklējumu glabāt datubāzē.");
+DEFINE('_EW_DESC_LIMIT_BOTS', "Cik daudz botu Jūs redzēsiet administrācijas panelī.");
+DEFINE('_EW_DESC_LIMIT_VISITORS', "Cik daudz reālu apmeklējumu Jūs redzēsiet administrācijas panelī.");
+DEFINE('_EW_DESC_TRUNCATE_VISITS', "Maksimālais simbolu skaits, kuru rādīt nosaukumos un adresēs.");
+DEFINE('_EW_DESC_TRUNCATE_STATS', "Maksimālais simbolu skaits, kuru rādīt labajā statistikas panelī.");
+DEFINE('_EW_DESC_STATS_KEEP_DAYS', "Cik dienas glabāt statistiku datubāzē, 0 = bezgalīgi ilgi.");
+DEFINE('_EW_DESC_TIMEZONE_OFFSET', "Kad Jūs atrodieties citā laika joslā kā Jūsu serveris. (pozitīva vai negatīva vērtība stundās)");
+DEFINE('_EW_DESC_WEEK_OFFSET', "Nedēļas kompensācija, laika šablons/(3600*24*7) sākas ar nedēļu 1.1.1970, šī kompensācija veic korekciju, lai nedēļa sāktos ar pirmdienu");
+DEFINE('_EW_DESC_DAY_OFFSET', "Dienas kompensācija, laika šablons/(3600*24) sākas ar dienu 1.1.1970, šī kompensācija veic korekciju, lai diena sāktos ar 00:00");
+DEFINE('_EW_DESC_FRONTEND_HIDE_LOGO', "Lai izmantotu tukšu 1x1px ikonu mājaslapā");
+DEFINE('_EW_DESC_IP_STATS', "Lai ieslēgtu IP adrešu statistiku. Dažās valstīs ilgu laiku turēt IP adreses datubāzēs ir aizliegts ar likumu. Izmantojiet uz savu atbildību.");
+DEFINE('_EW_DESC_HIDE_ADS', "Šis uzstādījums noslēpj administrācijas panelī redzamās reklāmas, ja tās krīt Jums uz nerviem. Atstājot tās, Jūs atbalstiet turpmāku šī rīka izstrādi. Paldies Jums.");
+DEFINE('_EW_DESC_TOOLTIP_ONCLICK', "Izķeksējiet, ja Jūs padomus vēlaties apskatīt pārvietojot tiem pāri peles kursoru, nevis spiežot uz tiem.");
+DEFINE('_EW_DESC_SERVER_URI_KEY', "Noklusējums ir 'REDIRECT_URL', kurš ir standarts, ja Jūs izmantojiet url pārrakstīšanu, to var uzstādīt arī kā 'SCRIPT_URL', ja tas veido statistiku tikai par index.php lapas apmeklējumiem");
+DEFINE('_EW_DESC_BLOCKING_MESSAGE', "Ziņa, kura tiek rādīta bloķētajiem lietotājiem, kā arī iemesls, kāpēc šis konkrētais lietotājs ir ticis bloķēts.");
 DEFINE('_EW_DESC_TOOLTIP_WIDTH', "Padomu loga platums");
 DEFINE('_EW_DESC_TOOLTIP_HEIGHT', "Padomu loga augstums");
-DEFINE('_EW_DESC_TOOLTIP_URL', "Šeit Jūs variet ievietot jebk�?du URL, lai vizualizētu apmeklēt�?ja IP. {ip} tiks aizvietots ar apmeklēt�?ja IP. Piemēram, http://somewebsite.com/query?iplookup={ip}");
-DEFINE('_EW_DESC_IGNORE_URI', "Jūs variet ievadīt jebk�?du URI, kuru vēlaties neiekļaut kopēj�? statistik�?. Jūs variet izmantot daļējos apzīmējumus (wildcards) (* un ?). Piemēram: /freel?n* ");
-DEFINE('_EW_DESC_GOALS_NAME', "Nor�?diet Mērķa nosaukumu. šo nosaukumu Jūs redzēsiet statistik�?.");
+DEFINE('_EW_DESC_TOOLTIP_URL', "Šeit Jūs variet ievietot jebkādu URL, lai vizualizētu apmeklētāja IP. {ip} tiks aizvietots ar apmeklētāja IP. Piemēram, http://somewebsite.com/query?iplookup={ip}");
+DEFINE('_EW_DESC_IGNORE_URI', "Jūs variet ievadīt jebkādu URI, kuru vēlaties neiekļaut kopējā statistikā. Jūs variet izmantot daļējos apzīmējumus (wildcards) (* un ?). Piemēram: /freel?n* ");
+DEFINE('_EW_DESC_GOALS_NAME', "Norādiet Mērķa nosaukumu. šo nosaukumu Jūs redzēsiet statistikā.");
 DEFINE('_EW_DESC_GOALS_URI_CONDITION', "Viss, kas atrodas aiz Jūsu domēna nosaukuma. Priekš http://www.codegravity.com/projects/ URI ir: /projects/ (Piemēram izmantojiet: <b>/projects*</b>)");
-DEFINE('_EW_DESC_GOALS_GET_VAR', "GET mainīgais ir mainīgais, kuru Jūs parasti variet redzēt URL pēc ? zīmes vai &amp; zīmes. Piemēram, http://www.codegravity.com/index.php?<u>name</u>=peter&amp;<u>surname</u>=smith. Šaj�? lauk�? Jūs variet izmantot arī <u>*</u> lai skanētu visas GET vērtības. (Piemēram, izmantojiet: <b>n*me</b>)");
-DEFINE('_EW_DESC_GOALS_GET_CONDITION', "Šeit Jums j�?nor�?da atbilstība k�?dai no iepriekšēj�? lauk�? redzamaj�?m vērtīb�?m. (Piemēram, izmantojiet: <b>p?t*r</b>) ");
-DEFINE('_EW_DESC_GOALS_POST_VAR', "Diezgan līdzīgi, ta�?u mēs p�?rbaud�?m no form�?m iesūtīt�?s vērtības. T�?pēc, ja Jūsu m�?jaslap�? ir forma, kurai ir lauks &lt;input type='text' name='<u>experiences</u>' /&gt;. (Piemēram, izmantojiet: <b>exper*ces</b>)");
-DEFINE('_EW_DESC_GOALS_POST_CONDITION', "Atbilstība POST lauka vērtībai. Piemēram, mēs vēlamies p�?rbaudīt, vai lietot�?jam ir bijusi saskarsme ar JAVA. (Piemēram, izmantojiet: <b>*java*</b>)");
-DEFINE('_EW_DESC_GOALS_TITLE_CONDITION', "Lapas nosaukums, kuram j�?atbilst. (Piemēram, izmantojiet: <b>*freelance programmers*</b>)");
-DEFINE('_EW_DESC_GOALS_USERNAME_CONDITION', "Lietot�?ja v�?rds, kurš ir pieslēdzies. (Piemēram, izmantojiet: <b>psmith*</b>)");
-DEFINE('_EW_DESC_GOALS_IP_CONDITION', "IP adrese no kurienes lietot�?js n�?k: (Piemēram, izmantojiet: <b>201.9?.*.*</b>)");
-DEFINE('_EW_DESC_GOALS_CAME_FROM_CONDITION', "URL no kurienes lietot�?js n�?k. (Piemēram, izmantojiet: <b>*www.google.*</b>)");
-DEFINE('_EW_DESC_GOALS_REDIRECT', "Lietot�?js ir p�?rvietots uz URL pēc Jūsu nor�?dījumiem. Ir augst�?ka priorit�?te k�? 'blocking': (Piemēram, izmantojiet: <b>http://www.codegravity.com/goaway.html</b>)");
-DEFINE('_EW_DESC_TRUNCATE_GOALS', "Cik daudz simbolu ievietot Mērķu tabul�?");
-DEFINE('_EW_DESC_FRONTEND_NO_BACKLINK', "Saite uz codegravity.com, Jūs variet to atslēgt, ta�?u mēs būsim pateicīgi, ja Jūs to atst�?siet. Paldies");
-DEFINE('_EW_DESC_FRONTEND_COUNTRIES', "Attēlot valstu kopējo statistiku m�?jaslapas modulī. Ja mainīts, šis uzst�?dījums mainīsies pēc nor�?dīt�? laika posma uzst�?dījum�? CACHE_FRONTEND_ ");
-DEFINE('_EW_DESC_FRONTEND_COUNTRIES_FIRST', "Ja Jūs vēlaties mainīt Apmeklēt�?ji/Valstis attēlošanas k�?rtību m�?jaslap�?. Izķeksējiet un Apmeklēt�?ji tiks r�?dīti k�? pirmie sarakst�?.");
-DEFINE('_EW_DESC_FRONTEND_COUNTRIES_NUM', "Attēlojamo valstu skaits m�?jaslap�?");
-DEFINE('_EW_DESC_FRONTEND_VISITORS', "Attēlot valstu apmeklēt�?jus m�?jaslap�?. Ja mainīts, šis uzst�?dījums mainīsies pēc nor�?dīt�? laika posma uzst�?dījum�? CACHE_FRONTEND_");
-DEFINE('_EW_DESC_CACHE_FRONTEND_COUNTRIES', "Laiks sekundēs, pēc kura tiks saglab�?ts un m�?jaslap�? attēlots Valstu apmeklējumu kopskaits");
-DEFINE('_EW_DESC_CACHE_FRONTEND_VISITORS', "Laiks sekundēs, pēc kura tiks saglab�?ts un m�?jaslap�? attēlots Apmeklēt�?ju kopskaits");
-DEFINE('_EW_DESC_FRONTEND_VISITORS_TODAY', "Lai r�?dītu m�?jaslap�? apmeklēt�?jus par: šodienu. Ja mainīts, šis uzst�?dījums mainīsies pēc nor�?dīt�? laika posma uzst�?dījum�? CACHE_FRONTEND_...");
-DEFINE('_EW_DESC_FRONTEND_VISITORS_YESTERDAY', "Lai r�?dītu m�?jaslap�? apmeklēt�?jus par: vakardienu. Ja mainīts, šis uzst�?dījums mainīsies pēc nor�?dīt�? laika posma uzst�?dījum�? CACHE_FRONTEND_...");
-DEFINE('_EW_DESC_FRONTEND_VISITORS_THIS_WEEK', "Lai r�?dītu m�?jaslap�? apmeklēt�?jus par: šonedēļu. Ja mainīts, šis uzst�?dījums mainīsies pēc nor�?dīt�? laika posma uzst�?dījum�? CACHE_FRONTEND_...");
-DEFINE('_EW_DESC_FRONTEND_VISITORS_LAST_WEEK', "Lai r�?dītu m�?jaslap�? apmeklēt�?jus par: pag�?jušo nedēļu. Ja mainīts, šis uzst�?dījums mainīsies pēc nor�?dīt�? laika posma uzst�?dījum�? CACHE_FRONTEND_...");
-DEFINE('_EW_DESC_FRONTEND_VISITORS_THIS_MONTH', "Lai r�?dītu m�?jaslap�? apmeklēt�?jus par: šo mēnesi. Ja mainīts, šis uzst�?dījums mainīsies pēc nor�?dīt�? laika posma uzst�?dījum�? CACHE_FRONTEND_...");
-DEFINE('_EW_DESC_FRONTEND_VISITORS_LAST_MONTH', "Lai r�?dītu m�?jaslap�? apmeklēt�?jus par: pag�?jušo mēnesi. Ja mainīts, šis uzst�?dījums mainīsies pēc nor�?dīt�? laika posma uzst�?dījum�? CACHE_FRONTEND_...");
-DEFINE('_EW_DESC_FRONTEND_VISITORS_TOTAL', "Lai r�?dītu kopējo apmeklēt�?ju skaitu kopš ExtraWatch instal�?cijas. Ja mainīts, šis uzst�?dījums mainīsies pēc nor�?dīt�? laika posma uzst�?dījum�? CACHE_FRONTEND_...");
-DEFINE('_EW_DESC_LANGUAGE', "Izmantojamais valodas fails. Tie atrodas /components/com_extrawatch/lang/. Ja Jūs vēlaties izveidot jaunu valodas failu, pirmk�?rt, p�?rbaudiet projekta m�?jaslapu, un, ja tur nav Jums nepieciešam�? tulkojuma, vienk�?rši nokopējiet english.php failu un p�?rsauciet to savas tulkojam�?s valodas nosaukum�?, piemēram, latvian.php un ievietojiet to valodas failu mapē. Pēc tam p�?rtulkojiet visas labaj�? pusē esoš�?s vērtības šaj�? fail�?.");
-DEFINE('_EW_DESC_GOALS', "Mērķi ļauj Jums nor�?dīt specifiskus parametrus. Kad šie parametri atbilst, mērķa skaitīt�?js tiek palielin�?ts. Š�?di Jūs variet p�?rbaudīt, vai lietot�?js ir apmeklējis specifisku URL, izmantojis specifisku vērtību adresē, tam ir specifisks lietot�?ja v�?rds vai arī tas ir n�?cis no specifiskas adreses. Šos lietot�?jus Jūs variet arī bloķēt vai p�?rsūtīt uz specifisku URL.");
-DEFINE('_EW_DESC_GOALS_INSERT', "Visos laukos izņemot v�?rdu Jūs variet izmantot * un ? k�? daļēju vērtību (wildcards) nor�?dīt�?jus. Piemēram: ?upa (atbildīs: zupa, pupa, ..),  l*s (atbildīs: ls, lats, lops ..) ");
-DEFINE('_EW_DESC_GOALS_BLOCK', "Uzst�?diet k�? 1, ja Jūs vēlaties apmeklēt�?ju bloķēt. Viņš neredzēs p�?rējo saturu, tikai ziņu, ka ir bloķēts - viņš netiks p�?rsūtīts, bet pievienots 'blocked' statistikai (Piemēram, izmantojiet: <b>1</b>)");
+DEFINE('_EW_DESC_GOALS_GET_VAR', "GET mainīgais ir mainīgais, kuru Jūs parasti variet redzēt URL pēc ? zīmes vai &amp; zīmes. Piemēram, http://www.codegravity.com/index.php?<u>name</u>=peter&amp;<u>surname</u>=smith. Šajā laukā Jūs variet izmantot arī <u>*</u> lai skanētu visas GET vērtības. (Piemēram, izmantojiet: <b>n*me</b>)");
+DEFINE('_EW_DESC_GOALS_GET_CONDITION', "Šeit Jums jānorāda atbilstība kādai no iepriekšējā laukā redzamajām vērtībām. (Piemēram, izmantojiet: <b>p?t*r</b>) ");
+DEFINE('_EW_DESC_GOALS_POST_VAR', "Diezgan līdzīgi, taču mēs pārbaudām no formām iesūtītās vērtības. Tāpēc, ja Jūsu mājaslapā ir forma, kurai ir lauks &lt;input type='text' name='<u>experiences</u>' /&gt;. (Piemēram, izmantojiet: <b>exper*ces</b>)");
+DEFINE('_EW_DESC_GOALS_POST_CONDITION', "Atbilstība POST lauka vērtībai. Piemēram, mēs vēlamies pārbaudīt, vai lietotājam ir bijusi saskarsme ar JAVA. (Piemēram, izmantojiet: <b>*java*</b>)");
+DEFINE('_EW_DESC_GOALS_TITLE_CONDITION', "Lapas nosaukums, kuram jāatbilst. (Piemēram, izmantojiet: <b>*freelance programmers*</b>)");
+DEFINE('_EW_DESC_GOALS_USERNAME_CONDITION', "Lietotāja vārds, kurš ir pieslēdzies. (Piemēram, izmantojiet: <b>psmith*</b>)");
+DEFINE('_EW_DESC_GOALS_IP_CONDITION', "IP adrese no kurienes lietotājs nāk: (Piemēram, izmantojiet: <b>201.9?.*.*</b>)");
+DEFINE('_EW_DESC_GOALS_CAME_FROM_CONDITION', "URL no kurienes lietotājs nāk. (Piemēram, izmantojiet: <b>*www.google.*</b>)");
+DEFINE('_EW_DESC_GOALS_REDIRECT', "Lietotājs ir pārvietots uz URL pēc Jūsu norādījumiem. Ir augstāka prioritāte kā 'blocking': (Piemēram, izmantojiet: <b>http://www.codegravity.com/goaway.html</b>)");
+DEFINE('_EW_DESC_TRUNCATE_GOALS', "Cik daudz simbolu ievietot Mērķu tabulā");
+DEFINE('_EW_DESC_FRONTEND_NO_BACKLINK', "Saite uz codegravity.com, Jūs variet to atslēgt, taču mēs būsim pateicīgi, ja Jūs to atstāsiet. Paldies");
+DEFINE('_EW_DESC_FRONTEND_COUNTRIES', "Attēlot valstu kopējo statistiku mājaslapas modulī. Ja mainīts, šis uzstādījums mainīsies pēc norādītā laika posma uzstādījumā CACHE_FRONTEND_ ");
+DEFINE('_EW_DESC_FRONTEND_COUNTRIES_FIRST', "Ja Jūs vēlaties mainīt Apmeklētāji/Valstis attēlošanas kārtību mājaslapā. Izķeksējiet un Apmeklētāji tiks rādīti kā pirmie sarakstā.");
+DEFINE('_EW_DESC_FRONTEND_COUNTRIES_NUM', "Attēlojamo valstu skaits mājaslapā");
+DEFINE('_EW_DESC_FRONTEND_VISITORS', "Attēlot valstu apmeklētājus mājaslapā. Ja mainīts, šis uzstādījums mainīsies pēc norādītā laika posma uzstādījumā CACHE_FRONTEND_");
+DEFINE('_EW_DESC_CACHE_FRONTEND_COUNTRIES', "Laiks sekundēs, pēc kura tiks saglabāts un mājaslapā attēlots Valstu apmeklējumu kopskaits");
+DEFINE('_EW_DESC_CACHE_FRONTEND_VISITORS', "Laiks sekundēs, pēc kura tiks saglabāts un mājaslapā attēlots Apmeklētāju kopskaits");
+DEFINE('_EW_DESC_FRONTEND_VISITORS_TODAY', "Lai rādītu mājaslapā apmeklētājus par: šodienu. Ja mainīts, šis uzstādījums mainīsies pēc norādītā laika posma uzstādījumā CACHE_FRONTEND_...");
+DEFINE('_EW_DESC_FRONTEND_VISITORS_YESTERDAY', "Lai rādītu mājaslapā apmeklētājus par: vakardienu. Ja mainīts, šis uzstādījums mainīsies pēc norādītā laika posma uzstādījumā CACHE_FRONTEND_...");
+DEFINE('_EW_DESC_FRONTEND_VISITORS_THIS_WEEK', "Lai rādītu mājaslapā apmeklētājus par: šonedēļu. Ja mainīts, šis uzstādījums mainīsies pēc norādītā laika posma uzstādījumā CACHE_FRONTEND_...");
+DEFINE('_EW_DESC_FRONTEND_VISITORS_LAST_WEEK', "Lai rādītu mājaslapā apmeklētājus par: pagājušo nedēļu. Ja mainīts, šis uzstādījums mainīsies pēc norādītā laika posma uzstādījumā CACHE_FRONTEND_...");
+DEFINE('_EW_DESC_FRONTEND_VISITORS_THIS_MONTH', "Lai rādītu mājaslapā apmeklētājus par: šo mēnesi. Ja mainīts, šis uzstādījums mainīsies pēc norādītā laika posma uzstādījumā CACHE_FRONTEND_...");
+DEFINE('_EW_DESC_FRONTEND_VISITORS_LAST_MONTH', "Lai rādītu mājaslapā apmeklētājus par: pagājušo mēnesi. Ja mainīts, šis uzstādījums mainīsies pēc norādītā laika posma uzstādījumā CACHE_FRONTEND_...");
+DEFINE('_EW_DESC_FRONTEND_VISITORS_TOTAL', "Lai rādītu kopējo apmeklētāju skaitu kopš ExtraWatch instalācijas. Ja mainīts, šis uzstādījums mainīsies pēc norādītā laika posma uzstādījumā CACHE_FRONTEND_...");
+DEFINE('_EW_DESC_LANGUAGE', "Izmantojamais valodas fails. Tie atrodas /components/com_extrawatch/lang/. Ja Jūs vēlaties izveidot jaunu valodas failu, pirmkārt, pārbaudiet projekta mājaslapu, un, ja tur nav Jums nepieciešamā tulkojuma, vienkārši nokopējiet english.php failu un pārsauciet to savas tulkojamās valodas nosaukumā, piemēram, latvian.php un ievietojiet to valodas failu mapē. Pēc tam pārtulkojiet visas labajā pusē esošās vērtības šajā failā.");
+DEFINE('_EW_DESC_GOALS', "Mērķi ļauj Jums norādīt specifiskus parametrus. Kad šie parametri atbilst, mērķa skaitītājs tiek palielināts. Šādi Jūs variet pārbaudīt, vai lietotājs ir apmeklējis specifisku URL, izmantojis specifisku vērtību adresē, tam ir specifisks lietotāja vārds vai arī tas ir nācis no specifiskas adreses. Šos lietotājus Jūs variet arī bloķēt vai pārsūtīt uz specifisku URL.");
+DEFINE('_EW_DESC_GOALS_INSERT', "Visos laukos izņemot vārdu Jūs variet izmantot * un ? kā daļēju vērtību (wildcards) norādītājus. Piemēram: ?upa (atbildīs: zupa, pupa, ..),  l*s (atbildīs: ls, lats, lops ..) ");
+DEFINE('_EW_DESC_GOALS_BLOCK', "Uzstādiet kā 1, ja Jūs vēlaties apmeklētāju bloķēt. Viņš neredzēs pārējo saturu, tikai ziņu, ka ir bloķēts - viņš netiks pārsūtīts, bet pievienots 'blocked' statistikai (Piemēram, izmantojiet: <b>1</b>)");
 
 /* new translations */
 DEFINE('_EW_GOALS_COUNTRY_CONDITION', "Valsts nosacījums");
 DEFINE('_EW_DESC_GOALS_COUNTRY_CONDITION', "2 burtu valsts simbols ar lielajiem burtiem (Piemēram: <b>LV</b>)");
-DEFINE('_EW_STATS_INTERNAL', "Iekšēj�?");
+DEFINE('_EW_STATS_INTERNAL', "Iekšējā");
 DEFINE('_EW_STATS_FROM', "No");
 DEFINE('_EW_STATS_TO', "Līdz");
 DEFINE('_EW_STATS_ADD_TO_GOALS', "Pievienot mērķiem");
 DEFINE('_EW_VISITS_ADD_GOAL_COUNTRY', "Pievienot mērķi šai valstij");
-DEFINE('_EW_MENU_REPORT_BUG', "Ziņot par kļūdu vai jaut�?t pēc uzlabojuma");
+DEFINE('_EW_MENU_REPORT_BUG', "Ziņot par kļūdu vai jautāt pēc uzlabojuma");
 DEFINE('_EW_GOALS_COUNTRY', "Valsts");
 
 
 /* translations 1.2.8b_12 */
-DEFINE('_EW_DESC_FRONTEND_COUNTRIES_UPPERCASE', "Ja Jūs vēlaties, lai m�?jaslap�? vastu nosaukumi tiktu attēloti ar lielajiem burtiem (Piemēram: LATVIJA, LIELBRITĀNIJA nevis Latvija, Lielbrit�?nija)");
-DEFINE('_EW_DESC_CACHE_FRONTEND_USERS', "Laiks sekundēs, pēc kura tiks saglab�?ts un m�?jaslap�? attēlots lietot�?ju kopskaits");
-DEFINE('_EW_DESC_FRONTEND_VISITORS_TOTAL_INITIAL', "Kopskaita s�?kotnēj�? vērtība m�?jaslap�?. Noderīgi, Ja Jūs migrējiet no cita statistikas rīka. (piemēram: 20000). Uzst�?diet 0, ja nevēlaties izmantot šo iespēju.");
-DEFINE('_EW_DESC_IGNORE_USER', "Ignorēt šeit uzr�?dītos lietot�?jus. Katr�? rind�? tikai viens. (Piemēram: janis {line break} juris_*) ");
-DEFINE('_EW_FRONTEND_USERS_MOST', "Šodienas paši aktīv�?kie lietot�?ji no kopējiem ");
-DEFINE('_EW_DESC_SPAMWORD_BANS_ENABLED', "Ieslēgt bloķēšanu pamatojoties uz zem�?k redzamo atslēgas v�?rdu izmantošanu ?");
-DEFINE('_EW_DESC_SPAMWORD_LIST', "Paši izplatīt�?kie SPAMa v�?rdi, kurus izmanto boti. Jūs variet izmantot nepilnos v�?rdus (wildcard) šeit, (Piemēram: ph?rmac*). Ja šī iespēja ir ieslēgta, ExtraWatch p�?rbaudīs vai potenci�?lais uzbrucējs būs pievienojis m�?jaslapai k�?du no šiem v�?rdiem izmantojot formas ( HTTP POST pieprasījums). (Darbojas tikai tad, ja forma iel�?dē Joomla-b�?zētu m�?jaslapu - forumu, koment�?rus, ta�?u ir ļoti efektīva botu bloķēt�?ja, jo tie mēģina izmantot ikvienu pieejamo formu)");
+DEFINE('_EW_DESC_FRONTEND_COUNTRIES_UPPERCASE', "Ja Jūs vēlaties, lai mājaslapā vastu nosaukumi tiktu attēloti ar lielajiem burtiem (Piemēram: LATVIJA, LIELBRITĀNIJA nevis Latvija, Lielbritānija)");
+DEFINE('_EW_DESC_CACHE_FRONTEND_USERS', "Laiks sekundēs, pēc kura tiks saglabāts un mājaslapā attēlots lietotāju kopskaits");
+DEFINE('_EW_DESC_FRONTEND_VISITORS_TOTAL_INITIAL', "Kopskaita sākotnējā vērtība mājaslapā. Noderīgi, Ja Jūs migrējiet no cita statistikas rīka. (piemēram: 20000). Uzstādiet 0, ja nevēlaties izmantot šo iespēju.");
+DEFINE('_EW_DESC_IGNORE_USER', "Ignorēt šeit uzrādītos lietotājus. Katrā rindā tikai viens. (Piemēram: janis {line break} juris_*) ");
+DEFINE('_EW_FRONTEND_USERS_MOST', "Šodienas paši aktīvākie lietotāji no kopējiem ");
+DEFINE('_EW_DESC_SPAMWORD_BANS_ENABLED', "Ieslēgt bloķēšanu pamatojoties uz zemāk redzamo atslēgas vārdu izmantošanu ?");
+DEFINE('_EW_DESC_SPAMWORD_LIST', "Paši izplatītākie SPAMa vārdi, kurus izmanto boti. Jūs variet izmantot nepilnos vārdus (wildcard) šeit, (Piemēram: ph?rmac*). Ja šī iespēja ir ieslēgta, ExtraWatch pārbaudīs vai potenciālais uzbrucējs būs pievienojis mājaslapai kādu no šiem vārdiem izmantojot formas ( HTTP POST pieprasījums). (Darbojas tikai tad, ja forma ielādē Joomla-bāzētu mājaslapu - forumu, komentārus, taču ir ļoti efektīva botu bloķētāja, jo tie mēģina izmantot ikvienu pieejamo formu)");
 DEFINE('_EW_SETTINGS_ANTI_SPAM', "Anti-Spams");
-DEFINE('_EW_DESC_FRONTEND_USER_LINK', "Adrese m�?jaslapas Lietot�?ju sadaļ�? - ļauj Jums nor�?dīt URL, kurš tiks atvērts, kad lietot�?js spiedīs uz lietot�?ja v�?rda. J�?satur rindiņa {user}, kura tiks aizvietota ar re�?lo lietot�?ja v�?rdu. (Piemēram, index.php?option=com_comprofiler&task=userProfile&user={user}) ");
+DEFINE('_EW_DESC_FRONTEND_USER_LINK', "Adrese mājaslapas Lietotāju sadaļā - ļauj Jums norādīt URL, kurš tiks atvērts, kad lietotājs spiedīs uz lietotāja vārda. Jāsatur rindiņa {user}, kura tiks aizvietota ar reālo lietotāja vārdu. (Piemēram, index.php?option=com_comprofiler&task=userProfile&user={user}) ");
 
 /* translations 1.2.11b */
-DEFINE('_EW_STATS_KEYPHRASE', "Atslēgas v�?rdi");
-DEFINE('_EW_DESC_HISTORY_MAX_VALUES', "Maksim�?lo vērtību skaits vēstures sadaļ�? (Piemēram: <i>100</i>)");
+DEFINE('_EW_STATS_KEYPHRASE', "Atslēgas vārdi");
+DEFINE('_EW_DESC_HISTORY_MAX_VALUES', "Maksimālo vērtību skaits vēstures sadaļā (Piemēram: <i>100</i>)");
 
-DEFINE('_EW_DESC_ONLY_LAST_URI', "Apmeklējumu sadaļ�? r�?dīt tikai pēdējo apmeklēto lapu nevis visas");
-DEFINE('_EW_DESC_HIDE_REPETITIVE_TITLE', "Apmeklējumu sadaļ�? paslēpt atk�?rtojošos lappušu nosaukumus");
-DEFINE('_EW_DESC_HISTORY_MAX_DB_RECORDS', "Maksim�?lais apmeklēt�?ju skaits, kuru glab�?t datub�?zē priekš Ameklējumu Vēstures. Esiet uzmanīgi ar šo iestatījumu, ja Jums ir augsts apmeklēt�?ju skaits, šis skaitlis var augt ļoti �?tri. Vienmēr p�?rbaudiet vēstures tabulas izmēru Statusa sadaļ�?");
-DEFINE('_EW_DESC_UNINSTALL_KEEP_DATA', "Paturēt datub�?zes tabulas pēc atinstalēšanas. Atzīmējiet šo iespēju, ja Jūs veicat versijas atjaunin�?šanu un vēlaties saglab�?t iepriekšējos datus.");
+DEFINE('_EW_DESC_ONLY_LAST_URI', "Apmeklējumu sadaļā rādīt tikai pēdējo apmeklēto lapu nevis visas");
+DEFINE('_EW_DESC_HIDE_REPETITIVE_TITLE', "Apmeklējumu sadaļā paslēpt atkārtojošos lappušu nosaukumus");
+DEFINE('_EW_DESC_HISTORY_MAX_DB_RECORDS', "Maksimālais apmeklētāju skaits, kuru glabāt datubāzē priekš Ameklējumu Vēstures. Esiet uzmanīgi ar šo iestatījumu, ja Jums ir augsts apmeklētāju skaits, šis skaitlis var augt ļoti ātri. Vienmēr pārbaudiet vēstures tabulas izmēru Statusa sadaļā");
+DEFINE('_EW_DESC_UNINSTALL_KEEP_DATA', "Paturēt datubāzes tabulas pēc atinstalēšanas. Atzīmējiet šo iespēju, ja Jūs veicat versijas atjaunināšanu un vēlaties saglabāt iepriekšējos datus.");
 
 /* email reports */
 DEFINE('_EW_DESC_EMAIL_REPORTS_ENABLED', "Katru nakti Jūs saņemsiet e-pastu ar atskaiti par iepriekšējo dienu, kuru varēsiet no rīta izlasīt.");
 DEFINE('_EW_DESC_EMAIL_REPORTS_ADDRESS', "E-pasta adrese, uz kuru atskaites nosūtīt");
-DEFINE('_EW_DESC_EMAIL_PERCENT_HIGHER_THAN', "E-pasta atskaitē iekļaut tikai t�?s rindas, kuras ir procentu�?li liel�?kas par {value}. Uzst�?diet 0, ja nevēlaties izmantot šo iespēju <i>(piemēram: 5)</i>");
-DEFINE('_EW_DESC_EMAIL_ONE_DAY_CHANGE_POSITIVE', "Iekļaut tikai <b>vienas pozitīvas dienas</b> izmaiņas e-pasta atskaitē, kuras augst�?kas par {value} procentiem. Uzst�?diet 0, ja nevēlaties izmantot šo iespēju <i>(piemēram: 5)</i>");
-DEFINE('_EW_DESC_EMAIL_ONE_DAY_CHANGE_NEGATIVE', "Iekļaut tikai <b>vienas negatīvas dienas</b> izmaiņas e-pasta atskaitē, kuras zem�?kas par {value} procentiem. Uzst�?diet 0, ja nevēlaties izmantot šo iespēju <i>(piemēram: -10)</i>");
-DEFINE('_EW_DESC_EMAIL_SEVEN_DAY_CHANGE_POSITIVE', "Iekļaut tikai <b>septiņu pozitīvu dienu</b> izmaiņas e-pasta atskaitē, kuras augst�?kas par {value} procentiem. Uzst�?diet 0, ja nevēlaties izmantot šo iespēju <i>(piemēram: 2)</i>");
-DEFINE('_EW_DESC_EMAIL_SEVEN_DAY_CHANGE_NEGATIVE', "Iekļaut tikai <b>septiņu negatīvu dienu</b> izmaiņas e-pasta atskaitē, kuras zem�?kas par {value} procentiem. Uzst�?diet 0, ja nevēlaties izmantot šo iespēju <i>(piemēram: -13)</i>");
-DEFINE('_EW_DESC_EMAIL_TWENTY_EIGHT_DAY_CHANGE_POSITIVE', "Iekļaut tikai <b>trīsdesmit pozitīvu dienu</b> izmaiņas e-pasta atskaitē, kuras augst�?kas par {value} procentiem. Uzst�?diet 0, ja nevēlaties izmantot šo iespēju <i>(piemēram: 2)</i>");
-DEFINE('_EW_DESC_EMAIL_TWENTY_EIGHT_DAY_CHANGE_NEGATIVE', "Iekļaut tikai <b>trīsdesmit negatīvu dienu</b> izmaiņas e-pasta atskaitē, kuras zem�?kas par {value} procentiem. Uzst�?diet 0, ja nevēlaties izmantot šo iespēju <i>(piemēram: -13)</i>");
+DEFINE('_EW_DESC_EMAIL_PERCENT_HIGHER_THAN', "E-pasta atskaitē iekļaut tikai tās rindas, kuras ir procentuāli lielākas par {value}. Uzstādiet 0, ja nevēlaties izmantot šo iespēju <i>(piemēram: 5)</i>");
+DEFINE('_EW_DESC_EMAIL_ONE_DAY_CHANGE_POSITIVE', "Iekļaut tikai <b>vienas pozitīvas dienas</b> izmaiņas e-pasta atskaitē, kuras augstākas par {value} procentiem. Uzstādiet 0, ja nevēlaties izmantot šo iespēju <i>(piemēram: 5)</i>");
+DEFINE('_EW_DESC_EMAIL_ONE_DAY_CHANGE_NEGATIVE', "Iekļaut tikai <b>vienas negatīvas dienas</b> izmaiņas e-pasta atskaitē, kuras zemākas par {value} procentiem. Uzstādiet 0, ja nevēlaties izmantot šo iespēju <i>(piemēram: -10)</i>");
+DEFINE('_EW_DESC_EMAIL_SEVEN_DAY_CHANGE_POSITIVE', "Iekļaut tikai <b>septiņu pozitīvu dienu</b> izmaiņas e-pasta atskaitē, kuras augstākas par {value} procentiem. Uzstādiet 0, ja nevēlaties izmantot šo iespēju <i>(piemēram: 2)</i>");
+DEFINE('_EW_DESC_EMAIL_SEVEN_DAY_CHANGE_NEGATIVE', "Iekļaut tikai <b>septiņu negatīvu dienu</b> izmaiņas e-pasta atskaitē, kuras zemākas par {value} procentiem. Uzstādiet 0, ja nevēlaties izmantot šo iespēju <i>(piemēram: -13)</i>");
+DEFINE('_EW_DESC_EMAIL_TWENTY_EIGHT_DAY_CHANGE_POSITIVE', "Iekļaut tikai <b>trīsdesmit pozitīvu dienu</b> izmaiņas e-pasta atskaitē, kuras augstākas par {value} procentiem. Uzstādiet 0, ja nevēlaties izmantot šo iespēju <i>(piemēram: 2)</i>");
+DEFINE('_EW_DESC_EMAIL_TWENTY_EIGHT_DAY_CHANGE_NEGATIVE', "Iekļaut tikai <b>trīsdesmit negatīvu dienu</b> izmaiņas e-pasta atskaitē, kuras zemākas par {value} procentiem. Uzstādiet 0, ja nevēlaties izmantot šo iespēju <i>(piemēram: -13)</i>");
 
-DEFINE('_EW_DESC_FRONTEND_NOFOLLOW', "<b>(funkcionējošs PRO versij�?)</b> Ieslēgt šo iespēju, ja vēlaties, lai logo adrese tiktu renderēta ar atribūtu rel='nofollow' ");
-DEFINE('_EW_DESC_EMAIL_NAME_TRUNCATE', "Maksim�?lais simbolu skaits e-pasta rindas nosaukum�?. Izmainiet šo, ja Jūsu e-pasta klienta ziņojuma logs ir p�?r�?k mazs");
+DEFINE('_EW_DESC_FRONTEND_NOFOLLOW', "<b>(funkcionējošs PRO versijā)</b> Ieslēgt šo iespēju, ja vēlaties, lai logo adrese tiktu renderēta ar atribūtu rel='nofollow' ");
+DEFINE('_EW_DESC_EMAIL_NAME_TRUNCATE', "Maksimālais simbolu skaits e-pasta rindas nosaukumā. Izmainiet šo, ja Jūsu e-pasta klienta ziņojuma logs ir pārāk mazs");
 
 DEFINE('_EW_MENU_HISTORY', "Vēsture");
 DEFINE('_EW_MENU_EMAILS', "E-pasti");
@@ -263,39 +263,39 @@ DEFINE('_EW_MENU_STATUS', "Statuss");
 DEFINE('_EW_DESC_BLOCKED', "Šīs IP adreses ir bloķējis anti-spams");
 
 
-DEFINE('_EW_HISTORY_VISITORS', "Apmeklēt�?ju Vēsture");
-DEFINE('_EW_HISTORY_SHOWING_ONLY', "R�?da tikai pēdējos %d ierakstus.
-                Lai mainītu šo vērtību, ejiet uz Uzst�?dījumiem -&gt; Vēsture &amp; Darbīda -&gt; HISTORY_MAX_DB_RECORDS . Esiet uzmanīgi, šis iestatījums ir atbildīgs par attēlojamo datu iel�?dēšanas �?trumu.  ");
+DEFINE('_EW_HISTORY_VISITORS', "Apmeklētāju Vēsture");
+DEFINE('_EW_HISTORY_SHOWING_ONLY', "Rāda tikai pēdējos %d ierakstus.
+                Lai mainītu šo vērtību, ejiet uz Uzstādījumiem -&gt; Vēsture &amp; Darbīda -&gt; HISTORY_MAX_DB_RECORDS . Esiet uzmanīgi, šis iestatījums ir atbildīgs par attēlojamo datu ielādēšanas ātrumu.  ");
 DEFINE('_EW_MENU_BUG', "Ziņot par kļūdu");
 DEFINE('_EW_MENU_FEATURE', "Pieprasīt papildus iespēju");
 
-DEFINE('_EW_VISITS_CAME_FROM_KEYWORDS', "Atslēgas v�?rdi");
+DEFINE('_EW_VISITS_CAME_FROM_KEYWORDS', "Atslēgas vārdi");
 
 DEFINE('_EW_BLOCKING_UNBLOCK', "atbloķēt");
-DEFINE('_EW_STATS_KEYPHRASE ', "Atslēgas fr�?ze");
-DEFINE('_EW_STATUS_DATABASE', "Datub�?zes statuss");
+DEFINE('_EW_STATS_KEYPHRASE ', "Atslēgas frāze");
+DEFINE('_EW_STATUS_DATABASE', "Datubāzes statuss");
 
 DEFINE('_EW_STATUS_DATABASE_TABLE_NAME', "tabulas nosaukums");
 DEFINE('_EW_STATUS_DATABASE_ROWS', "rindas");
 DEFINE('_EW_STATUS_DATABASE_DATA', "dati");
-DEFINE('_EW_STATUS_DATABASE_TOTAL', "kop�?");
+DEFINE('_EW_STATUS_DATABASE_TOTAL', "kopā");
 
 DEFINE('_EW_EMAIL_REPORTS', "E-pasta Atskaites");
-DEFINE('_EW_EMAIL_REPORT_GENERATED', "Ģenerēt�?s, filtrēt�?s vakardienas e-pasta atsklaites");
+DEFINE('_EW_EMAIL_REPORT_GENERATED', "Ģenerētās, filtrētās vakardienas e-pasta atsklaites");
 DEFINE('_EW_EMAIL_REPORTS_VALUE_FILTERS', "E-pasta Vērtību Filtri");
 DEFINE('_EW_EMAIL_REPORTS_VALUE', "vērtības");
 DEFINE('_EW_EMAIL_REPORTS_PERCENT', "procenti");
 DEFINE('_EW_EMAIL_REPORTS_1DAY_CHANGE', "1-dienas izmaiņas");
 DEFINE('_EW_EMAIL_REPORTS_7DAY_CHANGE', "7-dienu izmaiņas");
 DEFINE('_EW_EMAIL_REPORTS_28DAY_CHANGE', "28-dienu izmaiņas");
-DEFINE('_EW_ANTISPAM_BLOCKED', "ExtraWatch šodien ir bloķējusi %d spameru piekļuves mēģin�?jumus, pavisam: %d");
-DEFINE('_EW_ANTISPAM_ADDRESSES', "Bloķēt�?s IP Adreses");
-DEFINE('_EW_ANTISPAM_SETTINGS', "Anti-Spama Uzst�?dījumi");
-DEFINE('_EW_TRAFFIC_AJAX', "AJAX atjaunin�?jumu plūsma");
+DEFINE('_EW_ANTISPAM_BLOCKED', "ExtraWatch šodien ir bloķējusi %d spameru piekļuves mēģinājumus, pavisam: %d");
+DEFINE('_EW_ANTISPAM_ADDRESSES', "Bloķētās IP Adreses");
+DEFINE('_EW_ANTISPAM_SETTINGS', "Anti-Spama Uzstādījumi");
+DEFINE('_EW_TRAFFIC_AJAX', "AJAX atjauninājumu plūsma");
 
 
 DEFINE('_EW_HISTORY_PREVIOUS', "ipriekšējais");
-DEFINE('_EW_HISTORY_NEXT', "n�?kamais");
+DEFINE('_EW_HISTORY_NEXT', "nākamais");
 
 /** additional translation for 1.2.11 for countries in more rows */
 DEFINE('_EW_DESC_FRONTEND_COUNTRIES_MAX_COLUMNS', "Valstu kolonnu skaits");
@@ -305,16 +305,16 @@ DEFINE('_EW_DESC_FRONTEND_COUNTRIES_FLAGS_FIRST', "Attēlot karogus vispirms, ta
 
 /* ExtraWatch 1.2.14 translations */
 
-DEFINE('_EW_GOALS_GET_INVERSED', "GET invesais st�?voklis");
-DEFINE('_EW_GOALS_POST_INVERSED', "POST invesais st�?voklis");
-DEFINE('_EW_GOALS_TITLE_INVERSED', "Nosaukuma invesais st�?voklis");
-DEFINE('_EW_GOALS_USERNAME_INVERSED', "Lietot�?ja v�?rda invesais st�?voklis");
-DEFINE('_EW_GOALS_CAME_FROM_INVERSED', "N�?ca no invesais st�?voklis ");
+DEFINE('_EW_GOALS_GET_INVERSED', "GET invesais stāvoklis");
+DEFINE('_EW_GOALS_POST_INVERSED', "POST invesais stāvoklis");
+DEFINE('_EW_GOALS_TITLE_INVERSED', "Nosaukuma invesais stāvoklis");
+DEFINE('_EW_GOALS_USERNAME_INVERSED', "Lietotāja vārda invesais stāvoklis");
+DEFINE('_EW_GOALS_CAME_FROM_INVERSED', "Nāca no invesais stāvoklis ");
 
-DEFINE('_EW_STATS_MAP', "Pēdēj�? Apmeklējuma Karte");
-DEFINE('_EW_STATS_MAP_ENTER_KEY', "Lūdzu ievadiet <a href='http://www.ipinfodb.com/register.php' target='_blank'>ipinfodb.com</a> atslēgu, lai attēlotu pēdēj�? apmeklējuma karti:");
-DEFINE('_EW_STATS_MAP_STORE_KEY', "uzglab�?t atslēgu");
-DEFINE('_EW_STATS_MAP_INVALID_KEY', "Lūdzu ievadiet derīgu ipinfodb atslēgu, kuru ieguv�?t no: <a href='http://www.ipinfodb.com/register.php' target='_blank'>ipinfodb.com</a>");
+DEFINE('_EW_STATS_MAP', "Pēdējā Apmeklējuma Karte");
+DEFINE('_EW_STATS_MAP_ENTER_KEY', "Lūdzu ievadiet <a href='http://www.ipinfodb.com/register.php' target='_blank'>ipinfodb.com</a> atslēgu, lai attēlotu pēdējā apmeklējuma karti:");
+DEFINE('_EW_STATS_MAP_STORE_KEY', "uzglabāt atslēgu");
+DEFINE('_EW_STATS_MAP_INVALID_KEY', "Lūdzu ievadiet derīgu ipinfodb atslēgu, kuru ieguvāt no: <a href='http://www.ipinfodb.com/register.php' target='_blank'>ipinfodb.com</a>");
 
 DEFINE('_EW_SIZEQUERY_BAD_REQUEST', "NEDERĪGS PIEPRASĪJUMS: ");
 
@@ -322,29 +322,29 @@ DEFINE('_EW_VISIT_SUBMITED_FIELDS', "Sūtīts no lauki:");
 DEFINE('_EW_VISIT_URL_PARAMETERS', "URL parametri:");
 DEFINE('_EW_VISIT_ADD_PAGE', " Pievienot mērķa lapu");
 DEFINE('_EW_VISIT_BLOCK_IP', " Bloķēt šo IP Adresi");
-DEFINE('_EW_VISIT_SUBMITED_FROM_VARIABLE', " Pievienot šo formas  iesūtīto mainīgo k�? mērķi");
-DEFINE('_EW_VISIT_URL_PARAMETER_GOAL', " Pievienot šo URL parametru k�? mērķi");
+DEFINE('_EW_VISIT_SUBMITED_FROM_VARIABLE', " Pievienot šo formas  iesūtīto mainīgo kā mērķi");
+DEFINE('_EW_VISIT_URL_PARAMETER_GOAL', " Pievienot šo URL parametru kā mērķi");
 
 DEFINE('_EW_TREND_EMPTY', "Tukšs");
 
-DEFINE('_EW_NOT_NUMBER', " UZMANĪBU: Jūsu ievadīt�? vērtība nav skaitlis. ExtraWatch nespēs pareizi darboties!");
-DEFINE('_EW_EVALUATION_LEFT', "&nbsp; Šī ir 15-dienu izmēģin�?juma versija. Atlikušas: <b>%d</b> dienas. Pērciet pilno <a href='http://www.codegravity.com/donate/extrawatch/' target='_blank'>ExtraWatch versiju savam domēnam</a> kur�? iekļauti arī turpm�?kie atjaunin�?jumi.");
-DEFINE('_EW_TRIAL_VERSION_EXPIRED', " Jūsu izmēģin�?juma versijas ir beigusies. Lūdzu ieg�?d�?jieties ExtraWatch");
+DEFINE('_EW_NOT_NUMBER', " UZMANĪBU: Jūsu ievadītā vērtība nav skaitlis. ExtraWatch nespēs pareizi darboties!");
+DEFINE('_EW_EVALUATION_LEFT', "&nbsp; Šī ir 15-dienu izmēģinājuma versija. Atlikušas: <b>%d</b> dienas. Pērciet pilno <a href='http://www.codegravity.com/donate/extrawatch/' target='_blank'>ExtraWatch versiju savam domēnam</a> kurā iekļauti arī turpmākie atjauninājumi.");
+DEFINE('_EW_TRIAL_VERSION_EXPIRED', " Jūsu izmēģinājuma versijas ir beigusies. Lūdzu iegādājieties ExtraWatch");
 
 DEFINE('_EW_CONFIG_LICENSE_ACTIVATED', "Licence sekmīgi aktivizēta. Paldies");
-DEFINE('_EW_CONFIG_LICENCE_DONT_MATCH', "<b>Kļūda: licences atslēga un Jūsu domēns nav atbilstoši.</b><br/>Vai Jūs ievadīj�?t to pašu domēnu aktiviz�?cijas form�?, kuru redziet šeit zem�?k? Lūdzu sazinieties ar mums: support@codegravity.com");
+DEFINE('_EW_CONFIG_LICENCE_DONT_MATCH', "<b>Kļūda: licences atslēga un Jūsu domēns nav atbilstoši.</b><br/>Vai Jūs ievadījāt to pašu domēnu aktivizācijas formā, kuru redziet šeit zemāk? Lūdzu sazinieties ar mums: support@codegravity.com");
 
-DEFINE('_EW_VIEW_ADMINBODY_LONG_MESSAGE', "Ja Jūs redziet šo paziņojumu p�?r�?k ilgi, tad Jūsu nor�?dīt�? m�?jaslapas adrese var būt nepareiza.
+DEFINE('_EW_VIEW_ADMINBODY_LONG_MESSAGE', "Ja Jūs redziet šo paziņojumu pārāk ilgi, tad Jūsu norādītā mājaslapas adrese var būt nepareiza.
                     Atveriet components/com_extrawatch/config.php
-                    noņemiet koment�?ru, un iest�?diet savu re�?lo majaslapas adresi. Piemēram:
+                    noņemiet komentāru, un iestādiet savu reālo majaslapas adresi. Piemēram:
                     define('EXTRAWATCH_LIVE_SITE', 'http://www.codegravity.com');");
 
-DEFINE('_EW_ADMINBODY_LIVE_SITE', "UZMANĪBU: m�?jaslapa Jūsu p�?rlūk�? un lapa konfigur�?cij�?: %s un %s nesakrīt.");
-DEFINE('_EW_ADMINBODY_SET_LIVE_SITE', "Uzst�?diet re�?lo majaslapas adresi k�?: %s un turpiniet...");
+DEFINE('_EW_ADMINBODY_LIVE_SITE', "UZMANĪBU: mājaslapa Jūsu pārlūkā un lapa konfigurācijā: %s un %s nesakrīt.");
+DEFINE('_EW_ADMINBODY_SET_LIVE_SITE', "Uzstādiet reālo majaslapas adresi kā: %s un turpiniet...");
 
 DEFINE('_EW_ADMINHEADER_JW', "ExtraWatch");
 DEFINE('_EW_ADMINHEADER_REMOVE_BACKLINK', "Noņemt zemadresi");
-DEFINE('_EW_ADMINHEADER_KNOWLEDGE_BASE', "Informa�?ijas sadaļa");
+DEFINE('_EW_ADMINHEADER_KNOWLEDGE_BASE', "Informačijas sadaļa");
 DEFINE('_EW_ADMINHEADER_FLOW', "Plūsma");
 DEFINE('_EW_ADMINHEADER_GRAPHS', "Grafiki");
 DEFINE('_EW_ADMINHEADER_COMPONENTS', "Komponenti");
@@ -353,23 +353,23 @@ DEFINE('_EW_ADMINHEADER_WRITE', "Rakstīt ");
 
 DEFINE('_EW_FLOW_TRAFFIC', "Trafika plūsma");
 DEFINE('_EW_FLOW_SELECT_PAGE', "Izvēlēties lapu:");
-DEFINE('_EW_FLOW_OUTG_LINKS', "Izejošo b�?zes saišu skaits:");
+DEFINE('_EW_FLOW_OUTG_LINKS', "Izejošo bāzes saišu skaits:");
 DEFINE('_EW_FLOW_NESTING', "līmenis:");
 DEFINE('_EW_FLOW_SCALE', "Izmērs:");
 
-DEFINE('_EW_COMERCIAL_AD_FREE', "Bez-rekl�?mu versija");
+DEFINE('_EW_COMERCIAL_AD_FREE', "Bez-reklāmu versija");
 DEFINE('_EW_COMERCIAL_THANK_DONATION', "Paldies par Jūsu ziedojumu!");
-DEFINE('_EW_COMERCIAL_REGISTRATION_KEY', "Jūsu domēna %s reģistr�?cijas atslēga: ");
-DEFINE('_EW_COMERCIAL_BACKLINKS_REMOVE', "Tagad Jūs variet noņemt zemadresi vai pilnīb�? paslēpt ExtraWatch logo no Uzst�?dījumiem");
+DEFINE('_EW_COMERCIAL_REGISTRATION_KEY', "Jūsu domēna %s reģistrācijas atslēga: ");
+DEFINE('_EW_COMERCIAL_BACKLINKS_REMOVE', "Tagad Jūs variet noņemt zemadresi vai pilnībā paslēpt ExtraWatch logo no Uzstādījumiem");
 
 
-DEFINE('_EW_SIZES_LAST_CHECK', "Pēdēj�? p�?rbaude tika veikta:");
-DEFINE('_EW_SIZES_ADMINISTRATOR', "BLUE = Komponenta/moduļa izmērs /administratora direktorij�?");
+DEFINE('_EW_SIZES_LAST_CHECK', "Pēdējā pārbaude tika veikta:");
+DEFINE('_EW_SIZES_ADMINISTRATOR', "BLUE = Komponenta/moduļa izmērs /administratora direktorijā");
 
 DEFINE('_EW_SIZECOMPONENTS_COMPONENT', "Komponents");
-DEFINE('_EW_SIZECOMPONENTS_TOTAL', "Kop�?:");
+DEFINE('_EW_SIZECOMPONENTS_TOTAL', "Kopā:");
 DEFINE('_EW_SIZECOMPONENTS_SIZE', "Izmērs");
-DEFINE('_EW_SIZECOMPONENTS_REFRESH_ALL', "Atjaunin�?t Visu");
+DEFINE('_EW_SIZECOMPONENTS_REFRESH_ALL', "Atjaunināt Visu");
 
 DEFINE('_EW_SIZEDATABASE_TABLE', "Tabula");
 DEFINE('_EW_SIZEDATABASE_SIZE', "Izmērs");
@@ -377,10 +377,10 @@ DEFINE('_EW_SIZEDATABASE_1DAY', "1-Dienas Izmaiņas");
 DEFINE('_EW_SIZEDATABASE_7DAY', "7-Dienu Izmaiņas");
 DEFINE('_EW_SIZEDATABASE_28DAY', "28-Dienu Izmaiņas");
 DEFINE('_EW_SIZEDATABASE_NO_DATA', "datu nav");
-DEFINE('_EW_SIZEDATABASE_TOTAL', "Kop�?:");
+DEFINE('_EW_SIZEDATABASE_TOTAL', "Kopā:");
 
-DEFINE('_EW_SIZEMODULES_REFRESH_ALL', "Atjaunin�?t visu");
-DEFINE('_EW_SIZEMODULES_TOTAL', "Kop�?:");
+DEFINE('_EW_SIZEMODULES_REFRESH_ALL', "Atjaunināt visu");
+DEFINE('_EW_SIZEMODULES_TOTAL', "Kopā:");
 DEFINE('_EW_SIZEMODULES_MODULE', "Modulis");
 DEFINE('_EW_SIZEMODULES_SIZE', "Izmērs");
 
@@ -389,28 +389,28 @@ DEFINE('_EW_SIZES_BYTES', "baiti");
 DEFINE('_EW_SIZES_KB', "KB");
 DEFINE('_EW_SIZES_MB', "MB");
 DEFINE('_EW_SIZES_GB', "GB");
-DEFINE('_EW_SIZES_REFRESH', "Atjaunin�?t");
+DEFINE('_EW_SIZES_REFRESH', "Atjaunināt");
 
-DEFINE('_EW_STATS_FOOTER', "ExtraWatch &cautortiesības;2006-2013 CodeGravity.com");
+DEFINE('_EW_STATS_FOOTER', "ExtraWatch &cautortiesības;2006-%d CodeGravity.com");
 
 DEFINE('_EW_STATUS_MB', "MB");
 
-DEFINE('_EW_DESC_IPINFODB_KEY', "Pēdēj�? apmeklējuma ipinfodb.com kartes atslēga: <a href='http://www.ipinfodb.com/register.php' target='_blank'>ipinfodb.com</a>");
+DEFINE('_EW_DESC_IPINFODB_KEY', "Pēdējā apmeklējuma ipinfodb.com kartes atslēga: <a href='http://www.ipinfodb.com/register.php' target='_blank'>ipinfodb.com</a>");
 DEFINE('_EW_SETTINGS_FORCE_TIMEZONE_OFFSET', "Force Laika zonas Nobīde");
 
 
 /* ExtraWatch 1.2.17 translations */
-DEFINE('_EW_MENU_UPDATE', "Atjaunin�?t");
-DEFINE('_EW_MENU_UPDATE_TITLE', "Izveidot rezerves kopiju un Atjaunin�?t");
-DEFINE('_EW_ADMINHEADER_NA_IN_THIS_VERSION', "Nav pieejams bezmaksas versij�?, lūdzu izlasiet licences sadaļu");
-DEFINE('_EW_SPAMWORD_BANS_ENABLED', "Ieslēgt Spama V�?rdu Banu");
-DEFINE('_EW_SPAMWORD_LIST', "Spama V�?rdu Saraksts");
-DEFINE('_EW_HIDE_REPETITIVE_TITLE', "Paslēpt Atk�?rtojošos Nosaukumu");
-DEFINE('_EW_TRUNCATE_VISITS', "Saīsin�?t Apmeklējumus");
-DEFINE('_EW_TRUNCATE_STATS', "Samazin�?t Statistiku");
-DEFINE('_EW_TRUNCATE_GOALS', "Samazin�?t mērķus");
+DEFINE('_EW_MENU_UPDATE', "Atjaunināt");
+DEFINE('_EW_MENU_UPDATE_TITLE', "Izveidot rezerves kopiju un Atjaunināt");
+DEFINE('_EW_ADMINHEADER_NA_IN_THIS_VERSION', "Nav pieejams bezmaksas versijā, lūdzu izlasiet licences sadaļu");
+DEFINE('_EW_SPAMWORD_BANS_ENABLED', "Ieslēgt Spama Vārdu Banu");
+DEFINE('_EW_SPAMWORD_LIST', "Spama Vārdu Saraksts");
+DEFINE('_EW_HIDE_REPETITIVE_TITLE', "Paslēpt Atkārtojošos Nosaukumu");
+DEFINE('_EW_TRUNCATE_VISITS', "Saīsināt Apmeklējumus");
+DEFINE('_EW_TRUNCATE_STATS', "Samazināt Statistiku");
+DEFINE('_EW_TRUNCATE_GOALS', "Samazināt mērķus");
 DEFINE('_EW_LIMIT_BOTS', "Limitēt Botus");
-DEFINE('_EW_LIMIT_VISITORS', "Limitēt Apmeklēt�?jus");
+DEFINE('_EW_LIMIT_VISITORS', "Limitēt Apmeklētājus");
 DEFINE('_EW_TOOLTIP_WIDTH', "Padoma loga platums");
 DEFINE('_EW_TOOLTIP_HEIGHT', "Padoma loga augstums");
 DEFINE('_EW_TOOLTIP_URL', "Padoma loga URL");
@@ -419,53 +419,53 @@ DEFINE('_EW_IP_STATS', "IP statistika");
 DEFINE('_EW_IPINFODB_KEY', "IP Info DB atslēga ");
 DEFINE('_EW_ONLY_LAST_URI', "Tikai pēdējais URI ");
 
-DEFINE('_EW_FRONTEND_HIDE_LOGO', "Paslēpt logo m�?jaslap�? ");
-DEFINE('_EW_FRONTEND_NOFOLLOW', "Atslēgt sekošanu m�?jaslap�?");
-DEFINE('_EW_FRONTEND_NO_BACKLINK', "Atslēgt programmas linku m�?jaslap�?");
-DEFINE('_EW_FRONTEND_USER_LINK', "M�?jaslapas lietot�?ju adreses");
-DEFINE('_EW_FRONTEND_COUNTRIES_FIRST', "M�?jaslap�? pirm�?s r�?dīt valstis");
+DEFINE('_EW_FRONTEND_HIDE_LOGO', "Paslēpt logo mājaslapā ");
+DEFINE('_EW_FRONTEND_NOFOLLOW', "Atslēgt sekošanu mājaslapā");
+DEFINE('_EW_FRONTEND_NO_BACKLINK', "Atslēgt programmas linku mājaslapā");
+DEFINE('_EW_FRONTEND_USER_LINK', "Mājaslapas lietotāju adreses");
+DEFINE('_EW_FRONTEND_COUNTRIES_FIRST', "Mājaslapā pirmās rādīt valstis");
 DEFINE('_EW_FRONTEND_COUNTRIES_NAMES', "Majaslapas valstu naosaukumi");
-DEFINE('_EW_FRONTEND_COUNTRIES_UPPERCASE', "M�?jaslapas valstu nosaukumus ar lielajiem burtiem");
-DEFINE('_EW_FRONTEND_COUNTRIES_FLAGS_FIRST', "M�?jaslap�? pirmos r�?dīt valstu karogus ");
-DEFINE('_EW_FRONTEND_COUNTRIES_NUM', "M�?jaslapas valstu numuri");
-DEFINE('_EW_FRONTEND_COUNTRIES_MAX_COLUMNS', "M�?jaslapas valstu maksim�?l�?s kolonnas");
-DEFINE('_EW_FRONTEND_COUNTRIES_MAX_ROWS', "M�?jaslapas valstu maksim�?l�?s rindas");
-DEFINE('_EW_FRONTEND_VISITORS_TODAY', "M�?jaslapas šodienas apmeklēt�?ji ");
-DEFINE('_EW_FRONTEND_VISITORS_YESTERDAY', "M�?jaslapas vakardienas apmeklēt�?ji ");
-DEFINE('_EW_FRONTEND_VISITORS_THIS_WEEK', "M�?jaslapas šīs nedēļas apmeklēt�?ji ");
-DEFINE('_EW_FRONTEND_VISITORS_LAST_WEEK', "M�?jaslapas pag�?juš�?s nedēļas apmeklēt�?ji ");
+DEFINE('_EW_FRONTEND_COUNTRIES_UPPERCASE', "Mājaslapas valstu nosaukumus ar lielajiem burtiem");
+DEFINE('_EW_FRONTEND_COUNTRIES_FLAGS_FIRST', "Mājaslapā pirmos rādīt valstu karogus ");
+DEFINE('_EW_FRONTEND_COUNTRIES_NUM', "Mājaslapas valstu numuri");
+DEFINE('_EW_FRONTEND_COUNTRIES_MAX_COLUMNS', "Mājaslapas valstu maksimālās kolonnas");
+DEFINE('_EW_FRONTEND_COUNTRIES_MAX_ROWS', "Mājaslapas valstu maksimālās rindas");
+DEFINE('_EW_FRONTEND_VISITORS_TODAY', "Mājaslapas šodienas apmeklētāji ");
+DEFINE('_EW_FRONTEND_VISITORS_YESTERDAY', "Mājaslapas vakardienas apmeklētāji ");
+DEFINE('_EW_FRONTEND_VISITORS_THIS_WEEK', "Mājaslapas šīs nedēļas apmeklētāji ");
+DEFINE('_EW_FRONTEND_VISITORS_LAST_WEEK', "Mājaslapas pagājušās nedēļas apmeklētāji ");
 
-DEFINE('_EW_FRONTEND_VISITORS_THIS_MONTH', "M�?jaslapas šī mēneša apmeklēt�?ji ");
-DEFINE('_EW_FRONTEND_VISITORS_LAST_MONTH', "M�?jaslapas pag�?juš�? mēneša apmeklēt�?ji");
-DEFINE('_EW_FRONTEND_VISITORS_TOTAL', "Paslēpt kopējo m�?jaslapu apmeklēt�?ju skaitu");
-DEFINE('_EW_FRONTEND_VISITORS_TOTAL_INITIAL	', "M�?jaslapas kopējais s�?kotnējais apmeklēt�?ju skaits");
-DEFINE('_EW_HISTORY_MAX_VALUES', "Maksim�?l�?s vēstures vērtības");
-DEFINE('_EW_HISTORY_MAX_DB_RECORDS', "Vēstures maksim�?lie ieraksti");
+DEFINE('_EW_FRONTEND_VISITORS_THIS_MONTH', "Mājaslapas šī mēneša apmeklētāji ");
+DEFINE('_EW_FRONTEND_VISITORS_LAST_MONTH', "Mājaslapas pagājušā mēneša apmeklētāji");
+DEFINE('_EW_FRONTEND_VISITORS_TOTAL', "Paslēpt kopējo mājaslapu apmeklētāju skaitu");
+DEFINE('_EW_FRONTEND_VISITORS_TOTAL_INITIAL	', "Mājaslapas kopējais sākotnējais apmeklētāju skaits");
+DEFINE('_EW_HISTORY_MAX_VALUES', "Maksimālās vēstures vērtības");
+DEFINE('_EW_HISTORY_MAX_DB_RECORDS', "Vēstures maksimālie ieraksti");
 DEFINE('_EW_UPDATE_TIME_VISITS', "Atjaunot laika apmeklējumus");
 DEFINE('_EW_UPDATE_TIME_STATS', "Atjaunot lika statistiku");
-DEFINE('_EW_STATS_MAX_ROWS', "Statistikas maksim�?l�?s rindas");
+DEFINE('_EW_STATS_MAX_ROWS', "Statistikas maksimālās rindas");
 DEFINE('_EW_STATS_IP_HITS', "Statistikas IP klikšķu skaits");
-DEFINE('_EW_MAXID_BOTS', "Maksim�?lie ID boti");
-DEFINE('_EW_MAXID_VISITORS', "Maxid Apmeklēt�?ji");
-DEFINE('_EW_STATS_KEEP_DAYS', "Statistikas glab�?šanas dienu skaits ");
-DEFINE('_EW_CACHE_FRONTEND_COUNTRIES', "Kešot m�?jaslapas valstis ");
-DEFINE('_EW_CACHE_FRONTEND_VISITORS', "Kešot m�?jaslapas apmeklēt�?jus ");
+DEFINE('_EW_MAXID_BOTS', "Maksimālie ID boti");
+DEFINE('_EW_MAXID_VISITORS', "Maxid Apmeklētāji");
+DEFINE('_EW_STATS_KEEP_DAYS', "Statistikas glabāšanas dienu skaits ");
+DEFINE('_EW_CACHE_FRONTEND_COUNTRIES', "Kešot mājaslapas valstis ");
+DEFINE('_EW_CACHE_FRONTEND_VISITORS', "Kešot mājaslapas apmeklētājus ");
 
-DEFINE('_EW_UNINSTALL_KEEP_DATA	', "Atinstalēt saglab�?tos datus ");
+DEFINE('_EW_UNINSTALL_KEEP_DATA	', "Atinstalēt saglabātos datus ");
 DEFINE('_EW_IGNORE_IP', "Ignorēt IP");
 DEFINE('_EW_IGNORE_URI', "Ignorēt URI");
-DEFINE('_EW_IGNORE_USER', "Ignorēt Lietot�?ju");
+DEFINE('_EW_IGNORE_USER', "Ignorēt Lietotāju");
 DEFINE('_EW_BLOCKING_MESSAGE', "Bloķēšsanas Paziņojums");
 DEFINE('_EW_SERVER_URI_KEY', "Servera URI atslēga");
-DEFINE('_EW_FRONTEND_VISITORS_TOTAL_INITIAL', "M�?jaslapas kopējais s�?kotnējais apmeklēt�?ju skaits");
+DEFINE('_EW_FRONTEND_VISITORS_TOTAL_INITIAL', "Mājaslapas kopējais sākotnējais apmeklētāju skaits");
 DEFINE('_EW_SIZEDATABASE_RECORDS', "Ieraksti");
 /***********EDITs*****************/
-DEFINE('_EW_ANTISPAM_BLOCKING_TEXT', " Lai padarītu bloķēšanu efektīv�?ku, Jums ir j�?publicē ExtraWatch aģents PIRMS jebk�?da satura vai formu publicēšanas. Piemēram, Jūs majaslapas sagataves kreisaj�? pusē.
+DEFINE('_EW_ANTISPAM_BLOCKING_TEXT', " Lai padarītu bloķēšanu efektīvāku, Jums ir jāpublicē ExtraWatch aģents PIRMS jebkāda satura vai formu publicēšanas. Piemēram, Jūs majaslapas sagataves kreisajā pusē.
                     <br/>
-                    Ejiet uz Module Manager -> ExtraWatch agent -> izvēlieties kreis�?s puses novietojuma pozīciju");
+                    Ejiet uz Module Manager -> ExtraWatch agent -> izvēlieties kreisās puses novietojuma pozīciju");
 DEFINE('_EW_EMAIL_SEO_REPORTS', "SEO Atskaites");
 DEFINE('_EW_DESC_EMAIL_SEO_REPORTS_ENABLED', "SEO iknakts e-pasta askaites ieslēgtas");
-DEFINE('_EW_WATCH_INSTALLATION_DEMO', "Noskatīties instal�?cijas demo");
+DEFINE('_EW_WATCH_INSTALLATION_DEMO', "Noskatīties instalācijas demo");
 
 
 /** JW 1.2.18 */
