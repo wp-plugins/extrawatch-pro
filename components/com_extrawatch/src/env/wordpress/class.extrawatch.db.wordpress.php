@@ -32,7 +32,7 @@ class ExtraWatchDBWrapWordpress implements ExtraWatchDBWrap
     $database = $wpdb->dbname;
     $this->dbprefix = $wpdb->base_prefix;
     $select = TRUE;
-     if (!($this->dbref = @pmysql_connect($host, $user, $password, TRUE))) {//using persistent connection or reusing existing one to get rid of "cannot connect" problems
+     if (!($this->dbref = @mysql_pconnect($host, $user, $password, TRUE))) {//using persistent connection or reusing existing one to get rid of "cannot connect" problems
               die("cannot connect");
 	}
       if ($select) {
@@ -47,7 +47,7 @@ class ExtraWatchDBWrapWordpress implements ExtraWatchDBWrap
 
   function getEscaped($sql)
   {
-    return mysql_real_escape_string($sql, $this->dbref);
+    return @mysql_real_escape_string($sql, $this->dbref);
   }
 
   function query()
@@ -55,11 +55,11 @@ class ExtraWatchDBWrapWordpress implements ExtraWatchDBWrap
     $sql = $this->query;
 	ExtraWatchLog::debug("query: $sql"); 
 	$sql = str_replace("#__", $this->dbprefix, $sql);
-    $this->result = mysql_query($sql, $this->dbref);
+    $this->result = @mysql_query($sql, $this->dbref);
 
     if (!$this->result) {
-      $this->errNum = mysql_errno($this->dbref);
-      $this->errMsg = mysql_error($this->dbref) . " in query $sql";
+      $this->errNum = @mysql_errno($this->dbref);
+      $this->errMsg = @mysql_error($this->dbref) . " in query $sql";
       return FALSE;
     }
     return $this->result;
