@@ -4,7 +4,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1444
+ * @revision 1447
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -84,11 +84,11 @@ final class ipinfodb
                     $csvParsed = $this->str_getcsv_manual($csv, ";");
                 }
 
-                $result[ExtraWatchVisit::COUNTRY_CODE] = $csvParsed[3];
-                $result[ExtraWatchVisit::COUNTRY_NAME] = ucwords(strtolower($csvParsed[4])); //camel case
-                $result[ExtraWatchVisit::CITY] = ucwords(strtolower($csvParsed[6])); //camel case
-                $result[ExtraWatchVisit::LATITUDE] = $csvParsed[8];
-                $result[ExtraWatchVisit::LONGITUDE] = $csvParsed[9];
+                @$result[ExtraWatchVisit::COUNTRY_CODE] = $csvParsed[3];
+                @$result[ExtraWatchVisit::COUNTRY_NAME] = ucwords(strtolower($csvParsed[4])); //camel case
+                @$result[ExtraWatchVisit::CITY] = ucwords(strtolower($csvParsed[6])); //camel case
+                @$result[ExtraWatchVisit::LATITUDE] = $csvParsed[8];
+                @$result[ExtraWatchVisit::LONGITUDE] = $csvParsed[9];
                 return $result;
             }
             catch (Exception $e) {
