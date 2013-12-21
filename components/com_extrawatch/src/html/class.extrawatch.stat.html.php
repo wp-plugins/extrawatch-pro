@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1449
+ * @revision 1457
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -140,7 +140,7 @@ class ExtraWatchStatHTML
 
   function changeUsers($j, $row)
   {
-    $row->name = "<a href='" . $this->extraWatch->config->getAdministratorIndex() . "?option=com_users&task=view&search=$row->name'>$row->name</a>";
+    $row->name = "<a href='" . $this->extraWatch->config->getAdministratorIndex() . "?option=com_users&task=view&filter_search=$row->name'>$row->name</a>";
   }
 
   function changeKeywords($j, $row)

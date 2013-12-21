@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1449
+ * @revision 1457
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -116,16 +116,6 @@ function extrawatch_sendLastIdReq() {
         http4.open("GET", url, true);
         http4.send(null);
     } catch (err) {
-        alert(err);
-        try {
-            if ((window.ActiveXObject && err.message.substring(0, 17) == "Permission denied") || (!window.ActiveXObject && err.substring(0, 17) == "Permission denied"))
-                alert("<?php echo(_EW_AJAX_PERMISSION_DENIED_1); ?>&nbsp;<?php echo($extraWatch->config->getLiveSite()); ?>&nbsp;<?php echo(_EW_AJAX_PERMISSION_DENIED_2); ?>&nbsp;<?php echo($extraWatch->config->getLiveSite()); ?>&nbsp;<?php echo(_EW_AJAX_PERMISSION_DENIED_3); ?>&nbsp;<?php echo(str_replace("
-                    www.
-                    ", "
-                    ", $extraWatch->config->getLiveSite())); ?><?php echo(_EW_AJAX_PERMISSION_DENIED_4); ?>");
-        } catch (err2) {
-            alert(err2);
-        }
     }
 }
 
@@ -138,16 +128,7 @@ function extrawatch_sendVisitsReq() {
         http.open("GET", url, true);
         http.send(null);
     } catch (err) {
-        alert(err);
-        try {
-            if ((window.ActiveXObject && err.message.substring(0, 17) == "Permission denied") || (!window.ActiveXObject && err.substring(0, 17) == "Permission denied"))
-                alert("<?php echo(_EW_AJAX_PERMISSION_DENIED_1); ?>&nbsp;<?php echo($extraWatch->config->getLiveSite()); ?>&nbsp;<?php echo(_EW_AJAX_PERMISSION_DENIED_2); ?>&nbsp;<?php echo($extraWatch->config->getLiveSite()); ?>&nbsp;<?php echo(_EW_AJAX_PERMISSION_DENIED_3); ?>&nbsp;<?php echo(str_replace("
-                    www.
-                    ", "
-                    ", $extraWatch->config->getLiveSite())); ?><?php echo(_EW_AJAX_PERMISSION_DENIED_4); ?>");
-        } catch (err2) {
-            alert(err2);
-        }
+        //alert(err);
     }
 
 }
@@ -181,7 +162,7 @@ function extrawatch_sendStatsReq() {
         http2.open("GET", url, true);
         http2.send(null);
     } catch (err) {
-        alert(err);
+        //alert(err);
     }
 }
 
@@ -199,7 +180,7 @@ function extrawatch_blockIpToggle(_ip) {
             extrawatch_sendVisitsReq();
         }
     } catch (err) {
-        alert(err);
+        //alert(err);
     }
 }
 
@@ -208,7 +189,7 @@ function extrawatch_blockIpManually() {
         var ipManual = prompt("<?php echo(_EW_STATS_IP_BLOCKING_MANUALLY); ?>", "");
         if (ipManual) extrawatch_blockIpToggle(ipManual);
     } catch (err) {
-        alert(err);
+        //alert(err);
     }
 }
 
@@ -267,7 +248,7 @@ function needVisitsRefresh() {
 
         }
     } catch (err) {
-        alert(err);
+        //alert(err);
     }
 }
 
@@ -300,7 +281,7 @@ function needStatsRefresh() {
             /*    if(statsType != "2")  statsTimeoutId = window.setTimeout("extrawatch_sendStatsReq()",<?php echo($extraWatch->config->getConfigValue('EXTRAWATCH_UPDATE_TIME_STATS')); ?>); */
         }
     } catch (err) {
-        alert(err);
+        //alert(err);
     }
 }
 /* Custom variables */
@@ -550,16 +531,6 @@ function extrawatch_sendLastClickIdReq() {
         http5.open("GET", url, true);
         http5.send(null);
     } catch (err) {
-        alert(err);
-        try {
-            if ((window.ActiveXObject && err.message.substring(0, 17) == "Permission denied") || (!window.ActiveXObject && err.substring(0, 17) == "Permission denied"))
-                alert("<?php echo(_EW_AJAX_PERMISSION_DENIED_1); ?>&nbsp;<?php echo($extraWatch->config->getLiveSite()); ?>&nbsp;<?php echo(_EW_AJAX_PERMISSION_DENIED_2); ?>&nbsp;<?php echo($extraWatch->config->getLiveSite()); ?>&nbsp;<?php echo(_EW_AJAX_PERMISSION_DENIED_3); ?>&nbsp;<?php echo(str_replace("
-                    www.
-                    ", "
-                    ", $extraWatch->config->getLiveSite())); ?><?php echo(_EW_AJAX_PERMISSION_DENIED_4); ?>");
-        } catch (err2) {
-            alert(err2);
-        }
     }
 }
 
@@ -587,16 +558,6 @@ function extrawatch_sendClicksReq() {
         http6.open("GET", url, true);
         http6.send(null);
     } catch (err) {
-        alert(err);
-        try {
-            if ((window.ActiveXObject && err.message.substring(0, 17) == "Permission denied") || (!window.ActiveXObject && err.substring(0, 17) == "Permission denied"))
-                alert("<?php echo(_EW_AJAX_PERMISSION_DENIED_1); ?>&nbsp;<?php echo($extraWatch->config->getLiveSite()); ?>&nbsp;<?php echo(_EW_AJAX_PERMISSION_DENIED_2); ?>&nbsp;<?php echo($extraWatch->config->getLiveSite()); ?>&nbsp;<?php echo(_EW_AJAX_PERMISSION_DENIED_3); ?>&nbsp;<?php echo(str_replace("
-                    www.
-                    ", "
-                    ", $extraWatch->config->getLiveSite())); ?><?php echo(_EW_AJAX_PERMISSION_DENIED_4); ?>");
-        } catch (err2) {
-            alert(err2);
-        }
     }
 
 }
@@ -616,7 +577,7 @@ function needClickRefresh() {
 
         }
     } catch (err) {
-        alert(err);
+        //alert(err);
     }
 }
 
@@ -635,16 +596,6 @@ function extrawatch_sendLastElementClickIdReq() {
         http7.open("GET", url, true);
         http7.send(null);
     } catch (err) {
-        alert(err);
-        try {
-            if ((window.ActiveXObject && err.message.substring(0, 17) == "Permission denied") || (!window.ActiveXObject && err.substring(0, 17) == "Permission denied"))
-                alert("<?php echo(_EW_AJAX_PERMISSION_DENIED_1); ?>&nbsp;<?php echo($extraWatch->config->getLiveSite()); ?>&nbsp;<?php echo(_EW_AJAX_PERMISSION_DENIED_2); ?>&nbsp;<?php echo($extraWatch->config->getLiveSite()); ?>&nbsp;<?php echo(_EW_AJAX_PERMISSION_DENIED_3); ?>&nbsp;<?php echo(str_replace("
-                    www.
-                    ", "
-                    ", $extraWatch->config->getLiveSite())); ?><?php echo(_EW_AJAX_PERMISSION_DENIED_4); ?>");
-        } catch (err2) {
-            alert(err2);
-        }
     }
 }
 
@@ -672,16 +623,7 @@ function extrawatch_sendElementClicksReq() {
         http8.open("GET", url, true);
         http8.send(null);
     } catch (err) {
-        alert(err);
-        try {
-            if ((window.ActiveXObject && err.message.substring(0, 17) == "Permission denied") || (!window.ActiveXObject && err.substring(0, 17) == "Permission denied"))
-                alert("<?php echo(_EW_AJAX_PERMISSION_DENIED_1); ?>&nbsp;<?php echo($extraWatch->config->getLiveSite()); ?>&nbsp;<?php echo(_EW_AJAX_PERMISSION_DENIED_2); ?>&nbsp;<?php echo($extraWatch->config->getLiveSite()); ?>&nbsp;<?php echo(_EW_AJAX_PERMISSION_DENIED_3); ?>&nbsp;<?php echo(str_replace("
-                    www.
-                    ", "
-                    ", $extraWatch->config->getLiveSite())); ?><?php echo(_EW_AJAX_PERMISSION_DENIED_4); ?>");
-        } catch (err2) {
-            alert(err2);
-        }
+        //alert(err);
     }
 
 }
@@ -701,7 +643,7 @@ function needElementClickRefresh() {
 
         }
     } catch (err) {
-        alert(err);
+        //alert(err);
     }
 }
 

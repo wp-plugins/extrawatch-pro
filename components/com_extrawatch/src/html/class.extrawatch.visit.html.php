@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1449
+ * @revision 1457
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -224,7 +224,7 @@ class ExtraWatchVisitHTML
 
         $username = "";
         if (@ $row->username) {
-          $username = "<br/><a href='" . $this->extraWatch->config->getAdministratorIndex() . "?option=com_users&task=view&search=$row->username' style='color: black; text-decoration:none;'><i>" . @ ExtraWatchHelper::htmlspecialchars($row->username) . "</i></a>";
+          $username = "<br/><a href='" . $this->extraWatch->config->getAdministratorIndex() . "?option=com_users&task=view&filter_search=$row->username' style='color: black; text-decoration:none;'><i>" . @ ExtraWatchHelper::htmlspecialchars($row->username) . "</i></a>";
         }
         $ipString = sprintf("<a id='%s' href='javascript:extrawatch_blockIpToggle(\"%s\");extrawatch_sendVisitsReq();' style='color:black;' $inactiveClass>%s</a>", ExtraWatchHelper::htmlspecialchars($row->ip), ExtraWatchHelper::htmlspecialchars($row->ip), $ipString);
 
@@ -278,11 +278,11 @@ class ExtraWatchVisitHTML
         $onlineString = "";
 
         if ($row->inactive == 0 && $ipString) {
-            $onlineString = "<img src='".$liveSiteWithSuffix."components/com_extrawatch/img/icons/online.png' valign='top'/>";
+            $onlineString = "<img src='".$liveSiteWithSuffix."components/com_extrawatch/img/icons/online.png' valign='top' border='0'/>";
         }
 
         $output .= "</td><td valign='top' align='left' style='background-color: #$color;'>" . @ $flag . "</td>
-																		<td valign='top' align='left' style='background-color: #$color;'><span $inactiveClass>$ipString</span>$onlineString";
+																		<td valign='top' align='left' style='background-color: #$color;'><span $inactiveClass>$ipString$onlineString</span>";
 
 
           $output .= "$username</td>
@@ -319,7 +319,7 @@ class ExtraWatchVisitHTML
 
 		$trucateCharLimit = $this->extraWatch->config->getConfigValue('EXTRAWATCH_TRUNCATE_VISITS');
 		  
-        $uriTruncated = $this->extraWatch->helper->truncate($row->uri, $trucateCharLimit);
+        $uriTruncated = $this->extraWatch->helper->truncate(urldecode($row->uri), $trucateCharLimit);
         $titleOriginal = $row->title;
         $row->title = $this->extraWatch->helper->truncate($row->title, $trucateCharLimit);
         $row->title = $this->extraWatch->helper->removeRepetitiveTitle($row->title);
@@ -425,8 +425,8 @@ class ExtraWatchVisitHTML
         <td style='background-color: #" . $color . "'></td>
         <td style='background-color: #" . $color . "'>";
 
-    $refererTruncated = $this->extraWatch->helper->truncate($referer);
-    $output .= sprintf("<i style='color: gray;'> " . _EW_VISITS_CAME_FROM . ": <a href='%s' target='_blank' style='color: gray;' title='%s'>%s</a></i>", ExtraWatchHelper::htmlspecialchars($referer), ExtraWatchHelper::htmlspecialchars($referer), $refererTruncated);
+    $refererTruncated = $this->extraWatch->helper->truncate(urldecode($referer));
+    $output .= sprintf("<i style='color: gray;'> " . _EW_VISITS_CAME_FROM . ": <a href='%s' target='_blank' style='color: gray;' title='%s'>%s</a></i>", ExtraWatchHelper::htmlspecialchars(urldecode($referer)), ExtraWatchHelper::htmlspecialchars(urldecode($referer)), $refererTruncated);
 
      
     $position = $this->extraWatch->seo->extractGooglePageNumberFromReferer($referer);

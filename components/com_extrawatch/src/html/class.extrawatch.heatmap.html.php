@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1449
+ * @revision 1457
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -68,10 +68,6 @@ class ExtraWatchHeatmapHTML
 
     function renderHeatmapTableRow($row, $day, $maxClickForDay, $i, $highlightAreasLinks = FALSE)
     {
-		if (!$day) {
-			$day = ExtraWatchDate::jwDateToday();
-		}
-	
         $uri = $this->visit->getUriNameByUri2TitleId($row->uri2titleId);
         $title = ExtraWatchHelper::truncate($this->visit->getTitleByUriId($row->uri2titleId), self::TRUNCATE_LEN);
         ExtraWatchLog::debug("renderHeatmapTableRow - uri2titleId: ".$row->uri2titleId." uri found; ".$uri. "title: ".$title);
@@ -326,6 +322,10 @@ class ExtraWatchHeatmapHTML
 
     function renderPagesWithHighlightedHTMLElementsTable($day = 0, $limit = 20)
     {
+		if (!$day) {
+			$day = ExtraWatchDate::jwDateToday();
+		}
+	
         $rows = $this->extraWatchHeatmap->getTopHeatmapUris($day, 20);
         if (!$rows) {
             return ExtraWatchHelper::renderNoData();

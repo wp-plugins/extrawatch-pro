@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1449
+ * @revision 1457
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -178,6 +178,7 @@ IMG {
 	max-width: none !important; 
 }
 
+/*
 A .extraWatchInactiveVisit, .extraWatchInactiveVisit {
     opacity: 0.85;
     filter: alpha(opacity=85); /* msie */
@@ -187,7 +188,7 @@ A .extraWatchInactiveVisit, .extraWatchInactiveVisit {
     opacity: 0.85;
     filter: alpha(opacity=85); /* msie */
 }
-
+*/
 .disabled {
 	color: #AAA;
 	font-weight: normal;
