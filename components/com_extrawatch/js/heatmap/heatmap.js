@@ -87,6 +87,9 @@
                     var point = d[dlen];
 					var element;
 					try {
+					if (point.xpath.slice(-1) == "/") {
+						point.xpath = point.xpath.slice(0, -1);
+					}
                     var elementFound = document.evaluate(point.xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null);
 					element = elementFound.singleNodeValue;
 					} catch (e) {
@@ -97,7 +100,7 @@
                         var position = findPos(element);
                         point.x = position[0] + point.x;
                         point.y = position[1] + point.y;
-                        heatmap.drawAlpha(point.x, point.y, point.count);
+                        setTimeout(heatmap.drawAlpha(point.x, point.y, point.count), 1000);
                         if (!data[point.x]) {
                             data[point.x] = [];
                         }
@@ -105,7 +108,9 @@
                             data[point.x][point.y] = 1;
                         }
                         data[point.x][point.y] += point.count;
-                    }
+                    } else {
+                        //alert('element not found: ' + point.xpath);
+					}
 					
                 }
                 heatmap.displayDialog();

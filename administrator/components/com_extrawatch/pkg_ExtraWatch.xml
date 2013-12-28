@@ -7,24 +7,13 @@
     <authorEmail>support@extrawatch.com</authorEmail>
     <authorUrl>http://www.extrawatch.com</authorUrl>
     <packagename>ExtraWatch</packagename>
-    <version>2.2.1457 PRO</version>
+    <version>2.2.1484 PRO</version>
     <license>http://www.gnu.org/licenses/gpl-3.0.txt GNU/GPLv3</license>
     <url>http://www.extrawatch.com</url>
     <packager>CodeGravity.com - http://www.extrawatch.com</packager>
     <packagerurl>http://www.extrawatch.com</packagerurl>
     <description>
         <b>ExtraWatch component and modules installed successfully</b>
-
-        <br/><br/>
-        ExtraWatch is a component and module for Joomla CMS that allows you to watch<br/>
-        your website visitors and bots in real-time from the administration menu. Especially<br/>
-        their IP addresses, countries they come from, geographical location on a map, which<br/>
-        pages they are viewing, their browser and operating system, it creates daily and<br/>
-        all-time stats from these information plus unique, pageload and total hits statistics.<br/>
-        Furthermore, you can block harmful IP addresses, see blocked attempts stats, evaluate<br/>
-        the trend charts, and create goals based on many parameters. In the frontend, it can<br/>
-        show the top countries information and visit counts for certain periods of time.<br/>
-
     </description>
     <update>http://www.extrawatch.com/update/extrawatch/2.2/PRO/extrawatch-update.xml</update>
     <files>

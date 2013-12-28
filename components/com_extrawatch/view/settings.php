@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1457
+ * @revision 1484
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -190,15 +190,6 @@ defined('_JEXEC') or die('Restricted access'); ?>
                     <a href='<?php echo $extraWatch->config->renderLink("resetData");?>'
                        onClick="javascript:return confirm('<?php echo(_EW_SETTINGS_RESET_CONFIRM);?>')">[<?php echo(_EW_SETTINGS_RESET_ALL_LINK);?>
                       ]</a>
-                  </td>
-                </tr>
-                <tr>
-                  <td colspan='3'>
-                    <br/><br/>
-
-                    <h3>Timezone test</h3>
-                    <a href='<?php echo($extraWatch->config->getLiveSite()) . "components/com_extrawatch/timezone.php?rand=" . $extraWatch->config->getRand(); ?>'
-                       target='_blank'>[Open timezone test]</a>
                   </td>
                 </tr>
               </table>

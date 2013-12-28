@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1457
+ * @revision 1484
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -26,16 +26,23 @@ defined('_JEXEC') or die('Restricted access'); ?>
 <script type="text/javascript"
         src='<?php echo($extraWatch->config->getLiveSiteWithSuffix());?>components/com_extrawatch/js/fade.js'></script>
 
-<script type="text/javascript"
+<?php
+	if (defined('JVERSION') && function_exists('version_compare') && version_compare(JVERSION, '1.6.0', '<')) {
+		//do nothing.. menu fix for joomla 1.5
+	} else {
+?>		
+	<script type="text/javascript"
         src="<?php echo $extraWatch->config->getLiveSiteWithSuffix(); ?>components/com_extrawatch/js/jquery-latest.js"></script>
+<?php } ?>
+		
 <script type="text/javascript"
         src="<?php echo $extraWatch->config->getLiveSiteWithSuffix(); ?>components/com_extrawatch/js/jquery.tablesorter.js"></script>
 
 
 <script type="text/javascript">
-    $(document).ready(function()
+    jQuery(document).ready(function()
             {
-                $(".tablesorter").tablesorter();
+                jQuery(".tablesorter").tablesorter();
             }
     );
 </script>
@@ -73,7 +80,7 @@ defined('_JEXEC') or die('Restricted access'); ?>
                         </td>
                         <td width="250px">
                             <a href='http://www.extrawatch.com' target='_blank'
-                               style='font-family: verdana; font-size: 14px; align:top; font-weight: bold; color: black;'><?php echo _EW_ADMINHEADER_JW;?>&nbsp;<?php echo("2.2.1457");?>&nbsp;<?php echo("PRO");?></a><br/><?php echo _EW_TITLE;?>
+                               style='font-family: verdana; font-size: 14px; align:top; font-weight: bold; color: black;'><?php echo _EW_ADMINHEADER_JW;?>&nbsp;<?php echo("2.2.1484");?>&nbsp;<?php echo("PRO");?></a><br/><?php echo _EW_TITLE;?>
                         </td>
                         <td>
                             <?php require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "menu.php"; ?>

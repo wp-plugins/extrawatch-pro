@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1457
+ * @revision 1484
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -151,7 +151,7 @@ var markers = data.documentElement.getElementsByTagName("marker");
 var zoom = extraWatchLoadZoom();
 if (zoom == "")
 {
-zoom = 13;
+zoom = 3;
 }
 for (var i = 0; i < markers.length; i++) {
 var name = markers[i].getAttribute("name");

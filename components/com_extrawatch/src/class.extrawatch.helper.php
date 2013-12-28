@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1457
+ * @revision 1484
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -635,7 +635,7 @@ static function getTimezoneOffsetByTimezoneName($userTimezoneName){
 
 
 	static function getUrlQueryParams() {
-		$url = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+		$url = ExtraWatchHelper::getProtocol()."://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
 		$query_str = parse_url($url, PHP_URL_QUERY);
 		parse_str($query_str, $query_params);
 		return $query_params;
@@ -679,7 +679,7 @@ static function getTimezoneOffsetByTimezoneName($userTimezoneName){
      * @return string
      */
     static function getAbsoluteWebURL() {
-        $hostname = "http://" . $_SERVER['HTTP_HOST'];
+        $hostname = ExtraWatchHelper::getProtocol()."://" . $_SERVER['HTTP_HOST'];
         $scriptName = $_SERVER['SCRIPT_NAME'];
         $subdir = str_replace("/index.php", "", $scriptName);
 
@@ -690,6 +690,13 @@ static function getTimezoneOffsetByTimezoneName($userTimezoneName){
         return $hostname . $subdir;
     }
 
+	static function getProtocol() {
+		if( isset($_SERVER['HTTPS'] )  && $_SERVER['HTTPS'] != 'off' ) {
+			return 'https';
+		} else {
+			return 'http';
+		}
+	}
 
 }
 

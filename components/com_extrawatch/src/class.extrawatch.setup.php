@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1457
+ * @revision 1484
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -75,6 +75,7 @@ class ExtraWatchSetup {
     }
 
     public function runAdditionalSQLScripts() {
+	try {
         $files = scandir($this->sqlScriptsModuleDir);
         foreach ($files as $file) {
             if (strstr($file,".sql")) { // should be replaced by ends with
@@ -84,6 +85,9 @@ class ExtraWatchSetup {
                 }
             }
         }
+	} catch (Exception $e) {
+		ExtraWatchLog::error("An exception while running additional SQL scripts: ".$e->getMessage());
+	}
     }
 
     private function wasAdditionalSQLScriptRun($script) {

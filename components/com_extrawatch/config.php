@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1457
+ * @revision 1484
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -24,7 +24,7 @@ defined('_JEXEC') or die('Restricted access');
 # define('EXTRAWATCH_LIVE_SITE','/');
 
 define('EXTRAWATCH_VERSION', "2.2");
-define('EXTRAWATCH_REVISION', "1457");
+define('EXTRAWATCH_REVISION', "1484");
 
 define('EXTRAWATCH_DEBUG', 0);
 
@@ -539,7 +539,7 @@ define('TYPE_EXTRAWATCH_HIDE_REPETITIVE_TITLE', "checkbox");
 define('EXTRAWATCH_UNINSTALL_KEEP_DATA', FALSE);
 define('TYPE_EXTRAWATCH_UNINSTALL_KEEP_DATA', "checkbox");
 
-define('EXTRAWATCH_EMAIL_REPORTS_ENABLED', FALSE);
+define('EXTRAWATCH_EMAIL_REPORTS_ENABLED', TRUE);
 define('TYPE_EXTRAWATCH_EMAIL_REPORTS_ENABLED', "checkbox");
 
 define('EXTRAWATCH_EMAIL_SEO_REPORTS_ENABLED', FALSE);
@@ -698,7 +698,8 @@ serialize(array(
     'EXTRAWATCH_FRONTEND_COUNTRIES_FLAGS_FIRST',
     'EXTRAWATCH_EMAIL_REPORTS_ENABLED',
     'EXTRAWATCH_EMAIL_SEO_REPORTS_ENABLED',
-    'EXTRAWATCH_EMAIL_USERS_SEND_ALERT_EMAILS'
+    'EXTRAWATCH_EMAIL_USERS_SEND_ALERT_EMAILS',
+	'EXTRAWATCH_SEND_EMAIL'
 )));
 
 /* version 1.2.18 */

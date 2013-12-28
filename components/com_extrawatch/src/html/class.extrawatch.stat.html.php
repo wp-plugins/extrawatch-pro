@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1457
+ * @revision 1484
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -509,7 +509,8 @@ class ExtraWatchStatHTML
 
   function sendNightlyEmail()
   {
-
+ 	ExtraWatchLog::debug("function sendNightlyEmail in stat.html.php");
+  
     $output = $this->renderNightlyEmail();
 
     $email = $this->extraWatch->config->getConfigValue("EXTRAWATCH_EMAIL_REPORTS_ADDRESS");
@@ -531,7 +532,8 @@ class ExtraWatchStatHTML
 		ExtraWatchHelper::sendEmail($this->extraWatch->env, "$email", _EW_EMAIL_SENDER, "ExtraWatch SEO report - ".$projectName." - $date", $outputSEOReport);
 	  }
     }
-
+	ExtraWatchLog::debug("function sendNightlyEmail output rendered");
+	
     return $output;
   }
 
@@ -711,9 +713,9 @@ class ExtraWatchStatHTML
 
     $weekOfYear = ExtraWatchDate::getWeekFromTimestamp($week * 3600 * 24 * 7);
     $startDay = ExtraWatchDate::getWeekStartingDay($weekOfYear);
+	$searchEngineStats = $this->extraWatch->stat->getSearchEnginesStatsBetweenDays($startDay-1, $startDay+6);
 
     $i = 0xFF;
-    //$dateWeekStart = ExtraWatchDate::getDateByDay($startDay);
 
     $statsMax['unique'] = $this->extraWatch->stat->getMaxValueInGroupForWeek(EW_DB_KEY_UNIQUE, EW_DB_KEY_UNIQUE, $startDay);
     $statsMax['loads'] = $this->extraWatch->stat->getMaxValueInGroupForWeek(EW_DB_KEY_LOADS, EW_DB_KEY_LOADS, $startDay);
@@ -736,8 +738,11 @@ class ExtraWatchStatHTML
       $percent = 0;
 
 	  
-      $stats['search_engines'] = $this->extraWatch->seo->getTotalVisitsByKeyphrasesByDay($day);
+//      $stats['search_engines'] = $this->extraWatch->seo->getTotalVisitsByKeyphrasesByDay($day);
+      $stats['search_engines'] = $searchEngineStats[$day];
       $statsMax['search_engines'] = $stats['search_engines'];
+	  
+	  
 	  
 
       $stats['unique'] = $this->extraWatch->stat->getKeyValueInGroupByDate(EW_DB_KEY_UNIQUE, EW_DB_KEY_UNIQUE, $day);

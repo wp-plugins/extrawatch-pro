@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1457
+ * @revision 1484
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -36,10 +36,11 @@ function extrawatch_renderLicense($extraWatch)
                 <li>You also agree to use it on your own responsibility, respecting all the laws applicable for your country and countries of your visitors</li>
                 <li>You also agree to respect the privacy of your visitors by placing a notice into your <b>Privacy policy page</b>, that your site uses this software.</li>
                 <li>You also agree that you can be informed via an email you provided during registration about the information about this software. This makes it easier when there is a need to inform you about the latest versions and/or possible security updates.</li>
+				<li>No express or implied licenses to any party's patent rights are granted by this license</li>
             </ul>
 
             <h2>FREE and PRO difference</h2>
-            You agree that FREE version places the backlink to codegravity.com and displays ad to PRO version in back end.<br/>
+            You agree that FREE version places the backlink to extrawatch.com and displays ad to PRO version in back end.<br/>
             PRO version has no backlink and features additional functionalities.<br/>
 
             <h2>Security</h2>
@@ -75,7 +76,7 @@ function extrawatch_renderLicense($extraWatch)
 			<h2>Applicable law / authorized court</h2>
 			These Terms & Conditions will be governed by Slovak law.
 			Slovak law is applicable to all legal relationships between software provider and the user. 
-			Any legal issues that might arise from these agreements or agreements derived from these agreements, will be settled in Slovak court. The procedure will be conducted in the Slovak language. 
+			Any legal issues that might arise from these agreements or agreements derived from these agreements, will be settled in court of Slovak Republic. The procedure will be conducted in the Slovak language. 
 
             <h2>Acknowledgments:</h2>
 
@@ -175,7 +176,7 @@ function extrawatch_renderLicense($extraWatch)
 
             Enjoy using ExtraWatch<br/>
             CodeGravity.com, author<br/>
-            <a href='http://www.codegravity.com/' target='_blank'>www.codegravity.com</a><br/><span style='color: #cccccc'>Copyright &copy;2006-2012 by CodeGravity.com</span>
+            <a href='http://www.codegravity.com/' target='_blank'>www.codegravity.com</a><br/><span style='color: #cccccc'>Copyright &copy;2006-2013 by CodeGravity.com</span>
             <br/>
         </div>
 

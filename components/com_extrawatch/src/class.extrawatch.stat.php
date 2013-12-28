@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1457
+ * @revision 1484
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -397,6 +397,28 @@ class ExtraWatchStat
 
     }
   }
+  
+  function getSearchEnginesStatsBetweenDays($startDay, $endDay) {
+  
+	$query = sprintf("select `date`, sum(value) as count from #__extrawatch_info
+	 where `group` = %d and (`name` = 'google' or `name`='bing' or `name` = 'yahoo')
+	 and `date` > %d and `date` <= %d group by `date`",
+	(int) EW_DB_KEY_SOCIAL_MEDIA, (int) $startDay, (int) $endDay);
+
+    $this->database->setQuery($query);
+    $rows = $this->database->objectListQuery($query);
+
+      $result = array();
+      if (@$rows) {
+      foreach($rows as $row) {
+          $result[$row->date] = $row->count;
+
+      }
+     }
+
+    return $result;
+
+}
 
 }
 

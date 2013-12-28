@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1457
+ * @revision 1484
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -159,11 +159,43 @@ if (_EW_CLOUD_MODE) {
   }
     <?php } ?>
 
+	/**
+	source and thanks to: http://nickthecoder.wordpress.com/2013/02/26/offsetx-and-offsety-in-firefox/
+	*/
+	function ew_getOffset(evt) {
+		if(evt.offsetX!=undefined)
+		return {x:evt.offsetX,y:evt.offsetY};
+ 
+		var el = evt.target;
+		var offset = {x:0,y:0};
+ 
+		while(el.offsetParent) {
+			offset.x+=el.offsetLeft;
+			offset.y+=el.offsetTop;
+			el = el.offsetParent;
+		}
+ 
+		offset.x = evt.pageX - offset.x;
+		offset.y = evt.pageY - offset.y;
+ 
+		return offset;
+	}
+
+	
 	function extraWatch_click(evt) {
 	
 	  var pos = h337.util.mousePosition(evt); //relative position to element
-      var x = evt.offsetX; // offset relative within the element
-      var y = evt.offsetY;
+	  if (evt.offsetX == null || evt.offsetY == null) {
+			var calculatedOffset = ew_getOffset(evt);
+			var x = calculatedOffset.x;
+			var y = calculatedOffset.y;
+      } else {
+		var x = evt.offsetX; // offset relative within the element
+		var y = evt.offsetY;
+	  }
+	  
+	  
+	  
       var xpath = createXPathFromElement(evt.target);
 
       var scrollx = window.pageXOffset == undefined ? clickDoc.scrollLeft : window.pageXOffset;
@@ -249,7 +281,7 @@ if (_EW_CLOUD_MODE) {
 		}
 	}
 
-    document.addEventListener('DOMContentLoaded',function(){
+    document.addEventListener('load',function(){
 		extraWatchLinkElementsList = document.getElementsByTagName("A");
 		extraWatch_decorateLinksWithCustomHandler();  
 		  });
@@ -285,7 +317,7 @@ var xpathElementColors = [];
 
     var length = xpathElements.length;
     var xpath = null;
-	    document.addEventListener('DOMContentLoaded',function(){
+	    document.addEventListener('load',function(){
 
     for (var i = 0; i < length; i++) {
     xpath = xpathElements[i];
@@ -304,7 +336,7 @@ var xpathElementColors = [];
    <?php } else { ?>
 
 
-    document.addEventListener('DOMContentLoaded',function(){
+    document.addEventListener('load',function(){
 		var xpath = '<?php echo urldecode(urldecode($xpath));?>';
         var elementFound = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null);
 		alert('highlighting element: ' + xpath);
@@ -319,8 +351,8 @@ var xpathElementColors = [];
 
   <?php } else if (@$heatmapEnabled) { ?>
     xx = h337.create({"element":document.body, "radius":50, "visible":true});
-    document.addEventListener('DOMContentLoaded',function(){
-		renderHeatmap();
+    window.addEventListener('load',function(){
+	    setTimeout(renderHeatmap, 1000); //waiting 1 seconds for everything to load
 	  });
     <?php } ?>
 

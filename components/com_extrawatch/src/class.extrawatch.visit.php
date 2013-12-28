@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1457
+ * @revision 1484
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -300,9 +300,11 @@ class ExtraWatchVisit
 
   function sendNightlyEmails()
   {
+	ExtraWatchLog::debug("function sendNightlyEmails");
     $this->config->initializeTranslations();
 	
     if ($this->config->getCheckboxValue("EXTRAWATCH_EMAIL_REPORTS_ENABLED")) {
+	ExtraWatchLog::debug("function sendNightlyEmails - email reports are enabled");
       $extraWatch = new ExtraWatchMain();
       $extraWatchStatHTML = new ExtraWatchStatHTML($extraWatch);
       $extraWatchStatHTML->sendNightlyEmail();
@@ -798,7 +800,10 @@ function insertSearchResultPage($uri, $phrase, $referer, $title)
       if (!@ $id) {
           $this->insertBotVisit($uri, $referer, $title, $ip);
       } else {
-          $query = sprintf("insert into #__extrawatch_uri (id, fk, timestamp, uri, title) values ('', '%d', '%d', '%s', '%s') ", (int) $id, (int) $time, $this->database->getEscaped($uri), $this->database->getEscaped($title));
+          $query = sprintf("update #__extrawatch_uri set title = '%s' where uri = '%s' ",
+              $this->database->getEscaped(htmlentities($title, ENT_QUOTES, 'UTF-8')),
+                        $this->database->getEscaped($uri)
+           );
           $this->database->executeQuery($query);
       }
 
@@ -806,7 +811,7 @@ function insertSearchResultPage($uri, $phrase, $referer, $title)
 
       //START POST CODE MOD
       $query = sprintf("select id from #__extrawatch_uri where fk = '%d' and `timestamp` = '%d' and `uri` LIKE '%s' and `title` LIKE '%s' ",
-          (int) $id, (int) $time, $this->database->getEscaped($uri), $this->database->getEscaped($title));
+          (int) $id, (int) $time, $this->database->getEscaped($uri), $this->database->getEscaped(htmlentities($title, ENT_QUOTES, 'UTF-8')));
       $id = $this->database->resultQuery($query);
 
     /*  foreach (ExtraWatchHelper::requestPost() as $key => $value)   //
@@ -1243,8 +1248,10 @@ function insertSearchResultPage($uri, $phrase, $referer, $title)
     if ($lastRunAtMidnightDate) {
       if ($lastRunAtMidnightDate != $todayDate) {
 
+		ExtraWatchLog::debug("going to save last date before send nightly emails");
         $this->config->saveConfigValue("EXTRAWATCH_LAST_RUN_AT_MIDNIGHT_DATE", $todayDate);
-          /* functions to run at midnight */
+        /* functions to run at midnight */
+		ExtraWatchLog::debug("going to send nightly emails");
         $this->sendNightlyEmails();
         
         $this->sizes->updateTableSizes($lastRunAtMidnightDate);

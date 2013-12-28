@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1457
+ * @revision 1484
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -118,7 +118,8 @@ class ExtraWatchGoal
         $allowedFields = unserialize(EXTRAWATCH_GOALS_ALLOWED_FIELDS);
         $keys = array();
         $values = array();
-        foreach ($post as $key => $value) {
+        foreach ($allowedFields as $key) {
+            $value = @$post[$key];
             if (array_search($key, $allowedFields)) {
                 $keys[] = strtolower($key);
                 $value = sprintf("%s", $this->database->getEscaped($value));
@@ -130,7 +131,7 @@ class ExtraWatchGoal
 
         $id = @ $post['id'];
         if (@ $id) {    // update
-            for($i=0;$i<sizeof($keys)-1;$i++) {
+            for($i=0;$i<sizeof($keys);$i++) {
                 $updateKeys[] = $keys[$i]." = ". $values[$i]."";
             }
             $updateQuery = implode(", ", $updateKeys);
