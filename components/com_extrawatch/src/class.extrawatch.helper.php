@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1484
+ * @revision 1500
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -248,13 +248,16 @@ class ExtraWatchHelper
     /**
      * helper
      */
-/*
     function countryCodeToCountryNameList()
     {
         $query = sprintf("select cc, country from #__extrawatch_cc2c");
-        return $this->database->assocListQuery($query);
+        $result = $this->database->assocListQuery($query);
+        $assocArrayResult = array();
+        foreach($result as $object) {
+            $assocArrayResult[$object['cc']] = $object['country'];
+        }
+        return $assocArrayResult;
     }
-*/
 
     function removeRepetitiveTitle($title)
     {

@@ -622,25 +622,4 @@ DEFINE('_EW_MENU_AVAILABLE_IN_PRO_FLOW', "(Available in PRO version) Interactive
 DEFINE('_EW_MENU_AVAILABLE_IN_PRO_DOWNLOADS', "(Available in PRO version) See charts of downloads of zip, pdf or other downloadable artifacts"); 
 DEFINE('_EW_MENU_AVAILABLE_IN_PRO_STATUS', "(Available in PRO version) Database table sizes monitoring"); 
 DEFINE('_EW_MENU_AVAILABLE_IN_PRO_COMPONENTS', "(Available in PRO version) Directories size monitoring"); 
- 
-
-
-
-
-
- 
-
-
- 
-
- 
-
-
- 
-
-
-
- 
-
- 
-
+DEFINE('_EW_ADMINHEADER_SEARCH_RANK', "Search Rank"); 

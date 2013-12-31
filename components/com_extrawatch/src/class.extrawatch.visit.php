@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1484
+ * @revision 1500
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -800,11 +800,32 @@ function insertSearchResultPage($uri, $phrase, $referer, $title)
       if (!@ $id) {
           $this->insertBotVisit($uri, $referer, $title, $ip);
       } else {
-          $query = sprintf("update #__extrawatch_uri set title = '%s' where uri = '%s' ",
-              $this->database->getEscaped(htmlentities($title, ENT_QUOTES, 'UTF-8')),
-                        $this->database->getEscaped($uri)
+
+        $additionalFilter = "";
+        if ($uri == "/") {
+            $additionalFilter = " or uri = '/index.php' ";
+        }
+
+		$query = sprintf("select count(#__extrawatch_uri.id) as uriId from #__extrawatch join #__extrawatch_uri on #__extrawatch.id = #__extrawatch_uri.fk where title = '' and (uri = '%s' %s) order by #__extrawatch_uri.id limit 1", $this->database->getEscaped($uri),  $additionalFilter);
+		$lastVisitWithWithSameUriAndNoTitle = $this->database->resultQuery($query);
+		  
+   	    if (@$lastVisitWithWithSameUriAndNoTitle) {
+
+			//set title for that uri
+		   $query = sprintf("update #__extrawatch_uri INNER JOIN #__extrawatch ON #__extrawatch_uri.fk = #__extrawatch.id
+                         set title = '%s'
+                         where (#__extrawatch_uri.uri = '%s' %s) and #__extrawatch.ip = '%s'",
+                        $this->database->getEscaped(htmlentities($title, ENT_QUOTES, 'UTF-8')),
+                        $this->database->getEscaped($uri),
+                        $additionalFilter,
+						$this->database->getEscaped($ip)
            );
-          $this->database->executeQuery($query);
+		   $this->database->executeQuery($query);
+		
+		  } else {
+			$query = sprintf("insert into #__extrawatch_uri (id, fk, timestamp, uri, title) values ('', '%d', '%d', '%s', '%s') ", (int) $id, (int) $time, $this->database->getEscaped($uri), $this->database->getEscaped(htmlentities($title, ENT_QUOTES, 'UTF-8')));
+			$this->database->executeQuery($query);
+		  }
       }
 
       $this->makeVisitorActive($ip);
