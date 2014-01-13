@@ -51,7 +51,7 @@ function downloadUrl(url, callback, asText) {
             }
         }
     }
-    request.open('GET', url, false); //using synchronous loading
+    request.open('GET', url, true); //using asynchronous loading
     try {
         request.send(null);
     } catch (e) {

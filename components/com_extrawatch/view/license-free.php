@@ -7,7 +7,7 @@
  * @version 2.2
  * @revision 732
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
- * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
+ * @copyright (C) 2014 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
  */
 
@@ -51,7 +51,7 @@ function extrawatch_renderLicenseFree($extraWatch)
         font-weight: normal;
     }
 </style>
-<h1>ExtraWatch 2.2.1500 PRO</h1>
+<h1>ExtraWatch 2.2.1513 PRO</h1>
 
 <script type='text/javascript'>
     function toggleNoKeyForm() {

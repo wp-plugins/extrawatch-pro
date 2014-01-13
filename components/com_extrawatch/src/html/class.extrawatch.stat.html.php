@@ -5,9 +5,9 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1500
+ * @revision 1513
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
- * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
+ * @copyright (C) 2014 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
  */
 
@@ -528,8 +528,15 @@ class ExtraWatchStatHTML
       $extraWatchSEOHTML = new ExtraWatchSEOHTML($this->extraWatch);
       $day = $this->extraWatch->date->jwDateToday();
       $outputSEOReport = $extraWatchSEOHTML->renderSEOReport($day - 1, TRUE);
+	  
+	  if (@_EW_CLOUD_MODE) {
+		$emailSender = _EW_EMAIL_SENDER;	//only in cloud mode
+	  } else {
+		$emailSender = $email;	//admin email from configuration
+	  }
+	  
 	  if (@$outputSEOReport) {
-		ExtraWatchHelper::sendEmail($this->extraWatch->env, "$email", _EW_EMAIL_SENDER, "ExtraWatch SEO report - ".$projectName." - $date", $outputSEOReport);
+		ExtraWatchHelper::sendEmail($this->extraWatch->env, "$email", $emailSender, "ExtraWatch SEO report - ".$projectName." - $date", $outputSEOReport);
 	  }
     }
 	ExtraWatchLog::debug("function sendNightlyEmail output rendered");

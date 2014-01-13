@@ -5,9 +5,9 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1500
+ * @revision 1513
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
- * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
+ * @copyright (C) 2014 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
  */
 
@@ -426,6 +426,9 @@ class ExtraWatchVisit
 
       $this->goal->checkGoals("", $username, $ip, $referrer, $liveSite);
 
+      /* execute on midnight */
+      $this->runAtMidnight();
+
   }
 
   
@@ -785,8 +788,6 @@ function insertSearchResultPage($uri, $phrase, $referer, $title)
       }
 
       $this->insertIntoHistory();
-      /* execute on midnight */
-      $this->runAtMidnight();
 
       if ($this->date->getUTCTimestamp() % 10 == 0) {
           $this->deleteOldVisits();

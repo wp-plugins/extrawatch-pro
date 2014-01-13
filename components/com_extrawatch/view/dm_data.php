@@ -4,9 +4,9 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1500
+ * @revision 1513
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
- * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
+ * @copyright (C) 2014 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
  */
 defined('_JEXEC') or die('Restricted access');
@@ -35,7 +35,7 @@ for($da=-7*4;$da<7;$da++)
         foreach($chartar as $cht1)
         {
             $fid = $cht1->did;
-            $filepathquery_tot = sprintf("SELECT COUNT(*) FROM #__extrawatch_dm_counter where did='%d' and ddate='%s'", (int) $fid, mysql_escape_string($pday));
+            $filepathquery_tot = sprintf("SELECT COUNT(*) FROM #__extrawatch_dm_counter where did='%d' and ddate='%s'", (int) $fid, $extraWatch->database->getEscaped($pday));
             $count_tot_dt  = $extraWatch->database->resultQuery($filepathquery_tot);
 
             $dailydata = $dailydata.$count_tot_dt.",";

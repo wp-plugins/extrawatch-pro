@@ -5,9 +5,9 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1500
+ * @revision 1513
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
- * @copyright (C) 2013 by CodeGravity.com - All rights reserved!
+ * @copyright (C) 2014 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
  */
 // disabled for now defined('_JEXEC') or die('Restricted access');
@@ -205,8 +205,10 @@ if (_EW_CLOUD_MODE) {
       var randHashToPass = '<?php echo($extraWatch->config->getRandHash()); ?>';
       var url = urlBase + "&params=" + encodeURIComponent("&action=click&uri2titleId=<?php echo($uri2titleId);?>&x=" + x + "&y=" + y + "&w=" + w + "&h=" + h + "&randHash=" + randHashToPass + "&xpath=" + encodeURIComponent(encodeURIComponent(xpath)));
       //xx.store.addDataPoint(x,y);
-      downloadUrl(url, function (e) {
-      }, true);
+      setTimeout(function() {
+		downloadUrl(url, function (e) {}, true);
+	  }, 0);	//call the click asynchronously so there is no delay in clicks
+	  
  
   }
 
