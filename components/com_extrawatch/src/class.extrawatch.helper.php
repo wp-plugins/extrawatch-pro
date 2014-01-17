@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1513
+ * @revision 1528
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2014 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -253,6 +253,7 @@ class ExtraWatchHelper
         $query = sprintf("select cc, country from #__extrawatch_cc2c");
         $result = $this->database->assocListQuery($query);
         $assocArrayResult = array();
+		if (@$result)
         foreach($result as $object) {
             $assocArrayResult[$object['cc']] = $object['country'];
         }

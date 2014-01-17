@@ -100,7 +100,7 @@
                         var position = findPos(element);
                         point.x = position[0] + point.x;
                         point.y = position[1] + point.y;
-                        setTimeout(heatmap.drawAlpha(point.x, point.y, point.count), 1000);
+                        heatmap.drawAlpha(point.x, point.y, point.count);
                         if (!data[point.x]) {
                             data[point.x] = [];
                         }

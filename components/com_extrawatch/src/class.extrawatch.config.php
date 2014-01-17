@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1513
+ * @revision 1528
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2014 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -20,6 +20,7 @@ class ExtraWatchConfig
   public $liveSiteCached;
   public $env;
   public static $configValuesCached;
+  const _EW_CONST_UNREGISTERED = "UNREGISTERED";
 
   function __construct($database)
   {
@@ -427,6 +428,13 @@ class ExtraWatchConfig
 
         */
     }
+	
+	function isUnregistered() {
+        if (self::_EW_CONST_UNREGISTERED == $this->getConfigValue("EXTRAWATCH_ADFREE")) {
+			return TRUE;
+		}
+		return FALSE;
+	}
 
   /**
    * config
@@ -455,7 +463,7 @@ class ExtraWatchConfig
     if ($this->isAdFree()) {
       echo("<span style='color: green'>" . _EW_CONFIG_LICENSE_ACTIVATED . "</span>");
       $this->saveConfigValue('EXTRAWATCH_FREE', 0);
-    } else {
+    } else if (!$this->isUnregistered()){
       echo("<span style='color: red'>" . _EW_CONFIG_LICENCE_DONT_MATCH . "</span>");
     }
   }

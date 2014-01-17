@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1513
+ * @revision 1528
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2014 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -404,6 +404,13 @@ class ExtraWatchBlock
     {
         $query = sprintf("INSERT IGNORE into #__extrawatch_blocked (id, ip, reason, country, `date`) values %s", $valuesOutput);
         $this->database->executeQuery($query);
+    }
+
+    function saveBadWordsList($post) {
+
+        $this->config->saveConfigValue('EXTRAWATCH_SPAMWORD_BANS_ENABLED', @$post['EXTRAWATCH_SPAMWORD_BANS_ENABLED']);
+        $this->config->saveConfigValue('EXTRAWATCH_SPAMWORD_LIST', @$post['EXTRAWATCH_SPAMWORD_LIST']);
+
     }
 
 

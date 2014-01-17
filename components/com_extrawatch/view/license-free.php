@@ -51,7 +51,7 @@ function extrawatch_renderLicenseFree($extraWatch)
         font-weight: normal;
     }
 </style>
-<h1>ExtraWatch 2.2.1513 PRO</h1>
+<h1>ExtraWatch 2.2.1528 PRO</h1>
 
 <script type='text/javascript'>
     function toggleNoKeyForm() {
@@ -63,7 +63,7 @@ function extrawatch_renderLicenseFree($extraWatch)
 <tr>
     <td>
         <table><tr><td>
-            <h2>Enter the registration code you obtained to proceed</h2>
+            <h2>Enter the membership registration key to proceed</h2>
             domain: <b/>" . $extraWatch->config->getDomainFromLiveSite(_EW_PROJECT_ID) . "</b><br/><br/>
             <table>
                 <tr>
@@ -82,12 +82,13 @@ function extrawatch_renderLicenseFree($extraWatch)
             <br/>
 
 
-            <div style='color: #FFAB29'>
-                Please read: This is NOT the paypal confirmation number of your donation.<br/>
-                It's the license key you received after you filled out your domain details at codegravity.com after redirecting by paypal<br/>
-                If you were not redirected by paypal correctly, you made a purchase and haven't received the activation key,<br/>
-                or have any problems with activation, <a href='javascript:toggleNoKeyForm()'>request the correct activation key</a> <br/><br/><br/>
+            <div style='color: #D9BB55; font-size: 12px;'>
+                Notice: This is NOT the paypal confirmation number of your payment.<br/>
+                It's the registration key you received after you paired your domain with your membership<br/>
+                To check for your membership status, use the Customer Zone on <a href='http://www.extrawatch.com' style='color: #D9BB55' target='_blank'>extrawatch.com</a><br/><br/>
             </div>
+			
+			<a href='".$extraWatch->config->renderLink("continueUnregistered")."' style='color: red; font-size: 12px;'>Continue with no membership, no support and no updates</a>
 
 
             <div  id='nokey' style='border: 1px solid  rgb(255, 171, 41); width: 400px; padding: 10px; display:none;'>
