@@ -10,7 +10,7 @@
  * @website http://www.codegravity.com
  */
 
-defined( '_JEXEC' ) or die( 'Restricted access' );
+defined( '_JEXEC' ) or die( 'Restricted access: ' );
 
 //JoomlaWatch language file - to create a new language file, just copy the english.php to eg. german.php and place into /components/com_joomlawatch/lang/
 
@@ -620,3 +620,4 @@ DEFINE('_EW_MENU_AVAILABLE_IN_PRO_DOWNLOADS', "(Available in PRO version) See ch
 DEFINE('_EW_MENU_AVAILABLE_IN_PRO_STATUS', "(Available in PRO version) Database table sizes monitoring"); 
 DEFINE('_EW_MENU_AVAILABLE_IN_PRO_COMPONENTS', "(Available in PRO version) Directories size monitoring"); 
 DEFINE('_EW_ADMINHEADER_SEARCH_RANK', "Search Rank"); 
+DEFINE('_EW_DOWNLOADS_START_ADD_EXT', "No download statistics currently recorded. Start monitoring file downloads and");

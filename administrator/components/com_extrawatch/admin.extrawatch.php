@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1528
+ * @revision 1550
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2014 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -662,9 +662,16 @@ function extrawatch_mainController($task = "") {
     return $output;
 }
 
-if ((!_EW_CLOUD_MODE &&
-    (get_class($env) == "ExtraWatchWordpressEnv" && ( @ ExtraWatchHelper::request('task') == "js" || @ ExtraWatchHelper::request('task') == "ajax")))
-	|| (get_class($env) != "ExtraWatchWordpressEnv"))	//just a temporary fix, should be removed or refactored
+$isAllowedRequest = ( @ ExtraWatchHelper::request('task') == "js" || @ ExtraWatchHelper::request('task') == "ajax");
+
+if (
+        (!_EW_CLOUD_MODE && (get_class($env) == "ExtraWatchWordpressEnv" && $isAllowedRequest))
+    ||
+        (!_EW_CLOUD_MODE && (get_class($env) == "ExtraWatchMagentoEnv" && $isAllowedRequest))
+    ||
+
+        (get_class($env) != "ExtraWatchWordpressEnv") && (get_class($env) != "ExtraWatchMagentoEnv")
+    )	//just a temporary fix, should be removed or refactored
 	{
 	if (_EW_CLOUD_MODE) {
 	 if (@$authenticated) {

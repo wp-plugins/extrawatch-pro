@@ -4,7 +4,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1528
+ * @revision 1550
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2014 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -191,9 +191,20 @@ $filepathar = $extraWatch->downloads->getAllFilePaths();
         <h2><?php echo(_EW_DOWNLOADS_DOWNLOAD_MONITOR);?></h2>
 
 
-        <div id="chart_div" style="width: 100%; height: 400px;border:1px solid #ddddd"></div>
+            <?php
+            if (!$extraWatch->downloads->getDataCount()) {
 
-        <div id="chart_div_weekly" style="width: 100%; height: 400px;border:1px solid #ddddd"></div>
+                echo ("<i>"._EW_DOWNLOADS_START_ADD_EXT);
+                echo ("&nbsp;<a href='".$extraWatch->config->renderLink("downloads","addExtension")."'>"._EW_DOWNLOADS_ADD_EXTENSION."</a></i>");
+
+            } else {
+
+            ?>
+                <div id="chart_div" style="width: 100%; height: 400px;border:1px solid #ddddd"></div>
+
+                <div id="chart_div_weekly" style="width: 100%; height: 400px;border:1px solid #ddddd"></div>
+
+            <?php } ?>
 
         <br/><br/>
         <table width="100%" border="0" align="center" class="table-border">

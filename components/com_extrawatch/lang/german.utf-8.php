@@ -803,4 +803,4 @@ DEFINE('_EW_MENU_AVAILABLE_IN_PRO_STATUS', "(Nur in PRO version) Überwachung de
 DEFINE('_EW_MENU_AVAILABLE_IN_PRO_COMPONENTS', "(Nur in PRO version) Überwachung von Verzeichnisgrößen");
 DEFINE('_EW_ADMINHEADER_SEARCH_RANK', "Position");
 
-		
+		DEFINE('_EW_DOWNLOADS_START_ADD_EXT', "No download statistics currently recorded. Start monitoring file downloads and");

@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1528
+ * @revision 1550
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2014 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -71,6 +71,7 @@ defined('_JEXEC') or die('Restricted access'); ?>
                                     <input type='submit' value='<?php echo(_EW_SETTINGS_SAVE);?>'/>
                                     <input type='hidden' name='option' value='com_extrawatch'/>
                                     <input type='hidden' name='task' value='antiSpam'/>
+									<input name='form_key' type='hidden' value="<?php echo $extraWatch->env->getFormKey();?>" />
                                     <input type='hidden' name='action' value='save'/>
                                 </center>
                             </td>
