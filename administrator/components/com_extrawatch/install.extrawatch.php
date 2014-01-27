@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1550
+ * @revision 1565
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2014 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -15,7 +15,6 @@ defined('_JEXEC') or die('Restricted access');
 
 ini_set('display_errors', TRUE); 
 error_reporting(E_ALL & ~(E_STRICT|E_NOTICE));
-
 
 function extrawatch_fixFilePermissions() {
   $filesArray = array(
@@ -219,7 +218,25 @@ function com_install()
           <br/>
         </code>
 
-        <iframe src="http://www.extrawatch.com/track/extrawatch/2.2/install/" width="1px" frameborder="0"
+		<?php
+		
+		// this code here is due to the fact that this component is being used illegally on pirate websites in uncontrolled way
+		// helps us to send email to domain owners who should remove it and buy a license instead to support development. Thank you for your understanding
+		$parsedUrl = @ parse_url(@$_SERVER['HTTP_HOST']);
+   		$domain = trim(@$parsedUrl[path]);
+
+   	    if (@$_SERVER['HTTP_X_REAL_IP']) {
+			$ip = @$_SERVER['HTTP_X_REAL_IP'];
+		} else 
+		if (@$_SERVER['HTTP_X_FORWARDED_FOR']) {
+			$ip = @$_SERVER['HTTP_X_FORWARDED_FOR'];
+		} else {
+			$ip = @$_SERVER['REMOTE_ADDR'];
+		}
+
+		?>
+		
+        <iframe src="http://www.extrawatch.com/track/extrawatch/2.2/install/?domain=<?php echo($domain);?>&license=PRO&version=2.2.1565&ip=<?php echo $ip;?>&env=ExtraWatchJoomlaEnv" width="1px" frameborder="0"
                 height="1px">
         </iframe>
 

@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.2
- * @revision 1550
+ * @revision 1565
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2014 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -124,7 +124,7 @@ class ExtraWatchWordpressEnv implements ExtraWatchEnv
 
   function getAllowedDirsToCheckForSize()
   {
-    $dirs = array("../../../../plugins");
+    $dirs = array("..".DS."..".DS."..".DS."..".DS."..".DS."plugins");
     return $dirs;
   }
 
@@ -135,8 +135,8 @@ class ExtraWatchWordpressEnv implements ExtraWatchEnv
     $dirs[ExtraWatchSizes::SCAN_DIR_MAIN] = "..".DS."wp-content".DS."plugins".DS;
     $dirs[ExtraWatchSizes::SCAN_DIR_ADMIN] = "..".DS."wp-content".DS."plugins".DS;
 
-    $dirs[ExtraWatchSizes::REAL_DIR_MAIN] = "..".DS."..".DS."..".DS;
-    $dirs[ExtraWatchSizes::REAL_DIR_ADMIN] = "..".DS."..".DS."..".DS;
+    $dirs[ExtraWatchSizes::REAL_DIR_MAIN] = "..".DS."..".DS."..".DS."..".DS;
+    $dirs[ExtraWatchSizes::REAL_DIR_ADMIN] = "..".DS."..".DS."..".DS."..".DS;
 
     return $dirs;
   }
