@@ -2,36 +2,36 @@
 
 /**
  * @file
- * ExtraWatch - A real-time ajax monitor and live stats
- * @package ExtraWatch
- * @version 2.2
- * @revision 1565
- * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
- * @copyright (C) 2014 by CodeGravity.com - All rights reserved!
- * @website http://www.extrawatch.com
+ * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @version 2.2  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 1591  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @copyright (C) 2014 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @website http://www.extrawatch.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  */
 
-defined('_JEXEC') or die('Restricted access');
+defined('_JEXEC') or die('Restricted access');  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-class ExtraWatchWordpressEnv implements ExtraWatchEnv
+class ExtraWatchWordpressEnv implements ExtraWatchEnv  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 {
 
-   const EW_ENV_NAME = "wordpress";
+   const EW_ENV_NAME = "wordpress";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-  function getDatabase($user = _EW_PROJECT_ID)
+  function getDatabase($user = _EW_PROJECT_ID)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   {
-    return new ExtraWatchDBWrapWordpress();
+    return new ExtraWatchDBWrapWordpress();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   }
 
-  function getRequest()
+  function getRequest()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   {
-    return new EnvRequest();
+    return new EnvRequest();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   }
 
-  function & getURI()
+  function & getURI()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   {
     global $post;
-    return get_permalink($post->ID);
+    return get_permalink($post->ID);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   }
 
   function isSSL()
@@ -40,179 +40,179 @@ class ExtraWatchWordpressEnv implements ExtraWatchEnv
     return FALSE;
   }
 
-  function getRootSite()
+  function getRootSite()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   {
-    $hostname = ExtraWatchHelper::getProtocol()."://" . $_SERVER['HTTP_HOST'];
-    $scriptName = $_SERVER['SCRIPT_NAME'];
-    $scriptNameExploded = explode("wp-content/", $scriptName);
-    if (sizeof($scriptNameExploded) > 1) {
-      $subdir = @$scriptNameExploded[0];
+    $hostname = ExtraWatchHelper::getProtocol()."://" . $_SERVER['HTTP_HOST'];  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    $scriptName = $_SERVER['SCRIPT_NAME'];  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    $scriptNameExploded = explode("wp-content/", $scriptName);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    if (sizeof($scriptNameExploded) > 1) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+      $subdir = @$scriptNameExploded[0];  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     } else {
-      $subdir = str_replace("wp-admin/admin.php", "", $scriptName);
+      $subdir = str_replace("wp-admin/admin.php", "", $scriptName);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     }
-    $rootSite = $hostname . $subdir;
-	$url = parse_url($rootSite);
-    $liveSitePath = $url['path'];
-    return $liveSitePath;
+    $rootSite = $hostname . $subdir;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+	$url = parse_url($rootSite);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    $liveSitePath = $url['path'];  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    return $liveSitePath;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   }
 
-  function getAdminDir()
+  function getAdminDir()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   {
-    return "wp-admin";
+    return "wp-admin";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   }
 
 
-  function getCurrentUser()
+  function getCurrentUser()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   {
-    return $this->getUsername();
+    return $this->getUsername();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   }
 
-  function getUsersCustomTimezoneOffset()
+  function getUsersCustomTimezoneOffset()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   {
     return 0;
   }
 
-  function getEnvironmentSuffix()
+  function getEnvironmentSuffix()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   {
-    // as install dir
+    // as install dir  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     
 
     
-    $moduleName = "extrawatch-pro";
+    $moduleName = "extrawatch-pro";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     
 
-    return "wp-content/plugins/".$moduleName."/";
+    return "wp-content/plugins/".$moduleName."/";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   }
 
-  function renderLink($task, $otherParams)
+  function renderLink($task, $otherParams)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   {
-    return $this->getRootSite() . "wp-admin/admin.php?page=extrawatch&task=" . $task . "&action=" . $otherParams;
+    return $this->getRootSite() . "wp-admin/admin.php?page=extrawatch&task=" . $task . "&action=" . $otherParams;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   }
 
-  function getUser()
+  function getUser()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   {
-    global $current_user;
-    return $current_user->user_login;
+    global $current_user;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    return $current_user->user_login;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   }
 
-  function getTitle()
+  function getTitle()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   {
-    return get_the_title();
+    return get_the_title();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   }
 
-  function getUsername()
+  function getUsername()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   {
-    global $current_user;
-    return $current_user->user_login;
+    global $current_user;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    return $current_user->user_login;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   }
 
-  function sendMail($recipient, $sender, $recipient, $subject, $body, $true, $cc, $bcc, $attachment, $replyto, $replytoname)
+  function sendMail($recipient, $sender, $recipient, $subject, $body, $true, $cc, $bcc, $attachment, $replyto, $replytoname)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   {
-    mail($recipient, $subject, $body, null, $sender);
+    mail($recipient, $subject, $body, null, $sender);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   }
 
-  function getDbPrefix()
+  function getDbPrefix()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   {
     global $wpdb;
-    return $wpdb->base_prefix;
+    return $wpdb->base_prefix;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   }
 
-  function getTimezoneOffset()
+  function getTimezoneOffset()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   {
-    return get_option('gmt_offset');
+    return get_option('gmt_offset');  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   }
 
-  function getAllowedDirsToCheckForSize()
+  function getAllowedDirsToCheckForSize()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   {
-    $dirs = array("..".DS."..".DS."..".DS."..".DS."..".DS."plugins");
+    $dirs = array("..".DS."..".DS."..".DS."..".DS."..".DS."plugins");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     return $dirs;
   }
 
-  function getDirsToCheckForSize($directory)
+  function getDirsToCheckForSize($directory)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   {
-    $dirs = array();
+    $dirs = array();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-    $dirs[ExtraWatchSizes::SCAN_DIR_MAIN] = "..".DS."wp-content".DS."plugins".DS;
-    $dirs[ExtraWatchSizes::SCAN_DIR_ADMIN] = "..".DS."wp-content".DS."plugins".DS;
+    $dirs[ExtraWatchSizes::SCAN_DIR_MAIN] = "..".DS."wp-content".DS."plugins".DS;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    $dirs[ExtraWatchSizes::SCAN_DIR_ADMIN] = "..".DS."wp-content".DS."plugins".DS;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-    $dirs[ExtraWatchSizes::REAL_DIR_MAIN] = "..".DS."..".DS."..".DS."..".DS;
-    $dirs[ExtraWatchSizes::REAL_DIR_ADMIN] = "..".DS."..".DS."..".DS."..".DS;
+    $dirs[ExtraWatchSizes::REAL_DIR_MAIN] = "..".DS."..".DS."..".DS."..".DS;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    $dirs[ExtraWatchSizes::REAL_DIR_ADMIN] = "..".DS."..".DS."..".DS."..".DS;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
     return $dirs;
   }
 
-  function getAgentNotPublishedMsg($database) {
-    if (!is_active_widget( false, false, "extrawatchagentwidget", true )) {
-      return _EW_AGENT_NOT_PUBLISHED_ERROR_WORDPRESS;
+  function getAgentNotPublishedMsg($database) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    if (!is_active_widget( false, false, "extrawatchagentwidget", true )) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+      return _EW_AGENT_NOT_PUBLISHED_ERROR_WORDPRESS;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     }
     return FALSE;
   }
 
 
-    public function getAdminEmail()
+    public function getAdminEmail()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     {
-      global $current_user;
-      return $current_user->email;
+      global $current_user;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+      return $current_user->email;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     }
 
-    function getFormKey() {
+    function getFormKey() {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         return "";
     }
 
-    public function getReviewLink()
+    public function getReviewLink()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     {
-        
-        return "http://www.wordpress.org/support/view/plugin-reviews/extrawatch-pro";
+          	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        return "http://www.wordpress.org/support/view/plugin-reviews/extrawatch-pro";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
        
 
         
     }
 
-    public function getVoteLink()
+    public function getVoteLink()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     {
-        
-        return "http://www.wordpress.org/support/view/plugin-reviews/extrawatch-pro";
+          	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        return "http://www.wordpress.org/support/view/plugin-reviews/extrawatch-pro";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
        
 
         
     }
 
-    public function getEnvironmentName()
+    public function getEnvironmentName()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     {
-        return self::EW_ENV_NAME;
+        return self::EW_ENV_NAME;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     }
 
-    public function getRootPath() {
-        $path = realpath(dirname(__FILE__).DS."..".DS."..".DS."..".DS."..".DS."..".DS."..".DS."..".DS."..".DS);
-        return $path;
+    public function getRootPath() {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $path = realpath(dirname(__FILE__).DS."..".DS."..".DS."..".DS."..".DS."..".DS."..".DS."..".DS."..".DS);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        return $path;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     }
 
-    public function getTempDirectory() {
-        return get_temp_dir();
+    public function getTempDirectory() {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        return get_temp_dir();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     }
 
-    function getUserId()
+    function getUserId()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     {
-        //TODO implement
+        //TODO implement  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     }
 
-    public function getUsernameById($userId) {
-        //TODO implement
+    public function getUsernameById($userId) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        //TODO implement  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     }
 
-    public function renderAjaxLink($task, $action) {
-        $routerFile = "components/com_extrawatch/extrawatch.php?action=".$action."&task=".$task;
-        return $routerFile; 
+    public function renderAjaxLink($task, $action) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $routerFile = "components/com_extrawatch/extrawatch.php?action=".$action."&task=".$task;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        return $routerFile;   	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 	}
 
-    public function addStyleSheet($cssURL)
+    public function addStyleSheet($cssURL)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     {
-        $output = "<style type=\"text/css\" media=\"screen, projection\">
+        $output = "<style type=\"text/css\" media=\"screen, projection\">  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         <!--
-        @import url(" . $cssURL . ");
+        @import url(" . $cssURL . ");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         -->
         </style>";
-        return $output;
+        return $output;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     }
 
 

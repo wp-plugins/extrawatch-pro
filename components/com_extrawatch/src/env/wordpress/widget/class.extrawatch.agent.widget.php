@@ -1,53 +1,53 @@
 <?php
 /**
  * @file
- * ExtraWatch - A real-time ajax monitor and live stats
- * @package ExtraWatch
- * @version 2.2
- * @revision 1565
- * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
- * @copyright (C) 2014 by CodeGravity.com - All rights reserved!
- * @website http://www.extrawatch.com
+ * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @version 2.2  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 1591  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @copyright (C) 2014 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @website http://www.extrawatch.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  */
 
-defined('_JEXEC') or die('Restricted access');
+defined('_JEXEC') or die('Restricted access');  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-class ExtraWatchAgentWidget extends WP_Widget {
+class ExtraWatchAgentWidget extends WP_Widget {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-  function ExtraWatchAgentWidget()
+  function ExtraWatchAgentWidget()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   {
-    $widget_ops = array('classname' => 'ExtraWatchAgentWidget', 'description' => 'Essential ExtraWatch widget to record all visits' );
-    $this->WP_Widget('ExtraWatchAgentWidget', 'ExtraWatch Agent', $widget_ops);
+    $widget_ops = array('classname' => 'ExtraWatchAgentWidget', 'description' => 'Essential ExtraWatch widget to record all visits' );  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    $this->WP_Widget('ExtraWatchAgentWidget', 'ExtraWatch Agent', $widget_ops);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   }
 
-  function form($instance)
+  function form($instance)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   {
-    $instance = wp_parse_args( (array) $instance, array( 'title' => '' ) );
-    $title = $instance['title'];
+    $instance = wp_parse_args( (array) $instance, array( 'title' => '' ) );  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    $title = $instance['title'];  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   }
 
-  function update($new_instance, $old_instance)
+  function update($new_instance, $old_instance)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   {
-    $instance = $old_instance;
-    $instance['title'] = $new_instance['title'];
-    return $instance;
+    $instance = $old_instance;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    $instance['title'] = $new_instance['title'];  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    return $instance;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   }
 
-  function widget($args, $instance)
+  function widget($args, $instance)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   {
-    $extraWatchPluginDir = realpath(dirname(realpath(__FILE__)).DS."..".DS."..".DS."..".DS."..".DS."..".DS."..".DS);
-    include_once $extraWatchPluginDir.DS."modules".DS."mod_extrawatch_agent" . DS . "mod_extrawatch_agent.php";
-    echo renderExtraWatchAgent();
+    $extraWatchPluginDir = realpath(dirname(realpath(__FILE__)).DS."..".DS."..".DS."..".DS."..".DS."..".DS."..".DS);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    include_once $extraWatchPluginDir.DS."modules".DS."mod_extrawatch_agent" . DS . "mod_extrawatch_agent.php";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    echo renderExtraWatchAgent();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   }
 
 }
 
-/*register widget */
-function ExtraWatchAgentWidget_init()
+/*register widget */  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+function ExtraWatchAgentWidget_init()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 {
-  register_widget('ExtraWatchAgentWidget');
+  register_widget('ExtraWatchAgentWidget');  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 }
 
 
-add_action('widgets_init', 'ExtraWatchAgentWidget_init');
+add_action('widgets_init', 'ExtraWatchAgentWidget_init');  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 

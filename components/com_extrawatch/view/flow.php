@@ -2,88 +2,88 @@
 
 /**
  * @file
- * ExtraWatch - A real-time ajax monitor and live stats
- * @package ExtraWatch
- * @version 2.2
- * @revision 1565
- * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
- * @copyright (C) 2014 by CodeGravity.com - All rights reserved!
- * @website http://www.codegravity.com
+ * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @version 2.2  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 1591  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @copyright (C) 2014 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @website http://www.codegravity.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  */
-defined('_JEXEC') or die('Restricted access');
+defined('_JEXEC') or die('Restricted access');  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-$extraWatchFlowHTML = new ExtraWatchFlowHTML($extraWatch->flow); ?>
+$extraWatchFlowHTML = new ExtraWatchFlowHTML($extraWatch->flow); ?>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
 
 <script
-    src="<?php echo $extraWatch->config->getLiveSiteWithSuffix();?>components/com_extrawatch/js/jquery-1.4.2.min.js"></script>
+    src="<?php echo $extraWatch->config->getLiveSiteWithSuffix();?>components/com_extrawatch/js/jquery-1.4.2.min.js"></script>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 <script
-    src="<?php echo $extraWatch->config->getLiveSiteWithSuffix();?>components/com_extrawatch/js/springy/springy.js"></script>
+    src="<?php echo $extraWatch->config->getLiveSiteWithSuffix();?>components/com_extrawatch/js/springy/springy.js"></script>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 <script
-    src="<?php echo $extraWatch->config->getLiveSiteWithSuffix();?>components/com_extrawatch/js/springy/springyui.js"></script>
-<link rel="stylesheet"
-      href="<?php echo $extraWatch->config->getLiveSiteWithSuffix();?>components/com_extrawatch/css/extrawatch.css">
+    src="<?php echo $extraWatch->config->getLiveSiteWithSuffix();?>components/com_extrawatch/js/springy/springyui.js"></script>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+<link rel="stylesheet"  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+      href="<?php echo $extraWatch->config->getLiveSiteWithSuffix();?>components/com_extrawatch/css/extrawatch.css">  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
 <script>
-  var graph = new Graph();
+  var graph = new Graph();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   <?php
 
-  $outgoingLinksCount = $extraWatch->flow->getDefaultOutgoingLinks(@ExtraWatchHelper::requestPost('outgoingLinksCount'));
-  $nestingLevel = $extraWatch->flow->getDefaultNestingLevel(@ExtraWatchHelper::requestPost('nestingLevel'));
+  $outgoingLinksCount = $extraWatch->flow->getDefaultOutgoingLinks(@ExtraWatchHelper::requestPost('outgoingLinksCount'));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+  $nestingLevel = $extraWatch->flow->getDefaultNestingLevel(@ExtraWatchHelper::requestPost('nestingLevel'));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-  echo $extraWatchFlowHTML->renderGraph(@ExtraWatchHelper::requestPost('uriId'), $outgoingLinksCount, $nestingLevel);
+  echo $extraWatchFlowHTML->renderGraph(@ExtraWatchHelper::requestPost('uriId'), $outgoingLinksCount, $nestingLevel);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   ?>
 
-  jQuery(document).ready(function () {
-    jQuery('#trafficflow').springy(graph);
+  jQuery(document).ready(function () {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    jQuery('#trafficflow').springy(graph);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   });
 
 </script>
 
-<h2><?php echo _EW_FLOW_TRAFFIC;?></h2>
-<form action="" method="POST">
-  <table width="1024">
+<h2><?php echo _EW_FLOW_TRAFFIC;?></h2>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+<form action="" method="POST">  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+  <table width="1024">  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     <tr>
       <td>
-        <?php echo _EW_FLOW_SELECT_PAGE;?>
+        <?php echo _EW_FLOW_SELECT_PAGE;?>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
       </td>
       <td>
-        <?php echo _EW_FLOW_OUTG_LINKS;?>
+        <?php echo _EW_FLOW_OUTG_LINKS;?>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
       </td>
       <td>
-        <?php echo _EW_FLOW_NESTING;?>
+        <?php echo _EW_FLOW_NESTING;?>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
       </td>
-      <td align="center">
-        <?php echo _EW_FLOW_SCALE;?>
+      <td align="center">  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        <?php echo _EW_FLOW_SCALE;?>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
       </td>
     </tr>
     <tr>
-      <td valign="top">
-        <?php echo $extraWatchFlowHTML->renderPagesCombobox(@ExtraWatchHelper::requestPost('uriId')); ?>
+      <td valign="top">  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        <?php echo $extraWatchFlowHTML->renderPagesCombobox(@ExtraWatchHelper::requestPost('uriId')); ?>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
       </td>
-      <td valign="top">
-        <?php echo $extraWatchFlowHTML->renderOutgoingLinksCountCombobox($outgoingLinksCount); ?>
+      <td valign="top">  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        <?php echo $extraWatchFlowHTML->renderOutgoingLinksCountCombobox($outgoingLinksCount); ?>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
       </td>
-      <td valign="top">
-        <?php echo $extraWatchFlowHTML->renderNestingLevelCombobox($nestingLevel); ?>
+      <td valign="top">  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        <?php echo $extraWatchFlowHTML->renderNestingLevelCombobox($nestingLevel); ?>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
       </td>
-      <td align="center" valign="top">
+      <td align="center" valign="top">  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         <img
-            src="<?php echo $extraWatch->config->getLiveSiteWithSuffix();?>components/com_extrawatch/img/icons/hsv.png"
-            alt=""/><br/>
+            src="<?php echo $extraWatch->config->getLiveSiteWithSuffix();?>components/com_extrawatch/img/icons/hsv.png"  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+            alt=""/><br/>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
       </td>
     </tr>
     <tr>
-      <td colspan="5">
-        <canvas id="trafficflow" width="1024" height="400"/>
+      <td colspan="5">  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        <canvas id="trafficflow" width="1024" height="400"/>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
       </td>
     </tr>
     <tr>
-      <td colspan="5">
-        <?php echo $extraWatchFlowHTML->renderFlowTable(@ExtraWatchHelper::requestPost('uriId'), $outgoingLinksCount, $nestingLevel); ?>
+      <td colspan="5">  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        <?php echo $extraWatchFlowHTML->renderFlowTable(@ExtraWatchHelper::requestPost('uriId'), $outgoingLinksCount, $nestingLevel); ?>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
       </td>
     </tr>
   </table>
-  <input name='form_key' type='hidden' value="<?php echo $extraWatch->env->getFormKey();?>" />
+  <input name='form_key' type='hidden' value="<?php echo $extraWatch->env->getFormKey();?>" />  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 </form>
 
