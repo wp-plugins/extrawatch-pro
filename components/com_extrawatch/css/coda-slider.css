@@ -134,4 +134,8 @@
 .wrapper table td {
   padding: 4px;
 }
-		
+
+/* conflict with prestashop */
+#stripNavR0, .stripNavR0 {
+    display: none !important;
+}
