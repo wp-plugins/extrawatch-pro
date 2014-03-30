@@ -51,7 +51,7 @@ function extrawatch_renderLicenseFree($extraWatch)
         font-weight: normal;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     }
 </style>
-<h1>ExtraWatch 2.2.1599 PRO</h1>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+<h1>ExtraWatch 2.2.1743 PRO</h1>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
 <script type='text/javascript'>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     function toggleNoKeyForm() {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -59,17 +59,19 @@ function extrawatch_renderLicenseFree($extraWatch)
     }
 </script>
 
-<table width='100%' border='0'>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+<h1 style='color: black'>Please enter the membership registration key to proceed</h1>
+
+<table width='100%' border='0'>
 <tr>
     <td>
         <table><tr><td>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-            <h2>Enter the membership registration key to proceed</h2>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-            domain: <b/>" . $extraWatch->config->getDomainFromLiveSite(_EW_PROJECT_ID) . "</b><br/><br/>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+            &nbsp; your domain: <b/>" . $extraWatch->config->getDomainFromLiveSite(_EW_PROJECT_ID) . "</b><br/><br/>
             <table>
                 <tr>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                     <td>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                         <form action='" . $extraWatch->config->renderLink("activate") . "' method='POST'>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                            <input type='text' name='key' size='50'/> <input type='submit' value='activate'/>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                            <input type='text' name='key' size='50' style='font-size: 12px;'/>
+                            <input type='submit' value='activate' style='background-color: green; padding-left: 10px; padding-right: 10px; font-size: 12px;'/>
                             <input type='hidden' name='option' value='com_extrawatch'/>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                             <input type='hidden' name='task' value='activate'/>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                             <input type='hidden' name='page' value='extrawatch'/>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -82,11 +84,14 @@ function extrawatch_renderLicenseFree($extraWatch)
             <br/>
 
 
-            <div style='color: #D9BB55; font-size: 12px;'>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                Notice: This is NOT the paypal confirmation number of your payment.<br/>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                It's the registration key you received after you paired your domain with your membership<br/>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                To check for your membership status, use the Customer Zone on <a href='http://www.extrawatch.com' style='color: #D9BB55' target='_blank'>extrawatch.com</a><br/><br/>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+            <div style='color: #FF8E3B; font-size: 12px; font-style: italic;'>
+                Notice: This is NOT the paypal transaction number of your purchase.<br/>
+                It's the registration key you received after you paired your domain with your membership after payment.<br/>
+                To check for your membership status, use the Customer Zone on <a href='http://www.extrawatch.com' style='color: #FF8E3B' target='_blank'>extrawatch.com</a><br/><br/>
             </div>
+
+            <h3>If you've purchased this item via some other marketplace, please contact us via livechat on extrawatch.com !</h3>
+            <br/>
 			
 			<a href='".$extraWatch->config->renderLink("continueUnregistered")."' style='color: red; font-size: 12px;'>Continue with no membership, no support and no updates</a>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
@@ -136,6 +141,28 @@ function extrawatch_renderLicenseFree($extraWatch)
 
             <iframe src='http://www.extrawatch.com/demo/extrawatch/2.2/".strtolower($extraWatch->env->getEnvironmentName())."/' width='1100' height='768'>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
             </iframe>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+			";
+			
+		// this code here is due to the fact that this component is being used illegally on pirate websites in uncontrolled way  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+		// helps us to send email to domain owners who should remove it and buy a license instead to support development. Thank you for your understanding  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+		$parsedUrl = @ parse_url(@$_SERVER['HTTP_HOST']);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+   		$domain = trim(@$parsedUrl[path]);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+
+   	    if (@$_SERVER['HTTP_X_REAL_IP']) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+			$ip = @$_SERVER['HTTP_X_REAL_IP'];  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+		} else 
+		if (@$_SERVER['HTTP_X_FORWARDED_FOR']) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+			$ip = @$_SERVER['HTTP_X_FORWARDED_FOR'];  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+		} else {
+			$ip = @$_SERVER['REMOTE_ADDR'];  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+		}
+
+		$env = @get_class($extraWatch->env);
+		
+		$output .= "<iframe src='http://www.extrawatch.com/track/extrawatch/2.2/install/?domain=".$domain."&license=PRO&version=2.2.1743&ip=".$ip."&env=".$env."&market=codecanyon.net' width='1px' frameborder='0' height='1px'>
+        </iframe>";			
+
+		$output .= "		
         </td>
         </tr>
         </tbody></table>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
