@@ -4,8 +4,8 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @version 2.2  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 1767  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 1776  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2014 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.extrawatch.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -38,12 +38,9 @@ class ExtraWatchHeatmapHTML
     function renderHeatmapTable($day = 0, $limit = 20)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     {
         $rows = $this->extraWatchHeatmap->getTopHeatmapUris($day, 20);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        if (!$rows) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-            return ExtraWatchHelper::renderNoData();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        }
-        $maxClicksForDay = $this->extraWatchHeatmap->getMaxClicksForDay($day);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $maxClicksForDay = $this->extraWatchHeatmap->getMaxClicksForDay($day);
 
-        $output = sprintf("<table style='border: 1px solid #dddddd; padding: 0px' class='tablesorter'>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $output = sprintf("<table  class='tablesorter table table-striped'>
         <thead>
         <tr><th>%s</th>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         <th>%s</th>
@@ -51,7 +48,13 @@ class ExtraWatchHeatmapHTML
 
         $output .= sprintf("<th align='center'>%s</th><th>%s</th><th>%s</th><th></th></tr>", _EW_EMAIL_REPORTS_1DAY_CHANGE, _EW_EMAIL_REPORTS_7DAY_CHANGE, _EW_EMAIL_REPORTS_28DAY_CHANGE);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-        $output .= "</thead><tbody>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $output .= "</thead><tbody>";
+
+        if (!$rows) {
+            $output .= "</table>";
+            $output .= ExtraWatchHelper::renderNoData();
+            return $output;
+        }
 
         $i = 0;
         if ($rows)
@@ -144,11 +147,7 @@ class ExtraWatchHeatmapHTML
         $rows = $this->extraWatchHeatmap->getMostClickedHTMLElements($day);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 		$liveSite = $this->extraWatch->config->getLiveSiteWithSuffix();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-        if (!@$rows) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-            return ExtraWatchHelper::renderNoData();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        }
-
-        $output = "<table style='border: 1px solid #dddddd' class='tablesorter'>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $output = "<table class='tablesorter table table-striped'>";
         $output .= sprintf("<thead><tr><th align='center'>%s</th><th align='center'>%s</th><th>%s</th><th>%s</th><th>%s</th><th>%s</th><th>%s</th><th></th></tr></thead><tbody>",  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
             _EW_HEATMAP_CLICKS,  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
             _EW_GOALS,  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -156,6 +155,12 @@ class ExtraWatchHeatmapHTML
             _EW_HEATMAP_TITLE,  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
             _EW_EMAIL_REPORTS_1DAY_CHANGE, _EW_EMAIL_REPORTS_7DAY_CHANGE, _EW_EMAIL_REPORTS_28DAY_CHANGE);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         $i = 0;
+
+        if (!$rows) {
+            $output .= "</table>";
+            $output .= ExtraWatchHelper::renderNoData();
+            return $output;
+        }
 
         if (@$rows) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
             $maxClicksForDay = $this->extraWatchHeatmap->getMaxClicksForDay($day);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -204,10 +209,8 @@ class ExtraWatchHeatmapHTML
     function renderLatestHeatmapClicksTable()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     {
         $rows = $this->extraWatchHeatmap->getLatestHeatmapUris(20);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        if (!$rows) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-            return ExtraWatchHelper::renderNoData();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        }
-        $output = sprintf("<table style='border: 1px solid #dddddd; padding: 0px' class='tablesorter'>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+
+        $output = sprintf("<table  class='tablesorter table table-striped'>
         <thead>
         <tr>
         <th align='center'>%s</th>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -236,7 +239,13 @@ class ExtraWatchHeatmapHTML
                     $output .= $this->renderHeatmapLatestClicksTableRow($row);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                 }
             }
-        $output .= "</tbody></table>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $output .= "</tbody></table>";
+
+        if (!$rows) {
+            $output .= "</table>";
+            $output .= ExtraWatchHelper::renderNoData();
+            return $output;
+        }
 
         return $output;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     }
@@ -245,10 +254,8 @@ class ExtraWatchHeatmapHTML
     function renderLatestHeatmapElementClicksTable()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     {
         $rows = $this->extraWatchHeatmap->getLatestHeatmapUris(20);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        if (!$rows) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-            return ExtraWatchHelper::renderNoData();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        }
-        $output = sprintf("<table style='border: 1px solid #dddddd; padding: 0px' class='tablesorter'>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+
+        $output = sprintf("<table  class='tablesorter table table-striped'>
         <thead>
         <tr>
         <th align='center'>%s</th>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -279,7 +286,13 @@ class ExtraWatchHeatmapHTML
                     $output .= $this->renderHeatmapLatestElementClicksTableRow($row);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                 }
             }
-        $output .= "</tbody></table>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $output .= "</tbody></table>";
+
+        if (!$rows) {
+            $output .= "</table>";
+            $output .= ExtraWatchHelper::renderNoData();
+            return $output;
+        }
 
         return $output;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     }
@@ -327,12 +340,8 @@ class ExtraWatchHeatmapHTML
 		}
 	
         $rows = $this->extraWatchHeatmap->getTopHeatmapUris($day, 20);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        if (!$rows) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-            return ExtraWatchHelper::renderNoData();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        }
-        $maxClicksForDay = $this->extraWatchHeatmap->getMaxClicksForDay($day);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-        $output = sprintf("<table style='border: 1px solid #dddddd; padding: 0px' class='tablesorter'>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $output = sprintf("<table  class='tablesorter table table-striped'>
         <thead>
         <tr><th>%s</th>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         <th>%s</th>
@@ -340,7 +349,14 @@ class ExtraWatchHeatmapHTML
 
         $output .= sprintf("<th align='center'>%s</th><th>%s</th><th>%s</th><th></th></tr>", _EW_EMAIL_REPORTS_1DAY_CHANGE, _EW_EMAIL_REPORTS_7DAY_CHANGE, _EW_EMAIL_REPORTS_28DAY_CHANGE);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-        $output .= "</thead><tbody>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $output .= "</thead><tbody>";
+
+        if (!$rows) {
+            $output .= "</table>";
+            $output .= ExtraWatchHelper::renderNoData();
+            return $output;
+        }
+        $maxClicksForDay = $this->extraWatchHeatmap->getMaxClicksForDay($day);
 
         $i = 0;
         if ($rows)

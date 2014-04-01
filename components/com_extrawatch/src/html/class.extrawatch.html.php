@@ -4,8 +4,8 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @version 2.2  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 1767  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 1776  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2014 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.extrawatch.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -45,7 +45,7 @@ class ExtraWatchHTML
 
         $desc = "";
         if ($type == "number" && !(is_numeric($value))) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-            $desc .= " <span style='color: red; font-weight: bold;'>" . _EW_NOT_NUMBER . "</span> ";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+            $desc .= " <span style='color: #e74c3c; font-weight: bold;'>" . _EW_NOT_NUMBER . "</span> ";
         }
         $desc .= constant("_EW_DESC_" . $key);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         $desc .= $addToDescription;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -165,7 +165,7 @@ class ExtraWatchHTML
 
         $desc = @constant("_EW_DESC_GOALS_" . $id);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         if ($required == TRUE) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-            $requiredText = "<span style='color: red;'>(* required)</span>&nbsp;";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+            $requiredText = "<span style='color: #e74c3c;'>(* required)</span>&nbsp;";
         } else {
             $requiredText = "";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         }
@@ -191,7 +191,7 @@ class ExtraWatchHTML
 
         $desc = @constant("_EW_DESC_GOALS_" . $id);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         if ($required == TRUE) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-            $requiredText = "<span style='color: red;'>(* required)</span>&nbsp;";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+            $requiredText = "<span style='color: #e74c3c;'>(* required)</span>&nbsp;";
         } else {
             $requiredText = "";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         }
@@ -260,7 +260,7 @@ class ExtraWatchHTML
     function renderHeader()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     {
         // if ($this->extraWatch->config->getTrialVersionTimeLeft() > 0 || $this->extraWatch->config->isAdFree()) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        return ExtraWatchHelper::get_include_contents(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "adminheader.php", array("extraWatch" => $this->extraWatch));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        return ExtraWatchHelper::get_include_contents(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "adminheader.php", array("extraWatch" => $this->extraWatch, "extraWatchHTML" => $this));
         // }
     }
 
@@ -429,6 +429,82 @@ class ExtraWatchHTML
         $extraWatchHeatmapHTML = new ExtraWatchHeatmapHTML($this->extraWatch->database);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         $output = ExtraWatchHelper::get_include_contents(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "clicks.php", array("extraWatch" => $this->extraWatch, "extraWatchHeatmap" => $extraWatchHeatmap, "extraWatchHeatmapHTML" => $extraWatchHeatmapHTML, "extraWatchHTML" => $this));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         return $output;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    }
+
+    function renderLocation()
+    {
+        $output = ExtraWatchHelper::get_include_contents(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "location.php", array("extraWatch" => $this->extraWatch));
+        return $output;
+    }
+
+    function renderStats()
+    {
+        $output = ExtraWatchHelper::get_include_contents(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "stats.php", array("extraWatch" => $this->extraWatch));
+        return $output;
+    }
+
+    function renderFooter()
+    {
+        $output = ExtraWatchHelper::get_include_contents(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "footer.php", array("extraWatch" => $this->extraWatch));
+        return $output;
+    }
+
+
+    function renderBadge($badgeForSection) {
+
+        $today = ExtraWatchDate::jwDateToday();
+
+        switch($badgeForSection) {
+
+            
+            case 'heatmap': {
+                $badgeValue = $this->extraWatch->heatmap->getHeatmapClickCountByDate($today);
+                break;
+            }
+            case 'clicks': {
+                $badgeValue = $this->extraWatch->heatmap->getTotalMostClickedHTMLElementsForDay($today);
+                break;
+            }
+            case 'users': {
+                $badgeValue = $this->extraWatch->user->getUserCountForDay($today);
+                break;
+            }
+            case 'seo': {
+                $badgeValue = $this->extraWatch->seo->getTotalVisitsByKeyphrasesByDay($today);
+                break;
+            }
+            case 'download': {
+                $badgeValue = $this->extraWatch->downloads->getDownloadCountForDay($today);
+                break;
+            }
+            
+            case 'stats': {
+                $badgeValue = $this->extraWatch->stat->getCountByKeyAndDate(EW_DB_KEY_UNIQUE, $today);
+                break;
+            }
+            case 'visitors': {
+                $badgeValue = $this->extraWatch->visit->getActiveUsersCount();
+                break;
+            }
+            case 'antiSpam': {
+                $badgeValue = $this->extraWatch->block->getBlockedCountByDate($today);
+                break;
+            }
+                // ...
+        }
+
+        $title=@constant("_EW_BADGE_".strtoupper($badgeForSection));
+
+        if ($badgeValue) {
+            return "<span class=\"ew_badge\" title='$title''>&nbsp;".$badgeValue."&nbsp;</span>";
+        }
+
+    }
+
+    function renderGraphs($extraWatchTrendHTML)
+    {
+        $output = ExtraWatchHelper::get_include_contents(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "graphs.php", array("extraWatch" => $this->extraWatch, "extraWatchTrendHTML" => $extraWatchTrendHTML));
+        return $output;
     }
 
 

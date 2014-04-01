@@ -620,5 +620,44 @@ DEFINE('_EW_MENU_AVAILABLE_IN_PRO_FLOW', "(Available in PRO version) Interactive
 DEFINE('_EW_MENU_AVAILABLE_IN_PRO_DOWNLOADS', "(Available in PRO version) See charts of downloads of zip, pdf or other downloadable artifacts");   	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_MENU_AVAILABLE_IN_PRO_STATUS', "(Available in PRO version) Database table sizes monitoring");   	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_MENU_AVAILABLE_IN_PRO_COMPONENTS', "(Available in PRO version) Directories size monitoring");   	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ 
+
+
+
+
+
+ 
+
+
+ 
+
+ 
+
+
+ 
+
+
+
+ 
+
+ 
+
 DEFINE('_EW_ADMINHEADER_SEARCH_RANK', "Search Rank");   	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_DOWNLOADS_START_ADD_EXT', "No download statistics currently recorded. Start monitoring file downloads and");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_NAVIGATION_VISITORS', 'Current Visitors');
+DEFINE('_EW_NAVIGATION_LOCATION', 'Location');
+DEFINE('_EW_NAVIGATION_BLOCKING', 'Blocking');
+DEFINE('_EW_NAVIGATION_CLICKS', 'Clicks');
+DEFINE('_EW_NAVIGATION_STATISTICS', 'Statistics');
+
+DEFINE('_EW_MENU_AVAILABLE_IN_PRO_LOCATION', '(Available in PRO version) Location on a map');
+
+DEFINE('_EW_BADGE_VISITORS',"Number of unique visitors for current day");
+DEFINE('_EW_BADGE_HEATMAP',"Number of heatmap clicks for current day");
+DEFINE('_EW_BADGE_LOCATION',"Number of countries from which was your website visited today");
+DEFINE('_EW_BADGE_CLICKS',"Number of clicks on elements for current day");
+DEFINE('_EW_BADGE_USERS',"Number of registered users today");
+DEFINE('_EW_BADGE_SEO',"Number of keywords by which was your website found for today");
+DEFINE('_EW_BADGE_DOWNLOAD',"Number of downloads of files for today");
+DEFINE('_EW_BADGE_STATS',"Number of unique visits today");
+DEFINE('_EW_BADGE_ANTISPAM',"Number of blocked spam attempts");
