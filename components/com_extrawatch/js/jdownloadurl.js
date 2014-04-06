@@ -18,6 +18,15 @@ function createXmlHttpRequest() {
 }
 ;
 
+
+
+
+
+
+
+
+
+
 /**
  * This functions wraps XMLHttpRequest open/send function.
  * It lets you specify a URL and will call the callback if
@@ -25,7 +34,12 @@ function createXmlHttpRequest() {
  * @param {String} url The URL to retrieve
  * @param {Function} callback The function to call once retrieved.
  */
-function downloadUrl(url, callback, asText) {
+function downloadUrl(url, callback, asText, async) {
+
+if (async == null) {
+	async = true; //asynchronous true by default
+}
+
     var status = -1;
     var request = createXmlHttpRequest();
     if (!request) {
@@ -51,7 +65,7 @@ function downloadUrl(url, callback, asText) {
             }
         }
     }
-    request.open('GET', url, true); //using asynchronous loading
+    request.open('GET', url, async); //using asynchronous loading
     try {
         request.send(null);
     } catch (e) {
