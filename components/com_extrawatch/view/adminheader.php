@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.3
- * @revision 1804
+ * @revision 1801
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2014 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -48,26 +48,24 @@ echo $extraWatch->env->addStyleSheet($liveSite."components/com_extrawatch/css/da
 <?php $extraWatch->env->addScript($extraWatch->config->getLiveSiteWithSuffix()."components/com_extrawatch/js/morris/raphael-2.1.0.min.js");?>
 <?php $extraWatch->env->addScript($extraWatch->config->getLiveSiteWithSuffix()."components/com_extrawatch/js/morris/morris.min.js");?>
 
-
-
-<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="navbar-header">
-		  <img src="<?php echo $extraWatch->config->getLiveSiteWithSuffix();?>components/com_extrawatch/img/logo.png" alt="" width="155" height="55">
-            <?php if (!_EW_CLOUD_MODE && !$extraWatch->config->isAdFree()) { ?>
-                <div style="display: block; float: right">
-                                <?php require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "frame.php";?>
-                </div>
-            <?php } else if (@_EW_CLOUD_MODE){ ?>
-            <div style="display: block; color: white; width: 100%; text-align: right">
-            Welcome, <?php echo (@$_SESSION['email']);?>. <a href="?action=logout" style="color: white">Logout</a>
-            <?php } ?>
-            </div>
-        </div>
+<section id="container">
+<!-- header start -->
+<header class="header blue-bg">
+	<img src="<?php echo $extraWatch->config->getLiveSiteWithSuffix();?>components/com_extrawatch/img/logo.png" alt="" width="155" height="55">
+    <?php if (!_EW_CLOUD_MODE && !$extraWatch->config->isAdFree()) { ?>
+    <div style="display: block; float: right">
+		<?php require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "frame.php";?>
     </div>
-
-
+    <?php } else if (@_EW_CLOUD_MODE){ ?>
+    <div style="display: block; color: white; width: 100%; text-align: right">
+        Welcome, <?php echo (@$_SESSION['email']);?>. <a href="?action=logout" style="color: white">Logout</a>
+        <?php } ?>
+    </div>
+</header>
+<!-- header end -->
 <div class="container-fluid">
     <?php require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "navigation.php"; ?>
 
 <!-- body start -->
-    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+<section>
+    <div id="ew-main-content" style="margin-left: 210px;">

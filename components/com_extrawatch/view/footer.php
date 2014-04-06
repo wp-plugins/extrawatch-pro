@@ -4,7 +4,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 1804  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 1801  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2014 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.codegravity.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -13,16 +13,16 @@ defined('_JEXEC') or die('Restricted access'); ?>
 
 
 </div>
-
-
+</section>
+<!-- body end -->
 <audio id='ewVisitSound' src="<?php echo $extraWatch->config->getLiveSiteWithSuffix();?>components/com_extrawatch/data/mp3/click.mp3" autoplay="false" hidden="true" muted="muted">
 </audio>
 
 </div>
-
+<!-- footer start-->
 <footer class="panel-footer" id="ew-footer">
     <div class="container">
-        <span class="col-md-5">ExtraWatch 2.3.1804 2006-<?php echo(date("Y"));?> by CodeGravity.com</span>
+        <span class="col-md-5">ExtraWatch 2.3.1801 2006-<?php echo(date("Y"));?> by CodeGravity.com</span>
         <span class="col-md-7 text-right">
             <a href='http://www.extrawatch.com/support/' target='_blank'><?php echo _EW_MENU_FAQ;?></a> &nbsp;&nbsp;&nbsp;&nbsp;
             <a href='http://www.extrawatch.com/support/' target='_blank'><?php echo _EW_MENU_REPORT_BUG;?></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -37,3 +37,5 @@ defined('_JEXEC') or die('Restricted access'); ?>
             <a href="<?php echo $extraWatch->config->renderLink('credits');?>"><?php echo _EW_CREDITS_TITLE;?></a>
     </span>
 </footer>
+<!-- footer end -->
+</section>
