@@ -5,27 +5,27 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.3
- * @revision 1807
+ * @revision 1821
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2014 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
  */
 defined('_JEXEC') or die('Restricted access'); ?>
 
-<?php $extraWatch->env->addScript($extraWatch->config->getLiveSiteWithSuffix()."components/com_extrawatch/js/ajax-dynamic-content.js");?>
-<?php $extraWatch->env->addScript($extraWatch->config->getLiveSiteWithSuffix()."components/com_extrawatch/js/ajax.js");?>
-<?php $extraWatch->env->addScript($extraWatch->config->getLiveSiteWithSuffix().$extraWatch->env->renderAjaxLink('js','extrawatch.js')."&rand=".$extraWatch->config->getRand()."&time=".time()."&env=".($extraWatch->config->getEnvironment())."&projectId="._EW_PROJECT_ID);?>
-<?php $extraWatch->env->addScript($extraWatch->config->getLiveSiteWithSuffix()."components/com_extrawatch/js/fade.js");?>
+<?php echo $extraWatch->env->addScript($extraWatch->config->getLiveSiteWithSuffix()."components/com_extrawatch/js/ajax-dynamic-content.js");?>
+<?php echo $extraWatch->env->addScript($extraWatch->config->getLiveSiteWithSuffix()."components/com_extrawatch/js/ajax.js");?>
+<?php echo $extraWatch->env->addScript($extraWatch->config->getLiveSiteWithSuffix().$extraWatch->env->renderAjaxLink('js','extrawatch.js')."&rand=".$extraWatch->config->getRand()."&time=".time()."&env=".($extraWatch->config->getEnvironment())."&projectId="._EW_PROJECT_ID);?>
+<?php echo $extraWatch->env->addScript($extraWatch->config->getLiveSiteWithSuffix()."components/com_extrawatch/js/fade.js");?>
 
 <?php
 	if (defined('JVERSION') && function_exists('version_compare') && version_compare(JVERSION, '1.6.0', '<')) {
 		//do nothing.. menu fix for joomla 1.5
 	} else {
 ?>
-<?php $extraWatch->env->addScript($extraWatch->config->getLiveSiteWithSuffix()."components/com_extrawatch/js/jquery-1.11.0.min.js");?>
+<?php echo $extraWatch->env->addScript($extraWatch->config->getLiveSiteWithSuffix()."components/com_extrawatch/js/jquery-1.11.0.min.js");?>
 <?php } ?>
 
-<?php $extraWatch->env->addScript($extraWatch->config->getLiveSiteWithSuffix()."components/com_extrawatch/js/jquery.tablesorter.js");?>
+<?php echo $extraWatch->env->addScript($extraWatch->config->getLiveSiteWithSuffix()."components/com_extrawatch/js/jquery.tablesorter.js");?>
 
 
 <?php
@@ -33,20 +33,20 @@ $liveSite = $extraWatch->config->getLiveSiteWithSuffix();
 echo $extraWatch->env->addStyleSheet($liveSite."components/com_extrawatch/css/dashboard.css.php?env=".get_class($extraWatch->env));
 ?>
 
-<!--[if lt IE 9]><?php $extraWatch->env->addScript("../assets/js/ie8-responsive-file-warning.js");?><![endif]-->
+<!--[if lt IE 9]><?php echo $extraWatch->env->addScript("../assets/js/ie8-responsive-file-warning.js");?><![endif]-->
 
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
-<?php $extraWatch->env->addScript("https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js");?>
-<?php $extraWatch->env->addScript("https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js");?>
+<?php echo $extraWatch->env->addScript("https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js");?>
+<?php echo $extraWatch->env->addScript("https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js");?>
 <![endif]-->
 
 
 
-<?php $extraWatch->env->addScript($extraWatch->config->getLiveSiteWithSuffix()."components/com_extrawatch/js/jxml.js");?>
-<?php $extraWatch->env->addScript($extraWatch->config->getLiveSiteWithSuffix()."components/com_extrawatch/js/jdownloadurl.js");?>
-<?php $extraWatch->env->addScript($extraWatch->config->getLiveSiteWithSuffix()."components/com_extrawatch/js/morris/raphael-2.1.0.min.js");?>
-<?php $extraWatch->env->addScript($extraWatch->config->getLiveSiteWithSuffix()."components/com_extrawatch/js/morris/morris.min.js");?>
+<?php echo $extraWatch->env->addScript($extraWatch->config->getLiveSiteWithSuffix()."components/com_extrawatch/js/jxml.js");?>
+<?php echo $extraWatch->env->addScript($extraWatch->config->getLiveSiteWithSuffix()."components/com_extrawatch/js/jdownloadurl.js");?>
+<?php echo $extraWatch->env->addScript($extraWatch->config->getLiveSiteWithSuffix()."components/com_extrawatch/js/morris/raphael-2.1.0.min.js");?>
+<?php echo $extraWatch->env->addScript($extraWatch->config->getLiveSiteWithSuffix()."components/com_extrawatch/js/morris/morris.min.js");?>
 
 
 
@@ -71,3 +71,9 @@ echo $extraWatch->env->addStyleSheet($liveSite."components/com_extrawatch/css/da
 
 <!-- body start -->
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+        <?php
+        if (@_EW_CLOUD_MODE) {
+            include(realpath(dirname(__FILE__)).DS."expiration.php");
+        }
+        ?>

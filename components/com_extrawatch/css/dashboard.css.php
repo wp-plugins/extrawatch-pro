@@ -5964,6 +5964,7 @@ width: 100%;
 
 a:link {
     color: #2C3E50;
+    text-decoration: none;
 }
 
 .nav A {
