@@ -769,15 +769,15 @@ pre code {
   max-height: 340px;
   overflow-y: scroll;
 }
-.container {
+.ew-container {
   padding-right: 15px;
   padding-left: 5px;
   margin-right: auto;
   margin-left: auto;
-  
-  
-width: auto;
-padding: 0 15px;
+  width: auto;
+  padding: 0 15px;
+  font-size:11px;
+  width:80%;
 }
 @media (min-width: 768px) {
   .container {
@@ -3726,6 +3726,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     width:100%;
     float: left;
     padding-left: 10px;
+    padding-top: 25px;
     padding-top: 25px;
     z-index:-9999;
   }
