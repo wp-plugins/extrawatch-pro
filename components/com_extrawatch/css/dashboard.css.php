@@ -275,7 +275,7 @@ th {
   select {
     background: #fff !important;
   }
-  .navbar {
+  .ew-navbar {
     display: none;
   }
   .table td,
@@ -3710,23 +3710,24 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
-.navbar {
+.ew-navbar {
   position: relative;
   min-height: 50px;
   // margin-bottom: 20px; - removed by matto
   border: 1px solid transparent;
 }
 @media (min-width: 768px) {
-  .navbar {
+  .ew-navbar {
     border-radius: 4px;
   }
 }
 @media (min-width: 768px) {
-  .navbar-header {
+  .ew-navbar-header {
     width:100%;
     float: left;
     padding-left: 10px;
-    padding-top: 10px;
+    padding-top: 25px;
+    z-index:-9999;
   }
 }
 .navbar-collapse {
@@ -3756,23 +3757,23 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   .navbar-collapse.in {
     overflow-y: visible;
   }
-  .navbar-fixed-top .navbar-collapse,
+  .ew-navbar-fixed-top .navbar-collapse,
   .navbar-static-top .navbar-collapse,
   .navbar-fixed-bottom .navbar-collapse {
     padding-right: 0;
     padding-left: 0;
   }
 }
-.container > .navbar-header,
-.container-fluid > .navbar-header,
+.container > .ew-navbar-header,
+.container-fluid > .ew-navbar-header,
 .container > .navbar-collapse,
 .container-fluid > .navbar-collapse {
   margin-right: -15px;
   margin-left: -15px;
 }
 @media (min-width: 768px) {
-  .container > .navbar-header,
-  .container-fluid > .navbar-header,
+  .container > .ew-navbar-header,
+  .container-fluid > .ew-navbar-header,
   .container > .navbar-collapse,
   .container-fluid > .navbar-collapse {
     margin-right: 0;
@@ -3788,7 +3789,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     border-radius: 0;
   }
 }
-.navbar-fixed-top,
+.ew-navbar-fixed-top,
 .navbar-fixed-bottom {
   position: relative;
 clear: both;
@@ -3797,12 +3798,12 @@ clear: both;
   //z-index: 1030;    //matto - removed z-index, was causing joomla popup menu to be under this element
 }
 @media (min-width: 768px) {
-  .navbar-fixed-top,
+  .ew-navbar-fixed-top,
   .navbar-fixed-bottom {
     border-radius: 0;
   }
 }
-.navbar-fixed-top {
+.ew-navbar-fixed-top {
   border-width: 0 0 1px;
     position: relative !important;
 }
@@ -3823,8 +3824,8 @@ clear: both;
   text-decoration: none;
 }
 @media (min-width: 768px) {
-  .navbar > .container .navbar-brand,
-  .navbar > .container-fluid .navbar-brand {
+  .ew-navbar > .container .navbar-brand,
+  .ew-navbar > .container-fluid .navbar-brand {
     margin-left: -15px;
   }
 }
@@ -4095,93 +4096,93 @@ clear: both;
 .navbar-default .navbar-link:hover {
   color: #333;
 }
-.navbar-inverse {
+.ew-navbar-inverse {
   background-color: #2c3e50;
   border-color: #2c3e50;
 }
-.navbar-inverse .navbar-brand {
+.ew-navbar-inverse .navbar-brand {
   color: #999;
 }
-.navbar-inverse .navbar-brand:hover,
-.navbar-inverse .navbar-brand:focus {
+.ew-navbar-inverse .navbar-brand:hover,
+.ew-navbar-inverse .navbar-brand:focus {
   color: #fff;
   background-color: transparent;
 }
-.navbar-inverse .navbar-text {
+.ew-navbar-inverse .navbar-text {
   color: #999;
 }
-.navbar-inverse .navbar-nav > li > a {
+.ew-navbar-inverse .navbar-nav > li > a {
   color: #999;
 }
-.navbar-inverse .navbar-nav > li > a:hover,
-.navbar-inverse .navbar-nav > li > a:focus {
+.ew-navbar-inverse .navbar-nav > li > a:hover,
+.ew-navbar-inverse .navbar-nav > li > a:focus {
   color: #fff;
   background-color: transparent;
 }
-.navbar-inverse .navbar-nav > .active > a,
-.navbar-inverse .navbar-nav > .active > a:hover,
-.navbar-inverse .navbar-nav > .active > a:focus {
+.ew-navbar-inverse .navbar-nav > .active > a,
+.ew-navbar-inverse .navbar-nav > .active > a:hover,
+.ew-navbar-inverse .navbar-nav > .active > a:focus {
   color: #fff;
   background-color: #080808;
 }
-.navbar-inverse .navbar-nav > .disabled > a,
-.navbar-inverse .navbar-nav > .disabled > a:hover,
-.navbar-inverse .navbar-nav > .disabled > a:focus {
+.ew-navbar-inverse .navbar-nav > .disabled > a,
+.ew-navbar-inverse .navbar-nav > .disabled > a:hover,
+.ew-navbar-inverse .navbar-nav > .disabled > a:focus {
   color: #444;
   background-color: transparent;
 }
-.navbar-inverse .navbar-toggle {
+.ew-navbar-inverse .navbar-toggle {
   border-color: #333;
 }
-.navbar-inverse .navbar-toggle:hover,
-.navbar-inverse .navbar-toggle:focus {
+.ew-navbar-inverse .navbar-toggle:hover,
+.ew-navbar-inverse .navbar-toggle:focus {
   background-color: #333;
 }
-.navbar-inverse .navbar-toggle .icon-bar {
+.ew-navbar-inverse .navbar-toggle .icon-bar {
   background-color: #fff;
 }
-.navbar-inverse .navbar-collapse,
-.navbar-inverse .navbar-form {
+.ew-navbar-inverse .navbar-collapse,
+.ew-navbar-inverse .navbar-form {
   border-color: #101010;
 }
-.navbar-inverse .navbar-nav > .open > a,
-.navbar-inverse .navbar-nav > .open > a:hover,
-.navbar-inverse .navbar-nav > .open > a:focus {
+.ew-navbar-inverse .navbar-nav > .open > a,
+.ew-navbar-inverse .navbar-nav > .open > a:hover,
+.ew-navbar-inverse .navbar-nav > .open > a:focus {
   color: #fff;
   background-color: #080808;
 }
 @media (max-width: 767px) {
-  .navbar-inverse .navbar-nav .open .dropdown-menu > .dropdown-header {
+  .ew-navbar-inverse .navbar-nav .open .dropdown-menu > .dropdown-header {
     border-color: #080808;
   }
-  .navbar-inverse .navbar-nav .open .dropdown-menu .divider {
+  .ew-navbar-inverse .navbar-nav .open .dropdown-menu .divider {
     background-color: #080808;
   }
-  .navbar-inverse .navbar-nav .open .dropdown-menu > li > a {
+  .ew-navbar-inverse .navbar-nav .open .dropdown-menu > li > a {
     color: #999;
   }
-  .navbar-inverse .navbar-nav .open .dropdown-menu > li > a:hover,
-  .navbar-inverse .navbar-nav .open .dropdown-menu > li > a:focus {
+  .ew-navbar-inverse .navbar-nav .open .dropdown-menu > li > a:hover,
+  .ew-navbar-inverse .navbar-nav .open .dropdown-menu > li > a:focus {
     color: #fff;
     background-color: transparent;
   }
-  .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a,
-  .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a:hover,
-  .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a:focus {
+  .ew-navbar-inverse .navbar-nav .open .dropdown-menu > .active > a,
+  .ew-navbar-inverse .navbar-nav .open .dropdown-menu > .active > a:hover,
+  .ew-navbar-inverse .navbar-nav .open .dropdown-menu > .active > a:focus {
     color: #fff;
     background-color: #080808;
   }
-  .navbar-inverse .navbar-nav .open .dropdown-menu > .disabled > a,
-  .navbar-inverse .navbar-nav .open .dropdown-menu > .disabled > a:hover,
-  .navbar-inverse .navbar-nav .open .dropdown-menu > .disabled > a:focus {
+  .ew-navbar-inverse .navbar-nav .open .dropdown-menu > .disabled > a,
+  .ew-navbar-inverse .navbar-nav .open .dropdown-menu > .disabled > a:hover,
+  .ew-navbar-inverse .navbar-nav .open .dropdown-menu > .disabled > a:focus {
     color: #444;
     background-color: transparent;
   }
 }
-.navbar-inverse .navbar-link {
+.ew-navbar-inverse .navbar-link {
   color: #999;
 }
-.navbar-inverse .navbar-link:hover {
+.ew-navbar-inverse .navbar-link:hover {
   color: #fff;
 }
 .breadcrumb {
@@ -5682,8 +5683,8 @@ button.close {
 .nav:after,
 .navbar:before,
 .navbar:after,
-.navbar-header:before,
-.navbar-header:after,
+.ew-navbar-header:before,
+.ew-navbar-header:after,
 .navbar-collapse:before,
 .navbar-collapse:after,
 .pager:before,
@@ -5704,7 +5705,7 @@ button.close {
 .btn-group-vertical > .btn-group:after,
 .nav:after,
 .navbar:after,
-.navbar-header:after,
+.ew-navbar-header:after,
 .navbar-collapse:after,
 .pager:after,
 .panel-body:after,
@@ -6097,9 +6098,10 @@ body {
     padding-top: 0px !important;
 }
 
-.navbar {
-    min-height: 30px;
+.ew-navbar {
+    min-height: 90px;
     margin-bottom: 0px !important;
+    z-index:-99999;
 }
 
 /* chages for wordpress |*/

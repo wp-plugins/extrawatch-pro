@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.3
- * @revision 1821
+ * @revision 1822
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2014 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -50,8 +50,8 @@ echo $extraWatch->env->addStyleSheet($liveSite."components/com_extrawatch/css/da
 
 
 
-<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="navbar-header">
+<div class="ew-navbar ew-navbar-inverse ew-navbar-fixed-top" role="navigation">
+        <div class="ew-navbar-header">
 		  <img src="<?php echo $extraWatch->config->getLiveSiteWithSuffix();?>components/com_extrawatch/img/logo.png" alt="" width="155" height="55">
             <?php if (!_EW_CLOUD_MODE && !$extraWatch->config->isAdFree()) { ?>
                 <div style="display: block; float: right">
