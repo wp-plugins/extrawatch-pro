@@ -6102,7 +6102,7 @@ body {
 .ew-navbar {
     min-height: 90px;
     margin-bottom: 0px !important;
-    z-index:-99999;
+    z-index:0;
 }
 
 /* chages for wordpress |*/

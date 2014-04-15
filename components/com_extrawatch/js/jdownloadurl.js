@@ -51,7 +51,7 @@ if (async == null) {
             try {
                 status = request.status;
             } catch (e) {
-                alert(e);
+                //alert(e);	- suppress 	
                 // Usually indicates request timed out in FF.
             }
             if (status == 200) {
@@ -69,8 +69,8 @@ if (async == null) {
     try {
         request.send(null);
     } catch (e) {
-        alert(e);
-        changeStatus(e);
+		//suppress errors
+        //changeStatus(e);
     }
 }
 ;
