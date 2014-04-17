@@ -4957,7 +4957,7 @@ OpenLayers.Tile.Image = OpenLayers.Class(OpenLayers.Tile, {url:null, imgDiv:null
             this.imgDiv.map = null;
         }
         this.imgDiv.urls = null;
-        this.imgDiv.src = OpenLayers.Util.getImagesLocation() + "blank.gif";
+        this.imgDiv.src = OpenLayers.Util.getImagesLocation() + "blank.png";
     }
     this.imgDiv = null;
     if ((this.frame != null) && (this.frame.parentNode == this.layer.div)) {
@@ -5061,7 +5061,7 @@ OpenLayers.Tile.Image = OpenLayers.Class(OpenLayers.Tile, {url:null, imgDiv:null
     if (this.imgDiv) {
         this.hide();
         if (OpenLayers.Tile.Image.useBlankTile) {
-            this.imgDiv.src = OpenLayers.Util.getImagesLocation() + "blank.gif";
+            this.imgDiv.src = OpenLayers.Util.getImagesLocation() + "blank.png";
         }
     }
 }, initImgDiv:function () {
@@ -6129,7 +6129,7 @@ OpenLayers.Layer.EventPane = OpenLayers.Class(OpenLayers.Layer, {smoothDragPan:t
     this.pane.style.width = "100%";
     this.pane.style.height = "100%";
     if (OpenLayers.Util.getBrowserName() == "msie") {
-        this.pane.style.background = "url(" + OpenLayers.Util.getImagesLocation() + "blank.gif)";
+        this.pane.style.background = "url(" + OpenLayers.Util.getImagesLocation() + "blank.png)";
     }
     if (this.isFixed) {
         this.map.viewPortDiv.appendChild(this.pane);

@@ -4,8 +4,8 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 1832  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @version 2.4  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 1837  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2014 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.extrawatch.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -46,7 +46,7 @@ class ExtraWatchVisitHTML
 
         $output .= "<tr><td>" . ExtraWatchHelper::htmlspecialchars($key) . ": </td><td>" . ExtraWatchHelper::htmlspecialchars($value) . "</td><td>" .  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
             "<a href='" . $this->extraWatch->config->renderLink("goals", "insert&id=" . $id . "&postid=" . $row->id) . "'  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                        title='" . _EW_GOAL_ADD_SUBMITTED_VALUE . "'><img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/goal-add.gif' />" . _EW_VISIT_URL_PARAMETER_GOAL . "</a></td></tr>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                        title='" . _EW_GOAL_ADD_SUBMITTED_VALUE . "'><img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/goal-add.png' />" . _EW_VISIT_URL_PARAMETER_GOAL . "</a></td></tr>";
       }
 
     return $output;
@@ -68,7 +68,7 @@ class ExtraWatchVisitHTML
         $value = $row->value;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
         $output .= "<tr><td>" . ExtraWatchHelper::htmlspecialchars($key) . ": </td><td>" . ExtraWatchHelper::htmlspecialchars($value) . "</td><td>" .  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-            "<a href='" . $this->extraWatch->config->renderLink("goals", "insert&id=" . $id . "&postid=" . $row->id) . "' title='" . _EW_GOAL_ADD_SUBMITTED_VALUE . "'><img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/goal-add.gif' />" . _EW_VISIT_SUBMITED_FROM_VARIABLE . "</a></td></tr>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+            "<a href='" . $this->extraWatch->config->renderLink("goals", "insert&id=" . $id . "&postid=" . $row->id) . "' title='" . _EW_GOAL_ADD_SUBMITTED_VALUE . "'><img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/goal-add.png' />" . _EW_VISIT_SUBMITED_FROM_VARIABLE . "</a></td></tr>";
       }
 
     return $output;
@@ -192,7 +192,7 @@ class ExtraWatchVisitHTML
         if (@ $userAgent) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
           $browser = $this->extraWatch->referer->identifyBrowser(@ $userAgent);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
           if (@ $browser)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-            $browserIcon = $liveSiteWithSuffix . "components/com_extrawatch/img/icons/" . strtolower($browser) . ".gif";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+            $browserIcon = $liveSiteWithSuffix . "components/com_extrawatch/img/icons/" . strtolower($browser) . ".png";
 
           if (@ $browserIcon)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
             $browser = "<img src='$browserIcon' alt='$userAgent' title='$userAgent' $inactiveImageClass/>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -212,8 +212,8 @@ class ExtraWatchVisitHTML
         if ($bots == TRUE && $osIcon)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
           continue; // bot icon fix  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         if ($bots == TRUE) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-          $osIcon = $liveSiteWithSuffix . "components/com_extrawatch/img/icons/blank.gif";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-          $browserIcon = $liveSiteWithSuffix . "components/com_extrawatch/img/icons/blank.gif";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+          $osIcon = $liveSiteWithSuffix . "components/com_extrawatch/img/icons/blank.png";
+          $browserIcon = $liveSiteWithSuffix . "components/com_extrawatch/img/icons/blank.png";
           $browser = sprintf("<img src='%s' alt='%s' title='%s' $inactiveImageClass/>", ExtraWatchHelper::htmlspecialchars($browserIcon), ExtraWatchHelper::htmlspecialchars($userAgent), ExtraWatchHelper::htmlspecialchars($userAgent));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
           $os = sprintf("<img src='%s' alt='%s' title='%s' $inactiveImageClass/>", ExtraWatchHelper::htmlspecialchars($osIcon), ExtraWatchHelper::htmlspecialchars($userAgent), ExtraWatchHelper::htmlspecialchars($userAgent));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         }
@@ -229,7 +229,7 @@ class ExtraWatchVisitHTML
         $ipString = sprintf("<a id='%s' href='javascript:extrawatch_blockIpToggle(\"%s\");extrawatch_sendVisitsReq();' style='color:black;' $inactiveClass>%s</a>", ExtraWatchHelper::htmlspecialchars($row->ip), ExtraWatchHelper::htmlspecialchars($row->ip), $ipString);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
         
-        $mapsIcon = "<img src='" . $liveSiteWithSuffix . "components/com_extrawatch/img/icons/map_icon.gif' border='0' " .  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $mapsIcon = "<img src='" . $liveSiteWithSuffix . "components/com_extrawatch/img/icons/map_icon.png' border='0' " .
             $this->extraWatch->helper->getTooltipOnEvent() . "=\"ajax_showTooltip('" . $this->extraWatch->config->getLiveSite() . $this->extraWatch->env->getEnvironmentSuffix() .  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
             $this->extraWatch->env->renderAjaxLink('ajax','tooltip')."&rand=".  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
             $this->extraWatch->config->getRand() . "&ip=$row->ip&env=" .  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
