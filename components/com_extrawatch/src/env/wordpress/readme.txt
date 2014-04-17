@@ -4,7 +4,7 @@ Donate link: http://www.extrawatch.com/
 Tags: analytics, statistics, stats, tracking, widget, heatmap, clicks, conversion tracking, counter, anti-spam, stats, visitors, downloads, download monitor, click map, tracking, maps, location, geolocation, statistics, spam, flags, goals, analytics, click, heat map, mouse click, tap, touch, tracker, tracking, usability
 Requires at least: 3.2.
 Tested up to: 3.9.9.
-Stable tag: 2.3.1839
+Stable tag: 2.3.1840
 License: GNU/GPLv2
 
 Optimize website and increase sales. Watch your visitors in real time, Click Heatmap, Conversion Tracking, Download monitor, Anti-spam, Email Reports
@@ -117,15 +117,24 @@ Enjoy!
 
 == Screenshots ==
 
-1. Live Stats
-2. Front-end modules (Users by countries, Stats per time period)
-3. Graphs & Trends
-4. Insert new Goal (conditions)
-5. Anti-Spam and IP Blocking
-6. Email Reports
-7. Settings
-8. Geolocation Map
-9. Goals Form
+1. Latest Visitors refreshed in real-time
+2. Location of Last visitor
+3. Statistics and Analytics
+4. Heatmap and visualized button clicks via Heat Map
+5. Clicks on various elements by their ID on page
+6. Location on a Map
+7. Clicks and their IDs named as goals
+8. Graphs with daily and weekly values
+9. Download monitor monitors files your users downloaded
+10. Last active users and ability to detect account which is shared among multiple IP addresses
+11. Interactive chart with traffic distribution on your website - how your traffic flows from one page to another
+12. Report of visits from search engines and positions from which people found your website
+13. Extension keeps an eye on your database table sizes as weel 
+14. Monitoring directory sizes
+15. Various goals definition and how they change in time
+16. Ability to block spam bots and other users violating your website
+17. Receiving an email when some goal was reached - eg. a particular button was clicked
+18. Settings with selection of 42 world languages 
 
 == Frequently Asked Questions ==
 
