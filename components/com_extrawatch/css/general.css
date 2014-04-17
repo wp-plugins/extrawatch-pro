@@ -55,7 +55,7 @@ form {
 h1 {
   margin: 0;
   padding-bottom: 8px;
-  color: #3498db;
+  color: #0B55C4;
   font-size: 20px;
   font-weight: bold;
 }
@@ -65,12 +65,12 @@ h3 {
 }
 
 a:link {
-  color: #3498db;
+  color: #0B55C4;
   text-decoration: none;
 }
 
 a:visited {
-  color: #3498db;
+  color: #0B55C4;
   text-decoration: none;
 }
 
@@ -83,12 +83,12 @@ table td, table th {
 vertical-align: top;
 padding: 0px;
 border: 0;
-color: #2c3e50;
+color: black;
 }
 
 /* drupal */
 tr td:last-child {
-border-right: 0px solid #2c3e50;
+border-right: 0px solid #BEBFB9;
 }
 
 /* drupal */
@@ -96,7 +96,7 @@ table {
 width: 100%;
 font-size: 0.923em;
 margin: 0 0 px;
-border: 0px solid #2c3e50;
+border: 0px solid #BEBFB9;
 }
 
 .extraWatchBarImg {

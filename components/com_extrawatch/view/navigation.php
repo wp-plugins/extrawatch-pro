@@ -4,19 +4,18 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.4
- * @revision 1837
+ * @version 2.3
+ * @revision 1838
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2014 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
  */
 
 defined('_JEXEC') or die('Restricted access'); ?>
-<!-- sidebar start -->
-<aside>
-<div id="sidebar" class="nav-collapse" tabindex="5000" style="overflow: hidden; outline: none; margin-left: 0px;">
-	<!-- sidebar menu start -->
-    <ul class="nav nav-sidebar">
+
+
+<div class="col-md-2 sidebar">
+    <ul class="nav nav-sidebar" role="navigation">
         <li><a href="<?php echo $extraWatch->config->renderLink('');?>"><i class="glyphicons group"></i><?php echo _EW_NAVIGATION_VISITORS;?><?php echo $extraWatchHTML->renderBadge('visitors');?></a></li>
         <li><a href="<?php echo $extraWatch->config->renderLink('stats');?>"><i class="glyphicons stats"></i><?php echo _EW_NAVIGATION_STATISTICS;?><?php echo $extraWatchHTML->renderBadge('stats');?></a></li>
 
@@ -51,5 +50,3 @@ defined('_JEXEC') or die('Restricted access'); ?>
 
     </ul>
 </div>
-</aside>
-<!-- sidebar end -->
