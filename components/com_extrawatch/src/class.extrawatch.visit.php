@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 1843  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 1857  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2014 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.extrawatch.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -75,7 +75,15 @@ class ExtraWatchVisit
     return $last;
   }
 
-  function ip2Location($ip)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    function getLastActiveIpsWithLatLong()
+    {
+        $query = sprintf("select ip,latitude,longitude,city from #__extrawatch where (browser is not NULL and browser != '') and inactive = 0 order by id desc");
+        $lastIps = $this->database->objectListQuery($query);
+        return $lastIps;
+    }
+
+
+    function ip2Location($ip)
   {
 
     $ipinfodb = new ipinfodb;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -1499,5 +1507,16 @@ function insertSearchResultPage($uri, $phrase, $referer, $title)
         $query = sprintf("SELECT avg(value) as avgPageLoad FROM `#__extrawatch_info` WHERE `group` = %d", (int) EW_DB_KEY_LOADS);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         return @$this->database->resultQuery($query);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 	}
+
+
+    function updateLatLongCityForIp($ip, $latitude, $longitude, $city) {
+        $query = sprintf("update #__extrawatch set `latitude` = '%f', `longitude` = '%f', `city` = '%s' where ip = '%s'",
+            (float) $latitude,
+            (float) $longitude,
+            $this->database->getEscaped($city),
+            $this->database->getEscaped($ip)
+        );
+        return @$this->database->executeQuery($query);
+    }
 
 }

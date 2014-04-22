@@ -810,7 +810,7 @@ DEFINE('_EW_NAVIGATION_BLOCKING', 'Blocking');
 DEFINE('_EW_NAVIGATION_CLICKS', 'Clicks');
 DEFINE('_EW_NAVIGATION_STATISTICS', 'Statistics');
 
-DEFINE('_EW_MENU_AVAILABLE_IN_PRO_LOCATION', '(Available in PRO version) Location on a map');
+DEFINE('_EW_MENU_AVAILABLE_IN_PRO_LOCATION', 'Location on a map');
 
 DEFINE('_EW_BADGE_VISITORS',"Number of unique visitors for current day");
 DEFINE('_EW_BADGE_HEATMAP',"Number of heatmap clicks for current day");
@@ -821,3 +821,5 @@ DEFINE('_EW_BADGE_SEO',"Number of keywords by which was your website found for t
 DEFINE('_EW_BADGE_DOWNLOAD',"Number of downloads of files for today");
 DEFINE('_EW_BADGE_STATS',"Number of unique visits today");
 DEFINE('_EW_BADGE_ANTISPAM',"Number of blocked spam attempts");
+DEFINE('_EW_AVAILABLE_IN_FULL_VERSION', 'This feature is available in full version only');
+DEFINE('_EW_GET_FULL_VERSION',"Get the full version of ExtraWatch PRO");

@@ -1273,7 +1273,8 @@ pre code {
     margin-left: 25%;
   }
   .col-md-offset-2 {
-    margin-left: 16.66666667%;
+    margin-left: 16.36666667%;
+    min-height:20000px;
   }
   .col-md-offset-1 {
     margin-left: 8.33333333%;
@@ -6129,4 +6130,36 @@ TD, .container {
 
 .tablesorter TABLE {
 border 1px solid red !important;
+}
+
+.cta-btn-red{
+display:block;
+text-align: center;
+background: #c4000b;
+/* IE10 Consumer Preview */
+background-image: -ms-linear-gradient(top, #e40410 0%, #c4000b 100%);
+/* Mozilla Firefox */
+background-image: -moz-linear-gradient(top, #e40410 0%, #c4000b 100%);
+/* Opera */
+background-image: -o-linear-gradient(top, #e40410 0%, #c4000b 100%);
+/* Webkit (Safari/Chrome 10) */
+background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #e40410), color-stop(1, #c4000b));
+/* Webkit (Chrome 11+) */
+background-image: -webkit-linear-gradient(top, #e40410 0%, #c4000b 100%);
+/* W3C Markup, IE10 Release Preview */
+background-image: linear-gradient(to bottom, #e40410 0%, #c4000b 100%);
+-webkit-border-radius: 3px;
+-moz-border-radius: 3px;
+border-radius: 3px;
+text-decoration: none;
+color:#fff;
+font-size:16px;
+padding:10px;
+text-shadow:0px -1px #c00037;
+border:none;
+cursor: hand;
+cursor: pointer;
+}
+.cta-btn-red:hover{
+background: #c4000b;
 }

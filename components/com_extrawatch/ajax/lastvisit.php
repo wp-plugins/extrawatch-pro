@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 1843  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 1857  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2014 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.codegravity.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -17,15 +17,49 @@ defined('_JEXEC') or die('Restricted access');
 $jBasePath = realpath(dirname(__FILE__) . DS . ".." . DS . ".." . DS . "..". DS);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 define('JPATH_BASE2', $jBasePath);*/  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-header("Content-type: text/xml");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+header("Content-type: text/xml");
+
+function renderMarker($city, $country, $ipAddress, $latitude, $longitude, $type='visitor') {
+    $output = "
+    <marker
+    city=\"$city\"
+    country=\"$country\"
+    address=\"$ipAddress\"
+    lat=\"$latitude\"
+    lng=\"$longitude\"
+    type=\"$type\"/>";
+    return $output;
+}
 
 include_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS. "includes.php";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 $extraWatch = new ExtraWatchMain();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 $extraWatch->block->checkPermissions();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-$ip = $extraWatch->visit->getLastIp();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-$location = $extraWatch->visit->ip2Location($ip); ?>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+
+$ips = $extraWatch->visit->getLastActiveIpsWithLatLong();
+$markerOutput = "";
+if (@$ips)
+foreach($ips as $ip) {
+    $location = "";
+    if (!$ip->latitude && !$ip->longitude) {
+        $location = $extraWatch->visit->ip2Location($ip->ip);
+        $latitude = $location['latitude'];
+        $longitude = $location['longitude'];
+        $city = $location['city'];
+        $extraWatch->visit->updateLatLongCityForIp($ip->ip, $latitude, $longitude, $city);
+
+    } else {
+        $latitude = $ip->latitude;
+        $longitude = $ip->longitude;
+        $city = $ip->city;
+    }
+    $markerOutput .= renderMarker(@$city,
+        @$location['country'],
+        $location['ipAdress'],
+        $latitude,
+        $longitude);
+}
+?>
+
 <markers>
-  <?php echo "<marker city=\"" . $location['city'] . "\"  country=\"" . $location['country'] . "\" address=\"" . $location['ipAdress'] . "\" lat=\"" .  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-    $location['latitude'] . "\" lng=\"" .  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-    $location['longitude'] . "\" type=\"visitor\"/>"; ?>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+  <?php echo $markerOutput; ?>
 </markers>
