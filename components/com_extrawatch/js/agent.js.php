@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 1866  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 1880  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2014 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.codegravity.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -86,7 +86,7 @@ if (@_EW_CLOUD_MODE) {
 } else {
     $liveSite = $extraWatch->config->getLiveSiteWithSuffix();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     $output = ("document.write(\"");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-    $output .= ("<img src='".$liveSite.$extraWatch->env->renderAjaxLink('ajax','img')."&rand=" . (rand() % 100000) . "&amp;env=$env&amp;ref=\"+ew_encodeURIComponent(document.referrer)+\"&amp;title=\"+ew_Utf8Encoder.encode(document.title)+\"&amp;uri=\"+ew_encodeURIComponent(window.location.pathname)+\"&amp;params=\"+ew_encodeURIComponent(location.search)+\"' border='0' style='width:0px;height:0px'/>");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    $output .= ("<img src='".$liveSite.$extraWatch->env->renderAjaxLink('ajax','img')."&rand=" . (rand() % 100000) . "&amp;env=$env&amp;ref=\"+ew_encodeURIComponent(document.referrer)+\"&amp;title=\"+ew_Utf8Encoder.encode(document.title)+\"&amp;uri=\"+ew_encodeURIComponent(window.location.pathname)+\"&amp;referringQuery=\"+ew_encodeURIComponent(\"$referringQuery\")+\"&amp;params=\"+ew_encodeURIComponent(location.search)+\"' border='0' style='width:0px;height:0px'/>");
     $output .= ("\");\n");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     $output .= ("document.write(\"");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     $uri = @$_SERVER['HTTP_REFERER'];  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  

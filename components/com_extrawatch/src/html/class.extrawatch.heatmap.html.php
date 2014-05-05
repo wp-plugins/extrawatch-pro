@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 1866  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 1880  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2014 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.extrawatch.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -140,7 +140,11 @@ class ExtraWatchHeatmapHTML
             $separator = "&";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         }
         $projectSite = $this->extraWatch->config->getProjectUrlByUsername(_EW_PROJECT_ID);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        return sprintf("<a href='%s". $separator . ExtraWatchHeatmap::HEATMAP_PARAM_NAME . "=%d&" . ExtraWatchHeatmap::HEATMAP_PARAM_DAY_NAME . "=%d&ip=%s&" . ExtraWatchHeatmap::HEATMAP_PARAM_HASH . "=%s&uri2titleId=%d' target='_heatmap'>%s</a>", $projectSite.$uri, 1, $day, $ip, $this->extraWatch->database->getEscaped($this->extraWatch->config->getRandHash()), $uri2titleId, $linkContent);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        return sprintf("<a href='%s". $separator . ExtraWatchHeatmap::HEATMAP_PARAM_NAME . "=%d&" . ExtraWatchHeatmap::HEATMAP_PARAM_DAY_NAME . "=%d&ip=%s&" . ExtraWatchHeatmap::HEATMAP_PARAM_HASH . "=%s&uri2titleId=%d' target='_heatmap'>%s</a>",
+            $projectSite.$uri, 1, $day, $ip,
+            $this->extraWatch->database->getEscaped($this->extraWatch->config->getRandHash()),
+            $uri2titleId,
+            $linkContent);
     }
 
     function renderMostClickedHTMLElementsTable($day = 0) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  

@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 1866  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 1880  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2014 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.extrawatch.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -63,7 +63,7 @@ class ExtraWatchVisit
    */
   function getLastVisitId()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   {
-    $query = sprintf("select #__extrawatch_uri.id as last from #__extrawatch left join #__extrawatch_uri on #__extrawatch.id = #__extrawatch_uri.fk where #__extrawatch.browser is not NULL and title != '' order by #__extrawatch_uri.id desc limit 1");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    $query = sprintf("select #__extrawatch_uri.id as last from #__extrawatch left join #__extrawatch_uri on #__extrawatch.id = #__extrawatch_uri.fk where #__extrawatch.browser is not NULL order by #__extrawatch_uri.id desc limit 1");
     $last = $this->database->resultQuery($query);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     return $last;
   }
@@ -698,7 +698,9 @@ function insertSearchResultPage($uri, $phrase, $referer, $title)
   {
       ExtraWatchLog::debug("updateVisitByBrowser - uri: $uri, referer: $referer, title: $title, params: ".print_r($params, true));
 
-      $this->runAtMidnight();   //executing this again, but won't be called if it was already executed. Because of cloud version which doesn't call insertVisit
+      if (@_EW_CLOUD_MODE) {
+        $this->runAtMidnight();   //executing this again, but won't be called if it was already executed. Because of cloud version which doesn't call insertVisit
+      }
 
       $ip = addslashes(strip_tags(@ $this->getRemoteIPAddress()));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
@@ -733,16 +735,19 @@ function insertSearchResultPage($uri, $phrase, $referer, $title)
           return TRUE;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
       }
 
-  	  $this->referer->checkSocialMedia($referer);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+      $query = sprintf("update #__extrawatch_uri set `title` = '%s' where (uri = '%s' and title = '') ", $this->database->getEscaped($title), $this->database->getEscaped($uri));
+      $this->database->executeQuery($query);
+
+
+      $this->referer->checkSocialMedia($referer);
       $this->addUri2Title($uri, $title);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
       $userAgent = addslashes(strip_tags(@ $_SERVER['HTTP_USER_AGENT']));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
       $this->updateRefererForIP($referer, $ip);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-      $this->updateBrowserForIP($userAgent, $ip);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-	  
+      $this->updateBrowserForIP($userAgent, $ip);
 
-      if (@$referer) { // check if there is referer, otherwise there's no point to execute the code in this block  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+      if (@$referer) { // check if there is referer, otherwise there's no point to execute the code in this block
           //if (@ !$this->isVisitFromSameSite($referer))  {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 			$isSameSite = $this->isVisitFromSameSite($referer);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 			ExtraWatchLog::debug("referer: $referer, same site: ".(int) $isSameSite);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -798,9 +803,9 @@ function insertSearchResultPage($uri, $phrase, $referer, $title)
               }
 
               $query = sprintf("update #__extrawatch_internal set `timestamp` = '%d' where (id = '%d') ", $this->date->getUTCTimestamp(), (int) $id);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-              $this->database->executeQuery($query);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+              $this->database->executeQuery($query);
 
-              $this->stat->increaseKeyValueInGroup(EW_DB_KEY_INTERNAL, $id);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+              $this->stat->increaseKeyValueInGroup(EW_DB_KEY_INTERNAL, $id);
 
           }
       }
