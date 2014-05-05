@@ -39,11 +39,12 @@ function ajax_showContent(divId, ajaxIndex, url) {
     dynamicContent_ajaxObjects[ajaxIndex] = false;
 }
 
-function ajax_loadContent(divId, url, callback) {
+function ajax_loadContent(divId, url) {
     if (enableCache && jsCache[url]) {
         document.getElementById(divId).innerHTML = jsCache[url];
         return;
     }
+
 
     var ajaxIndex = dynamicContent_ajaxObjects.length;
     document.getElementById(divId).innerHTML = '';
@@ -67,9 +68,6 @@ function ajax_loadContent(divId, url, callback) {
     dynamicContent_ajaxObjects[ajaxIndex].requestFile = url;	// Specifying which file to get
     dynamicContent_ajaxObjects[ajaxIndex].onCompletion = function () {
         ajax_showContent(divId, ajaxIndex, url);
-		if (callback != null && (typeof callback == "function")) {
-			callback();
-		}
     };	// Specify function that will be executed after file has been found
     dynamicContent_ajaxObjects[ajaxIndex].runAJAX();		// Execute AJAX function
 

@@ -2418,7 +2418,7 @@ input[type="button"].btn-block {
 @font-face{
  font-family:'Glyphicons Regular';
  src:url('<?php echo $extraWatch->config->getLiveSiteWithSuffix()."components/com_extrawatch/css/fonts/";?>glyphicons-regular.eot');
- src:url('<?php echo $extraWatch->config->getLiveSiteWithSuffix()."components/com_extrawatch/css/fonts/";?>glyphicons-regular.eot?#iefix') format('embedded-opentype'),url('<?php echo $extraWatch->config->getLiveSiteWithSuffix()."components/com_extrawatch/css/fonts/";?>glyphicons-regular.woff') format('woff'),url('../fonts/glyphicons-regular.ttf') format('truetype'),url('<?php echo $extraWatch->config->getLiveSiteWithSuffix()."components/com_extrawatch/css/fonts/";?>glyphicons-regular.svg#glyphiconsregular') format('svg');
+ src:url('<?php echo $extraWatch->config->getLiveSiteWithSuffix()."components/com_extrawatch/css/fonts/";?>glyphicons-regular.eot?#iefix') format('embedded-opentype'),url('<?php echo $extraWatch->config->getLiveSiteWithSuffix()."components/com_extrawatch/css/fonts/";?>glyphicons-regular.woff') format('woff'),url('<?php echo $extraWatch->config->getLiveSiteWithSuffix()."components/com_extrawatch/css/fonts/";?>glyphicons-regular.ttf') format('truetype'),url('<?php echo $extraWatch->config->getLiveSiteWithSuffix()."components/com_extrawatch/css/fonts/";?>glyphicons-regular.svg#glyphiconsregular') format('svg');
  font-weight:normal;
  font-style:normal
  }

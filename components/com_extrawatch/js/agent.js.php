@@ -4,8 +4,8 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 1881  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @version 2.2  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 1789  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2014 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.codegravity.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -16,7 +16,7 @@ if (!defined('DS')) {
 	define('DS',DIRECTORY_SEPARATOR);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 }
 
-if (@_EW_CLOUD_MODE) {
+if (_EW_CLOUD_MODE) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     $projectId = @$_REQUEST['projectId'];  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 	define('ENV',1);
 }
@@ -74,7 +74,7 @@ function ew_encodeURIComponent (str) {
 
 <?php
 
-if (@_EW_CLOUD_MODE) {
+if (_EW_CLOUD_MODE) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     $output = ("var extrawatch_projectId='".$projectId."';\n");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     $output .= ("document.write(\"");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     $output .= ("<img src='"._EW_SCRIPT_HOST._EW_SCRIPT_HOST_DIR."extrawatch/".$extraWatch->env->renderAjaxLink('ajax','img')."&rand=" . (rand() % 100000) . "&amp;env=$env&amp;ref=\"+ew_encodeURIComponent(document.referrer)+\"&amp;title=\"+ew_Utf8Encoder.encode((document.title)+\"&amp;uri=\"+ew_encodeURIComponent(window.location.pathname)+\"&amp;params=\"+ew_encodeURIComponent(location.search)+\"&amp;projectId=\"+extrawatch_projectId+\"' border='0' alt='$title' title='$title' style='width:0px;height:0px'/>");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -86,7 +86,7 @@ if (@_EW_CLOUD_MODE) {
 } else {
     $liveSite = $extraWatch->config->getLiveSiteWithSuffix();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     $output = ("document.write(\"");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-    $output .= ("<img src='".$liveSite.$extraWatch->env->renderAjaxLink('ajax','img')."&rand=" . (rand() % 100000) . "&amp;env=$env&amp;ref=\"+ew_encodeURIComponent(document.referrer)+\"&amp;title=\"+ew_Utf8Encoder.encode(document.title)+\"&amp;uri=\"+ew_encodeURIComponent(window.location.pathname)+\"&amp;referringQuery=\"+ew_encodeURIComponent(\"$referringQuery\")+\"&amp;params=\"+ew_encodeURIComponent(location.search)+\"' border='0' style='width:0px;height:0px'/>");
+    $output .= ("<img src='".$liveSite.$extraWatch->env->renderAjaxLink('ajax','img')."&rand=" . (rand() % 100000) . "&amp;env=$env&amp;ref=\"+ew_encodeURIComponent(document.referrer)+\"&amp;title=\"+ew_Utf8Encoder.encode(document.title)+\"&amp;uri=\"+ew_encodeURIComponent(window.location.pathname)+\"&amp;params=\"+ew_encodeURIComponent(location.search)+\"' border='0' style='width:0px;height:0px'/>");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     $output .= ("\");\n");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     $output .= ("document.write(\"");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     $uri = @$_SERVER['HTTP_REFERER'];  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  

@@ -4,8 +4,8 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 1881  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @version 2.2  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 1789  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2014 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.extrawatch.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -39,26 +39,19 @@ class ExtraWatchWordpressEnv implements ExtraWatchEnv
       return (!empty($_SERVER['HTTPS']) && @$_SERVER['HTTPS'] != 'off');
   }
 
-    function getRootSiteAbsolute() {
-        $hostname = ExtraWatchHelper::getProtocol()."://" . $_SERVER['HTTP_HOST'];
-        $scriptName = $_SERVER['SCRIPT_NAME'];
-        $scriptNameExploded = explode("wp-content/", $scriptName);
-        if (sizeof($scriptNameExploded) > 1) {
-            $subdir = @$scriptNameExploded[0];
-        } else {
-            $subdir = str_replace("wp-admin/admin.php", "", $scriptName);
-        }
-        $rootSite = $hostname . $subdir;
-        return $rootSite;
-    }
-
-    function getRootSite()
+  function getRootSite()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   {
-
-    $rootSite = $this->getRootSiteAbsolute();
+    $hostname = ExtraWatchHelper::getProtocol()."://" . $_SERVER['HTTP_HOST'];  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    $scriptName = $_SERVER['SCRIPT_NAME'];  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    $scriptNameExploded = explode("wp-content/", $scriptName);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    if (sizeof($scriptNameExploded) > 1) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+      $subdir = @$scriptNameExploded[0];  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    } else {
+      $subdir = str_replace("wp-admin/admin.php", "", $scriptName);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    }
+    $rootSite = $hostname . $subdir;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 	$url = parse_url($rootSite);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-    $liveSitePath = $url['path'];
-    $liveSitePath = str_replace("index.php","",$liveSitePath);
+    $liveSitePath = $url['path'];  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     return $liveSitePath;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   }
 
@@ -199,7 +192,7 @@ class ExtraWatchWordpressEnv implements ExtraWatchEnv
 
     function getUserId()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     {
-        return get_current_user_id();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        //TODO implement  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     }
 
     public function getUsernameById($userId) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -213,8 +206,7 @@ class ExtraWatchWordpressEnv implements ExtraWatchEnv
 
     public function addStyleSheet($cssURL)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     {
-        $cssURL = str_replace($this->getRootSite(),"/", $cssURL);   //because wp_equeue_style adds this suffix
-        wp_enqueue_style(md5($cssURL), $cssURL);    //md5 is used because it requires some unique identifier as style reference
+        wp_enqueue_style('extrawatch', $cssURL);
    
     }
 
@@ -224,25 +216,6 @@ class ExtraWatchWordpressEnv implements ExtraWatchEnv
         exit;
     }
 
-    public function getAllUsersAsIdToUsernameArray($database) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        $query = sprintf(" SELECT id, user_login  FROM `#__users`");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        $users = $database->objectListQuery($query);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        $usersArray = array();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        if (@$users)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        for ($i=0;$i<sizeof($users);$i++) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-            if (@$users[$i] && @$users[$i]->user_login) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                $usersArray[@$users[$i]->id] = @$users[$i]->user_login;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-            }
-        }
-        return $usersArray;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-    }
-
-    public function addScript($scriptUrl)
-    {
-        $scriptUrl = str_replace($this->getRootSite(),"/", $scriptUrl);   //because wp_register_script adds this suffix
-        wp_register_script(md5($scriptUrl), $scriptUrl);    //md5 is used because it requires some unique identifier as script reference
-        wp_enqueue_script(md5($scriptUrl));
-    }
 
 }
 

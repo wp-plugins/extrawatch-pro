@@ -22,7 +22,6 @@ var FADE_BLUE = 55;
 var FADE_HOLD = 500;
 var FADE_SPEED = 100;
 var FADE_STEP = 25;
-var MAX_VALUE = 250;
 
 
 // FOR BASIC FUNCTIONALITY, LEAVE EVERYTHING BELOW THIS POINT AS IS.
@@ -42,7 +41,7 @@ function fade(container) {
             fade_b == FADE_BLUE;
         }
 
-        if (fade_r + fade_g + fade_b != (MAX_VALUE * 3)) {
+        if (fade_r + fade_g + fade_b != (255 * 3)) {
             document.getElementById(container).style.background = "rgb(" + fade_r + "," + fade_g + "," + fade_b + ")";
 
             if ((fade_r == FADE_RED) && (fade_g == FADE_GREEN) && (fade_b == FADE_BLUE)) {
@@ -52,18 +51,18 @@ function fade(container) {
                 setTimeout('fade("' + container + '")', FADE_SPEED)
             }
 
-            if ((fade_r >= MAX_VALUE) || (fade_r + FADE_STEP > MAX_VALUE)) {
-                fade_r = MAX_VALUE;
+            if ((fade_r >= 255) || (fade_r + FADE_STEP > 255)) {
+                fade_r = 255;
             } else {
                 fade_r = fade_r + FADE_STEP;
             }
-            if ((fade_g >= MAX_VALUE) || (fade_g + FADE_STEP > MAX_VALUE)) {
-                fade_g = MAX_VALUE;
+            if ((fade_g >= 255) || (fade_g + FADE_STEP > 255)) {
+                fade_g = 255;
             } else {
                 fade_g = fade_g + FADE_STEP;
             }
-            if ((fade_b >= MAX_VALUE) || (fade_b + FADE_STEP > MAX_VALUE)) {
-                fade_b = MAX_VALUE;
+            if ((fade_b >= 255) || (fade_b + FADE_STEP > 255)) {
+                fade_b = 255;
             } else {
                 fade_b = fade_b + FADE_STEP;
             }
@@ -78,6 +77,4 @@ function fade(container) {
     catch (err) {
 
     }
-
-
 }
