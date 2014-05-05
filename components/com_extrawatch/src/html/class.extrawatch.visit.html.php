@@ -4,8 +4,8 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @version 2.2  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 1789  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 1882  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2014 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.extrawatch.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -52,7 +52,6 @@ class ExtraWatchVisitHTML
     return $output;
   }
 
-
   function renderPostVars($id)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   {
     if ($this->extraWatch->config->isFree()) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -76,7 +75,7 @@ class ExtraWatchVisitHTML
   }
 
   /* visits */
-  function renderTable($bots = FALSE, $inactive, $ipFilter = FALSE, $renderAsEmail = FALSE)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+  function renderTable($bots = FALSE, $inactive, $ipFilter = FALSE, $renderAsEmail = FALSE, $renderedFromHistory = FALSE)
   {
     $output = "";
     $rows = $this->getJoinedURIRows($bots, $inactive, $ipFilter);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -92,15 +91,17 @@ class ExtraWatchVisitHTML
         if (!$rows) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
             $noDataHTML = "";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-            if (!$bots && _EW_CLOUD_MODE) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-
-                $noDataHTML = "<h2 style='color: red; font-weight: bold;'>Tracking is not active!</h2> <span style='color: red; font-weight: bold;'>Please add the following HTML code snippet into every page you want to monitor:</span><br/><br/>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+            if (!$bots && _EW_CLOUD_MODE && $inactive == FALSE && !$renderedFromHistory) {
+                $noDataHTML = "<h2 style='color: #e74c3c; font-weight: bold;'>You still haven't inserted the tracking code on web you want to track. Contact us via chat in lower right corner if you need help with it.</h2> <span style='color: #e74c3c; font-weight: bold;'>Please add the following HTML code snippet into every page you want to monitor:</span><br/><br/>";
                 $noDataHTML .= "<textarea cols='100' rows='6'>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                 $noDataHTML .= htmlentities($this->extraWatch->helper->renderHTMLCodeSnippet(_EW_PROJECT_ID));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                 $noDataHTML .= "</textarea><br/><br/>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                 $noDataHTML .= "<b>To accomplish this, you need to have an FTP access to your website and edit your template file. <br/>Copy and paste the tracking code before the &lt;/body&gt; tag.<br/>There are several ways how to do it if you're using various CMS.<br/>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                 $noDataHTML .= "If you need any help with this, contact us via live chat in lower right corner</b><br/><br/>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
+            } else if ($inactive == FALSE) {
+
+               $noDataHTML .= _EW_NO_DATA;
             }
 
             $output .= "<tr><td colspan='5'>" . $noDataHTML . "</td></tr>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -234,7 +235,8 @@ class ExtraWatchVisitHTML
             $this->extraWatch->config->getRand() . "&ip=$row->ip&env=" .  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
             $this->extraWatch->config->getEnvironment() . "&projectId="._EW_PROJECT_ID."',this);return FALSE\"/>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-         $timeOfVisit = $this->extraWatch->helper->secondsToHumanFormat(@$row->timeDiff);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+         $timeOfVisit = $this->extraWatch->helper->secondsToHumanFormat(@$row->timeDiff);
+		 $timeOfVisit = str_replace(" ","&nbsp;", $timeOfVisit);
 
           $displayCountryFlag = FALSE;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
           if ($lastIp != $row->ip) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -262,11 +264,11 @@ class ExtraWatchVisitHTML
         }
         $dateOfVisit = ExtraWatchDate::date("d.m.Y", $row->timestamp);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         if (isset($this->lastDate) && $this->lastDate != $dateOfVisit && !(!$this->lastDate && $inactive)) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-          $output .= "<tr><td style='background-color: #" . $color . ";'></td><td style='background-color: #" . $color . ";'></td><td style='background-color: #" . $color . ";'></td><td style='background-color: #" . $color . ";'><td style='background-color: #" . $color . ";'></td></td><td style='background-color: #" . $color . ";'></td><td style='background-color: #" . $color . ";'></td><td colspan='8' style='background-color: #" . $color . ";' colspan='3'><h3>$dateOfVisit</h3></td></tr>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+          $output .= "<tr><td ></td><td ></td><td ></td><td ><td ></td></td><td ></td><td ></td><td ></td><td colspan='8'  colspan='3'><h3>$dateOfVisit</h3></td></tr>";
           $this->lastDate = $dateOfVisit;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         }
-        $output .= "<tr><td valign='top' align='left' style='background-color: #$color'></td>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-																		<td valign='top' align='left' style='background-color: #$color;'>" . @ $mapsIcon . "</td><td valign='top' align='left' style='background-color: #$color; color: #999999;'>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $output .= "<tr><td valign='top' align='left' ></td>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+																		<td valign='top' align='left' >" . @ $mapsIcon . "</td><td valign='top' align='left' >";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
 
         if (!$countryUpper) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -280,13 +282,13 @@ class ExtraWatchVisitHTML
             $onlineString = "<img src='".$liveSiteWithSuffix."components/com_extrawatch/img/icons/online.png' valign='top' border='0'/>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         }
 
-        $output .= "</td><td valign='top' align='left' style='background-color: #$color;'>" . @ $flag . "</td>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-																		<td valign='top' align='left' style='background-color: #$color;'><span $inactiveClass>$ipString</span>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $output .= "</td><td valign='top' align='left' >" . @ $flag . "</td>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+																		<td valign='top' align='left' ><span $inactiveClass>$ipString</span>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
           $output .= "$username</td>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-																		<td valign='top' align='left' style='background-color: #$color;'>$onlineString</td>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-																		<td valign='top' align='left' style='background-color: #$color;'>" . @ $browser . "</td>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-																		<td valign='top' align='left' style='background-color: #$color;'>" . @ $os . "</td>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-																		<td valign='top' align='left' style='background-color: #$color;' width='100%'>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+																		<td valign='top' align='left' >$onlineString</td>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+																		<td valign='top' align='left' >" . @ $browser . "</td>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+																		<td valign='top' align='left' >" . @ $os . "</td>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+																		<td valign='top' align='left'  width='80%'>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
         $day = $this->extraWatch->date->jwDateFromTimestamp($row->timestamp);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
@@ -299,7 +301,7 @@ class ExtraWatchVisitHTML
 		if (@$downloadsForIp) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 			foreach($downloadsForIp as $download) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 				$downloadTimestampHumanReadable = ExtraWatchDate::date("H:i:s", $download['timestamp']);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-				$output .= "<span $inactiveClass>".$downloadTimestampHumanReadable." $downloadIcon ".$download['dname']."</span><br/>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+				$output .= "<div $inactiveClass>".$downloadTimestampHumanReadable." $downloadIcon ".$download['dname']."</div><br/>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 			}
 		}
 
@@ -310,7 +312,7 @@ class ExtraWatchVisitHTML
 
                   $goalLink =  "<a href='" . $this->extraWatch->config->renderLink("goals", "edit&goalId=".((int)$goalForIp->goalId)."") . "' target='_blank'>".$goalForIp->name."</a>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-                  $output .= "<span style='background-color: #FFEFA7' $inactiveClass>".$goalTimestampHumanReadable.sprintf(_EW_VISITS_GOAL_REACHED, $goalLink)."</span><br/>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                  $output .= "<div style='background-color: #FFF9E1;' $inactiveClass>".$goalTimestampHumanReadable.sprintf(_EW_VISITS_GOAL_REACHED, $goalLink)."</div><br/>";
               }
           }
         $lastTimestamp = $row->timestamp;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -323,15 +325,23 @@ class ExtraWatchVisitHTML
         $row->title = $this->extraWatch->helper->removeRepetitiveTitle($row->title);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
         $uri2titleId = $this->extraWatch->visit->getUri2TitleId($row->uri, $titleOriginal);//TODO optimize  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        $output .= ("<div id='id$row->id' style='text-decoration: none;' $inactiveClass onmouseout=\"toggleElementVisibility('goal_" . $row->id . "',0);\"  onmouseover=\"toggleDiv('".$row->id."','".$row->ip."',1, $uri2titleId, $day);\" style='background-color: #$color'>");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $output .= ("<div id='id$row->id' style='text-decoration: none;' $inactiveClass onmouseout=\"toggleElementVisibility('goal_" . $row->id . "',0);\"  onmouseover=\"toggleDiv('".$row->id."','".$row->ip."',1, ".((int)$uri2titleId).", $day);\" >");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-		$projectSite = "";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        if ($renderAsEmail) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-			$projectSite = $this->extraWatch->config->getDomainFromLiveSite(_EW_PROJECT_ID);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        if (@_EW_CLOUD_MODE) {
+			$projectSite = $this->extraWatch->config->getDomainFromLiveSite(_EW_PROJECT_ID);
+            if (!ExtraWatchHelper::startsWith($projectSite, "http://")) {   //add http prefix
+                $projectSite = "http://".$projectSite;
+            }
 		}
-        $output .= ("$timestampHumanReadable <a href='".$projectSite.$row->uri."' target='_blank' $inactiveClass>$row->title</a> $uriTruncated");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+
+        if (!$row->title) {
+            $row->title = $uriTruncated;
+        }
+
+        $output .= ("$timestampHumanReadable <a href='".$projectSite.$row->uri."' target='_blank' $inactiveClass title='$uriTruncated'>$row->title</a>");
 
            	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+		/*
         $userHeatmapClicks = $this->heatmap->getHeatmapClickNums($row->ip, $row->uri, ExtraWatchDate::jwDateFromTimestamp($timestampHumanReadable));//TODO optimize  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         if (@$userHeatmapClicks > 0) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
           if (@$maxClicksOfDay) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -340,8 +350,9 @@ class ExtraWatchVisitHTML
               $ratio = 1;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
           }
           $userClicksColor = ExtraWatchHelper::rgbFromRatio($ratio);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-          $output .= $this->heatmapHTML->renderHeatmapLink($row->uri, $uri2titleId, $day, "&nbsp;<img src='" . $liveSiteWithSuffix . "components/com_extrawatch/img/icons/click.png' title='" . _EW_HEATMAP_CLICK_OPEN . "'/> <span style='color: " . $userClicksColor . "' title='" . _EW_HEATMAP_CLICK_OPEN . "' $inactiveClass>$userHeatmapClicks</span>", $row->ip);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+          $output .= $this->heatmapHTML->renderHeatmapLink($row->uri, (int) $uri2titleId, $day, "&nbsp;<img src='" . $liveSiteWithSuffix . "components/com_extrawatch/img/icons/click.png' title='" . _EW_HEATMAP_CLICK_OPEN . "'/> <span style='color: " . $userClicksColor . "' title='" . _EW_HEATMAP_CLICK_OPEN . "' $inactiveClass>$userHeatmapClicks</span>", $row->ip);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         }
+		*/
 		 
 
         $clicks = @$uri2HeatmapClicksAssoc[$row->uri];  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -353,7 +364,7 @@ class ExtraWatchVisitHTML
           if ($userHeatmapClicks > 0) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
             $output .= "&nbsp;" . _EW_HEATMAP_OF . "&nbsp;";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
           }
-          $output .= $this->heatmapHTML->renderHeatmapLink($row->uri, $uri2titleId, $day, "&nbsp;<img src='" . $liveSiteWithSuffix . "components/com_extrawatch/img/icons/heatmap.png' title='" . _EW_HEATMAP_CLICK_OPEN . "'/> <span style='color: " . $color . "' title='" . _EW_HEATMAP_CLICK_OPEN . "'>$clicks</span>");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+          $heatmapLinkOutput = $this->heatmapHTML->renderHeatmapLink($row->uri, (int) $uri2titleId, $day, "<span style='color: " . $color . "' title='" . _EW_HEATMAP_CLICK_OPEN . "'>$clicks</span>");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         }
         
 
@@ -371,8 +382,9 @@ class ExtraWatchVisitHTML
 			$output .= ("</div>");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 		}
         if ($timeOfVisit) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-            $output .= "&nbsp;"._EW_TIME_BETWEEN_VISITS.":&nbsp;<img src='" . $liveSiteWithSuffix . "components/com_extrawatch/img/icons/clock.png' align='' $inactiveImageClass />&nbsp;$timeOfVisit";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         }
+        $output .= "<td>$heatmapLinkOutput</td>";
+        $output .= "<td>$timeOfVisit</td>";
 	    $output .= ("</div>");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
 
@@ -380,7 +392,7 @@ class ExtraWatchVisitHTML
 
         //TODO handle post data  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         if ($paramData) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-          $postImage = "<div id='idp$row->id' onmouseout=\"toggleDiv('post_" . $row->id . "',0, $uri2titleId, $day);\" onmouseover=\"toggleDiv('post_" . $row->id . "',1, $uri2titleId, $day);\">";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+          $postImage = "<div id='idp$row->id' onmouseout=\"toggleDiv('post_" . $row->id . "',0, ".((int)$uri2titleId).", $day);\" onmouseover=\"toggleDiv('post_" . $row->id . "',1, ".((int)$uri2titleId).", $day);\">";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         } else {
           $postImage = "";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         }
@@ -414,18 +426,18 @@ class ExtraWatchVisitHTML
       return;
     }
     $output = "<tr>
-        <td style='background-color: #" . $color . "'></td>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        <td style='background-color: #" . $color . "'></td>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        <td style='background-color: #" . $color . "'></td>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        <td style='background-color: #" . $color . "'></td>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        <td style='background-color: #" . $color . "'></td>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        <td style='background-color: #" . $color . "'></td>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        <td style='background-color: #" . $color . "'></td>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        <td style='background-color: #" . $color . "'></td>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        <td style='background-color: #" . $color . "'>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        <td ></td>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        <td ></td>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        <td ></td>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        <td ></td>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        <td ></td>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        <td ></td>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        <td ></td>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        <td ></td>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        <td >";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
     $refererTruncated = $this->extraWatch->helper->truncate(urldecode($referer));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-    $output .= sprintf("<i style='color: gray;'> " . _EW_VISITS_CAME_FROM . ": <a href='%s' target='_blank' style='color: gray;' title='%s'>%s</a></i>", ExtraWatchHelper::htmlspecialchars(urldecode($referer)), ExtraWatchHelper::htmlspecialchars(urldecode($referer)), $refererTruncated);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    $output .= sprintf("<i style='color: gray;'> " . _EW_VISITS_CAME_FROM . ": <a href='%s' target='_blank' style='color: #eee;' title='%s'>%s</a></i>", ExtraWatchHelper::htmlspecialchars(urldecode($referer)), ExtraWatchHelper::htmlspecialchars(urldecode($referer)), $refererTruncated);
 
      
     $position = $this->extraWatch->seo->extractGooglePageNumberFromReferer($referer);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -439,7 +451,7 @@ class ExtraWatchVisitHTML
     if (@$phrase) {
       $hostname = $this->extraWatch->visit->extractHostnameFromUrl($referer);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
       $referer = $hostname . "/search?q=" . urlencode($phrase);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-      $output .= sprintf("<br/><i style='color: gray;'>" . _EW_VISITS_CAME_FROM_KEYWORDS . ": [<a href='%s' target='_blank' style='color: gray;' title='%s'>%s</a>]</i>", ExtraWatchHelper::htmlspecialchars($referer), ExtraWatchHelper::htmlspecialchars($referer), ExtraWatchHelper::htmlspecialchars(urldecode($phrase)));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+      $output .= sprintf("<br/><i style='color: gray;'>" . _EW_VISITS_CAME_FROM_KEYWORDS . ": [<a href='%s' target='_blank' style='color: #eee;' title='%s'>%s</a>]</i>", ExtraWatchHelper::htmlspecialchars($referer), ExtraWatchHelper::htmlspecialchars($referer), ExtraWatchHelper::htmlspecialchars(urldecode($phrase)));
     }
     $output .= "</tr>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 

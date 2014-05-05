@@ -4,8 +4,8 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @version 2.2  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 1789  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 1882  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2014 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.extrawatch.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -314,6 +314,19 @@ LIMIT 1
     }
   }
 
+
+    function getTotalMostClickedHTMLElementsForDay($day) {
+        $query = sprintf("select sum(T.count) from ( select count(#__extrawatch_goals.clicked_element_xpath_condition) as count  from #__extrawatch_heatmap
+    JOIN #__extrawatch_uri2title ON #__extrawatch_uri2title.id = #__extrawatch_heatmap.uri2titleId
+	LEFT JOIN #__extrawatch_goals ON #__extrawatch_heatmap.xpath = #__extrawatch_goals.clicked_element_xpath_condition
+    WHERE
+	clicked_element_xpath_condition is not null
+	and day = %d
+    GROUP BY xpath, uri2titleId
+    ) as T
+    ", (int) $day);
+                return $this->database->resultQuery($query);
+    }
     
 
 }

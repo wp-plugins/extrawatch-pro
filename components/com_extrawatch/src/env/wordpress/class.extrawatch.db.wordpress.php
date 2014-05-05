@@ -42,7 +42,7 @@ class ExtraWatchDBWrapWordpress implements ExtraWatchDBWrap
 
   function __destruct()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   {
-    return @mysql_close($this->dbref);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    //return @mysql_close($this->dbref);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   }
 
   function getEscaped($sql)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -52,7 +52,10 @@ class ExtraWatchDBWrapWordpress implements ExtraWatchDBWrap
 
   function query()
   {
-    $sql = $this->query;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+      if (@EXTRAWATCH_PROFILING_ENABLED) {
+          $t1 = round(microtime(true) * 1000);
+      }
+    $sql = $this->query;
 	ExtraWatchLog::debug("query: $sql");   	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 	$sql = str_replace("#__", $this->dbprefix, $sql);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     $this->result = @mysql_query($sql, $this->dbref);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -62,30 +65,56 @@ class ExtraWatchDBWrapWordpress implements ExtraWatchDBWrap
       $this->errMsg = @mysql_error($this->dbref) . " in query $sql";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
       return FALSE;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     }
-    return $this->result;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+      if (@EXTRAWATCH_PROFILING_ENABLED) {
+          $time = round(microtime(true) * 1000) - $t1;
+          $debugMessage = " ($time ms) ";
+      }
+      $debugMessage .= "query: $sql";
+      ExtraWatchLog::debug($debugMessage);
+
+      return $this->result;
   }
 
   function loadResult()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   {
-    if (!($result = $this->query())) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+      if (@EXTRAWATCH_PROFILING_ENABLED) {
+          $t1 = round(microtime(true) * 1000);
+      }
+    if (!($result = $this->query())) {
       return null;
     }
     $return = null;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     if ($row = mysql_fetch_row($result)) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
       $return = $row[0];  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     }
-    mysql_free_result($result);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-    return $return;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    mysql_free_result($result);
+
+      if (@EXTRAWATCH_PROFILING_ENABLED) {
+          $time = round(microtime(true) * 1000) - $t1;
+          $debugMessage = " ($time ms) ";
+      }
+      $debugMessage .= "loadResult: ".$this->sql;
+      ExtraWatchLog::debug($debugMessage);
+    return $return;
   }
 
   function loadAssocList($key = '')  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   {
-    $result = $this->query();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+      if (@EXTRAWATCH_PROFILING_ENABLED) {
+          $t1 = round(microtime(true) * 1000);
+      }
+    $result = $this->query();
     $array = array();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     while ($row = mysql_fetch_assoc($result)) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
       $array[] = $row;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     }
-    mysql_free_result($result);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    mysql_free_result($result);
+      if (@EXTRAWATCH_PROFILING_ENABLED) {
+          $time = round(microtime(true) * 1000) - $t1;
+          $debugMessage = " ($time ms) ";
+      }
+      $debugMessage .= "loadAssocList: ".$this->sql;
+      ExtraWatchLog::debug($debugMessage);
     return $array;
   }
 
@@ -150,7 +179,10 @@ class ExtraWatchDBWrapWordpress implements ExtraWatchDBWrap
 
   private function loadObjectList($key = '')  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   {
-    if (!($cur = $this->query())) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+      if (@EXTRAWATCH_PROFILING_ENABLED) {
+          $t1 = round(microtime(true) * 1000);
+      }
+    if (!($cur = $this->query())) {
       return null;
     }
     $array = array();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -161,7 +193,13 @@ class ExtraWatchDBWrapWordpress implements ExtraWatchDBWrap
         $array[] = $row;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
       }
     }
-    mysql_free_result($cur);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    mysql_free_result($cur);
+      if (@EXTRAWATCH_PROFILING_ENABLED) {
+          $time = round(microtime(true) * 1000) - $t1;
+          $debugMessage = " ($time ms) ";
+      }
+      $debugMessage .= "loadObjectList: ".$this->sql;
+      ExtraWatchLog::debug($debugMessage);
     return $array;
   }
 }

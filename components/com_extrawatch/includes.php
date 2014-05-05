@@ -4,14 +4,19 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @version 2.2  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 1789  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 1882  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2014 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.codegravity.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  */
 
-defined('_JEXEC') or die('Restricted access');  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+defined('_JEXEC') or die('Restricted access');
+
+/* wordpress performance optimization */
+define('SHORTINIT', true);
+define('MYSQL_NEW_LINK', false);
+/* wordpress performance optimization */
 
 $env = @$_REQUEST['env'];  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 if (!$env) {
@@ -51,6 +56,7 @@ switch ($env) {
             @define('_PS_CONFIG_DIR_', realpath(realpath(dirname(__FILE__)).''.DS.'..'.DS.'..'.DS.'..'.DS.'..'.DS.'..'.DS.'config').DS);
             @define('_PS_CLASS_DIR_', realpath(realpath(dirname(__FILE__)).''.DS.'..'.DS.'..'.DS.'..'.DS.'..'.DS.'..'.DS.'classes').DS);
             @define('_PS_CORE_DIR_', realpath(realpath(dirname(__FILE__)).''.DS.'..'.DS.'..'.DS.'..'.DS.'..'.DS.'..').DS);
+            @define('_PS_ROOT_DIR_', realpath(realpath(dirname(__FILE__)).''.DS.'..'.DS.'..'.DS.'..'.DS.'..'.DS.'..').DS);
         }
 
         require_once(realpath(realpath(dirname(__FILE__)).''.DS.'..'.DS.'..'.DS.'..'.DS.'..'.DS.'..'.DS.'config'.DS.'settings.inc.php'));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -83,9 +89,30 @@ switch ($env) {
 
     case "ExtraWatchWordpressEnv":  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     {
-        require_once dirname(__FILE__) . '/../../../../../wp-load.php';  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        //ob_end_clean(); - was causing problems in redering ajax js scripts to include  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        if (!defined('ENV')) define('ENV', 1);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+
+        /* perf. optim. - loading frontend widgets faster way */
+        $requestedURI = $_SERVER['REQUEST_URI'];
+        if (
+            strstr($requestedURI,"action=heatmap.include.js&task=ajax") ||
+            strstr($requestedURI,"action=agent.js") ||
+            strstr($requestedURI,"action=img")
+        ){
+
+            require_once dirname(__FILE__) . '/../../../../../wp-load.php';
+
+        } else {    //not ajax calls..
+            require_once dirname(__FILE__) . '/../../../../../wp-load.php';
+            require( ABSPATH . WPINC . '/formatting.php' );
+            require( ABSPATH . WPINC . '/meta.php' );
+            require( ABSPATH . WPINC . '/post.php' );
+            require( ABSPATH . WPINC . '/widgets.php' );
+            wp_plugin_directory_constants();
+        }
+
+        @$GLOBALS['wp_version'] = true;
+
+        //ob_end_clean(); - was causing problems in redering ajax js scripts to include
+        if (!defined('ENV')) define('ENV', 1);
         break;
     }
     case "ExtraWatchNoCMSEnv":  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  

@@ -4,8 +4,8 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @version 2.2  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 1789  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 1882  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2014 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.extrawatch.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -229,7 +229,7 @@ class ExtraWatchTrendHTML
     $output .= "<br/><br/>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     $output .= $this->renderDayTrends($group, $name, $date);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     $output .= "<br/><br/>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-    $output .= $this->renderWeekTrends($group, $name, $date);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    //$output .= $this->renderWeekTrends($group, $name, $date);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     return $output;
 
   }
@@ -261,11 +261,32 @@ class ExtraWatchTrendHTML
   }
 
 
-  /* trend */
+    function findLatestGraphDataRecursively($group, $date, $false = FALSE, $iteration = 0) {
+
+        $iteration++;
+        if ($iteration > 10) {
+            return;
+        }
+
+        $rows = $this->extraWatch->stat->getIntValuesByName($group, $date, FALSE, 10);
+        if (sizeof($rows)<1) {
+            $date--;
+            return $this->findLatestGraphDataRecursively($group, $date, $false, $iteration);
+        }
+        return $rows;
+    }
+
+
+
+    /* trend */
   function renderGraphsForGroup($group = 0)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   {
 
-    $output = "<table border='0' width='80%'><tr><td>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+      require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "trendtooltip.php";
+
+      return;
+
+      $output = "<table border='0' width='80%'><tr><td>";
 
     if (!$group) {
       $group = 10; //referers as first value in graphs  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -273,7 +294,8 @@ class ExtraWatchTrendHTML
 
     $date = $this->extraWatch->date->jwDateToday();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-    $rows = $this->extraWatch->stat->getIntValuesByName($group, $date, FALSE, 10);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+
+      $rows = $this->findLatestGraphDataRecursively($group, $date, FALSE);
 
     $output .= $this->renderGraphSelectionForm($group);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     if (!$rows) {
@@ -281,11 +303,12 @@ class ExtraWatchTrendHTML
     }
 
 
-    foreach ($rows as $row) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+
+    foreach ($rows as $row) {
       $output .= "<br/><br/>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-      $output .= $this->renderDayTrends($group, $row->name, $date);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+      $output .= $this->renderDayTrends($group, $row->name, $date);
       $output .= "<br/><br/>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-      $output .= $this->renderWeekTrends($group, $row->name, $date);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+      $output .= $this->renderWeekTrends($group, $row->name, $date);
       $output .= "<hr/><br/>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     }
     $output .= $this->renderGraphSelectionForm($group);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -305,6 +328,57 @@ class ExtraWatchTrendHTML
     }
     return $output;
   }
+  
+  
+  
+    /* trend */
+  function renderDayTrendData($group, $name, $date)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+  {
+
+      //$lineArray[] = ("{\"period\": \"".date("Y-m-d",($date - 20 -1)*3600*24)."\", \"value\":".((int) 0)."}");
+      $max = 0;
+    for ($i = $date - 20; $i <= $date; $i++) {
+      $value = $this->extraWatch->stat->getKeyValueInGroupByDate($group, $name, $i);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+      if ($max < $value) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $max = $value;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+      }
+	  $lineArray[] = ("{\"period\": \"".date("Y-m-d",$i*3600*24)."\", \"value\":".((int) $value)."}");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    }
+
+      //$lineArray[] = ("{\"period\": \"".date("Y-m-d",($date + 1)*3600*24)."\", \"value\":".((int) 0)."}");
+
+	return(implode(",",$lineArray));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+
+  }
+
+  
+  
+    /* trend */
+  function renderWeekTrendData($group, $name, $date)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+  {
+  
+
+    $NUMBER_OF_BARS = 20;
+    $resultsArray = array();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    $max = 0;
+    $maxDate = 0;
+    // first day has to be monday  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    $lineArray[] = ("{\"period\": \"".date("Y",($date - 20)*3600*24)." W".date("W",($date - 20)*3600*24)."\", \"value\":".((int) 0)."}");
+
+    $dayOfWeek = (ExtraWatchDate::date("N", $date * 24 * 3600) - 1);
+    for ($i = $date - $NUMBER_OF_BARS * 7 - $dayOfWeek + 7; $i <= $date - $dayOfWeek; $i += 7) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+      $value = $this->extraWatch->stat->getSumOfTwoDays($i + 7, $i, $group, $name);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+      if ($max < $value) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $max = $value;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $maxDate = $i;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+      }
+	  $lineArray[] = ("{\"period\": \"".date("Y",$i*3600*24)." W".date("W",$i*3600*24)."\", \"value\":".((int) $value)."}");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    }
+	
+	return(implode(",",$lineArray));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+
+  }
+
 }
 
 

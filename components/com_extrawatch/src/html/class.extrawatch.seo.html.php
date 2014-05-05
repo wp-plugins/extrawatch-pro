@@ -4,8 +4,8 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @version 2.2  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 1789  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 1882  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2014 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.extrawatch.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -53,7 +53,7 @@ class ExtraWatchSEOHTML
     if (!_EW_CLOUD_MODE) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         $output .= $this->renderMostDynamicKeyphrases($renderAlsoNotChanged, $day);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     }
-    $output .= "<table border='0'>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    $output .= "<table border='0' class='table'>";
     $output .= "<tr><td></td><td align='right'><b>" . _EW_SEO_TOTAL_VISITS_FROM_SEARCH_ENGINES . ": " . $searchEngineHits . " (".@$percent."%)</b></td></tr>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
     $rows = $this->extraWatch->seo->getUri2KeyphrasePosUris($day);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -68,7 +68,7 @@ class ExtraWatchSEOHTML
         $outputBlock = "<tr><td><h3><a href='" . $row->uri . "'>" . $row->title . "</a></h3><td align='right'><b>" . _EW_STATS_TOTAL . ": " . $total . " ($percent%)</b></td></tr><tr><td colspan='2'>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         $rows2 = $this->extraWatch->seo->getUri2KeyphrasePosById($day, $row->uri2titleId);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         if ($rows2) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-          $outputBlock .= ("<table width='100%' style='border: 1px solid #dddddd' class='tablesorter'><thead><tr><th>" . _EW_URI . "</th><th>" . _EW_POSITION . "</th><th>" . _EW_COUNT . "</th><th>" . _EW_EMAIL_REPORTS_PERCENT . "</th><th>" . _EW_EMAIL_REPORTS_1DAY_CHANGE . "</th><th>" . _EW_EMAIL_REPORTS_7DAY_CHANGE . "</th><th>" . _EW_EMAIL_REPORTS_28DAY_CHANGE . "</th><th></th></tr></thead><tbody>");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+          $outputBlock .= ("<table width='100%' class='tablesorter table table-striped'><thead><tr><th>" . _EW_URI . "</th><th>" . _EW_POSITION . "</th><th>" . _EW_COUNT . "</th><th>" . _EW_EMAIL_REPORTS_PERCENT . "</th><th>" . _EW_EMAIL_REPORTS_1DAY_CHANGE . "</th><th>" . _EW_EMAIL_REPORTS_7DAY_CHANGE . "</th><th>" . _EW_EMAIL_REPORTS_28DAY_CHANGE . "</th><th></th></tr></thead><tbody>");
           $i = 0;
           foreach ($rows2 as $row2) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
@@ -145,7 +145,7 @@ class ExtraWatchSEOHTML
     $output = "";
     $rows = $this->extraWatch->seo->getMostChangedKeyphrases();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     if (@$rows) {
-      $output .= "<h2>" . _EW_SEO_MOST_DYNAMIC_KEYPHRASES . "</h2><table style='border: 1px solid #dddddd;width:50%;' class='tablesorter'><thead><tr><th>" . _EW_STATS_KEYPHRASE . "</th><th>" . _EW_SEO_MIN_POSITION . "</th><th>" . _EW_SEO_AVG_POSITION . "</th><th>" . _EW_SEO_MIN_POSITION . "</th><th>" . _EW_COUNT . "</th><th>" . _EW_SEO_CHANGE . "</th><th></th><th>" . _EW_SEO_DATE_OF_LAST_CHANGE . "</th></th></tr></thead><tbody>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+      $output .= "<h2>" . _EW_SEO_MOST_DYNAMIC_KEYPHRASES . "</h2><table style='width:50%;' class='tablesorter table table-striped'><thead><tr><th>" . _EW_STATS_KEYPHRASE . "</th><th>" . _EW_SEO_MIN_POSITION . "</th><th>" . _EW_SEO_AVG_POSITION . "</th><th>" . _EW_SEO_MIN_POSITION . "</th><th>" . _EW_COUNT . "</th><th>" . _EW_SEO_CHANGE . "</th><th></th><th>" . _EW_SEO_DATE_OF_LAST_CHANGE . "</th></th></tr></thead><tbody>";
       $i = 0;
       foreach ($rows as $row) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         $rows2 = $this->extraWatch->seo->getAveragePositionChangesByUri2KeyphraseIdBetweenDays($row->uri2keyphraseId);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
