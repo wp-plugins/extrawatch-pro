@@ -5912,15 +5912,16 @@ margin-left: 210px;
 }
 .wrapper {
 display: inline-block;
-margin-top: 60px;
-padding: 15px;
+//margin-top: 60px; -- fix for magento
+//padding: 15px; -- fix for magento
 width: 100%;
 }
 .main {
   padding: 20px;
   //padding-top: 120px !important;
-  top:100px;
-  position: absolute;
+  //top:100px;
+//  position: absolute;
+  vertical-align: top;
 }
 @media (min-width: 768px) {
   .main {
@@ -6068,7 +6069,7 @@ min-height: 20000px;
 
 /* style fixes for Jooomla 2.5 */
 
-#status, #footer, .header DIV, header {
+#status, #footer {
     display: none;
 }
 
@@ -6092,9 +6093,6 @@ width: 100% !importnant;
 }
 
 /*TODO: colision with joomla 3.2 and tablesorter
-.header {
-    display: none;
-}
 */
 body {
     padding-top: 0px !important;
@@ -6162,4 +6160,13 @@ cursor: pointer;
 }
 .cta-btn-red:hover{
 background: #c4000b;
+}
+
+.middle {   /* magento css class */
+padding: 0px;
+}
+
+/* prestashop */
+#content {
+padding: 0px;
 }
