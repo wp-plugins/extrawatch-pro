@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 1901  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 1908  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2014 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.extrawatch.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -431,11 +431,17 @@ class ExtraWatchVisit
               die($exception->getBlockingMessage());  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
           }
       }
-      $this->user->updateUserLog($userId, $ip);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+      $this->user->updateUserLog($userId, $ip);
+
+      $uri = $this->helper->getURI();
 
       ExtraWatchLog::debug("Insert bot visit from insertVisit");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-	  $this->insertBotVisit($this->helper->getURI(), $referrer, "", $ip);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-	  ExtraWatchLog::debug("Visit inserted: IP: $ip, ref: $referrer, live site: $liveSite");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+	  $this->insertBotVisit($uri, $referrer, "", $ip);
+	  ExtraWatchLog::debug("Visit inserted: IP: $ip, ref: $referrer, live site: $liveSite");
+
+	  	
+      $this->savePostParams($uri);
+	  	
 
       $this->goal->checkGoals("", $username, $ip, $referrer, $liveSite);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
@@ -735,8 +741,10 @@ function insertSearchResultPage($uri, $phrase, $referer, $title)
           return TRUE;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
       }
 
-      $query = sprintf("update #__extrawatch_uri set `title` = '%s' where (uri = '%s' and title = '') ", $this->database->getEscaped($title), $this->database->getEscaped($uri));
-      $this->database->executeQuery($query);
+      if (@$title) {
+        $query = sprintf("update #__extrawatch_uri set `title` = '%s' where (uri = '%s' and title = '') ", $this->database->getEscaped($title), $this->database->getEscaped($uri));
+        $this->database->executeQuery($query);
+      }
 
 
       $this->referer->checkSocialMedia($referer);
@@ -817,9 +825,7 @@ function insertSearchResultPage($uri, $phrase, $referer, $title)
           $this->seo->cleanUnimportantKeyphrases();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
       }
 
-      $time = $this->date->getUTCTimestamp();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-
-      $query = sprintf(" update #__extrawatch_uri LEFT JOIN #__extrawatch ON #__extrawatch_uri.fk = #__extrawatch.id  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+      $query = sprintf(" update #__extrawatch_uri LEFT JOIN #__extrawatch ON #__extrawatch_uri.fk = #__extrawatch.id
                          set title = '%s'  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                          where #__extrawatch_uri.uri = '%s' and #__extrawatch.ip = '%s'",  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                         $this->database->getEscaped(htmlentities($title, ENT_QUOTES, 'UTF-8')),  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -830,36 +836,7 @@ function insertSearchResultPage($uri, $phrase, $referer, $title)
 
       $this->makeVisitorActive($ip);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-      //START POST CODE MOD  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-      $query = sprintf("select id from #__extrawatch_uri where fk = '%d' and `timestamp` = '%d' and `uri` LIKE '%s' and `title` LIKE '%s' ",  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-          (int) $id, (int) $time, $this->database->getEscaped($uri), $this->database->getEscaped(htmlentities($title, ENT_QUOTES, 'UTF-8')));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-      $id = $this->database->resultQuery($query);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-
-    /*  foreach (ExtraWatchHelper::requestPost() as $key => $value)   //  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-      {
-          $query = sprintf("insert into #__extrawatch_uri_post (`uriid`, `key`, `value`, `type`) values ('%d', '%s', '%s', 1) ",  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-              $id, $this->database->getEscaped($key), $this->database->getEscaped($value));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-          $this->database->executeQuery($query);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-      }*/
-
-      $params = str_replace("?","",$params);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-      $paramsGetSplitted = @explode("&",$params);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-
-      foreach ($paramsGetSplitted as $value)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-      {
-		  if (@$value) {
-			$paramSplitted = @explode("=", $value);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-			$paramKey = @$paramSplitted[0];  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-			$paramValue = @$paramSplitted[1];  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-
-			$query = sprintf("insert into #__extrawatch_uri_post (`uriid`, `key`, `value`, `type`) values ('%d', '%s', '%s', 2) ",  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-				$id, $this->database->getEscaped($paramKey), $this->database->getEscaped($paramValue));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-			$this->database->executeQuery($query);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-		  }
-      }
-      //END POST CODE MOD  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-
-      $username = $this->getUsernameForIp($ip);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+      $username = $this->getUsernameForIp($ip);
 
       if (($username != $newUsername) && ($newUsername)) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
           $query = sprintf("update #__extrawatch set username = '%s' where ip = '%s'", $this->database->getEscaped($newUsername), $this->database->getEscaped($ip));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -915,6 +892,10 @@ function insertSearchResultPage($uri, $phrase, $referer, $title)
 					)");	//deactivate those which are on site longer than 10 minutes  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     @ $this->database->objectListQuery($query);
       }
+
+	
+      $this->saveGetParams($params, $uri);
+    
 
   }
 
@@ -1528,6 +1509,72 @@ function insertSearchResultPage($uri, $phrase, $referer, $title)
             $this->database->getEscaped($ip)
         );
         return @$this->database->executeQuery($query);
+    }
+
+    /**
+     * @param $uri
+     * @param $title
+     * @param $params
+     * @param $uriId
+     * @param $time
+     * @return string
+     */
+    public function saveGetParams($params, $uri)
+    {
+
+        $uriId = $this->getUriIdByUri($uri);
+
+        $params = str_replace("?", "", $params);
+        $paramsGetSplitted = @explode("&", $params);
+
+        foreach ($paramsGetSplitted as $value) {
+            if (@$value) {
+                $paramSplitted = @explode("=", $value);
+                $paramKey = @$paramSplitted[0];
+                $paramValue = @$paramSplitted[1];
+
+                $query = sprintf("insert into #__extrawatch_uri_post (`uriid`, `key`, `value`, `type`) values ('%d', '%s', '%s', 2) ",
+                    $uriId, $this->database->getEscaped($paramKey), $this->database->getEscaped($paramValue));
+                $this->database->executeQuery($query);
+            }
+        }
+        return $query;
+    }
+
+
+    /**
+     * @param $uri
+     * @param $title
+     * @param $params
+     * @param $uriId
+     * @param $time
+     * @return string
+     */
+    public function savePostParams($uri)
+    {
+        $uriId = $this->getUriIdByUri($uri);
+
+        foreach (ExtraWatchHelper::requestPost() as $key => $value)
+          {
+              $query = sprintf("insert into #__extrawatch_uri_post (`uriid`, `key`, `value`, `type`) values ('%d', '%s', '%s', 1) ",
+                  $uriId, $this->database->getEscaped($key), $this->database->getEscaped($value));
+              $this->database->executeQuery($query);
+          }
+
+    }
+
+
+
+    /**
+     * @param $uri
+     * @return $uriId
+     */
+    public function getUriIdByUri($uri)
+    {
+        $query = sprintf("select id from #__extrawatch_uri where uri = '%s' order by id desc limit 1",
+            $this->database->getEscaped($uri));
+        $uriId = $this->database->resultQuery($query);
+        return $uriId;
     }
 
 }

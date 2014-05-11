@@ -37,7 +37,7 @@
   border: 1px solid #ddd; /* this is the border. should have the same value for the links */
   width: 1000px; /* Also specified in  .stripViewer .panelContainer .panel  below */
   height: auto;
-  clear: both;
+  //clear: both;
   background: #fff;
 }
 

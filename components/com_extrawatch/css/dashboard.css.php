@@ -6170,3 +6170,14 @@ padding: 0px;
 #content {
 padding: 0px;
 }
+
+
+/* joomla 3.0 */
+.admin .header {
+display: none;
+}
+
+.admin .ew-navbar-header {
+padding-top: 30px;
+}
+
