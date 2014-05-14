@@ -6181,3 +6181,12 @@ display: none;
 padding-top: 30px;
 }
 
+/* prestashop 1.6 */
+#nav-sidebar {
+display: none;
+}
+
+.extrawatchadmin #main #content {
+padding-top: 35px;
+margin-left: 0px;
+}

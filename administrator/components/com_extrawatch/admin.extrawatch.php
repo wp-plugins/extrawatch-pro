@@ -187,7 +187,7 @@ function extrawatch_mainController($task = "") {
                 } else {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                     $output = ("<br/><div style='border: 1px solid red; width: 50%; padding: 10px;'>" . _EW_STATS_MAP_INVALID_KEY . "</div>");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                 }
-                $output .= $extraWatchHTML->renderBody($option);
+                $output .= $extraWatchHTML->renderLocation();
                 $output .= $extraWatchHTML->renderFooter();
                 break;
                 }
