@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 1917  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 1918  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2014 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.extrawatch.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -488,10 +488,10 @@ class ExtraWatchStatHTML
     }
 
     $output = "<table>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-    $output .= "<tr><td><h3></h3></td><td align='center'>&nbsp;<u>" . _EW_EMAIL_REPORTS_VALUE . "</u></td><td align='center'>&nbsp;<u>" . _EW_EMAIL_REPORTS_PERCENT . "</u></td><td align='center'>&nbsp;<u>" . _EW_EMAIL_REPORTS_1DAY_CHANGE . "</u></td><td align='center'>&nbsp;<u>" . _EW_EMAIL_REPORTS_7DAY_CHANGE . "</u></td><td align='center'>&nbsp;<u>" . _EW_EMAIL_REPORTS_28DAY_CHANGE . "</u></td></tr>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-    $output .= "<tr><td>" . _EW_STATS_UNIQUE . "</td><td align='right'>" . $this->extraWatch->stat->getCountByKeyAndDate(EW_DB_KEY_UNIQUE, $day - 1) . "</td><td></td>" . $this->renderDiffTableCellsAndIcon(EW_DB_KEY_UNIQUE, EW_DB_KEY_UNIQUE, $day - 1, TRUE) . "</td></tr>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-    $output .= "<tr><td>" . _EW_STATS_LOADS . "</td><td align='right'>" . $this->extraWatch->stat->getCountByKeyAndDate(EW_DB_KEY_LOADS, $day - 1) . "</td><td></td>" . $this->renderDiffTableCellsAndIcon(EW_DB_KEY_LOADS, EW_DB_KEY_LOADS, $day - 1, TRUE) . "</td></tr>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-    $output .= "<tr><td>" . _EW_STATS_HITS . "</td><td align='right'>" . $this->extraWatch->stat->getCountByKeyAndDate(EW_DB_KEY_HITS, $day - 1) . "</td><td></td>" . $this->renderDiffTableCellsAndIcon(EW_DB_KEY_HITS, EW_DB_KEY_HITS, $day - 1, TRUE) . "</td></tr>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    $output .= "<tr><td><h3></h3></td><td align='center'>&nbsp;<u>" . _EW_EMAIL_REPORTS_VALUE . "</u></td><td align='center'>&nbsp;<u>" . _EW_EMAIL_REPORTS_PERCENT . "</u></td><td align='center'>&nbsp;<u>" . _EW_EMAIL_REPORTS_1DAY_CHANGE . "</u></td><td align='center'>&nbsp;<u>" . _EW_EMAIL_REPORTS_7DAY_CHANGE . "</u></td><td align='center'>&nbsp;<u>" . _EW_EMAIL_REPORTS_28DAY_CHANGE . "</u></td></tr>\r\n";
+    $output .= "<tr><td>" . _EW_STATS_UNIQUE . "</td><td align='right'>" . $this->extraWatch->stat->getCountByKeyAndDate(EW_DB_KEY_UNIQUE, $day - 1) . "</td><td></td>" . $this->renderDiffTableCellsAndIcon(EW_DB_KEY_UNIQUE, EW_DB_KEY_UNIQUE, $day - 1, TRUE) . "</td></tr>\r\n";
+    $output .= "<tr><td>" . _EW_STATS_LOADS . "</td><td align='right'>" . $this->extraWatch->stat->getCountByKeyAndDate(EW_DB_KEY_LOADS, $day - 1) . "</td><td></td>" . $this->renderDiffTableCellsAndIcon(EW_DB_KEY_LOADS, EW_DB_KEY_LOADS, $day - 1, TRUE) . "</td></tr>\r\n";
+    $output .= "<tr><td>" . _EW_STATS_HITS . "</td><td align='right'>" . $this->extraWatch->stat->getCountByKeyAndDate(EW_DB_KEY_HITS, $day - 1) . "</td><td></td>" . $this->renderDiffTableCellsAndIcon(EW_DB_KEY_HITS, EW_DB_KEY_HITS, $day - 1, TRUE) . "</td></tr>\r\n";
 
 
     foreach ($keysArray as $key) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -500,7 +500,7 @@ class ExtraWatchStatHTML
       }
       $output .= nl2br($this->renderIntValuesByNameForEmail($key, TRUE, FALSE, $day, 10, FALSE, TRUE));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-      $output .= "<tr><td colspan='4'>&nbsp;</td></tr>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+      $output .= "<tr><td colspan='4'>&nbsp;</td></tr>\r\n";
     }
     $output .= "</table>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     return $output;
