@@ -6,7 +6,7 @@ Plugin URI: http://www.extrawatch.com
 
 Description: Features: <strong>Visitor Live Stats</strong>, <strong>Monitor File Downloads, Clicks</strong>, <strong>Monitor clicks, Heatmap</strong>, <strong>SEO Report</strong>, <strong>Traffic Flow</strong>, <strong>Front-end Counters</strong>, <strong>Anti-spam</strong>, <strong>Nightly Email Reports</strong>, <strong>History</strong>, <strong>Graphs</strong>, <strong>Directory sizes</strong>, translated in <strong>42 world languages</strong>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-Version: 2.3.1949 PRO  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+Version: 2.3.1951 PRO  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 Author: CodeGravity.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 Author URI: http://www.extrawatch.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 */
@@ -29,12 +29,13 @@ if ( ! defined( 'WP_PLUGIN_DIR' ) )
 if ( ! defined( '_EW_PROJECT_ID' ) )   	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 	define("_EW_PROJECT_ID", FALSE);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
+add_action('admin_menu', 'extrawatch_admin_menu');  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+	
 /* this fixes double require by wordpress*/  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 if (@function_exists("extrawatch_admin_menu")) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   return;
 } else {
 
-  add_action('admin_menu', 'extrawatch_admin_menu');  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   //add_action('wp_meta', 'extrawatch_frontend');  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
   require_once(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "src" . DS. "class.extrawatch.log.php");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  

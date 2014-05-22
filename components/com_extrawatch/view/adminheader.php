@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.3
- * @revision 1949
+ * @revision 1951
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2014 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -22,7 +22,14 @@ defined('_JEXEC') or die('Restricted access'); ?>
 		//do nothing.. menu fix for joomla 1.5
 	} else {
 ?>
-<?php echo $extraWatch->env->addScript($extraWatch->config->getLiveSiteWithSuffix()."components/com_extrawatch/js/jquery-1.11.0.min.js");?>
+
+<?php 
+if (get_class($extraWatch->env) != "ExtraWatchWordpressEnv") {	//query is already initialized for wordpress and would cause conflict otherwise
+	$extraWatch->env->addScript($extraWatch->config->getLiveSiteWithSuffix()."components/com_extrawatch/js/jquery-1.11.0.min.js");
+}
+?>
+
+
 <?php } ?>
 
 <?php echo $extraWatch->env->addScript($extraWatch->config->getLiveSiteWithSuffix()."components/com_extrawatch/js/jquery.tablesorter.js");?>
