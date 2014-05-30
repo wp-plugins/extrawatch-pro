@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.3
- * @revision 1959
+ * @revision 1961
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2014 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -37,16 +37,11 @@ if (get_class($extraWatch->env) != "ExtraWatchWordpressEnv") {	//query is alread
 
 <?php
 $liveSite = $extraWatch->config->getLiveSiteWithSuffix();
-echo $extraWatch->env->addStyleSheet($liveSite."components/com_extrawatch/css/dashboard.css.php?env=".get_class($extraWatch->env));
+
+if (get_class($extraWatch->env) != "ExtraWatchWordpressEnv") {  //for wordpress we're loading this in module so it gets to header section
+    echo $extraWatch->env->addStyleSheet($liveSite."components/com_extrawatch/css/dashboard.css.php?env=".get_class($extraWatch->env));
+}
 ?>
-
-
-<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!--[if lt IE 9]>
-<?php echo $extraWatch->env->addScript("https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js");?>
-<?php echo $extraWatch->env->addScript("https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js");?>
-<![endif]-->
-
 
 
 <?php echo $extraWatch->env->addScript($extraWatch->config->getLiveSiteWithSuffix()."components/com_extrawatch/js/jxml.js");?>

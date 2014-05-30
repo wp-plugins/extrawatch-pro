@@ -6088,7 +6088,7 @@ width: 100% !importnant;
 }
 
 .linkDisabled  {
-    color: grey !important;
+    color: #909090 !important;
 }
 
 /*TODO: colision with joomla 3.2 and tablesorter
