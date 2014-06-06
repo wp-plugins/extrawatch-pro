@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 1965  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 1970  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2014 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.extrawatch.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -61,9 +61,13 @@ class ExtraWatchVisit
    *
    * @return unknown  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
    */
-  function getLastVisitId()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+  function getLastVisitId($onlyWithTitle = false)
   {
-    $query = sprintf("select #__extrawatch_uri.id as last from #__extrawatch left join #__extrawatch_uri on #__extrawatch.id = #__extrawatch_uri.fk where #__extrawatch.browser is not NULL order by #__extrawatch_uri.id desc limit 1");
+    $onlyWithTitleFilter = "";
+    if ($onlyWithTitle) {
+        $onlyWithTitleFilter = " and (title != '' or title is NULL) ";
+    }
+    $query = sprintf("select #__extrawatch_uri.id as last from #__extrawatch left join #__extrawatch_uri on #__extrawatch.id = #__extrawatch_uri.fk where #__extrawatch.browser is not NULL %s order by #__extrawatch_uri.id desc limit 1", $onlyWithTitleFilter);
     $last = $this->database->resultQuery($query);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     return $last;
   }
@@ -738,7 +742,7 @@ function insertSearchResultPage($uri, $phrase, $referer, $title)
       }
 
       if (@$title) {
-        $query = sprintf("update #__extrawatch_uri set `title` = '%s' where (uri = '%s' and title = '') ", $this->database->getEscaped($title), $this->database->getEscaped($uri));
+        $query = sprintf("update #__extrawatch_uri set `title` = '%s' where (uri = '%s' and (title = '' or title is NULL)) ", $this->database->getEscaped($title), $this->database->getEscaped($uri));
         $this->database->executeQuery($query);
       }
 
@@ -751,7 +755,7 @@ function insertSearchResultPage($uri, $phrase, $referer, $title)
       $this->updateRefererForIP($referer, $ip);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
       $this->updateBrowserForIP($userAgent, $ip);
 
-      if (@$referer) { // check if there is referer, otherwise there's no point to execute the code in this block
+      if (@$referer) { // check if there is referer, otherwise there's no point to execute the code in this block  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
           //if (@ !$this->isVisitFromSameSite($referer))  {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 			$isSameSite = $this->isVisitFromSameSite($referer);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 			ExtraWatchLog::debug("referer: $referer, same site: ".(int) $isSameSite);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  

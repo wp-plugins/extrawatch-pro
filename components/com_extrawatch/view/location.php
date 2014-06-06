@@ -4,7 +4,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 1965  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 1970  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2014 byCodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.codegravity.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -42,11 +42,23 @@ if (!$extraWatch->config->isFree()) {
     <?php
     } else {
 ?>
-<form action="<?php echo $extraWatch->config->renderLink();?>" method="POST">
+<script type='text/javascript'>
+function checkKeyFormat() {
+	var keyValue = document.getElementById('ipInfoDbKey').value;
+	if (keyValue.length < 64) {	//64 is the length of the key
+		alert('are you sure that "' +keyValue + '" is really key which you got from ipinfodb.com?');
+	return false;
+	}
+	return true;
+}
+
+</script>
+
+<form action="<?php echo $extraWatch->config->renderLink();?>" method="POST" onsubmit='return checkKeyFormat();'>
   <?php echo _EW_STATS_MAP_ENTER_KEY;?>
 <br/><br/>
-<input type="edit" name="storeIpInfoDbKey"/> <br/><br/>
-<input type="submit" value="<?php echo _EW_STATS_MAP_STORE_KEY; ?>"/>
+<input id='ipInfoDbKey' type="edit" name="storeIpInfoDbKey"/> <br/><br/>
+<input type="submit" value="<?php echo _EW_STATS_MAP_STORE_KEY; ?>" class='btn btn-primary'/>
 <input type="hidden" name="task" value="storeIpInfoDbKey"/>
 <input name='form_key' type='hidden' value="<?php echo $extraWatch->env->getFormKey();?>" />
 </form>

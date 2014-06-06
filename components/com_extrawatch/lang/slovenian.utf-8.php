@@ -311,7 +311,14 @@ DEFINE('_EW_GOALS_USERNAME_INVERSED', "Username inversed condition");
 DEFINE('_EW_GOALS_CAME_FROM_INVERSED', "Came from inversed condition");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
 DEFINE('_EW_STATS_MAP', "Last Visit Map");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_STATS_MAP_ENTER_KEY', "Please enter <a href='http://www.ipinfodb.com/register.php' target='_blank'>ipinfodb.com</a> key to display last visit map:");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_STATS_MAP_ENTER_KEY', "<h2>Please enter ipinfodb API key to display last visit map below</h2> <br/>
+<u>Why this is needed?</u><br/>
+This is a 3rd party service which allows you to get more accurate location of your visitor.<br/><br/>
+1. Open the link <a href='http://www.ipinfodb.com/register.php' target='_blank'>ipinfodb.com</a><br/>
+2. Fill in the form on website<br/>
+3. You'll receive an email with the API key<br/>
+4. Enter this key into the box below: <br/>
+");
 DEFINE('_EW_STATS_MAP_STORE_KEY', "store key");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_STATS_MAP_INVALID_KEY', "Please enter valid ipinfodb key you obtained from: <a href='http://www.ipinfodb.com/register.php' target='_blank'>ipinfodb.com</a>");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
