@@ -1,2 +1,6 @@
-Order deny,allow
-Allow from all
+<IfModule !mod_authz_core.c>
+Header set X-Robots-Tag "noindex"
+</IfModule>
+<IfModule mod_authz_core.c>
+Header set X-Robots-Tag "noindex"
+</IfModule>
