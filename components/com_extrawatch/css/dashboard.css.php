@@ -43,6 +43,7 @@ if (!defined("_EW_PROJECT_ID")) {
 
 
 $extraWatch = new ExtraWatchMain();
+$extraWatch->helper->setNoindexHttpHeaders();   //setting explicitly for ajax requests
 $extraWatch->config->initializeTranslations();
 $extraWatchHTML = new ExtraWatchHTML();
 $extraWatch->block->checkPermissions();
