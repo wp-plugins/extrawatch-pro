@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 1992  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 1993  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2014 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.extrawatch.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -709,10 +709,11 @@ function insertSearchResultPage($uri, $phrase, $referer, $title)
         $this->runAtMidnight();   //executing this again, but won't be called if it was already executed. Because of cloud version which doesn't call insertVisit
       }
 
-      $ip = addslashes(strip_tags(@ $this->getRemoteIPAddress()));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+      $ip = addslashes(strip_tags(@ $this->getRemoteIPAddress()));
 
-      if (@_EW_CLOUD_MODE) {    //there's no insertVisit in cloud mode because of script  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-    	  ExtraWatchLog::debug("Insert bot visit in cloud mode: uri: $uri referer: $referer title: $title ip: $ip");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+      $areUriAndLastUriSame = (strcmp($uri, $this->getLastUriForIp($ip)) === 0);    //this is because there can be some caching of PHP scripts included which prevents agent php code to be executed
+      if (@_EW_CLOUD_MODE || !($areUriAndLastUriSame)) {    //there's no insertVisit in cloud mode because of script
+    	  ExtraWatchLog::debug("Insert bot visit: uri: $uri referer: $referer title: $title ip: $ip");
           $this->insertBotVisit($uri, $referer, $title, $ip);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
       }
 
@@ -743,7 +744,7 @@ function insertSearchResultPage($uri, $phrase, $referer, $title)
       }
 
       if (@$title) {
-        $query = sprintf("update #__extrawatch_uri set `title` = '%s' where (uri = '%s' and (title = '' or title is NULL)) ", $this->database->getEscaped($title), $this->database->getEscaped($uri));
+        $query = sprintf("update #__extrawatch_uri set `title` = '%s' where (uri = '%s' and (title = '' or title is NULL)) ", $this->database->getEscaped($title), $this->database->getEscaped(htmlentities($uri)));
         $this->database->executeQuery($query);
       }
 
@@ -1573,9 +1574,21 @@ function insertSearchResultPage($uri, $phrase, $referer, $title)
     public function getUriIdByUri($uri)
     {
         $query = sprintf("select id from #__extrawatch_uri where uri = '%s' order by id desc limit 1",
-            $this->database->getEscaped($uri));
+            $this->database->getEscaped(htmlentities($uri)));
         $uriId = $this->database->resultQuery($query);
         return $uriId;
+    }
+
+    /**
+     * @param $uri
+     * @return $uriId
+     */
+    public function getLastUriForIp($ip)
+    {
+        $query = sprintf("select uri from #__extrawatch_uri join #__extrawatch on #__extrawatch_uri.fk = #__extrawatch.id where ip = '%s' order by #__extrawatch_uri.fk desc limit 1",
+        $this->database->getEscaped($ip));
+        $uri = $this->database->resultQuery($query);
+        return $uri;
     }
 
 }
