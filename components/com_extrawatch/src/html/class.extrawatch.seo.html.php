@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 2021  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 2026  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2014 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.extrawatch.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -155,7 +155,7 @@ class ExtraWatchSEOHTML
               if (!$showEncryptedKeywords && $row->name == ExtraWatchHelper::_EW_ENCRYPTED) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                   continue;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
               }
-            $output .= sprintf("<tr class='tableRow%d'><td>%s</td><td align='center'>%d</td><td align='center'>%.2f</td><td align='center'>%d</td><td align='center'>" . $row->count . "</td>", ($i++ % 2), $this->renderKeyphraseLink($row->name), $row->minPosition, $row->averagePosition, $row->maxPosition);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+            $output .= sprintf("<tr class='tableRow%d'><td>%s</td><td class='ewCentered'>%d</td><td class='ewCentered'>%.2f</td><td class='ewCentered'>%d</td><td class='ewCentered'>" . $row->count . "</td>", ($i++ % 2), $this->renderKeyphraseLink($row->name), $row->minPosition, $row->averagePosition, $row->maxPosition);
             $output .= $changeOutput;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
             $output .= "</tr>\r\n";
           }
@@ -191,7 +191,7 @@ class ExtraWatchSEOHTML
             $diffColor = ExtraWatchTrendHTML::getDiffColor($diff, TRUE);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
             $diffImg = "<img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/trend_$diffColor.gif' border='0'/>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
             if ($day == $row->date || !$day) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-              $output .= sprintf("<td style='color: $diffColor' align='right'>%+.2f</td><td>$diffImg</td><td align='center'>%s</td>", $diff, ExtraWatchDate::getDateByDay($row->date));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+              $output .= sprintf("<td style='color: $diffColor' align='right'>%+.2f</td><td>$diffImg</td><td class='ewCentered'>%s</td>", $diff, ExtraWatchDate::getDateByDay($row->date));
             }
           }
           $lastAveragePosition = $averagePosition;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  

@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 2021  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 2026  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2014 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.extrawatch.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -86,7 +86,7 @@ class ExtraWatchHeatmapHTML
 			$link = $this->renderHeatmapLink($uri, $row->uri2titleId, $day, $title, "", TRUE);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 		}
 
-        $output = sprintf("<tr class='tableRow" . ($i % 2) . "'><td align='center' style='color: %s' width='5%%'>%d</td><td>%s</td><td>%s</td>",  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $output = sprintf("<tr class='tableRow" . ($i % 2) . "'><td class='ewCentered' style='color: %s' width='5%%'>%d</td><td>%s</td><td>%s</td>",
             $color,
             $row->count,  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
             $link,
@@ -109,7 +109,7 @@ class ExtraWatchHeatmapHTML
         $countryIcon = $this->extraWatchStatHTML->renderCountryFlagIcon($countryCode, $countryCode);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
         return sprintf("<tr id='heatmapTableRowId_".$row->clickId."'>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        <td align='center' width='5%%'>%s</td>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        <td class='ewCentered' width='5%%'>%s</td>
         <td>%s</td>
         <td>%s</td>
         <td>%s</td>
@@ -185,7 +185,7 @@ class ExtraWatchHeatmapHTML
 
 
                 $output .= "<tr  class='tableRow" . ($i % 2) . "'>".  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                    "<td align='center' style='color: ".$color."' width='5%%'>".$row->clickCount."</td><td align='center'>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                    "<td class='ewCentered' style='color: ".$color."' width='5%%'>".$row->clickCount."</td><td class='ewCentered'>";
 
                 if (@$row->clicked_element_xpath_condition) {    //render goal name instead of link  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                     $output .=  "<a href='" . $this->extraWatch->config->renderLink("goals", "edit&goalId=".((int)$row->id)."") . "'>".$row->name."</a>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -316,8 +316,8 @@ class ExtraWatchHeatmapHTML
 
 
         return sprintf("<tr id='heatmapTableRowId_".$row->clickId."'>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        <td align='center' width='5%%'>%s</td>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        <td align='center'>%s</td>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        <td class='ewCentered' width='5%%'>%s</td>
+        <td class='ewCentered'>%s</td>
         <td>%s</td>
         <td>%s</td>
         <td>%s</td>

@@ -4833,11 +4833,6 @@ a.list-group-item-danger.active:focus {
 }
 .panel {
   margin-bottom: 20px;
-  background-color: #fff;
-  border: 1px solid transparent;
-  border-radius: 4px;
-  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
-          box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
 }
 .panel-body {
   padding: 15px;
@@ -6064,7 +6059,6 @@ min-height: 20000px;
 }
 
 #container-fluid, #stats, .main {
-    background-color: white;
 }
 
 /* style fixes for Jooomla 2.5 */
@@ -6099,7 +6093,7 @@ body {
 }
 
 .ew-navbar {
-    min-height: 90px;
+    min-height: 94px;
     margin-bottom: 0px !important;
     z-index:0;
 }
@@ -6176,6 +6170,10 @@ padding: 0px;
 display: none;
 }
 
+.table th, .table td {
+    border-top: 0px !important;
+}
+
 .admin .ew-navbar-header {
 padding-top: 30px;
 }
@@ -6192,4 +6190,9 @@ margin-left: 0px;
 
 .ew-navbar, .main, .nav-sidebar, .ew-container {
 	font-family: Verdana !important;
+}
+
+
+.ewCentered {
+    text-align: center !important;
 }
