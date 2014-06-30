@@ -6196,3 +6196,7 @@ margin-left: 0px;
 .ewCentered {
     text-align: center !important;
 }
+
+INPUT[type=text] {
+    height: 24px !important;
+}

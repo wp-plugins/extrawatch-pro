@@ -662,3 +662,4 @@ DEFINE('_EW_BADGE_STATS',"Number of unique visits today");
 DEFINE('_EW_BADGE_ANTISPAM',"Number of blocked spam attempts");
 DEFINE('_EW_AVAILABLE_IN_FULL_VERSION', 'This feature is available in full version only');
 DEFINE('_EW_GET_FULL_VERSION',"Get the full version of ExtraWatch PRO");
+DEFINE('_EW_LIVE_STATS_SESSION_TIME', 'Time difference since user first visited your website');
