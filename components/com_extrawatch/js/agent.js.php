@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 2037  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 2050  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2014 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.codegravity.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -34,51 +34,13 @@ $referringQuery = @$referringURLParsed['query'];
 $env = $_REQUEST['env'];  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
 ?>
-/** Credits: http://www.webtoolkit.info/javascript-url-decode-encode.html **/  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-var ew_Utf8Encoder = { //added ex_ to avoid conflicts  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-
-// URL utf-8 encoding  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-encode : function (str) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-    return escape(this._utf8_encode(str));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-},
-
-// UTF-8 encoding
-_utf8_encode : function (str) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-str = str.replace(/\r\n/g,"\n");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-var encoded_str = "";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-
-for (var n = 0; n < str.length; n++) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-    var c = str.charCodeAt(n);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-    if (c < 128) {
-        encoded_str += String.fromCharCode(c);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-    }
-    else if((c > 127) && (c < 2048)) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        encoded_str += String.fromCharCode((c >> 6) | 192);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        encoded_str += String.fromCharCode((c & 63) | 128);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-    } else {
-        encoded_str += String.fromCharCode((c >> 12) | 224);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        encoded_str += String.fromCharCode(((c >> 6) & 63) | 128);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        encoded_str += String.fromCharCode((c & 63) | 128);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-		}
-	}
-return encoded_str;
-}
-
-}
-
-/** prevent restricted %2F in paths */
-function ew_encodeURIComponent (str) {
-    str = str.replace("/","_SLASH_");
-    str = encodeURIComponent(str);
-    return str;
-}
 
 <?php
 
 if (@_EW_CLOUD_MODE) {
     $output = ("var extrawatch_projectId='".$projectId."';\n");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-    $output .= ("document.write(\"");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-    $output .= ("<img src='"._EW_SCRIPT_HOST._EW_SCRIPT_HOST_DIR."extrawatch/".$extraWatch->env->renderAjaxLink('ajax','img')."&rand=\"+ Math.random() +\"&amp;env=$env&amp;ref=\"+ew_encodeURIComponent(document.referrer)+\"&amp;title=\"+ew_Utf8Encoder.encode((document.title)+\"&amp;uri=\"+ew_encodeURIComponent(window.location.pathname)+\"&amp;params=\"+ew_encodeURIComponent(location.search)+\"&amp;projectId=\"+extrawatch_projectId+\"' border='0' alt='$title' title='$title' style='width:0px;height:0px'/>");
+    $output .= ("document.write(\"");
+    $output .= ("<img src='"._EW_SCRIPT_HOST._EW_SCRIPT_HOST_DIR."extrawatch/".$extraWatch->env->renderAjaxLink('ajax','img')."&rand=\"+ Math.random() +\"&amp;env=$env&amp;ref=\"+ew_Utf8Encoder.ew_encodeURIComponent(document.referrer)+\"&amp;title=\"+ew_Utf8Encoder.encode((document.title)+\"&amp;uri=\"+ew_Utf8Encoder.ew_encodeURIComponent(window.location.pathname)+\"&amp;params=\"+ew_Utf8Encoder.ew_encodeURIComponent(location.search)+\"&amp;projectId=\"+extrawatch_projectId+\"' border='0' alt='$title' title='$title' style='width:0px;height:0px'/>");
     $output .= ("\");\n");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     $output .= ("document.write(\"");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     $uri = @$_SERVER['HTTP_REFERER'];  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -86,27 +48,15 @@ if (@_EW_CLOUD_MODE) {
     $output .= ("\");\n");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 } else {
     $liveSite = $extraWatch->config->getLiveSiteWithSuffix();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-    $output = ("document.write(\"");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-    $output .= ("<img src='".$liveSite.$extraWatch->env->renderAjaxLink('ajax','img')."&rand=\"+ Math.random() +\"&amp;env=$env&amp;ref=\"+ew_encodeURIComponent(document.referrer)+\"&amp;title=\"+ew_Utf8Encoder.encode(document.title)+\"&amp;uri=\"+ew_encodeURIComponent(window.location.pathname)+\"&amp;referringQuery=\"+ew_encodeURIComponent(\"$referringQuery\")+\"&amp;params=\"+ew_encodeURIComponent(location.search)+\"' border='0' style='width:0px;height:0px'/>");
-    $output .= ("\");\n");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-    $output .= ("document.write(\"");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-    $uri = @$_SERVER['HTTP_REFERER'];  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-    $output .= $extraWatchHTML->renderHeatMapJS($uri, $referringQuery);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-    $output .= ("\");\n");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    $output = ("var ew_img = document.createElement('img');\n
+    ew_img.src = \"".$liveSite.$extraWatch->env->renderAjaxLink('ajax','img')."&rand=\"+ Math.random() +\"&amp;env=$env&amp;ref=\"+ew_Utf8Encoder.ew_encodeURIComponent(document.referrer)+\"&amp;title=\"+ew_Utf8Encoder.encode(document.title)+\"&amp;uri=\"+ew_Utf8Encoder.ew_encodeURIComponent(window.location.pathname)+\"&amp;referringQuery=\"+ew_Utf8Encoder.ew_encodeURIComponent(\"$referringQuery\")+\"&amp;params=\"+ew_Utf8Encoder.ew_encodeURIComponent(location.search);\n
+    ");
+    $uri = @$_SERVER['HTTP_REFERER'];
+    $output .= $extraWatchHTML->renderHeatMapJS($uri, $referringQuery);
 
 }
 echo $output;
 ?>
-
-function extrawatch_createRequestObject() {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-    var ro;
-    if(window.ActiveXObject){  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        ro = new ActiveXObject("Microsoft.XMLHTTP");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-    }else{
-        ro = new XMLHttpRequest();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-    }
-    return ro;
-}
 
 function extrawatch_sendUnloadReq() {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 var rand='<?php echo $extraWatch->config->getRand(); ?>';  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  

@@ -8,3 +8,7 @@
 	</IfVersion>
 </IfModule>
 </IfModule>
+
+<FilesMatch "\.(js)$">
+Header set Cache-Control "max-age=290304000, public"
+</FilesMatch>

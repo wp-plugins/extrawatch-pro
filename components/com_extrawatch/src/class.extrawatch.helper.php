@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 2037  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 2061  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2014 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.extrawatch.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -539,8 +539,14 @@ function renderHTMLCodeSnippet($projectId) {
         $output .= ("</script>\n");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     } else {
         $liveSite = $this->config->getLiveSiteWithSuffix();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+	
+		$this->env->addScript($liveSite."components/com_extrawatch/js/jdownloadurl.js");
+		$this->env->addScript($liveSite."components/com_extrawatch/js/extrawatch.js");
+		
 		$output = "";
 		$title = "Visitor counter, Heat Map, Conversion tracking, Search Rank";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+
+		$this->env->addScript($liveSite."components/com_extrawatch/js/heatmap/heatmap.js");
 
 		if (!$this->config->isAdFree()  && !$this->config->isUnregistered()) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
@@ -548,12 +554,19 @@ function renderHTMLCodeSnippet($projectId) {
 
 		}
 
-        $output .= ("<script type=\"text/javascript\">\n");
-        $output .= ("<!--\n");
-        $output .= ("document.write(\"");
-        $output .= ("<script src='".$liveSite.$this->env->renderAjaxLink('js','agent.js'."&env=".get_class($this->env)."&rand=\"+ Math.random() +\"")."' type='text/javascript'><\/script>\");\n");
-        $output .= ("-->\n");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        $output .= ("</script>\n");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+
+		$agentLink = $liveSite."components/com_extrawatch/js/agent.js?env=".get_class($this->env);
+        $output .= "<script async type=\"text/javascript\" id=\"extraWatchAgent\">\n
+		var extraWatchAjaxLink = \"".urlencode($liveSite.$this->env->renderAjaxLink('ajax',''))."\";\n
+		var extraWatchEnv = \"".get_class($this->env)."\";\n
+        (function() {\n
+        var ew = document.createElement('script');
+        ew.type = 'text/javascript'; ew.async = true;\n
+        ew.src = \"".$agentLink."&rand=\"+ Math.random();
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ew, s);\n
+        })();\n
+        </script>
+        ";
 
     }
 
@@ -657,8 +670,9 @@ static function getTimezoneOffsetByTimezoneName($userTimezoneName){
 
 
 	static function getUrlQueryParams() {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-		$url = ExtraWatchHelper::getProtocol()."://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-		$query_str = parse_url($url, PHP_URL_QUERY);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+		$url = ExtraWatchHelper::getProtocol()."://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+        $url = str_replace("&amp;","&",$url);
+		$query_str = parse_url($url, PHP_URL_QUERY);
 		parse_str($query_str, $query_params);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 		return $query_params;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 	}
