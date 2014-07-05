@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.3
- * @revision 2061
+ * @revision 2063
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2014 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -154,7 +154,7 @@ var xpathElementColors = [];
   <?php } else if (@$heatmapEnabled) { ?>
     xx = h337.create({"element":document.body, "radius":50, "visible":true});
     window.addEventListener('load',function(){
-	    setTimeout(ew_Heatmap.renderHeatmap(randHash, data), 1000); //waiting 1 seconds for everything to load
+	    setTimeout(ew_Heatmap.renderHeatmap(randHash, data), 0); //waiting 1 seconds for everything to load
 	  });
     <?php } ?>
 
