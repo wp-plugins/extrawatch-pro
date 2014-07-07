@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 2073  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 2075  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2014 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.extrawatch.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -92,12 +92,17 @@ class ExtraWatchVisitHTML
 
             $noDataHTML = "";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
             if (!$bots && _EW_CLOUD_MODE && $inactive == FALSE && !$renderedFromHistory) {
-                $noDataHTML = "<h2 style='color: #e74c3c; font-weight: bold;'>You still haven't inserted the tracking code on web you want to track. Contact us via chat in lower right corner if you need help with it.</h2> <span style='color: #e74c3c; font-weight: bold;'>Please add the following HTML code snippet into every page you want to monitor:</span><br/><br/>";
-                $noDataHTML .= "<textarea cols='100' rows='6'>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                $noDataHTML .= htmlentities($this->extraWatch->helper->renderHTMLCodeSnippet(_EW_PROJECT_ID));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                $noDataHTML .= "</textarea><br/><br/>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                $noDataHTML .= "<b>To accomplish this, you need to have an FTP access to your website and edit your template file. <br/>Copy and paste the tracking code before the &lt;/body&gt; tag.<br/>There are several ways how to do it if you're using various CMS.<br/>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                $noDataHTML .= "If you need any help with this, contact us via live chat in lower right corner</b><br/><br/>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                $noDataHTML = "<h2 style='color: #e74c3c; font-weight: bold;'>1. Select the HTML code below and copy it to a clipboard </h2>";
+                $noDataHTML .= "<i>(Click on text area below, Ctrl+A, Ctrl+C)</i><br/><br/>";
+                $noDataHTML .= "<textarea cols='100' rows='8'>";
+                $noDataHTML .= htmlentities($this->extraWatch->helper->renderHTMLCodeSnippet(_EW_PROJECT_ID));
+                $noDataHTML .= "</textarea><br/><br/>";
+                $noDataHTML .= "<h2 style='color: #e74c3c; font-weight: bold;'>2. Open editor of your website's front-end</h2><br/>";
+                $noDataHTML .= "This step may be different for every CMS. <br/>You need to find where's your website frontend saved as HTML and the modify that file. <br/><b>Or ask your webmaster do to it for you!</b>";
+                $noDataHTML .= "<h2 style='color: #e74c3c; font-weight: bold;'>3. Find the &lt;/body&gt; tag</h2>";
+                $noDataHTML .= "This is a footer of my website &copy;MyWebsite.com<br/><b>&lt;/body&gt;</b><br/>&lt;/html&gt;";
+                $noDataHTML .= "<h2 style='color: #e74c3c; font-weight: bold;'>3. Paste this code before the &lt;/body&gt; tag</h2>";
+                $noDataHTML .= "This is a footer of my website &copy;MyWebsite.com<br/><i>{code from clipboard}</i><br/><b>&lt;/body&gt;</b><br/>&lt;/html&gt;";
 
             } else if ($inactive == FALSE) {
 
