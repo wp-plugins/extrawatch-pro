@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 2082  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 2083  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2014 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.extrawatch.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -412,9 +412,7 @@ class ExtraWatchVisit
    */
   function insertVisit()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   {
-      $this->config->initializeTranslations();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-
-      $ip = addslashes(strip_tags(@ $this->getRemoteIPAddress()));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+      $ip = addslashes(strip_tags(@ $this->getRemoteIPAddress()));
       $username = @ $this->env->getUsername();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
       $userId = @ $this->env->getUserId();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
       $referrer = $this->getReferer();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -427,7 +425,8 @@ class ExtraWatchVisit
       $count = $this->block->getBlockedIp($ip);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
       if (@ $count) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
           try {
-            $this->block->dieWithBlockingMessage($ip);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+            $this->config->initializeTranslations();
+            $this->block->dieWithBlockingMessage($ip);
           } catch (ExtraWatchIPBlockedException $exception) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
               die($exception->getBlockingMessage());  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
           }
@@ -436,18 +435,20 @@ class ExtraWatchVisit
 
       $uri = $this->helper->getURI();
 
-      ExtraWatchLog::debug("Insert bot visit from insertVisit");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-	  $this->insertBotVisit($uri, $referrer, "", $ip);
-	  ExtraWatchLog::debug("Visit inserted: IP: $ip, ref: $referrer, live site: $liveSite");
 
-	  	
+      if ($this->isBot()) {
+          ExtraWatchLog::debug("Insert bot visit from insertVisit");
+          $this->insertBotVisit($uri, $referrer, "", $ip);
+          ExtraWatchLog::debug("Visit inserted: IP: $ip, ref: $referrer, live site: $liveSite");
+      }
+
+
+      
       $this->savePostParams($uri);
 	  	
 
       $this->goal->checkGoals("", $username, $ip, $referrer, $liveSite);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-      /* execute on midnight */  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-      $this->runAtMidnight();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
   }
 
@@ -712,15 +713,14 @@ function insertSearchResultPage($uri, $phrase, $referer, $title)
       $ip = addslashes(strip_tags(@ $this->getRemoteIPAddress()));
 
       $isCachingEnabled = $this->env->isPHPCachingEnabled();
-      if (@_EW_CLOUD_MODE || $isCachingEnabled) {    //there's no insertVisit in cloud mode because of script
-    	  ExtraWatchLog::debug("Insert bot visit: uri: $uri referer: $referer title: $title ip: $ip");
+      if (@_EW_CLOUD_MODE || $isCachingEnabled || !$this->isBot()) {    //there's no insertVisit in cloud mode because of script
+    	  ExtraWatchLog::debug("Insert visit: uri: $uri referer: $referer title: $title ip: $ip");
           $this->insertBotVisit($uri, $referer, $title, $ip);
       }
 
-      $this->config->initializeTranslations();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-
-      if (!$title) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-          $title = _EW_NO_TITLE;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+      if (!$title) {
+          $this->config->initializeTranslations();
+          $title = _EW_NO_TITLE;
       }
 
       $newUsername = @ $this->env->getUsername();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -898,6 +898,9 @@ function insertSearchResultPage($uri, $phrase, $referer, $title)
 	
       $this->saveGetParams($params, $uri);
     
+
+     /* execute on midnight */
+     $this->runAtMidnight();
 
   }
 
@@ -1451,7 +1454,7 @@ function insertSearchResultPage($uri, $phrase, $referer, $title)
      * @param $time
      * @return array  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
      */
-    public function insertBotVisit($uri, $referer, $title, $ip)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    public function insertBotVisit($uri, $referer, $title, $ip)
     {
 		ExtraWatchLog::debug("Insert bot visit: uri: $uri referer: $referer title: $title ip: $ip");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
@@ -1589,6 +1592,10 @@ function insertSearchResultPage($uri, $phrase, $referer, $title)
         $this->database->getEscaped($ip));
         $uri = $this->database->resultQuery($query);
         return $uri;
+    }
+
+    public function  isBot() {
+        return (@preg_match('/bot|robot|spider|crawler|curl/i', $_SERVER['HTTP_USER_AGENT']));
     }
 
 }
