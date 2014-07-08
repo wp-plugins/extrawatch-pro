@@ -2,7 +2,7 @@
     <IfVersion >= 2.4>
 	Require all granted
     </IfVersion>
-    <IfVersion <= 2.4>
+    <IfVersion < 2.4>
 	Order deny,allow
 	</IfVersion>
 </IfModule>
