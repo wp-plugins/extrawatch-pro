@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 2079  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 2081  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2014 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.codegravity.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -88,7 +88,9 @@ if ($daysToTrialEnd < 4) {
     $daysToExpireStyle = "color: #e40410; font-size: 20px; font-weight: bold;";
 }
 
-if (!$paymentActive && !$alwaysActive && $daysToTrialEnd <= 6) { ?>
+$numberOfVisitors = @sizeof($extraWatch->visit->getVisitors());
+echo ("<!-- size of visitors: $numberOfVisitors -->");
+if (!$paymentActive && !$alwaysActive && $daysToTrialEnd <= 6 && $numberOfVisitors > 0) { ?>
     This trial account will expire in <span style='<?php echo $daysToExpireStyle;?>'><?php echo($daysToTrialEnd);?> days</span> . To take advantage of all great features: <br/> <br/>
     <?php renderSubscriptionForm($extraWatch); ?>
 <?php
