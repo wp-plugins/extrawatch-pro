@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.3
- * @revision 2075
+ * @revision 2079
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2014 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -14,7 +14,7 @@
 defined('_JEXEC') or die('Restricted access'); ?>
 
 
-<div class="col-md-2 sidebar">
+<div class="col-md-2 sidebar" id="sidebar">
     <ul class="nav nav-sidebar" role="navigation">
         <li><a href="<?php echo $extraWatch->config->renderLink('');?>"><i class="glyphicons group"></i><?php echo _EW_NAVIGATION_VISITORS;?><?php echo $extraWatchHTML->renderBadge('visitors');?></a></li>
         <li><a href="<?php echo $extraWatch->config->renderLink('stats');?>"><i class="glyphicons stats"></i><?php echo _EW_NAVIGATION_STATISTICS;?><?php echo $extraWatchHTML->renderBadge('stats');?></a></li>

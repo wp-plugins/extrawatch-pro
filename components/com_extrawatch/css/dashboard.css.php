@@ -510,7 +510,7 @@ p {
   font-weight: 200;
   line-height: 1.4;
 }
-@media (min-width: 768px) {
+@media {
   .lead {
     font-size: 21px;
   }
@@ -642,7 +642,7 @@ dt {
 dd {
   margin-left: 0;
 }
-@media (min-width: 768px) {
+@media {
   .dl-horizontal dt {
     float: left;
     width: 160px;
@@ -779,17 +779,17 @@ pre code {
   font-size:11px;
   width:80%;
 }
-@media (min-width: 768px) {
+@media {
   .container {
     width: 100%;
   }
 }
-@media (min-width: 992px) {
+@media {
   .container {
     width: 100%;
   }
 }
-@media (min-width: 1200px) {
+@media {
   .container {
     width: 1170px;
   }
@@ -966,7 +966,7 @@ pre code {
 .col-xs-offset-0 {
   margin-left: 0;
 }
-@media (min-width: 768px) {
+@media {
   .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12 {
     float: left;
   }
@@ -1124,7 +1124,7 @@ pre code {
     margin-left: 0;
   }
 }
-@media (min-width: 992px) {
+@media {
   .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12 {
     float: left;
   }
@@ -1274,7 +1274,6 @@ pre code {
   }
   .col-md-offset-2 {
     margin-left: 16.36666667%;
-    min-height:20000px;
   }
   .col-md-offset-1 {
     margin-left: 8.33333333%;
@@ -1283,7 +1282,7 @@ pre code {
     margin-left: 0;
   }
 }
-@media (min-width: 1200px) {
+@media {
   .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12 {
     float: left;
   }
@@ -1967,7 +1966,7 @@ select[multiple].input-lg {
   margin-bottom: 10px;
   color: #737373;
 }
-@media (min-width: 768px) {
+@media {
   .form-inline .form-group {
     display: inline-block;
     margin-bottom: 0;
@@ -2022,7 +2021,7 @@ select[multiple].input-lg {
 .form-horizontal .form-control-static {
   padding-top: 7px;
 }
-@media (min-width: 768px) {
+@media {
   .form-horizontal .control-label {
     text-align: right;
   }
@@ -3189,7 +3188,7 @@ input[type="button"].btn-block {
   bottom: 100%;
   margin-bottom: 1px;
 }
-@media (min-width: 768px) {
+@media {
   .navbar-right .dropdown-menu {
     right: 0;
     left: auto;
@@ -3603,7 +3602,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   top: auto;
   left: auto;
 }
-@media (min-width: 768px) {
+@media {
   .nav-tabs.nav-justified > li {
     display: table-cell;
     width: 1%;
@@ -3621,7 +3620,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav-tabs.nav-justified > .active > a:focus {
   border: 1px solid #ddd;
 }
-@media (min-width: 768px) {
+@media {
   .nav-tabs.nav-justified > li > a {
     border-bottom: 1px solid #ddd;
     border-radius: 4px 4px 0 0;
@@ -3668,7 +3667,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   top: auto;
   left: auto;
 }
-@media (min-width: 768px) {
+@media {
   .nav-justified > li {
     display: table-cell;
     width: 1%;
@@ -3689,7 +3688,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav-tabs-justified > .active > a:focus {
   border: 1px solid #ddd;
 }
-@media (min-width: 768px) {
+@media {
   .nav-tabs-justified > li > a {
     border-bottom: 1px solid #ddd;
     border-radius: 4px 4px 0 0;
@@ -3717,12 +3716,12 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   // margin-bottom: 20px; - removed by matto
   border: 1px solid transparent;
 }
-@media (min-width: 768px) {
+@media {
   .ew-navbar {
     border-radius: 4px;
   }
 }
-@media (min-width: 768px) {
+@media {
   .ew-navbar-header {
     width:100%;
     float: left;
@@ -3744,7 +3743,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar-collapse.in {
   overflow-y: auto;
 }
-@media (min-width: 768px) {
+@media {
   .navbar-collapse {
     width: auto;
     border-top: 0;
@@ -3773,7 +3772,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   margin-right: -15px;
   margin-left: -15px;
 }
-@media (min-width: 768px) {
+@media {
   .container > .ew-navbar-header,
   .container-fluid > .ew-navbar-header,
   .container > .navbar-collapse,
@@ -3786,7 +3785,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   z-index: 1000;
   border-width: 0 0 1px;
 }
-@media (min-width: 768px) {
+@media {
   .navbar-static-top {
     border-radius: 0;
   }
@@ -3799,7 +3798,7 @@ clear: both;
   left: 0;
   //z-index: 1030;    //matto - removed z-index, was causing joomla popup menu to be under this element
 }
-@media (min-width: 768px) {
+@media {
   .ew-navbar-fixed-top,
   .navbar-fixed-bottom {
     border-radius: 0;
@@ -3825,7 +3824,7 @@ clear: both;
 .navbar-brand:focus {
   text-decoration: none;
 }
-@media (min-width: 768px) {
+@media {
   .ew-navbar > .container .navbar-brand,
   .ew-navbar > .container-fluid .navbar-brand {
     margin-left: -15px;
@@ -3855,7 +3854,7 @@ clear: both;
 .navbar-toggle .icon-bar + .icon-bar {
   margin-top: 4px;
 }
-@media (min-width: 768px) {
+@media {
   .navbar-toggle {
     display: none;
   }
@@ -3890,7 +3889,7 @@ clear: both;
     background-image: none;
   }
 }
-@media (min-width: 768px) {
+@media {
   .navbar-nav {
     float: left;
     margin: 0;
@@ -3906,7 +3905,7 @@ clear: both;
     margin-right: -15px;
   }
 }
-@media (min-width: 768px) {
+@media {
   .navbar-left {
     float: left !important;
   }
@@ -3925,7 +3924,7 @@ clear: both;
   -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1), 0 1px 0 rgba(255, 255, 255, .1);
           box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1), 0 1px 0 rgba(255, 255, 255, .1);
 }
-@media (min-width: 768px) {
+@media {
   .navbar-form .form-group {
     display: inline-block;
     margin-bottom: 0;
@@ -3965,7 +3964,7 @@ clear: both;
     margin-bottom: 5px;
   }
 }
-@media (min-width: 768px) {
+@media {
   .navbar-form {
     width: auto;
     padding-top: 0;
@@ -4005,7 +4004,7 @@ clear: both;
   margin-top: 15px;
   margin-bottom: 15px;
 }
-@media (min-width: 768px) {
+@media {
   .navbar-text {
     float: left;
     margin-right: 15px;
@@ -4463,7 +4462,7 @@ a.list-group-item.active > .ew_badge,
 .jumbotron .container {
   max-width: 100%;
 }
-@media screen and (min-width: 768px) {
+@media screen {
   .jumbotron {
     padding-top: 48px;
     padding-bottom: 48px;
@@ -5249,7 +5248,7 @@ button.close {
 .modal-footer .btn-block + .btn-block {
   margin-left: 0;
 }
-@media (min-width: 768px) {
+@media {
   .modal-dialog {
     width: 600px;
     margin: 30px auto;
@@ -5262,7 +5261,7 @@ button.close {
     width: 300px;
   }
 }
-@media (min-width: 992px) {
+@media {
   .modal-lg {
     width: 900px;
   }
@@ -5642,7 +5641,7 @@ button.close {
 .carousel-caption .btn {
   text-shadow: none;
 }
-@media screen and (min-width: 768px) {
+@media screen {
   .carousel-control .glyphicon-chevron-left,
   .carousel-control .glyphicon-chevron-right,
   .carousel-control .icon-prev,
@@ -5767,7 +5766,7 @@ button.close {
     display: table-cell !important;
   }
 }
-@media (min-width: 768px) and (max-width: 991px) {
+@media {
   .visible-sm {
     display: block !important;
   }
@@ -5782,7 +5781,7 @@ button.close {
     display: table-cell !important;
   }
 }
-@media (min-width: 992px) and (max-width: 1199px) {
+@media {
   .visible-md {
     display: block !important;
   }
@@ -5797,7 +5796,7 @@ button.close {
     display: table-cell !important;
   }
 }
-@media (min-width: 1200px) {
+@media {
   .visible-lg {
     display: block !important;
   }
@@ -5817,17 +5816,17 @@ button.close {
     display: none !important;
   }
 }
-@media (min-width: 768px) and (max-width: 991px) {
+@media {
   .hidden-sm {
     display: none !important;
   }
 }
-@media (min-width: 992px) and (max-width: 1199px) {
+@media {
   .hidden-md {
     display: none !important;
   }
 }
-@media (min-width: 1200px) {
+@media {
   .hidden-lg {
     display: none !important;
   }
@@ -5877,7 +5876,6 @@ button.close {
   overflow-x: hidden;
   overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
   background-color: #34495e;
-  min-height: 20000px;
 }
 
 ul.nav-sidebar li a i {
@@ -5918,7 +5916,7 @@ width: 100%;
 //  position: absolute;
   vertical-align: top;
 }
-@media (min-width: 768px) {
+@media {
   .main {
     padding-right: 40px;
     padding-left: 40px;
@@ -6049,13 +6047,14 @@ div.m {
     width: 100%;
     float: left;
     padding-right:20px;
+	background-color: #FAFAFA;
 }
 
 #stats {
 width:100%;
 float: left;
 padding-left: 20px;
-min-height: 20000px;
+background-color: #FAFAFA;
 }
 
 #container-fluid, #stats, .main {
@@ -6199,4 +6198,14 @@ margin-left: 0px;
 
 INPUT[type=text] {
     height: 24px !important;
+}
+
+
+/* Joomla 2.5 */
+#content-box {
+    border-bottom-left-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+    border-right: none !important;
+    border-width: 0 0px 0px !important;
+    margin-bottom: 0px !important;
 }

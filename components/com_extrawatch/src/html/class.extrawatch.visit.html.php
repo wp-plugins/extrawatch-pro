@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 2075  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 2079  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2014 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.extrawatch.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -92,17 +92,22 @@ class ExtraWatchVisitHTML
 
             $noDataHTML = "";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
             if (!$bots && _EW_CLOUD_MODE && $inactive == FALSE && !$renderedFromHistory) {
-                $noDataHTML = "<h2 style='color: #e74c3c; font-weight: bold;'>1. Select the HTML code below and copy it to a clipboard </h2>";
+                $noDataHTML = "<table><tr><td>";
+				$noDataHTML .= "<h2 style='color: #e74c3c; font-weight: bold;'>1. Select the HTML code below and copy it to a clipboard </h2>";
                 $noDataHTML .= "<i>(Click on text area below, Ctrl+A, Ctrl+C)</i><br/><br/>";
-                $noDataHTML .= "<textarea cols='100' rows='8'>";
-                $noDataHTML .= htmlentities($this->extraWatch->helper->renderHTMLCodeSnippet(_EW_PROJECT_ID));
-                $noDataHTML .= "</textarea><br/><br/>";
+                $noDataHTML .= "<textarea cols='90' rows='8'>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                $noDataHTML .= htmlentities($this->extraWatch->helper->renderHTMLCodeSnippet(_EW_PROJECT_ID));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                $noDataHTML .= "</textarea><br/><br/>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                 $noDataHTML .= "<h2 style='color: #e74c3c; font-weight: bold;'>2. Open editor of your website's front-end</h2><br/>";
                 $noDataHTML .= "This step may be different for every CMS. <br/>You need to find where's your website frontend saved as HTML and the modify that file. <br/><b>Or ask your webmaster do to it for you!</b>";
                 $noDataHTML .= "<h2 style='color: #e74c3c; font-weight: bold;'>3. Find the &lt;/body&gt; tag</h2>";
-                $noDataHTML .= "This is a footer of my website &copy;MyWebsite.com<br/><b>&lt;/body&gt;</b><br/>&lt;/html&gt;";
-                $noDataHTML .= "<h2 style='color: #e74c3c; font-weight: bold;'>3. Paste this code before the &lt;/body&gt; tag</h2>";
-                $noDataHTML .= "This is a footer of my website &copy;MyWebsite.com<br/><i>{code from clipboard}</i><br/><b>&lt;/body&gt;</b><br/>&lt;/html&gt;";
+                $noDataHTML .= "This is a footer of my website &copy;MyWebsite.com<br/><b>&lt;/body&gt;</b><br/>&lt;/html&gt;";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                $noDataHTML .= "<h2 style='color: #e74c3c; font-weight: bold;'>4. Paste this code before the &lt;/body&gt; tag</h2>";
+                $noDataHTML .= "This is a footer of my website &copy;MyWebsite.com<br/><i>{code from clipboard}</i><br/><b>&lt;/body&gt;</b><br/>&lt;/html&gt;";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                $noDataHTML .= "</td><td valign='top'>";
+                $noDataHTML .= "<h2 style='color: #e74c3c; font-weight: bold;'>.. Or Watch the video with instructions:</h2><br/><br/>";
+				$noDataHTML .= "<iframe width=\"640\" height=\"360\" src=\"//www.youtube.com/embed/tvHNg-X4d8o\" frameborder=\"0\" allowfullscreen></iframe>";
+                $noDataHTML .= "</td></tr></table>";
 
             } else if ($inactive == FALSE) {
 
