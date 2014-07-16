@@ -51,7 +51,7 @@ function extrawatch_renderLicenseFree($extraWatch)
         font-weight: normal;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     }
 </style>
-<h1>ExtraWatch 2.3.2084 PRO</h1>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+<h1>ExtraWatch 2.3.2087 PRO</h1>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
 <script type='text/javascript'>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     function toggleNoKeyForm() {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -91,11 +91,14 @@ function extrawatch_renderLicenseFree($extraWatch)
             </div>
 
             <h3>If you've purchased this item via some other marketplace, please contact us via livechat on extrawatch.com !</h3>
-            <br/>
-			
-			<a href='".$extraWatch->config->renderLink("continueUnregistered")."' style='color: #e74c3c; font-size: 12px;'>Continue with no membership, no support and no updates</a>
+            <br/>";
+
+if (@get_class($extraWatch->env) == "ExtraWatchJoomlaEnv") {
+    $output .= "			<a href='" . $extraWatch->config->renderLink("continueUnregistered") . "' style='color: #e74c3c; font-size: 12px;'>Continue with no membership, no support and no updates</a>";
+}
 
 
+$output .= "
             <div  id='nokey' style='border: 1px solid  rgb(255, 171, 41); width: 400px; padding: 10px; display:none;'>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                 <h3>Request the correct activation key</h3>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                 <form action='http://www.extrawatch.com/success/' method='GET'>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -159,7 +162,7 @@ function extrawatch_renderLicenseFree($extraWatch)
 
 		$env = @get_class($extraWatch->env);
 		
-		$output .= "<iframe src='http://www.extrawatch.com/track/extrawatch/2.3/install/?domain=".$domain."&license=PRO&version=2.3.2084&ip=".$ip."&env=".$env."&market=codecanyon.net' width='1px' frameborder='0' height='1px'>
+		$output .= "<iframe src='http://www.extrawatch.com/track/extrawatch/2.3/install/?domain=".$domain."&license=PRO&version=2.3.2087&ip=".$ip."&env=".$env."&market=codecanyon.net' width='1px' frameborder='0' height='1px'>
         </iframe>";			
 
 		$output .= "		
