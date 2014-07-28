@@ -352,7 +352,7 @@
                 (233, 'tk', 'Tokelau'),
                 (234, 'nf', 'Norfolk Island'),
                 (235, 'ai', 'Anguilla'),
-                (236, 'eu', 'European Union') ENGINE=InnoDB DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_general_ci;
+                (236, 'eu', 'European Union');
 
 
 
