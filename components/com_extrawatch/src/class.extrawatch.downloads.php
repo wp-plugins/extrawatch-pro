@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 2101  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 2113  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2014 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.codegravity.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -103,8 +103,27 @@ class ExtraWatchDownloads
         }
 
     }
+
+    /**
+     * This is
+     */
+    function checkIfHtAccessTxtPresentOnJoomla() {
+
+        if ($this->env->getEnvironmentName() == "joomla") {
+            $rootPath = $this->env->getRootPath();
+            $htaccess_file = $rootPath.DS."htaccess.txt";
+            if (@file_exists($htaccess_file)) {
+                return TRUE;
+            }
+            return FALSE;
+        }
+    }
 	
-    function addExtension($extName) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    function addExtension($extName) {
+
+        if ($this->checkIfHtAccessTxtPresentOnJoomla()) {
+            return FALSE;
+        }
 
         $extensionquery_ht_prev = sprintf("SELECT * FROM #__extrawatch_dm_extension");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         $extensionar_ht_prev = $this->database->objectListQuery($extensionquery_ht_prev);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -179,7 +198,11 @@ class ExtraWatchDownloads
 
     }
 
-    function addFilePath($filepathnamename, $allowedReferrer = "") {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    function addFilePath($filepathnamename, $allowedReferrer = "") {
+
+        if ($this->checkIfHtAccessTxtPresentOnJoomla()) {
+            return FALSE;
+        }
 
         $pathsBeforeInsert = $this->database->objectListQuery(sprintf("SELECT * FROM #__extrawatch_dm_paths where addedManually = 1"));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
@@ -347,9 +370,11 @@ class ExtraWatchDownloads
 
             $root_file = $this->env->getRootPath().DS.".htaccess";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-            $existingcode = file_get_contents($root_file);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+            $existingcode = @file_get_contents($root_file);
 
-            $existingcode_f = str_replace($writingonht_prev,"",$existingcode);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+            if (!@$existingcode) {
+
+            $existingcode_f = str_replace($writingonht_prev,"",$existingcode);
             //$existingcode_f = str_replace($writingonht_prev1,"",$existingcode);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
             $writingonht = $existingcode_f."\nRewriteEngine on";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -387,7 +412,14 @@ class ExtraWatchDownloads
                 }
             }
 
+        } else {
+
+                echo("ERROR: could not get content of $root_file ");
+
         }
+
+        }
+
     }
 
     function deleteEverythingFromHtaccess() {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  

@@ -4,7 +4,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 2101  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 2113  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2014 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.codegravity.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -16,7 +16,16 @@ defined('_JEXEC') or die('Restricted access'); ?>
             <td colspan="2" class="Subtitle"><h3><?php echo(_EW_DOWNLOADS_ADD_EXTENSION);?></h3> </td>
         </tr>
         <tr>
-            <td height="23" colspan="3" align="left" style='color: red'><?php echo(_EW_DOWNLOADS_WARNING);?><br/><br/></td>
+            <td height="23" colspan="3" align="left" style='color: red'><?php echo(_EW_DOWNLOADS_WARNING);?><br/><br/>
+
+                <?php
+                $htaccessTxtPresent = $extraWatch->downloads->checkIfHtAccessTxtPresentOnJoomla();
+                if ($htaccessTxtPresent) {
+                    echo("<b>"._EW_DOWNLOAD_MONITOR_HTACCESS_TXT."</b>");
+                }
+                ?>
+
+            </td>
         </tr>
         <tr>
             <td width="31%">
@@ -31,7 +40,13 @@ defined('_JEXEC') or die('Restricted access'); ?>
                     <input name="task" type="hidden"  value="downloads">
                     <input name="action" type="hidden"  value="saveAddExtension">
                     <input name='form_key' type='hidden' value="<?php echo $extraWatch->env->getFormKey();?>" />
-                    <input name="Submit" type="submit" class="button" value="Add">
+
+                    <?php if (@!$htaccessTxtPresent) { ?>
+                        <input name="Submit" type="submit" class="button" value="Add">
+                    <?php } else { ?>
+                        <input name="Submit" type="submit" class="button" value="Add" disabled title="<?php echo _EW_DOWNLOAD_MONITOR_HTACCESS_TXT;?>">
+                    <?php } ?>
+
                     <input name="Submit" type="button" class="button" value="Back" onclick="window.location.href='<?php echo $extraWatch->config->renderLink("downloads","");?>">
                 </div>
             </td>

@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.3
- * @revision 2101
+ * @revision 2113
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2014 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -25,7 +25,7 @@ defined('_JEXEC') or die('Restricted access'); ?>
 
 <?php 
 if (get_class($extraWatch->env) != "ExtraWatchWordpressEnv") {	//query is already initialized for wordpress and would cause conflict otherwise
-	$extraWatch->env->addScript($extraWatch->config->getLiveSiteWithSuffix()."components/com_extrawatch/js/jquery-1.11.0.min.js");
+	echo $extraWatch->env->addScript($extraWatch->config->getLiveSiteWithSuffix()."components/com_extrawatch/js/jquery-1.11.0.min.js");
 }
 ?>
 
@@ -39,7 +39,7 @@ if (get_class($extraWatch->env) != "ExtraWatchWordpressEnv") {	//query is alread
 $liveSite = $extraWatch->config->getLiveSiteWithSuffix();
 
 if (get_class($extraWatch->env) != "ExtraWatchWordpressEnv") {  //for wordpress we're loading this in module so it gets to header section
-    echo $extraWatch->env->addStyleSheet($liveSite."components/com_extrawatch/css/dashboard.css.php?env=".get_class($extraWatch->env));
+    echo $extraWatch->env->addStyleSheet($extraWatch->config->getLiveSiteWithSuffix().$extraWatch->env->renderAjaxLink('ajax','dashboard.css')."&env=".get_class($extraWatch->env));
 }
 ?>
 
