@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3
- * @revision 2113
+ * @revision 2114
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2014 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -456,7 +456,7 @@ class ExtraWatchHTML
 
         switch($badgeForSection) {
 
-            
+            /*PRO_START*/
             case 'heatmap': {
                 $badgeValue = $this->extraWatch->heatmap->getHeatmapClickCountByDate($today);
                 break;
@@ -477,7 +477,7 @@ class ExtraWatchHTML
                 $badgeValue = $this->extraWatch->downloads->getDownloadCountForDay($today);
                 break;
             }
-            
+            /*PRO_END*/
             case 'stats': {
                 $badgeValue = $this->extraWatch->stat->getCountByKeyAndDate(EW_DB_KEY_UNIQUE, $today);
                 break;

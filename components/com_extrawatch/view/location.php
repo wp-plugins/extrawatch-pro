@@ -4,16 +4,20 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 2113  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 2114  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2014 byCodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.codegravity.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  */
 defined('_JEXEC') or die('Restricted access'); ?>
 
+<!--FREE_START-->
+<h1><?php echo _EW_NAVIGATION_LOCATION;?></h1>
+<h2><?php echo _EW_MENU_AVAILABLE_IN_PRO_LOCATION;?></h2>
+<?php echo ($extraWatchHTML->renderAvailableInFullVersion("location"));?>
+<!--FREE_END-->
 
-
-
+<!--PRO_START-->
 <?php
 if (!$extraWatch->config->isFree()) {
     if ($extraWatch->config->getConfigValue("EXTRAWATCH_IPINFODB_KEY")) {
@@ -65,7 +69,7 @@ function checkKeyFormat() {
 <?php
 }
 } ?>
-
+<!--PRO_END-->
 
 
 
