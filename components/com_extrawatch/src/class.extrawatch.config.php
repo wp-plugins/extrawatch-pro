@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 2114  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 2116  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2014 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.extrawatch.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -144,6 +144,7 @@ class ExtraWatchConfig
     $value = @ constant($key);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     return $value;
   }
+
 
   /**
    * config
@@ -410,11 +411,15 @@ class ExtraWatchConfig
    */
     function isAdFree()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     {
-        $key = md5(strrev($this->getDomainFromLiveSite(_EW_PROJECT_ID)));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        if ($key == $this->getConfigValue("EXTRAWATCH_ADFREE")) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-            return TRUE;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $domain = @$this->getDomainFromLiveSite(_EW_PROJECT_ID);$key = md5(strrev($domain));
+
+        if ($key == @$this->getConfigValue("EXTRAWATCH_ADFREE")) {
+            return TRUE;
+        } else if ($key == @$this->getConfigValue("EXTRAWATCH_ADFREE_".$domain)){
+            return TRUE;
         }
-        return FALSE;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+
+        return FALSE;
         /*require_once(JPATH_BASE2.DS."components".DS."com_extrawatch".DS."lib".DS."phpseclib".DS."Crypt".DS."RSA.php");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         require_once(JPATH_BASE2.DS."components".DS."com_extrawatch".DS."lib".DS."phpseclib".DS."Math".DS."BigInteger.php");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
@@ -431,8 +436,9 @@ class ExtraWatchConfig
         */
     }
 	
-	function isUnregistered() {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        if (self::_EW_CONST_UNREGISTERED == $this->getConfigValue("EXTRAWATCH_ADFREE")) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+	function isUnregistered() {
+        $domain = $this->getDomainFromLiveSite(_EW_PROJECT_ID);
+        if (self::_EW_CONST_UNREGISTERED == $this->getConfigValue("EXTRAWATCH_ADFREE_".$domain)) {
 			return TRUE;
 		}
 		return FALSE;
@@ -455,7 +461,8 @@ class ExtraWatchConfig
   function activate($value)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   {
     if (@$value) {
-        $this->saveConfigValue('EXTRAWATCH_ADFREE', $this->database->getEscaped($value));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $domain = $this->getDomainFromLiveSite(_EW_PROJECT_ID);
+        $this->saveConfigValue('EXTRAWATCH_ADFREE_'.$domain, $this->database->getEscaped($value), true);
     } else {
         ExtraWatchLog::error("License activation value is empty!");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     }
