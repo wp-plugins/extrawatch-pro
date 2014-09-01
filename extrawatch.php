@@ -6,7 +6,7 @@ Plugin URI: http://www.extrawatch.com
 
 Description: Features: <strong>Visitor Live Stats</strong>, <strong>Monitor File Downloads, Clicks</strong>, <strong>Monitor clicks, Heatmap</strong>, <strong>SEO Report</strong>, <strong>Traffic Flow</strong>, <strong>Front-end Counters</strong>, <strong>Anti-spam</strong>, <strong>Nightly Email Reports</strong>, <strong>History</strong>, <strong>Graphs</strong>, <strong>Directory sizes</strong>, translated in <strong>42 world languages</strong>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-Version: 2.3.2127 PRO  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+Version: 2.3.2128 PRO  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 Author: CodeGravity.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 Author URI: http://www.extrawatch.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 */
@@ -124,6 +124,13 @@ if (!function_exists("extrawatch_admin_menu")) {
 
   register_activation_hook(__FILE__, array('ExtraWatchEnvSetupWordpress', 'install'));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   register_deactivation_hook(__FILE__, array('ExtraWatchEnvSetupWordpress', 'uninstall'));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+
+  add_action('wp_head','extrawatch_head_frontend');
+
+	function extrawatch_head_frontend() {
+		$extraWatchJSUrl = getExtraWatchURL()."/components/com_extrawatch/js/extrawatch.js";
+		echo "<script type='text/javascript' src='$extraWatchJSUrl'></script>";
+	}
 
 
 
