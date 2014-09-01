@@ -148,11 +148,11 @@ var ew_Heatmap = {
     attachExtraWatchClickListener: function (randHashToPass, uri2titleId) {
         window.document.onclick = function (evt) {
             if (window.addEventListener) {
-                window.addEventListener("onclick", ew_Heatmap.extraWatch_click(evt, randHashToPass, uri2titleId), false);
+                window.addEventListener("onclick", function() {return ew_Heatmap.extraWatch_click(evt, randHashToPass, uri2titleId)}, false);
             } else if (window.attachEvent) {
-                window.attachEvent("onclick", ew_Heatmap.extraWatch_click(evt, randHashToPass, uri2titleId));
+                window.attachEvent("onclick", function() {return ew_Heatmap.extraWatch_click(evt, randHashToPass, uri2titleId)});
             } else {
-                window.addEventListener("onclick", ew_Heatmap.extraWatch_click(evt, randHashToPass, uri2titleId), false);
+                window.addEventListener("onclick", function() {return ew_Heatmap.extraWatch_click(evt, randHashToPass, uri2titleId)}, false);
             }
         }
     },
@@ -220,7 +220,7 @@ var ew_Heatmap = {
             (
             (evt.target.localName == "a" && evt.target.href != null && evt.target.href.indexOf('javascript:') == -1) ||
             (evt.target.parentElement.localName == "a" && evt.target.parentElement.href != null && evt.target.parentElement.href.indexOf('javascript:') == -1 ) ||	//checking currenlty only 3 parents above..
-            (evt.target.parentElement.parentElement.localName == "a" && evt.target.parentElement.parentElement.href != null && evt.target.parentElement.parentElement.href.indexOf('javascript:') == -1)
+            (evt.target.parentElement != null && evt.target.parentElement != null && evt.target.parentElement.parentElement != null && evt.target.parentElement.parentElement.localName == "a" && evt.target.parentElement.parentElement.href != null && evt.target.parentElement.parentElement.href.indexOf('javascript:') == -1)
             )) {
             return true;
         } else {

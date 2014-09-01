@@ -104,7 +104,9 @@ ew_Heatmap.attachExtraWatchClickListener('<?php echo($extraWatch->config->getRan
 
     window.addEventListener('load',function(){
 		extraWatchLinkElementsList = document.getElementsByTagName("A");
+		
 		ew_Heatmap.extraWatch_decorateLinksWithCustomHandler(extraWatchLinkElementsList);
+		ew_Heatmap.extraWatch_decorateLinksWithCustomHandler(document.getElementsByTagName("BUTTON"));
 		  });
 
 
