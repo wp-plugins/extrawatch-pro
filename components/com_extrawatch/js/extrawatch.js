@@ -148,11 +148,11 @@ var ew_Heatmap = {
     attachExtraWatchClickListener: function (randHashToPass, uri2titleId) {
         window.document.onclick = function (evt) {
             if (window.addEventListener) {
-                window.addEventListener("onclick", function() {return ew_Heatmap.extraWatch_click(evt, randHashToPass, uri2titleId)}, false);
+                window.addEventListener("onclick", ew_Heatmap.extraWatch_click(evt, randHashToPass, uri2titleId), false);
             } else if (window.attachEvent) {
-                window.attachEvent("onclick", function() {return ew_Heatmap.extraWatch_click(evt, randHashToPass, uri2titleId)});
+                window.attachEvent("onclick", ew_Heatmap.extraWatch_click(evt, randHashToPass, uri2titleId));
             } else {
-                window.addEventListener("onclick", function() {return ew_Heatmap.extraWatch_click(evt, randHashToPass, uri2titleId)}, false);
+                window.addEventListener("onclick", ew_Heatmap.extraWatch_click(evt, randHashToPass, uri2titleId), false);
             }
         }
     },
