@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 2137  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 2155  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2014 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.extrawatch.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -543,12 +543,12 @@ function renderHTMLCodeSnippet($projectId) {
 		echo $this->env->addScript($liveSite."components/com_extrawatch/js/jdownloadurl.js");
 		
 
-		if (get_class($extraWatch->env) != "ExtraWatchWordpressEnv") {	//query is already initialized for wordpress and would cause conflict otherwise 
+		if (@get_class($extraWatch->env) != "ExtraWatchWordpressEnv") {	//query is already initialized for wordpress and would cause conflict otherwise 
 			echo $this->env->addScript($liveSite."components/com_extrawatch/js/extrawatch.js");
 		}
 		
 		$output = "";
-		$title = "Visitors Counter, Heat Map Tracker and User Click Tracking";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+		$title = "Stats counter, realtime web analytics, heatmap creator";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
 		echo $this->env->addScript($liveSite."components/com_extrawatch/js/heatmap/heatmap.js");
 
@@ -761,6 +761,21 @@ static function getTimezoneOffsetByTimezoneName($userTimezoneName){
     function setNoindexHttpHeaders() {
         $this->env->setHttpHeader("X-Robots-Tag: noindex, nofollow");
     }
+
+	static function getUrlContent($url) {	
+		$ch = curl_init();
+	
+		curl_setopt_array(
+			$ch, array(
+			CURLOPT_URL => $url,
+			CURLOPT_RETURNTRANSFER => true
+		));
+ 
+		$content = curl_exec($ch);
+ 
+		curl_close($ch);
+		return $content;
+	}
 
 
 }

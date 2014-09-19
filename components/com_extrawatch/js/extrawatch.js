@@ -5,6 +5,8 @@
  * @website http://www.codegravity.com
  */
 
+var extraWatchLinkElementsListOriginal = {};
+
 
 var ew_Utf8Encoder = { //added ex_ to avoid conflicts
     /** Credits: http://www.webtoolkit.info/javascript-url-decode-encode.html **/
@@ -58,7 +60,9 @@ function extrawatch_createRequestObject() {
 }
 
 
+
 var ew_Heatmap = {
+
 
     extraWatch_click : function(evt, randHashToPass, uri2titleId) {
 
@@ -158,14 +162,26 @@ var ew_Heatmap = {
     },
 
     extraWatch_decorateLinksWithCustomHandler: function (extraWatchLinkElementsList) {
-        for (i = 0; i < extraWatchLinkElementsList.length; i++) {
+	
+
+		for (i = 0; i < extraWatchLinkElementsList.length; i++) {
             try {
                 if (extraWatchLinkElementsList[i].onclick != null) {
-                    extraWatchLinkElementsListOriginal[extraWatchLinkElementsList[i].innerText] = extraWatchLinkElementsList[i].onclick;	//storing original onclick function by key which is innerText
+                    extraWatchLinkElementsListOriginal[extraWatchLinkElementsList[i].outerHTML] = extraWatchLinkElementsList[i].onclick;	//storing original onclick function by key which is innerText
                     extraWatchLinkElementsList[i].onclick = function (evt) {
-                        extraWatch_click(evt);
-                        extraWatch_originalOnClickFunction = extraWatchLinkElementsListOriginal[evt.srcElement.innerText];	//retrieving original onclick function by key which is innerText
-                        extraWatch_originalOnClickFunction();
+                        ew_Heatmap.extraWatch_click(evt);
+						var outerHTMLElement;
+						if (evt.srcElement != null) {	// supposed to work in IE only
+							outerHTMLElement = evt.srcElement.outerHTML;
+						} else if (evt.target != null) { // supposed to work in other browsers
+							outerHTMLElement = evt.target.outerHTML;
+						}
+						if (outerHTMLElement) {
+							extraWatch_originalOnClickFunction = extraWatchLinkElementsListOriginal[outerHTMLElement];	//retrieving original onclick function by key which is innerText
+							if (extraWatch_originalOnClickFunction != null) {
+								return extraWatch_originalOnClickFunction();
+							}
+						}
                     }
                 }
             } catch (e) {
@@ -220,7 +236,7 @@ var ew_Heatmap = {
             (
             (evt.target.localName == "a" && evt.target.href != null && evt.target.href.indexOf('javascript:') == -1) ||
             (evt.target.parentElement.localName == "a" && evt.target.parentElement.href != null && evt.target.parentElement.href.indexOf('javascript:') == -1 ) ||	//checking currenlty only 3 parents above..
-            (evt.target.parentElement != null && evt.target.parentElement != null && evt.target.parentElement.parentElement != null && evt.target.parentElement.parentElement.localName == "a" && evt.target.parentElement.parentElement.href != null && evt.target.parentElement.parentElement.href.indexOf('javascript:') == -1)
+            (evt.target.parentElement != null && evt.target.parentElement.parentElement != null && evt.target.parentElement.parentElement.localName == "a" && evt.target.parentElement.parentElement.href != null && evt.target.parentElement.parentElement.href.indexOf('javascript:') == -1)
             )) {
             return true;
         } else {

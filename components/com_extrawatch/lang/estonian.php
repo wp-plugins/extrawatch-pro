@@ -454,7 +454,7 @@ DEFINE('_EW_DESC_HIDE_REPETITIVE_TITLE', "K&uuml;lastustes peida korduvad leheni
 
 DEFINE('_EW_DESC_HISTORY_MAX_DB_RECORDS', "Maksimum number k&uuml;lastajaid, mida hoitakse k&uuml;lastajate ajaloo andmebaasis. Ole selle seadega ettevaatlik, kui teil on k&otilde;rge liiklus siis v&otilde;ib see kasvada v&auml;ga kiiresti. Kontrolli alati, kui palju andmeid ajaloo statistika tabelis on");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-DEFINE('_EW_DESC_UNINSTALL_KEEP_DATA', "Hoia andmebaasi tabelid komponendi eemaldamisel. M&auml;rgi see valik, enne eemaldamist, kui sa teostad versiooniuuendust ja soovid oma andmeid hoida.");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_DESC_UNINSTALL_KEEP_DATA', "<span style='color:red'>Backup your DB tables first if using this option!</span>Hoia andmebaasi tabelid komponendi eemaldamisel. M&auml;rgi see valik, enne eemaldamist, kui sa teostad versiooniuuendust ja soovid oma andmeid hoida.");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
 
 /* email reports */
@@ -904,3 +904,13 @@ DEFINE('_EW_AVAILABLE_IN_FULL_VERSION', 'This feature is available in full versi
 DEFINE('_EW_GET_FULL_VERSION',"Get the full version of ExtraWatch PRO");
 DEFINE('_EW_LIVE_STATS_SESSION_TIME', 'Time difference since user first visited your website');
 DEFINE('_EW_DOWNLOAD_MONITOR_HTACCESS_TXT', 'Warning - please change: htaccess.txt is present in your joomla root folder, please rename it to .htaccess first and make sure there is no htaccess.txt file anymore !');
+DEFINE('_EW_AGENT_NOT_PUBLISHED',"Agent module which gathers data is not published on frontend! - How to fix it?<br/><br/>
+<u>Joomla:</u><br/>
+1. Go to Extensions -> Module Manager -> find Agent module<br/>
+2. Change Position to some other value (choose some for which you already see some module in frontend - like 'footer'<br/>
+3. Save and refresh extrawatch back-end dashboard again<br/><br/>
+
+<u>Wordpress:</u><br/>
+1. Go to Apperance -> Widgets<br/>
+2. Drag and Drop ExtraWatch agent do placeholder on right to widget that it's already visible in frontend<br/>
+");
