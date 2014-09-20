@@ -51,7 +51,7 @@ function extrawatch_renderLicenseFree($extraWatch)
         font-weight: normal;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     }
 </style>
-<h1>ExtraWatch 2.3.2162 PRO</h1>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+<h1>ExtraWatch 2.3.2165 PRO</h1>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
 <script type='text/javascript'>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     function toggleNoKeyForm() {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -61,33 +61,38 @@ function extrawatch_renderLicenseFree($extraWatch)
 
 <h1 style='color: black'>Please enter the membership registration key to proceed</h1>
 
-<table width='100%' border='0'>
+<table width='50%' border='0'>
 <tr>
     <td>
-        <table><tr><td>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        <table width='50%'><tr><td>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
             &nbsp; your domain: <b/>" . $extraWatch->config->getDomainFromLiveSite(_EW_PROJECT_ID) . "</b><br/><br/>
-            <table>
+            <table width='50%' border='1' style='width:300px; border: 0px solid black;'>
                 <tr>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                    <td>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                        <form action='" . $extraWatch->config->renderLink("activate") . "' method='POST'>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                    <td width='30%'>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                        <form action='" . $extraWatch->config->renderLink("activate") . "' method='POST' style='width:500px'>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                             <input type='text' name='key' size='50' style='font-size: 12px;'/>
-                            <input type='submit' value='activate' style='background-color: green; padding-left: 10px; padding-right: 10px; font-size: 12px;'/>
+                            <input type='submit' value='activate' style='background-color: #00AC00; color: white; padding-left: 10px; padding-right: 10px; font-size: 12px; font-weight: bold'/>
                             <input type='hidden' name='option' value='com_extrawatch'/>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                             <input type='hidden' name='task' value='activate'/>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                             <input type='hidden' name='page' value='extrawatch'/>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                             <input type='hidden' name='form_key' value='".$extraWatch->env->getFormKey()."' />  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                         </form>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-
                     </td>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+					<td align='center' width='10%'>
+                        <form action='http://www.extrawatch.com/buy' method='GET'>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                            <input type='submit' value='get a license' style='background-color: #DF3721; color: white; padding-left: 10px; padding-right: 10px; font-size: 12px; font-weight: bold'/>
+						</form>
+					</td>
                 </tr>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
             </table>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
             <br/>
 
 
             <div style='color: #FF8E3B; font-size: 12px; font-style: italic;'>
-                Notice: This is NOT the paypal transaction number of your purchase.<br/>
+                Note: License key works on all subdomains too<br/>
+                Warning: This is NOT the paypal transaction number of your purchase.<br/>
                 It's the registration key you received after you paired your domain with your membership after payment.<br/>
-                To check for your membership status, use the Customer Zone on <a href='http://www.extrawatch.com' style='color: #FF8E3B' target='_blank'>extrawatch.com</a><br/><br/>
+                To check for your membership status, use the <a href='http://www.extrawatch.com/customer' target='_blank'><b>Customer Zone</b></a> on <a href='http://www.extrawatch.com' style='color: #FF8E3B' target='_blank'>extrawatch.com</a><br/><br/>
             </div>
 
             <h3>If you've purchased this item via some other marketplace, please contact us via livechat on extrawatch.com !</h3>
@@ -162,7 +167,7 @@ $output .= "
 
 		$env = @get_class($extraWatch->env);
 		
-		$output .= "<iframe src='http://www.extrawatch.com/track/extrawatch/2.3/install/?domain=".$domain."&license=PRO&version=2.3.2162&ip=".$ip."&env=".$env."' width='1px' frameborder='0' height='1px'>
+		$output .= "<iframe src='http://www.extrawatch.com/track/extrawatch/2.3/install/?domain=".$domain."&license=PRO&version=2.3.2165&ip=".$ip."&env=".$env."' width='1px' frameborder='0' height='1px'>
         </iframe>";			
 
 		$output .= "		

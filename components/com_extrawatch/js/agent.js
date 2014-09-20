@@ -22,3 +22,8 @@ var extraWatchAjaxLinkDecoded = decodeURIComponent(extraWatchAjaxLink);
         })();
 
 
+(function() {	//onload ajax request which deactivates user
+    window.addEventListener('beforeunload', function() {
+        downloadUrl(extraWatchAjaxLinkDecoded + "unloaded", function (e) {}, true, true);
+    })
+})();
