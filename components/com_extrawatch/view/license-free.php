@@ -51,7 +51,7 @@ function extrawatch_renderLicenseFree($extraWatch)
         font-weight: normal;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     }
 </style>
-<h1>ExtraWatch 2.3.2165 PRO</h1>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+<h1>ExtraWatch 2.3.2181 PRO</h1>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
 <script type='text/javascript'>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     function toggleNoKeyForm() {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -66,7 +66,7 @@ function extrawatch_renderLicenseFree($extraWatch)
     <td>
         <table width='50%'><tr><td>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
             &nbsp; your domain: <b/>" . $extraWatch->config->getDomainFromLiveSite(_EW_PROJECT_ID) . "</b><br/><br/>
-            <table width='50%' border='1' style='width:300px; border: 0px solid black;'>
+            <table width='50%' border='0' style='width:300px; border: 0px solid black;'>
                 <tr>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                     <td width='30%'>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                         <form action='" . $extraWatch->config->renderLink("activate") . "' method='POST' style='width:500px'>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -104,7 +104,7 @@ if (@get_class($extraWatch->env) == "ExtraWatchJoomlaEnv") {
 
 
 $output .= "
-            <div  id='nokey' style='border: 1px solid  rgb(255, 171, 41); width: 400px; padding: 10px; display:none;'>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+            <div  id='nokey' style='border: 0px solid  rgb(255, 171, 41); width: 400px; padding: 10px; display:none;'>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                 <h3>Request the correct activation key</h3>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                 <form action='http://www.extrawatch.com/success/' method='GET'>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                     <table>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -167,7 +167,7 @@ $output .= "
 
 		$env = @get_class($extraWatch->env);
 		
-		$output .= "<iframe src='http://www.extrawatch.com/track/extrawatch/2.3/install/?domain=".$domain."&license=PRO&version=2.3.2165&ip=".$ip."&env=".$env."' width='1px' frameborder='0' height='1px'>
+		$output .= "<iframe src='http://www.extrawatch.com/track/extrawatch/2.3/install/?domain=".$domain."&license=PRO&version=2.3.2181&ip=".$ip."&env=".$env."' width='1px' frameborder='0' height='1px'>
         </iframe>";			
 
 		$output .= "		

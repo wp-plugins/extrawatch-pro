@@ -13,7 +13,7 @@ var ew_Utf8Encoder = { //added ex_ to avoid conflicts
 
 // URL utf-8 encoding  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     encode : function (str) {
-        return escape(this._utf8_encode(str));
+        return escape(ew_Utf8Encoder._utf8_encode(str));
     },
 
 // UTF-8 encoding
@@ -76,7 +76,7 @@ var ew_Heatmap = {
         var url = urlBase + "&params=" + encodeURIComponent("&action=click&uri2titleId=" + uri2titleId + "&x=" + positionFromEvent[0] + "&y=" + positionFromEvent[1] + "&w=" + w + "&h=" + h + "&randHash=" + randHashToPass + "&xpath=" + encodeURIComponent(encodeURIComponent(xpath)));
 
 
-        if(this.checkIfDoSynchronousClick(evt))	  {
+        if(ew_Heatmap.checkIfDoSynchronousClick(evt))	  {
             downloadUrl(url, function (e) {}, true, false);	//download it synchronously
         } else {
             setTimeout(function() {
@@ -89,20 +89,20 @@ var ew_Heatmap = {
         var key = (evt) ? evt.which : event.keyCode;
 
         if (String.fromCharCode(key) == "p") {
-            this.changeDayInUrl(-1);
+            ew_Heatmap.changeDayInUrl(-1);
         } else if (String.fromCharCode(key) == "n") {
-            this.changeDayInUrl(1);
+            ew_Heatmap.changeDayInUrl(1);
         } else if (String.fromCharCode(key) == "t") {
-            this.toggleHeatmap();
+            ew_Heatmap.toggleHeatmap();
         }
     },
 
     changeDayInUrl: function (_increment) {
-        var dayVariable = "<?php echo ExtraWatchHeatmap::HEATMAP_PARAM_DAY_NAME; ?>";
+        var dayVariable = "extraWatchDay";	//todo - move to constants
         var location = document.location.href;
-        var extraWatchDay = this.getQueryVariable(dayVariable);
+        var extraWatchDay = ew_Heatmap.getQueryVariable(dayVariable);
         var prevDay = parseInt(extraWatchDay) + _increment;
-        var newLocationString = this.replaceString(location, extraWatchDay, prevDay);
+        var newLocationString = ew_Heatmap.replaceString(location, extraWatchDay, prevDay);
         document.location.href = newLocationString;
     },
 
@@ -248,7 +248,7 @@ var ew_Heatmap = {
     getPositionFromEvent : function (evt) {
         var pos = h337.util.mousePosition(evt); //relative position to element
         if (evt.offsetX == null || evt.offsetY == null) {
-            var calculatedOffset = this.ew_getOffset(evt);
+            var calculatedOffset = ew_Heatmap.ew_getOffset(evt);
             var x = calculatedOffset.x;
             var y = calculatedOffset.y;
         } else {
