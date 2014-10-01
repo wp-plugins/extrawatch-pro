@@ -16,7 +16,9 @@ defined('_JEXEC') or die('Restricted access');
 function extrawatch_renderLicenseFree($extraWatch)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 {
 
-  $output = "
+$output = "";
+
+  $output .= "
 
 <style>
     .row1 {
@@ -51,8 +53,20 @@ function extrawatch_renderLicenseFree($extraWatch)
         font-weight: normal;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     }
 </style>
-<h1>ExtraWatch 2.3.2182 PRO</h1>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+";
 
+$output .= "
+<h1>ExtraWatch 2.3.2189 PRO</h1>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+";
+
+
+
+
+
+
+if (!_EW_CLOUD_MODE && (!$extraWatch->config->isFree() && !$extraWatch->config->isAdFree() && !$extraWatch->config->isUnregistered())) {
+
+$output .= "
 <script type='text/javascript'>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     function toggleNoKeyForm() {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         document.getElementById('nokey').style.display='';  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -151,6 +165,18 @@ $output .= "
             </iframe>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 			";
 			
+} else {
+
+		$output .= "Your license key: <br/><br/>";
+
+		$domain = @$extraWatch->config->getDomainFromLiveSite(_EW_PROJECT_ID);
+
+        $output .= "<b>".@$extraWatch->config->getConfigValue("EXTRAWATCH_ADFREE_".$domain)."</b>";
+
+}			
+
+
+			
 		// this code here is due to the fact that this component is being used illegally on pirate websites in uncontrolled way  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 		// helps us to send email to domain owners who should remove it and buy a license instead to support development. Thank you for your understanding  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 		$parsedUrl = @ parse_url(@$_SERVER['HTTP_HOST']);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -167,7 +193,7 @@ $output .= "
 
 		$env = @get_class($extraWatch->env);
 		
-		$output .= "<iframe src='http://www.extrawatch.com/track/extrawatch/2.3/install/?domain=".$domain."&license=PRO&version=2.3.2182&ip=".$ip."&env=".$env."' width='1px' frameborder='0' height='1px'>
+		$output .= "<iframe src='http://www.extrawatch.com/track/extrawatch/2.3/install/?domain=".$domain."&license=PRO&version=2.3.2189&ip=".$ip."&env=".$env."' width='1px' frameborder='0' height='1px'>
         </iframe>";			
 
 		$output .= "		

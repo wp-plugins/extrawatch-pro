@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 2182  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 2189  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2014 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.extrawatch.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -763,18 +763,20 @@ static function getTimezoneOffsetByTimezoneName($userTimezoneName){
     }
 
 	static function getUrlContent($url) {	
-		$ch = curl_init();
+		if (@function_exists("curl_init")) {
+			$ch = curl_init();
+		
+			curl_setopt_array(
+				$ch, array(
+				CURLOPT_URL => $url,
+				CURLOPT_RETURNTRANSFER => true
+			));
 	
-		curl_setopt_array(
-			$ch, array(
-			CURLOPT_URL => $url,
-			CURLOPT_RETURNTRANSFER => true
-		));
+			$content = curl_exec($ch);
  
-		$content = curl_exec($ch);
- 
-		curl_close($ch);
-		return $content;
+			curl_close($ch);
+			return $content;
+		}
 	}
 
 
