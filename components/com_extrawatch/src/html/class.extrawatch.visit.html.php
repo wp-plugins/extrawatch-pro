@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 2189  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 2194  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2014 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.extrawatch.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -114,16 +114,7 @@ class ExtraWatchVisitHTML
                $noDataHTML .= _EW_NO_DATA;
             }
 			
-			
-			if (!$inactive && !$rows) {
-				$host = "http://".$_SERVER['HTTP_HOST'].$this->extraWatch->config->getLiveSite();
-				$homepageContents = ExtraWatchHelper::getUrlContent($host);
-				if (@$homepageContents && strstr($homepageContents,"agent.js") === FALSE) {
-					echo("<span style='color: red; font-weight: bold;'>"._EW_AGENT_NOT_PUBLISHED."</span><br/><br/>");
-				}
-			}
-
-            $output .= "<tr><td colspan='5'>" . $noDataHTML . "</td></tr>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+		    $output .= "<tr><td colspan='5'>" . $noDataHTML . "</td></tr>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
             return $output;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         }
@@ -489,6 +480,15 @@ class ExtraWatchVisitHTML
       }
 
       $uriCount = $this->extraWatch->visit->getTotalUriCount($inactive);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+	  if (!$inactive && !$uriCount) {
+	  
+		$host = "http://".$_SERVER['HTTP_HOST'].$this->extraWatch->config->getLiveSite();
+		$homepageContents = ExtraWatchHelper::getUrlContent($host);
+		if (@$homepageContents && strstr($homepageContents,"agent.js") === FALSE) {
+			echo("<span style='color: red; font-weight: bold;'>"._EW_AGENT_NOT_PUBLISHED."</span><br/><br/>");
+		}
+	}
+
       $countCached = $this->extraWatch->cache->getCachedItem("URI_COUNT_$activeString", FALSE);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
       if ($countCached != $uriCount && !$withoutReloading) { //TODO optimize add 1 || to render it all the time
           $visitorsOutput = $this->renderTable(FALSE, $inactive);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
