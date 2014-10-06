@@ -5,9 +5,6 @@
  * @website http://www.codegravity.com
  */
 
-var extraWatchLinkElementsListOriginal = {};
-
-
 var ew_Utf8Encoder = { //added ex_ to avoid conflicts
     /** Credits: http://www.webtoolkit.info/javascript-url-decode-encode.html **/
 
@@ -47,6 +44,29 @@ var ew_Utf8Encoder = { //added ex_ to avoid conflicts
 
 }
 
+var ew_Helper = {   /* helper functions which can be used anywhere*/
+    replaceString: function (_str, _search, _replace) {
+        var re = new RegExp(_search, 'g')
+        return _str.replace(re, _replace);
+    },
+
+    getQueryVariable: function (variable) {
+        var query = window.location.search.substring(1);
+        var vars = query.split("&");
+        for (var i = 0; i < vars.length; i++) {
+            var pair = vars[i].split("=");
+            if (pair[0] == variable) {
+                return pair[1];
+            }
+        }
+    },
+    endsWith: function (str, suffix) {
+        return str.indexOf(suffix, str.length - suffix.length) !== -1;
+    },
+    startsWith : function(str, prefix) {
+        return str.indexOf(prefix) === 0;
+    }
+}
 
 
 function extrawatch_createRequestObject() {
@@ -62,7 +82,6 @@ function extrawatch_createRequestObject() {
 
 
 var ew_Heatmap = {
-
 
     extraWatch_click : function(evt, randHashToPass, uri2titleId) {
 
@@ -100,9 +119,9 @@ var ew_Heatmap = {
     changeDayInUrl: function (_increment) {
         var dayVariable = "extraWatchDay";	//todo - move to constants
         var location = document.location.href;
-        var extraWatchDay = ew_Heatmap.getQueryVariable(dayVariable);
+        var extraWatchDay = ew_Helper.getQueryVariable(dayVariable);
         var prevDay = parseInt(extraWatchDay) + _increment;
-        var newLocationString = ew_Heatmap.replaceString(location, extraWatchDay, prevDay);
+        var newLocationString = ew_Helper.replaceString(location, extraWatchDay, prevDay);
         document.location.href = newLocationString;
     },
 
@@ -110,21 +129,6 @@ var ew_Heatmap = {
         xx.toggleDisplay();
     },
 
-    replaceString: function (_str, _search, _replace) {
-        var re = new RegExp(_search, 'g')
-        return _str.replace(re, _replace);
-    },
-
-    getQueryVariable: function (variable) {
-        var query = window.location.search.substring(1);
-        var vars = query.split("&");
-        for (var i = 0; i < vars.length; i++) {
-            var pair = vars[i].split("=");
-            if (pair[0] == variable) {
-                return pair[1];
-            }
-        }
-    },
 
     /**
      source and thanks to: http://nickthecoder.wordpress.com/2013/02/26/offsetx-and-offsety-in-firefox/
@@ -162,27 +166,19 @@ var ew_Heatmap = {
     },
 
     extraWatch_decorateLinksWithCustomHandler: function (extraWatchLinkElementsList) {
-	
-
 		for (i = 0; i < extraWatchLinkElementsList.length; i++) {
             try {
-                if (extraWatchLinkElementsList[i].onclick != null) {
-                    extraWatchLinkElementsListOriginal[extraWatchLinkElementsList[i].outerHTML] = extraWatchLinkElementsList[i].onclick;	//storing original onclick function by key which is innerText
-                    extraWatchLinkElementsList[i].onclick = function (evt) {
-                        ew_Heatmap.extraWatch_click(evt);
-						var outerHTMLElement;
-						if (evt.srcElement != null) {	// supposed to work in IE only
-							outerHTMLElement = evt.srcElement.outerHTML;
-						} else if (evt.target != null) { // supposed to work in other browsers
-							outerHTMLElement = evt.target.outerHTML;
-						}
-						if (outerHTMLElement) {
-							extraWatch_originalOnClickFunction = extraWatchLinkElementsListOriginal[outerHTMLElement];	//retrieving original onclick function by key which is innerText
-							if (extraWatch_originalOnClickFunction != null) {
-								return extraWatch_originalOnClickFunction();
-							}
-						}
-                    }
+                if (extraWatchLinkElementsList[i].onclick != null) {    /* go through all onclick methods */
+                    var replaceOnClick= ["onclick=\"javascript:","onclick='javascript:","onclick=\"","onclick='"];
+                    replaceOnClick.forEach(function(entry) {    /* for each search pattern */
+                            var searchMask = entry;
+                            var regEx = new RegExp(searchMask, "ig");
+                            if (extraWatchLinkElementsList[i].outerHTML.match(regEx) != null) {  /* if outer HTML matches pattern */
+                                var replaceMask = entry + "ew_Heatmap.extraWatch_click(evt);";  /* inserting click method before original onclick method content */
+                                extraWatchLinkElementsList[i].onclick = extraWatchLinkElementsList[i].onclick.replace(regEx, replaceMask);
+                                return true;
+                            }
+                    });
                 }
             } catch (e) {
             }
@@ -231,17 +227,62 @@ var ew_Heatmap = {
         return segs.length ? '/' + segs.join('/') : null;
     },
 
-    checkIfDoSynchronousClick: function (evt) {
-        if (((evt.target.localName == "input" || evt.target.localName == "button") && evt.target.type == "submit") ||
-            (
-            (evt.target.localName == "a" && evt.target.href != null && evt.target.href.indexOf('javascript:') == -1) ||
-            (evt.target.parentElement.localName == "a" && evt.target.parentElement.href != null && evt.target.parentElement.href.indexOf('javascript:') == -1 ) ||	//checking currenlty only 3 parents above..
-            (evt.target.parentElement != null && evt.target.parentElement.parentElement != null && evt.target.parentElement.parentElement.localName == "a" && evt.target.parentElement.parentElement.href != null && evt.target.parentElement.parentElement.href.indexOf('javascript:') == -1)
-            )) {
-            return true;
-        } else {
-            return false;
+    isTargetElementNavigatingAway: function (target) {
+
+        switch (target.localName) {
+            case "a": {
+                /* if there's A element and contains # or javascript: in href="..." we are assuming that we are not navigating away */
+                if (ew_Helper.endsWith(target.href,"#") || ew_Helper.startsWith(target.href, 'javascript:')) {
+                    return false;
+                }
+                return true;
+                break;
+            }
+            case "input": {
+                if (target.type == "submit") {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+            case "button": {
+                /* if element is in form we're assuming it's navigating away */
+                return ew_Heatmap.checkIfElementIsInForm(target);
+            }
+            case "submit": {
+                /* in case of submit and form buttons we'll assume this is navigating away */
+                return true;
+            }
+            default: {
+                return false;
+            }
         }
+
+
+    },
+
+    checkIfElementIsInForm: function (targetElement) {
+        while(targetElement != null) {  /* go through all parent elements */
+            if (targetElement.method == "post") {
+                return true;
+            }
+            targetElement = targetElement.parentElement;
+        };
+        return false;
+    },
+
+    checkIfDoSynchronousClick: function (evt) {
+        var targetElement = evt.target;
+        var isNavigatingAway = false;
+        while(targetElement != null) {  /* go through all parent elements */
+            if (ew_Heatmap.isTargetElementNavigatingAway(targetElement)) {
+                isNavigatingAway = true;
+                break;
+            }
+            targetElement = targetElement.parentElement;
+        };
+
+        return isNavigatingAway;    /* do synchronous click if navigating away */
     },
 
 
@@ -279,7 +320,7 @@ var ew_Heatmap = {
 
 
     renderHeatmap : function (randHash, data) {
-        var ip = ew_Heatmap.getQueryVariable('ip');
+        var ip = ew_Helper.getQueryVariable('ip');
         var obj = eval('(' + data + ')');
         xx.displayLoading
         xx.store.setDataSet(obj);
