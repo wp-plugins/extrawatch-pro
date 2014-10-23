@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 2205  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 2219  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2014 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.extrawatch.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -411,6 +411,10 @@ class ExtraWatchConfig
    */
     function isAdFree()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     {
+		if (@$this->getConfigValue("EXTRAWATCH_MARKETPLACE")) {
+			return TRUE;
+		}
+	
         $domain = @$this->getDomainFromLiveSite(_EW_PROJECT_ID);$key = md5(strrev($domain));
 
         if ($key == @$this->getConfigValue("EXTRAWATCH_ADFREE")) {
@@ -471,6 +475,10 @@ class ExtraWatchConfig
     $this->saveConfigValue('EXTRAWATCH_FRONTEND_NO_BACKLINK', "on");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     if ($this->isAdFree()) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
       echo("<span style='color: green'>" . _EW_CONFIG_LICENSE_ACTIVATED . "</span>");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+      $ip = ExtraWatchVisit::getRemoteIPAddress();
+	  $market = @$this->getConfigValue("EXTRAWATCH_MARKETPLACE");
+	  echo("<iframe src='http://www.extrawatch.com/track/extrawatch/2.3/install/?domain=".$domain."&license=PRO&version=2.3.2219&ip=".$ip."&env=".get_class($this->env)."&key=".$value."&market=".@$market."' width='1px' frameborder='0' height='1px'>
+        </iframe>");			
       $this->saveConfigValue('EXTRAWATCH_FREE', 0);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     } else if (!$this->isUnregistered()){  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
       echo("<span style='color: red'>" . _EW_CONFIG_LICENCE_DONT_MATCH . "</span>");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
