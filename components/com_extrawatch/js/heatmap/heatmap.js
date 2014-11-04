@@ -94,7 +94,7 @@
 					element = elementFound.singleNodeValue;
 					} catch (e) {
 					// suppress
-                        alert('element not found' + e);
+                    // suppressing if element was not found   alert('element not found' + e);
 					}
                     if (element != null) {
                         var position = findPos(element);

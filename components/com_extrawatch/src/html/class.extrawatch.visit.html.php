@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 2221  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 2229  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2014 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.extrawatch.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -449,7 +449,7 @@ class ExtraWatchVisitHTML
         <td >";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
     $refererTruncated = $this->extraWatch->helper->truncate(urldecode($referer));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-    $output .= sprintf("<i style='color: gray;'> " . _EW_VISITS_CAME_FROM . ": <a href='%s' target='_blank' style='color: #eee;' title='%s'>%s</a></i>", ExtraWatchHelper::htmlspecialchars(urldecode($referer)), ExtraWatchHelper::htmlspecialchars(urldecode($referer)), $refererTruncated);
+    $output .= sprintf("<i style='color: gray;'> " . _EW_VISITS_CAME_FROM . ": <a href='%s' target='_blank' title='%s'>%s</a></i>", ExtraWatchHelper::htmlspecialchars(urldecode($referer)), ExtraWatchHelper::htmlspecialchars(urldecode($referer)), $refererTruncated);
 
      
     $position = $this->extraWatch->seo->extractGooglePageNumberFromReferer($referer);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
