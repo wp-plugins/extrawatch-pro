@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 2234  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 2373  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2014 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.extrawatch.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -106,7 +106,7 @@ class ExtraWatchConfig
       $query = sprintf("update #__extrawatch_config set value = '%s' where (name = '%s' and date = '%d')", $this->database->getEscaped($value), $this->database->getEscaped($key), (int) $value);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
       $this->database->executeQuery($query);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     } else {
-      $query = sprintf("insert into #__extrawatch_config (id, `name`, `value`) values ('', '%s', '%s')", $this->database->getEscaped($key), $this->database->getEscaped($value));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+      $query = sprintf("insert into #__extrawatch_config (`name`, `value`) values ('%s', '%s')", $this->database->getEscaped($key), $this->database->getEscaped($value));
       $this->database->executeQuery($query);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     }
   }
@@ -158,7 +158,7 @@ class ExtraWatchConfig
       $query = sprintf("update #__extrawatch_config set value = '%s' where name = '%s'", $this->database->getEscaped($value), $this->database->getEscaped($key));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
       $this->database->executeQuery($query);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     } else { //insert  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-      $query = sprintf("insert into #__extrawatch_config values ('','%s','%s')", $this->database->getEscaped($key), $this->database->getEscaped($value));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+      $query = sprintf("insert into #__extrawatch_config (`name`,`value`) values ('%s','%s')", $this->database->getEscaped($key), $this->database->getEscaped($value));
       $this->database->executeQuery($query);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     }
     $this->reloadConfigValues();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -477,7 +477,7 @@ class ExtraWatchConfig
       echo("<span style='color: green'>" . _EW_CONFIG_LICENSE_ACTIVATED . "</span>");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
       $ip = ExtraWatchVisit::getRemoteIPAddress();
 	  $market = @$this->getConfigValue("EXTRAWATCH_MARKETPLACE");
-	  echo("<iframe src='http://www.extrawatch.com/track/extrawatch/2.3/install/?domain=".$domain."&license=PRO&version=2.3.2234&ip=".$ip."&env=".get_class($this->env)."&key=".$value."&market=".@$market."' width='1px' frameborder='0' height='1px'>
+	  echo("<iframe src='http://www.extrawatch.com/track/extrawatch/2.3/install/?domain=".$domain."&license=PRO&version=2.3.2373&ip=".$ip."&env=".get_class($this->env)."&key=".$value."&market=".@$market."' width='1px' frameborder='0' height='1px'>
         </iframe>");			
       $this->saveConfigValue('EXTRAWATCH_FREE', 0);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     } else if (!$this->isUnregistered()){  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -488,7 +488,7 @@ class ExtraWatchConfig
 	$this->database->executeQuery(trim($query));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
 	$rand = rand();
-	$query = "INSERT IGNORE INTO #__extrawatch_config (id, name, value) values ('', 'rand', '$rand') ";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+	$query = "INSERT IGNORE INTO #__extrawatch_config (`name`, `value`) values ('rand', '$rand') ";
 	$this->database->executeQuery(trim($query));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
   }
@@ -515,7 +515,7 @@ class ExtraWatchConfig
   function setRand()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   {
     $rand = md5(md5(mt_rand()) + mt_rand());  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-    $query = sprintf("INSERT INTO #__extrawatch_config (id, name, value) values ('', 'rand', '%s') ", $this->database->getEscaped($rand));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    $query = sprintf("INSERT INTO #__extrawatch_config (name, value) values ('rand', '%s') ", $this->database->getEscaped($rand));
     $this->database->executeQuery(trim($query));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   }
 

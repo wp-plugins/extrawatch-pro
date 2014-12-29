@@ -63,15 +63,25 @@ die("Setup construct");
 
   static function create_tables($database)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   {
-    $sqlFile = JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "sql" . DS . "install.mysql.utf8.sql";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    $sqlFile = JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "sql" . DS . "install.mysql.utf8.sql";  	 	 
     $sql = file_get_contents($sqlFile);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-    $sql = $database->replaceDbPrefix($sql);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+   if (!$sql) {
+	die("cannot find file: $sqlFile");
+   }
+   $sql = $database->replaceDbPrefix($sql);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     $sqlSplitted = @split(";", $sql);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-    foreach ($sqlSplitted as $sql) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    foreach ($sqlSplitted as $sql) {  	
+	  $sql = trim($sql);
+	  if (@$sql) {
       $sql .= ";";
-      $database->executeQuery($sql);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-      // echo($sql . "<br/><br/>");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+      $success = $database->executeQuery($sql);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+	  if (!$success) {
+	
+		die("Cannot initialize plugin when trying to execute: \"$sql\" because of SQL error:  ".$database->getErrorMsg()."<br/><br/>");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+	  }
     }
+	}
+	//die("initializing from file: $sqlFile");	
   }
 
   static function install_geolocation($database)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  

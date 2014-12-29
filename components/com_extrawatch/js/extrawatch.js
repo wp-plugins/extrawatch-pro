@@ -232,22 +232,29 @@ var ew_Heatmap = {
         switch (target.localName) {
             case "a": {
                 /* if there's A element and contains # or javascript: in href="..." we are assuming that we are not navigating away */
-                if (ew_Helper.endsWith(target.href,"#") || ew_Helper.startsWith(target.href, 'javascript:')) {
+                if (target.href == "" || ew_Helper.endsWith(target.href,"#") || ew_Helper.startsWith(target.href, 'javascript:')) {
                     return false;
                 }
                 return true;
                 break;
             }
             case "input": {
-                if (target.type == "submit") {
-                    return true;
-                } else {
-                    return false;
-                }
-            }
-            case "button": {
-                /* if element is in form we're assuming it's navigating away */
-                return ew_Heatmap.checkIfElementIsInForm(target);
+				 switch (target.type) {
+						 
+					 case "button": {
+		                return true;
+					 }
+					
+					 default : {	 
+                		if (target.type == "submit") {
+                    		return true;
+                		} else {
+                    		return false;
+                		}
+						break;
+					 }
+				}	 
+						 
             }
             case "submit": {
                 /* in case of submit and form buttons we'll assume this is navigating away */

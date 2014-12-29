@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 2234  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 2373  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2014 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.extrawatch.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -810,7 +810,7 @@ function insertSearchResultPage($uri, $phrase, $referer, $title)
               $id = $this->database->resultQuery($query);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
               if (!@$id) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                  $query = sprintf("insert into #__extrawatch_internal (id, `from`,`to`,`timestamp`) values ('', '%s', '%s', '%d') ", $this->database->getEscaped($from), $this->database->getEscaped($uri), (int)ExtraWatchDate::getUTCTimestamp());  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                  $query = sprintf("insert into #__extrawatch_internal (`from`,`to`,`timestamp`) values ('%s', '%s', '%d') ", $this->database->getEscaped($from), $this->database->getEscaped($uri), (int)ExtraWatchDate::getUTCTimestamp());
                   $this->database->executeQuery($query);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
                   $query = sprintf("select id from #__extrawatch_internal where (`from` = '%s' and `to` = '%s') ", $this->database->getEscaped($from), $this->database->getEscaped($uri));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -1135,7 +1135,7 @@ function insertSearchResultPage($uri, $phrase, $referer, $title)
     $id = $this->database->resultQuery($query);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
     if (!@$id) {
-      $query = sprintf("insert into #__extrawatch_uri2title (id, uri, title, `count`, `timestamp`) values ('','%s','%s',1,'%d') ", $this->database->getEscaped($uri), $this->database->getEscaped($title), (int)ExtraWatchDate::getUTCTimestamp());  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+      $query = sprintf("insert into #__extrawatch_uri2title (uri, title, `count`, `timestamp`) values ('%s','%s',1,'%d') ", $this->database->getEscaped($uri), $this->database->getEscaped($title), (int)ExtraWatchDate::getUTCTimestamp());
       $this->database->executeQuery($query);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     } elseif ($title) { // already exists, but we need to update title if there is any  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
       $query = sprintf("update #__extrawatch_uri2title set title = '%s' where id = '%d' ", $this->database->getEscaped($title), (int) $id);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -1219,6 +1219,7 @@ function insertSearchResultPage($uri, $phrase, $referer, $title)
 
   function isVisitFromSameSite($referer)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   {
+    $referer = urldecode($referer);
 	ExtraWatchLog::debug("isFromSameSite:  $referer");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     if (@_EW_CLOUD_MODE) {
         $liveSite = $this->config->getDomainFromLiveSiteByUsername(_EW_PROJECT_ID);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -1304,7 +1305,7 @@ function insertSearchResultPage($uri, $phrase, $referer, $title)
 
         $uri2keyphraseId = $this->getUri2KeyphraseId($uri2titleId, $keyphraseId);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         if (!$uri2keyphraseId) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-            $query = sprintf("insert into #__extrawatch_uri2keyphrase values ('','%d','%d') ", (int) $uri2titleId, (int) $keyphraseId);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+            $query = sprintf("insert into #__extrawatch_uri2keyphrase ($uri2titleId, $keyphraseId) values (%d','%d') ", (int) $uri2titleId, (int) $keyphraseId);
             $this->database->executeQuery($query);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
             $uri2keyphraseId = $this->getUri2KeyphraseId($uri2titleId, $keyphraseId);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         }
@@ -1327,7 +1328,7 @@ function insertSearchResultPage($uri, $phrase, $referer, $title)
   {
     $id = $this->getUri2Keyphrase2Position($uri2keyphraseId, $position);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     if (!$id) {
-      $query = sprintf("insert into #__extrawatch_uri2keyphrase_pos values ('','%d','%d') ", (int) $uri2keyphraseId, (int) $position);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+      $query = sprintf("insert into #__extrawatch_uri2keyphrase_pos ($uri2keyphraseId, position) values ('%d','%d') ", (int) $uri2keyphraseId, (int) $position);
       $this->database->executeQuery($query);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
       $id = $this->getUri2Keyphrase2Position($uri2keyphraseId, $position);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     }
@@ -1463,7 +1464,7 @@ function insertSearchResultPage($uri, $phrase, $referer, $title)
         if (!$this->checkIfVisitAlreadyInserted($ip)) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
             $referer = strip_tags($referer);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
             $ip = strip_tags($ip);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-            $query = sprintf("insert into #__extrawatch (id, ip, country, browser, referer, username, inactive) values ('', '%s',  NULL, NULL, '%s', '%s', %d) ", $this->database->getEscaped($ip), $this->database->getEscaped($referer), $this->database->getEscaped($username), 1);
+            $query = sprintf("insert into #__extrawatch (ip, country, browser, referer, username, inactive) values ('%s',  NULL, NULL, '%s', '%s', %d) ", $this->database->getEscaped($ip), $this->database->getEscaped($referer), $this->database->getEscaped($username), 1);
             $this->database->executeQuery($query);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         }
 
@@ -1473,7 +1474,7 @@ function insertSearchResultPage($uri, $phrase, $referer, $title)
         $id = @ $row->id;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
         $time = $this->date->getUTCTimestamp();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        $query = sprintf("insert into #__extrawatch_uri (id, fk, timestamp, uri, title) values ('', '%d', '%d', '%s', '%s') ", (int)$id, (int)$time, $this->database->getEscaped($uri), $this->database->getEscaped($title));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $query = sprintf("insert into #__extrawatch_uri (fk, timestamp, uri, title) values ('%d', '%d', '%s', '%s') ", (int)$id, (int)$time, $this->database->getEscaped($uri), $this->database->getEscaped($title));
         $this->database->executeQuery($query);
 
         

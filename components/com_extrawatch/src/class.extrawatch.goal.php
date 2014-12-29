@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 2234  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 2373  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2014 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.extrawatch.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -139,7 +139,7 @@ class ExtraWatchGoal
             $result = $this->database->executeQuery($query);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         } else {
             // insert  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-            $query = "insert into #__extrawatch_goals (id, ".$keysImploded.") values ('',".$valuesImploded.")";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+            $query = "insert into #__extrawatch_goals (".$keysImploded.") values (".$valuesImploded.")";
             $result = $this->database->executeQuery($query);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         }
         return $result;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -528,16 +528,23 @@ class ExtraWatchGoal
                         $redirect = $redirects->item(0)->nodeValue;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
                         $disableds = $goal->getElementsByTagName("disabled");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                        $disabled = $disableds->item(0)->nodeValue;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                        $disabled = $disableds->item(0)->nodeValue;
+
+                        $clicked_element_xpath_conditions = $goal->getElementsByTagName("clicked_element_xpath_condition");
+                        $clicked_element_xpath_condition = $clicked_element_xpath_conditions->item(0)->nodeValue;
+
+                        $send_emails = $goal->getElementsByTagName("send_email");
+                        $send_email = $send_emails->item(0)->nodeValue;
 
                         //Check the Goal is exist or not  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                        $query = sprintf("select name from #__extrawatch_goals where name = '$name'");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                        $query = sprintf("select name from #__extrawatch_goals where `name` = '$name'");
                         $rows = @ $this->database->assocListQuery($query);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                         if (empty($rows)) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                            $value = "'$name','$username_inversed','$parentId','$uri_condition','$uri_inversed','$get_var','$get_condition','$get_inversed',                                     '$post_var','$post_condition','$post_inversed','$title_condition','$title_inversed','$username_condition','$ip_condition','$ip_inversed',                                     '$came_from_condition','$came_from_inversed','$country_condition','$country_inversed','$block','$redirect','$disabled'";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                            $value = "'$name','$username_inversed','$parentId','$uri_condition','$uri_inversed','$get_var','$get_condition','$get_inversed',                                     '$post_var','$post_condition','$post_inversed','$title_condition','$title_inversed','$username_condition','$ip_condition','$ip_inversed',                                     '$came_from_condition','$came_from_inversed','$country_condition','$country_inversed','$block','$redirect','$disabled', '$clicked_element_xpath_condition', '$send_email'";
                             //$query = sprintf("insert into #__extrawatch_goals values('NULL','$name','$username_inversed','$parentId','$uri_condition','$uri_inversed','$get_var','$get_condition','$get_inversed','$post_var','$post_condition','$post_inversed','$title_condition','$title_inversed','$username_condition','$ip_condition','$ip_inversed','$came_from_condition','$came_from_inversed','$country_condition','$country_inversed','$block','$redirect','$disabled')");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-                            $query = sprintf("insert into #__extrawatch_goals values('NULL',$value)");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                            $query = sprintf("insert into #__extrawatch_goals (`name`, `username_inversed`, `parentId` , `uri_condition`, `uri_inversed` , `get_var` , `get_condition`, `get_inversed` , `post_var` , `post_condition`, `post_inversed` , `title_condition`, `title_inversed`, `username_condition`, `ip_condition` , `ip_inversed` , `came_from_condition`, `came_from_inversed`, `country_condition` , `country_inversed` , `block` , `redirect` , `disabled`, `clicked_element_xpath_condition`, `send_email`)
+                                                values (".$value.")");
                             $result = $this->database->executeQuery($query);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                         }  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                     } //Delete uploaded file  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  

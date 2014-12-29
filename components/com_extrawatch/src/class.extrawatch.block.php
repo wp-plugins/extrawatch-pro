@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 2234  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 2373  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2014 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.extrawatch.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -38,7 +38,7 @@ class ExtraWatchBlock
   function blockIp($ip, $reason = "", $date = 0, $spamWord = "")  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   {
     $ip = htmlentities(strip_tags($ip));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-    $query = sprintf("INSERT into #__extrawatch_blocked (id, ip, hits, `date`, reason, country, badWord) values ('','%s','','%d', '%s', null, '%s')", $this->database->getEscaped($ip), (int) $date, $this->database->getEscaped($reason), $this->database->getEscaped($spamWord));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    $query = sprintf("INSERT into #__extrawatch_blocked (ip, hits, `date`, reason, country, badWord) values (%s','','%d', '%s', null, '%s')", $this->database->getEscaped($ip), (int) $date, $this->database->getEscaped($reason), $this->database->getEscaped($spamWord));
     $this->database->executeQuery($query);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   }
 
@@ -355,7 +355,8 @@ class ExtraWatchBlock
             return;
         }
 
-        move_uploaded_file($_FILES["file"]["tmp_name"],JPATH_BASE."/" . $_FILES["file"]["name"]);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $uploadedFilePath = JPATH_BASE."/" . $_FILES["file"]["name"];
+        move_uploaded_file($_FILES["file"]["tmp_name"],$uploadedFilePath);
 
         $reason = $_FILES["file"]["name"];  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         $row = 1;
@@ -363,12 +364,19 @@ class ExtraWatchBlock
 
         set_time_limit(0);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-        $handle = fopen($_FILES["file"]["name"], "r");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $handle = fopen($uploadedFilePath, "r");
+        if (!$handle) {
+            return("Error: it was not possible to open uploaded file from: ".$uploadedFilePath);
+
+        }
+
+        $errorMessages = array();
         while (($data = fgetcsv($handle, '', ",")) !== FALSE) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
             $row++;
-            $ip = $data[1];  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+            $ip = $data[0];
             if($ip != 'ip'){  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                if (!ExtraWatchHelper::isValidIPv4($ip)) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                if (!ExtraWatchHelper::isValidIPv4($ip)) {
+                    $errorMessages[] = "$ip is not a valid IP address!";
                     continue;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                 }
                 $ipArray[] = $ip;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -377,7 +385,7 @@ class ExtraWatchBlock
         $valuesOutputArray = array();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         $i=0;
         foreach ($ipArray as $ip) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-            $valuesOutputArray[] = sprintf(" ('','%s','%s', '%s', '%d')", $this->database->getEscaped($ip), "", EXTRAWATCH_UNKNOWN_COUNTRY, (int) $date);   //adding reason as empty, to save db space  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+            $valuesOutputArray[] = sprintf(" ('%s','%s', '%s', '%d')", $this->database->getEscaped($ip), "", EXTRAWATCH_UNKNOWN_COUNTRY, (int) $date);   //adding reason as empty, to save db space
             if ($i<sizeof($ipArray)) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                 if ($i!=0 && $i% self::IP_BULK_IMPORT_SIZE ==0) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                     $valuesOutput = implode(",", $valuesOutputArray).";";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -391,9 +399,9 @@ class ExtraWatchBlock
         $this->insertIpBulk($valuesOutput); // remaining IP addresses  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
         fclose($handle);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        unlink($_FILES["file"]["name"]);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        unlink($uploadedFilePath);
 
-        return sizeof($ipArray);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        return implode("\n",$errorMessages);
     }
 
     /**
@@ -402,7 +410,7 @@ class ExtraWatchBlock
      */
     public function insertIpBulk($valuesOutput)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     {
-        $query = sprintf("INSERT IGNORE into #__extrawatch_blocked (id, ip, reason, country, `date`) values %s", $valuesOutput);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $query = sprintf("INSERT IGNORE into #__extrawatch_blocked (ip, reason, country, `date`) values %s", $valuesOutput);
         $this->database->executeQuery($query);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     }
 
