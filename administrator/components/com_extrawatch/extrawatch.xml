@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <extension type="component" version="3.0" method="upgrade">
 
-    <name>ExtraWatch</name>
+    <name>ExtraWatch PRO</name>
     <creationDate>2014</creationDate>
     <author>CodeGravity.com - http://www.extrawatch.com</author>
     <copyright>Copyright 2006-2014 by CodeGravity.com</copyright>
     <authorEmail>support@extrawatch.com</authorEmail>
     <authorUrl>http://www.extrawatch.com</authorUrl>
-    <version>2.3.2373 PRO</version>
+    <version>2.3.2377</version>
     <license>http://www.gnu.org/licenses/gpl-3.0.txt GNU/GPLv3</license>
     <description>
         ExtraWatch is an AJAX component and module for Joomla CMS that allows you to watch
@@ -178,6 +178,10 @@ in this section are copied from /site/ in the package -->
     </administration>
 
     <scriptfile>script.extrawatch.php</scriptfile>
+
+	 <updateservers>
+		<server type="extension" priority="1" name="ExtraWatch PRO update"><![CDATA[http://www.extrawatch.com/update/extrawatch/2.3/PRO/extrawatch-update.xml]]></server>
+     </updateservers>
 
 
 </extension>

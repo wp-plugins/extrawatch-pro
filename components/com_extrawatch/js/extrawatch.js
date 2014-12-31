@@ -95,14 +95,20 @@ var ew_Heatmap = {
         var url = urlBase + "&params=" + encodeURIComponent("&action=click&uri2titleId=" + uri2titleId + "&x=" + positionFromEvent[0] + "&y=" + positionFromEvent[1] + "&w=" + w + "&h=" + h + "&randHash=" + randHashToPass + "&xpath=" + encodeURIComponent(encodeURIComponent(xpath)));
 
 
-        if(ew_Heatmap.checkIfDoSynchronousClick(evt))	  {
-            downloadUrl(url, function (e) {}, true, false);	//download it synchronously
-        } else {
             setTimeout(function() {
-                downloadUrl(url, function (e) {}, true);
-            }, 0);	//call the click asynchronously so there is no delay in clicks
+        if(ew_Heatmap.checkIfDoSynchronousClick(evt))	  {
+			setTimeout(function() {
+            downloadUrl(url, function (e) {}, true, false);	//download it synchronously
+			}, 0);
+        } else {
+			setTimeout(function() {
+				downloadUrl(url, function (e) {}, true);
+			}, 0);
         }
-    },
+		}, 3000);	//we had to add some delay so that this call is last one. If it was called first, it was causing some problems with some shopping cart ajax calls
+
+
+		},
     keyListener: function (evt) {
         var evt = (evt) ? evt : ((event) ? event : null);
         var key = (evt) ? evt.which : event.keyCode;
@@ -154,16 +160,24 @@ var ew_Heatmap = {
 
     /* attach click event listener on onclick event */
     attachExtraWatchClickListener: function (randHashToPass, uri2titleId) {
-        window.document.onclick = function (evt) {
-            if (window.addEventListener) {
-                window.addEventListener("onclick", ew_Heatmap.extraWatch_click(evt, randHashToPass, uri2titleId), false);
-            } else if (window.attachEvent) {
-                window.attachEvent("onclick", ew_Heatmap.extraWatch_click(evt, randHashToPass, uri2titleId));
-            } else {
-                window.addEventListener("onclick", ew_Heatmap.extraWatch_click(evt, randHashToPass, uri2titleId), false);
-            }
-        }
+
+		if(!!window.jQuery) {	//registering click listener via jQuery if it's loaded
+			jQuery(document).bind("click", function (event) {
+                ew_Heatmap.extraWatch_click(event, randHashToPass, uri2titleId);
+				});
+		} else {
+			window.document.onclick = function (evt) {
+				if (window.addEventListener) {
+					window.addEventListener("onclick", ew_Heatmap.extraWatch_click(evt, randHashToPass, uri2titleId), false);
+				} else if (window.attachEvent) {
+					window.attachEvent("onclick", ew_Heatmap.extraWatch_click(evt, randHashToPass, uri2titleId));
+				} else {
+					window.addEventListener("onclick", ew_Heatmap.extraWatch_click(evt, randHashToPass, uri2titleId), false);
+				}
+			}
+		}
     },
+
 
     extraWatch_decorateLinksWithCustomHandler: function (extraWatchLinkElementsList) {
 		for (i = 0; i < extraWatchLinkElementsList.length; i++) {
@@ -242,7 +256,7 @@ var ew_Heatmap = {
 				 switch (target.type) {
 						 
 					 case "button": {
-		                return true;
+		                return false;	//we assume that all buttons are not navigating away, most of them are on site
 					 }
 					
 					 default : {	 
