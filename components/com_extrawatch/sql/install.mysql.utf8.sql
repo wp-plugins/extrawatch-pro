@@ -470,9 +470,6 @@
 				PRIMARY KEY  (`id`)
 				) ENGINE=InnoDB DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_general_ci;
 				
-				ALTER TABLE #__extrawatch_uri
-				ADD FOREIGN KEY (fk)
-				REFERENCES #__extrawatch(id) ON DELETE CASCADE;
 
 
 

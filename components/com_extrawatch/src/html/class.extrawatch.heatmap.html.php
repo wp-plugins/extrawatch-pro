@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 2381  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 2395  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2015 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.extrawatch.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -209,7 +209,9 @@ class ExtraWatchHeatmapHTML
 
     public function renderHighlightElementLink($uri, $xpath, $linkName = "")  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     {
-        return sprintf("<a href='%s?" . ExtraWatchHeatmap::HEATMAP_PARAM_NAME . "=%d&" . ExtraWatchHeatmap::HEATMAP_PARAM_HASH . "=%s&xpath=%s' target='_heatmap' title='%s'>%s</a>", $this->projectSite . $uri, 1, $this->extraWatch->database->getEscaped($this->extraWatch->config->getRandHash()), urlencode($xpath), htmlentities($xpath), $linkName ? $linkName : ExtraWatchHelper::truncate($xpath) );  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $projectSite = @$this->extraWatch->config->getProjectUrlByUsername(_EW_PROJECT_ID);
+        $uri = $this->extraWatch->config->getLiveSite();
+        return sprintf("<a href='%s?" . ExtraWatchHeatmap::HEATMAP_PARAM_NAME . "=%d&" . ExtraWatchHeatmap::HEATMAP_PARAM_HASH . "=%s&xpath=%s' target='_heatmap' title='%s'>%s</a>", $projectSite . $uri, 1, $this->extraWatch->database->getEscaped($this->extraWatch->config->getRandHash()), urlencode($xpath), htmlentities($xpath), $linkName ? $linkName : ExtraWatchHelper::truncate($xpath) );
     }
 
     function renderLatestHeatmapClicksTable()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  

@@ -496,8 +496,8 @@ DEFINE('_EW_GOALS_USERNAME_INVERSED', "Benutzername umgekehrte Bedingungen");
 DEFINE('_EW_GOALS_CAME_FROM_INVERSED', "Came from/Komme von umgekehrten Bedingungen");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
 DEFINE('_EW_STATS_MAP', "letzter Besuch der Karte");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_STATS_MAP_ENTER_KEY', "Bitte drücken Sie <a href='http://www.ipinfodb.com/register.php' target='_blank'>ipinfodb.com</a> eine Taste, um die Karte der letzten Besucher anzuzeigen:");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_STATS_MAP_STORE_KEY', "Speichere Taste");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_STATS_MAP_ENTER_KEY', "Bitte holen Sie sich einen 'API key' bei <a href='http://www.ipinfodb.com/register.php' target='_blank'>ipinfodb.com</a> und tragen ihn unten ein.");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_STATS_MAP_STORE_KEY', "API key Speichern");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_STATS_MAP_INVALID_KEY', "Bitte geben Sie einen gültigen ipinfodb key ein, den Sie von: <a href='http://www.ipinfodb.com/register.php' target='_blank'>ipinfodb.com</a> bekommen");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
 DEFINE('_EW_SIZEQUERY_BAD_REQUEST', "BAD REQUEST/Falsche Anfrage: ");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  

@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 2381  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 2395  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2015 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.codegravity.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -24,7 +24,7 @@ defined('_JEXEC') or die('Restricted access');
 # define('EXTRAWATCH_LIVE_SITE','/');  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
 define('EXTRAWATCH_VERSION', "2.3");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-define('EXTRAWATCH_REVISION', "2381");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+define('EXTRAWATCH_REVISION', "2395");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
 define('EXTRAWATCH_DEBUG', 0);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 define('EXTRAWATCH_PROFILING_ENABLED', 0);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -634,41 +634,63 @@ define('TYPE_EXTRAWATCH_GOALS_SEND_EMAIL_WHEN_REACHED', "checkbox");
 
 define('EXTRAWATCH_TABLES_TO_OPTIMIZE',  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 serialize(array(
-        "#__extrawatch_config",  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        "#__extrawatch_flow",  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        "#__extrawatch_goals",  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        "#__extrawatch_heatmap",  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        "#__extrawatch_history",  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        "#__extrawatch_info",  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        "#__extrawatch_internal",  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        "#__extrawatch_ip2c",  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        "#__extrawatch_keyphrase",  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        "#__extrawatch_uri",  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        "#__extrawatch_uri2keyphrase",  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        "#__extrawatch_uri2title",  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        "#__extrawatch_uri_history",  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        "#__extrawatch_uri_post")  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+"#__extrawatch",
+"#__extrawatch_blocked",
+"#__extrawatch_cache",
+"#__extrawatch_cc2c",
+"#__extrawatch_config",
+"#__extrawatch_dm_counter",
+"#__extrawatch_dm_extension",
+"#__extrawatch_dm_paths",
+"#__extrawatch_dm_referrer",
+"#__extrawatch_flow",
+"#__extrawatch_goals",
+"#__extrawatch_heatmap",
+"#__extrawatch_history",
+"#__extrawatch_info",
+"#__extrawatch_internal",
+"#__extrawatch_ip2c_cache",
+"#__extrawatch_keyphrase",
+"#__extrawatch_sql_scripts",
+"#__extrawatch_uri",
+"#__extrawatch_uri2keyphrase",
+"#__extrawatch_uri2keyphrase_pos",
+"#__extrawatch_uri2title",
+"#__extrawatch_uri_history",
+"#__extrawatch_uri_post",
+"#__extrawatch_user_log",
+"#__extrawatch_visit2goal"
+)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 ));
 
 define('EXTRAWATCH_TABLES_TO_TRUNCATE',  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 serialize(array(
-        "#__extrawatch_uri",  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        "#__extrawatch",  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        "#__extrawatch_blocked",  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        "#__extrawatch_cache",  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        "#__extrawatch_flow",  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        "#__extrawatch_goals",  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        "#__extrawatch_heatmap",  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        "#__extrawatch_history",  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        "#__extrawatch_info",  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        "#__extrawatch_internal",  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        "#__extrawatch_keyphrase",  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        "#__extrawatch_uri2keyphrase",  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        "#__extrawatch_uri2keyphrase_pos",  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        "#__extrawatch_uri2title",  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        "#__extrawatch_uri_history",  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        "#__extrawatch_uri_post",  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-    )
+"#__extrawatch",
+"#__extrawatch_blocked",
+"#__extrawatch_cache",
+"#__extrawatch_cc2c",
+"#__extrawatch_dm_counter",
+"#__extrawatch_dm_extension",
+"#__extrawatch_dm_paths",
+"#__extrawatch_dm_referrer",
+"#__extrawatch_flow",
+"#__extrawatch_goals",
+"#__extrawatch_heatmap",
+"#__extrawatch_history",
+"#__extrawatch_info",
+"#__extrawatch_internal",
+"#__extrawatch_ip2c_cache",
+"#__extrawatch_keyphrase",
+"#__extrawatch_sql_scripts",
+"#__extrawatch_uri",
+"#__extrawatch_uri2keyphrase",
+"#__extrawatch_uri2keyphrase_pos",
+"#__extrawatch_uri2title",
+"#__extrawatch_uri_history",
+"#__extrawatch_uri_post",
+"#__extrawatch_user_log",
+"#__extrawatch_visit2goal"
+)
 ));
 
 /* defines explicitely checkboxes */  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  

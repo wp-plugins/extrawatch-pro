@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 2381  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 2395  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2015 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.extrawatch.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -163,32 +163,32 @@ class ExtraWatchGoal
                       	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
                 if (@trim(@$row->clicked_element_xpath_condition) ) {
-                    $achieved[clicked_element_xpath_condition] = FALSE;
+                    @$achieved[clicked_element_xpath_condition] = FALSE;
                     if (@$this->helper->wildcardSearch(trim(@$row->clicked_element_xpath_condition),$clickedXpath)) {
-                        $achieved[clicked_element_xpath_condition] = TRUE;
+                        @$achieved[clicked_element_xpath_condition] = TRUE;
                     }
                 } else {
 
                     if (@trim($row->uri_inversed) == "on") {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                         if (@trim($row->uri_condition)) {
-                            $achieved[uri_condition] = FALSE;
+                            @$achieved[uri_condition] = FALSE;
                             if (@ $this->helper->wildcardSearch($row->uri_condition, trim($this->helper->getURI()))) {
                             } else {
-                                $achieved[uri_condition] = TRUE;
+                                @$achieved[uri_condition] = TRUE;
                             }
                         }
                     } else {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                         if (@trim($row->uri_condition)) {
-                            $achieved[uri_condition] = FALSE;
+                            @$achieved[uri_condition] = FALSE;
                             if (@ $this->helper->wildcardSearch($row->uri_condition, trim($this->helper->getURI()))) {
-                                $achieved[uri_condition] = TRUE;
+                                @$achieved[uri_condition] = TRUE;
                             }
                         }  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                     }  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
                     if (@trim($row->get_inversed) == "on") {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                         if (@trim($row->get_condition)) {
-                            $achieved[get_condition] = FALSE;
+                            @$achieved[get_condition] = FALSE;
                             if (@ $this->helper->wildcardSearch($row->get_condition, trim(ExtraWatchHelper::requestGet($row->get_var)))) {
                                   	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                             } else  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -200,23 +200,23 @@ class ExtraWatchGoal
                                         }  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                                     }  	 	
                                     if ($found) {
-										$achieved[uri_condition] = FALSE;
+										@$achieved[uri_condition] = FALSE;
 									}  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                                 } else {
-                                    $achieved[uri_condition] = TRUE;
+                                    @$achieved[uri_condition] = TRUE;
                                 }
                         }  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                     } else {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                         if (@trim($row->get_condition)) {
-                            $achieved[get_condition] = FALSE;
+                            @$achieved[get_condition] = FALSE;
                             if (@ $this->helper->wildcardSearch($row->get_condition, trim(ExtraWatchHelper::requestGet($row->get_var)))) {
-                                $achieved[get_condition] = TRUE;
+                                @$achieved[get_condition] = TRUE;
                             } else  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                                 if ($row->get_var == "*") {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                                     foreach (ExtraWatchHelper::requestGet() as $get) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                                         if ($this->helper->wildcardSearch($row->get_condition, trim($get))) {
-                                            $achieved[get_condition] = TRUE;
+                                            @$achieved[get_condition] = TRUE;
                                         }  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                                     }  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                                 }
@@ -225,7 +225,7 @@ class ExtraWatchGoal
 
                     if (@trim($row->post_inversed) == "on") {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                         if (@trim($row->post_condition)) {
-                            $achieved[post_condition] = FALSE;
+                            @$achieved[post_condition] = FALSE;
                             if (@ $this->helper->wildcardSearch($row->post_condition, trim(ExtraWatchHelper::requestPost($row->post_var)))) {
                                   	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                             } else  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -237,22 +237,22 @@ class ExtraWatchGoal
                                         }  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                                     }  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                                     if ($found) {
-                                        $achieved[post_condition] = FALSE;
+                                        @$achieved[post_condition] = FALSE;
                                     }
                                 } else {
-                                    $achieved[post_condition] = TRUE;
+                                    @$achieved[post_condition] = TRUE;
                                 }
                         }  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                     } else {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                         if (@trim($row->post_condition)) {
-                            $achieved[post_condition] = FALSE;
+                            @$achieved[post_condition] = FALSE;
                             if (@ $this->helper->wildcardSearch($row->post_condition, trim(ExtraWatchHelper::requestPost($row->post_var)))) {
-                                $achieved[post_condition] = TRUE;
+                                @$achieved[post_condition] = TRUE;
                             } else  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                                 if ($row->post_var == "*") {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                                     foreach (ExtraWatchHelper::requestPost() as $post) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                                         if ($this->helper->wildcardSearch($row->post_condition, trim($post))) {
-                                            $achieved[post_condition] = TRUE;
+                                            @$achieved[post_condition] = TRUE;
                                         }  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                                     }  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                                 }
@@ -262,90 +262,90 @@ class ExtraWatchGoal
 
                     if (@trim($row->title_inversed) == "on") {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                         if (@trim($row->title_condition)) {
-                            $achieved[title_condition] = FALSE;
+                            @$achieved[title_condition] = FALSE;
                             if (@ $this->helper->wildcardSearch($row->title_condition, trim($title))) {
                                   	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                             } else
-                                $achieved[title_condition] = TRUE;
+                                @$achieved[title_condition] = TRUE;
                         }  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                     } else {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                         if (@trim($row->title_condition)) {
-                            $achieved[title_condition] = FALSE;
+                            @$achieved[title_condition] = FALSE;
                             if (@ $this->helper->wildcardSearch($row->title_condition, trim($title))) {
-                                $achieved[title_condition] = TRUE;
+                                @$achieved[title_condition] = TRUE;
                             }
                         }  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                     }  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
                     if (@trim($row->username_inversed) == "on") {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                         if (@trim($row->username_condition)) {
-                            $achieved[username_condition] = FALSE;
+                            @$achieved[username_condition] = FALSE;
                             if (@ $this->helper->wildcardSearch($row->username_condition, trim($username))) {
                                   	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                             } else {
-                                $achieved[username_condition] = TRUE;
+                                @$achieved[username_condition] = TRUE;
                             }
                         }  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                     } else {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                         if (@trim($row->username_condition)) {
-                            $achieved[username_condition] = FALSE;
+                            @$achieved[username_condition] = FALSE;
                             if (@ $this->helper->wildcardSearch($row->username_condition, trim($username))) {
-                                $achieved[username_condition] = TRUE;
+                                @$achieved[username_condition] = TRUE;
                             }
                         }  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                     }  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
                     if (@trim($row->ip_inversed) == "on") {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                         if (@trim($row->ip_condition)) {
-                            $achieved[ip_condition] = FALSE;
+                            @$achieved[ip_condition] = FALSE;
                             if (@ $this->helper->wildcardSearch($row->ip_condition, trim($ip))) {
                                   	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                             } else {
-                                $achieved[ip_condition] = TRUE;
+                                @$achieved[ip_condition] = TRUE;
                             }
                         }  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                     } else {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                         if (@trim($row->ip_condition)) {
-                            $achieved[ip_condition] = FALSE;
+                            @$achieved[ip_condition] = FALSE;
                             if (@ $this->helper->wildcardSearch($row->ip_condition, trim($ip))) {
-                                $achieved[ip_condition] = TRUE;
+                                @$achieved[ip_condition] = TRUE;
                             }
                         }  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                     }  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
                     if (@trim($row->came_from_inversed) == "on") {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                         if (@trim($row->came_from_condition)) {
-                            $achieved[came_from_condition] = FALSE;
+                            @$achieved[came_from_condition] = FALSE;
                             if (@ $this->helper->wildcardSearch($row->came_from_condition, trim($came_from)) || $this->helper->wildcardSearch($liveSite . $row->came_from_condition, trim($came_from))) {
                                   	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                             } else {
-                                $achieved[came_from_condition] = TRUE;
+                                @$achieved[came_from_condition] = TRUE;
                             }
                         }
                     } else {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                         if (@trim($row->came_from_condition)) {
-                            $achieved[came_from_condition] = FALSE;
+                            @$achieved[came_from_condition] = FALSE;
                             if (@ $this->helper->wildcardSearch($row->came_from_condition, trim($came_from)) || $this->helper->wildcardSearch($liveSite . $row->came_from_condition, trim($came_from))) {
-                                $achieved[came_from_condition] = TRUE;
+                                @$achieved[came_from_condition] = TRUE;
                             }
                         }  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                     }  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
                     if (@trim($row->country_inversed) == "on") {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                         if (@trim($row->country_condition)) {
-                            $achieved[came_from_condition] = FALSE;
+                            @$achieved[came_from_condition] = FALSE;
                             $country = $this->helper->countryByIp($ip); //performance optim. - checking country only if there is some condition
                             if (@ $this->helper->wildcardSearch($row->country_condition, trim($country))) {
                             } else {
-                                $achieved[came_from_condition] = TRUE;
+                                @$achieved[came_from_condition] = TRUE;
                             }
                         }  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                     } else {
                         if (@trim($row->country_condition)) {
-                            $achieved[country_condition] = FALSE;
+                            @$achieved[country_condition] = FALSE;
                             $country = $this->helper->countryByIp($ip); //performance optim. - checking country only if there is some condition
                             if (@ $this->helper->wildcardSearch($row->country_condition, trim($country))) {
-                                $achieved[country_condition] = TRUE;
+                                @$achieved[country_condition] = TRUE;
                             }
                         }  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                     }  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
