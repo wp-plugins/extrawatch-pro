@@ -161,7 +161,7 @@ var ew_Heatmap = {
     /* attach click event listener on onclick event */
     attachExtraWatchClickListener: function (randHashToPass, uri2titleId) {
 
-		if(!!window.jQuery) {	//registering click listener via jQuery if it's loaded
+		if(false) {	//bugfix: binding via jquery was taking too long, using rather native js addEventListener //registering click listener via jQuery if it's loaded
 			jQuery(document).bind("click", function (event) {
                 ew_Heatmap.extraWatch_click(event, randHashToPass, uri2titleId);
 				});
