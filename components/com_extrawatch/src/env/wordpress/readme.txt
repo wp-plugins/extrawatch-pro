@@ -4,7 +4,7 @@ Donate link: http://www.extrawatch.com/
 Tags: analytics, slimstat, wp slimstat, statistics, stats, tracking, widget, heatmap, clicks, conversion tracking, counter, anti-spam, stats, visitors, downloads, download monitor, click map, tracking, maps, location, geolocation, statistics, spam, flags, goals, analytics, click, heat map, mouse click, tap, touch, tracker, tracking, usability, analytics, analyze, geolocation, maxmind, online users, pageviews, reports, spider, statistics, StatPress, stats, tracker, tracking, wassup
 Requires at least: 3.2.
 Tested up to: 4.0
-Stable tag: 2.3.2405
+Stable tag: 2.3.2417
 License: GNU/GPLv2
 
 Optimize website and increase sales. Watch your visitors in real time, Click Heatmap, Conversion Tracking, Download monitor, Anti-spam, Email Reports

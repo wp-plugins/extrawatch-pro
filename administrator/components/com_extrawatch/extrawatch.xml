@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <extension type="component" version="3.0" method="upgrade">
 
-    <name>ExtraWatch</name>
+    <name>COM_EXTRAWATCH</name>
     <creationDate>2015</creationDate>
     <author>ExtraWatch PRO by CodeGravity.com - http://www.extrawatch.com</author>
     <copyright>Copyright 2006-2015 by CodeGravity.com</copyright>
     <authorEmail>support@extrawatch.com</authorEmail>
     <authorUrl>http://www.extrawatch.com</authorUrl>
-    <version>2.3.2405</version>
+    <version>2.3.2417</version>
     <license>http://www.gnu.org/licenses/gpl-3.0.txt GNU/GPLv3</license>
     <description>
         ExtraWatch is an AJAX component and module for Joomla CMS that allows you to watch
@@ -22,10 +22,10 @@
 
     <install>
         <sql>
-            <file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
-            <file driver="mysql">sql/install.mysql.utf8.sql</file>
-            <file driver="mysqli" charset="utf8">sql/install.mysql.utf8.sql</file>
-            <file driver="mysqli">sql/install.mysql.utf8.sql</file>
+<file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+<file driver="mysql">sql/install.mysql.utf8.sql</file>
+<file driver="mysqli" charset="utf8">sql/install.mysql.utf8.sql</file>
+<file driver="mysqli">sql/install.mysql.utf8.sql</file>
         </sql>
     </install>
 
@@ -70,112 +70,49 @@ in this section are copied from /site/ in the package -->
     <uninstallfile>uninstall.extrawatch.php</uninstallfile>
 
     <administration>
-        <menu task="default" img="components/com_extrawatch/img/icons/extrawatch-logo-16x16.gif">ExtraWatch</menu>
+        <menu task="default" img="components/com_extrawatch/img/menu/extrawatch-logo-16x16.png">COM_EXTRAWATCH</menu>
         <submenu>
-            <menu
-                    link="option=com_extrawatch"
-                    img="components/com_extrawatch/img/icons/map_icon.gif"
-                    alt="Live Stats">Live Stats
-            </menu>
+            <menu link="option=com_extrawatch" img="components/com_extrawatch/img/menu/visitors.png" alt="Live Stats">COM_EXTRAWATCH_VISITORS</menu>
             
-            <menu
-                    link="option=com_extrawatch&amp;task=users"
-                    img="components/com_extrawatch/img/icons/credits.png"
-                    alt="Users">Users
-            </menu>
-            <menu
-                    link="option=com_extrawatch&amp;task=downloads"
-                    img="components/com_extrawatch/img/icons/downloads.png"
-                    alt="Downloads">Downloads
-            </menu>
-            <menu
-                    link="option=com_extrawatch&amp;task=seo"
-                    img="components/com_extrawatch/img/icons/seo.png"
-                    alt="SEO">SEO
-            </menu>
-            <menu
-                    link="option=com_extrawatch&amp;task=heatmap"
-                    img="components/com_extrawatch/img/icons/click.png"
-                    alt="Clicks">Clicks
-            </menu>
-            <menu
-                    link="option=com_extrawatch&amp;task=flow"
-                    img="components/com_extrawatch/img/icons/flow.png"
-                    alt="Traffic Flow">Traffic Flow
-            </menu>
+            <menu link="option=com_extrawatch&amp;task=heatmap" img="components/com_extrawatch/img/menu/heatmap.png" alt="Clicks">COM_EXTRAWATCH_HEATMAP</menu>
+            <menu link="option=com_extrawatch&amp;task=clicks" img="components/com_extrawatch/img/menu/clicks.png" alt="Clicks">COM_EXTRAWATCH_CLICKS</menu>
+            <menu link="option=com_extrawatch&amp;task=users" img="components/com_extrawatch/img/menu/users.png" alt="Users">COM_EXTRAWATCH_USERS</menu>
+            <menu link="option=com_extrawatch&amp;task=downloads" img="components/com_extrawatch/img/menu/downloads.png" alt="Downloads">COM_EXTRAWATCH_DOWNLOADS</menu>
+            <menu link="option=com_extrawatch&amp;task=seo" img="components/com_extrawatch/img/menu/seo.png" alt="SEO">COM_EXTRAWATCH_SEO</menu>
+            <menu link="option=com_extrawatch&amp;task=location" img="components/com_extrawatch/img/menu/location.png" alt="Traffic Flow">COM_EXTRAWATCH_LOCATION</menu>
+            <menu link="option=com_extrawatch&amp;task=flow" img="components/com_extrawatch/img/menu/flow.png" alt="Traffic Flow">COM_EXTRAWATCH_FLOW</menu>
             
-            <menu
-                    link="option=com_extrawatch&amp;task=graphs"
-                    img="components/com_extrawatch/img/icons/trend_icon.gif"
-                    alt="Graphs &amp; Trends">Graphs &amp; Trends
-            </menu>
-            <menu
-                    link="option=com_extrawatch&amp;task=goals"
-                    img="components/com_extrawatch/img/icons/goal.gif"
-                    alt="Goals">Goals
-            </menu>
-            <menu
-                    link="option=com_extrawatch&amp;task=history"
-                    img="components/com_extrawatch/img/icons/history.png"
-                    alt="Visit History">Visit History
-            </menu>
-            <menu
-                    link="option=com_extrawatch&amp;task=antiSpam"
-                    img="components/com_extrawatch/img/icons/antispam.png"
-                    alt="Anti-spam &amp; Blocking">Anti-spam / Blocking
-            </menu>
-            <menu
-                    link="option=com_extrawatch&amp;task=emails"
-                    img="components/com_extrawatch/img/icons/emails.png"
-                    alt="Email Reports">Email Reports
-            </menu>
-            <menu
-                    link="option=com_extrawatch&amp;task=license"
-                    img="components/com_extrawatch/img/icons/license.png"
-                    alt="Your License">Your License
-            </menu>
+            <menu link="option=com_extrawatch&amp;task=graphs" img="components/com_extrawatch/img/menu/graphs.png" alt="Graphs &amp; Trends">COM_EXTRAWATCH_GRAPHS</menu>
+            <menu link="option=com_extrawatch&amp;task=goals" img="components/com_extrawatch/img/menu/goals.png" alt="Goals">COM_EXTRAWATCH_GOALS</menu>
+            <menu link="option=com_extrawatch&amp;task=history" img="components/com_extrawatch/img/menu/history.png" alt="Visit History">COM_EXTRAWATCH_HISTORY</menu>
+            <menu link="option=com_extrawatch&amp;task=antiSpam" img="components/com_extrawatch/img/menu/antispam.png" alt="Anti-spam &amp; Blocking">COM_EXTRAWATCH_ANTISPAM</menu>
+            <menu link="option=com_extrawatch&amp;task=emails" img="components/com_extrawatch/img/menu/emails.png" alt="Email Reports">COM_EXTRAWATCH_REPORTS</menu>
+            <menu link="option=com_extrawatch&amp;task=license" img="components/com_extrawatch/img/menu/license.png" alt="Your License">COM_EXTRAWATCH_LICENSE</menu>
             
-            <menu
-                    link="option=com_extrawatch&amp;task=status"
-                    img="components/com_extrawatch/img/icons/status.png"
-                    alt="Database Status">Database Status
-            </menu>
-            <menu
-                    link="option=com_extrawatch&amp;task=sizes"
-                    img="components/com_extrawatch/img/icons/sizes.png"
-                    alt="Modules / Components Sizes">Modules / Components Sizes
-            </menu>
+            <menu link="option=com_extrawatch&amp;task=status" img="components/com_extrawatch/img/menu/database.png" alt="Database Status">COM_EXTRAWATCH_DATABASE</menu>
+            <menu link="option=com_extrawatch&amp;task=sizes" img="components/com_extrawatch/img/menu/sizes.png" alt="Modules / Components Sizes">COM_EXTRAWATCH_MODULES</menu>
             
-            <menu
-                    link="option=com_extrawatch&amp;task=settings"
-                    img="components/com_extrawatch/img/icons/settings.gif"
-                    alt="Settings">Settings
-            </menu>
-            <menu
-                    link="option=com_extrawatch&amp;task=update"
-                    img="components/com_extrawatch/img/icons/update.png"
-                    alt="Update">Update
-            </menu>
-            <menu
-                    link="option=com_extrawatch&amp;task=credits"
-                    img="components/com_extrawatch/img/icons/credits.png"
-                    alt="Credits">Credits
-            </menu>
+            <menu link="option=com_extrawatch&amp;task=settings" img="components/com_extrawatch/img/menu/settings.png" alt="Settings">COM_EXTRAWATCH_SETTINGS</menu>
         </submenu>
 
 
         <files>
-            <folder>sql</folder>
-            <folder>img</folder>
-            <folder>img/icons/</folder>
-            <folder>img/flags/</folder>
-            <filename>script.extrawatch.php</filename>
-            <filename>install.extrawatch.php</filename>
-            <filename>uninstall.extrawatch.php</filename>
-            <filename>admin.extrawatch.php</filename>
-            <filename>index.html</filename>
+<folder>sql</folder>
+<folder>img</folder>
+<folder>img/icons/</folder>
+<folder>img/flags/</folder>
+<filename>script.extrawatch.php</filename>
+<filename>install.extrawatch.php</filename>
+<filename>uninstall.extrawatch.php</filename>
+<filename>admin.extrawatch.php</filename>
+<filename>index.html</filename>
         </files>
-    </administration>
+
+	<languages folder="language">
+      <language tag="en-GB">en-GB.com_extrawatch.sys.ini</language>
+    </languages>
+
+	</administration>
 
     <scriptfile>script.extrawatch.php</scriptfile>
 

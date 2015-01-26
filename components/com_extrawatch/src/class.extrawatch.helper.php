@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 2405  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 2417  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2015 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.extrawatch.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -544,16 +544,20 @@ function renderHTMLCodeSnippet($projectId) {
         $output .= ("</script>\n");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     } else {
         $liveSite = $this->config->getLiveSiteWithSuffix();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-		echo $this->env->addScript($liveSite."components/com_extrawatch/js/jdownloadurl.js");
-
-		if (@get_class($this->env) != "ExtraWatchWordpressEnv") {	//query is already initialized for wordpress and would cause conflict otherwise
-			echo $this->env->addScript($liveSite."components/com_extrawatch/js/extrawatch.js");
+		if (@get_class($this->env) != "ExtraWatchPrestaShopEnv") {	//in PrestaShop this is done in extrawatch.php
+			echo $this->env->addScript($liveSite."components/com_extrawatch/js/jdownloadurl.js");
 		}
-		
+
+		if (@get_class($this->env) != "ExtraWatchWordpressEnv" && @get_class($this->env) != "ExtraWatchPrestaShopEnv") {	//query is already initialized for wordpress and would cause conflict otherwise			echo $this->env->addScript($liveSite."components/com_extrawatch/js/extrawatch.js");
+            echo $this->env->addScript($liveSite."components/com_extrawatch/js/extrawatch.js");
+		}
+
 		$output = "";
 		$title = "Visitor heat map tracker, live visitor tracking, real time visitor counter";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
+    if (@get_class($this->env) != "ExtraWatchPrestaShopEnv") {	//in PrestaShop this is done in extrawatch.php
 		echo $this->env->addScript($liveSite."components/com_extrawatch/js/heatmap/heatmap.js");
+    }
 
 		if (!$this->config->isAdFree()  && !$this->config->isUnregistered()) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
@@ -677,7 +681,7 @@ static function getTimezoneOffsetByTimezoneName($userTimezoneName){
 
 
 	static function getUrlQueryParams() {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-		$url = ExtraWatchHelper::getProtocol()."://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+		$url = ExtraWatchHelper::getProtocol()."://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']."?".$_SERVER['QUERY_STRING'];
         $url = str_replace("&amp;","&",$url);
 		$query_str = parse_url($url, PHP_URL_QUERY);
 		parse_str($query_str, $query_params);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  

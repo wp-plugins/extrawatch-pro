@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 2405  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 2417  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2015 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.extrawatch.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -42,17 +42,17 @@ class pkg_extrawatchInstallerScript {
 		}
 
 		$app = JFactory::getApplication();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        $code  = "<div style='background-color: #FFF9D1; color: black; padding: 10px;'><h2 style='color: green'>Whoo! Success!</h2>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        $code .= "<h3 style='color: #1115AB'>What now?</h3>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        $code .= "From main menu choose <b>Components -&gt; extrawatch</b>, then in another window visit your website";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        $code .= ".. and start seeing your visitors right now!<br/>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $code  = "<div style='color: black; margin: 10px;'><h2>ExtraWatch PRO installed and activated successfully</h2>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $code .= "<h2 style='color: #1115AB'>How to access ExtraWatch?</h2>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $code .= "<ul style='background-image:none'><li>From main menu choose <b>Components -&gt; ExtraWatch</b></li></ul>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $code .= "<br/>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 		
-        $code .= "<h3 style='color: #1115AB'>Need help or do you have any questions how this software can help your website?</h3>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        $code .= "Contact us via live chat widget in lower right corner on <a href='http://www.extrawatch.com' target='_blank'>extrawatch.com</a> or write your question to support (at) extrawatch.com";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        $code .= "<h3 style='color: #1115AB'>Join the community of users of ExtraWatch, share your tips!</h3>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        $code .= "<li>Like us on <a href='http://www.facebook.com/ExtraWatch' target='_blank'>Facebook</a> or follow us on <a href='http://www.twitter.com/ExtraWatch' target='_blank'>twitter</a> and get latest information!</li><br/>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        $code .= "</div>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        $code .= "<iframe src=\"http://www.extrawatch.com/track/extrawatch/2.3/install/?time=".time()."&license=PRO&domain=$domain&version=2.3.2405&ip=$ip&env=ExtraWatchJoomlaEnv\" width=\"1px\" height=\"1px\" frameborder=\"0\" style='max-width:0px;'></iframe>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $code .= "<h2 style='color: #1115AB'>Need help?</h2>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $code .= "<ul style='background-image:none'><li>Open a support ticket at <a href='http://www.extrawatch.com/support' target='_blank'>extrawatch.com</a></ul><br/>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $code .= "<h2 style='color: #1115AB'>Join the community of users of ExtraWatch, share your tips!</h2>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $code .= "<ul style='background-image:none'><li>Give us a like us on <a href='http://www.facebook.com/ExtraWatch' target='_blank'>Facebook</a> or follow us on <a href='http://www.twitter.com/ExtraWatch' target='_blank'>twitter</a> and get latest information!</li><br/>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $code .= "</ul></div>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $code .= "<iframe src=\"http://www.extrawatch.com/track/extrawatch/2.3/install/?time=".time()."&license=PRO&domain=$domain&version=2.3.2417&ip=$ip&env=ExtraWatchJoomlaEnv\" width=\"1px\" height=\"1px\" frameborder=\"0\" style='max-width:0px;'></iframe>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         $app->enqueueMessage($code);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     }
 }
