@@ -95,17 +95,13 @@ var ew_Heatmap = {
         var url = urlBase + "&params=" + encodeURIComponent("&action=click&uri2titleId=" + uri2titleId + "&x=" + positionFromEvent[0] + "&y=" + positionFromEvent[1] + "&w=" + w + "&h=" + h + "&randHash=" + randHashToPass + "&xpath=" + encodeURIComponent(encodeURIComponent(xpath)));
 
 
-            setTimeout(function() {
         if(ew_Heatmap.checkIfDoSynchronousClick(evt))	  {
-			setTimeout(function() {
             downloadUrl(url, function (e) {}, true, false);	//download it synchronously
-			}, 0);
         } else {
 			setTimeout(function() {
 				downloadUrl(url, function (e) {}, true);
-			}, 0);
+			}, 3000);	//we had to add some delay so that this call is last one. If it was called first, it was causing some problems with some shopping cart ajax calls
         }
-		}, 3000);	//we had to add some delay so that this call is last one. If it was called first, it was causing some problems with some shopping cart ajax calls
 
 
 		},
@@ -293,17 +289,11 @@ var ew_Heatmap = {
     },
 
     checkIfDoSynchronousClick: function (evt) {
-        var targetElement = evt.target;
-        var isNavigatingAway = false;
-        while(targetElement != null) {  /* go through all parent elements */
-            if (ew_Heatmap.isTargetElementNavigatingAway(targetElement)) {
-                isNavigatingAway = true;
-                break;
-            }
-            targetElement = targetElement.parentElement;
-        };
-
-        return isNavigatingAway;    /* do synchronous click if navigating away */
+		if (evt.target != null && evt.target.href != null && ew_Helper.startsWith(evt.target.href,"http")) {	//only for links which have http://
+			return true;
+		}
+		
+        return false;    /* do synchronous click if navigating away */
     },
 
 
