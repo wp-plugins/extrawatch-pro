@@ -278,9 +278,9 @@ var ew_Heatmap = {
 
     },
 
-    checkIfElementIsInForm: function (targetElement) {
+    checkIfElementContainsHrefWithHttp: function (targetElement, domain) {
         while(targetElement != null) {  /* go through all parent elements */
-            if (targetElement.method == "post") {
+            if (targetElement.href != null && ew_Helper.startsWith(targetElement.href,"http") && !(targetElement.href.indexOf(domain) > 0)) {
                 return true;
             }
             targetElement = targetElement.parentElement;
@@ -289,7 +289,11 @@ var ew_Heatmap = {
     },
 
     checkIfDoSynchronousClick: function (evt) {
-		if (evt.target != null && evt.target.href != null && ew_Helper.startsWith(evt.target.href,"http")) {	//only for links which have http://
+		var currentDomain = null;
+		if (window.location && window.location.href && window.location.href.split('/') && (window.location.href.split('/').length > 0)) {
+			currentDomain = window.location.href.split('/')[2];
+		}
+		if (evt.target != null && ew_Heatmap.checkIfElementContainsHrefWithHttp(evt.target, currentDomain)) {	//only for links which have http://
 			return true;
 		}
 		
