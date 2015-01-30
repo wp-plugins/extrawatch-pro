@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 2424  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 2425  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2015 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.extrawatch.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -123,8 +123,12 @@ class ExtraWatchGoal
             $value = @$post[$key];  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
             if (array_search($key, $allowedFields)) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                 $keys[] = strtolower($key);
-                if (@get_class($env) == "ExtraWatchWordpressEnv") { //wordpress post values come pre-escaped
+                if (@get_class($env) != "ExtraWatchWordpressEnv") { //wordpress post values come pre-escaped
                     $value = sprintf("%s", $this->database->getEscaped($value));
+                } else {
+                    if ($key == "CLICKED_ELEMENT_XPATH_CONDITION") {
+                        $value = $this->unescapeXPathCondition($value);
+                    }
                 }
                 $values[] = "'".$value."'";
             }
@@ -571,6 +575,18 @@ class ExtraWatchGoal
     function getGoalsForVisitIdBetweenTimestamps($visitId, $earlierTimestamp, $laterTimestamp) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         $query = sprintf("SELECT `name`, goalId, `timestamp` FROM  `#__extrawatch_visit2goal` LEFT JOIN `#__extrawatch_goals` ON `#__extrawatch_goals`.id = `#__extrawatch_visit2goal`.goalId  where `#__extrawatch_visit2goal`.visitId = '%d' and (%d > `timestamp`) and (`timestamp` > %d) ORDER BY `#__extrawatch_visit2goal`.timestamp DESC ", (int) $visitId, (int) $earlierTimestamp, (int) $laterTimestamp);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         return $this->database->objectListQuery($query);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    }
+
+    /**
+	 * Unescapes \\" to "
+     * @param $value
+     * @return mixed
+     */
+    public function unescapeXPathCondition($value)
+    {
+        $value = str_replace("\\\"", "\"", $value);
+        $value = str_replace("\\\"", "\"", $value);
+        return $value;
     }
 
 
