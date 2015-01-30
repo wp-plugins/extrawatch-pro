@@ -1,5 +1,5 @@
 <extensionset name="ExtraWatch PRO" description="ExtraWatch PRO Updates">
-    <extension name="pkg_extrawatch" element="pkg_extrawatch" type="package" version="2.3.2422"
+    <extension name="pkg_extrawatch" element="pkg_extrawatch" type="package" version="2.3.2424"
                detailsurl="http://www.extrawatch.com/update/extrawatch/2.3/PRO/extrawatch-update.xml"/>
 
 </extensionset>
