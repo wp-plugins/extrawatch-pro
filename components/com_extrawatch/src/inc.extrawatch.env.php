@@ -21,7 +21,7 @@ require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "src
 
 $envName = "joomla";	//this is being replaced by actual build  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 if ($envName == "@BUILD_"."ENV_NAME@") {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-	$envName = "joomla";
+	$envName = "wordpress";
 }
 
 require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "src" . DS ."env" . DS . $envName . DS . "class.extrawatch.env.$envName.php";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
