@@ -1,5 +1,0 @@
-<?php
-
-class CodeGravity_ExtraWatch_Helper_Data extends Mage_Core_Helper_Abstract {
-
-}
