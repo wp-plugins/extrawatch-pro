@@ -5845,6 +5845,9 @@ button.close {
 
 .sidebar {
   display: none;
+  width:16.666%;
+  max-width:16.666%;
+  float: left;
 }
 
 .sidebar {
@@ -5897,6 +5900,7 @@ width: 100%;
   //top:100px;
 //  position: absolute;
   vertical-align: top;
+  max-width:83.3333%;
 }
 @media {
   .main {
