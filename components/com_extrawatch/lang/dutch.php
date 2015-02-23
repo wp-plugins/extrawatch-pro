@@ -653,3 +653,4 @@ DEFINE('_EW_AGENT_NOT_PUBLISHED',"Agent module die gegevens verzamelt is niet ge
 1. Ga naar Weergave -> Widgets<br/>
 2. Drag and Drop de ExtraWatch agent do plaatshouder aan de rechterzijde van de widget die reeds zichtbaar is in de frontend<br/>
 ");
+DEFINE('_EW_USER_NO_LONGER_EXISTS',"<i>User with id %d no longer exists</i>");

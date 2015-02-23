@@ -650,3 +650,4 @@ DEFINE('_EW_AGENT_NOT_PUBLISHED',"Agent module which gathers data is not publish
 1. Go to Apperance -> Widgets<br/>
 2. Drag and Drop ExtraWatch agent do placeholder on right to widget that it's already visible in frontend<br/>
 ");
+DEFINE('_EW_USER_NO_LONGER_EXISTS',"<i>User with id %d no longer exists</i>");
