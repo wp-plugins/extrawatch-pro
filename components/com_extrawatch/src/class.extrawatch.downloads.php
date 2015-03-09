@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 2439  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 2477  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2015 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.codegravity.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -44,6 +44,11 @@ class ExtraWatchDownloads
 
     function increaseFileDownload($file) {
 
+        $fileExtension = pathinfo($file, PATHINFO_EXTENSION);
+
+        if (!$this->checkIfExtensionAllowed($fileExtension)) {
+            die("Downloading file with this extension is not allowed!");
+        }
         $ip = ExtraWatchVisit::getRemoteIPAddress();
 
         if (@$this->config->isIgnored('IP', $ip)) { // do not count downloads for excluded IP addresses
@@ -845,6 +850,13 @@ class ExtraWatchDownloads
     function getDownloadCountForDay($date) {
         $filepathquery_curr = sprintf("SELECT COUNT(*) FROM #__extrawatch_dm_counter where ddate='%s' ", $this->database->getEscaped($date));
         return $this->database->resultQuery($filepathquery_curr);
+
+    }
+
+    function checkIfExtensionAllowed($extension) {
+        $extensionquery = sprintf("select count(*) from #__extrawatch_dm_extension where extname='%s'", $this->database->getEscaped($extension));
+        $this->database->setQuery($extensionquery);
+        return $this->database->loadResult();
 
     }
 }

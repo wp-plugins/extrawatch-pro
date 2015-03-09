@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 2439  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 2477  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2015 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.extrawatch.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -40,23 +40,25 @@ class ExtraWatchUserHTML
 				} else {
 					$countryCode = $user->countryCode;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 				}
-				$countryName = $this->extraWatch->helper->countryCodeToCountryName($countryCode);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-				
-				
-                $output .= "<tr>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                $output .= "<td width='20%'>".ExtraWatchDate::getDateTimeFromUTC($user->timestamp)."</td>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                $userName = $this->env->getUsernameById($user->userId);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                $output .= "<td width='20%'>".$userName."</td>";
-                $userRealName = $this->env->getUserRealNameById($user->userId);
-                $output .= "<td width='20%'>".$userRealName."</td>";
-                $output .= "<td width='20%'>".$user->ip."</td>";
-                $output .= "<td width='20%'>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-				if (@$countryCode) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-					$output .= "<img src='".$this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/flags/".$countryCode.".png' title='".$countryName."'/>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-				}
-				$output .= "</td>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                $output .= "<td width='20%'>".$blockingActionOutput."</td>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                $output .= "</tr>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+				$countryName = $this->extraWatch->helper->countryCodeToCountryName($countryCode);
+
+
+                $userName = $this->env->getUsernameById($user->userId);
+                if (@$userName) {
+                    $output .= "<tr>";
+                    $output .= "<td width='20%'>".ExtraWatchDate::getDateTimeFromUTC($user->timestamp)."</td>";
+                    $output .= "<td width='20%'>".$userName."</td>";
+                    $userRealName = $this->env->getUserRealNameById($user->userId);
+                    $output .= "<td width='20%'>".$userRealName."</td>";
+                    $output .= "<td width='20%'>".$user->ip."</td>";
+                    $output .= "<td width='20%'>";
+                    if (@$countryCode) {
+                        $output .= "<img src='".$this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/flags/".$countryCode.".png' title='".$countryName."'/>";
+                    }
+                    $output .= "</td>";
+                    $output .= "<td width='20%'>".$blockingActionOutput."</td>";
+                    $output .= "</tr>";
+                }
             }
         }
 

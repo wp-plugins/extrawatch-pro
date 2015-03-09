@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 2439  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 2477  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2015 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.extrawatch.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -448,7 +448,7 @@ class ExtraWatchVisit
 
       ExtraWatchLog::debug("Insert bot visit from insertVisit");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 	  $this->insertBotVisit($uri, $referrer, "", $ip, $username);
-	  ExtraWatchLog::debug("Visit inserted: IP: $ip, ref: $referrer, live site: $liveSite");
+	  ExtraWatchLog::debug("Visit inserted: IP: $ip, ref: $referrer, live site: $liveSite username: $username");
 
       $this->goal->checkGoals("", $username, $ip, $referrer, $liveSite);
 
@@ -846,10 +846,8 @@ function insertSearchResultPage($uri, $phrase, $referer, $title)
       $this->makeVisitorActive($ip);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
       $username = $this->getUsernameForIp($ip);
-
-      if (($username != $newUsername) && ($newUsername)) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-          $query = sprintf("update #__extrawatch set username = '%s' where ip = '%s'", $this->database->getEscaped($newUsername), $this->database->getEscaped($ip));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-          $this->database->executeQuery($query);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+      if (@$username) {
+          $this->updateUsernameForIp($username, $ip);
       }
 
       if (@ $newUsername) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -1463,13 +1461,17 @@ function insertSearchResultPage($uri, $phrase, $referer, $title)
      */
     public function insertBotVisit($uri, $referer, $title, $ip, $username = "")
     {
-		ExtraWatchLog::debug("Insert bot visit: uri: $uri referer: $referer title: $title ip: $ip");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+		ExtraWatchLog::debug("Insert bot visit: uri: $uri referer: $referer title: $title ip: $ip username: $username");
 
         if (!$this->checkIfVisitAlreadyInserted($ip)) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
             $referer = strip_tags($referer);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
             $ip = strip_tags($ip);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
             $query = sprintf("insert into #__extrawatch (ip, country, browser, referer, username, inactive) values ('%s',  NULL, NULL, '%s', '%s', %d) ", $this->database->getEscaped($ip), $this->database->getEscaped($referer), $this->database->getEscaped($username), 1);
             $this->database->executeQuery($query);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        }
+
+        if (@$username) {
+            $this->updateUsernameForIp($username, $ip);
         }
 
         $query = sprintf("select id from #__extrawatch where ip = '%s' limit 1", $this->database->getEscaped($ip));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -1605,6 +1607,20 @@ function insertSearchResultPage($uri, $phrase, $referer, $title)
         $this->database->getEscaped($ip));
         $uri = $this->database->resultQuery($query);
         return $uri;
+    }
+
+    /**
+     * @param $newUsername
+     * @param $ip
+     * @return string
+     */
+    public function updateUsernameForIp($newUsername, $ip)
+    {
+        if (!@$newUsername) {
+            return false;
+        }
+        $query = sprintf("update #__extrawatch set username = '%s' where ip = '%s'", $this->database->getEscaped($newUsername), $this->database->getEscaped($ip));
+        return $this->database->executeQuery($query);
     }
 
 }

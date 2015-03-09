@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 2439  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 2477  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2015 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.extrawatch.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -98,8 +98,7 @@ class ExtraWatchWordpressEnv implements ExtraWatchEnv
 
   function getUser()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   {
-    global $current_user;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-    return $current_user->user_login;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    return @$this->getUsernameById(@$this->getCurrentUserId());
   }
 
   function getTitle()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -107,11 +106,10 @@ class ExtraWatchWordpressEnv implements ExtraWatchEnv
     return @get_the_title();
   }
 
-  function getUsername()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-  {
-    global $current_user;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-    return $current_user->user_login;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-  }
+    function getUsername()
+    {
+        return @$this->getUsernameById(@$this->getCurrentUserId());
+    }
 
   function sendMail($recipient, $sender, $recipient, $subject, $body, $true, $cc, $bcc, $attachment, $replyto, $replytoname)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   {
@@ -204,20 +202,24 @@ class ExtraWatchWordpressEnv implements ExtraWatchEnv
 
     function getUserId()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     {
-        return get_current_user_id();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        return @$this->getCurrentUserId();
     }
 
     public function getUsernameById($userId) {
+        if (@function_exists("get_userdata") && @$userId) {
         $userInfo = @get_userdata($userId);
         if (@$userInfo) {
             return $userInfo->user_login;
         }
+        }
     }
 
     public function getUserRealNameById($userId) {
+        if (@function_exists("get_userdata") && $userId) {
         $userInfo = @get_userdata($userId);
         if (@$userInfo) {
             return $userInfo->first_name." ".$userInfo->last_name;
+        }
         }
     }
 
@@ -267,6 +269,13 @@ class ExtraWatchWordpressEnv implements ExtraWatchEnv
 
     public function isPHPCachingEnabled() {
         return FALSE;
+    }
+
+    private function getCurrentUserId() {
+        if (@function_exists("get_current_user_id")) {
+            return get_current_user_id();
+        }
+        return false;
     }
 
 
