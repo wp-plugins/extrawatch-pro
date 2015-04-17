@@ -335,7 +335,7 @@ DEFINE('_EW_EVALUATION_LEFT', "&nbsp; Kjo është 15-ditor Version Vlerësimi. D
 DEFINE('_EW_TRIAL_VERSION_EXPIRED', " Periudha e vlerësimit ka mbaruar. Ju lutemi blini ExtraWatch");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
 DEFINE('_EW_CONFIG_LICENSE_ACTIVATED', "Licensa u aktivizua me suksese. Faleminderit");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_CONFIG_LICENCE_DONT_MATCH', "<b>Gabim: Numri i licences dhe emaili juaj nuk përputhen.</b><br/>Futet emrin e domainit ne forme sic shikoni me poshte <br/>Click '<b>kërkoni celsin e rregullt të aktivizimit </b>' posht, ose kontakt: support@codegravity.com<br/>");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_CONFIG_LICENCE_DONT_MATCH', "<b>Gabim: Numri i licences dhe emaili juaj nuk përputhen.</b><br/>Futet emrin e domainit ne forme sic shikoni me poshte <br/>Click '<b>kërkoni celsin e rregullt të aktivizimit </b>' posht, ose kontakt: live chat on extrawatch.com or submit support ticket via <a href='http://www.extrawatch.com/ticket' target='_blank'>http://www.extrawatch.com/ticket</a><br/>");
 
 DEFINE('_EW_VIEW_ADMINBODY_LONG_MESSAGE', "Nëse ju jeni duke parë mesazhin e mësipërme për një kohë të gjatë, faqja e juaj mund të jetë i gabuar.  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                     Hap komponentët/com_extrawatch/config.php  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  

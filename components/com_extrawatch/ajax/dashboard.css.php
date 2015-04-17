@@ -46,7 +46,7 @@ $extraWatch = new ExtraWatchMain();
 $extraWatch->helper->setNoindexHttpHeaders();   //setting explicitly for ajax requests
 $extraWatch->config->initializeTranslations();
 $extraWatchHTML = new ExtraWatchHTML();
-$extraWatch->block->checkPermissions();
+$extraWatch->config->checkBackendTokenFromUrl();
 $env = @$_REQUEST['env'];
 
 

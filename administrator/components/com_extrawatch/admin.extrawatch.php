@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 2477  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 2532  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2015 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.extrawatch.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -29,7 +29,7 @@ if (!defined('DS')) {
 ini_set('display_errors', TRUE);   	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 error_reporting(E_ALL & ~(E_STRICT|E_NOTICE));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-$scriptFilename = $_SERVER['SCRIPT_FILENAME'];  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+$scriptFilename = $_SERVER['SCRIPT_FILENAME'];  ///
 $scriptFilename = str_replace("/",DS, $scriptFilename);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
 $jPathBase2 = realpath(dirname(__FILE__).DS."..".DS."..".DS."..");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -49,7 +49,7 @@ if (!defined('JPATH_BASE2'))
 
 require_once (JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "includes.php");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-$env = ExtraWatchEnvFactory::getEnvironment();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+$env = ExtraWatchEnvFactory::getEnvironment();  ///
 
 
 
@@ -66,23 +66,23 @@ function extrawatch_mainController($task = "") {
     $env = ExtraWatchEnvFactory::getEnvironment();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
 	$queryParams = ExtraWatchHelper::getUrlQueryParams();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-	$action = @$queryParams['action'];  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+	$action = ExtraWatchInput::validate(_EW_INPUT_ONE_STRING,@$queryParams['action']);  ///
 
     if (!$task) {
-        $task = @$queryParams['task'];  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $task = ExtraWatchInput::validate(_EW_INPUT_ONE_STRING,@$queryParams['task']); ///
     }
 
     ExtraWatchHelper::checkIfRequestPathAllowed($extraWatch, $env, $task);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-    $taskFromNavigation = @ ExtraWatchHelper::request('task');  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    $taskFromNavigation = ExtraWatchInput::validate(_EW_INPUT_ONE_STRING, @ ExtraWatchHelper::request('task'));  ///
 
     if ($taskFromNavigation) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         $task = $taskFromNavigation;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     }
 
-    $option = @ ExtraWatchHelper::requestGet('option');  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-    $result = @ ExtraWatchHelper::requestGet('result');  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-    $params = @$queryParams['params'];  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    $option =  ExtraWatchInput::validate(_EW_INPUT_ONE_STRING, @ ExtraWatchHelper::requestGet('option'));  	 ///
+    $result =  ExtraWatchInput::validate(_EW_INPUT_ONE_STRING, @ ExtraWatchHelper::requestGet('result'));  	 ///
+    $params = @$queryParams['params'];  	 	    	    ///
 	
     $output = "";
 
@@ -95,18 +95,23 @@ function extrawatch_mainController($task = "") {
 	
     $extraWatch->setup->runAdditionalSQLScripts(); 
 
+    $extraWatch->config->saveRandValue();
 
-    switch ($task) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    switch ($task) {
 
                 case "ajax" :  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                 {
-                    $includePath = JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "ajax";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                    ExtraWatchHelper::checkIfFileExistsInDir($includePath, $action.".php");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                    if ($action == "download") {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                        include_once($includePath. DS. $action .".php");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                    $includePath = JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "ajax";
+                    ExtraWatchHelper::checkIfFileExistsInDir($includePath, $action.".php");
+                    if ($action == "download") {
+                        if (ExtraWatchInput::validate(_EW_INPUT_FILE_PATH, $includePath. DS. $action .".php")) {
+                            include_once($includePath. DS. $action .".php");
+                        }
                         die();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                    } else {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                        $output = ExtraWatchHelper::get_include_contents($includePath.DS. $action .".php", array("params" => $params));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                    } else {
+                        $extraWatch->config->validateRequestToken($queryParams);
+
+                        $output = ExtraWatchHelper::get_include_contents("ajax".DS. $action .".php", array("params" => $params));
                         die($output);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                     }  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                     break;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -114,8 +119,10 @@ function extrawatch_mainController($task = "") {
 
                 case "js" :  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                 {
-                    $includePath = JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "js";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                    ExtraWatchHelper::checkIfFileExistsInDir($includePath, $action.".php");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                    $extraWatch->config->validateRequestToken($queryParams);
+
+                    $includePath = "js";
+                    ExtraWatchHelper::checkIfFileExistsInDir(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . $includePath, $action.".php");
                     $output = ExtraWatchHelper::get_include_contents($includePath . DS. $action .".php", array());  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                     die($output);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                     break;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -137,7 +144,7 @@ function extrawatch_mainController($task = "") {
 					if ($action == "codecanyon") {
 	                    $extraWatch->config->saveConfigValue("EXTRAWATCH_MARKETPLACE", $action);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 					}
-                    $extraWatch->config->activate(ExtraWatchHelper::requestGet('key'));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                    $extraWatch->config->activate( ExtraWatchInput::validate(_EW_INPUT_ONE_STRING, ExtraWatchHelper::requestGet('key')));  	///
                     $extraWatch->config->saveVersionIntoDatabase();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                     $extraWatch->config->setLiveSite($env->getRootSite());  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                     break;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -195,7 +202,7 @@ function extrawatch_mainController($task = "") {
                 {
                 $output .= $extraWatchHTML->renderAdminStyles($extraWatch);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                 $output .= $extraWatchHTML->renderHeader($extraWatch);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                $keyValue = ExtraWatchHelper::requestPost('storeIpInfoDbKey');  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                $keyValue =  ExtraWatchInput::validate(_EW_INPUT_ONE_STRING, ExtraWatchHelper::requestPost('storeIpInfoDbKey'));  ///
                 if ($keyValue) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                     $extraWatch->config->saveConfigValue("EXTRAWATCH_IPINFODB_KEY", $keyValue);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                 } else {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -211,7 +218,7 @@ function extrawatch_mainController($task = "") {
                 switch ($action) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                     case "save":  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                     {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                        $result = $extraWatch->helper->saveUserSettings(ExtraWatchHelper::requestPost());  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                        $result = $extraWatch->helper->saveUserSettings(ExtraWatchHelper::requestPost()); ///
                     }  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                     default:  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                         {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -251,7 +258,7 @@ function extrawatch_mainController($task = "") {
                 switch ($action) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                     case "save":  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                         {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                        $result = $extraWatch->helper->saveSEOSettings(ExtraWatchHelper::requestPost());  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                        $result = $extraWatch->helper->saveSEOSettings(ExtraWatchHelper::requestPost());  ///
                         }  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                     default:  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                         {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -301,7 +308,7 @@ function extrawatch_mainController($task = "") {
                         $output .= $extraWatchHTML->renderAdminStyles($extraWatch);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                         $output .= $extraWatchHTML->renderHeader($extraWatch);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                         $output .= $extraWatchGoalHTML->renderBackToGoals();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                        $output .= $extraWatchGoalHTML->renderGoalsInsert(@ ExtraWatchHelper::requestGet('id'), @ ExtraWatchHelper::requestGet('postid'));
+                        $output .= $extraWatchGoalHTML->renderGoalsInsert((int)@ ExtraWatchHelper::requestGet('id'), (int) @ ExtraWatchHelper::requestGet('postid'));///
                         $output .= $extraWatchHTML->renderFooter();
                         break;
                         }  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -309,7 +316,7 @@ function extrawatch_mainController($task = "") {
                         {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                         $output .= $extraWatchHTML->renderAdminStyles($extraWatch);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                         $output .= $extraWatchHTML->renderHeader($extraWatch);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                        $extraWatch->goal->saveGoal(ExtraWatchHelper::requestPost());  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                        $extraWatch->goal->saveGoal(ExtraWatchHelper::requestPost()); ///
                         $output .= $extraWatchGoalHTML->renderGoals(@$result);
                         $output .= $extraWatchHTML->renderFooter();
                         break;
@@ -319,7 +326,7 @@ function extrawatch_mainController($task = "") {
                         $output .= $extraWatchHTML->renderAdminStyles($extraWatch);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                         $output .= $extraWatchHTML->renderHeader($extraWatch);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                         $output .= $extraWatchGoalHTML->renderBackToGoals();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                        $output .= $extraWatchGoalHTML->renderGoalEdit(@ ExtraWatchHelper::requestGet('goalId'));
+                        $output .= $extraWatchGoalHTML->renderGoalEdit(@ ExtraWatchHelper::requestGet('goalId'));///
                         $output .= $extraWatchHTML->renderFooter();
                         break;
                         }  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -327,7 +334,7 @@ function extrawatch_mainController($task = "") {
                         {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                         $output .= $extraWatchHTML->renderAdminStyles($extraWatch);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                         $output .= $extraWatchHTML->renderHeader($extraWatch);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                        $result = $extraWatch->goal->deleteGoal(@ ExtraWatchHelper::requestGet('goalId'));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                        $result = $extraWatch->goal->deleteGoal(@ ExtraWatchHelper::requestGet('goalId'));  ///
                         $output .= $extraWatchGoalHTML->renderGoals(@ $result);
                         $output .= $extraWatchHTML->renderFooter();
                         break;
@@ -336,7 +343,7 @@ function extrawatch_mainController($task = "") {
                         {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                         $output .= $extraWatchHTML->renderAdminStyles($extraWatch);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                         $output .= $extraWatchHTML->renderHeader($extraWatch);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                        $result = $extraWatch->goal->enableGoal(@ ExtraWatchHelper::requestGet('goalId'));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                        $result = $extraWatch->goal->enableGoal(@ ExtraWatchHelper::requestGet('goalId'));  	///
                         $output .= $extraWatchGoalHTML->renderGoals(@ $result);
                         $output .= $extraWatchHTML->renderFooter();
                         break;
@@ -345,7 +352,7 @@ function extrawatch_mainController($task = "") {
                         {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                         $output .= $extraWatchHTML->renderAdminStyles($extraWatch);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                         $output .= $extraWatchHTML->renderHeader($extraWatch);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                        $result = $extraWatch->goal->disableGoal(@ ExtraWatchHelper::requestGet('goalId'));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                        $result = $extraWatch->goal->disableGoal(@ ExtraWatchHelper::requestGet('goalId'));  	///
                         $output .= $extraWatchGoalHTML->renderGoals(@ $result);
                         $output .= $extraWatchHTML->renderFooter();
                         break;
@@ -355,7 +362,7 @@ function extrawatch_mainController($task = "") {
                         {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                         //$output .= $extraWatchHTML->renderAdminStyles($extraWatch);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                         //$output .= $extraWatchHTML->renderHeader($extraWatch);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                        $extraWatch->goal->exportGoals(ExtraWatchHelper::requestPost());  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                        $extraWatch->goal->exportGoals(ExtraWatchHelper::requestPost());  	 	 ///
                         $extraWatchGoalHTML->renderExportGoals(@ $result);
                         $output .= $extraWatchHTML->renderFooter();
                         break;
@@ -374,7 +381,7 @@ function extrawatch_mainController($task = "") {
                         {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                         $output .= $extraWatchHTML->renderAdminStyles($extraWatch);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                         $output .= $extraWatchHTML->renderHeader($extraWatch);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                        $extraWatch->goal->saveImportGoal(ExtraWatchHelper::requestPost());  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                        $extraWatch->goal->saveImportGoal(ExtraWatchHelper::requestPost());  ///
                         $output .= $extraWatchGoalHTML->renderGoals(@ $result);
                         $output .= $extraWatchHTML->renderFooter();
                         }
@@ -402,7 +409,7 @@ function extrawatch_mainController($task = "") {
                 }
             case "settingsSave" :  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                 {
-                $result = $extraWatch->helper->saveSettings(ExtraWatchHelper::requestPost());  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                $result = $extraWatch->helper->saveSettings(ExtraWatchHelper::requestPost()); ///
                 $output .= $extraWatchHTML->renderAdminStyles($extraWatch);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                 $output .= $extraWatchHTML->renderHeader($extraWatch);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                 $output .= $extraWatchHTML->renderSettings(@ $result);
@@ -413,7 +420,7 @@ function extrawatch_mainController($task = "") {
                 {
                 $output .= $extraWatchHTML->renderAdminStyles($extraWatch);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                 $output .= $extraWatchHTML->renderHeader($extraWatch);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                $result = $extraWatch->helper->resetData(ExtraWatchHelper::requestPost());  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                $result = $extraWatch->helper->resetData(ExtraWatchHelper::requestPost());  	///
                 $output .= $extraWatchHTML->renderResetData($result);
                 $output .= $extraWatchHTML->renderFooter();
                 break;
@@ -428,7 +435,7 @@ function extrawatch_mainController($task = "") {
                         {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                         $output .= $extraWatchHTML->renderAdminStyles($extraWatch);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                         $output .= $extraWatchHTML->renderHeader($extraWatch);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                        $ip = @ ExtraWatchHelper::requestGet('ip');  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                        $ip = @ ExtraWatchHelper::requestGet('ip');  	 ///
                         $extraWatch->block->extrawatch_blockIpToggle($ip);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                         $output .= $extraWatchHTML->renderAntiSpam();
                         $output .= $extraWatchHTML->renderFooter();
@@ -529,7 +536,7 @@ function extrawatch_mainController($task = "") {
                         {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                         $output .= $extraWatchHTML->renderAdminStyles($extraWatch);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                         $output .= $extraWatchHTML->renderHeader($extraWatch);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                        $result = $extraWatch->helper->saveEmailSettings(ExtraWatchHelper::requestPost());  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                        $result = $extraWatch->helper->saveEmailSettings(ExtraWatchHelper::requestPost()); ///
                         $output .= $extraWatchHTML->renderEmails();
                         $output .= $extraWatchHTML->renderFooter();
                         break;
@@ -596,9 +603,9 @@ function extrawatch_mainController($task = "") {
                     case "saveAddExtension":  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                     {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-                        $output .= $extraWatchHTML->renderAdminStyles($extraWatch);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                        $output .= $extraWatchHTML->renderAdminStyles($extraWatch);
                         $output .= $extraWatchHTML->renderHeader($extraWatch);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                        $output .= $extraWatchDownloads->addExtension(ExtraWatchHelper::requestPost('extname'));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                        $output .= $extraWatchDownloads->addExtension(ExtraWatchHelper::requestPost('extname'));  ///
                         $output .= $extraWatchHTML->renderDownloads();
                         $output .= $extraWatchHTML->renderFooter();
                         return $output;
@@ -609,7 +616,7 @@ function extrawatch_mainController($task = "") {
 
                         $output .= $extraWatchHTML->renderAdminStyles($extraWatch);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                         $output .= $extraWatchHTML->renderHeader($extraWatch);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                        $output .= $extraWatchDownloadsHTML->renderEditExtension(ExtraWatchHelper::requestGet('eid'));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                        $output .= $extraWatchDownloadsHTML->renderEditExtension(ExtraWatchHelper::requestGet('eid'));  ///
                         $output .= $extraWatchHTML->renderDownloads();
                         $output .= $extraWatchHTML->renderFooter();
                         break;
@@ -619,7 +626,7 @@ function extrawatch_mainController($task = "") {
 
                         $output .= $extraWatchHTML->renderAdminStyles($extraWatch);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                         $output .= $extraWatchHTML->renderHeader($extraWatch);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                        $output .= $extraWatchDownloads->updateExtension(ExtraWatchHelper::requestPost('eid'), ExtraWatchHelper::requestPost('extname'));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                        $output .= $extraWatchDownloads->updateExtension(ExtraWatchHelper::requestPost('eid'), ExtraWatchHelper::requestPost('extname'));  ///
                         $output .= $extraWatchHTML->renderDownloads();
                         $output .= $extraWatchHTML->renderFooter();
                         return $output;
@@ -630,7 +637,7 @@ function extrawatch_mainController($task = "") {
 
                         $output .= $extraWatchHTML->renderAdminStyles($extraWatch);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                         $output .= $extraWatchHTML->renderHeader($extraWatch);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                        $output .= $extraWatchDownloads->deleteExtension(ExtraWatchHelper::requestGet('co'));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                        $output .= $extraWatchDownloads->deleteExtension(ExtraWatchHelper::requestGet('co'));  	///
                         $output .= $extraWatchHTML->renderDownloads();
                         $output .= $extraWatchHTML->renderFooter();
                         break;
@@ -651,7 +658,7 @@ function extrawatch_mainController($task = "") {
 
                         $output .= $extraWatchHTML->renderAdminStyles($extraWatch);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                         $output .= $extraWatchHTML->renderHeader($extraWatch);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                        $output .= $extraWatchDownloadsHTML->renderEditFile(ExtraWatchHelper::requestGet('did'));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                        $output .= $extraWatchDownloadsHTML->renderEditFile(ExtraWatchHelper::requestGet('did'));  	///
                         $output .= $extraWatchHTML->renderDownloads();
                         $output .= $extraWatchHTML->renderFooter();
                         break;
@@ -661,7 +668,7 @@ function extrawatch_mainController($task = "") {
 
                         $output .= $extraWatchHTML->renderAdminStyles($extraWatch);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                         $output .= $extraWatchHTML->renderHeader($extraWatch);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                        $output .= $extraWatchDownloads->updateFilePath(ExtraWatchHelper::requestPost('did'), ExtraWatchHelper::requestPost('filepathname'));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                        $output .= $extraWatchDownloads->updateFilePath(ExtraWatchHelper::requestPost('did'), ExtraWatchHelper::requestPost('filepathname'));  ///
                         $output .= $extraWatchHTML->renderDownloads();
                         $output .= $extraWatchHTML->renderFooter();
                         return $output;
@@ -672,7 +679,7 @@ function extrawatch_mainController($task = "") {
 
                         $output .= $extraWatchHTML->renderAdminStyles($extraWatch);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                         $output .= $extraWatchHTML->renderHeader($extraWatch);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                        $output .= $extraWatchDownloads->addFilePath(ExtraWatchHelper::requestPost('filepathname'));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                        $output .= $extraWatchDownloads->addFilePath(ExtraWatchHelper::requestPost('filepathname')); ///
                         $output .= $extraWatchHTML->renderDownloads();
                         $output .= $extraWatchHTML->renderFooter();
                         return $output;
@@ -683,7 +690,7 @@ function extrawatch_mainController($task = "") {
 
                         $output .= $extraWatchHTML->renderAdminStyles($extraWatch);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                         $output .= $extraWatchHTML->renderHeader($extraWatch);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                        $output .= $extraWatchDownloads->deleteFilePath(ExtraWatchHelper::requestGet('co'));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                        $output .= $extraWatchDownloads->deleteFilePath(ExtraWatchHelper::requestGet('co'));  	 ///
                         $output .= $extraWatchHTML->renderDownloads();
                         $output .= $extraWatchHTML->renderFooter();
                         break;
@@ -753,7 +760,11 @@ if (
 		echo @extrawatch_mainController(@$task);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 		}
 	} else {
-    echo @extrawatch_mainController(@$task);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        try {
+            echo @extrawatch_mainController(@$task);
+        } catch (ExtraWatchInputException $e) {
+            die("ExtraWatch Invalid Input Exception - Filter ID: ".$e->getFilterName(). " Input: ".$e->getInput());
+        }
 	}
 }
 //}

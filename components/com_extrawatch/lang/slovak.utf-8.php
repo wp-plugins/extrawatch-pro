@@ -332,7 +332,7 @@ DEFINE('_EW_TRIAL_VERSION_EXPIRED', " Vaša trial verzia expirovala. Prosím kú
 
 DEFINE('_EW_CONFIG_LICENSE_ACTIVATED', "Licencia aktivovaná úspešne. Ďakujeme");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_CONFIG_LICENCE_DONT_MATCH', "<b>Chyba: licenčné kľúč a vaša doména sa nezhodujú.</b><br/>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-Naozaj ste vložili správny názov domény do aktivačného dialógu? Prosím kontaktujte: support@codegravity.com");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+Naozaj ste vložili správny názov domény do aktivačného dialógu? Prosím kontaktujte: live chat on extrawatch.com or submit support ticket via <a href='http://www.extrawatch.com/ticket' target='_blank'>http://www.extrawatch.com/ticket</a>");
 
 DEFINE('_EW_VIEW_ADMINBODY_LONG_MESSAGE', "Ak vidíte túto správu príliš dlho, nastavenie vašej domény môže byť nesprávne.  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                     Otvorte components/com_extrawatch/config.php  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  

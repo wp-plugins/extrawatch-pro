@@ -15,7 +15,7 @@ class modExtraWatchAgentHelper {
 
 static function getAjax()  {
 
-    if (@$_REQUEST["env"] == "ExtraWatchJoomlaEnv") {
+    if (@$_REQUEST["env"] == "ExtraWatchJoomlaEnv") {///
         defined('_JEXEC') or die('Restricted access');
     }
 
@@ -40,7 +40,7 @@ static function getAjax()  {
     if (@_EW_CLOUD_MODE) {
         $queryParams = ExtraWatchHelper::getUrlQueryParams();
         if (@!$task) {
-            $task = @$queryParams['task'];
+            $task = @$queryParams['task'];///
         }
         echo @extrawatch_mainController(@$task);
     }

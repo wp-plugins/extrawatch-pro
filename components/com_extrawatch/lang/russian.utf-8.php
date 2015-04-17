@@ -337,7 +337,7 @@ DEFINE('_EW_EVALUATION_LEFT', "&nbsp; Это 15-ти дневная пробна
 DEFINE('_EW_TRIAL_VERSION_EXPIRED', " Ваш пробный период закончился. Пожалуйста приобретите ExtraWatch");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
 DEFINE('_EW_CONFIG_LICENSE_ACTIVATED', "Лицензия активирована. Большое спасибо");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_CONFIG_LICENCE_DONT_MATCH', "<b>Ошибка: лицензионный ключ и домен не совпадают.</b><br/>Вы ввели такое же доменное имя в поле активации как указано ниже? Пожалуйста свяжитесь: support@codegravity.com");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_CONFIG_LICENCE_DONT_MATCH', "<b>Ошибка: лицензионный ключ и домен не совпадают.</b><br/>Вы ввели такое же доменное имя в поле активации как указано ниже? Пожалуйста свяжитесь: live chat on extrawatch.com or submit support ticket via <a href='http://www.extrawatch.com/ticket' target='_blank'>http://www.extrawatch.com/ticket</a>");
 
 DEFINE('_EW_VIEW_ADMINBODY_LONG_MESSAGE', "Ели сообщение сверху Вы видите достаточно долго, Ваш рабочий сайт может быть введен неверно.  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                     Откройте components/com_extrawatch/config.php  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  

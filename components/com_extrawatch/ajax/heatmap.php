@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 2477  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 2532  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2015 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.codegravity.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -23,33 +23,39 @@ include_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS. "incl
 
 $extraWatch = new ExtraWatchMain();
 $extraWatch->helper->setNoindexHttpHeaders();   //setting explicitly for ajax requests
-//$extraWatch->block->checkPermissions();
+$extraWatch->block->checkFrontendTokenFromUrl();
 $extraWatch->config->initializeTranslations();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
 $params = $extraWatch->helper->convertUrlQuery(urldecode($params));	//params passed from above controller  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-$action = @$params["action"];  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-$uri2titleId = @$params["uri2titleId"];  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-$w = @$params["w"];
-$h = @$params["h"];
-$day = @$params["day"];  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-$ip = @$params["ip"];  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+$action = ExtraWatchInput::validate(_EW_INPUT_ONE_STRING, @$params["action"]);///**
+$uri2titleId = (int) @$params["uri2titleId"];///**
+$w = (int) @$params["w"];///**
+$h = (int) @$params["h"];///**
+$day = (int) @$params["day"];///**
 
-$randHash = @$params[ExtraWatchHeatmap::HEATMAP_PARAM_HASH];  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-if (!$extraWatch->config->isPermittedWithHash($randHash)) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-  die("Unauthorized access");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+if (@$params["ip"]) {
+    $ip = ExtraWatchInput::validate(_EW_INPUT_IP, @$params["ip"]);///**
 }
+
 
 switch ($action) {
   case 'getHeatMap':  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     {
-    echo $extraWatch->heatmap->getHeatmapClicksByUri2TitleIdJSON($uri2titleId, $w, $h, $day, $ip);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    $randHash = ExtraWatchInput::validate(_EW_INPUT_ONE_STRING,@$params[ExtraWatchHeatmap::HEATMAP_PARAM_HASH]);///
+    if (!$extraWatch->config->isPermittedWithHeatmapToken($randHash)) {
+            die("Unauthorized access");
+    }
+    echo $extraWatch->heatmap->getHeatmapClicksByUri2TitleIdJSON($uri2titleId, $w, $h, $day, $ip);
     break;
     }
 
 
   case 'click':
     {
+        if (!$extraWatch->config->isPermittedWithFrontendToken($extraWatch->config->getFrontendToken())) {
+            die("Unauthorized access");
+        }
     $x = $params["x"];  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     $y = $params["y"];  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     $xpath = urldecode(urldecode($params["xpath"]));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  

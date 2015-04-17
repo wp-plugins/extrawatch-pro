@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 2477  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 2532  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2015 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.codegravity.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -14,8 +14,7 @@
 defined('_JEXEC') or die('Restricted access');  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
 
-$env = @$_REQUEST['env'];  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-$frontend = @$_REQUEST['frontend'];  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+$env = ExtraWatchInput::validate(_EW_INPUT_ENV, @$_REQUEST['env']);///
 
 // compatibility with ZOO  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 if (defined('JVERSION') && version_compare( JVERSION, '2.5.0', '<' )) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -27,7 +26,7 @@ require_once JPATH_BASE . DS."components" . DS . "com_extrawatch" . DS . "includ
 
 $extraWatch = new ExtraWatchMain();
 $extraWatch->config->initializeTranslations();
-$extraWatch->block->checkPermissions();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+$extraWatch->block->checkBackendTokenFromUrl();
 ?>
 var oldmarker;
 var map;
@@ -77,7 +76,7 @@ map = new google.maps.Map(document.getElementById("map"), myOptions);
 
 function GoogleMapUpdate()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 {
-downloadUrl("<?php echo $extraWatch->config->getLiveSiteWithSuffix(); ?><?php echo $extraWatch->env->renderAjaxLink('ajax','lastvisit');?>&rand=<?php echo $extraWatch->config->getRand(); ?>&env=<?php echo(get_class($extraWatch->env)); ?>&projectId=<?php echo(_EW_PROJECT_ID); ?>", function(data) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+downloadUrl("<?php echo $extraWatch->config->getLiveSiteWithSuffix(); ?><?php echo $extraWatch->env->renderBackendAjaxLink($extraWatch->config, 'ajax','lastvisit');?>&env=<?php echo(get_class($extraWatch->env)); ?>&projectId=<?php echo(_EW_PROJECT_ID); ?>", function(data) {
 var markers = data.documentElement.getElementsByTagName("marker");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 for (var i = 0; i < markers.length; i++) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 var name = markers[i].getAttribute("name");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -147,7 +146,7 @@ return "";
 }
 
 function extraWatchOpenMapUpdate() {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-downloadUrl("<?php echo $extraWatch->config->getLiveSiteWithSuffix(); ?><?php echo $extraWatch->env->renderAjaxLink('ajax','lastvisit');?>&rand=<?php echo $extraWatch->config->getRand(); ?>&env=<?php echo(get_class($extraWatch->env)); ?>&projectId=<?php echo _EW_PROJECT_ID; ?>", function(data) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+downloadUrl("<?php echo $extraWatch->config->getLiveSiteWithSuffix(); ?><?php echo $extraWatch->env->renderBackendAjaxLink($extraWatch->config, 'ajax','lastvisit');?>&env=<?php echo(get_class($extraWatch->env)); ?>&projectId=<?php echo _EW_PROJECT_ID; ?>", function(data) {
 var markers = data.documentElement.getElementsByTagName("marker");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 var zoom = extraWatchLoadZoom();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 if (zoom == "")

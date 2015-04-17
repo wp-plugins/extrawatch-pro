@@ -334,7 +334,7 @@ DEFINE('_EW_EVALUATION_LEFT', "&nbsp; هذه نسخة للتجربة مدتها 
 DEFINE('_EW_TRIAL_VERSION_EXPIRED', "ExtraWatchنسخة التجربة الخاصة بك انتهت برجاء شراء برنامج");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
 DEFINE('_EW_CONFIG_LICENSE_ACTIVATED', "تم تفعيل الترخيص بنجاح، شكراً");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_CONFIG_LICENCE_DONT_MATCH', "<b>Error: مفتاح الترخيص ومجالك لا يتطابقان.</b><br/>هل اسم المجال الذي أدخلته في وثيقة التبرع يطابق ذلك الذي تراه بأسفل؟ <br/>Click '<b>اطلب مفتاح التفعيل المناسب</b>' بأسفل أو اتصل بـ: support@codegravity.com<br/>");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_CONFIG_LICENCE_DONT_MATCH', "<b>Error: مفتاح الترخيص ومجالك لا يتطابقان.</b><br/>هل اسم المجال الذي أدخلته في وثيقة التبرع يطابق ذلك الذي تراه بأسفل؟ <br/>Click '<b>اطلب مفتاح التفعيل المناسب</b>' بأسفل أو اتصل بـ: live chat on extrawatch.com or submit support ticket via <a href='http://www.extrawatch.com/ticket' target='_blank'>http://www.extrawatch.com/ticket</a><br/>");
 
 DEFINE('_EW_VIEW_ADMINBODY_LONG_MESSAGE', "إذا كنت ترى الرسالة أعلاه لوقت أطول من اللازم فقد يكون موقعك الحالي غير صحيح  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                     افتح العناصر/com_extrawatch/config.php  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  

@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 2477  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 2532  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2015 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.extrawatch.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -71,8 +71,8 @@ class ExtraWatchSizes
   {
     $totalsize = 0;
 
-    if ($handle = @opendir($path)) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-      while (FALSE !== ($file = readdir($handle)))  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    if ($handle = @opendir(ExtraWatchInput::validate(_EW_INPUT_DIR, $path))) {  ///
+      while (FALSE !== ($file = readdir($handle)))  ///
       {
         $nextpath = $path . '/' . $file;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         if ($file != '.' && $file != '..' && !is_link($nextpath)) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -136,7 +136,7 @@ class ExtraWatchSizes
       $tableSize = $row->Data_length + $row->Index_length;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
       if ($checked == FALSE) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        $query = sprintf("SELECT COUNT(*) FROM #__extrawatch_info AS t WHERE date = '%d' AND t.group = '%d';", $lastRunAtMidnightDate, EW_DB_KEY_SIZE_DB);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $query = sprintf("SELECT COUNT(*) FROM #__extrawatch_info AS t WHERE date = '%d' AND t.group = '%d';", (int) $lastRunAtMidnightDate, (int) EW_DB_KEY_SIZE_DB);
         $this->database->setQuery($query);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         $count = $this->database->resultQuery($query);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
@@ -145,7 +145,7 @@ class ExtraWatchSizes
       }
 
       $query = sprintf("INSERT INTO #__extrawatch_info (`name`, `value`, `date`, `group`) VALUES ('%s', %d, %d, %d);",  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        $this->database->getEscaped($tableName), $this->database->getEscaped($tableSize), $lastRunAtMidnightDate, EW_DB_KEY_SIZE_DB);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $this->database->getEscaped($tableName), $this->database->getEscaped($tableSize), (int) $lastRunAtMidnightDate, (int) EW_DB_KEY_SIZE_DB);
       $this->database->setQuery($query);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
       $rows = $this->database->executeQuery($query);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     }
@@ -215,17 +215,20 @@ class ExtraWatchSizes
   public $renderPageTotal = 0;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   public $renderPageTotalRaw = 0;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-  /** HTML */
+  /** HTML */ //TODO: move to HTML !!!
   function renderFileList($group, $scanDirectoryMain, $scanDirectoryAdmin, $realDirectoryMain, $realDirectoryAdmin, $suffix)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   {
     $this->renderPageHtml = "";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     $this->renderPageItems = 0;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     $this->renderPageTotal = 0;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     $this->renderPageTotalRaw = 0;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-    $this->renderPageJavaArray = "var dirs_$suffix = [\"\"";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    $this->renderPageJavaArray = "var dirs_$suffix = [\"\"";
 
-    $dirs1 = @scandir($scanDirectoryMain);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-    $dirs2 = @scandir($scanDirectoryAdmin);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    ExtraWatchInput::validate(_EW_INPUT_DIR, realpath(__DIR__.DS.$scanDirectoryMain));  	///**
+    $dirs1 = @scandir($scanDirectoryMain);  	///**
+
+    ExtraWatchInput::validate(_EW_INPUT_DIR, realpath(__DIR__.DS.$scanDirectoryAdmin));  	///**
+    $dirs2 = @scandir($scanDirectoryAdmin);  	///**
 
     if ($dirs2) {   // in case we only use one folder  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         $dirs = @array_merge($dirs1, $dirs2);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -240,7 +243,7 @@ class ExtraWatchSizes
         if ($dir == ".") continue;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         if ($dir == "..") continue;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-        if (is_dir($scanDirectoryMain . $dir)) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        if (is_dir($scanDirectoryMain . $dir)) { ///
           $directory = $realDirectoryMain . $dir;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
           if (!isset($dirsParsed[$directory])) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -318,7 +321,7 @@ class ExtraWatchSizes
 
   function findLatestCheckDayByComOrModGroup()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   {
-    $query = sprintf("select MAX(`date`) as lastCheckDay from #__extrawatch_info where `group` = '%d' or `group` = '%d'", EW_DB_KEY_SIZE_COM, EW_DB_KEY_SIZE_MOD);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    $query = sprintf("select MAX(`date`) as lastCheckDay from #__extrawatch_info where `group` = '%d' or `group` = '%d'", (int) EW_DB_KEY_SIZE_COM, (int) EW_DB_KEY_SIZE_MOD);
     $this->database->setQuery($query);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     return $this->database->resultQuery($query);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   }
@@ -330,7 +333,7 @@ class ExtraWatchSizes
    */
   function isAllowed($dir)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   {
-    $env = ExtraWatchEnvFactory::getEnvironment();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    $env = ExtraWatchEnvFactory::getEnvironment();  	 	///
       switch (get_class($env)){  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
           case "ExtraWatchMagentoEnv": {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
           $realPathBase = realpath("..".DS."..".DS."..".DS."..".DS."..".DS."..".DS);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  

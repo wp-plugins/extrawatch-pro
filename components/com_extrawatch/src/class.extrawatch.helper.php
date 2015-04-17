@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 2477  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 2532  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2015 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.extrawatch.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -21,9 +21,9 @@ class ExtraWatchHelper
     public $config;
 
     const DEFAULT_TRUNC_LENGTH = 60;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-    const _EW_ENCRYPTED = "#encrypted#";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    const _EW_ENCRYPTED = "#encrypted#";
 
-    function __construct($database)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    function __construct($database)
     {
         $this->env = ExtraWatchEnvFactory::getEnvironment();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         $this->database = $database;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -64,7 +64,7 @@ class ExtraWatchHelper
     function getURI()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     {
         $redirURI = addslashes(@strip_tags(@ $_SERVER[$this->config->getConfigValue('EXTRAWATCH_SERVER_URI_KEY')]));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        $uri = ExtraWatchHelper::htmlspecialchars(addslashes(@strip_tags(@ $_SERVER['REQUEST_URI'])));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $uri = ExtraWatchHelper::htmlspecialchars(addslashes(@strip_tags(ExtraWatchInput::validate(_EW_INPUT_URI, @ $_SERVER['REQUEST_URI']))));  	 ///
 
         if (@ $redirURI && @ substr($redirURI, -9, 9) != "index.php")  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
             $uri = $redirURI;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -163,8 +163,8 @@ class ExtraWatchHelper
     {
         $langDirPath = JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "lang";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-        if ($handle = @ opendir($langDirPath)) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-            while (FALSE !== ($file = readdir($handle))) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        if ($handle = @ opendir(ExtraWatchInput::validate(_EW_INPUT_FILE_PATH,$langDirPath))) {  	 ///
+            while (FALSE !== ($file = readdir($handle))) {
                 if (strstr($file, ".php")) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                     $file = str_replace(".php", "", $file);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                     $langArray[] = $file;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -501,16 +501,39 @@ class ExtraWatchHelper
         return "<i>" . _EW_NO_DATA . "</i><br/><br/>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     }
 
+    static function checkFileIncludeWhitelist($filename) {
+        $filename = str_replace("\\","/",$filename);
+        $fileWhitelistArray = unserialize(EXTRAWATCH_INCLUDE_FILE_WHITELIST);
+        if (array_search($filename, $fileWhitelistArray)) {
+            return TRUE;
+        }
+        return FALSE;
+    }
+
 
     static function get_include_contents($filename, $param) {
         if (!defined('_JEXEC')) {
             define('_JEXEC', 1);
         }
 
-        if (is_file($filename)) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-            ob_start();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-            extract($param);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-            require_once $filename;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        if (!self::checkFileIncludeWhitelist($filename)) {
+            die("Restricted access, trying to include file which is not in white list: $filename");
+        }
+
+        $filenameFullPath = JPATH_BASE2.DS."components".DS."com_extrawatch".DS.$filename;
+
+        if (is_file($filenameFullPath)) {  	 ///
+            ob_start();
+            if (@$param) {
+                extract(ExtraWatchInput::validate(_EW_INPUT_EXTRACT,$param)); ///
+            }
+            $ewPath = realpath(__DIR__.DS."..".DS);
+            if (!ExtraWatchHelper::startsWith($filenameFullPath, $ewPath)) {
+                die("restricted access to file $filename");
+            }
+            if (ExtraWatchInput::validate(_EW_INPUT_FILE_PATH, $filenameFullPath)) {
+                require_once $filenameFullPath;  	 	 ///
+            }
             return ob_get_clean();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         }
         return false;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -530,7 +553,7 @@ class ExtraWatchHelper
     }
 
 
-function renderHTMLCodeSnippet($projectId) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+function renderHTMLCodeSnippet($projectId) {   ///
 
     if (@_EW_CLOUD_MODE) {
         $output = "";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -568,7 +591,7 @@ function renderHTMLCodeSnippet($projectId) {
 
 		$agentLink = $liveSite."components/com_extrawatch/js/agent.js?env=".get_class($this->env);
         $output .= "<script type=\"text/javascript\" id=\"extraWatchAgent\">\n
-		var extraWatchAjaxLink = \"".urlencode($liveSite.$this->env->renderAjaxLink('ajax',''))."\";\n
+		var extraWatchAjaxLink = \"".urlencode($liveSite.$this->env->renderFrontendAjaxLink($this->config, 'ajax',''))."\";\n
 		var extraWatchEnv = \"".get_class($this->env)."\";\n
         (function() {\n
         var ew = document.createElement('script');
@@ -597,7 +620,10 @@ function getFirstUsersProject($database, $userId) {
 
     static function extrawatch_sureRemoveDir($dir, $DeleteMe)
     {
-        if (!$dh = @opendir($dir)) return;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        if (!ExtraWatchInput::validate(_EW_INPUT_DIR,$dir)) {
+            die("not allowed");
+        }
+        if (!$dh = @opendir($dir)) return;   ///
         while (FALSE !== ($obj = readdir($dh))) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
             if ($obj == '.' || $obj == '..') continue;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
             if (!@unlink($dir . '/' . $obj)) extrawatch_sureRemoveDir($dir . '/' . $obj, TRUE);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -610,7 +636,7 @@ function getFirstUsersProject($database, $userId) {
 
 
 function getUserId($database, $user, $password) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-	$query = sprintf("select id from global_extrawatch_user where `email` = '%s' and `password` = '%s' ", $user, $password);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+	$query = sprintf("select id from global_extrawatch_user where `email` = '%s' and `password` = '%s' ", $database->getEscaped($user), $database->getEscaped($password));
     $result = $database->resultQuery($query);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 	return $result;
 }
@@ -681,7 +707,11 @@ static function getTimezoneOffsetByTimezoneName($userTimezoneName){
 
 
 	static function getUrlQueryParams() {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-		$url = ExtraWatchHelper::getProtocol()."://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']."?".$_SERVER['QUERY_STRING'];
+		$url = ExtraWatchHelper::getProtocol()."://".
+            ExtraWatchInput::validate(_EW_INPUT_HOST, $_SERVER['HTTP_HOST']).
+            ExtraWatchInput::validate(_EW_INPUT_URI,$_SERVER['REQUEST_URI']).
+            "?".
+            ExtraWatchInput::validate(_EW_INPUT_QUERY_STRING, $_SERVER['QUERY_STRING']); ///
         $url = str_replace("&amp;","&",$url);
 		$query_str = parse_url($url, PHP_URL_QUERY);
 		parse_str($query_str, $query_params);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -706,17 +736,19 @@ static function getTimezoneOffsetByTimezoneName($userTimezoneName){
 			ExtraWatchCache::clearCache($extraWatch->database);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 		} else
 		if ($task != "js" && $task != "ajax") {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-            if ($extraWatch->config->getLiveSite() && !ExtraWatchHelper::startsWith(@$_SERVER['REQUEST_URI'], $extraWatch->config->getLiveSite().$env->getAdminDir())) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                die("Restricted access");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+            if ($extraWatch->config->getLiveSite() && !ExtraWatchHelper::startsWith(
+                    ExtraWatchInput::validate(_EW_INPUT_URI, @$_SERVER['REQUEST_URI']),
+                    $extraWatch->config->getLiveSite().$env->getAdminDir())) {   ///
+                die("Restricted access - live site mismatch");
             }
         }
     }
 
-    static function checkIfFileExistsInDir($path, $file) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        $listOfFiles = scandir($path);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    static function checkIfFileExistsInDir($path, $file) {
+        $listOfFiles = scandir(ExtraWatchInput::validate(_EW_INPUT_FILE_PATH, $path));  	 ///
         $result = in_array($file, $listOfFiles);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         if (!$result || $file == "." || $file == "..") {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-            die("Restricted access");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+            die("Restricted access, file does not exist in directory");
         }
     }
 
@@ -726,11 +758,12 @@ static function getTimezoneOffsetByTimezoneName($userTimezoneName){
      * @return string  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
      */
     static function getAbsoluteWebURL() {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        $hostname = ExtraWatchHelper::getProtocol()."://" . $_SERVER['HTTP_HOST'];  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        $scriptName = $_SERVER['SCRIPT_NAME'];  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $hostname = ExtraWatchHelper::getProtocol()."://" .
+            ExtraWatchInput::validate(_EW_INPUT_HOST, $_SERVER['HTTP_HOST']);   ///
+        $scriptName = ExtraWatchInput::validate(_EW_INPUT_SCRIPT_NAME, $_SERVER['SCRIPT_NAME']);  	 	     ///
         $subdir = str_replace("/index.php", "", $scriptName);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-        $env = ExtraWatchEnvFactory::getEnvironment();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $env = ExtraWatchInput::validate(_EW_INPUT_ENV, ExtraWatchEnvFactory::getEnvironment());  	 	 ///
         $adminDirName = $env->getAdminDir();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         $subdir = str_replace("/".$adminDirName, "", $subdir);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
@@ -738,7 +771,7 @@ static function getTimezoneOffsetByTimezoneName($userTimezoneName){
     }
 
 	static function getProtocol() {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-		if( isset($_SERVER['HTTPS'] )  && $_SERVER['HTTPS'] != 'off' ) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+		if( isset($_SERVER['HTTPS'] )  && $_SERVER['HTTPS'] != 'off' ) {  	  ///
 			return 'https';
 		} else {
 			return 'http';
@@ -775,7 +808,7 @@ static function getTimezoneOffsetByTimezoneName($userTimezoneName){
 		
 			curl_setopt_array(
 				$ch, array(
-				CURLOPT_URL => $url,
+				CURLOPT_URL => ExtraWatchInput::validate(_EW_INPUT_URL, $url), ///
 				CURLOPT_RETURNTRANSFER => true
 			));
 	

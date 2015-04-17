@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 2477  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 2532  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2015 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.codegravity.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -21,13 +21,13 @@ include_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS. "incl
 
 $extraWatch = new ExtraWatchMain();
 $extraWatch->helper->setNoindexHttpHeaders();   //setting explicitly for ajax requests
-$extraWatch->block->checkPermissions();
+$extraWatch->block->checkBackendTokenFromUrl();
 $extraWatch->config->initializeTranslations();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-$uriId = ExtraWatchHelper::requestGet('uriId');  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-$ip = ExtraWatchHelper::requestGet('ip');  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-$uri2titleId = ExtraWatchHelper::requestGet('uri2titleId');  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-$day = ExtraWatchHelper::requestGet('day');  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+$uriId = (int) ExtraWatchHelper::requestGet('uriId');  ///
+$ip = ExtraWatchInput::validate(_EW_IP, ExtraWatchHelper::requestGet('ip'));  	 	///
+$uri2titleId = (int) ExtraWatchHelper::requestGet('uri2titleId');  	///
+$day = (int) ExtraWatchHelper::requestGet('day');  	 	    	///
 
 $uriIdVisitRow = $extraWatch->visit->getJoinedURIRowById($uriId);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
@@ -44,8 +44,8 @@ $output .= ("
 
 
 
-$getData = $extraWatchVisitsHTML->renderGetVars($uriId);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-$postData = $extraWatchVisitsHTML->renderPostVars($uriId);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+$getData = $extraWatchVisitsHTML->renderGetVars($uriId);
+$postData = $extraWatchVisitsHTML->renderPostVars($uriId);
 
 $output .= "<table>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 if ($getData) {

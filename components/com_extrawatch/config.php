@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 2477  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 2532  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2015 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.codegravity.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -24,7 +24,7 @@ defined('_JEXEC') or die('Restricted access');
 # define('EXTRAWATCH_LIVE_SITE','/');  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
 define('EXTRAWATCH_VERSION', "2.3");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-define('EXTRAWATCH_REVISION', "2477");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+define('EXTRAWATCH_REVISION', "2532");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
 define('EXTRAWATCH_DEBUG', 0);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 define('EXTRAWATCH_PROFILING_ENABLED', 0);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -786,3 +786,72 @@ define('EXTRAWATCH_KEEP_MAX_VISITS', 1000);
 define('TYPE_EXTRAWATCH_KEEP_MAX_VISITS', "number");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
 define('EXTRAWATCH_FRONTEND_USER_RENDER_REAL_NAME', 0);		//0 - display username on frontend, 1- display user's real name on frontend    	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+
+
+
+define('EXTRAWATCH_INCLUDE_FILE_WHITELIST',
+serialize(array( 1=>
+    "view/dm_add_ext.php",
+    "view/adminstyles.php",
+    "view/adminbody.php",
+    "view/dm_add_filepath.php",
+    "view/dm_edit_ext.php",
+    "view/dm_edit_filepath.php",
+    "view/exportxml.php",
+    "view/goal.php",
+    "view/goals.php",
+    "view/importxml.php",
+    "view/adminstyles.php",
+    "view/adminheader.php",
+    "view/settings.php",
+    "view/credits.php",
+    "view/license.php",
+    "view/license-free.php",
+    "view/status.php",
+    "view/history.php",
+    "view/emails.php",
+    "view/flow.php",
+    "view/sizes.php",
+    "view/sizecomponents.php",
+    "view/sizemodules.php",
+    "view/sizedatabase.php",
+    "view/seo.php",
+    "view/dm_downloads.php",
+    "view/users.php",
+    "view/location.php",
+    "view/stats.php",
+    "view/footer.php",
+    "view/graphs.php",
+    "view/fullversion.php",
+    "view/heatmap.php",
+    "view/clicks.php",
+    "view/antispam.php",
+
+    "ajax/unloaded.php",
+    "ajax/img.php",
+    "ajax/heatmap.include.js.php",
+    "ajax/heatmap.php",
+    "ajax/block.php",
+    "ajax/clicks.php",
+    "ajax/dashboard.css.php",
+    "ajax/download.php",
+    "ajax/elementclicks.php",
+    "ajax/heatmap.include.js.php",
+    "ajax/heatmap.php",
+    "ajax/img.php",
+    "ajax/last.php",
+    "ajax/lastclick.php",
+    "ajax/lastvisit.php",
+    "ajax/sizequery.php",
+    "ajax/sizequerytotal.php",
+    "ajax/stats.php",
+    "ajax/tooltip.php",
+    "ajax/trendtooltip.php",
+    "ajax/unloaded.php",
+    "ajax/vars.php",
+    "ajax/visits.php",
+
+    "js/extrawatch.js.php",
+    "js/maps.js.php"
+
+)));

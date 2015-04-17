@@ -6,7 +6,7 @@ Plugin URI: http://www.extrawatch.com
 
 Description: Features: <strong>Visitor Live Stats</strong>, <strong>Monitor File Downloads, Clicks</strong>, <strong>Monitor clicks, Heatmap</strong>, <strong>SEO Report</strong>, <strong>Traffic Flow</strong>, <strong>Front-end Counters</strong>, <strong>Anti-spam</strong>, <strong>Nightly Email Reports</strong>, <strong>History</strong>, <strong>Graphs</strong>, <strong>Directory sizes</strong>, translated in <strong>42 world languages</strong>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-Version: 2.3.2477 PRO  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+Version: 2.3.2532 PRO  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 Author: CodeGravity.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 Author URI: http://www.extrawatch.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 */
@@ -30,10 +30,17 @@ if ( ! defined( '_EW_PROJECT_ID' ) )
 	define("_EW_PROJECT_ID", FALSE);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
   function getExtraWatchURL() {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-    
+
+	if ( function_exists('plugins_url') ) {
+		$pluginUrl = plugins_url();
+	} else {
+		$pluginUrl = WP_PLUGIN_URL;
+	}
 
     
-    $extraWatchPath = WP_PLUGIN_URL."/extrawatch-pro/";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    
+    
+    $extraWatchPath = $pluginUrl."/extrawatch-pro/";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     
 
     return $extraWatchPath;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -46,7 +53,15 @@ add_action('plugins_loaded', 'extrawatch_menu');
 
 //including main stylesheet to header to prevent blinking
 if (strstr($_SERVER['REQUEST_URI'],'?page=extrawatch')) {   //loading only if actual plugin body is requested
-    wp_enqueue_style("dashboard.css.php",getExtraWatchURL()."/components/com_extrawatch/ajax/dashboard.css.php?env=ExtraWatchWordpressEnv");
+
+	require_once(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "includes.php");
+
+    $env = ExtraWatchEnvFactory::getEnvironment();
+    $extraWatch = new ExtraWatchMain();
+
+    $extraWatch->config->saveRandValue(); //this is because we have to set rand value because ajax link uses security token generated from rand value
+
+    wp_enqueue_style("dashboard.css.php",  getExtraWatchURL()."/".$env->renderBackendAjaxLink($extraWatch->config,"ajax","dashboard.css&env=ExtraWatchWordpressEnv"));
 }
 
 
@@ -56,7 +71,7 @@ function extrawatch_menu() {
 		$wpBase = realpath(dirname(__FILE__).DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."..");
 		require_once($wpBase.DIRECTORY_SEPARATOR."wp-admin".DIRECTORY_SEPARATOR."includes".DIRECTORY_SEPARATOR."plugin.php");
 	} 
-	$EC_userLevel = 'level_10';  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+	$EC_userLevel = 'level_7';  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 	if (function_exists("add_menu_page")) {
 		add_menu_page('ExtraWatch', 'ExtraWatch', $EC_userLevel, 'extrawatch', 'ew_plugin_options', $extraWatchURL.'components/com_extrawatch/img/icons/extrawatch-logo-16x16.png');
 	}
@@ -74,7 +89,7 @@ if (!function_exists("extrawatch_admin_menu")) {
 
     $extraWatchPath = getExtraWatchPath();
 
-      if (!current_user_can('manage_options')) {
+      if (!current_user_can('edit_pages')) {
       wp_die(__('You do not have sufficient permissions to access this page.'));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     }
     echo '<div class="wrap">';  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -87,23 +102,38 @@ if (!function_exists("extrawatch_admin_menu")) {
     echo '</div>';
   }
 
+
+  function extrawatch_frontend_agent()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+  {
+    include_once getExtraWatchPath() . "modules" . DS . "mod_extrawatch_agent" . DS . "mod_extrawatch_agent.php";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    echo renderExtraWatchAgent();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+  }
+
+
+  function extrawatch_frontend_users()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+  {
+    include_once getExtraWatchPath() . "modules" . DS . "mod_extrawatch_users" . DS . "mod_extrawatch_users.php";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    echo renderExtraWatchUsers();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+}
+
+  function extrawatch_frontend_visitors()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+  {
+    include_once getExtraWatchPath() . "modules" . DS . "mod_extrawatch_visitors" . DS . "mod_extrawatch_visitors.php";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    echo renderExtraWatchVisitors();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+  }
+  
   function extrawatch_frontend()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   {
-    $extraWatchPath = getExtraWatchPath();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     echo("<br/>");
-    include_once $extraWatchPath . "modules" . DS . "mod_extrawatch_agent" . DS . "mod_extrawatch_agent.php";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-    include_once $extraWatchPath . "modules" . DS . "mod_extrawatch_users" . DS . "mod_extrawatch_users.php";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-    include_once $extraWatchPath . "modules" . DS . "mod_extrawatch_visitors" . DS . "mod_extrawatch_visitors.php";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-
-    echo renderExtraWatchAgent();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-    echo renderExtraWatchVisitors();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-    echo renderExtraWatchUsers();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+	extrawatch_frontend_agent();
+    extrawatch_frontend_users();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+	extrawatch_frontend_visitors();
   }
 
 
   function getExtraWatchPath() {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     
-
+    
     
     $extraWatchPath = WP_PLUGIN_DIR."/extrawatch-pro/";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     
@@ -127,6 +157,18 @@ if (!function_exists("extrawatch_admin_menu")) {
 
   add_action('wp_head','extrawatch_head_frontend');
 
+
+//including main stylesheet to header to prevent blinking
+if (strstr($_SERVER['REQUEST_URI'],'?page=extrawatch')) {   //loading only if actual plugin body is requested
+
+    require_once(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "includes.php");
+
+    $env = ExtraWatchEnvFactory::getEnvironment();
+    $extraWatch = new ExtraWatchMain();
+    wp_enqueue_style("dashboard.css.php",  getExtraWatchURL()."/".$env->renderBackendAjaxLink($extraWatch->config,"ajax","dashboard.css&env=ExtraWatchWordpressEnv"));
+}
+
+
 	function extrawatch_head_frontend() {
 		echo "<script type='text/javascript' src='".getExtraWatchURL()."components/com_extrawatch/js/extrawatch.js'></script>\n";
 	
@@ -135,6 +177,13 @@ if (!function_exists("extrawatch_admin_menu")) {
 	
 	}
 
+add_action( 'init', 'extrawatch_register_shortcodes');	
+
+function extrawatch_register_shortcodes(){
+   add_shortcode('extraWatchAgent', 'extrawatch_frontend_agent');
+   add_shortcode('extraWatchUsers', 'extrawatch_frontend_users');
+   add_shortcode('extraWatchVisitors', 'extrawatch_frontend_visitors');
+}
 
 
 unset($_GET['error'] );  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  

@@ -350,7 +350,7 @@ DEFINE('_EW_EVALUATION_LEFT', "&nbsp; Αυτή είναι μία δοκιμασ�
 DEFINE('_EW_TRIAL_VERSION_EXPIRED', " Η δοκιμαστική περίοδος έληξε. Παρακαλώ αγοράστε το ExtraWatch");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
 DEFINE('_EW_CONFIG_LICENSE_ACTIVATED', "Η αδεια ενεργοποιηθικε με επιτιχια.Ευχαριστουμε");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_CONFIG_LICENCE_DONT_MATCH', "<b>Σφάλμα: Το κλειδί αδείας και το domain δεν ταιριάζουν.</b><br/>Εχετε δώσει το ίδιο όνομα domain κατά τη δωρεά σας με το παρακάτω? Παρακαλώ επικοινωνήστε με: support@codegravity.com");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_CONFIG_LICENCE_DONT_MATCH', "<b>Σφάλμα: Το κλειδί αδείας και το domain δεν ταιριάζουν.</b><br/>Εχετε δώσει το ίδιο όνομα domain κατά τη δωρεά σας με το παρακάτω? Παρακαλώ επικοινωνήστε με: live chat on extrawatch.com or submit support ticket via <a href='http://www.extrawatch.com/ticket' target='_blank'>http://www.extrawatch.com/ticket</a>");
 
 DEFINE('_EW_VIEW_ADMINBODY_LONG_MESSAGE', "Εάν βλέπετε το παραπάνω μήνυμα για αρκετή ώρα, ή ρύθμιση ιστοσελίδας ίσως είναι λανθασμένη.  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                     Ανοίξτε το components/com_extrawatch/config.php  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  

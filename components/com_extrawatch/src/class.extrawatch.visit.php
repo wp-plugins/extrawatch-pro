@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 2477  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 2532  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2015 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.extrawatch.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -39,8 +39,8 @@ class ExtraWatchVisit
 
     function __construct()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   {
-    $this->env = ExtraWatchEnvFactory::getEnvironment();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-    $this->database = $this->env->getDatabase(_EW_PROJECT_ID);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    $this->env = ExtraWatchEnvFactory::getEnvironment();
+    $this->database = $this->env->getDatabase(_EW_PROJECT_ID);
     $this->config = new ExtraWatchConfig($this->database);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     $this->helper = new ExtraWatchHelper($this->database);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     $this->stat = new ExtraWatchStat($this->database);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -330,7 +330,7 @@ class ExtraWatchVisit
    * @param  $referer  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
    * @return
    */
-  function extractPhraseFromUrl($referer)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+  function extractPhraseFromUrl($referer)  	 	///
   {
     if (@strstr($referer, "usg=") && @strstr($referer, "q=&")) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 		if ($this->config->getCheckboxValue("EXTRAWATCH_SEO_LIST_ENCRYPTED_KEYWORDS")) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -375,13 +375,13 @@ class ExtraWatchVisit
    */
   static function getRemoteIPAddress()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   {
-    if (@$_SERVER['HTTP_X_REAL_IP']) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-      $ip = @$_SERVER['HTTP_X_REAL_IP'];  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    if (@$_SERVER['HTTP_X_REAL_IP']) {  	///
+      $ip = ExtraWatchInput::validate(_EW_INPUT_IP, @$_SERVER['HTTP_X_REAL_IP']);  	///
     } else 
-    if (@$_SERVER['HTTP_X_FORWARDED_FOR']) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-      $ip = @$_SERVER['HTTP_X_FORWARDED_FOR'];  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    if (@$_SERVER['HTTP_X_FORWARDED_FOR']) {  	///
+      $ip = ExtraWatchInput::validate(_EW_INPUT_IP, @$_SERVER['HTTP_X_FORWARDED_FOR']);  ///
     } else {
-      $ip = @$_SERVER['REMOTE_ADDR'];  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+      $ip = ExtraWatchInput::validate(_EW_INPUT_IP, @$_SERVER['REMOTE_ADDR']);  	 	 ///
     }
     return $ip;
   }
@@ -413,18 +413,18 @@ class ExtraWatchVisit
   function insertVisit()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   {
   
-  	  $redirectStatus = @$_SERVER['REDIRECT_STATUS'];
+  	  $redirectStatus = (int) @$_SERVER['REDIRECT_STATUS'];///
 	  if ($redirectStatus == "404") {	//prevent inserting not-found pages
 		return;
 	  }
 
       $this->config->initializeTranslations();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-      $ip = addslashes(strip_tags(@ $this->getRemoteIPAddress()));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-      $username = @ $this->env->getUsername();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-      $userId = @ $this->env->getUserId();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-      $referrer = $this->getReferer();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-      $liveSite = $this->config->getLiveSite();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+      $ip = addslashes(strip_tags(ExtraWatchInput::validate(_EW_INPUT_IP, @ $this->getRemoteIPAddress())));///
+      $username = ExtraWatchInput::validate(_EW_INPUT_ONE_STRING, @ $this->env->getUsername());  ///
+      $userId = (int) @ $this->env->getUserId();  	///
+      $referrer = ExtraWatchInput::validate(_EW_INPUT_REFERRER, $this->getReferer());  	 ///
+      $liveSite = $this->config->getLiveSite(); ///
 	  
       if ($this->config->isIgnored('IP', $ip) || $this->config->isIgnored('USER', $username) 
 	  
@@ -684,7 +684,9 @@ class ExtraWatchVisit
 function insertSearchResultPage($uri, $phrase, $referer, $title)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   {
     if (@$phrase) {
-      $position = $this->seo->extractGooglePageNumberFromReferer($referer);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+      
+	  $position = $this->seo->extractGooglePageNumberFromReferer($referer);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+      
       if (@$position) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         $uri2keyphraseId = $this->insertUri2KeyphraseByUriKeyphraseTitle($uri, $phrase, $title);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         $uri2keyphraseId2positionId = $this->insertUri2Keyphrase2Position($uri2keyphraseId, $position);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -831,7 +833,9 @@ function insertSearchResultPage($uri, $phrase, $referer, $title)
 
       if ($this->date->getUTCTimestamp() % 10 == 0) {
           $this->deleteOldVisits();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-          $this->seo->cleanUnimportantKeyphrases();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+		  
+		  $this->seo->cleanUnimportantKeyphrases();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+		  
       }
 
       $query = sprintf(" update #__extrawatch_uri LEFT JOIN #__extrawatch ON #__extrawatch_uri.fk = #__extrawatch.id

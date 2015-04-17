@@ -331,7 +331,7 @@ DEFINE('_EW_EVALUATION_LEFT', "&nbsp; Detta är ett 15-dagars utvärderingsversi
 DEFINE('_EW_TRIAL_VERSION_EXPIRED', " Din testversion har gått ut. Vänligen köp ExtraWatch");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
 DEFINE('_EW_CONFIG_LICENSE_ACTIVATED', "Licensen aktiverades. Tack");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_CONFIG_LICENCE_DONT_MATCH', "<b>FEL: licensnyckeln och din domän stämmer inte.</b><br/>Har du angett samma domännamn i aktivering formuläret som du ser nedan? Kontakta: support@codegravity.com");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_CONFIG_LICENCE_DONT_MATCH', "<b>FEL: licensnyckeln och din domän stämmer inte.</b><br/>Har du angett samma domännamn i aktivering formuläret som du ser nedan? Kontakta: live chat on extrawatch.com or submit support ticket via <a href='http://www.extrawatch.com/ticket' target='_blank'>http://www.extrawatch.com/ticket</a>");
 
 DEFINE('_EW_VIEW_ADMINBODY_LONG_MESSAGE', "Om du ser meddelandet ovan för länge, kanske den aktiva webbplatsen är fel.  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                     Öppna components/com_extrawatch/config.php  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  

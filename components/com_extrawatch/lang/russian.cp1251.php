@@ -337,7 +337,7 @@ DEFINE('_EW_EVALUATION_LEFT', "&nbsp; ��� 15-�� ������� 
 DEFINE('_EW_TRIAL_VERSION_EXPIRED', " ��� ������� ������ ����������. ���������� ����������� ExtraWatch");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
 DEFINE('_EW_CONFIG_LICENSE_ACTIVATED', "�������� ������������. ������� �������");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_CONFIG_LICENCE_DONT_MATCH', "<b>������: ������������ ���� � ����� �� ���������.</b><br/>�� ����� ����� �� �������� ��� � ���� ��������� ��� ������� ����? ���������� ���������: support@codegravity.com");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_CONFIG_LICENCE_DONT_MATCH', "<b>������: ������������ ���� � ����� �� ���������.</b><br/>�� ����� ����� �� �������� ��� � ���� ��������� ��� ������� ����? ���������� ���������: live chat on extrawatch.com or submit support ticket via <a href='http://www.extrawatch.com/ticket' target='_blank'>http://www.extrawatch.com/ticket</a>");
 
 DEFINE('_EW_VIEW_ADMINBODY_LONG_MESSAGE', "��� ��������� ������ �� ������ ���������� �����, ��� ������� ���� ����� ���� ������ �������.  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                     �������� components/com_extrawatch/config.php  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  

@@ -336,7 +336,7 @@ DEFINE('_EW_EVALUATION_LEFT', "&nbsp; To jest 15-dniowa wersja testowa. Liczba d
 DEFINE('_EW_TRIAL_VERSION_EXPIRED', " Wersja testowa wygasła. Kup wersję pełną.");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
 DEFINE('_EW_CONFIG_LICENSE_ACTIVATED', "Aktywowano licencję. Dziękujemy.");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_CONFIG_LICENCE_DONT_MATCH', "<b>Błąd: klucz licencji nie został wydany dla tej domeny.</b><br/>Czy podczas zakupu podałeś tę samą nazwę domeny, co widoczna poniżej? Aby wyjaśnić tę sprawę, napisz: support@codegravity.com");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_CONFIG_LICENCE_DONT_MATCH', "<b>Błąd: klucz licencji nie został wydany dla tej domeny.</b><br/>Czy podczas zakupu podałeś tę samą nazwę domeny, co widoczna poniżej? Aby wyjaśnić tę sprawę, napisz: live chat on extrawatch.com or submit support ticket via <a href='http://www.extrawatch.com/ticket' target='_blank'>http://www.extrawatch.com/ticket</a>");
 
 DEFINE('_EW_VIEW_ADMINBODY_LONG_MESSAGE', "Jeżeli widzisz powyższy komunikat zbyt długo, bazowa nazwa domeny (live_site) może być błędna. Otwórz plik components/com_extrawatch/config.php i podaj właściwą nazwę. Przykład: define('EXTRAWATCH_LIVE_SITE', 'http://www.codegravity.com');");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 

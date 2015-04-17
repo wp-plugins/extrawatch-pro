@@ -339,7 +339,7 @@ DEFINE('_EW_EVALUATION_LEFT', "&nbsp; Dit is een Evaluatie Versie die 15 dagen g
 DEFINE('_EW_TRIAL_VERSION_EXPIRED', " Uw evaluatie versie is verlopen. Schaf een exemplaar aan van ExtraWatch");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
 DEFINE('_EW_CONFIG_LICENSE_ACTIVATED', "Licentie is succesvol geactiveerd. Bedankt");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_CONFIG_LICENCE_DONT_MATCH', "<b>Fout: de licentiesleutel en uw domein komen niet overeen.</b><br/>Hebt u dezelfde domeinnaam als die u hieronder ziet in het formulier voor activering ingevoerd? Neem contact op met: support@codegravity.com");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_CONFIG_LICENCE_DONT_MATCH', "<b>Fout: de licentiesleutel en uw domein komen niet overeen.</b><br/>Hebt u dezelfde domeinnaam als die u hieronder ziet in het formulier voor activering ingevoerd? Neem contact op met: live chat on extrawatch.com or submit support ticket via <a href='http://www.extrawatch.com/ticket' target='_blank'>http://www.extrawatch.com/ticket</a>");
 
 DEFINE('_EW_VIEW_ADMINBODY_LONG_MESSAGE', "Als bovenstaand bericht te lang wordt weergegeven is mogelijk uw live website verkeerd.  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                     Open de components/com_extrawatch/config.php  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  

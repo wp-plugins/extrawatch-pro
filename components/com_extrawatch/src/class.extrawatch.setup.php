@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 2477  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 2532  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2015 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.extrawatch.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -31,7 +31,7 @@ class ExtraWatchSetup {
 
     function isEwInitialized() {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-        $database = $this->env->getDatabase(_EW_PROJECT_ID);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $database = $this->env->getDatabase(_EW_PROJECT_ID); ///
 
 		try {
         $result = @$database->resultQuery("select `value` from #__extrawatch_config where `name` = 'EXTRAWATCH_LIVE_SITE'");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -56,7 +56,9 @@ class ExtraWatchSetup {
                     require_once (realpath(dirname(__FILE__)).DS."env".DS."nocms".DS."admin".DS."src".DS."class.extrawatch.project.php");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
                     $extraWatchProject = new ExtraWatchProject($this->database);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                    $username = @$_SESSION['email'] ? @$_SESSION['email'] : @$_REQUEST['email'];  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                    $username = ExtraWatchInput::validate(_EW_INPUT_EMAIL, @$_SESSION['email']) ?
+                        ExtraWatchInput::validate(_EW_INPUT_EMAIL, @$_SESSION['email']) :
+                        ExtraWatchInput::validate(_EW_INPUT_EMAIL, @$_REQUEST['email']);  	 ///
 
                     $extraWatchProject->setTimeOfProjectCreation(_EW_PROJECT_ID);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                     @mail(_EW_CLOUD_NOTIFY_EMAIL, "project "._EW_PROJECT_ID." initialized", "project "._EW_PROJECT_ID." initialized");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -76,12 +78,12 @@ class ExtraWatchSetup {
 
     public function runAdditionalSQLScripts() {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 	try {
-        $files = scandir($this->sqlScriptsModuleDir);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $files = scandir(ExtraWatchInput::validate(_EW_INPUT_DIR, $this->sqlScriptsModuleDir));  	  ///
         foreach ($files as $file) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
             if (strstr($file,".sql")) { // should be replaced by ends with  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                 if (!$this->wasAdditionalSQLScriptRun($file)) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                    $this->runSQLscriptsFromFile($this->sqlScriptsModuleDir.DS.$file);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                    $this->database->executeQuery(sprintf("insert into #__extrawatch_sql_scripts (scriptname) values ('%s')", $file));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                    $this->runSQLscriptsFromFile($this->sqlScriptsModuleDir.DS.$file);  	 ///
+                    $this->database->executeQuery(sprintf("insert into #__extrawatch_sql_scripts (scriptname) values ('%s')", $this->database->getEscaped($file)));  ///
                 }
             }
         }
@@ -97,8 +99,8 @@ class ExtraWatchSetup {
 
 
     private function runSQLscriptsFromFile($file) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        $database = $this->env->getDatabase(_EW_PROJECT_ID);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        $lines = file($file);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $database = $this->env->getDatabase(_EW_PROJECT_ID);  	  ///
+        $lines = file(ExtraWatchInput::validate(_EW_INPUT_FILE_PATH, $file));  	  ///
         $query = "";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         foreach ($lines as $line_num => $line) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
             $query .= " ".trim($line);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -134,8 +136,8 @@ class ExtraWatchSetup {
 
     static function initializeMenu()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     {
-        $env = ExtraWatchEnvFactory::getEnvironment();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        $database = $env->getDatabase(_EW_PROJECT_ID);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $env = ExtraWatchEnvFactory::getEnvironment();  ///
+        $database = $env->getDatabase(_EW_PROJECT_ID); ///
 
         if (version_compare(JVERSION, "2.5.0", "<")) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
@@ -206,7 +208,7 @@ class ExtraWatchSetup {
     function resetData()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     {
         foreach (unserialize(EXTRAWATCH_TABLES_TO_TRUNCATE) as $table) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-            $query = sprintf("DELETE FROM `$table`");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+            $query = sprintf("DELETE FROM `%s`", $this->database->getEscaped($table));
             $this->database->executeQuery($query);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         }
         return TRUE;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -218,7 +220,7 @@ class ExtraWatchSetup {
         $this->database->executeQuery($query);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
         foreach ($this->getExtraWatchTables() as $table => $value) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-            $query = sprintf("DROP TABLE `%s`", $value->Name);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+            $query = sprintf("DROP TABLE `%s`", $this->database->getEscaped($value->Name));
             $this->database->executeQuery($query);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         }
         return TRUE;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  

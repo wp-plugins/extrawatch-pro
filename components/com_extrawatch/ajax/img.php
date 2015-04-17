@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 2477  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 2532  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2015 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.codegravity.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -30,19 +30,19 @@ $extraWatch = new ExtraWatchMain();
 $extraWatch->helper->setNoindexHttpHeaders();   //setting explicitly for ajax requests
 $extraWatchHTML = new ExtraWatchHTML();
 
-$referer = ExtraWatchHelper::requestGet("ref");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-$title = ExtraWatchHelper::requestGet("title");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-$uri = ExtraWatchHelper::requestGet("uri");
-$queryString = ExtraWatchHelper::requestGet("referringQuery");
+$referer = ExtraWatchInput::validate(_EW_INPUT_REFERRER, ExtraWatchHelper::requestGet("ref"));///
+$title = ExtraWatchHelper::requestGet("title");///
+$uri = ExtraWatchInput::validate(_EW_INPUT_URI, ExtraWatchHelper::requestGet("uri"));///
+$queryString = ExtraWatchHelper::requestGet("referringQuery");///
 if ($queryString) {
     $uri .= "?".$queryString;
 }
-$params = ExtraWatchHelper::requestGet("params");
+$params = ExtraWatchHelper::requestGet("params");///
 
-$uri = ExtraWatchHelper::unescapeSlash($uri);
-$title = ExtraWatchHelper::unescapeSlash($title);
-$referer = ExtraWatchHelper::unescapeSlash($referer);
-$params = ExtraWatchHelper::unescapeSlash($params);
+$uri = ExtraWatchInput::validate(_EW_INPUT_URI, ExtraWatchHelper::unescapeSlash($uri));///
+$title = ExtraWatchHelper::unescapeSlash($title);///
+$referer = ExtraWatchInput::validate(_EW_INPUT_REFERRER, ExtraWatchHelper::unescapeSlash($referer));///
+$params = ExtraWatchHelper::unescapeSlash($params);///
 $uri = $uri.$params;    //adding params to uri
 
 
@@ -54,7 +54,7 @@ ExtraWatchLog::debug("img.php - referer: $referer title: $title uri: $uri prams:
 
 if (@_EW_CLOUD_MODE) {
 
-    $projectId = @$_REQUEST['projectId'];
+    $projectId = (int) @$_REQUEST['projectId'];///
     $projectInitialized = $extraWatch->visit->isProjectInitialized($projectId);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
     if ($projectInitialized) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  

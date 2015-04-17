@@ -332,7 +332,7 @@ DEFINE('_EW_TRIAL_VERSION_EXPIRED', " Va�a trial verzia expirovala. Pros�m k
 
 DEFINE('_EW_CONFIG_LICENSE_ACTIVATED', "Licencia aktivovan� �spe�ne. �akujeme");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_CONFIG_LICENCE_DONT_MATCH', "<b>Chyba: licen�n� k��� a va�a dom�na sa nezhoduj�.</b><br/>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-Naozaj ste vlo�ili spr�vny n�zov dom�ny do aktiva�n�ho dial�gu? Pros�m kontaktujte: support@codegravity.com");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+Naozaj ste vlo�ili spr�vny n�zov dom�ny do aktiva�n�ho dial�gu? Pros�m kontaktujte: live chat on extrawatch.com or submit support ticket via <a href='http://www.extrawatch.com/ticket' target='_blank'>http://www.extrawatch.com/ticket</a>");
 
 DEFINE('_EW_VIEW_ADMINBODY_LONG_MESSAGE', "Ak vid�te t�to spr�vu pr�li� dlho, nastavenie va�ej dom�ny m��e by� nespr�vne.  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                     Otvorte components/com_extrawatch/config.php  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  

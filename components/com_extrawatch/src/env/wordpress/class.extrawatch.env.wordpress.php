@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 2477  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 2532  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2015 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.extrawatch.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -224,10 +224,31 @@ class ExtraWatchWordpressEnv implements ExtraWatchEnv
     }
 
 
-    public function renderAjaxLink($task, $action) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        $routerFile = "components/com_extrawatch/extrawatch.php?task=".$task."&action=".$action;
-        return $routerFile;   	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-	}
+    private function getExtraWatchControllerUrl() {
+            return "components/com_extrawatch/extrawatch.php?";
+    }
+
+    public function renderBackendAjaxLink($extraWatchConfig, $task, $action) {
+        $urlPart = array();
+        $urlPart[] = $extraWatchConfig->getBackendRequestOriginUrlParam();
+        $urlPart[] = $extraWatchConfig->getTokenUrlParam($extraWatchConfig->getBackendToken());
+        $urlPart[] = "task=".$task;
+        $urlPart[] = "action=".$action;
+        return $this->getExtraWatchControllerUrl().implode("&", $urlPart);
+    }
+
+    public function renderFrontendAjaxLink($extraWatchConfig, $task, $action, $withoutToken = FALSE) {
+        $urlPart = array();
+        $urlPart[] = $extraWatchConfig->getFrontendRequestOriginUrlParam();
+        if (!$withoutToken) {
+            $urlPart[] = $extraWatchConfig->getTokenUrlParam($extraWatchConfig->getFrontendToken());
+        }
+        $urlPart[] = "task=".$task;
+        $urlPart[] = "action=".$action;
+        return $this->getExtraWatchControllerUrl().implode("&", $urlPart);
+    }
+
+
 
     public function addStyleSheet($cssURL)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     {
@@ -270,6 +291,16 @@ class ExtraWatchWordpressEnv implements ExtraWatchEnv
     public function isPHPCachingEnabled() {
         return FALSE;
     }
+
+    public function getCMSFileSystemRootPath() {
+        return ABSPATH;
+    }
+
+	public function getCMSBaseURL() {
+		return get_site_url();
+	}
+
+
 
     private function getCurrentUserId() {
         if (@function_exists("get_current_user_id")) {

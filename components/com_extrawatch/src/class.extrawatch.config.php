@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 2477  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 2532  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2015 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.extrawatch.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -20,9 +20,15 @@ class ExtraWatchConfig
   public $liveSiteCached;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   public $env;
   public static $configValuesCached;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-  const _EW_CONST_UNREGISTERED = "UNREGISTERED";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+  const _EW_CONST_UNREGISTERED = "UNREGISTERED";
 
-  function __construct($database)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+  const _EW_REQUEST_ORIGIN_FRONTEND = "frontend";
+  const _EW_REQUEST_ORIGIN_BACKEND = "backend";
+  const _EW_REQUEST_ORIGIN_PARAM_NAME = "origin";
+
+  const _EW_TOKEN_PARAM_NAME = "token";
+
+  function __construct($database)
   {
     $this->env = ExtraWatchEnvFactory::getEnvironment();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     $this->database = $database;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -41,20 +47,17 @@ class ExtraWatchConfig
   /**
    * config
    */
-  function checkPermissions()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+  function checkBackendTokenFromUrl()
   {
-    if (!$this->isPermitted()) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-      die("Access denied. Hacking attempt has been logged and reported.");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+      $token = $this->getTokenFromRequestUrl();
+      if (!$this->isPermittedWithBackendToken($token)) {
+          die("Access denied");
     }
   }
 
-  function isPermitted()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+  function isPermittedWithBackendToken($backendToken)
   {
-/*    $rand = $this->getRand();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-    if (!$rand || $rand != addslashes(strip_tags(@ ExtraWatchHelper::requestGet('rand')))) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-      return FALSE;
-    }*/
-    return TRUE;
+      return (ExtraWatchConfig::getBackendToken() === $backendToken);
   }
 
 
@@ -63,12 +66,10 @@ class ExtraWatchConfig
    *
    * @return unknown  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
    */
-  function getRand()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+  function getBackendToken()
   {
-    $rand = $this->getConfigValue("rand");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-    //$query = sprintf("select value from #__extrawatch_config where name = 'rand' order by id desc limit 1; ");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-    //$rand = $this->database->resultQuery($query);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-    return $rand;
+    $rand = $this->getConfigValue("rand");
+    return sha1($rand.date("d h"));
 
   }
 
@@ -194,7 +195,7 @@ class ExtraWatchConfig
     return FALSE;
   }
 
-  function getLicenseFilePath()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+  function getLicenseFilePath()  	 //TODO obsolete
   {
     $config = new JConfig();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     $fileName = md5($this->getLiveSite());  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -238,7 +239,6 @@ class ExtraWatchConfig
   {
     // $this->createLicenseFile(); not used yet  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     $this->saveConfigValue("EXTRAWATCH_LICENSE_ACCEPTED", "1");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-    $this->setRand();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   }
 
   /**
@@ -343,9 +343,10 @@ class ExtraWatchConfig
     return FALSE;
   }
 
+
   function getProjectUrlByUsername($user) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
       if (@_EW_CLOUD_MODE) {
-        return "http://".$this->getDomainFromLiveSiteByUsername($user);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        return $this->getDomainFromLiveSiteByUsername($user);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
       } else {
          return "";
       }
@@ -358,10 +359,11 @@ class ExtraWatchConfig
        $url = $this->database->resultQuery($query);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
         $parsedUrl = @ parse_url($url);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        return @$parsedUrl['host'];  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+		$scheme = @$parsedUrl['scheme'] ? @$parsedUrl['scheme']."://" : "http://";
+        return $scheme.@$parsedUrl['host'];  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
     }
-
+	
   function getDomainFromLiveSite($user)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   {
 
@@ -474,22 +476,15 @@ class ExtraWatchConfig
     $this->saveConfigValue('EXTRAWATCH_FRONTEND_NOFOLLOW', "on");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     $this->saveConfigValue('EXTRAWATCH_FRONTEND_NO_BACKLINK', "on");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     if ($this->isAdFree()) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-      echo("<span style='color: green'>" . _EW_CONFIG_LICENSE_ACTIVATED . "</span>");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+      //echo("<span style='color: green'>" . _EW_CONFIG_LICENSE_ACTIVATED . "</span>");
       $ip = ExtraWatchVisit::getRemoteIPAddress();
 	  $market = @$this->getConfigValue("EXTRAWATCH_MARKETPLACE");
-	  echo("<iframe src='http://www.extrawatch.com/track/extrawatch/2.3/install/?domain=".$domain."&license=PRO&version=2.3.2477&ip=".$ip."&env=".get_class($this->env)."&key=".$value."&market=".@$market."' width='1px' frameborder='0' height='1px'>
+	  echo("<iframe style='display:none' src='http://www.extrawatch.com/track/extrawatch/2.3/install/?domain=".$domain."&license=PRO&version=2.3.2532&ip=".$ip."&env=".get_class($this->env)."&key=".$value."&market=".@$market."' width='1px' frameborder='0' height='1px'>
         </iframe>");			
       $this->saveConfigValue('EXTRAWATCH_FREE', 0);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     } else if (!$this->isUnregistered()){  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
       echo("<span style='color: red'>" . _EW_CONFIG_LICENCE_DONT_MATCH . "</span>");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     }
-	
-	$query = "DELETE IGNORE FROM #__extrawatch_config where name like 'rand' ";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-	$this->database->executeQuery(trim($query));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-
-	$rand = rand();
-	$query = "INSERT IGNORE INTO #__extrawatch_config (`name`, `value`) values ('rand', '$rand') ";
-	$this->database->executeQuery(trim($query));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
   }
 
@@ -512,14 +507,7 @@ class ExtraWatchConfig
   }
 
 
-  function setRand()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-  {
-    $rand = md5(md5(mt_rand()) + mt_rand());  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-    $query = sprintf("INSERT INTO #__extrawatch_config (name, value) values ('rand', '%s') ", $this->database->getEscaped($rand));
-    $this->database->executeQuery(trim($query));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-  }
-
-  function checkLiveSite()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+  function checkLiveSite()
   {
     if ($this->getLiveSite() == $this->env->getRootSite()) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
       return TRUE;
@@ -552,25 +540,31 @@ class ExtraWatchConfig
     return get_class($this->env);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   }
 
-  function getRandHash()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+  function getFrontendToken()
   {
-    return md5(md5(ExtraWatchConfig::getRand()));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    return sha1(sha1(date("d h")).sha1($this->getConfigValue("rand")));
   }
 
-  /**
+  function getHeatmapToken()
+  {
+    return sha1(date("d h").sha1(sha1($this->getConfigValue("rand"))));
+  }
+
+    /**
    * For things like heatmap etc..  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
    * @return bool
    */
-  function isPermittedWithHash($hash)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+  function isPermittedWithFrontendToken($frontendToken)
   {
-    $randHash = ExtraWatchConfig::getRandHash();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-    if (!$randHash || $randHash != addslashes(strip_tags($hash))) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-      return FALSE;
-    }
-    return TRUE;
+    return (ExtraWatchConfig::getFrontendToken() === $frontendToken);
   }
 
-  /**
+    function isPermittedWithHeatmapToken($heatmapToken)
+    {
+        return (ExtraWatchConfig::getHeatmapToken() === $heatmapToken);
+    }
+
+    /**
    * Used by both - save anti-spam and save settings  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
    * @param  $checkboxNamesArray  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
    * @param  $post
@@ -582,7 +576,7 @@ class ExtraWatchConfig
     if (@$post)
     foreach ($post as $key => $value) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
       if (strstr($key, "EXTRAWATCH_")) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        $this->saveConfigValue($key, trim($value));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $this->saveConfigValue( ExtraWatchInput::validate(_EW_INPUT_ONE_STRING, $key), trim($value));
       }
     }
     //hack :( explicitly save checkbox values  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -599,7 +593,7 @@ class ExtraWatchConfig
     function initializeTranslations() {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         if (!defined("_EW_MENU_STATS")) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
             $modulePath = realpath(dirname(__FILE__).DIRECTORY_SEPARATOR."..");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-            require $modulePath . DS . "lang" . DS . $this->getLanguage() . ".php";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+            require $modulePath . DS . "lang" . DS . $this->getLanguage() . ".php";  	///
         }
     }
 	
@@ -613,6 +607,60 @@ class ExtraWatchConfig
 		
 	}
 
+    /**
+     * @param $this
+     */
+    function saveRandValue()
+    {
+        $rand = $this->getConfigValue('rand');
+        if (!$rand) {
+            $this->saveConfigValue('rand', sha1(sha1(mt_rand()) + mt_rand()));
+        }
+    }
+
+    public function getBackendRequestOriginUrlParam() {
+        return self::_EW_REQUEST_ORIGIN_PARAM_NAME."=".ExtraWatchConfig::_EW_REQUEST_ORIGIN_BACKEND;
+    }
+
+    public function getFrontendRequestOriginUrlParam() {
+        return self::_EW_REQUEST_ORIGIN_PARAM_NAME."=".ExtraWatchConfig::_EW_REQUEST_ORIGIN_FRONTEND;
+    }
+
+    public function getTokenUrlParam($token) {
+        return self::_EW_TOKEN_PARAM_NAME."=".$token;
+    }
+
+
+    /**
+     * @param $queryParams
+     * @param $extraWatch
+     */
+    function validateRequestToken($queryParams)
+    {
+        $origin = ExtraWatchInput::validate(_EW_INPUT_ONE_STRING, @$queryParams[ExtraWatchConfig::_EW_REQUEST_ORIGIN_PARAM_NAME]); ///
+        $token = $this->getTokenFromRequestUrl();
+        if ($origin == ExtraWatchConfig::_EW_REQUEST_ORIGIN_FRONTEND) {
+            if (!$this->isPermittedWithFrontendToken($token)) {
+                die("Unauthorized frontend access without security token");
+            }
+        } else if ($origin == ExtraWatchConfig::_EW_REQUEST_ORIGIN_BACKEND) {
+            if (!$this->isPermittedWithBackendToken($token)) {
+                die("Unauthorized backend access without security token");
+            }
+        } else {
+            die("Unauthorized access without security token");
+        }
+    }
+
+    /**
+     * @return string
+     */
+    public function getTokenFromRequestUrl()
+    {
+        $queryParams = ExtraWatchHelper::getUrlQueryParams();
+        $token = ExtraWatchInput::validate(_EW_INPUT_ONE_STRING, @$queryParams[ExtraWatchConfig::_EW_TOKEN_PARAM_NAME]);///
+        return $token;
+    }
 }
 
 

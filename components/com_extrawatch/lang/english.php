@@ -342,7 +342,7 @@ DEFINE('_EW_EVALUATION_LEFT', "&nbsp; This is 15-day Evaluation Version. Days Le
 DEFINE('_EW_TRIAL_VERSION_EXPIRED', " Your trial version has expired. Please purchase ExtraWatch");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
 DEFINE('_EW_CONFIG_LICENSE_ACTIVATED', "License activated successfully. Thank you");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_CONFIG_LICENCE_DONT_MATCH', "<b>Error: the license key and your domain don't match.</b><br/>Did you enter the same domain name into the donation form as one you see below? <br/>Click '<b>request the correct activation key</b>' below, or contact: support@codegravity.com<br/>");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_CONFIG_LICENCE_DONT_MATCH', "<b>Error: the license key and your domain don't match.</b><br/>Did you enter the same domain name into the donation form as one you see below? <br/>Click '<b>request the correct activation key</b>' below, or contact: live chat on extrawatch.com or submit support ticket via <a href='http://www.extrawatch.com/ticket' target='_blank'>http://www.extrawatch.com/ticket</a><br/>");
 
 DEFINE('_EW_VIEW_ADMINBODY_LONG_MESSAGE', "If you are seeing the message above for too long, your live site may be wrong.  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                     Open the components/com_extrawatch/config.php  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  

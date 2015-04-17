@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3
- * @revision 2477
+ * @revision 2532
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2015 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.extrawatch.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -33,8 +33,11 @@ class ExtraWatchDBWrapWordpress implements ExtraWatchDBWrap
     $this->dbprefix = $wpdb->base_prefix;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     $select = TRUE;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
      if (!($this->dbref = @mysql_pconnect($host, $user, $password, TRUE))) {//using persistent connection or reusing existing one to get rid of "cannot connect" problems  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-              die("cannot connect");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+		if (!($this->dbref = @mysql_connect($host, $user, $password, TRUE))) {//using persistent connection or reusing existing one to get rid of "cannot connect" problems  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+              die("I was not possible to connect to your db with mysql_connect nor mysql_pconnect");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+		}
 	}
+
       if ($select) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 	      $this->select($database);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     }
@@ -65,6 +68,7 @@ class ExtraWatchDBWrapWordpress implements ExtraWatchDBWrap
       $this->errMsg = @mysql_error($this->dbref) . " in query $sql";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
       return FALSE;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     }
+	  $debugMessage = "";
       if (@EXTRAWATCH_PROFILING_ENABLED) {
           $time = round(microtime(true) * 1000) - $t1;
           $debugMessage = " ($time ms) ";
@@ -89,11 +93,12 @@ class ExtraWatchDBWrapWordpress implements ExtraWatchDBWrap
     }
     mysql_free_result($result);
 
+	  $debugMessage = "";
       if (@EXTRAWATCH_PROFILING_ENABLED) {
           $time = round(microtime(true) * 1000) - $t1;
           $debugMessage = " ($time ms) ";
       }
-      $debugMessage .= "loadResult: ".$this->sql;
+      $debugMessage .= "loadResult: ".@$this->sql;
       ExtraWatchLog::debug($debugMessage);
     return $return;
   }
@@ -108,12 +113,13 @@ class ExtraWatchDBWrapWordpress implements ExtraWatchDBWrap
     while ($row = mysql_fetch_assoc($result)) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
       $array[] = $row;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     }
+	$debugMessage = "";
     mysql_free_result($result);
       if (@EXTRAWATCH_PROFILING_ENABLED) {
           $time = round(microtime(true) * 1000) - $t1;
           $debugMessage = " ($time ms) ";
       }
-      $debugMessage .= "loadAssocList: ".$this->sql;
+      $debugMessage .= "loadAssocList: ".@$this->sql;
       ExtraWatchLog::debug($debugMessage);
     return $array;
   }
@@ -199,11 +205,13 @@ class ExtraWatchDBWrapWordpress implements ExtraWatchDBWrap
       }
     }
     mysql_free_result($cur);
+	
+	  $debugMessage = "";
       if (@EXTRAWATCH_PROFILING_ENABLED) {
           $time = round(microtime(true) * 1000) - $t1;
           $debugMessage = " ($time ms) ";
       }
-      $debugMessage .= "loadObjectList: ".$this->sql;
+      $debugMessage .= "loadObjectList: ".@$this->sql;
       ExtraWatchLog::debug($debugMessage);
     return $array;
   }

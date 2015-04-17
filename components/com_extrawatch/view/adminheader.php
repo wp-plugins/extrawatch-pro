@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.3
- * @revision 2477
+ * @revision 2532
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2015 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -15,7 +15,7 @@ defined('_JEXEC') or die('Restricted access'); ?>
 <?php echo $extraWatch->env->addScript($extraWatch->config->getLiveSiteWithSuffix()."components/com_extrawatch/js/ajax-dynamic-content.js");?>
 <?php echo $extraWatch->env->addScript($extraWatch->config->getLiveSiteWithSuffix()."components/com_extrawatch/js/ajax.js");?>
 
-<?php echo $extraWatch->env->addScript($extraWatch->config->getLiveSiteWithSuffix().$extraWatch->env->renderAjaxLink('js','extrawatch.js')."&rand=".$extraWatch->config->getRand()."&time=".time()."&env=".($extraWatch->config->getEnvironment())."&projectId="._EW_PROJECT_ID);?>
+<?php echo $extraWatch->env->addScript($extraWatch->config->getLiveSiteWithSuffix().$extraWatch->env->renderBackendAjaxLink($extraWatch->config, 'js','extrawatch.js')."&time=".time()."&env=".($extraWatch->config->getEnvironment())."&projectId="._EW_PROJECT_ID);?>
 
 <?php echo $extraWatch->env->addScript($extraWatch->config->getLiveSiteWithSuffix()."components/com_extrawatch/js/fade.js");?>
 
@@ -48,7 +48,7 @@ if (get_class($extraWatch->env) != "ExtraWatchWordpressEnv" &&  	//query is alre
 $liveSite = $extraWatch->config->getLiveSiteWithSuffix();
 
 if (get_class($extraWatch->env) != "ExtraWatchWordpressEnv") {  //for wordpress we're loading this in module so it gets to header section
-    echo $extraWatch->env->addStyleSheet($extraWatch->config->getLiveSiteWithSuffix().$extraWatch->env->renderAjaxLink('ajax','dashboard.css')."&env=".get_class($extraWatch->env));
+    echo $extraWatch->env->addStyleSheet($extraWatch->config->getLiveSiteWithSuffix().$extraWatch->env->renderBackendAjaxLink($extraWatch->config, 'ajax','dashboard.css')."&env=".get_class($extraWatch->env));
 }
 ?>
 

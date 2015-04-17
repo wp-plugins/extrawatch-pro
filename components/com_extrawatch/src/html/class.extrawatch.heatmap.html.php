@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 2477  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 2532  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2015 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.extrawatch.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -144,7 +144,7 @@ class ExtraWatchHeatmapHTML
         $projectSite = $this->extraWatch->config->getProjectUrlByUsername(_EW_PROJECT_ID);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         return sprintf("<a href='%s". $separator . ExtraWatchHeatmap::HEATMAP_PARAM_NAME . "=%d&" . ExtraWatchHeatmap::HEATMAP_PARAM_DAY_NAME . "=%d&ip=%s&" . ExtraWatchHeatmap::HEATMAP_PARAM_HASH . "=%s&uri2titleId=%d' target='_heatmap'>%s</a>",
             $projectSite.$uri, 1, $day, $ip,
-            $this->extraWatch->database->getEscaped($this->extraWatch->config->getRandHash()),
+            $this->extraWatch->database->getEscaped($this->extraWatch->config->getHeatmapToken()),
             $uri2titleId,
             $linkContent);
     }
@@ -211,7 +211,7 @@ class ExtraWatchHeatmapHTML
     {
         $projectSite = @$this->extraWatch->config->getProjectUrlByUsername(_EW_PROJECT_ID);
         $uri = $this->extraWatch->config->getLiveSite();
-        return sprintf("<a href='%s?" . ExtraWatchHeatmap::HEATMAP_PARAM_NAME . "=%d&" . ExtraWatchHeatmap::HEATMAP_PARAM_HASH . "=%s&xpath=%s' target='_heatmap' title='%s'>%s</a>", $projectSite . $uri, 1, $this->extraWatch->database->getEscaped($this->extraWatch->config->getRandHash()), urlencode($xpath), htmlentities($xpath), $linkName ? $linkName : ExtraWatchHelper::truncate($xpath) );
+        return sprintf("<a href='%s?" . ExtraWatchHeatmap::HEATMAP_PARAM_NAME . "=%d&" . ExtraWatchHeatmap::HEATMAP_PARAM_HASH . "=%s&xpath=%s' target='_heatmap' title='%s'>%s</a>", $projectSite . $uri, 1, $this->extraWatch->database->getEscaped($this->extraWatch->config->getFrontendToken()), urlencode($xpath), htmlentities($xpath), $linkName ? $linkName : ExtraWatchHelper::truncate($xpath) );
     }
 
     function renderLatestHeatmapClicksTable()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  

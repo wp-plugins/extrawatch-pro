@@ -331,7 +331,7 @@ DEFINE('_EW_EVALUATION_LEFT', "&nbsp; Toto je 15-ti denní zkušební verze. Vyp
 DEFINE('_EW_TRIAL_VERSION_EXPIRED', " Vaše zkušební verze vypršela. Prosím, kupte si ExtraWatch");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
 DEFINE('_EW_CONFIG_LICENSE_ACTIVATED', "Licence byla úspěšně aktivována. Děkujeme vám");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_CONFIG_LICENCE_DONT_MATCH', "<b>Chyba: licenční klíč nesouhlasí s vaší doménou.</b><br/>Napsali jste stejnou doménu do aktivačního formuláře jako je zobrazena níže? Prosím, napište na: support@codegravity.com");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_CONFIG_LICENCE_DONT_MATCH', "<b>Chyba: licenční klíč nesouhlasí s vaší doménou.</b><br/>Napsali jste stejnou doménu do aktivačního formuláře jako je zobrazena níže? Prosím, napište na: live chat on extrawatch.com or submit support ticket via <a href='http://www.extrawatch.com/ticket' target='_blank'>http://www.extrawatch.com/ticket</a>");
 
 DEFINE('_EW_VIEW_ADMINBODY_LONG_MESSAGE', "Pokud tuto zprávu vidíte dlouhou dobu, vaše stránka může být špatná.  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                     Otevřete components/com_extrawatch/config.php  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  

@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 2477  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 2532  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2015 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.extrawatch.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -295,14 +295,23 @@ class ExtraWatchBlock
     }
   }
 
-  function checkPermissions()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+   function checkFrontendTokenFromUrl() {
+       $token = $this->config->getTokenFromRequestUrl();
+       if (!$this->config->isPermittedWithFrontendToken($token)) {
+           die("Unauthorized access - wrong frontend token");
+       }
+   }
+
+
+  function checkBackendTokenFromUrl()
   {
-    $ip = ExtraWatchVisit::getRemoteIPAddress();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    $ip = ExtraWatchInput::validate(_EW_INPUT_IP, ExtraWatchVisit::getRemoteIPAddress());  ///**
     $reason = sprintf($this->BLOCKING_REASON, $ip);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     if ($this->checkBlocked($ip)) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
       die($reason);
     }
-    if (!$this->config->isPermitted()) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    $token = $this->config->getTokenFromRequestUrl();
+    if (!$this->config->isPermittedWithBackendToken($token)) {
       $this->blockIp($ip, $reason, $this->date->jwDateToday(), @constant(_EW_BLOCKING_UNAUTHORIZED_ACCESS));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
       die($reason);
     }
@@ -342,8 +351,11 @@ class ExtraWatchBlock
     return $data;
   }    /**     * block     */  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-    function saveImportAntiSpamIp($post) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        if ((($_FILES["file"]["type"] == "application/octet-stream"))) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    function saveImportAntiSpamIp($post) {
+
+        ExtraWatchInput::validate(_EW_INPUT_FILE_NAME, $_FILES);
+
+        if ((($_FILES["file"]["type"] == "application/octet-stream"))) {///
             if ($_FILES["file"]["error"] > 0) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                 echo "Return Code: " . $_FILES["file"]["error"] . "<br />";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                 return;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -355,10 +367,10 @@ class ExtraWatchBlock
             return;
         }
 
-        $uploadedFilePath = JPATH_BASE."/" . $_FILES["file"]["name"];
-        move_uploaded_file($_FILES["file"]["tmp_name"],$uploadedFilePath);
+        $uploadedFilePath = JPATH_BASE."/" . $_FILES["file"]["name"];///
+        move_uploaded_file($_FILES["file"]["tmp_name"],$uploadedFilePath);///
 
-        $reason = $_FILES["file"]["name"];  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $reason = $_FILES["file"]["name"];  	 	    	///
         $row = 1;
         $date = ExtraWatchDate::jwDateToday();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 

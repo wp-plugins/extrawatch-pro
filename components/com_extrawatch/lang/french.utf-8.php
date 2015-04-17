@@ -16,7 +16,7 @@ defined('_JEXEC') or die('Restricted access');
 //ExtraWatch - fichier de langue : Français - Version 1.1 - 06/08/2011 par Lalit.MOUTAL  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
 // Main Menu.
-DEFINE('_EW_MENU_STATS', "Visites &amp; Statistiques");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_MENU_STATS', "Visites et statistiques");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_MENU_GOALS', "Cibles");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_MENU_SETTINGS', "Réglages");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_MENU_CREDITS', "Crédits");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -24,13 +24,13 @@ DEFINE('_EW_MENU_FAQ', "Foire aux questions");
 DEFINE('_EW_MENU_DOCUMENTATION', "Documentation");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_MENU_LICENSE', "Licence");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_MENU_DONATORS', "Faire un don");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_MENU_SUPP', "Soutenez ExtraWatch pour masquer les publicités dans le Back-end !");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_MENU_SUPP', "Soutenez ExtraWatch pour masquer les publicités dans le back-end !");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
 // Left visitors real-time window.  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_VISITS_VISITORS', "Derniers visiteurs");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_VISITS_BOTS', "Derniers bots");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_VISITS_BOTS', "Derniers robots");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_VISITS_CAME_FROM', "Provenance&nbsp;");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_VISITS_MODULE_NOT_PUBLISHED', "Le module de ExtraWatch n'est pas publié ! Par conséquent, aucune statistique ne sera enregistrée. Pour le publier, allez dans le menu Modules, activez-le puis affectez-le à tous les menus.");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_VISITS_MODULE_NOT_PUBLISHED', "Le module d'ExtraWatch n'est pas publié ! Par conséquent, aucune statistique ne sera enregistrée. Pour le publier, allez dans le menu Modules, activez-le puis affectez-le à toutes les pages.");
 DEFINE('_EW_VISITS_PANE_LOADING', "Chargement des visites en cours...  Veuillez patienter !");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
 // Right stats window.  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -43,8 +43,8 @@ DEFINE('_EW_STATS_HITS', "hits");
 DEFINE('_EW_STATS_TODAY', "aujourd'hui");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_STATS_FOR', "au");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_STATS_ALL_TIME', "Stats globales :");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_STATS_EXPAND', "développer la liste des");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_STATS_COLLAPSE', "condenser la liste des");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_STATS_EXPAND', "Développer la liste des");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_STATS_COLLAPSE', "Condenser la liste des");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_STATS_URI', "Pages");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_STATS_COUNTRY', "Pays");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_STATS_USERS', "Utilisateurs");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -72,7 +72,7 @@ DEFINE('_EW_SETTINGS_DEFAULT', "Par défaut&nbsp;");
 DEFINE('_EW_SETTINGS_SAVE', "Enregistrer");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_SETTINGS_APPEARANCE', "Apparences");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_SETTINGS_FRONTEND', "Front-end");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_SETTINGS_HISTORY_PERFORMANCE', "Historique &amp; Performance");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_SETTINGS_HISTORY_PERFORMANCE', "Historique et performance");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_SETTINGS_ADVANCED', "Mode avancé");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_SETTINGS_IGNORE', "Ignorer");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_SETTINGS_BLOCKING', "Bloquer");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -86,10 +86,10 @@ DEFINE('_EW_SETTINGS_ADD_YOUR_IP', "Ajouter votre adresse IP");
 DEFINE('_EW_SETTINGS_TO_THE_LIST', "à la liste.");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
 // Other / mostly general.  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_TITLE', "<i>Moniteur AJAX en temps réel</i>");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_TITLE', "<i>Moniteur AJAX temps réel</i>");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_BACK', "Retour");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_ACCESS_DENIED', "Vous n'avez pas l'autorisation pour voir ceci !");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_LICENSE_AGREE', "J'accepte les termes &amp; les conditions générales ci-dessus");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_LICENSE_AGREE', "J'accepte les termes et les conditions générales ci-dessus");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_LICENSE_CONTINUE', "Continuer");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_SUCCESS', "Opération effectuée !");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_RESET_SUCCESS', "Toutes les statistiques et les informations sur les visiteurs ont été effacées !");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -128,7 +128,7 @@ DEFINE('_EW_GOALS_URI_CONDITION', "URI");
 DEFINE('_EW_GOALS_URI_INVERSED', "Condition inversée");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_GOALS_GET_VAR', "GET variable");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_GOALS_GET_CONDITION', "Valeur pour GET");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_GOALS_POST_VAR', "POST variable");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_GOALS_POST_VAR', "Variable POST");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_GOALS_POST_CONDITION', "Valeur pour POST");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_GOALS_TITLE_CONDITION', "Titre");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_GOALS_USERNAME_CONDITION', "Identifiant");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -155,7 +155,7 @@ DEFINE('_EW_FRONTEND_LAST_MONTH', "Le mois dernier&nbsp;");
 DEFINE('_EW_FRONTEND_TOTAL', "Total des visiteurs&nbsp;");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
 // Settings description - quite long.  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_DESC_DEBUG', "ExtraWatch est en mode débuggage. Grâce à ce mode, vous pouvez découvrir les causes d'erreurs. Pour le désactiver, veuillez changer la valeur de EXTRAWATCH_DEBUG de 1 à 0 dans le fichier /components/com_extrawatch/config.php.");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_DESC_DEBUG', "ExtraWatch est en mode débogage. Grâce à ce mode, vous pouvez découvrir les causes d'erreurs. Pour le désactiver, veuillez changer la valeur de EXTRAWATCH_DEBUG de 1 à 0 dans le fichier /components/com_extrawatch/config.php.");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_DESC_STATS_MAX_ROWS', "Nombre de lignes maximum affichées quand une liste de l'onglet Stats (journalières ou globales) est développée.");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_DESC_STATS_IP_HITS', "Toutes les adresses IP qui ont effectué un nombre de hits inférieur à cette valeur la veille seront supprimées de l'historique des IP.");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_DESC_STATS_URL_HITS', "Toutes les adresses URL qui ont eu un nombre de hits inférieur à cette valeur la veille seront supprimées de l'historique des IP.");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -180,7 +180,7 @@ DEFINE('_EW_DESC_SERVER_URI_KEY', "La valeur par défaut est 'REDIRECT_URL' qui 
 DEFINE('_EW_DESC_BLOCKING_MESSAGE', "Message qui s'affiche lorsqu'une personne tente de se connecter sur le site alors que son adresse IP est bloquée.");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_DESC_TOOLTIP_WIDTH', "Largeur de la fenêtre de géolocalisation (l'icône pour ouvrir cette fenêtre est à gauche de l'adresse IP).");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_DESC_TOOLTIP_HEIGHT', "Hauteur de la fenêtre de géolocalisation (l'icône pour ouvrir cette fenêtre est à gauche de l'adresse IP).");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_DESC_TOOLTIP_URL', "URL du site pour effectuer une recherche sur l'IP de l'utilisateur. L'expression {ip} sera remplacée par l'adresse IP du visiteur dans l'URL. Par exemple : http://siteweb.com/query?iplookup=<b>{ip}</b>.");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_DESC_TOOLTIP_URL', "URL du site pour effectuer une recherche sur l'IP de l'utilisateur. L&rsquo;expression {ip} sera remplacée par l'adresse IP du visiteur dans l'URL. Par exemple : http://siteweb.com/query?iplookup=<b>{ip}</b>.");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_DESC_IGNORE_URI', "Entrez toutes les portions d'URL qui suivent le nom de domaine (URI) que vous souhaitez ignorer dans les statistiques. Vous devez saisir une adresse URI par ligne. Vous pouvez aussi utiliser des jokers * et ?. Par exemple : /freel?n*.");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_DESC_GOALS_NAME', "Entrez un nom pour la cible. Ce nom apparaîtra dans l'onglet Visites &amp; Statistiques.");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_DESC_GOALS_URI_CONDITION', "Portion d'une URL qui suit le nom de domaine. Par exemple : pour l'URL http://www.codegravity.com/projets/, l'URI est : /projets/. Vous devez donc saisir <b>/projets*</b>. Si vous cochez 'Condition inversée', cela signifie : lorsque l'URI n'est pas la valeur saisie.");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -234,7 +234,7 @@ DEFINE('_EW_FRONTEND_USERS_MOST', "Utilisateurs les plus actifs aujourd'hui sur 
 DEFINE('_EW_DESC_SPAMWORD_BANS_ENABLED', "Les mots figurant sur la liste ci-dessous seront bannis");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_DESC_SPAMWORD_LIST', "Mots bannis les plus couramment utilisés par les bots des spammeurs. Vous pouvez utiliser des jokers * (par exemple : pharmac*). Lorsque cette option est activée, ExtraWatch vérifiera si un formulaire de votre site est rempli avec ces mots bannis (requête HTTP POST). Cette option fonctionnera pour les formulaires prévus pour être utilisé dans Joomla! (par exemple : forum, commentaires) et devrait également permettre de bloquer les bots qui tenteraient d'envoyer un spam sur les autres types de formulaires de votre site.");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_SETTINGS_ANTI_SPAM', "IP bloquées &amp; Anti-spam");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_DESC_FRONTEND_USER_LINK', "URL qui sera ouverte lorsqu'un visiteur clique sur l'identifiant d'un utilisateur. L'expression {user} sera remplacée par l'identifiant de l'utilisateur dans l'URL. Par exemple : index.php?option=com_comprofiler&task=userProfile&user=<b>{user}</b>.");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_DESC_FRONTEND_USER_LINK', "URL qui sera ouverte lorsqu'un visiteur clique sur l'identifiant d'un utilisateur. L&rsquo;expression {user} sera remplacée par l'identifiant de l'utilisateur dans l'URL. Par exemple : index.php?option=com_comprofiler&task=userProfile&user=<b>{user}</b>.");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
 /* translations 1.2.11b */  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_STATS_KEYPHRASE', "Expressions-clés");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -281,7 +281,7 @@ DEFINE('_EW_STATUS_DATABASE_DATA', "Taille");
 DEFINE('_EW_STATUS_DATABASE_TOTAL', "TOTAL&nbsp;");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
 DEFINE('_EW_EMAIL_REPORTS', "Rapports par e-mail :");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_EMAIL_REPORT_GENERATED', "Rapport par e-mail généré pour la veille");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_EMAIL_REPORT_GENERATED', "Rapport par e-mail généré sur la veille");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_EMAIL_REPORTS_VALUE_FILTERS', "Options du rapport&nbsp;");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_EMAIL_REPORTS_VALUE', "Valeur");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_EMAIL_REPORTS_PERCENT', "Pourcentage");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -314,7 +314,7 @@ DEFINE('_EW_GOALS_CAME_FROM_INVERSED', "Condition inversée");
 DEFINE('_EW_STATS_MAP', "Géolocalisation du dernier visiteur");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_STATS_MAP_ENTER_KEY', "Obtenez une clé sur le site <a href='http://www.ipinfodb.com/register.php' target='_blank'>ipinfodb.com</a> pour activer la géolocalisation du dernier visiteur.");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_STATS_MAP_STORE_KEY', "Sauver la clé");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_STATS_MAP_INVALID_KEY', "Veuillez saisir la clé que vous avez obtenu sur le site <a href='http://www.ipinfodb.com/register.php' target='_blank'>ipinfodb.com</a> pour activer la géolocalisation du dernier visiteur.");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_STATS_MAP_INVALID_KEY', "Veuillez saisir la clé que vous avez obtenue sur le site <a href='http://www.ipinfodb.com/register.php' target='_blank'>ipinfodb.com</a> pour activer la géolocalisation du dernier visiteur.");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
 DEFINE('_EW_SIZEQUERY_BAD_REQUEST', "Requête erronnée : ");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
@@ -327,12 +327,12 @@ DEFINE('_EW_VISIT_URL_PARAMETER_GOAL', " Ajouter ce paramètre comme cible");
 
 DEFINE('_EW_TREND_EMPTY', "Aucune donnée");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-DEFINE('_EW_NOT_NUMBER', " Attention ! La valeur que vous avez saisie n'est pas un nombre, ExtraWatch ne fonctionnera pas correctement.");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_EVALUATION_LEFT', "Version d'évaluation limitée à 15 jours. Nombre de jours restants : <b>%d</b>. Veuillez faire l'acquisition de la <a href='http://www.codegravity.com/donate/extrawatch/' target='_blank'>licence de ExtraWatch</a> pour votre nom de domaine et ainsi bénéficier de toutes les fonctions et mises à jour futures !");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_TRIAL_VERSION_EXPIRED', " La version d'essai a expiré ! Veuillez faire l'acquisition de la <a href='http://www.codegravity.com/donate/extrawatch/' target='_blank'>licence de ExtraWatch</a> pour votre nom domaine et ainsi bénéficier de toutes les fonctions et mises à jour futures !");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_NOT_NUMBER', " Attention ! La valeur que vous avez saisie n'est pas un nombre ! ExtraWatch ne fonctionnera pas correctement.");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_EVALUATION_LEFT', "Version d'évaluation limitée à 15 jours. Nombre de jours restants : <b>%d</b>. Veuillez faire l'acquisition de la <a href='http://www.codegravity.com/donate/extrawatch/' target='_blank'>licence d'ExtraWatch</a> pour votre nom de domaine et ainsi bénéficier de toutes les fonctions et mises à jour futures !");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_TRIAL_VERSION_EXPIRED', " La version d'essai a expiré ! Veuillez faire l'acquisition de la <a href='http://www.codegravity.com/donate/extrawatch/' target='_blank'>licence d'ExtraWatch</a> pour votre nom domaine et ainsi bénéficier de toutes les fonctions et mises à jour futures !");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
 DEFINE('_EW_CONFIG_LICENSE_ACTIVATED', "Licence activée avec succès ! Dorénavant, vous pourrez profiter de toutes les fonctions sans limite de temps.");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_CONFIG_LICENCE_DONT_MATCH', "<b>Attention ! Le numéro de licence et votre nom de domaine ne correspondent pas.</b><br />Avez-vous saisi le même nom de domaine dans le formulaire de donation que celui ci-dessous ? En cas de problème, veuillez contacter : support@codegravity.com");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_CONFIG_LICENCE_DONT_MATCH', "<b>Attention ! Le numéro de licence et votre nom de domaine ne correspondent pas.</b><br />Avez-vous saisi le même nom de domaine dans le formulaire de donation que celui ci-dessous ? En cas de problème, veuillez contacter : live chat on extrawatch.com or submit support ticket via <a href='http://www.extrawatch.com/ticket' target='_blank'>http://www.extrawatch.com/ticket</a>");
 
 DEFINE('_EW_VIEW_ADMINBODY_LONG_MESSAGE', "Si vous voyez ce message s'afficher, c'est que le nom de domaine dans ExtraWatch est incorrect !  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                     Ouvrez le fichier components/com_extrawatch/<b>config.php</b>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -347,7 +347,7 @@ DEFINE('_EW_ADMINHEADER_REMOVE_BACKLINK', "Masquer le lien retour");
 DEFINE('_EW_ADMINHEADER_KNOWLEDGE_BASE', "Base de connaissances");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_ADMINHEADER_FLOW', "Flux du trafic");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_ADMINHEADER_GRAPHS', "Graphiques");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_ADMINHEADER_COMPONENTS', "Composants &amp; Modules");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_ADMINHEADER_COMPONENTS', "Composants et modules");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_ADMINHEADER_REVIEW', "commentaire");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_ADMINHEADER_WRITE', " et rédiger un ");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
@@ -360,7 +360,7 @@ DEFINE('_EW_FLOW_SCALE', "Pourcentage :");
 DEFINE('_EW_COMERCIAL_AD_FREE', "Version Pro");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_COMERCIAL_THANK_DONATION', "Merci pour votre don !");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_COMERCIAL_REGISTRATION_KEY', "Le numéro de licence pour le site %s est : ");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_COMERCIAL_BACKLINKS_REMOVE', "Dorénavant, vous pouvez désactiver dans la section Réglages le lien retour ou masquer le logo de ExtraWatch dans le site.");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_COMERCIAL_BACKLINKS_REMOVE', "Dorénavant, vous pouvez désactiver dans la section Réglages le lien de retour ou masquer le logo d'ExtraWatch dans le site.");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
 DEFINE('_EW_SIZES_LAST_CHECK', "Dernière mise à jour effectuée le :");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_SIZES_ADMINISTRATOR', "En bleu : Taille du composant et taille du module dans le dossier /administrator");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -383,7 +383,7 @@ DEFINE('_EW_SIZEMODULES_TOTAL', "TOTAL :");
 DEFINE('_EW_SIZEMODULES_MODULE', "Modules");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_SIZEMODULES_SIZE', "Taille");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-DEFINE('_EW_SIZES_FILES', "Taille des Composants &amp; Modules");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_SIZES_FILES', "Taille des composants et modules");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_SIZES_BYTES', "octets");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_SIZES_KB', "Ko");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_SIZES_MB', "Mo");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -399,16 +399,16 @@ DEFINE('_EW_DESC_IPINFODB_KEY', "<b><i>(Version Pro uniquement)</i></b>&nbsp;&nb
 
 /* ExtraWatch 1.2.17 translations */  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_MENU_UPDATE', "Mise à jour");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_MENU_UPDATE_TITLE', "Sauvegarde & Mise à jour");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_ADMINHEADER_NA_IN_THIS_VERSION', "Indisponible pour la version gratuite, veuillez saisir le numéro d'enregistrement dans l'onglet 'Licence'");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_MENU_UPDATE_TITLE', "Sauvegarde et mise à jour");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_ADMINHEADER_NA_IN_THIS_VERSION', "Indisponible pour la version gratuite. Veuillez saisir le numéro d'enregistrement dans l'onglet 'Licence'");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_SPAMWORD_BANS_ENABLED', "Activer le bannissement");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_SPAMWORD_LIST', "Liste de mots bannis");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_HIDE_REPETITIVE_TITLE', "Masquer le nom de domaine");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_TRUNCATE_VISITS', "Visites");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_TRUNCATE_STATS', "Statistiques");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_TRUNCATE_GOALS', "Cibles");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_LIMIT_BOTS', "Limite de bots");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_LIMIT_VISITORS', "Limite de visiteurs");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_LIMIT_BOTS', "Limite pour les robots");
+DEFINE('_EW_LIMIT_VISITORS', "Limite pour les visiteurs");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_TOOLTIP_WIDTH', "Largeur de la fenêtre");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_TOOLTIP_HEIGHT', "Hauteur de la fenêtre");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_TOOLTIP_URL', "Site de recherche de l'IP");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -418,7 +418,7 @@ DEFINE('_EW_IPINFODB_KEY', "Clé de IP Info DB");
 DEFINE('_EW_ONLY_LAST_URI', "Dernière page uniquement");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_FRONTEND_HIDE_LOGO', "Masquer le logo ");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_FRONTEND_NOFOLLOW', "Attribut nofollow");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_FRONTEND_NO_BACKLINK', "Masquer le lien retour");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_FRONTEND_NO_BACKLINK', "Masquer le lien de retour");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_FRONTEND_USER_LINK', "URL vers l'utilisateur");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_FRONTEND_COUNTRIES_FIRST', "Afficher les pays en premier");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_FRONTEND_COUNTRIES_NAMES', "Afficher le nom des pays");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -456,189 +456,189 @@ DEFINE('_EW_SERVER_URI_KEY', "Clé de l'URI du serveur");
 DEFINE('_EW_SIZEDATABASE_RECORDS', "Nombre d'enregistrements");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
 /***********EDITs*****************/  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_ANTISPAM_BLOCKING_TEXT', "Afin que le blocage soit effectif, vous devez publier l'agent de ExtraWatch AVANT quelque contenu ou formulaire que ce soit.<br />Par exemple : à gauche dans le template.<br />Gestion des modules -> ExtraWatch agent -> Position : left");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_ANTISPAM_BLOCKING_TEXT', "Afin que le blocage soit effectif, vous devez publier l'agent d'ExtraWatch AVANT quelque contenu ou formulaire que ce soit.<br />Par exemple : à gauche dans le modèle.<br />Gestion des modules -> ExtraWatch agent -> Position : left");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_EMAIL_SEO_REPORTS', "Rapports SEO");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_DESC_EMAIL_SEO_REPORTS_ENABLED', "Activer la réception de rapports SEO par e-mail. L'envoi des e-mails est nocturne, ainsi vous pourrez les lire au matin.");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_WATCH_INSTALLATION_DEMO', "Regarder la démonstration de l'installation");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_LANGUAGE', "Langue");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
 /** JW 1.2.18 */
-DEFINE('_EW_ADMINHEADER_HEATMAP', "Heatmap");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_HEATMAP_CLICKS', "clicks");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_HEATMAP_TITLE', "title");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_HEATMAP_CLICK_OPEN', "Click to open heatmap");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_NO_DATA', "This section contains no data yet ...");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_POSITION', "Search result num.");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_BLOCKING_REASON', 'reason');  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_BLOCKING_UNAUTHORIZED_ACCESS', 'Unauthorized Access');  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_BLOCKING_BLOCKED_MANUALLY', 'Blocked manually');  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_BLOCKING_BAD_WORD', "bad word");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_HEATMAP_OF', "of");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_ADMINHEADER_HEATMAP', "Heatmap (carte de chaleur)");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_HEATMAP_CLICKS', "clics");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_HEATMAP_TITLE', "titre");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_HEATMAP_CLICK_OPEN', "Cliquer pour ouvrir la heatmap");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_NO_DATA', "Cette section ne contient encore aucune donnée ...");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_POSITION', "Résultat de recherche");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_BLOCKING_REASON', 'raison');  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_BLOCKING_UNAUTHORIZED_ACCESS', 'Accès non autorisé');  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_BLOCKING_BLOCKED_MANUALLY', 'Bloqué manuellement');  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_BLOCKING_BAD_WORD', "terme proscrit");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_HEATMAP_OF', "sur");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_URI', "uri");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_COUNT', "count");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_SEO_REPORT_FOR', "SEO report for");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_SEO_MOST_DYNAMIC_KEYPHRASES', "Most dynamic keyphrases");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_SEO_MIN_POSITION', "min position");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_SEO_AVG_POSITION', "average position");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_SEO_MAX_POSITION', "max position");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_SEO_CHANGE', "change");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_SEO_DATE_OF_LAST_CHANGE', "date of last change");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_SEO_TOTAL_VISITS_FROM_SEARCH_ENGINES', "Total visits by keyphrase from search engines");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_GOAL_ADD_SUBMITTED_VALUE', "Add submitted variable as goal");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_RENDERED_IN', "Rendered in");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_DESC_SEO_RENDER_ONLY_CHANGED', "Render only values which were already used in previous days (have some percentage in change column)");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_SEO_REPORT_SETTINGS', "SEO Report Settings");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_COUNT', "nombre");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_SEO_REPORT_FOR', "Rapport SEO pour");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_SEO_MOST_DYNAMIC_KEYPHRASES', "Phrases-clés les plus dynamiques");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_SEO_MIN_POSITION', "position min");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_SEO_AVG_POSITION', "position moyenne");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_SEO_MAX_POSITION', "position max");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_SEO_CHANGE', "changement");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_SEO_DATE_OF_LAST_CHANGE', "date du dernier changement");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_SEO_TOTAL_VISITS_FROM_SEARCH_ENGINES', "Nombre total de visites par phrase-clé de moteur de recherches");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_GOAL_ADD_SUBMITTED_VALUE', "Ajouter la variable soumise comme cible");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_RENDERED_IN', "Présenté dans");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_DESC_SEO_RENDER_ONLY_CHANGED', "Présenter uniquement les valeurs déjà utilisées les jours précédents (ont des pourcentages affichés en colonns)");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_SEO_REPORT_SETTINGS', "Réglages du rapport SEO");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-DEFINE('_EW_HTTP500_ERROR', "Could not initialize ExtraWatch javascript functions! Browser could not load: \\n%s, because it returned HTTP 500 internal server error.  \\nThis usually of security restrictions by other components/plugins. Please check your .htaccess file in your root Joomla directory.  \\nIf you use Akeeba Admin tools, you need to go \ 'Akeeba htaccess maker\ ' -> \ 'Server Protection\ ' -> \ 'Exceptions\ ' -> \ 'Allow direct access to these files\ ', and add: \\n/components/com_joomlawatch/block.php \\n/components/com_joomlawatch/img.php \\n/components/com_joomlawatch/last.php \\n/components/com_joomlawatch/lastvisit.php \\n/components/com_joomlawatch/sizequery.php \\n/components/com_joomlawatch/sizequerytotal.php \\n/components/com_joomlawatch/stats.php \\n/components/com_joomlawatch/timezone.php \\n/components/com_joomlawatch/tooltip.php \\n/components/com_joomlawatch/trendtooltip.php \\n/components/com_joomlawatch/vars.php \\n/components/com_joomlawatch/visits.php \\n/components/com_joomlawatch/js/joomlawatch.js.php \\n/components/com_joomlawatch/js/maps.js.php ");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_HTTP500_ERROR', "Impossible d'initialiser les fonctions javascript d'ExtraWatch ! Impossible de charger le navigateur de visites : \\n%s, en raison d'une erreur HTTP 500 interne au serveur.  \\nCela provient d'habitude de restrictions de sécurité dues à d'autres composants/plugins. Merci de vérifier le fichier .htaccess de votre répertoire racine de Joomla.  \\nSi vous utilisez les outils Akeeba Admin tools, allez sur \ 'Akeeba htaccess maker\ ' -> \ 'Server Protection\ ' -> \ 'Exceptions\ ' -> \ 'Permettre l'accès direct à ces fichiers\ ', et ajouter : \\n/components/com_joomlawatch/block.php \\n/components/com_joomlawatch/img.php \\n/components/com_joomlawatch/last.php \\n/components/com_joomlawatch/lastvisit.php \\n/components/com_joomlawatch/sizequery.php \\n/components/com_joomlawatch/sizequerytotal.php \\n/components/com_joomlawatch/stats.php \\n/components/com_joomlawatch/timezone.php \\n/components/com_joomlawatch/tooltip.php \\n/components/com_joomlawatch/trendtooltip.php \\n/components/com_joomlawatch/vars.php \\n/components/com_joomlawatch/visits.php \\n/components/com_joomlawatch/js/joomlawatch.js.php \\n/components/com_joomlawatch/js/maps.js.php ");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-DEFINE('_EW_AGENT_NOT_PUBLISHED_ERROR_JOOMLA',"Warning: No visits are currently being recorded. Your ExtraWatch Agent module is published, but most probably in position which does not exist in your template.  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_AGENT_NOT_PUBLISHED_ERROR_JOOMLA',"Attention : aucune visite n'est enregistrée. Votre module ExtraWatch Agent est publié, mais probablement dans une position qui n'existe pas dans votre modèle.
                 <br/><br/>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                To fix this: <br/>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                1. go to Modules section -&gt; ExtraWatch Agent <br/>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                2. change the Position to 'left' or 'footer' (or some other position).<br/>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                3. check if new visits are being recorded  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                Pour corriger cela : <br/>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                1. Aller dans la section Gestion des modules -&gt; ExtraWatch Agent <br/>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                2. Changez la position à 'left' ou 'footer' (ou toute autre position).<br/>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                3. Vérifiez que vous enregistrez bien de nouvelles visites
                 <br/><br/>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                If this won't help, you can also: <br/>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                1. set 'Show Title' to 'Yes' in  Modules section -&gt; ExtraWatch Agent <br/>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                2. try to use some other positions of ExtraWatch agent module<br/>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                3. save<br/>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                4. after reload of your main page look for 'ExtraWatch Agent' text.<br/>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                5. this way you'll make sure the Agent module is published.<br/>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                6. after that you can set 'Show Title' back to 'No'.  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                Si cela n'aide pas, vous pouvez aussi : <br/>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                1. définir 'Titre du module' à 'Afficher' dans la section Modules -&gt; ExtraWatch Agent <br/>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                2. essayer une autre position pour le module ExtraWatch agent<br/>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                3. enregistrer<br/>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                4. après le rechargement de la page principale, cherchez le texte 'ExtraWatch Agent'.<br/>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                5. de cette façon, vous serez sûr(e) que le module Agent est publié.<br/>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                6. Ensuite, vous pourrez redéfinir 'Affichage du titre' sur 'Masquer'.  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                 ");
 
 /** Goals/Import IP */  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_GOALS', "Goals");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_GOALS_IMPORT', "Import goals");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_GOALS', "Cibles");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_GOALS_IMPORT', "Importer des cibles");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_GOALS_IMPORT_XML', "Import XML");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_GOALS_EXPORT', "Export goals");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_GOALS_FILENAME', "Select goals previously exported as XML");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_ANTISPAM_IMPORT_CSV', "import anti-spam ip csv");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_GOALS_EXPORT', "Exporter des cibles");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_GOALS_FILENAME', "Choisir les cibles précédemment exportées en XML");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_ANTISPAM_IMPORT_CSV', "import anti-spam de fichier CSV d'IP");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-DEFINE('_EW_AGENT_NOT_PUBLISHED_ERROR_WORDPRESS',"Warning: No visits are being recorded. You must go to Appearance->Widgets section, <br/>find ExtraWatchAgent widget and drag&drop it to some of the containers on the right side. <br/>You can publish also other ExtraWatch modules this way. <br/><br/>Check the demonstration video:<br/><br/><iframe id='video-player' width='800' height='468' src='http://www.youtube.com/embed/uu_luBKJ8jI?enablejsapi=1&autoplay=1&rel=0&modestbranding=1&showinfo=0&showsearch=0&vq=hd1080' frameborder='0' allowfullscreen></iframe><br/><br/>In case of any questions about installation or problems, you can take advantage of our support on <a href='http://www.extrawatch.com' target='_blank'>http://www.extrawatch.com</a>");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_AGENT_NOT_PUBLISHED_ERROR_WORDPRESS',"Attention : aucune visite n'est enregistrée. Aller dans la section Apparence->Widgets, <br/>Trouvez le widget ExtraWatchAgentet déplacez-le par glisser/déposer dans l'un des conteneurs de la barre de droite. <br/>Vous pouvez également publier d'autres modules ExtraWatch de cette façon. <br/><br/>Regardez la vidéo de démonstration :<br/><br/><iframe id='video-player' width='800' height='468' src='http://www.youtube.com/embed/uu_luBKJ8jI?enablejsapi=1&autoplay=1&rel=0&modestbranding=1&showinfo=0&showsearch=0&vq=hd1080' frameborder='0' allowfullscreen></iframe><br/><br/>Si vous avez des questions ou problèmes d'installation, profitez de notre assistance à l'adresse <a href='http://www.extrawatch.com' target='_blank'>http://www.extrawatch.com</a>");
 
 
 /** 2.1 */
-DEFINE('_EW_MENU_DOWNLOADS', "Downloads");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_DOWNLOADS_FILE_NOT_FOUND', "FILE NOT FOUND");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_DOWNLOADS_HTACCESS_NOT_WRITABLE', "Your .htaccess is not Writable.");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_DOWNLOADS_HTACCESS_COULD_NOT_BE_CREATED', ".htaccess could not be created, Please create your own.");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_DOWNLOADS_ADD_EXTENSION', "Add Extension");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_DOWNLOADS_EXTENSION_NAME', "Extension Name");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_DOWNLOADS_WARNING', "<b>Warning:</b> always backup your .htaccess file before adding new extension or path! Do not add 'php' as monitored extension. <br/>Be also careful with adding png/jpg, the download count will be increased once someone opens your page which contains images with this extension.");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_DOWNLOADS_ADD_FILE_PATH', "Add File/Path");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_DOWNLOADS_FILE_PATH_NAME', "File/Path Name");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_DOWNLOADS_DOWNLOAD_MONITOR', "Download Monitor");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_DOWNLOADS_EXTENSIONS_BEING_MONITORED', "Extensions Being Monitored");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_DOWNLOADS_FILES_PATHS_BEING_MONITORED', "Files/Paths Being Monitored");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_DOWNLOADS_EDIT_EXTENSION', "Edit Extension");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_DOWNLOADS_EDIT_FILE_PATH', "Edit File/Path");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_MENU_DOWNLOADS', "Téléchargements");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_DOWNLOADS_FILE_NOT_FOUND', "FICHIER NON TROUVÉ");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_DOWNLOADS_HTACCESS_NOT_WRITABLE', "Votre fichier .htaccess est protégé en écriture.");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_DOWNLOADS_HTACCESS_COULD_NOT_BE_CREATED', "Impossible de créer le fichier .htaccess, Merci de le créer par vous-même.");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_DOWNLOADS_ADD_EXTENSION', "Ajouter une extension");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_DOWNLOADS_EXTENSION_NAME', "Nom de l'extension");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_DOWNLOADS_WARNING', "<b>Attention :</b> Toujours sauvegarder votre fichier .htaccess avant d'ajouter toute extension ou chemin ! Ne pas ajouter 'php' comme extension à suivre. <br/>Faire également attention lorsque vous ajoutez une extension png/jpg. Le nombre de téléchargements augmentera dès que quelqu'un ouvre une page qui contient des images ayant cette extension.");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_DOWNLOADS_ADD_FILE_PATH', "Ajout fichier/chemin");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_DOWNLOADS_FILE_PATH_NAME', "Nom du fichier/chemin");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_DOWNLOADS_DOWNLOAD_MONITOR', "Suivi des téléchargements");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_DOWNLOADS_EXTENSIONS_BEING_MONITORED', "Extensions suivies");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_DOWNLOADS_FILES_PATHS_BEING_MONITORED', "Fichiers/Chemins suivis");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_DOWNLOADS_EDIT_EXTENSION', "Modification d'extension");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_DOWNLOADS_EDIT_FILE_PATH', "Modification de fichier/chemin");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_DOWNLOADS_EXTENSION', "Extension");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_DOWNLOADS_ACTION', "Action");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_DOWNLOADS_PATH', "Path");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_DOWNLOADS_TODAY', "Today");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_DOWNLOADS_YESTERDAY', "Yesterday");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_DOWNLOADS_THIS_WEEK', "This Week");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_DOWNLOADS_LAST_WEEK', "Last Week");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_DOWNLOADS_THIS_MONTH', "This Month");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_DOWNLOADS_LAST_MONTH', "Last Month");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_DOWNLOADS_INCOMPLETE', "The required Information is incomplete");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_DOWNLOADS_PATH', "Chemin");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_DOWNLOADS_TODAY', "Aujourd'hui");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_DOWNLOADS_YESTERDAY', "Hier");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_DOWNLOADS_THIS_WEEK', "Cette semaine");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_DOWNLOADS_LAST_WEEK', "Semaine dernière");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_DOWNLOADS_THIS_MONTH', "Mois courant");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_DOWNLOADS_LAST_MONTH', "Mois dernier");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_DOWNLOADS_INCOMPLETE', "L'information requise est incomplète");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-DEFINE('_EW_STATS_SOCIAL_MEDIA', "Media");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_MENU_AVAILABLE_IN_PRO',"Available in PRO version");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_DOWNLOADS_TOTAL',"Total Downloads");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_STATS_SOCIAL_MEDIA', "Média");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_MENU_AVAILABLE_IN_PRO',"Disponible dans la version PRO");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_DOWNLOADS_TOTAL',"Total téléchargement");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
 
 /** 3.0 - hosted version */  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_GOALS_CLICKED_ELEMENT_XPATH_CONDITION', "xpath of clicked element condition");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_DESC_GOALS_CLICKED_ELEMENT_XPATH_CONDITION', "xpath of clicked element condition");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_GOALS_CLICKED_ELEMENT_XPATH_CONDITION', "xpath de la condition sur état de clic de l'élément");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_DESC_GOALS_CLICKED_ELEMENT_XPATH_CONDITION', "xpath de la condition sur état de clic de l'élément");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-DEFINE('_EW_STATS_DEVICES', "Mobile Devices");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_STATS_DEVICES', "Dispositifs mobiles");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-DEFINE('_EW_BLOCKED_BASED_ON_GOAL',"Blocked based on goal no. %s");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_BLOCKED_BASED_ON_GOAL',"Bloqué d'après la cible n° %s");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
 
-DEFINE('_EW_TIME_BETWEEN_VISITS',"Total time spent");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_LEFT_WEBSITE',"Left website");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_MENU_USERS',"Users");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_USERS_BLOCK_IP_CONFIRM',"Do you really want to block this IP address?");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_USERS_SHARING_HEADER',"Users sharing same login");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_USERS_SHARING_DESC',"Contains users who accessed the website from different IP addresses and/or from different country but with same login. This might be a warning for you, that they're sharing their account with someone else.");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_USERS_ACTIVITY_HEADER',"Latest user activity");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-define('_EW_DESC_SEO_LIST_ENCRYPTED_KEYWORDS', "Google hides passing particular keywords from google search to websites. This will reveal the keyword's position,<br/> but not the keyword itself. Enable this option if you want to see also position of these encrypted keywords in stats.");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_TIME_BETWEEN_VISITS',"Temps total passé");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_LEFT_WEBSITE',"Sortie du site web");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_MENU_USERS',"Utilisateurs");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_USERS_BLOCK_IP_CONFIRM',"Voulez-vous réellement bloquer cette adresse IP ?");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_USERS_SHARING_HEADER',"Utilisateurs partageant le même identifiant");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_USERS_SHARING_DESC',"Contient la liste des utilisateurs qui accèdent au site web depuis différentes adresses IP et/ou différents pays mais avec le même identifiant. Ceci peut être un signe avertisseur qu'ils partagent leur compte avec d'autres.");
+DEFINE('_EW_USERS_ACTIVITY_HEADER',"Dernières activités des utilisateurs");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+define('_EW_DESC_SEO_LIST_ENCRYPTED_KEYWORDS', "Google cache le passage de mots-clés depuis la recherche vers les sites web. Ce paramètre révèlera la position du mot-clé<br/> mais pas le mot-clé lui-même. Activez cette option si vous voulez voir la position de ces mots-clés cryptés dans les statistiques.");
 
-DEFINE('_EW_SEO_MOST_POPULAR_KEYPHRASES',"Most popular keyphrases");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_SEO_MOST_POPULAR_KEYPHRASES_DESC',"These are the keyphrases by which was your website found. You can copy this list and use it with some 3rd party service, which will give you an overview of SERP (Search Engine Rank Position). You can then optimize your website using SEO techniques,	and watch the increase of traffic in right upper side of main dashboard - displayed as a cyan bar");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_SEO_MOST_POPULAR_KEYPHRASES',"Phrases-clés les plus populaires");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_SEO_MOST_POPULAR_KEYPHRASES_DESC',"Ce sont les phrases-clés qui ont permis de trouver votre site web. Vous pouvez copier cette liste et l'utiliser avec d'autres service qui vous donneront un aperçu du ranking de votre site dans les moteurs de recherche (SERP oSearch Engine Rank Position). Vous pourrez alors optimiser votre site avec des techniques SEO et observer l'augmentation du trafic dans la partie supérieure droite de la page principale (barre de couleur cyan)");
 
-DEFINE('_EW_USERS_ALERT_EMAIL_SUBJECT',"Alert - user '%s' uses different IP address: '%s'");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_USERS_ALERT_EMAIL_CONTENT',"You can block this user from ExtraWatch Users section");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_MAX_RECORDS',"Displaying max. %d records");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_USERS_ALERT_EMAIL_SUBJECT',"Alerte - l'utilisateur '%s' utilise différentes adresses IP : '%s'");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_USERS_ALERT_EMAIL_CONTENT',"Vous pouvez bloquer cet utilisateur depuis la section Utilisateurs d'ExtraWatch");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_MAX_RECORDS',"Affichage de %d enregistrements max.");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-DEFINE('_EW_DESC_USERS_SEND_ALERT_EMAILS',"If checked, you'll get an email once user uses different IP. This can help you to detect immediately, which user shares his login with someone else. Useful, if you're using paid accounts.");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_DESC_SEO_SHOW_ALL_TIME_REPORT', "Do not filter by particular dates, show all time SEO report");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_DESC_USERS_SEND_ALERT_EMAILS',"Si l'option est activée, vous recevrez un email chaque fois qu'un utilisateur se sert d'une adresse IP différente. Ceci peut vous aider à détecter immédiatement un utilisateur qui partage son identifiant avec quelqu'un d'autre. Utile si vous utilisez des comptes payants.");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_DESC_SEO_SHOW_ALL_TIME_REPORT', "Ne pas filtrer par dates précises. Afficher le rapport SEO sur toutes dates");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-DEFINE('_EW_DOWNLOADS_ALLOW_ONLY_REFERRER', "Allow only when referred from: ");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_DOWNLOADS_ALLOWED_REFERRER', "Allowed Referrer");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_DOWNLOADS_NOT_ALLOWED',"File download restricted by ExtraWatch rule. Please contact: %s");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_DOWNLOADS_ALLOW_ONLY_REFERRER', "Uniquement autorisé lorsque provenant de : ");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_DOWNLOADS_ALLOWED_REFERRER', "Référenceur autorisé");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_DOWNLOADS_NOT_ALLOWED',"Téléchargement de fichiers restreint par une règle ExtraWatch. Merci de contacter : %s");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-DEFINE('_EW_DOWNLOADS_EMAIL_RESTRICTED_SUBJECT',"Download restricted for IP: %s");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_DOWNLOADS_EMAIL_RESTRICTED_BODY',"Someone from IP: %s attempted to download file: %s referred from %s, but it's restricted by ExtraWatch download referrer check");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_DOWNLOADS_EMAIL_RESTRICTED_SUBJECT',"Téléchargement restreint pour l'adresse IP : %s");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_DOWNLOADS_EMAIL_RESTRICTED_BODY',"Quelqu'un à l'adresse IP : %s a tenté de télécharger le fichier : %s référencé par %s, mais il y a une restriction due au test de téléchargements d'ExtraWatch");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-DEFINE('_EW_ADMINHEADER_CLICK_AREAS', "Click Areas");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_NO_TITLE','No Title');  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_CLICK_HEATMAP_FOR','Click Heatmap for ');  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_CLICK_AREAS_FOR','Clicks Areas for ');  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_ADMINHEADER_CLICK_AREAS', "Zones de clics");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_NO_TITLE',"Aucun titre");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_CLICK_HEATMAP_FOR',"Heatmap des clics pour le ");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_CLICK_AREAS_FOR',"Zones de clics pour ");
+DEFINE('_EW_GOALS_SEND_EMAIL',"Envoyer un email");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_DESC_GOALS_SEND_EMAIL',"Vous recevrez un email à chaque fois que la cible a été atteinte. L&rsquo;adresse email est obtenue depuis la section Emails.");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_GOAL_EMAIL_SUBJECT', "La cible '%s' a été atteinte : Nombre : %d");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_VISITS_GOAL_REACHED', " La cible '%s' a été atteinte");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-DEFINE('_EW_GOALS_SEND_EMAIL','Send an email');  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_DESC_GOALS_SEND_EMAIL','You will get an email everytime the goal has been reached. Email address is taken from "Emails" section.');  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_GOAL_EMAIL_SUBJECT', "Goal '%s' was achieved, count: %d");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_VISITS_GOAL_REACHED', " Goal '%s' was reached");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_DOWNLOADS_TOTAL_WEEKLY', "Total de la semaine");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_ACTIVE', "actif");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_DOWNLOAD_PRO', "Téléchargez la version PRO");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_VISITS_HEATMAP_CLICK_COUNT', "Nombre total de clics du jour : %d");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_HEATMAP_LOADING','Chargement de la table de heatmap ...');  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_ANTISPAM_INVALID_EXTENSION', "Type d&rsquo;extension invalide ! .csv attendu");   	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_ANTISPAM_NUM_IP_FROM_CSV_IMPORTED', "Importtion de %d adresses IP depuis le fichier .csv"); 
+DEFINE('_EW_MENU_AVAILABLE_IN_PRO_HEATMAP', "Avec notre très précise heat map, vous pouvez suivre les clics des utilisateurs et les zones les plus attractives de votre site et optimiser le contenu en conséquence");
+DEFINE('_EW_MENU_AVAILABLE_IN_PRO_CLICK_AREAS', "Avec le suivi des zones de clics, vous pouvez suivre les clics sur des boutons et des liens et améliorer le nombre d'actions");
+DEFINE('_EW_MENU_AVAILABLE_IN_PRO_SEO_REPORT', "Position de vos liens dans les moteurs de recherches");
+DEFINE('_EW_MENU_AVAILABLE_IN_PRO_USERS', "Suivi de l'activité des utilisateurs");
+DEFINE('_EW_MENU_AVAILABLE_IN_PRO_FLOW', "Carte interactive avec distribution du trafic interne");
+DEFINE('_EW_MENU_AVAILABLE_IN_PRO_DOWNLOADS', "Voir les cartes de téléchargement de fichiers zip, pdf ou autres éléments téléchargeables");
+DEFINE('_EW_MENU_AVAILABLE_IN_PRO_STATUS', "Suivi de la taille des tables de la base de données");
+DEFINE('_EW_MENU_AVAILABLE_IN_PRO_COMPONENTS', "Suivi de la taille des répertoires");
+DEFINE('_EW_ADMINHEADER_SEARCH_RANK', "Rang de recherche");   	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_DOWNLOADS_START_ADD_EXT', "Aucune donnée statistique sur les téléchargements. Démarrez le suivi de téléchargements et");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_NAVIGATION_VISITORS', 'Visiteurs actuels');
+DEFINE('_EW_NAVIGATION_LOCATION', 'Localisation');
+DEFINE('_EW_NAVIGATION_BLOCKING', 'Blocage');
+DEFINE('_EW_NAVIGATION_CLICKS', 'Clics');
+DEFINE('_EW_NAVIGATION_STATISTICS', 'Statistiques');
 
-DEFINE('_EW_DOWNLOADS_TOTAL_WEEKLY', "Total weekly");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_ACTIVE', "active");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_DOWNLOAD_PRO', "Download PRO version");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_VISITS_HEATMAP_CLICK_COUNT', "Total clicks today: %d");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_HEATMAP_LOADING','Loading Heatmap table ...');  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_ANTISPAM_INVALID_EXTENSION', "Invalid extension type, .csv expected");   	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_ANTISPAM_NUM_IP_FROM_CSV_IMPORTED', "Imported %d IP addresses from .csv file"); DEFINE('_EW_MENU_AVAILABLE_IN_PRO_HEATMAP', "With our most accurate Heat Map, you can monitor user clicks and see the hottest click areas of your web and optimize the content accordingly");
-DEFINE('_EW_MENU_AVAILABLE_IN_PRO_CLICK_AREAS', "With Click Areas monitoring you can track clicks on buttons, links and improve the click rate");
-DEFINE('_EW_MENU_AVAILABLE_IN_PRO_SEO_REPORT', "Position of your web links on search engines");
-DEFINE('_EW_MENU_AVAILABLE_IN_PRO_USERS', "User Activity monitoring");
-DEFINE('_EW_MENU_AVAILABLE_IN_PRO_FLOW', "Interactive chart with internal traffic distribution");
-DEFINE('_EW_MENU_AVAILABLE_IN_PRO_DOWNLOADS', "See charts of downloads of zip, pdf or other downloadable artifacts");
-DEFINE('_EW_MENU_AVAILABLE_IN_PRO_STATUS', "Database table sizes monitoring");
-DEFINE('_EW_MENU_AVAILABLE_IN_PRO_COMPONENTS', "Directories size monitoring");
-DEFINE('_EW_ADMINHEADER_SEARCH_RANK', "Search Rank");   	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_DOWNLOADS_START_ADD_EXT', "No download statistics currently recorded. Start monitoring file downloads and");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_NAVIGATION_VISITORS', 'Current Visitors');
-DEFINE('_EW_NAVIGATION_LOCATION', 'Location');
-DEFINE('_EW_NAVIGATION_BLOCKING', 'Blocking');
-DEFINE('_EW_NAVIGATION_CLICKS', 'Clicks');
-DEFINE('_EW_NAVIGATION_STATISTICS', 'Statistics');
+DEFINE('_EW_MENU_AVAILABLE_IN_PRO_LOCATION', 'Locatisation sur une carte');
 
-DEFINE('_EW_MENU_AVAILABLE_IN_PRO_LOCATION', 'Location on a map');
-
-DEFINE('_EW_BADGE_VISITORS',"Number of unique visitors for current day");
-DEFINE('_EW_BADGE_HEATMAP',"Number of heatmap clicks for current day");
-DEFINE('_EW_BADGE_LOCATION',"Number of countries from which was your website visited today");
-DEFINE('_EW_BADGE_CLICKS',"Number of clicks on elements for current day");
-DEFINE('_EW_BADGE_USERS',"Number of registered users today");
-DEFINE('_EW_BADGE_SEO',"Number of keywords by which was your website found for today");
-DEFINE('_EW_BADGE_DOWNLOAD',"Number of downloads of files for today");
-DEFINE('_EW_BADGE_STATS',"Number of unique visits today");
-DEFINE('_EW_BADGE_ANTISPAM',"Number of blocked spam attempts");
-DEFINE('_EW_AVAILABLE_IN_FULL_VERSION', 'This feature is available in full version only');
-DEFINE('_EW_GET_FULL_VERSION',"Get the full version of ExtraWatch PRO");
-DEFINE('_EW_LIVE_STATS_SESSION_TIME', 'Time difference since user first visited your website');
-DEFINE('_EW_DOWNLOAD_MONITOR_HTACCESS_TXT', 'Warning - please change: htaccess.txt is present in your joomla root folder, please rename it to .htaccess first and make sure there is no htaccess.txt file anymore !');
-DEFINE('_EW_AGENT_NOT_PUBLISHED',"Agent module which gathers data is not published on frontend! - How to fix it?<br/><br/>
-<u>Joomla:</u><br/>
-1. Go to Extensions -> Module Manager -> find Agent module<br/>
-2. Change Position to some other value (choose some for which you already see some module in frontend - like 'footer'<br/>
-3. Save and refresh extrawatch back-end dashboard again<br/><br/>
+DEFINE('_EW_BADGE_VISITORS',"Nombre de visiteurs uniques pour la journée en cours");
+DEFINE('_EW_BADGE_HEATMAP',"Nombre clics heatmap pour la journée en cours");
+DEFINE('_EW_BADGE_LOCATION',"Nombre de pays d'où votre site web a été visité aujourd'hui");
+DEFINE('_EW_BADGE_CLICKS',"Nombre de clics sur des éléments pour la journée en cours");
+DEFINE('_EW_BADGE_USERS',"Nombre d'utilisateurs enregistrés aujourd'hui");
+DEFINE('_EW_BADGE_SEO',"Nombre de mots-clés ayant permis de trouver votre site aujourd'hui");
+DEFINE('_EW_BADGE_DOWNLOAD',"Nombre de fichiers téléchargés aujourd'hui");
+DEFINE('_EW_BADGE_STATS',"Nombre de visites uniques aujourd'hui");
+DEFINE('_EW_BADGE_ANTISPAM',"Nombre de tentatives de spam bloquées aujourd'hui");
+DEFINE('_EW_AVAILABLE_IN_FULL_VERSION', "Cette fonction n'est disponible que dans la version complète");
+DEFINE('_EW_GET_FULL_VERSION',"Obtenez la version complète d'ExtraWatch PRO");
+DEFINE('_EW_LIVE_STATS_SESSION_TIME', "Ecart de temps depuis la première visite de l'utilisateur sur votre site");
+DEFINE('_EW_DOWNLOAD_MONITOR_HTACCESS_TXT', "Attention ! Merci de changer ce qui suit : un fichier htaccess.txt est présent dans le répertoire racine de votre site Joomla. Merci de le renommer d'abord en .htaccess et assurez-vous qu'il n'y a plus de fichier appelé htaccess.txt ");
+DEFINE('_EW_AGENT_NOT_PUBLISHED',"Le module Agent qui collecte les données n'est pas publié sur le frontal ! - Comment corriger ?<br/><br/>
+<u>Joomla :</u><br/>
+1. Aller à Extensions -> Gestion des modules -> Trouver le module Extrawatch Agent<br/>
+2. Changez la position vers une autre (choisissez par exemple un module que vous voyez sur le frontal du site comme 'footer'<br/>
+3. Enregistrez et rafraîchissez la page du backend d'Eextrawatch<br/><br/>
 
 <u>Wordpress:</u><br/>
-1. Go to Apperance -> Widgets<br/>
-2. Drag and Drop ExtraWatch agent do placeholder on right to widget that it's already visible in frontend<br/>
+1. Aller sur Appearance -> Widgets<br/>
+2. Glissez/déposez l'agent ExtraWatch vers un emplacement vers un widget déjà visible sur le frontal<br/>
 ");
-DEFINE('_EW_USER_NO_LONGER_EXISTS',"<i>User with id %d no longer exists</i>");
+DEFINE('_EW_USER_NO_LONGER_EXISTS',"<i>L'utilisateur dont l'identifiant est %d n'existe plus</i>");

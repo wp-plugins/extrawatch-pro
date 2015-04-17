@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 2477  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 2532  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2015 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.codegravity.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -44,70 +44,42 @@ class ExtraWatchDownloads
 
     function increaseFileDownload($file) {
 
+        if(!$file) {
+            echo _EW_DOWNLOADS_FILE_NOT_FOUND;
+            return;
+        }
+
         $fileExtension = pathinfo($file, PATHINFO_EXTENSION);
 
         if (!$this->checkIfExtensionAllowed($fileExtension)) {
             die("Downloading file with this extension is not allowed!");
         }
-        $ip = ExtraWatchVisit::getRemoteIPAddress();
-
-        if (@$this->config->isIgnored('IP', $ip)) { // do not count downloads for excluded IP addresses
-            return;
-        }
 
         set_time_limit(0);
-	
-        $filepathquery = sprintf("SELECT did FROM #__extrawatch_dm_paths where dname='%s'", $this->database->getEscaped($file));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        $filepathid = $this->database->resultQuery($filepathquery);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $mimeType = $this->mime_content_type($file);
 
-        $mimeType = $this->mime_content_type($file);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-        if($file!='') {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-            $currdate = date("Y-m-d");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $referrer = ExtraWatchInput::validate(_EW_INPUT_REFERRER, ExtraWatchVisit::getReferer());///
+        $ip = ExtraWatchInput::validate(_EW_INPUT_IP, ExtraWatchVisit::getRemoteIPAddress());///
 
-            $filesearchquery = sprintf("SELECT COUNT(*) as `count` FROM #__extrawatch_dm_paths where dname='%s'", $this->database->getEscaped($file));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-            $filesearchar = $this->database->resultQuery($filesearchquery);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-			$referrer = ExtraWatchVisit::getReferer();
-
-            if (!$this->checkIfReferrerAllowed($file, $referrer)) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                $adminEmail = $this->helper->getAdminEmail($this->env);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                $adminEmailReplaced = str_replace("@"," {at} ", $adminEmail);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                $emailSubject = sprintf(_EW_DOWNLOADS_EMAIL_RESTRICTED_SUBJECT, $ip);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                $emailContent = sprintf(_EW_DOWNLOADS_EMAIL_RESTRICTED_BODY, $ip, $file, $referrer);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                $this->helper->sendEmail($this->env, $adminEmail, $adminEmail, $emailSubject, $emailContent);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                die(sprintf(_EW_DOWNLOADS_NOT_ALLOWED, $adminEmailReplaced));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-            }
-
-            $referrerId = $this->findOrAddReferrer($referrer);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-            $timestamp = $this->date->getUTCTimestamp();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-            if($filesearchar>0)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-            {
-                $filepathquery_add = sprintf("insert into #__extrawatch_dm_counter (did,ddate,ip,referrerId,`timestamp`) values ('%s','%s','%s','%d','%d')", (int)$filepathid, $this->database->getEscaped($currdate), $ip, (int) $referrerId, (int) $timestamp);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                $this->database->executeQuery($filepathquery_add);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-            }
-            else
-            {
-                $file_add = sprintf("insert into #__extrawatch_dm_paths (dname) values ('%s')", $this->database->getEscaped($file));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                $this->database->executeQuery($file_add);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-
-                $path_query = "select did from #__extrawatch_dm_paths where dname = ('$file')";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                $filepathid = $this->database->resultQuery($path_query);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-
-                $counter_add = sprintf("insert into #__extrawatch_dm_counter (did,ddate,ip,referrerId, `timestamp`) values ('%d','%s','%s','%d')", (int) $filepathid, $this->database->getEscaped($currdate), $ip, (int) $referrerId, (int) $timestamp);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                $this->database->executeQuery($counter_add);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-
-            }
-            $filepath = $this->env->getRootPath().DS.trim($file);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-
-            $this->serveDownload($filepath, 1024, $mimeType);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-
+        if (!$this->checkIfReferrerAllowed($file, $referrer)) {
+            $adminEmail = $this->helper->getAdminEmail($this->env);
+            $adminEmailReplaced = str_replace("@"," {at} ", $adminEmail);
+            $emailSubject = sprintf(_EW_DOWNLOADS_EMAIL_RESTRICTED_SUBJECT, $ip);
+            $emailContent = sprintf(_EW_DOWNLOADS_EMAIL_RESTRICTED_BODY, $ip, $file, $referrer);
+            $this->helper->sendEmail($this->env, $adminEmail, $adminEmail, $emailSubject, $emailContent);
+            die(sprintf(_EW_DOWNLOADS_NOT_ALLOWED, $adminEmailReplaced));
         }
-        else
-        {
-            echo _EW_DOWNLOADS_FILE_NOT_FOUND;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+
+        if (!@$this->config->isIgnored('IP', $ip)) { // do not count downloads for excluded IP addresses
+            $this->increaseDownloadStat($file);
         }
+        $filepath = $this->env->getRootPath().DS.trim($file);
+
+        $this->serveDownload($filepath, 1024, $mimeType);
 
     }
+
 
     /**
      * This is
@@ -165,22 +137,22 @@ class ExtraWatchDownloads
 
 		$env = $this->config->getEnvironment();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-        $writingonht_prev = "\nRewriteEngine on"."\n"."RewriteRule ^(.*).(".$ext_n_prev.")$ ".$path.$this->env->renderAjaxLink('ajax','download')."&env=$env&params=".urlencode("&rand=")."&file="."$1.$2 [R,L]";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $writingonht_prev = "\nRewriteEngine on"."\n"."RewriteRule ^(.*).(".$ext_n_prev.")$ ".$path.$this->env->renderFrontendAjaxLink($this->config, 'ajax','download', TRUE)."&env=$env&params=".urlencode("&rand=")."&file="."$1.$2 [R,L]";
 
         $root_file = $this->env->getRootPath().DS.".htaccess";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-        $existingcode = @file_get_contents($root_file);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $existingcode = @file_get_contents(ExtraWatchInput::validate(_EW_INPUT_FILE_ROOT_PATH_HTACCESS, $root_file));  ///
 
         $existingcode_f = str_replace($writingonht_prev,"",$existingcode);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
         $writingonht = $existingcode_f."\nRewriteEngine on";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        $writingonht = $writingonht."\n"."RewriteRule ^(.*).(".$ext_n.")$ ".$path.$this->env->renderAjaxLink('ajax','download')."&env=$env&params=".urlencode("&rand=")."&file="."$1.$2 [R,L]";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $writingonht = $writingonht."\n"."RewriteRule ^(.*).(".$ext_n.")$ ".$path.$this->env->renderFrontendAjaxLink($this->config, 'ajax','download', TRUE)."&env=$env&params=".urlencode("&rand=")."&file="."$1.$2 [R,L]";
 
         if (file_exists($root_file))  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         {
             if (is_writable($root_file))  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
             {
-                $handle = fopen($root_file,"w");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                $handle = fopen(ExtraWatchInput::validate(_EW_INPUT_FILE_ROOT_PATH_HTACCESS,$root_file),"w"); ///
                 fwrite($handle,$writingonht);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                 fclose($handle);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
             }
@@ -191,7 +163,7 @@ class ExtraWatchDownloads
         }
         else
         {
-            $handle = fopen($root_file,"w");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+            $handle = fopen(ExtraWatchInput::validate(_EW_INPUT_FILE_ROOT_PATH_HTACCESS,$root_file),"w");  ///
             if ($handle)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
             {
                 fwrite($handle,$writingonht);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -231,17 +203,17 @@ class ExtraWatchDownloads
         $pathsDividedBySeparator = $this->objectListToString($pathsBeforeInsert,"|");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
 
-        $textBeforeInHtAccess = "\nRewriteEngine on"."\n"."RewriteRule ^(".$pathsDividedBySeparator.")$ ".$path.$this->env->renderAjaxLink('ajax','download')."&env=$env&params=".urlencode("&rand=")."&file="."$1 [R,L]";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $textBeforeInHtAccess = "\nRewriteEngine on"."\n"."RewriteRule ^(".$pathsDividedBySeparator.")$ ".$path.$this->env->renderFrontendAjaxLink($this->config, 'ajax','download', TRUE)."&env=$env&params=".urlencode("&rand=")."&file="."$1 [R,L]";
 
         $root_file = $this->env->getRootPath().DS.".htaccess";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        $existingContentOfHtAccess = @file_get_contents($root_file);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $existingContentOfHtAccess = @file_get_contents(ExtraWatchInput::validate(_EW_INPUT_FILE_ROOT_PATH_HTACCESS,$root_file));  ///
 
         $originalContentOfHtAccess = str_replace($textBeforeInHtAccess,"",$existingContentOfHtAccess);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
         $pathsDividedBySeparator = $this->objectListToString($pathsAfterInsert,"|");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
         $newContentToWriteToHtAccess = $originalContentOfHtAccess."\nRewriteEngine on\n";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        $newContentToWriteToHtAccess .= "RewriteRule ^(".$pathsDividedBySeparator.")$ ".$path.$this->env->renderAjaxLink('ajax','download')."&env=$env&params=".urlencode("&rand=")."&file="."$1 [R,L]";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $newContentToWriteToHtAccess .= "RewriteRule ^(".$pathsDividedBySeparator.")$ ".$path.$this->env->renderFrontendAjaxLink($this->config, 'ajax','download', TRUE)."&env=$env&params=".urlencode("&rand=")."&file="."$1 [R,L]";
 
         $this->writeToFile($root_file, $newContentToWriteToHtAccess);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
@@ -284,25 +256,25 @@ class ExtraWatchDownloads
 
 		$env = $this->config->getEnvironment();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-        $writingonht_prev = "\nRewriteEngine on"."\n"."RewriteRule ^(.*).(".$ext_n_prev.")$ ".$path.$this->env->renderAjaxLink('ajax','download')."&env=$env&params=".urlencode("&rand=")."&file="."$1.$2 [R,L]";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $writingonht_prev = "\nRewriteEngine on"."\n"."RewriteRule ^(.*).(".$ext_n_prev.")$ ".$path.$this->env->renderFrontendAjaxLink($this->config, 'ajax','download', TRUE)."&env=$env&params=".urlencode("&rand=")."&file="."$1.$2 [R,L]";
 
         $root_file = $this->env->getRootPath().DS.".htaccess";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-        $existingcode = file_get_contents($root_file);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $existingcode = file_get_contents(ExtraWatchInput::validate(_EW_INPUT_FILE_ROOT_PATH_HTACCESS,$root_file));  ///
 
         $existingcode_f = str_replace($writingonht_prev,"",$existingcode);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         //$existingcode_f = str_replace($writingonht_prev1,"",$existingcode);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
         $writingonht = $existingcode_f."\nRewriteEngine on";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        $writingonht = $writingonht."\n"."RewriteRule ^(.*).(".$ext_n.")$ ".$path.$this->env->renderAjaxLink('ajax','download')."&env=$env&params=".urlencode("&rand=")."&file="."$1.$2 [R,L]";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $writingonht = $writingonht."\n"."RewriteRule ^(.*).(".$ext_n.")$ ".$path.$this->env->renderFrontendAjaxLink($this->config, 'ajax','download', TRUE)."&env=$env&params=".urlencode("&rand=")."&file="."$1.$2 [R,L]";
 
 
         if (file_exists($root_file))  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         {
             if (is_writable($root_file))  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
             {
-                $handle = fopen($root_file,"w");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                fwrite($handle,$writingonht);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                $handle = fopen(ExtraWatchInput::validate(_EW_INPUT_FILE_ROOT_PATH_HTACCESS,$root_file),"w");///
+                fwrite($handle,$writingonht);  ///
                 fclose($handle);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
             }
             else
@@ -312,7 +284,7 @@ class ExtraWatchDownloads
         }
         else
         {
-            $handle = fopen($root_file,"w");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+            $handle = fopen(ExtraWatchInput::validate(_EW_INPUT_FILE_ROOT_PATH_HTACCESS,$root_file),"w");   ///
             if ($handle)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
             {
                 fwrite($handle,$writingonht);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -379,11 +351,11 @@ class ExtraWatchDownloads
 
 			$env = $this->config->getEnvironment();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-            $writingonht_prev = "\nRewriteEngine on"."\n"."RewriteRule ^(.*).(".$ext_n_prev.")$ ".$path.$this->env->renderAjaxLink('ajax','download')."&env=$env&params=".urlencode("&rand=")."&file="."$1.$2 [R,L]";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+            $writingonht_prev = "\nRewriteEngine on"."\n"."RewriteRule ^(.*).(".$ext_n_prev.")$ ".$path.$this->env->renderFrontendAjaxLink($this->config, 'ajax','download', TRUE)."&env=$env&params=".urlencode("&rand=")."&file="."$1.$2 [R,L]";
 
             $root_file = $this->env->getRootPath().DS.".htaccess";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-            $existingcode = @file_get_contents($root_file);
+            $existingcode = @file_get_contents(ExtraWatchInput::validate(_EW_INPUT_FILE_ROOT_PATH_HTACCESS,$root_file)); ///
 
             if (!@$existingcode) {
 
@@ -391,7 +363,7 @@ class ExtraWatchDownloads
             //$existingcode_f = str_replace($writingonht_prev1,"",$existingcode);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
             $writingonht = $existingcode_f."\nRewriteEngine on";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-            $writingonht = $writingonht."\n"."RewriteRule ^(.*).(".$ext_n.")$ ".$path.$this->env->renderAjaxLink('ajax','download')."&env=$env&params=".urlencode("&rand=")."&file="."$1.$2 [R,L]";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+            $writingonht = $writingonht."\n"."RewriteRule ^(.*).(".$ext_n.")$ ".$path.$this->env->renderFrontendAjaxLink($this->config, 'ajax','download', TRUE)."&env=$env&params=".urlencode("&rand=")."&file="."$1.$2 [R,L]";
 
             if (file_exists($root_file))  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
             {
@@ -399,21 +371,21 @@ class ExtraWatchDownloads
                 {
                     if($ext_n!="")  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                     {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                        $handle = fopen($root_file,"w");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                        $handle = fopen(ExtraWatchInput::validate(_EW_INPUT_FILE_ROOT_PATH_HTACCESS,$root_file),"w");  	 ///
                         fwrite($handle,$writingonht);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                         fclose($handle);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                     }
                 }
                 else  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                 {
-                    $handle = fopen($root_file,"w");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                    $handle = fopen(ExtraWatchInput::validate(_EW_INPUT_FILE_ROOT_PATH_HTACCESS,$root_file),"w");  	  ///
                     fwrite($handle,$existingcode_f);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                     fclose($handle);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                 }
             }
             else
             {
-                $handle = fopen($root_file,"w");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                $handle = fopen(ExtraWatchInput::validate(_EW_INPUT_FILE_ROOT_PATH_HTACCESS,$root_file),"w");  	 	 ///
                 if ($handle)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                 {
                     fwrite($handle,$writingonht);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -466,31 +438,31 @@ class ExtraWatchDownloads
 
             $env = $this->config->getEnvironment();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-            $writingonht_prev = "\nRewriteEngine on"."\n"."RewriteRule ^(.*).(".$ext_n_prev.")$ ".$path.$this->env->renderAjaxLink('ajax','download')."&env=$env&params=".urlencode("&rand=")."&file="."$1.$2 [R,L]";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+            $writingonht_prev = "\nRewriteEngine on"."\n"."RewriteRule ^(.*).(".$ext_n_prev.")$ ".$path.$this->env->renderFrontendAjaxLink($this->config, 'ajax','download', TRUE)."&env=$env&params=".urlencode("&rand=")."&file="."$1.$2 [R,L]";
 
             $root_file = $this->env->getRootPath().DS.".htaccess";
 
             if (@file_exists($root_file)) {
-                $existingcode = file_get_contents($root_file);
+                $existingcode = file_get_contents(ExtraWatchInput::validate(_EW_INPUT_FILE_ROOT_PATH_HTACCESS,$root_file)); ///
 
                 $existingcode_f = str_replace($writingonht_prev,"",$existingcode);
 
                 $writingonht = $existingcode_f."\nRewriteEngine on";
-                $writingonht = $writingonht."\n"."RewriteRule ^(.*).(".$ext_n.")$ ".$path.$this->env->renderAjaxLink('ajax','download')."&env=$env&params=".urlencode("&rand=")."&file="."$1.$2 [R,L]";
+                $writingonht = $writingonht."\n"."RewriteRule ^(.*).(".$ext_n.")$ ".$path.$this->env->renderFrontendAjaxLink($this->config, 'ajax','download', TRUE)."&env=$env&params=".urlencode("&rand=")."&file="."$1.$2 [R,L]";
 
                 if (file_exists($root_file)) {
                     if (is_writable($root_file))
                     {
                         if($ext_n!="")
                         {
-                            $handle = fopen($root_file,"w");
+                            $handle = fopen(ExtraWatchInput::validate(_EW_INPUT_FILE_ROOT_PATH_HTACCESS,$root_file),"w"); ///
                             fwrite($handle,$writingonht);
                             fclose($handle);
                         }
                     }
                     else
                     {
-                        $handle = @fopen($root_file,"w");
+                        $handle = @fopen(ExtraWatchInput::validate(_EW_INPUT_FILE_ROOT_PATH_HTACCESS,$root_file),"w"); ///
                         if (@$handle) {
                             fwrite($handle,$existingcode_f);
                             fclose($handle);
@@ -592,7 +564,7 @@ class ExtraWatchDownloads
 
     function findOrAddReferrer($referrer)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     {
-        $referrer = ExtraWatchHelper::htmlspecialchars($referrer);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $referrer = ExtraWatchHelper::htmlspecialchars(ExtraWatchInput::validate(_EW_INPUT_REFERRER,$referrer));   ///
 
         $id = $this->getReferrerIdByName($referrer);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
@@ -656,7 +628,7 @@ class ExtraWatchDownloads
 
         if (is_file($path = realpath($path)) === true)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         {
-            $file = @fopen($path, 'rb');  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+            $file = @fopen(ExtraWatchInput::validate(_EW_INPUT_FILE_EXTERNAL_PATH,$path), 'rb');   ///**
             $size = sprintf('%u', filesize($path));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
             $speed = (empty($speed) === true) ? 1024 : floatval($speed);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
@@ -675,7 +647,7 @@ class ExtraWatchDownloads
 
                     if (array_key_exists('HTTP_RANGE', $_SERVER) === true)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                     {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                        $range = array_map('intval', explode('-', preg_replace('~.*=([^,]*).*~', '$1', $_SERVER['HTTP_RANGE'])));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                        $range = array_map('intval', explode('-', preg_replace('~.*=([^,]*).*~', '$1', $_SERVER['HTTP_RANGE'])));  	 ///
 
                         if (empty($range[1]) === true)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                         {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -712,12 +684,12 @@ class ExtraWatchDownloads
 
                 if ($range[0] > 0)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                 {
-                    fseek($file, $range[0]);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                    fseek($file, (int) $range[0]);  ///
                 }
 
                 while ((feof($file) !== true) && (connection_status() === CONNECTION_NORMAL))  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                 {
-                    echo fread($file, round($speed * 1024)); flush();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                    echo fread($file, round($speed * 1024)); flush();  ///
                 }
 
                 fclose($file);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -820,18 +792,18 @@ class ExtraWatchDownloads
      */
     public function writeToFile($root_file, $writingonht)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     {
-        if (file_exists($root_file)) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        if (file_exists($root_file)) {  	 ///
             if (is_writable($root_file)) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                $handle = fopen($root_file, "w");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                $handle = fopen(ExtraWatchInput::validate(_EW_INPUT_FILE_ROOT_PATH_HTACCESS,$root_file), "w");///
                 fwrite($handle, $writingonht);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                 fclose($handle);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
             } else {
                 echo _EW_DOWNLOADS_HTACCESS_NOT_WRITABLE;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
             }
         } else {
-            $handle = fopen($root_file, "w");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+            $handle = fopen(ExtraWatchInput::validate(_EW_INPUT_FILE_ROOT_PATH_HTACCESS,$root_file), "w");///
             if ($handle) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                fwrite($handle, $writingonht);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                fwrite($handle, $writingonht);   ///
                 fclose($handle);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
             } else {
                 echo _EW_DOWNLOADS_HTACCESS_COULD_NOT_BE_CREATED;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -858,6 +830,44 @@ class ExtraWatchDownloads
         $this->database->setQuery($extensionquery);
         return $this->database->loadResult();
 
+    }
+
+    /**
+     * @param $file
+     * @param $filepathid
+     * @param $currdate
+     * @param $ip
+     * @param $referrerId
+     * @param $timestamp
+     */
+    public function increaseDownloadStat($file)
+    {
+        $ip = ExtraWatchInput::validate(_EW_INPUT_IP, ExtraWatchVisit::getRemoteIPAddress()); ///
+        $referrer = ExtraWatchInput::validate(_EW_INPUT_REFERRER, ExtraWatchVisit::getReferer()); ///
+
+        $currdate = date("Y-m-d");
+        $referrerId = $this->findOrAddReferrer($referrer);
+        $timestamp = $this->date->getUTCTimestamp();
+
+        $filepathquery = sprintf("SELECT did FROM #__extrawatch_dm_paths where dname='%s'", $this->database->getEscaped($file));
+        $filepathid = $this->database->resultQuery($filepathquery);
+
+        $filesearchquery = sprintf("SELECT COUNT(*) as `count` FROM #__extrawatch_dm_paths where dname='%s'", $this->database->getEscaped($file));
+        $filesearchar = $this->database->resultQuery($filesearchquery);
+        if ($filesearchar > 0) {
+            $filepathquery_add = sprintf("insert into #__extrawatch_dm_counter (did,ddate,ip,referrerId,`timestamp`) values ('%s','%s','%s','%d','%d')", (int)$filepathid, $this->database->getEscaped($currdate), $ip, (int)$referrerId, (int)$timestamp);
+            $this->database->executeQuery($filepathquery_add);
+        } else {
+            $file_add = sprintf("insert into #__extrawatch_dm_paths (dname) values ('%s')", $this->database->getEscaped($file));
+            $this->database->executeQuery($file_add);
+
+            $path_query = "select did from #__extrawatch_dm_paths where dname = ('$file')";
+            $filepathid = $this->database->resultQuery($path_query);
+
+            $counter_add = sprintf("insert into #__extrawatch_dm_counter (did,ddate,ip,referrerId, `timestamp`) values ('%d','%s','%s','%d')", (int)$filepathid, $this->database->getEscaped($currdate), $ip, (int)$referrerId, (int)$timestamp);
+            $this->database->executeQuery($counter_add);
+
+        }
     }
 }
 

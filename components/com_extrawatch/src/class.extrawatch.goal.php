@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 2477  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 2532  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2015 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.extrawatch.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -119,8 +119,9 @@ class ExtraWatchGoal
         $keys = array();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         $values = array();
         $env = ExtraWatchEnvFactory::getEnvironment();
-        foreach ($allowedFields as $key) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-            $value = @$post[$key];  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        foreach ($allowedFields as $key) {
+            $key = ExtraWatchInput::validate(_EW_INPUT_ONE_STRING, $key);
+            $value = @$post[$key];   ///
             if (array_search($key, $allowedFields)) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                 $keys[] = strtolower($key);
                 if (@get_class($env) != "ExtraWatchWordpressEnv") { //wordpress post values come pre-escaped
@@ -130,20 +131,20 @@ class ExtraWatchGoal
                         $value = $this->unescapeXPathCondition($value);
                     }
                 }
-                $values[] = "'".$value."'";
+                $values[] = "'".$this->database->getEscaped($value)."'";
             }
         }
         $keysImploded = implode(",", $keys);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         $valuesImploded = implode(",", $values);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-        $id = @ $post['id'];  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $id = (int) @ $post['id'];
         if (@ $id) {    // update  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-            for($i=0;$i<sizeof($keys);$i++) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                $updateKeys[] = $keys[$i]." = ". $values[$i]."";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+            for($i=0;$i<sizeof($keys);$i++) {
+                 $updateKeys[] =  ExtraWatchInput::validate(_EW_INPUT_ONE_STRING, $keys[$i])." = ". $values[$i]."";
             }
             $updateQuery = implode(", ", $updateKeys);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
             $query = sprintf("update #__extrawatch_goals set %s  where id = '%d'", $updateQuery, (int) $id);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-            $result = $this->database->executeQuery($query);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+            $result = $this->database->executeQuery($query);
         } else {
             // insert  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
             $query = "insert into #__extrawatch_goals (".$keysImploded.") values (".$valuesImploded.")";
@@ -196,12 +197,12 @@ class ExtraWatchGoal
                     if (@trim($row->get_inversed) == "on") {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                         if (@trim($row->get_condition)) {
                             @$achieved[get_condition] = FALSE;
-                            if (@ $this->helper->wildcardSearch($row->get_condition, trim(ExtraWatchHelper::requestGet($row->get_var)))) {
+                            if (@ $this->helper->wildcardSearch($row->get_condition, trim( ExtraWatchInput::validate(_EW_INPUT_ONE_STRING, ExtraWatchHelper::requestGet($row->get_var))))) { ///
                                   	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                             } else  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                                 if ($row->get_var == "*") {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                                     $found = FALSE;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                                    foreach (ExtraWatchHelper::requestGet() as $get) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                                    foreach (ExtraWatchHelper::requestGet() as $get) {  ///
                                         if ($this->helper->wildcardSearch($row->get_condition, trim($get))) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                                             $found = TRUE;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                                         }  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -217,11 +218,11 @@ class ExtraWatchGoal
                     } else {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                         if (@trim($row->get_condition)) {
                             @$achieved[get_condition] = FALSE;
-                            if (@ $this->helper->wildcardSearch($row->get_condition, trim(ExtraWatchHelper::requestGet($row->get_var)))) {
+                            if (@ $this->helper->wildcardSearch($row->get_condition, trim( ExtraWatchInput::validate(_EW_INPUT_ONE_STRING, ExtraWatchHelper::requestGet($row->get_var))))) { ///
                                 @$achieved[get_condition] = TRUE;
                             } else  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                                 if ($row->get_var == "*") {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                                    foreach (ExtraWatchHelper::requestGet() as $get) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                                    foreach (ExtraWatchHelper::requestGet() as $get) {   ///
                                         if ($this->helper->wildcardSearch($row->get_condition, trim($get))) {
                                             @$achieved[get_condition] = TRUE;
                                         }  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -233,13 +234,13 @@ class ExtraWatchGoal
                     if (@trim($row->post_inversed) == "on") {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                         if (@trim($row->post_condition)) {
                             @$achieved[post_condition] = FALSE;
-                            if (@ $this->helper->wildcardSearch($row->post_condition, trim(ExtraWatchHelper::requestPost($row->post_var)))) {
+                            if (@ $this->helper->wildcardSearch($row->post_condition, trim( ExtraWatchInput::validate(_EW_INPUT_ONE_STRING, ExtraWatchHelper::requestPost($row->post_var))))) { ///
                                   	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                             } else  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                                 if ($row->post_var == "*") {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                                     $found = FALSE;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                                    foreach (ExtraWatchHelper::requestPost() as $post) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                                        if ($this->helper->wildcardSearch($row->post_condition, trim($post))) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                                    foreach (ExtraWatchHelper::requestPost() as $post) {   ///
+                                        if ($this->helper->wildcardSearch($row->post_condition, trim($post))) {   ///
                                             $found = TRUE;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                                         }  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                                     }  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -253,7 +254,7 @@ class ExtraWatchGoal
                     } else {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                         if (@trim($row->post_condition)) {
                             @$achieved[post_condition] = FALSE;
-                            if (@ $this->helper->wildcardSearch($row->post_condition, trim(ExtraWatchHelper::requestPost($row->post_var)))) {
+                            if (@ $this->helper->wildcardSearch($row->post_condition, trim( ExtraWatchInput::validate(_EW_INPUT_ONE_STRING, ExtraWatchHelper::requestPost($row->post_var))))) { ///
                                 @$achieved[post_condition] = TRUE;
                             } else  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                                 if ($row->post_var == "*") {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -371,8 +372,8 @@ class ExtraWatchGoal
                         $totalAchievedCountToday = $this->stat->getIntValueByNameAndValue(EW_DB_KEY_GOALS, $row->id);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
 					    $email = $this->config->getConfigValue("EXTRAWATCH_EMAIL_REPORTS_ADDRESS");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                        $env = ExtraWatchEnvFactory::getEnvironment();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-					    $ip = ExtraWatchVisit::getRemoteIPAddress();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                        $env = ExtraWatchInput::validate(_EW_INPUT_ENV, ExtraWatchEnvFactory::getEnvironment());
+					    $ip = ExtraWatchInput::validate(_EW_INPUT_IP, ExtraWatchVisit::getRemoteIPAddress());  	 ///
                         $subject = sprintf(_EW_GOAL_EMAIL_SUBJECT, $row->name, $totalAchievedCountToday);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
                         require_once(realpath(dirname(__FILE__)).DS."html".DS."class.extrawatch.visit.html.php");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -389,7 +390,7 @@ class ExtraWatchGoal
 
 
                     if (@ $row->redirect) {
-                        $env = ExtraWatchEnvFactory::getEnvironment();
+                        $env = ExtraWatchInput::validate(_EW_INPUT_ENV, ExtraWatchEnvFactory::getEnvironment()); ///
                         $env->redirect(@$row->redirect);
                     }
                     if (@ $row->block) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -427,7 +428,7 @@ class ExtraWatchGoal
     /**
      *  Export Goals  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
      */
-    function exportGoals()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    function exportGoals()
     {
         $query = "select * from #__extrawatch_goals ";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         $rows = @ $this->database->assocListQuery($query);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -445,26 +446,28 @@ class ExtraWatchGoal
         }
 
         $output .= "</goals>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        $xmlFile = "extrawatch-goals-" . date('Ymd') . ".xml";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        $xmlHandle = fopen($xmlFile, "w"); //--- write xml to file ---  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        fwrite($xmlHandle, $output);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $xmlFile = ExtraWatchInput::getUploadTmpDir().DS."extrawatch-goals-" . date('Ymd') . ".xml";
+        $xmlHandle = fopen(ExtraWatchInput::validate(_EW_INPUT_FILE_PATH_TMP, $xmlFile), "w"); //--- write xml to file ---   ///
+        fwrite($xmlHandle, $output);  	  ///
         fclose($xmlHandle); // tell the browser what kind of file is come in  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         return @ $output;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     }
 
     function saveImportGoal($post)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     {
-        if ((($_FILES["file"]["type"] == "text/xml"))) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-            if ($_FILES["file"]["error"] > 0) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                echo "Return Code: " . $_FILES["file"]["error"] . "<br />";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        ExtraWatchInput::validate(_EW_INPUT_FILE_NAME, $_FILES); ///**
+
+        if ((($_FILES["file"]["type"] == "text/xml"))) {
+            if ($_FILES["file"]["error"] > 0) {
+                echo "Return Code: " . $_FILES["file"]["error"] . "<br />";
             } else {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                if (file_exists(JPATH_BASE . "/" . $_FILES["file"]["name"])) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                if (file_exists(JPATH_BASE . "/" . $_FILES["file"]["name"])) {  	 ///
                     echo $_FILES["file"]["name"] . " already exists. ";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                 } else {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                    move_uploaded_file($_FILES["file"]["tmp_name"], JPATH_BASE . "/" . $_FILES["file"]["name"]);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                    move_uploaded_file($_FILES["file"]["tmp_name"], JPATH_BASE . "/" . $_FILES["file"]["name"]);  ///
                     //XML Read  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                     $doc = new DOMDocument();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                    $doc->load($_FILES['file']['name']);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                    $doc->load($_FILES['file']['name']);  	 ///
 
                     $goals = $doc->getElementsByTagName("goal");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                     foreach ($goals as $goal) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -555,7 +558,7 @@ class ExtraWatchGoal
                             $result = $this->database->executeQuery($query);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                         }  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                     } //Delete uploaded file  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                    unlink($_FILES["file"]["name"]);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                    unlink($_FILES["file"]["name"]);  	 ///
                 }
             }
         } else {

@@ -5,9 +5,9 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.3
- * @revision 2124
+ * @revision 2532
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
- * @copyright (C) 2014 by CodeGravity.com - All rights reserved!
+ * @copyright (C) 2015 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
  */
 // disabled for now defined('_JEXEC') or die('Restricted access');  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -29,23 +29,25 @@ include_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS. "incl
 
 $extraWatch = new ExtraWatchMain();
 $extraWatch->helper->setNoindexHttpHeaders();   //setting explicitly for ajax requests
-//$extraWatch->block->checkPermissions();
+$extraWatch->block->checkFrontendTokenFromUrl();
 
-$params = ExtraWatchHelper::requestGet("params");
+$params = ExtraWatchHelper::requestGet("params");///
 $params=str_replace("?","",$params);    //remove trailing ?  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-$queryParams = ExtraWatchHelper::getUrlQueryParams();
-$getParamsFromQuery = ExtraWatchHelper::convertUrlQuery($queryParams['params']);
-$getParams = ExtraWatchHelper::convertUrlQuery(urldecode(@$getParamsFromQuery['getParams']));
+$queryParams = ExtraWatchHelper::getUrlQueryParams();///
+$getParamsFromQuery = ExtraWatchHelper::convertUrlQuery($queryParams['params']);///
+$getParams = ExtraWatchHelper::convertUrlQuery(urldecode(@$getParamsFromQuery['getParams']));///
 
-$ip = @$getParams["ip"];
+if (@$getParams["ip"]) {
+    $ip = ExtraWatchInput::validate(_EW_INPUT_IP, @$getParams["ip"]);///
+}
 
 //$queryParams = ExtraWatchHelper::convertUrlQuery($params);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
 //print_r($queryParams);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-$title = @$queryParams['title'];
-$uri = ExtraWatchHelper::unescapeSlash(@$queryParams['uri']);
+$title = @$queryParams['title'];///
+$uri = ExtraWatchInput::validate(_EW_INPUT_URI, ExtraWatchHelper::unescapeSlash(@$queryParams['uri']));///
 
 
 //echo("url: $uri title: $title");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -64,7 +66,7 @@ if (@_EW_CLOUD_MODE) {
 }
 
 ?>
-  var urlBase = "<?php echo $liveSite; ?><?php echo $extraWatch->env->renderAjaxLink('ajax','heatmap');?>&rand=<?php echo $extraWatch->config->getRand();?>&env=<?php echo $extraWatch->config->getEnvironment();?>&projectId=<?php echo _EW_PROJECT_ID;?>";
+  var urlBase = "<?php echo $liveSite; ?><?php echo $extraWatch->env->renderFrontendAjaxLink($extraWatch->config, 'ajax','heatmap');?>&env=<?php echo $extraWatch->config->getEnvironment();?>&projectId=<?php echo _EW_PROJECT_ID;?>";
   var clickDoc = (document.documentElement != undefined && document.documentElement.clientHeight != 0) ? document.documentElement : document.body;
   var w = screen.width;
   var h = screen.height;
@@ -77,12 +79,12 @@ if (@_EW_CLOUD_MODE) {
   <?php
   $request = $extraWatch->env->getRequest();
 
-  $heatmapEnabled = @$getParams[ExtraWatchHeatmap::HEATMAP_PARAM_NAME];
-  $day = @$getParams[ExtraWatchHeatmap::HEATMAP_PARAM_DAY_NAME];
-  $xpath = urldecode(@$getParams['xpath']);
+  $heatmapEnabled = (bool) @$getParams[ExtraWatchHeatmap::HEATMAP_PARAM_NAME];
+  $day = (int) @$getParams[ExtraWatchHeatmap::HEATMAP_PARAM_DAY_NAME];///
+  $xpath = ExtraWatchInput::validate(_EW_INPUT_XPATH, urldecode(@$getParams['xpath']));///
 ?>
 
-ew_Heatmap.attachExtraWatchClickListener('<?php echo($extraWatch->config->getRandHash()); ?>', <?php echo( (int) $uri2titleId);?>);
+ew_Heatmap.attachExtraWatchClickListener('<?php echo($extraWatch->config->getFrontendToken()); ?>', <?php echo( (int) $uri2titleId);?>);
 
 
   <?php if (@$heatmapEnabled) { ?>

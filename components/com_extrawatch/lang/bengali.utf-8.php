@@ -335,7 +335,7 @@ DEFINE('_EW_EVALUATION_LEFT', "&nbsp; এটি ১৫ দিনের মূল
 DEFINE('_EW_TRIAL_VERSION_EXPIRED', " আপনার পরীক্ষা সংস্করণের মেয়াদপূর্তী হয়েছে। দয়া করে জুমলাওয়াচ ক্রয় করুন।");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
 DEFINE('_EW_CONFIG_LICENSE_ACTIVATED', "অনুমতিপত্র সাফল্যের সাথে চালু হয়েছে! ধন্যবাদ");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_CONFIG_LICENCE_DONT_MATCH', "<b>ভুল!!: আপনার অনমতিপত্রের চাবি এবং ডোমেইন মিলছেনা</b><br/>আপনি ডোনেশন ফর্মে প্রদত্ত আপনার একই ডোমেইন টি দেখতে পাচ্ছেন?মূল চালুকরণ চাবির জন্য<b>' নিচে ক্লিক করুন '</b> <br/>অথবা যোগাযোগ করুন: support@codegravity.com<br/>এ");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_CONFIG_LICENCE_DONT_MATCH', "<b>ভুল!!: আপনার অনমতিপত্রের চাবি এবং ডোমেইন মিলছেনা</b><br/>আপনি ডোনেশন ফর্মে প্রদত্ত আপনার একই ডোমেইন টি দেখতে পাচ্ছেন?মূল চালুকরণ চাবির জন্য<b>' নিচে ক্লিক করুন '</b> <br/>অথবা যোগাযোগ করুন: live chat on extrawatch.com or submit support ticket via <a href='http://www.extrawatch.com/ticket' target='_blank'>http://www.extrawatch.com/ticket</a><br/>এ");
 
 DEFINE('_EW_VIEW_ADMINBODY_LONG_MESSAGE', "আপনি যদি উপরের বার্তাটি অনেক্ষন ধরে দেখতে থাকেন, তাহলে বুঝতে হবে আপনার লাইভ সাইটটি হয়তো সমস্যা করছে।  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                     এটি খুলুন components/com_extrawatch/config.php  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  

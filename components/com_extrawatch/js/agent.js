@@ -1,7 +1,6 @@
 
 var extraWatchAjaxLinkDecoded = decodeURIComponent(extraWatchAjaxLink);
 
-
 (function() {
 
 	var ew_img = document.createElement('img');

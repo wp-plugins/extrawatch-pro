@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3
- * @revision 2477
+ * @revision 2532
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2015 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -129,7 +129,7 @@ class ExtraWatchHTML
         if (@ $print) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
             $output = "<script language='Javascript'>window.print();</script>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         } else {
-            $output = ("<table width='100%'><tr><td align='right'><a href='" . $this->extraWatch->config->getLiveSiteWithSuffix() . $this->extraWatch->env->renderAjaxLink('ajax','trendtooltip')."&rand=" . $this->extraWatch->config->getRand() . "&group=$group&name=$name&date=$date&print=1&env=".$this->extraWatch->config->getEnvironment()."' target='_blank'><img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/print.gif' border='0' title='" . _EW_TOOLTIP_PRINT . "'/></a></td></tr></table>");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+            $output = ("<table width='100%'><tr><td align='right'><a href='" . $this->extraWatch->config->getLiveSiteWithSuffix() . $this->extraWatch->env->renderBackendAjaxLink($this->extraWatch->config, 'ajax','trendtooltip'). "&group=$group&name=$name&date=$date&print=1&env=".$this->extraWatch->config->getEnvironment()."' target='_blank'><img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/print.gif' border='0' title='" . _EW_TOOLTIP_PRINT . "'/></a></td></tr></table>");
         }
         return $output;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     }
@@ -240,9 +240,9 @@ class ExtraWatchHTML
 
     function renderAdminStyles()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     {
-        //$output = ExtraWatchHelper::get_include_contents(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "lang" . DS . $this->extraWatch->config->getLanguage() . ".php", array("extraWatch" => $this->extraWatch));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        //$output = ExtraWatchHelper::get_include_contents( "lang" . DS . $this->extraWatch->config->getLanguage() . ".php", array("extraWatch" => $this->extraWatch));
         $this->extraWatch->config->initializeTranslations();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        $output = ExtraWatchHelper::get_include_contents(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "adminstyles.php", array("extraWatch" => $this->extraWatch));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $output = ExtraWatchHelper::get_include_contents("view" . DS . "adminstyles.php", array("extraWatch" => $this->extraWatch));
         return $output;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     }
 
@@ -260,7 +260,7 @@ class ExtraWatchHTML
     function renderHeader()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     {
         // if ($this->extraWatch->config->getTrialVersionTimeLeft() > 0 || $this->extraWatch->config->isAdFree()) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        return ExtraWatchHelper::get_include_contents(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "adminheader.php", array("extraWatch" => $this->extraWatch, "extraWatchHTML" => $this));
+        return ExtraWatchHelper::get_include_contents("view" . DS . "adminheader.php", array("extraWatch" => $this->extraWatch, "extraWatchHTML" => $this));
         // }
     }
 
@@ -269,32 +269,32 @@ class ExtraWatchHTML
     {
         $extraWatchVisitHTML = new ExtraWatchVisitHTML($this->extraWatch);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         $extraWatchBlockHTML = new ExtraWatchBlockHTML($this->extraWatch);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        return ExtraWatchHelper::get_include_contents(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "adminbody.php", array("extraWatch" => $this->extraWatch, "extraWatchHTML" => $this, "extraWatchVisitHTML" => $extraWatchVisitHTML, "extraWatchBlockHTML"=>$extraWatchBlockHTML));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        return ExtraWatchHelper::get_include_contents("view" . DS . "adminbody.php", array("extraWatch" => $this->extraWatch, "extraWatchHTML" => $this, "extraWatchVisitHTML" => $extraWatchVisitHTML, "extraWatchBlockHTML"=>$extraWatchBlockHTML));
     }
 
     function renderSettings($result = "")  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     {
-        $output = ExtraWatchHelper::get_include_contents(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "settings.php", array("extraWatch" => $this->extraWatch, "extraWatchHTML" => $this));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $output = ExtraWatchHelper::get_include_contents("view" . DS . "settings.php", array("extraWatch" => $this->extraWatch, "extraWatchHTML" => $this));
         return $output;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     }
 
 
     function renderCredits()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     {
-        $output = ExtraWatchHelper::get_include_contents(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "credits.php", array("extraWatch" => $this->extraWatch));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $output = ExtraWatchHelper::get_include_contents("view" . DS . "credits.php", array("extraWatch" => $this->extraWatch));
         return $output;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     }
 
     function renderAcceptLicense()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     {
-        $output = ExtraWatchHelper::get_include_contents(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "license.php", array("extraWatch" => $this->extraWatch));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $output = ExtraWatchHelper::get_include_contents("view" . DS . "license.php", array("extraWatch" => $this->extraWatch));
         return extrawatch_renderLicense($this->extraWatch);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     }
 
     function renderAdFreeLicense()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     {
         
-        $output = ExtraWatchHelper::get_include_contents(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "license-free.php", array("extraWatch" => $this->extraWatch));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $output = ExtraWatchHelper::get_include_contents("view" . DS . "license-free.php", array("extraWatch" => $this->extraWatch));
         return extrawatch_renderLicenseFree($this->extraWatch);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         
 
@@ -306,27 +306,27 @@ class ExtraWatchHTML
     function renderAntiSpam()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     {
         $extraWatchBlockHTML = new ExtraWatchBlockHTML($this->extraWatch);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        $output = ExtraWatchHelper::get_include_contents(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "antispam.php", array("extraWatch" => $this->extraWatch, "extraWatchBlockHTML" => $extraWatchBlockHTML, "extraWatchHTML" => $this));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $output = ExtraWatchHelper::get_include_contents("view" . DS . "antispam.php", array("extraWatch" => $this->extraWatch, "extraWatchBlockHTML" => $extraWatchBlockHTML, "extraWatchHTML" => $this));
         return $output;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     }
 
     function renderStatus()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     {
         $extraWatchStatHTML = new ExtraWatchStatHTML($this->extraWatch);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        $output = ExtraWatchHelper::get_include_contents(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "status.php", array("extraWatch" => $this->extraWatch, "extraWatchStatHTML" => $extraWatchStatHTML, "extraWatchHTML" => $this));
+        $output = ExtraWatchHelper::get_include_contents("view" . DS . "status.php", array("extraWatch" => $this->extraWatch, "extraWatchStatHTML" => $extraWatchStatHTML, "extraWatchHTML" => $this));
         return $output;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     }
 
     function renderUpdate()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     {
-        $output = ExtraWatchHelper::get_include_contents(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "update.php", array("extraWatch" => $this->extraWatch));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $output = ExtraWatchHelper::get_include_contents("view" . DS . "update.php", array("extraWatch" => $this->extraWatch));
         return $output;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     }
 
     function renderVisitsHistory()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     {
         $extraWatchVisitHistoryHTML = new ExtraWatchVisitHistoryHTML($this->extraWatch);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        $output = ExtraWatchHelper::get_include_contents(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "history.php", array("extraWatch" => $this->extraWatch, "extraWatchVisitHistoryHTML" => $extraWatchVisitHistoryHTML));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $output = ExtraWatchHelper::get_include_contents("view" . DS . "history.php", array("extraWatch" => $this->extraWatch, "extraWatchVisitHistoryHTML" => $extraWatchVisitHistoryHTML));
         return $output;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     }
 
@@ -337,7 +337,7 @@ class ExtraWatchHTML
             $this->extraWatch->config->saveConfigValue("EXTRAWATCH_EMAIL_REPORTS_ADDRESS", $userEmail);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         }
         $extraWatchStatHTML = new ExtraWatchStatHTML($this->extraWatch);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        $output = ExtraWatchHelper::get_include_contents(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "emails.php", array("extraWatch" => $this->extraWatch, "extraWatchStatHTML" => $extraWatchStatHTML, "extraWatchHTML" => $this));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $output = ExtraWatchHelper::get_include_contents("view" . DS . "emails.php", array("extraWatch" => $this->extraWatch, "extraWatchStatHTML" => $extraWatchStatHTML, "extraWatchHTML" => $this));
         return $output;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     }
 
@@ -353,38 +353,38 @@ class ExtraWatchHTML
 
     function renderFlow()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     {
-        $output = ExtraWatchHelper::get_include_contents(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "flow.php", array("extraWatch" => $this->extraWatch, "extraWatchHTML" => $this));
+        $output = ExtraWatchHelper::get_include_contents("view" . DS . "flow.php", array("extraWatch" => $this->extraWatch, "extraWatchHTML" => $this));
         return $output;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     }
 
     function renderSizes()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     {
-        $output = ExtraWatchHelper::get_include_contents(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "sizes.php", array("extraWatch" => $this->extraWatch, "extraWatchHTML" => $this));
+        $output = ExtraWatchHelper::get_include_contents("view" . DS . "sizes.php", array("extraWatch" => $this->extraWatch, "extraWatchHTML" => $this));
         return $output;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     }
 
     function renderSizeComponents()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     {
-        $output = ExtraWatchHelper::get_include_contents(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "sizecomponents.php", array("extraWatch" => $this->extraWatch, "extraWatchHTML" => $this));
+        $output = ExtraWatchHelper::get_include_contents("view" . DS . "sizecomponents.php", array("extraWatch" => $this->extraWatch, "extraWatchHTML" => $this));
         return $output;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     }
 
     function renderSizeModules()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     {
-        $output = ExtraWatchHelper::get_include_contents(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "sizemodules.php", array("extraWatch" => $this->extraWatch, "extraWatchHTML" => $this));
+        $output = ExtraWatchHelper::get_include_contents("view" . DS . "sizemodules.php", array("extraWatch" => $this->extraWatch, "extraWatchHTML" => $this));
         return $output;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     }
 
     function renderSizeDatabase()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     {
-        $output = ExtraWatchHelper::get_include_contents(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "sizedatabase.php", array("extraWatch" => $this->extraWatch));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $output = ExtraWatchHelper::get_include_contents("view" . DS . "sizedatabase.php", array("extraWatch" => $this->extraWatch));
         return $output;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     }
 
     function renderSEO()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     {
         $extraWatchStatHTML = new ExtraWatchStatHTML($this->extraWatch);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        $output = ExtraWatchHelper::get_include_contents(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "seo.php", array("extraWatch" => $this->extraWatch, "extraWatchStatHTML" => $extraWatchStatHTML, "extraWatchHTML" => $this));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $output = ExtraWatchHelper::get_include_contents("view" . DS . "seo.php", array("extraWatch" => $this->extraWatch, "extraWatchStatHTML" => $extraWatchStatHTML, "extraWatchHTML" => $this));
         return $output;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     }
 
@@ -397,7 +397,7 @@ class ExtraWatchHTML
         $urlParsed = @parse_url($url);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         $uri = @$urlParsed['path'];  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         $id = $this->extraWatch->visit->getUriIdByUriName($uri);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        $output .= ExtraWatchHelper::get_include_contents(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "js" . DS . "heatmap.js.php", array("extraWatch" => $this->extraWatch, "extraWatchHeatmap"=>$extraWatchHeatmap, "uri" => $uri, "id" => $id, "extraWatch" => $this->extraWatch, "params" => $params ));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $output .= ExtraWatchHelper::get_include_contents("js" . DS . "heatmap.js.php", array("extraWatch" => $this->extraWatch, "extraWatchHeatmap"=>$extraWatchHeatmap, "uri" => $uri, "id" => $id, "extraWatch" => $this->extraWatch, "params" => $params ));
         
         return $output;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     }
@@ -406,20 +406,20 @@ class ExtraWatchHTML
     {
         $extraWatchHeatmap = new ExtraWatchHeatmap($this->extraWatch->database);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         $extraWatchHeatmapHTML = new ExtraWatchHeatmapHTML($this->extraWatch->database);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        $output = ExtraWatchHelper::get_include_contents(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "heatmap.php", array("extraWatch" => $this->extraWatch, "extraWatchHeatmap" => $extraWatchHeatmap, "extraWatchHeatmapHTML" => $extraWatchHeatmapHTML, "extraWatchHTML" => $this));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $output = ExtraWatchHelper::get_include_contents("view" . DS . "heatmap.php", array("extraWatch" => $this->extraWatch, "extraWatchHeatmap" => $extraWatchHeatmap, "extraWatchHeatmapHTML" => $extraWatchHeatmapHTML, "extraWatchHTML" => $this));
         return $output;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     }
 
     function renderDownloads()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     {
-        $output = ExtraWatchHelper::get_include_contents(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "dm_downloads.php", array("extraWatch" => $this->extraWatch, "extraWatchHTML" => $this));
+        $output = ExtraWatchHelper::get_include_contents("view" . DS . "dm_downloads.php", array("extraWatch" => $this->extraWatch, "extraWatchHTML" => $this));
         return $output;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     }
 
     function renderUsers()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     {
        $extraWatchUserHTML = new ExtraWatchUserHTML($this->extraWatch);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-       $output = ExtraWatchHelper::get_include_contents(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "users.php", array("extraWatch" => $this->extraWatch, "extraWatchUserHTML" => $extraWatchUserHTML,  "extraWatchHTML" => $this));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+       $output = ExtraWatchHelper::get_include_contents("view" . DS . "users.php", array("extraWatch" => $this->extraWatch, "extraWatchUserHTML" => $extraWatchUserHTML,  "extraWatchHTML" => $this));
        return $output;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     }
 
@@ -427,25 +427,25 @@ class ExtraWatchHTML
     {
         $extraWatchHeatmap = new ExtraWatchHeatmap($this->extraWatch->database);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         $extraWatchHeatmapHTML = new ExtraWatchHeatmapHTML($this->extraWatch->database);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        $output = ExtraWatchHelper::get_include_contents(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "clicks.php", array("extraWatch" => $this->extraWatch, "extraWatchHeatmap" => $extraWatchHeatmap, "extraWatchHeatmapHTML" => $extraWatchHeatmapHTML, "extraWatchHTML" => $this));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $output = ExtraWatchHelper::get_include_contents("view" . DS . "clicks.php", array("extraWatch" => $this->extraWatch, "extraWatchHeatmap" => $extraWatchHeatmap, "extraWatchHeatmapHTML" => $extraWatchHeatmapHTML, "extraWatchHTML" => $this));
         return $output;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     }
 
     function renderLocation()
     {
-        $output = ExtraWatchHelper::get_include_contents(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "location.php", array("extraWatch" => $this->extraWatch, "extraWatchHTML" => $this));
+        $output = ExtraWatchHelper::get_include_contents("view" . DS . "location.php", array("extraWatch" => $this->extraWatch, "extraWatchHTML" => $this));
         return $output;
     }
 
     function renderStats()
     {
-        $output = ExtraWatchHelper::get_include_contents(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "stats.php", array("extraWatch" => $this->extraWatch));
+        $output = ExtraWatchHelper::get_include_contents("view" . DS . "stats.php", array("extraWatch" => $this->extraWatch));
         return $output;
     }
 
     function renderFooter()
     {
-        $output = ExtraWatchHelper::get_include_contents(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "footer.php", array("extraWatch" => $this->extraWatch));
+        $output = ExtraWatchHelper::get_include_contents("view" . DS . "footer.php", array("extraWatch" => $this->extraWatch));
         return $output;
     }
 
@@ -503,13 +503,13 @@ class ExtraWatchHTML
 
     function renderGraphs($extraWatchTrendHTML)
     {
-        $output = ExtraWatchHelper::get_include_contents(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "graphs.php", array("extraWatch" => $this->extraWatch, "extraWatchTrendHTML" => $extraWatchTrendHTML));
+        $output = ExtraWatchHelper::get_include_contents("view" . DS . "graphs.php", array("extraWatch" => $this->extraWatch, "extraWatchTrendHTML" => $extraWatchTrendHTML));
         return $output;
     }
 
     function renderAvailableInFullVersion($featureName) {
         if (!$this->extraWatch->config->isAdFree()) {
-            $output = ExtraWatchHelper::get_include_contents(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "fullversion.php", array("extraWatch" => $this->extraWatch, "featureName" => $featureName));
+            $output = ExtraWatchHelper::get_include_contents("view" . DS . "fullversion.php", array("extraWatch" => $this->extraWatch, "featureName" => $featureName));
             return $output;
         }
 

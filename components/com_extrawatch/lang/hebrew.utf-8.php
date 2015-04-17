@@ -337,7 +337,7 @@ DEFINE('_EW_EVALUATION_LEFT', "&nbsp; זה 15 יום גירסת הערכה
 DEFINE('_EW_TRIAL_VERSION_EXPIRED', " גירסת הניסיון שלך פגה. אנא לרכוש ExtraWatch");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
 DEFINE('_EW_CONFIG_LICENSE_ACTIVATED', "רשיון הפעלת בהצלחה. תודה");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_CONFIG_LICENCE_DONT_MATCH', "<b>טָעוּת: מפתח רישיון הדומיין שלך אינם תואמים.</b><br/>האם להזין את שם הדומיין אותו לתוך טופס תרומה כאחד אתה רואה למטה? <br/>Click '<b>בקשת מפתח ההפעלה הנכונה</b>' להלן, או ליצור קשר: support@codegravity.com<br/>");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_CONFIG_LICENCE_DONT_MATCH', "<b>טָעוּת: מפתח רישיון הדומיין שלך אינם תואמים.</b><br/>האם להזין את שם הדומיין אותו לתוך טופס תרומה כאחד אתה רואה למטה? <br/>Click '<b>בקשת מפתח ההפעלה הנכונה</b>' להלן, או ליצור קשר: live chat on extrawatch.com or submit support ticket via <a href='http://www.extrawatch.com/ticket' target='_blank'>http://www.extrawatch.com/ticket</a><br/>");
 
 DEFINE('_EW_VIEW_ADMINBODY_LONG_MESSAGE', "אם אתה רואה את ההודעה הנל במשך זמן רב מדי, האתר שלך עלול להיות שגוי.  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                     Open the components/com_extrawatch/config.php  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  

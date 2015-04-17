@@ -332,7 +332,7 @@ DEFINE('_EW_EVALUATION_LEFT', "&nbsp; Questa &egrave; una versione di prova dell
 DEFINE('_EW_TRIAL_VERSION_EXPIRED', " La vostra versione di prova &egrave; scaduta. Per favore acquistate ExtraWatch");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
 DEFINE('_EW_CONFIG_LICENSE_ACTIVATED', "La licenza &egrave; stata attivata. Grazie");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_CONFIG_LICENCE_DONT_MATCH', "<b>Errore: la chiave per la licenza e il vostro dominio non combaciano.</b><br/>Nel form di attivazione avete inserito lo stesso dominio indicato in basso? In caso affermativo contattare: support@codegravity.com");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_CONFIG_LICENCE_DONT_MATCH', "<b>Errore: la chiave per la licenza e il vostro dominio non combaciano.</b><br/>Nel form di attivazione avete inserito lo stesso dominio indicato in basso? In caso affermativo contattare: live chat on extrawatch.com or submit support ticket via <a href='http://www.extrawatch.com/ticket' target='_blank'>http://www.extrawatch.com/ticket</a>");
 
 DEFINE('_EW_VIEW_ADMINBODY_LONG_MESSAGE', "Se visualizzate il messaggio riportato pi&ugrave; sopra per tanto tempo potrebbe essersi verifcato un errore nel vostro sito.  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                     Aprire components/com_extrawatch/config.php  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  

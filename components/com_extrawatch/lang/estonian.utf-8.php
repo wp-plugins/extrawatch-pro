@@ -334,7 +334,7 @@ DEFINE('_EW_EVALUATION_LEFT', "&nbsp; See on 15-päevane testimise versioon. Pä
 DEFINE('_EW_TRIAL_VERSION_EXPIRED', " Sinu prooviversioon on aegunud. Palun osta ExtraWatch");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
 DEFINE('_EW_CONFIG_LICENSE_ACTIVATED', "Litsents on aktiveeritud edukalt. Tänan teid");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_CONFIG_LICENCE_DONT_MATCH', "<b>Tõrge: litsentsivõti ja domeen ei sobi.</b><br/>Kas sa sisestasid sama domeeninime annetuse vormis, mida näed allpool? Palun võta ühendust: support@codegravity.com");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_CONFIG_LICENCE_DONT_MATCH', "<b>Tõrge: litsentsivõti ja domeen ei sobi.</b><br/>Kas sa sisestasid sama domeeninime annetuse vormis, mida näed allpool? Palun võta ühendust: live chat on extrawatch.com or submit support ticket via <a href='http://www.extrawatch.com/ticket' target='_blank'>http://www.extrawatch.com/ticket</a>");
 
 DEFINE('_EW_VIEW_ADMINBODY_LONG_MESSAGE', "Kui sa näed eespool olevat sõnumit liiga kaua siis sinu live sait võib olla vale.  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                     Ava components/com_extrawatch/config.php  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  

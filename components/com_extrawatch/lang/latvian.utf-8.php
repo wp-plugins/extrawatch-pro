@@ -332,7 +332,7 @@ DEFINE('_EW_EVALUATION_LEFT', "&nbsp; Šī ir 15-dienu izmēģinājuma versija. 
 DEFINE('_EW_TRIAL_VERSION_EXPIRED', " Jūsu izmēģinājuma versijas ir beigusies. Lūdzu iegādājieties ExtraWatch");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
 DEFINE('_EW_CONFIG_LICENSE_ACTIVATED', "Licence sekmīgi aktivizēta. Paldies");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_CONFIG_LICENCE_DONT_MATCH', "<b>Kļūda: licences atslēga un Jūsu domēns nav atbilstoši.</b><br/>Vai Jūs ievadījāt to pašu domēnu aktivizācijas formā, kuru redziet šeit zemāk? Lūdzu sazinieties ar mums: support@codegravity.com");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_CONFIG_LICENCE_DONT_MATCH', "<b>Kļūda: licences atslēga un Jūsu domēns nav atbilstoši.</b><br/>Vai Jūs ievadījāt to pašu domēnu aktivizācijas formā, kuru redziet šeit zemāk? Lūdzu sazinieties ar mums: live chat on extrawatch.com or submit support ticket via <a href='http://www.extrawatch.com/ticket' target='_blank'>http://www.extrawatch.com/ticket</a>");
 
 DEFINE('_EW_VIEW_ADMINBODY_LONG_MESSAGE', "Ja Jūs redziet šo paziņojumu pārāk ilgi, tad Jūsu norādītā mājaslapas adrese var būt nepareiza.  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                     Atveriet components/com_extrawatch/config.php  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  

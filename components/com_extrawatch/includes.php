@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 2477  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 2532  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2015 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.codegravity.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -142,8 +142,11 @@ if (!@_EW_CLOUD_MODE && !defined("_EW_PROJECT_ID")) {
     define("_EW_PROJECT_ID", FALSE);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 }
 
-require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "src" . DS . "class.extrawatch.php";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "src" . DS . "class.extrawatch.exception.ipblocked.php";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "src" . DS . "class.extrawatch.php";
+require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "src" . DS . "class.extrawatch.log.php";
+require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "src" . DS . "class.extrawatch.exception.input.php";
+require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "src" . DS . "class.extrawatch.input.php";
+require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "src" . DS . "class.extrawatch.exception.ipblocked.php";
 require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "src" . DS . "class.extrawatch.setup.php";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "src" . DS . "class.extrawatch.referers.php";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "src" . DS . "class.extrawatch.block.php";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -155,8 +158,7 @@ require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "src
 require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "src" . DS . "class.extrawatch.stat.php";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "src" . DS . "class.extrawatch.visit.php";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "src" . DS . "class.extrawatch.visit.history.php";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "src" . DS . "class.extrawatch.log.php";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "src" . DS . "class.extrawatch.sizes.php";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "src" . DS . "class.extrawatch.sizes.php";
 require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "src" . DS . "class.extrawatch.flow.php";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "src" . DS . "class.extrawatch.heatmap.php";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "src" . DS . "class.extrawatch.user.php";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  

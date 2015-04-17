@@ -334,7 +334,7 @@ DEFINE('_EW_EVALUATION_LEFT', "这是15天评估版本.还剩下: <b>%d</b>.请�
 DEFINE('_EW_TRIAL_VERSION_EXPIRED', "你的试用版已过期.请购买 ExtraWatch ");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
 DEFINE('_EW_CONFIG_LICENSE_ACTIVATED', "许可证激活成功.谢谢您");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_CONFIG_LICENCE_DONT_MATCH', "<b>错误的许可证密钥,您的域名不匹配: </b> <br/>你输入的域名是否和你捐赠时填写的相同,如下? <br/>点击“<b>请求正确的激活密钥</b>”下面,或联系: support@codegravity.com <br/> ");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_CONFIG_LICENCE_DONT_MATCH', "<b>错误的许可证密钥,您的域名不匹配: </b> <br/>你输入的域名是否和你捐赠时填写的相同,如下? <br/>点击“<b>请求正确的激活密钥</b>”下面,或联系: live chat on extrawatch.com or submit support ticket via <a href='http://www.extrawatch.com/ticket' target='_blank'>http://www.extrawatch.com/ticket</a> <br/> ");
 
 DEFINE('_EW_VIEW_ADMINBODY_LONG_MESSAGE', "如果您一直看到上面消息,您的实际网站设置可能是错误的的.  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                     打开 components/com_extrawatch/config.php 文件  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  

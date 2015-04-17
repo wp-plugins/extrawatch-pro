@@ -335,7 +335,7 @@ DEFINE('_EW_EVALUATION_LEFT', "&nbsp; これは15日間評価版です。残り�
 DEFINE('_EW_TRIAL_VERSION_EXPIRED', " トライアル版の期限がきれました。ジュームラ・ウォッチをご購入ください。");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
 DEFINE('_EW_CONFIG_LICENSE_ACTIVATED', "ライセンスが無事に起動しました。ありがとうございます");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_CONFIG_LICENCE_DONT_MATCH', "<b>エラー: ライセンスキーとドメインが一致しません</b><br/>以下に表示した寄付フォームと同じドメイン名をご入力されましたか？ <br/>クリック '<b>以下に正しい起動キーを要求してください</b>或はお問い合わせください: support@codegravity.com<br/>");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_CONFIG_LICENCE_DONT_MATCH', "<b>エラー: ライセンスキーとドメインが一致しません</b><br/>以下に表示した寄付フォームと同じドメイン名をご入力されましたか？ <br/>クリック '<b>以下に正しい起動キーを要求してください</b>或はお問い合わせください: live chat on extrawatch.com or submit support ticket via <a href='http://www.extrawatch.com/ticket' target='_blank'>http://www.extrawatch.com/ticket</a><br/>");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
 DEFINE('_EW_VIEW_ADMINBODY_LONG_MESSAGE', "長時間上記メッセージを見られているのであれば、ライブサイトが間違っている可能性があります。  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                     コンポーネント/com_extrawatch/config.php  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
