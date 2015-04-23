@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.3
- * @revision 2532
+ * @revision 2538
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2015 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -34,7 +34,8 @@ _EW_INPUT_USER_AGENT = 17,
 _EW_INPUT_EMAIL = 18,//
 _EW_INPUT_REFERRER_SAME_SITE = 19,//
 _EW_INPUT_FILE_ROOT_PATH_HTACCESS = 20,
-_EW_INPUT_FILE_PATH_TMP = 21;
+_EW_INPUT_FILE_PATH_TMP = 21,
+_EW_INPUT_LANGUAGE = 22;
 
 define("_EW_ALLOWED_PARAMS_TO_EXTRACT", serialize (array (1=>"action", "click", "uri2titleId", "x", "y", "w","h","heatmapToken","xpath",
 "extraWatchHeatmap", "extraWatchDay", "getParams","ip")));
@@ -45,9 +46,11 @@ class ExtraWatchInput {
     public static function validate($type, $input = "") {
         switch ($type) {
             case _EW_INPUT_IP: {
+                $inputModified = $input;
+                $inputModified = self::replaceWildcardWithRealNumber($inputModified);
                 if (!(
-                    filter_var($input, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4 | FILTER_FLAG_NO_PRIV_RANGE) ||
-                    filter_var($input, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6 | FILTER_FLAG_NO_PRIV_RANGE)
+                    filter_var($inputModified, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4 | FILTER_FLAG_NO_PRIV_RANGE) ||
+                    filter_var($inputModified, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6 | FILTER_FLAG_NO_PRIV_RANGE)
                 )) {
                     throw new ExtraWatchInputException(_EW_INPUT_IP, $input);
                 }
@@ -165,6 +168,15 @@ class ExtraWatchInput {
                 }
                 return $input;
             }
+            case _EW_INPUT_LANGUAGE: {
+                $input = ExtraWatchInput::validate(_EW_INPUT_ONE_STRING, $input);//prevent from using anything else than single string !
+                $langDir = realpath(__DIR__.DS."..".DS."lang".DS.$input.".php");
+                if (!file_exists($langDir)) {
+                    throw new ExtraWatchInputException(_EW_INPUT_LANGUAGE, $langDir);
+                }
+                return $input;
+
+            }
 
             default: {
             return $input;
@@ -180,6 +192,33 @@ class ExtraWatchInput {
     public static function getUploadTmpDir()
     {
         return ini_get('upload_tmp_dir') ? ini_get('upload_tmp_dir') : sys_get_temp_dir();
+    }
+
+    /**
+     * @param $input
+     * @param $inputModified
+     * @return mixed|string
+     */
+    public static function replaceWildcardWithRealNumber($inputModified)
+    {
+        if (strstr($inputModified,":")) {   //possibly a IPv6
+            $inputModified = str_replace("*", "0", $inputModified);
+        } else if (strstr($inputModified, ".*")) { //IPv4 - contains wildcard
+            $dotCount = substr_count($inputModified, ".");
+            if ($dotCount == 1) {
+                $inputModified = str_replace(".*", ".0.0.0", $inputModified);
+                return $inputModified; //replacing with some number
+            } else if ($dotCount == 2) {
+                $inputModified = str_replace(".*", ".0", $inputModified); //replacing with some number
+                $inputModified .= ".0";
+                return $inputModified;
+            } else if ($dotCount == 3) {
+                $inputModified = str_replace(".*", ".0", $inputModified);
+                return $inputModified; //replacing with some number
+            }return $inputModified;
+
+        }
+        return $inputModified;
     }
 
 

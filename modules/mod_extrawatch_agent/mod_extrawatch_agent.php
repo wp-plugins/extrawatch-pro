@@ -47,7 +47,7 @@ function renderExtraWatchAgent()
 
     $extraWatch = new ExtraWatchMain();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-    require_once JPATH_BASE . DS . "components" . DS . "com_extrawatch" . DS . "lang" . DS . $extraWatch->config->getLanguage() . ".php";	///  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    require_once JPATH_BASE . DS . "components" . DS . "com_extrawatch" . DS . "lang" . DS . $extraWatch->config->getLanguage() . ".php";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
     if (EXTRAWATCH_DEBUG) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         $output .= ("<span style='color: #ff3333'>" . _EW_DESC_DEBUG . "</span><br/>");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -81,7 +81,10 @@ function renderExtraWatchAgent()
 }
 
 }
-
-if (!defined('ENV') | $env->getEnvironmentName() == "nocms") echo renderExtraWatchAgent();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+try {
+    if (!defined('ENV') | $env->getEnvironmentName() == "nocms") echo renderExtraWatchAgent();
+} catch (ExtraWatchInputException $e) {
+    ExtraWatchLog::error($e->getMessage());
+}
 
 
