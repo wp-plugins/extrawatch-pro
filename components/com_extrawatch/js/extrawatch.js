@@ -288,6 +288,17 @@ var ew_Heatmap = {
         return false;
     },
 
+   checkIfElementContainsHash: function (targetElement, domain) {
+        while(targetElement != null) {  /* go through all parent elements */
+            if (targetElement.href != null && targetElement.href.indexOf("#") != -1) {
+                return true;
+            }
+            targetElement = targetElement.parentElement;
+        };
+        return false;
+    },
+
+
     checkIfDoSynchronousClick: function (evt) {
 		var currentDomain = null;
 		if (window.location && window.location.href && window.location.href.split('/') && (window.location.href.split('/').length > 0)) {
@@ -296,6 +307,10 @@ var ew_Heatmap = {
 		if (evt.target != null && evt.target.type != null && evt.target.type == "submit") {	/* shopping cart submit buttons etc. */
 			return true;
 		}
+		if (evt.target != null && ew_Heatmap.checkIfElementContainsHash(evt.target, currentDomain)) {	//only for links which have http://
+			return false;
+		}
+
 		if (evt.target != null && ew_Heatmap.checkIfElementContainsHrefWithHttp(evt.target, currentDomain)) {	//only for links which have http://
 			return true;
 		}
