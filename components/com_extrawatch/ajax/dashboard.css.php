@@ -6075,7 +6075,7 @@ body {
 .ew-navbar {
     min-height: 94px;
     margin-bottom: 0px !important;
-    z-index:1000;
+    z-index:99;
 }
 
 /* chages for wordpress |*/
@@ -6198,5 +6198,5 @@ INPUT[type=text] {
 
 /* prestashop */
 .page-head {
-    z-index: 2000 !important;
+    z-index: 99 !important;
 }
