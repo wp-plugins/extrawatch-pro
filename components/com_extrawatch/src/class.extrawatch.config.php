@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 2538  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 2549  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2015 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.extrawatch.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -69,7 +69,7 @@ class ExtraWatchConfig
   function getBackendToken()
   {
     $rand = $this->getConfigValue("rand");
-    return sha1($rand.date("d h"));
+    return sha1($rand.gmdate("d w"));
 
   }
 
@@ -479,7 +479,7 @@ class ExtraWatchConfig
       //echo("<span style='color: green'>" . _EW_CONFIG_LICENSE_ACTIVATED . "</span>");
       $ip = ExtraWatchVisit::getRemoteIPAddress();
 	  $market = @$this->getConfigValue("EXTRAWATCH_MARKETPLACE");
-	  echo("<iframe style='display:none' src='http://www.extrawatch.com/track/extrawatch/2.3/install/?domain=".$domain."&license=PRO&version=2.3.2538&ip=".$ip."&env=".get_class($this->env)."&key=".$value."&market=".@$market."' width='1px' frameborder='0' height='1px'>
+	  echo("<iframe style='display:none' src='http://www.extrawatch.com/track/extrawatch/2.3/install/?domain=".$domain."&license=PRO&version=2.3.2549&ip=".$ip."&env=".get_class($this->env)."&key=".$value."&market=".@$market."' width='1px' frameborder='0' height='1px'>
         </iframe>");			
       $this->saveConfigValue('EXTRAWATCH_FREE', 0);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     } else if (!$this->isUnregistered()){  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -542,12 +542,12 @@ class ExtraWatchConfig
 
   function getFrontendToken()
   {
-    return sha1(sha1(date("d h")).sha1($this->getConfigValue("rand")));
+    return sha1(sha1(gmdate("d w")).sha1($this->getConfigValue("rand")));
   }
 
   function getHeatmapToken()
   {
-    return sha1(date("d h").sha1(sha1($this->getConfigValue("rand"))));
+    return sha1(gmdate("d w").sha1(sha1($this->getConfigValue("rand"))));
   }
 
     /**

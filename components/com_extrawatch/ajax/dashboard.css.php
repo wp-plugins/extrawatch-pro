@@ -2383,12 +2383,7 @@ input[type="button"].btn-block {
 .fade.in {
   opacity: 1;
 }
-.collapse {
-  display: none;
-}
-.collapse.in {
-  display: block;
-}
+
 .collapsing {
   position: relative;
   height: 0;
@@ -6080,7 +6075,7 @@ body {
 .ew-navbar {
     min-height: 94px;
     margin-bottom: 0px !important;
-    z-index:0;
+    z-index:1000;
 }
 
 /* chages for wordpress |*/
@@ -6194,4 +6189,14 @@ INPUT[type=text] {
     border-right: none !important;
     border-width: 0 0px 0px !important;
     margin-bottom: 0px !important;
+}
+
+/* Joomla 3.x */
+.subhead-collapse {
+    display: none;
+}
+
+/* prestashop */
+.page-head {
+    z-index: 2000 !important;
 }

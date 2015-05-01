@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 2538  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 2549  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2015 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.extrawatch.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -370,11 +370,7 @@ class ExtraWatchBlock
         $uploadedFilePath = JPATH_BASE."/" . $_FILES["file"]["name"];///
         move_uploaded_file($_FILES["file"]["tmp_name"],$uploadedFilePath);///
 
-        $reason = $_FILES["file"]["name"];  	 	    	///
-        $row = 1;
-        $date = ExtraWatchDate::jwDateToday();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-
-        set_time_limit(0);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        set_time_limit(0);
 
         $handle = fopen($uploadedFilePath, "r");
         if (!$handle) {
@@ -383,9 +379,9 @@ class ExtraWatchBlock
         }
 
         $errorMessages = array();
-        while (($data = fgetcsv($handle, '', ",")) !== FALSE) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-            $row++;
-            $ip = $data[0];
+        $i = 0;
+        while (($data = stream_get_line($handle, 1024, ",")) !== FALSE) {
+            $ip = $data;
             if($ip != 'ip'){  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                 if (!ExtraWatchHelper::isValidIPv4($ip)) {
                     $errorMessages[] = "$ip is not a valid IP address!";
@@ -393,22 +389,14 @@ class ExtraWatchBlock
                 }
                 $ipArray[] = $ip;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
             }
-        }
-        $valuesOutputArray = array();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        $i=0;
-        foreach ($ipArray as $ip) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-            $valuesOutputArray[] = sprintf(" ('%s','%s', '%s', '%d')", $this->database->getEscaped($ip), "", EXTRAWATCH_UNKNOWN_COUNTRY, (int) $date);   //adding reason as empty, to save db space
-            if ($i<sizeof($ipArray)) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                if ($i!=0 && $i% self::IP_BULK_IMPORT_SIZE ==0) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                    $valuesOutput = implode(",", $valuesOutputArray).";";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                    $this->insertIpBulk($valuesOutput);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                    $valuesOutputArray = array();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                }
-                $i++;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+            if ($i % self::IP_BULK_IMPORT_SIZE == self::IP_BULK_IMPORT_SIZE -1) { //flushing array when it has particular size to DB
+                $this->flushIPBulkFromArray($ipArray);
+                $ipArray = array();
             }
+            $i++;
+
         }
-        $valuesOutput = implode(",", $valuesOutputArray).";";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        $this->insertIpBulk($valuesOutput); // remaining IP addresses  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $this->flushIPBulkFromArray($ipArray);
 
         fclose($handle);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         unlink($uploadedFilePath);
@@ -433,6 +421,29 @@ class ExtraWatchBlock
 
     }
 
+    /**
+     * @param $ipArray
+     * @param $date
+     */
+    public function flushIPBulkFromArray($ipArray)
+    {
+        $date = ExtraWatchDate::jwDateToday();
+        $valuesOutputArray = array();
+        $i = 0;
+        foreach ($ipArray as $ip) {
+            $valuesOutputArray[] = sprintf(" ('%s','%s', '%s', '%d')", $this->database->getEscaped($ip), "", EXTRAWATCH_UNKNOWN_COUNTRY, (int)$date); //adding reason as empty, to save db space
+            if ($i < sizeof($ipArray)) {
+                if ($i != 0 && $i % self::IP_BULK_IMPORT_SIZE == 0) {
+                    $valuesOutput = implode(",", $valuesOutputArray) . ";";
+                    $this->insertIpBulk($valuesOutput);
+                    $valuesOutputArray = array();
+                }
+                $i++;
+            }
+        }
+        $valuesOutput = implode(",", $valuesOutputArray) . ";";
+        $this->insertIpBulk($valuesOutput); // remaining IP addresses
+    }
 
 }
 

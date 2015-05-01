@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.3
- * @revision 2538
+ * @revision 2549
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2015 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -43,10 +43,16 @@ define("_EW_ALLOWED_PARAMS_TO_EXTRACT", serialize (array (1=>"action", "click", 
 class ExtraWatchInput {
 
 
+    const IP_SEPARATOR = ",";
+
     public static function validate($type, $input = "") {
         switch ($type) {
             case _EW_INPUT_IP: {
                 $inputModified = $input;
+                 if (@strstr($inputModified, self::IP_SEPARATOR)) {  //has multiple entries splitted by "," ?
+                     self::splitAndValidateMultipleIp($inputModified);
+                     return $inputModified;
+                 } else {
                 $inputModified = self::replaceWildcardWithRealNumber($inputModified);
                 if (!(
                     filter_var($inputModified, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4 | FILTER_FLAG_NO_PRIV_RANGE) ||
@@ -54,6 +60,7 @@ class ExtraWatchInput {
                 )) {
                     throw new ExtraWatchInputException(_EW_INPUT_IP, $input);
                 }
+                 }
                 return $input;
             }
             case _EW_INPUT_URL: {
@@ -199,7 +206,7 @@ class ExtraWatchInput {
      * @param $inputModified
      * @return mixed|string
      */
-    public static function replaceWildcardWithRealNumber($inputModified)
+    private static function replaceWildcardWithRealNumber($inputModified)
     {
         if (strstr($inputModified,":")) {   //possibly a IPv6
             $inputModified = str_replace("*", "0", $inputModified);
@@ -219,6 +226,17 @@ class ExtraWatchInput {
 
         }
         return $inputModified;
+    }
+
+    /**
+     * @param $inputModified
+     */
+    private static function splitAndValidateMultipleIp($inputModified)
+    {
+        $inputModifiedArray = explode(self::IP_SEPARATOR, $inputModified);
+        foreach ($inputModifiedArray as $inputModifiedArrayEntry) {
+            ExtraWatchInput::validate(_EW_INPUT_IP, trim($inputModifiedArrayEntry));
+        }
     }
 
 
