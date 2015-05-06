@@ -5,7 +5,7 @@ var extraWatchAjaxLinkDecoded = decodeURIComponent(extraWatchAjaxLink);
 
 	var ew_img = document.createElement('img');
 
-    ew_img.src = extraWatchAjaxLinkDecoded + "img&rand="+ Math.random() +"&env=" + extraWatchEnv + "&ref="+ew_Utf8Encoder.ew_encodeURIComponent(ew_Utf8Encoder.ew_encodeURIComponent(document.referrer))+"&title="+ew_Utf8Encoder.encode(document.title)+"&uri="+ew_Utf8Encoder.ew_encodeURIComponent(window.location.pathname)+"&referringQuery="+ew_Utf8Encoder.ew_encodeURIComponent("")+"&params="+ew_Utf8Encoder.ew_encodeURIComponent(location.search);
+    ew_img.src = extraWatchAjaxLinkDecoded + "img&rand="+ Math.random() +"&env=" + extraWatchEnv + "&ref="+ew_Utf8Encoder.ew_encodeURIComponent(ew_Utf8Encoder.ew_encodeURIComponent(document.referrer))+"&title="+ew_Utf8Encoder.encode(document.title)+"&uri="+ew_Utf8Encoder.ew_encodeURIComponent(window.location.pathname)+"&referringQuery="+ew_Utf8Encoder.ew_encodeURIComponent("")+"&getParams="+ew_Utf8Encoder.ew_encodeURIComponent(location.search);
 
     })();
 

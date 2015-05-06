@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 2551
+ * @revision 2553
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2015 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.codegravity.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -56,7 +56,7 @@ $output = "";
 ";
 
 $output .= "
-<h1>ExtraWatch 2.3.2551 PRO</h1>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+<h1>ExtraWatch 2.3.2553 PRO</h1>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 ";
 
 
@@ -111,10 +111,6 @@ $output .= "
 
             <h3>If you've purchased this item via some other marketplace, please contact us via livechat on extrawatch.com !</h3>
             <br/>";
-
-if (@get_class($extraWatch->env) == "ExtraWatchJoomlaEnv") {
-    $output .= "			<a href='" . $extraWatch->config->renderLink("continueUnregistered") . "' style='color: #e74c3c; font-size: 12px;'>Continue with no membership, no support and no updates</a>";
-}
 
 
 $output .= "
@@ -193,7 +189,7 @@ $output .= "
 
 		$env = @get_class($extraWatch->env);
 		
-		$output .= "<iframe src='http://www.extrawatch.com/track/extrawatch/2.3/install/?domain=".$domain."&license=PRO&version=2.3.2551&ip=".$ip."&env=".$env."' width='1px' frameborder='0' height='1px'>
+		$output .= "<iframe src='http://www.extrawatch.com/track/extrawatch/2.3/install/?domain=".$domain."&license=PRO&version=2.3.2553&ip=".$ip."&env=".$env."' width='1px' frameborder='0' height='1px'>
         </iframe>";			
 
 		$output .= "		
