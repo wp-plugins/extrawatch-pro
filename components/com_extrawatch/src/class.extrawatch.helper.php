@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 2553  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 2559  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2015 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.extrawatch.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -527,7 +527,7 @@ class ExtraWatchHelper
             if (@$param) {
                 extract(ExtraWatchInput::validate(_EW_INPUT_EXTRACT,$param)); ///
             }
-            $ewPath = realpath(__DIR__.DS."..".DS);
+            $ewPath = realpath(dirname(__FILE__).DS."..".DS);
             if (!ExtraWatchHelper::startsWith($filenameFullPath, $ewPath)) {
                 die("restricted access to file $filename");
             }
@@ -576,7 +576,7 @@ function renderHTMLCodeSnippet($projectId) {   ///
 		}
 
 		$output = "";
-		$title = "Visitor heat map tracker, live visitor tracking, real time visitor counter";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+		$title = "Web analytics, Visit tracker, Conversion rate optimization";
 
     if (@get_class($this->env) != "ExtraWatchPrestaShopEnv") {	//in PrestaShop this is done in extrawatch.php
 		echo $this->env->addScript($liveSite."components/com_extrawatch/js/heatmap/heatmap.js");

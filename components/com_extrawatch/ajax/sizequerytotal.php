@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 2553  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 2559  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2015 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.codegravity.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -30,10 +30,10 @@ $group = ExtraWatchInput::validate(_EW_INPUT_ONE_STRING, ExtraWatchHelper::reque
 $prevSum = (int) ExtraWatchHelper::requestPost('prev');///
 $suffix = ExtraWatchInput::validate(_EW_INPUT_ONE_STRING,ExtraWatchHelper::requestPost('suffix'));///
 
-ExtraWatchInput::validate(_EW_INPUT_DIR, realpath(__DIR__.DS.ExtraWatchHelper::requestPost('dir1')));
+ExtraWatchInput::validate(_EW_INPUT_DIR, realpath(dirname(__FILE__).DS.ExtraWatchHelper::requestPost('dir1')));
 $realDirectoryMain = ExtraWatchHelper::requestPost('dir1');///**
 
-ExtraWatchInput::validate(_EW_INPUT_DIR, realpath(__DIR__.DS.ExtraWatchHelper::requestPost('dir2')));
+ExtraWatchInput::validate(_EW_INPUT_DIR, realpath(dirname(__FILE__).DS.ExtraWatchHelper::requestPost('dir2')));
 $realDirectoryAdmin = ExtraWatchHelper::requestPost('dir2');///**
 
 if (!$extraWatch->sizes->isAllowed($realDirectoryMain) || !$extraWatch->sizes->isAllowed($realDirectoryAdmin)) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  

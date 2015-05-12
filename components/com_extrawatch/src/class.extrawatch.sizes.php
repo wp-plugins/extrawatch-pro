@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 2553  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 2559  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2015 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.extrawatch.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -224,10 +224,10 @@ class ExtraWatchSizes
     $this->renderPageTotalRaw = 0;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     $this->renderPageJavaArray = "var dirs_$suffix = [\"\"";
 
-    ExtraWatchInput::validate(_EW_INPUT_DIR, realpath(__DIR__.DS.$scanDirectoryMain));  	///**
+    ExtraWatchInput::validate(_EW_INPUT_DIR, realpath(dirname(__FILE__).DS.$scanDirectoryMain));  	///**
     $dirs1 = @scandir($scanDirectoryMain);  	///**
 
-    ExtraWatchInput::validate(_EW_INPUT_DIR, realpath(__DIR__.DS.$scanDirectoryAdmin));  	///**
+    ExtraWatchInput::validate(_EW_INPUT_DIR, realpath(dirname(__FILE__).DS.$scanDirectoryAdmin));  	///**
     $dirs2 = @scandir($scanDirectoryAdmin);  	///**
 
     if ($dirs2) {   // in case we only use one folder  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
