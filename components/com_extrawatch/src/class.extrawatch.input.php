@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.3
- * @revision 2563
+ * @revision 2564
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2015 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -56,8 +56,8 @@ class ExtraWatchInput {
                  } else {
                 $inputModified = self::replaceWildcardWithRealNumber($inputModified);
                 if (!(
-                    filter_var($inputModified, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4 | FILTER_FLAG_NO_PRIV_RANGE) ||
-                    filter_var($inputModified, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6 | FILTER_FLAG_NO_PRIV_RANGE)
+                    filter_var($inputModified, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4) ||
+                    filter_var($inputModified, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6)
                 )) {
                     throw new ExtraWatchInputException(_EW_INPUT_IP, $input);
                 }
@@ -155,8 +155,8 @@ class ExtraWatchInput {
 
             case _EW_INPUT_HOST: {
                 $isIpValid = (
-                    filter_var($input, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4 | FILTER_FLAG_NO_PRIV_RANGE) ||
-                    filter_var($input, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6 | FILTER_FLAG_NO_PRIV_RANGE)
+                    filter_var($input, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4) ||
+                    filter_var($input, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6)
                 );
 
                 $isHostValid = (preg_match("/^([a-z\d](-*[a-z\d])*)(\.([a-z\d](-*[a-z\d])*))*$/i", $input) //valid chars check
