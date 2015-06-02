@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.3
- * @revision 2564
+ * @revision 2566
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2015 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -87,9 +87,14 @@ if (@_EW_CLOUD_MODE) {
 ew_Heatmap.attachExtraWatchClickListener('<?php echo($extraWatch->config->getFrontendToken()); ?>', <?php echo( (int) $uri2titleId);?>);
 
 
-  <?php if (@$heatmapEnabled) { ?>
+  <?php if (@$heatmapEnabled) {
 
-	var data = "<?php echo str_replace("\"","\\\"",$extraWatch->heatmap->getHeatmapClicksByUri2TitleIdJSON($uri2titleId, $day, $ip)); ?>";
+    $heatmapDataJSON = $extraWatch->heatmap->getHeatmapClicksByUri2TitleIdJSON($uri2titleId, $day, $ip);
+    $heatmapDataJSON = str_replace("\"","\\\"",$heatmapDataJSON);
+
+    ?>
+
+    var data = <?php echo $heatmapDataJSON; ?>;
 
       document.onkeypress = ew_Heatmap.keyListener;
 

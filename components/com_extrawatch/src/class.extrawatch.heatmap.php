@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 2564  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 2566  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2015 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.extrawatch.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -77,22 +77,22 @@ class ExtraWatchHeatmap
     return $this->database->objectListQuery($query);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   }
 
-   function getHeatmapClicksByUri2TitleIdJSON($uri2titleId, $day, $ip = "") {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-    $result = $this->getHeatmapClicksByUri2TitleId($uri2titleId, $day, $ip);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-    $output = "{max: 90, data: [";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-    $i = 0;
-    if ($result)
-      foreach ($result as $row) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        $output .= sprintf("{x: %d, y: %d, count: %d, xpath: '%s'}", $row->x, $row->y, 10, $row->xpath);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        $i++;
-        if ($i < sizeof($result)) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-          $output .= ",";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        }
-      }
-    $output .= "]}";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-	
-    return $output;
-  }
+    function getHeatmapClicksByUri2TitleIdJSON($uri2titleId, $day, $ip = "") {
+        $result = $this->getHeatmapClicksByUri2TitleId($uri2titleId, $day, $ip);
+        $output = "{max: 90, data: [\n";
+        $i = 0;
+        if ($result)
+            foreach ($result as $row) {
+                $output .= sprintf("{x: %d, y: %d, count: %d, xpath: '%s'}", $row->x, $row->y, 10, str_replace("'","\\'",$row->xpath));
+                $i++;
+                if ($i < sizeof($result)) {
+                    $output .= ",\n";
+                }
+            }
+        $output .= "]}";
+
+        return $output;
+    }
 
   /* heatmap */
   function getHeatmapClicksByUri2TitleIdForToday($uri2titleId, $w, $h)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
