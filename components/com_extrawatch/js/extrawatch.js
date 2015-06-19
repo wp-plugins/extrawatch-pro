@@ -353,10 +353,14 @@ var ew_Heatmap = {
 
 
     renderHeatmap : function (randHash, data) {
-        var ip = ew_Helper.getQueryVariable('ip');
-        var obj = eval('(' + data + ')');
-        xx.displayLoading
-        xx.store.setDataSet(obj);
+		try {
+			var ip = ew_Helper.getQueryVariable('ip');
+			var obj = eval( data );
+			xx.displayLoading
+			xx.store.setDataSet(obj);
+		} catch (e) {
+			alert("There was problem loading ExtraWatch Heatmap. This is not fault of ExtraWatch but fact that you might have some other javascript errors on your website.\n\nError:\n" + e.message + "\nStack:\n" + e.stack);
+		}
     }
 
 
