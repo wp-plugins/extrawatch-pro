@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 2572  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 2587  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2015 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.codegravity.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -31,18 +31,24 @@ $extraWatchTrendHTML = new ExtraWatchTrendHTML($extraWatch);
 $extraWatch->block->checkBackendTokenFromUrl();
 $extraWatch->config->initializeTranslations();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-//echo $extraWatchHTML->renderAdminStyles();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-echo $extraWatchHTML->renderPrint();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-echo $extraWatchHTML->renderCloseWindow();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+echo $extraWatchHTML->renderAdminStyles();
+echo $extraWatchHTML->renderCloseWindow();
 
 $group = (int) @ ExtraWatchHelper::requestGet('group'); ///
 $name = ExtraWatchInput::validate(_EW_INPUT_ONE_STRING, urldecode(@ExtraWatchHelper::requestGet('name'))); ///
 $date = (int) @ ExtraWatchHelper::requestGet('date');  ///
- 
 
 ?>
+<?php
+
+echo "<script type=\"text/javascript\" src='".$extraWatch->config->getLiveSiteWithSuffix()."components/com_extrawatch/js/jquery-1.11.0.min.js"."'></script>";
+echo "<script type=\"text/javascript\" src='".$extraWatch->config->getLiveSiteWithSuffix()."components/com_extrawatch/js/morris/raphael-2.1.0.min.js"."'></script>";
+echo "<script type=\"text/javascript\" src='".$extraWatch->config->getLiveSiteWithSuffix()."components/com_extrawatch/js/morris/morris.min.js"."'></script>";
+?>
+
 <center>
-<h2><?php echo htmlentities($name);?></h2>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+
+<h2><?php echo htmlentities($name);?></h2>
 </center>
 <br/><br/>
 <table>
@@ -58,7 +64,8 @@ $date = (int) @ ExtraWatchHelper::requestGet('date');  ///
 </tr>
 </table>
 
-<script type='text/javascript'>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+<script type='text/javascript'>
+jQuery(document).ready(function() {
 Morris.Area ({
   element: 'trendChartDaily',  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   behaveLikeLine: true,  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -75,5 +82,9 @@ Morris.Area ({
   ykeys: ['value'],
   labels: ['<?php echo _EW_EMAIL_REPORTS_VALUE;?>', '']  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 });
+});
 </script>
 
+<?php
+echo $extraWatchHTML->renderPrint();
+?>

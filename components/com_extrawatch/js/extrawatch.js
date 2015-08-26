@@ -64,7 +64,9 @@ var ew_Helper = {   /* helper functions which can be used anywhere*/
         return str.indexOf(suffix, str.length - suffix.length) !== -1;
     },
     startsWith : function(str, prefix) {
-        return str.indexOf(prefix) === 0;
+		if (str != null && prefix != null) {
+			return str.indexOf(prefix) === 0;
+		}
     }
 }
 
@@ -280,7 +282,7 @@ var ew_Heatmap = {
 
     checkIfElementContainsHrefWithHttp: function (targetElement, domain) {
         while(targetElement != null) {  /* go through all parent elements */
-            if (targetElement.href != null && ew_Helper.startsWith(targetElement.href,"http") /* && !(targetElement.href.indexOf(domain) > 0) */) {
+            if (targetElement.href != null && ew_Helper.startsWith(targetElement.href,"http") || ew_Helper.startsWith(targetElement.href,"https") /* && !(targetElement.href.indexOf(domain) > 0) */) {
                 return true;
             }
             targetElement = targetElement.parentElement;

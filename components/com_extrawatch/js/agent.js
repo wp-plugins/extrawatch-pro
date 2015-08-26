@@ -1,15 +1,21 @@
 
-var extraWatchAjaxLinkDecoded = decodeURIComponent(extraWatchAjaxLink);
 
-(function() {
+/* Detects if user has "Tell websites that I don't want to be tracked" browser setting switched on and skips tracking of such user */
+var extraWatchDoNotTrackSettingEnabled = navigator.doNotTrack == "yes" || navigator.doNotTrack == "1" || navigator.msDoNotTrack == "1";
 
-	var ew_img = document.createElement('img');
+if (!extraWatchDoNotTrackSettingEnabled) {
 
-    ew_img.src = extraWatchAjaxLinkDecoded + "img&rand="+ Math.random() +"&env=" + extraWatchEnv + "&ref="+ew_Utf8Encoder.ew_encodeURIComponent(ew_Utf8Encoder.ew_encodeURIComponent(document.referrer))+"&title="+ew_Utf8Encoder.encode(document.title)+"&uri="+ew_Utf8Encoder.ew_encodeURIComponent(window.location.pathname)+"&referringQuery="+ew_Utf8Encoder.ew_encodeURIComponent("")+"&getParams="+ew_Utf8Encoder.ew_encodeURIComponent(location.search);
+    var extraWatchAjaxLinkDecoded = decodeURIComponent(extraWatchAjaxLink);
+
+    (function() {
+
+        var ew_img = document.createElement('img');
+
+        ew_img.src = extraWatchAjaxLinkDecoded + "img&rand="+ Math.random() +"&env=" + extraWatchEnv + "&ref="+ew_Utf8Encoder.ew_encodeURIComponent(ew_Utf8Encoder.ew_encodeURIComponent(document.referrer))+"&title="+ew_Utf8Encoder.encode(document.title)+"&uri="+ew_Utf8Encoder.ew_encodeURIComponent(window.location.pathname)+"&referringQuery="+ew_Utf8Encoder.ew_encodeURIComponent("")+"&getParams="+ew_Utf8Encoder.ew_encodeURIComponent(location.search);
 
     })();
 
-	(function() {
+    (function() {
 
         var ewHeatmapIncludeJS = document.createElement('script');
         ewHeatmapIncludeJS.type = 'text/javascript'; ewHeatmapIncludeJS.async = true;
@@ -18,11 +24,13 @@ var extraWatchAjaxLinkDecoded = decodeURIComponent(extraWatchAjaxLink);
 
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ewHeatmapIncludeJS, s);
 
-        })();
+    })();
 
 
-(function() {	//onload ajax request which deactivates user
-    window.addEventListener('beforeunload', function() {
-        downloadUrl(extraWatchAjaxLinkDecoded + "unloaded", function (e) {}, true, true);
-    })
-})();
+    (function() {	//onload ajax request which deactivates user
+        window.addEventListener('beforeunload', function() {
+            downloadUrl(extraWatchAjaxLinkDecoded + "unloaded", function (e) {}, true, true);
+        })
+    })();
+
+}

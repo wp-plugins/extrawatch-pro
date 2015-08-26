@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 2572  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 2587  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2015 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.extrawatch.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -62,7 +62,7 @@ class ExtraWatchHeatmap
   }
 
   /* heatmap */
-  function getHeatmapClicksByUri2TitleId($uri2titleId, $day, $ip = "")  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+  function getHeatmapClicksByUri2TitleId($uri2titleId, $day, $ip = "", $limit = 100)
   {
     $ipFilter = "";
     if ($ip) {
@@ -72,8 +72,12 @@ class ExtraWatchHeatmap
     if ($day) {
       $dayFilter = sprintf(" AND day = '%d' ", (int) $day);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     }
+    $limitFilter = "";
+    if ($limit) {
+        $limitFilter = sprintf(" limit %d ", (int) $limit);
+    }
 
-    $query = sprintf("SELECT * FROM #__extrawatch_heatmap LEFT JOIN #__extrawatch_goals on #__extrawatch_goals.clicked_element_xpath_condition WHERE uri2titleId = '%d' $dayFilter $ipFilter", (int) $uri2titleId);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    $query = sprintf("SELECT * FROM #__extrawatch_heatmap LEFT JOIN #__extrawatch_goals on #__extrawatch_goals.clicked_element_xpath_condition WHERE uri2titleId = '%d' $dayFilter $ipFilter order by #__extrawatch_heatmap.timestamp desc $limitFilter ", (int) $uri2titleId);
     return $this->database->objectListQuery($query);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   }
 
