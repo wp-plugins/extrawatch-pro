@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 2587  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 2588  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2015 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.codegravity.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -56,7 +56,8 @@ class ExtraWatchDownloads
         }
 
         set_time_limit(0);
-        $mimeType = $this->mime_content_type($file);
+        $filepath = $this->env->getRootPath().DS.trim($file);
+        $mimeType = $this->mime_content_type($filepath);
 
 
         $referrer = ExtraWatchInput::validate(_EW_INPUT_REFERRER, ExtraWatchVisit::getReferer());///
@@ -74,7 +75,6 @@ class ExtraWatchDownloads
         if (!@$this->config->isIgnored('IP', $ip)) { // do not count downloads for excluded IP addresses
             $this->increaseDownloadStat($file);
         }
-        $filepath = $this->env->getRootPath().DS.trim($file);
 
         $this->serveDownload($filepath, 1024, $mimeType);
 

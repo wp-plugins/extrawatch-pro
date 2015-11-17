@@ -64,9 +64,7 @@ var ew_Helper = {   /* helper functions which can be used anywhere*/
         return str.indexOf(suffix, str.length - suffix.length) !== -1;
     },
     startsWith : function(str, prefix) {
-		if (str != null && prefix != null) {
-			return str.indexOf(prefix) === 0;
-		}
+        return str.indexOf(prefix) === 0;
     }
 }
 

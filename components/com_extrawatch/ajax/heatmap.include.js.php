@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.3
- * @revision 2587
+ * @revision 2588
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2015 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -29,9 +29,7 @@ include_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS. "incl
 
 $extraWatch = new ExtraWatchMain();
 $extraWatch->helper->setNoindexHttpHeaders();   //setting explicitly for ajax requests
-$extraWatch->env->setHttpHeader("Content-Type: text/javascript");
 $extraWatch->block->checkFrontendTokenFromUrl();
-
 
 $params = ExtraWatchHelper::requestGet("params");///
 $params=str_replace("?","",$params);    //remove trailing ?  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -55,13 +53,7 @@ $uri = ExtraWatchInput::validate(_EW_INPUT_URI, ExtraWatchHelper::unescapeSlash(
 //echo("url: $uri title: $title");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
 $extraWatch->visit->addUri2Title($uri, $title);
-$uri2TitleIdFromQuery = @$getParams['uri2titleId'];
-if (@$uri2TitleIdFromQuery) {
-	$uri2titleId = $uri2TitleIdFromQuery;
-} else {
-	$extraWatch->visit->addUri2Title($uri, $title);
-	$uri2titleId = $extraWatch->visit->getUri2TitleId($uri, $title);
-}
+$uri2titleId = $extraWatch->visit->getUri2TitleId($uri, $title);
 
 ExtraWatchLog::debug("heatmap.include.js.php - title: ".$title." uri: ".$uri. " uri2titleId: ".$uri2titleId. " ip: $ip queryParams: ". print_r($queryParams, true));
 
