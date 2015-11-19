@@ -61,10 +61,16 @@ var ew_Helper = {   /* helper functions which can be used anywhere*/
         }
     },
     endsWith: function (str, suffix) {
+		if (str == null || suffix == null) {
+			return false;
+		}
         return str.indexOf(suffix, str.length - suffix.length) !== -1;
     },
     startsWith : function(str, prefix) {
-        return str.indexOf(prefix) === 0;
+		if (str == null || prefix == null) {
+			return false;
+		}
+		return str.indexOf(prefix) === 0;
     }
 }
 
